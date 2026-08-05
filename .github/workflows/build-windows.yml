@@ -8,6 +8,7 @@ on:
       - "app.py"
       - "requirements.txt"
       - "FlightDeals.spec"
+      - "runtime_hook.py"
       - "scripts/**"
       - ".github/workflows/build-windows.yml"
 
@@ -41,7 +42,7 @@ jobs:
         shell: pwsh
         run: |
           python -c "import inspect, fast_flights, typing_extensions; from fast_flights import create_query, FlightQuery; print('create_query', inspect.signature(create_query)); print('FlightQuery', inspect.signature(FlightQuery))"
-          python -m py_compile app.py
+          python -m py_compile app.py runtime_hook.py
 
       - name: Gerar executável
         shell: pwsh
@@ -57,7 +58,7 @@ jobs:
       - name: Publicar artefato
         uses: actions/upload-artifact@v4
         with:
-          name: Flight-Deals-Local-Windows-v0.1.1
+          name: Flight-Deals-Local-Windows-v0.1.2
           path: release
           if-no-files-found: error
           retention-days: 30
