@@ -1,0 +1,58 @@
+name: Gerar executável Windows
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "app.py"
+      - "requirements.txt"
+      - "FlightDeals.spec"
+      - ".github/workflows/build-windows.yml"
+
+jobs:
+  build:
+    runs-on: windows-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Instalar dependências
+        shell: pwsh
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Testar importações
+        shell: pwsh
+        run: |
+          python -c "import fast_flights, typing_extensions; print('Dependências OK')"
+          python -m py_compile app.py
+
+      - name: Gerar executável
+        shell: pwsh
+        run: pyinstaller --clean --noconfirm FlightDeals.spec
+
+      - name: Preparar pacote portátil
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path release
+          Copy-Item "dist/Flight Deals Local.exe" "release/Flight Deals Local.exe"
+          Copy-Item README.md release/README.md
+
+      - name: Publicar artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: Flight-Deals-Local-Windows-v0.1
+          path: release
+          if-no-files-found: error
+          retention-days: 30
