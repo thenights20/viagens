@@ -35,9 +35,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Aplicar compatibilidade fast-flights
+      - name: Aplicar compatibilidade fast-flights na v0.3
         shell: pwsh
-        run: python scripts/patch_fast_flights_compat.py
+        run: python scripts/patch_v03_fast_flights.py
 
       - name: Testar importações e código
         shell: pwsh
@@ -59,7 +59,7 @@ jobs:
       - name: Publicar artefato
         uses: actions/upload-artifact@v4
         with:
-          name: Flight-Deals-Local-Windows-v0.3
+          name: Flight-Deals-Local-Windows-v0.3.1
           path: release
           if-no-files-found: error
           retention-days: 30
