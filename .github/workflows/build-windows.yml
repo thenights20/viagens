@@ -8,6 +8,7 @@ on:
       - "app.py"
       - "requirements.txt"
       - "FlightDeals.spec"
+      - "scripts/**"
       - ".github/workflows/build-windows.yml"
 
 jobs:
@@ -32,10 +33,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Testar importações
+      - name: Aplicar compatibilidade fast-flights
+        shell: pwsh
+        run: python scripts/patch_fast_flights_compat.py
+
+      - name: Testar importações e assinatura
         shell: pwsh
         run: |
-          python -c "import fast_flights, typing_extensions; print('Dependências OK')"
+          python -c "import inspect, fast_flights, typing_extensions; from fast_flights import create_query, FlightQuery; print('create_query', inspect.signature(create_query)); print('FlightQuery', inspect.signature(FlightQuery))"
           python -m py_compile app.py
 
       - name: Gerar executável
@@ -52,7 +57,7 @@ jobs:
       - name: Publicar artefato
         uses: actions/upload-artifact@v4
         with:
-          name: Flight-Deals-Local-Windows-v0.1
+          name: Flight-Deals-Local-Windows-v0.1.1
           path: release
           if-no-files-found: error
           retention-days: 30
