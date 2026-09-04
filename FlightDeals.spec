@@ -3,7 +3,7 @@ from PyInstaller.utils.hooks import collect_all, collect_submodules
 
 datas = []
 binaries = []
-hiddenimports = ["typing_extensions", "airport_catalog"]
+hiddenimports = ["typing_extensions", "airport_catalog", "search_core"]
 for package in ["fast_flights", "pymod02"]:
     d, b, h = collect_all(package)
     datas += d
@@ -12,7 +12,7 @@ for package in ["fast_flights", "pymod02"]:
 hiddenimports += collect_submodules("fast_flights")
 
 a = Analysis(
-    ["app_v03.py"],
+    ["app_v04.py"],
     pathex=[],
     binaries=binaries,
     datas=datas,
