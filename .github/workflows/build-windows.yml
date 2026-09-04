@@ -58,7 +58,7 @@ jobs:
       - name: Publicar artefato
         uses: actions/upload-artifact@v4
         with:
-          name: Flight-Deals-Local-Windows-v0.4.0
+          name: Flight-Deals-Local-Windows-v0.5.0
           path: release
           if-no-files-found: error
           retention-days: 30
