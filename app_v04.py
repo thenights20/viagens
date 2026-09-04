@@ -46,6 +46,40 @@ class RegionPicker:
         self.top.destroy()
 
 
+class MonthPicker:
+    MONTHS = [
+        "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+        "julho", "agosto", "setembro", "outubro", "novembro", "dezembro",
+    ]
+
+    def __init__(self, parent: Tk, selected: list[str], callback: Any) -> None:
+        self.top = Toplevel(parent)
+        self.top.title("Selecionar meses")
+        self.top.geometry("430x560")
+        self.top.transient(parent)
+        self.callback = callback
+        self.values: list[str] = []
+        self.listbox = Listbox(self.top, selectmode=MULTIPLE, exportselection=False)
+        self.listbox.pack(fill=BOTH, expand=True, padx=12, pady=12)
+        today = date.today().replace(day=1)
+        for offset in range(24):
+            year = today.year + (today.month - 1 + offset) // 12
+            month = (today.month - 1 + offset) % 12 + 1
+            value = f"{year:04d}-{month:02d}"
+            self.values.append(value)
+            self.listbox.insert(END, f"{self.MONTHS[month - 1].capitalize()} de {year}")
+            if value in selected:
+                self.listbox.selection_set(offset)
+        bar = ttk.Frame(self.top)
+        bar.pack(fill=X, padx=12, pady=(0, 12))
+        ttk.Button(bar, text="Limpar", command=lambda: self.listbox.selection_clear(0, END)).pack(side=LEFT)
+        ttk.Button(bar, text="Aplicar", command=self.apply).pack(side=RIGHT)
+
+    def apply(self) -> None:
+        self.callback([self.values[i] for i in self.listbox.curselection()])
+        self.top.destroy()
+
+
 class App:
     def __init__(self) -> None:
         self.root = Tk()
@@ -59,8 +93,10 @@ class App:
         self.worker: threading.Thread | None = None
         self.current_job_id: int | None = None
         self.results: list[Deal] = []
+        self.date_results: list[Deal] = []
         self.origin_regions: list[str] = []
         self.destination_regions: list[str] = []
+        self.selected_months: list[str] = []
         self._vars()
         self._style()
         self._ui()
@@ -81,15 +117,18 @@ class App:
         self.ret_end = StringVar(value=(today + timedelta(days=379)).isoformat())
         self.dep_months = StringVar(value=f"{today.year + 1}-01")
         self.ret_months = StringVar(value=f"{today.year + 1}-02")
+        self.selected_months_text = StringVar(value="Nenhum mês selecionado")
         self.min_nights = IntVar(value=3)
         self.max_nights = IntVar(value=14)
         self.adults = IntVar(value=1)
         self.max_stops = IntVar(value=2)
         self.max_price = IntVar(value=0)
         self.result_limit = IntVar(value=50)
+        self.date_limit = StringVar(value="500")
         self.seat = StringVar(value="economy")
         self.currency = StringVar(value="BRL")
         self.depth = StringVar(value="Profundo")
+        self.speed = StringVar(value="Turbo adaptativo (3)")
         self.status_text = StringVar(value="Pronto para pesquisar.")
         self.summary_text = StringVar(value="Selecione os destinos ou use “Brasil inteiro”.")
         self.progress_text = StringVar(value="0%")
@@ -135,7 +174,10 @@ class App:
         mode = ttk.Combobox(
             form,
             textvariable=self.date_mode,
-            values=["Próximos 12 meses", "Datas/Intervalo", "Meses flexíveis"],
+            values=[
+                "Próximos 30 dias", "Próximos 3 meses", "Próximos 6 meses",
+                "Próximos 12 meses", "Intervalo personalizado", "Meses específicos",
+            ],
             state="readonly",
             width=22,
         )
@@ -180,6 +222,14 @@ class App:
             state="readonly",
             width=13,
         ).pack(side=LEFT, padx=4)
+        ttk.Label(controls, text="Velocidade").pack(side=LEFT, padx=(10, 2))
+        ttk.Combobox(
+            controls,
+            textvariable=self.speed,
+            values=["Segura (1)", "Rápida (2)", "Turbo adaptativo (3)"],
+            state="readonly",
+            width=20,
+        ).pack(side=LEFT)
         ttk.Label(controls, text="Rotas exibidas").pack(side=LEFT, padx=(10, 2))
         ttk.Combobox(controls, textvariable=self.result_limit, values=[10, 20, 50], state="readonly", width=5).pack(side=LEFT)
         ttk.Button(controls, text="Iniciar pesquisa", style="Accent.TButton", command=self.start).pack(side=LEFT, padx=(14, 4))
@@ -195,43 +245,68 @@ class App:
         ttk.Label(progress, textvariable=self.progress_text, width=8).pack(side=LEFT, padx=6)
         ttk.Label(progress, textvariable=self.status_text, width=72).pack(side=RIGHT)
 
+        list_bar = ttk.Frame(frame)
+        list_bar.pack(fill=X, pady=(8, 0))
+        ttk.Label(list_bar, text="Preços por data exibidos:").pack(side=LEFT)
+        ttk.Combobox(
+            list_bar, textvariable=self.date_limit, values=["100", "500", "2000", "Todos"],
+            state="readonly", width=8,
+        ).pack(side=LEFT, padx=4)
+        ttk.Button(list_bar, text="Atualizar listas", command=self.refresh_lists).pack(side=LEFT, padx=4)
+
+        notebook = ttk.Notebook(frame)
+        notebook.pack(fill=BOTH, expand=True, pady=(5, 0))
+        best_tab = ttk.Frame(notebook)
+        dates_tab = ttk.Frame(notebook)
+        notebook.add(best_tab, text="Melhor preço por rota")
+        notebook.add(dates_tab, text="Preços por datas")
+
         columns = ("badge", "price", "route", "dates", "airline", "stops", "duration")
-        self.tree = ttk.Treeview(frame, columns=columns, show="headings")
+        self.best_tree = ttk.Treeview(best_tab, columns=columns, show="headings")
+        self.dates_tree = ttk.Treeview(dates_tab, columns=columns, show="headings")
         headings = {
             "badge": "Resultado", "price": "Menor preço", "route": "Rota", "dates": "Datas",
             "airline": "Companhia", "stops": "Escalas", "duration": "Duração",
         }
         widths = {"badge": 150, "price": 120, "route": 110, "dates": 220, "airline": 260, "stops": 100, "duration": 100}
-        for column in columns:
-            self.tree.heading(column, text=headings[column])
-            self.tree.column(column, width=widths[column], anchor="w" if column in {"badge", "airline"} else "center")
-        self.tree.pack(fill=BOTH, expand=True, pady=(8, 0))
-        self.tree.bind("<Double-1>", self.open_selected)
+        for tree in (self.best_tree, self.dates_tree):
+            for column in columns:
+                tree.heading(column, text=headings[column])
+                tree.column(column, width=widths[column], anchor="w" if column in {"badge", "airline"} else "center")
+            tree.pack(fill=BOTH, expand=True)
+            tree.bind("<Double-1>", self.open_selected)
         ttk.Label(
             frame,
-            text="Cada rota aparece uma única vez. Dê duplo clique para conferir a tarifa no Google Flights.",
+            text="A primeira aba mostra o vencedor de cada rota; a segunda preserva alternativas de datas. Duplo clique abre o Google Flights.",
         ).pack(anchor="w", pady=4)
 
     def update_date_mode(self) -> None:
         for child in self.date_frame.winfo_children():
             child.destroy()
-        if self.date_mode.get() == "Próximos 12 meses":
+        if self.date_mode.get().startswith("Próximos"):
             ttk.Label(self.date_frame, text="Início (AAAA-MM-DD)").grid(row=0, column=0, sticky="w", padx=4)
             ttk.Entry(self.date_frame, textvariable=self.dep_start, width=14).grid(row=0, column=1, padx=4)
-            ttk.Label(self.date_frame, text="A busca cobre até 365 dias a partir dessa data.").grid(row=0, column=2, sticky="w", padx=8)
-        elif self.date_mode.get() == "Meses flexíveis":
-            ttk.Label(self.date_frame, text="Meses da ida (AAAA-MM)").grid(row=0, column=0, sticky="w", padx=4)
-            ttk.Entry(self.date_frame, textvariable=self.dep_months, width=35).grid(row=0, column=1, padx=4)
-            ttk.Label(self.date_frame, text="Meses da volta").grid(row=0, column=2, sticky="w", padx=4)
-            ttk.Entry(self.date_frame, textvariable=self.ret_months, width=35).grid(row=0, column=3, padx=4)
+            ttk.Label(self.date_frame, text="As voltas serão calculadas pelas noites mínima e máxima.").grid(row=0, column=2, sticky="w", padx=8)
+        elif self.date_mode.get() == "Meses específicos":
+            ttk.Button(self.date_frame, text="Escolher meses", command=self.pick_months).grid(row=0, column=0, padx=4)
+            ttk.Label(self.date_frame, textvariable=self.selected_months_text).grid(row=0, column=1, sticky="w", padx=8)
+            ttk.Label(self.date_frame, text="Você pode combinar meses diferentes dentro dos próximos 24 meses.").grid(row=0, column=2, sticky="w", padx=8)
         else:
-            fields = [
-                ("Ida inicial", self.dep_start), ("Ida final", self.dep_end),
-                ("Volta inicial", self.ret_start), ("Volta final", self.ret_end),
-            ]
-            for index, (label, variable) in enumerate(fields):
-                ttk.Label(self.date_frame, text=label).grid(row=0, column=index * 2, sticky="w", padx=4)
-                ttk.Entry(self.date_frame, textvariable=variable, width=14).grid(row=0, column=index * 2 + 1, padx=4)
+            ttk.Label(self.date_frame, text="Ida inicial").grid(row=0, column=0, sticky="w", padx=4)
+            ttk.Entry(self.date_frame, textvariable=self.dep_start, width=14).grid(row=0, column=1, padx=4)
+            ttk.Label(self.date_frame, text="Ida final").grid(row=0, column=2, sticky="w", padx=4)
+            ttk.Entry(self.date_frame, textvariable=self.dep_end, width=14).grid(row=0, column=3, padx=4)
+            ttk.Label(self.date_frame, text="As voltas serão calculadas pelas noites.").grid(row=0, column=4, sticky="w", padx=8)
+
+    def pick_months(self) -> None:
+        def apply(chosen: list[str]) -> None:
+            self.selected_months = chosen
+            if chosen:
+                self.selected_months_text.set(f"{len(chosen)} mês(es): " + ", ".join(chosen))
+            else:
+                self.selected_months_text.set("Nenhum mês selecionado")
+
+        MonthPicker(self.root, self.selected_months, apply)
 
     def select_brazil(self, origin: bool) -> None:
         selected = [key for key in AIRPORTS_BY_REGION if key.startswith("BR-")]
@@ -271,6 +346,7 @@ class App:
             "date_mode": self.date_mode.get(),
             "dep_months": self.dep_months.get(),
             "ret_months": self.ret_months.get(),
+            "selected_months": ",".join(self.selected_months),
             "dep_start": start,
             "dep_end": self._date(self.dep_end.get()) if self.date_mode.get() != "Próximos 12 meses" else start + timedelta(days=364),
             "ret_start": self._date(self.ret_start.get()),
@@ -283,6 +359,7 @@ class App:
             "seat": self.seat.get(),
             "currency": self.currency.get(),
             "depth": self.depth.get(),
+            "concurrency": {"Segura (1)": 1, "Rápida (2)": 2, "Turbo adaptativo (3)": 3}[self.speed.get()],
         }
 
     def start(self) -> None:
@@ -304,7 +381,9 @@ class App:
             if not answer:
                 return
         self.results = []
-        self.tree.delete(*self.tree.get_children())
+        self.date_results = []
+        self.best_tree.delete(*self.best_tree.get_children())
+        self.dates_tree.delete(*self.dates_tree.get_children())
         self._start_worker(params, None)
 
     def _start_worker(self, params: dict[str, Any], job_id: int | None) -> None:
@@ -341,7 +420,9 @@ class App:
             return
         self.current_job_id = int(job["id"])
         self.results = self.store.best(self.current_job_id, self.result_limit.get())
+        self.date_results = self.store.results(self.current_job_id, self._date_result_limit())
         self.show_results(self.results)
+        self.show_date_results(self.date_results)
         self._start_worker(job["params"], self.current_job_id)
 
     def _show_resumable(self) -> None:
@@ -349,6 +430,20 @@ class App:
         if job:
             percent = int(int(job["cursor"]) * 100 / max(int(job["total"]), 1))
             self.summary_text.set(f"Pesquisa #{job['id']} disponível para continuar: {percent}% concluída.")
+
+    def _date_result_limit(self) -> int | None:
+        return None if self.date_limit.get() == "Todos" else int(self.date_limit.get())
+
+    def refresh_lists(self) -> None:
+        if self.current_job_id is None:
+            self.status_text.set("Inicie ou continue uma pesquisa para visualizar o banco de preços.")
+            return
+        self.results = self.store.best(self.current_job_id, self.result_limit.get())
+        self.date_results = self.store.results(self.current_job_id, self._date_result_limit())
+        self.show_results(self.results)
+        self.show_date_results(self.date_results)
+        total = self.store.result_count(self.current_job_id)
+        self.status_text.set(f"Listas atualizadas: {len(self.results)} rotas e {total:,} combinações de datas salvas.")
 
     @staticmethod
     def _eta(seconds: int) -> str:
@@ -383,11 +478,19 @@ class App:
                     job_id, _deal = payload
                     self.results = self.store.best(job_id, self.result_limit.get())
                     self.show_results(self.results)
+                elif kind == "result_saved":
+                    job_id, count = payload
+                    if count % 25 == 0:
+                        self.current_job_id = job_id
+                        self.date_results = self.store.results(job_id, self._date_result_limit())
+                        self.show_date_results(self.date_results)
                 elif kind in {"complete", "paused", "cancelled"}:
                     job_id, results = payload
                     self.current_job_id = job_id
                     self.results = results[: self.result_limit.get()]
+                    self.date_results = self.store.results(job_id, self._date_result_limit())
                     self.show_results(self.results)
+                    self.show_date_results(self.date_results)
                     labels = {"complete": "Pesquisa concluída", "paused": "Pesquisa pausada", "cancelled": "Pesquisa cancelada"}
                     self.status_text.set(f"{labels[kind]}. {len(self.results)} menores preços exibidos.")
                     if kind == "complete":
@@ -398,14 +501,16 @@ class App:
                     self.status_text.set("A pesquisa não pôde ser iniciada.")
                 elif kind == "log":
                     self.status_text.set(str(payload)[:200])
+                elif kind == "throttle":
+                    self.status_text.set(str(payload))
         except queue.Empty:
             pass
         self.root.after(150, self._poll)
 
     def show_results(self, deals: list[Deal]) -> None:
-        self.tree.delete(*self.tree.get_children())
+        self.best_tree.delete(*self.best_tree.get_children())
         for index, deal in enumerate(deals):
-            self.tree.insert(
+            self.best_tree.insert(
                 "", END, iid=str(index),
                 values=(
                     deal.badge, deal.price_text, f"{deal.origin}–{deal.destination}",
@@ -413,24 +518,38 @@ class App:
                 ),
             )
 
-    def open_selected(self, _event: Any = None) -> None:
-        selected = self.tree.selection()
+    def show_date_results(self, deals: list[Deal]) -> None:
+        self.dates_tree.delete(*self.dates_tree.get_children())
+        for index, deal in enumerate(deals):
+            self.dates_tree.insert(
+                "", END, iid=str(index),
+                values=(
+                    "PREÇO DA DATA", deal.price_text, f"{deal.origin}–{deal.destination}",
+                    f"{deal.departure_date} → {deal.return_date}", deal.airline, deal.stops, deal.duration,
+                ),
+            )
+
+    def open_selected(self, event: Any = None) -> None:
+        tree = event.widget if event is not None else self.best_tree
+        selected = tree.selection()
         if selected:
-            webbrowser.open(self.results[int(selected[0])].query_url)
+            source = self.date_results if tree is self.dates_tree else self.results
+            webbrowser.open(source[int(selected[0])].query_url)
 
     def export_csv(self) -> None:
-        if not self.results:
+        export_items = self.date_results or self.results
+        if not export_items:
             messagebox.showinfo(APP_NAME, "Ainda não há resultados para exportar.")
             return
         path = filedialog.asksaveasfilename(
-            defaultextension=".csv", filetypes=[("CSV", "*.csv")], initialfile="menores_precos_v04.csv"
+            defaultextension=".csv", filetypes=[("CSV", "*.csv")], initialfile="precos_por_data_v05.csv"
         )
         if not path:
             return
         with open(path, "w", newline="", encoding="utf-8-sig") as handle:
-            writer = csv.DictWriter(handle, fieldnames=list(asdict(self.results[0]).keys()))
+            writer = csv.DictWriter(handle, fieldnames=list(asdict(export_items[0]).keys()))
             writer.writeheader()
-            writer.writerows(asdict(item) for item in self.results)
+            writer.writerows(asdict(item) for item in export_items)
         messagebox.showinfo(APP_NAME, "Arquivo exportado com sucesso.")
 
     def on_close(self) -> None:
@@ -449,4 +568,3 @@ class App:
 
 if __name__ == "__main__":
     App().run()
-

@@ -6,6 +6,7 @@ import re
 import sqlite3
 import threading
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict, dataclass
 from datetime import date, datetime, timedelta
 from pathlib import Path
@@ -16,7 +17,7 @@ from airport_catalog import airports_for_regions
 
 
 APP_NAME = "Flight Deals Local"
-APP_VERSION = "0.4.0"
+APP_VERSION = "0.5.0"
 DATA_DIR = Path.home() / "FlightDealsLocal"
 DB_PATH = DATA_DIR / "flight_deals.db"
 
@@ -118,12 +119,26 @@ def build_plan(params: dict[str, Any]) -> SearchPlan:
     min_nights = max(1, int(params.get("min_nights", 3)))
     max_nights = max(min_nights, int(params.get("max_nights", 14) or min_nights))
 
-    if mode == "Próximos 12 meses":
-        # Mantém a data original para que o índice salvo continue apontando para
-        # a mesma combinação quando a pesquisa for retomada dias depois.
+    preset_days = {
+        "Próximos 30 dias": 30,
+        "Próximos 3 meses": 92,
+        "Próximos 6 meses": 183,
+        "Próximos 12 meses": 365,
+    }
+    if mode in preset_days:
+        # A data inicial também é persistida para que uma retomada reconstrua
+        # exatamente a mesma sequência, mesmo dias ou semanas depois.
         start = params.get("dep_start", date.today() + timedelta(days=1))
-        end = min(start + timedelta(days=364), params.get("dep_end", start + timedelta(days=364)))
+        end = start + timedelta(days=preset_days[mode] - 1)
         departures = _days(start, end, day_step)
+        nights = _sample(list(range(min_nights, max_nights + 1)), night_step)
+        pairs = [(dep, dep + timedelta(days=stay)) for dep in departures for stay in nights]
+    elif mode in {"Intervalo personalizado", "Meses específicos"}:
+        if mode == "Meses específicos":
+            departures = _month_dates(params.get("selected_months", ""))
+        else:
+            departures = _days(params["dep_start"], params["dep_end"])
+        departures = _sample(departures, day_step)
         nights = _sample(list(range(min_nights, max_nights + 1)), night_step)
         pairs = [(dep, dep + timedelta(days=stay)) for dep in departures for stay in nights]
     else:
@@ -186,6 +201,27 @@ class Store:
                     badge TEXT NOT NULL,
                     PRIMARY KEY (job_id, origin, destination)
                 );
+                CREATE TABLE IF NOT EXISTS query_results_v05 (
+                    job_id INTEGER NOT NULL,
+                    origin TEXT NOT NULL,
+                    destination TEXT NOT NULL,
+                    departure_date TEXT NOT NULL,
+                    return_date TEXT NOT NULL,
+                    airline TEXT NOT NULL,
+                    price_text TEXT NOT NULL,
+                    price_value REAL NOT NULL,
+                    duration TEXT NOT NULL,
+                    duration_minutes INTEGER NOT NULL,
+                    stops TEXT NOT NULL,
+                    stops_count INTEGER NOT NULL,
+                    departure TEXT NOT NULL,
+                    arrival TEXT NOT NULL,
+                    query_url TEXT NOT NULL,
+                    badge TEXT NOT NULL,
+                    PRIMARY KEY (job_id, origin, destination, departure_date, return_date)
+                );
+                CREATE INDEX IF NOT EXISTS idx_query_results_price_v05
+                    ON query_results_v05(job_id, price_value);
                 CREATE TABLE IF NOT EXISTS deals_history_v04 (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     job_id INTEGER NOT NULL,
@@ -293,6 +329,29 @@ class Store:
             self.conn.commit()
         return True
 
+    def save_result(self, job_id: int, deal: Deal) -> bool:
+        """Salva o menor voo de uma combinação exata de rota e datas."""
+        values = asdict(deal)
+        with self.lock:
+            row = self.conn.execute(
+                "SELECT price_value FROM query_results_v05 WHERE job_id=? AND origin=? AND destination=? "
+                "AND departure_date=? AND return_date=?",
+                (job_id, deal.origin, deal.destination, deal.departure_date, deal.return_date),
+            ).fetchone()
+            if row and float(row["price_value"]) <= deal.price_value:
+                return False
+            columns = ["job_id", *values.keys()]
+            placeholders = ",".join("?" for _ in columns)
+            key_names = {"origin", "destination", "departure_date", "return_date"}
+            updates = ",".join(f"{name}=excluded.{name}" for name in values if name not in key_names)
+            self.conn.execute(
+                f"INSERT INTO query_results_v05({','.join(columns)}) VALUES({placeholders}) "
+                f"ON CONFLICT(job_id,origin,destination,departure_date,return_date) DO UPDATE SET {updates}",
+                (job_id, *values.values()),
+            )
+            self.conn.commit()
+        return True
+
     def best(self, job_id: int, limit: int = 50) -> list[Deal]:
         with self.lock:
             rows = self.conn.execute(
@@ -302,6 +361,25 @@ class Store:
                 (job_id, limit),
             ).fetchall()
         return [Deal(**dict(row)) for row in rows]
+
+    def results(self, job_id: int, limit: int | None = 500) -> list[Deal]:
+        sql = (
+            "SELECT origin,destination,departure_date,return_date,airline,price_text,price_value,duration,"
+            "duration_minutes,stops,stops_count,departure,arrival,query_url,badge "
+            "FROM query_results_v05 WHERE job_id=? ORDER BY price_value ASC"
+        )
+        values: tuple[Any, ...] = (job_id,)
+        if limit is not None:
+            sql += " LIMIT ?"
+            values = (job_id, limit)
+        with self.lock:
+            rows = self.conn.execute(sql, values).fetchall()
+        return [Deal(**dict(row)) for row in rows]
+
+    def result_count(self, job_id: int) -> int:
+        with self.lock:
+            row = self.conn.execute("SELECT COUNT(*) AS total FROM query_results_v05 WHERE job_id=?", (job_id,)).fetchone()
+        return int(row["total"]) if row else 0
 
     def archive(self, job_id: int) -> None:
         with self.lock:
@@ -463,6 +541,27 @@ class SearchEngine:
         except (AttributeError, OSError):
             pass
 
+    def _fetch(
+        self,
+        index: int,
+        item: tuple[str, str, date, date],
+        params: dict[str, Any],
+        stagger: float,
+    ) -> tuple[int, Deal | None, bool, str | None]:
+        origin, destination, dep, ret = item
+        key = self._cache_key(origin, destination, dep, ret, params)
+        try:
+            cached = self.store.cache_get(key)
+            if cached is False:
+                if stagger:
+                    time.sleep(stagger)
+                cheapest = query_cheapest(origin, destination, dep, ret, params)
+                self.store.cache_put(key, cheapest)
+                return index, cheapest, False, None
+            return index, cached if isinstance(cached, Deal) else None, True, None
+        except Exception as exc:
+            return index, None, False, str(exc)
+
     def run(self, params: dict[str, Any], job_id: int | None = None) -> None:
         try:
             plan = build_plan(params)
@@ -483,47 +582,79 @@ class SearchEngine:
             self.store.update_job(job_id, cursor, "running", errors)
 
         self.events.put(("started", (job_id, cursor, plan.total, len(plan.routes), len(plan.pairs))))
-        delay = {"Rápido": 0.2, "Equilibrado": 0.35, "Profundo": 0.6, "Máximo": 0.9}.get(params.get("depth"), 0.6)
+        maximum_workers = max(1, min(3, int(params.get("concurrency", 3))))
+        concurrency = maximum_workers
+        stagger_base = {1: 0.0, 2: 0.04, 3: 0.05}[maximum_workers]
         started = time.monotonic()
         processed_session = 0
+        successful_batches = 0
         self._keep_awake(True)
         try:
-            for index in range(cursor, plan.total):
+            while cursor < plan.total:
                 if self.cancel_event.is_set():
-                    self.store.update_job(job_id, index, "cancelled", errors)
+                    self.store.update_job(job_id, cursor, "cancelled", errors)
                     self.events.put(("cancelled", (job_id, self.store.best(job_id, 50))))
                     return
                 if self.pause_event.is_set():
-                    self.store.update_job(job_id, index, "paused", errors)
+                    self.store.update_job(job_id, cursor, "paused", errors)
                     self.events.put(("paused", (job_id, self.store.best(job_id, 50))))
                     return
 
-                origin, destination, dep, ret = plan.item(index)
-                next_cursor = index + 1
-                cached = self.store.cache_get(self._cache_key(origin, destination, dep, ret, params))
-                try:
-                    if cached is False:
-                        cheapest = query_cheapest(origin, destination, dep, ret, params)
-                        self.store.cache_put(self._cache_key(origin, destination, dep, ret, params), cheapest)
-                    else:
-                        cheapest = cached
-                    if isinstance(cheapest, Deal) and self.store.save_best(job_id, cheapest):
-                        self.events.put(("new_best", (job_id, cheapest)))
-                except Exception as exc:
-                    errors += 1
-                    self.events.put(("log", f"Falha em {origin}–{destination} {dep:%d/%m}: {exc}"))
+                batch_end = min(plan.total, cursor + concurrency * 4)
+                indices = list(range(cursor, batch_end))
+                batch_errors = 0
+                completed = 0
+                with ThreadPoolExecutor(max_workers=concurrency, thread_name_prefix="flight-search") as pool:
+                    futures = {
+                        pool.submit(
+                            self._fetch,
+                            index,
+                            plan.item(index),
+                            params,
+                            (position % concurrency) * stagger_base,
+                        ): index
+                        for position, index in enumerate(indices)
+                    }
+                    for future in as_completed(futures):
+                        index, cheapest, was_cached, error = future.result()
+                        origin, destination, dep, ret = plan.item(index)
+                        if error:
+                            errors += 1
+                            batch_errors += 1
+                            self.events.put(("log", f"Falha em {origin}–{destination} {dep:%d/%m}: {error}"))
+                        elif isinstance(cheapest, Deal):
+                            is_route_best = self.store.save_best(job_id, cheapest)
+                            if self.store.save_result(job_id, cheapest):
+                                self.events.put(("result_saved", (job_id, self.store.result_count(job_id))))
+                            if is_route_best:
+                                self.events.put(("new_best", (job_id, cheapest)))
+                        completed += 1
+                        processed_session += 1
+                        display_done = min(cursor + completed, plan.total)
+                        elapsed = max(time.monotonic() - started, 0.001)
+                        speed = processed_session / elapsed
+                        remaining_seconds = int((plan.total - display_done) / speed) if speed else 0
+                        self.events.put(("progress", (
+                            job_id, display_done, plan.total, errors, remaining_seconds,
+                            f"{origin} → {destination} | {dep:%d/%m/%Y}–{ret:%d/%m/%Y} | {concurrency} simultâneas",
+                        )))
 
-                self.store.update_job(job_id, next_cursor, "running", errors)
-                processed_session += 1
-                elapsed = max(time.monotonic() - started, 0.001)
-                speed = processed_session / elapsed
-                remaining_seconds = int((plan.total - next_cursor) / speed) if speed else 0
-                self.events.put(("progress", (
-                    job_id, next_cursor, plan.total, errors, remaining_seconds,
-                    f"{origin} → {destination} | {dep:%d/%m/%Y}–{ret:%d/%m/%Y}",
-                )))
-                if cached is False:
-                    time.sleep(delay)
+                cursor = batch_end
+                self.store.update_job(job_id, cursor, "running", errors)
+                error_ratio = batch_errors / max(len(indices), 1)
+                if error_ratio >= 0.25 and concurrency > 1:
+                    concurrency -= 1
+                    successful_batches = 0
+                    self.events.put(("throttle", f"Muitas falhas detectadas. Velocidade reduzida para {concurrency} consulta(s) simultânea(s)."))
+                    time.sleep(3)
+                elif batch_errors == 0:
+                    successful_batches += 1
+                    if successful_batches >= 3 and concurrency < maximum_workers:
+                        concurrency += 1
+                        successful_batches = 0
+                        self.events.put(("throttle", f"Fonte estável. Velocidade aumentada para {concurrency} consultas simultâneas."))
+                else:
+                    successful_batches = 0
 
             self.store.update_job(job_id, plan.total, "complete", errors)
             self.store.archive(job_id)

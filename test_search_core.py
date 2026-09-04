@@ -1,11 +1,15 @@
 import tempfile
 import unittest
 import sys
+import queue
+import threading
+import time
+from unittest.mock import patch
 from datetime import date, timedelta
 from pathlib import Path
 from types import ModuleType, SimpleNamespace
 
-from search_core import Deal, SearchPlan, Store, _deal, _price, build_plan, query_cheapest
+from search_core import Deal, SearchEngine, SearchPlan, Store, _deal, _price, build_plan, query_cheapest
 
 
 def sample_deal(price: float, dep: str = "2027-01-10") -> Deal:
@@ -33,6 +37,24 @@ class PlanTests(unittest.TestCase):
 
     def test_quick_mode_is_a_smaller_sample(self):
         self.assertLess(build_plan(self.params("Rápido")).total, build_plan(self.params()).total)
+
+    def test_period_presets_and_custom_range(self):
+        params = self.params()
+        params.update({"date_mode": "Próximos 30 dias", "min_nights": 7, "max_nights": 7})
+        self.assertEqual(30, build_plan(params).total)
+        params.update({
+            "date_mode": "Intervalo personalizado",
+            "dep_start": date(2027, 1, 1), "dep_end": date(2027, 1, 5),
+        })
+        self.assertEqual(5, build_plan(params).total)
+
+    def test_specific_months_can_be_combined(self):
+        params = self.params()
+        params.update({
+            "date_mode": "Meses específicos", "selected_months": "2027-01,2027-03",
+            "min_nights": 7, "max_nights": 7,
+        })
+        self.assertEqual(62, build_plan(params).total)
 
     def test_plan_interleaves_routes_for_broad_coverage(self):
         pair = (date(2027, 1, 1), date(2027, 1, 8))
@@ -64,6 +86,45 @@ class StoreTests(unittest.TestCase):
         job = self.store.latest_resumable()
         self.assertEqual(7, job["cursor"])
         self.assertEqual(2, job["errors"])
+
+    def test_database_preserves_alternative_dates_sorted_by_price(self):
+        self.store.save_result(self.job_id, sample_deal(1200, "2027-01-10"))
+        self.store.save_result(self.job_id, sample_deal(850, "2027-02-10"))
+        self.store.save_result(self.job_id, sample_deal(990, "2027-03-10"))
+        results = self.store.results(self.job_id)
+        self.assertEqual([850, 990, 1200], [item.price_value for item in results])
+
+
+class ParallelSearchTests(unittest.TestCase):
+    def test_turbo_executes_three_queries_concurrently(self):
+        with tempfile.TemporaryDirectory() as folder:
+            store = Store(Path(folder) / "parallel.db")
+            events = queue.Queue()
+            active = 0
+            maximum_active = 0
+            lock = threading.Lock()
+
+            def fake_query(origin, destination, dep, ret, params):
+                nonlocal active, maximum_active
+                with lock:
+                    active += 1
+                    maximum_active = max(maximum_active, active)
+                time.sleep(0.12)
+                with lock:
+                    active -= 1
+                return sample_deal(1000, dep.isoformat())
+
+            params = {
+                "origins": "CGR", "destinations": "REC", "origin_regions": [], "destination_regions": [],
+                "date_mode": "Intervalo personalizado", "dep_start": date(2027, 1, 1),
+                "dep_end": date(2027, 1, 3), "min_nights": 7, "max_nights": 7,
+                "depth": "Profundo", "concurrency": 3,
+            }
+            with patch("search_core.query_cheapest", side_effect=fake_query):
+                SearchEngine(store, events, threading.Event(), threading.Event()).run(params)
+            self.assertEqual(3, maximum_active)
+            self.assertEqual(3, store.result_count(1))
+            store.conn.close()
 
 
 class ConversionTests(unittest.TestCase):
