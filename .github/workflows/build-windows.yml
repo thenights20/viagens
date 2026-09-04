@@ -5,7 +5,9 @@ on:
   push:
     branches: [main]
     paths:
-      - "app_v03.py"
+      - "app_v04.py"
+      - "search_core.py"
+      - "test_search_core.py"
       - "airport_catalog.py"
       - "requirements.txt"
       - "FlightDeals.spec"
@@ -35,15 +37,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Aplicar compatibilidade fast-flights na v0.3
-        shell: pwsh
-        run: python scripts/patch_v03_fast_flights.py
-
       - name: Testar importações e código
         shell: pwsh
         run: |
           python -c "import inspect, fast_flights, typing_extensions, airport_catalog; from fast_flights import create_query, FlightQuery; print('create_query', inspect.signature(create_query)); print('FlightQuery', inspect.signature(FlightQuery)); print('Regiões', len(airport_catalog.AIRPORTS_BY_REGION))"
-          python -m py_compile app_v03.py airport_catalog.py runtime_hook.py
+          python -m unittest -v test_search_core.py
+          python -m py_compile app_v04.py search_core.py airport_catalog.py runtime_hook.py
 
       - name: Gerar executável
         shell: pwsh
@@ -59,7 +58,7 @@ jobs:
       - name: Publicar artefato
         uses: actions/upload-artifact@v4
         with:
-          name: Flight-Deals-Local-Windows-v0.3.1
+          name: Flight-Deals-Local-Windows-v0.4.0
           path: release
           if-no-files-found: error
           retention-days: 30
