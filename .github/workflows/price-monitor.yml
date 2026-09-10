@@ -11,8 +11,6 @@ concurrency:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
   scan:
@@ -43,14 +41,17 @@ jobs:
       - name: Atualização
         env:
           PYTHONPATH: price-monitor/src
-        run: python -m price_monitor.run --config price-monitor/config.json --output price-monitor/site/data/current.json --history price-monitor/data/history.json
+        shell: pwsh
+        run: |
+          python -m price_monitor.run --config price-monitor/config.json --output docs/data/current.json --history price-monitor/data/history.json
+          Copy-Item docs/data/current.json price-monitor/site/data/current.json -Force
 
       - name: Persistir dados
         shell: pwsh
         run: |
           git config user.name "personal-monitor-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add price-monitor/data/history.json price-monitor/site/data/current.json
+          git add price-monitor/data/history.json price-monitor/site/data/current.json docs/data/current.json
           git diff --cached --quiet
           if ($LASTEXITCODE -ne 0) {
             git commit -m "data: atualizar acompanhamento pessoal [skip ci]"
@@ -63,7 +64,7 @@ jobs:
       - name: Resumo
         shell: pwsh
         run: |
-          $d = Get-Content price-monitor/site/data/current.json -Raw | ConvertFrom-Json
+          $d = Get-Content docs/data/current.json -Raw | ConvertFrom-Json
           "## Acompanhamento pessoal" >> $env:GITHUB_STEP_SUMMARY
           "- Itens observados: $($d.observed_count)" >> $env:GITHUB_STEP_SUMMARY
           "- Destaques ativos: $($d.active_count)" >> $env:GITHUB_STEP_SUMMARY
