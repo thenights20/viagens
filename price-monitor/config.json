@@ -1,7 +1,27 @@
 {
-  "queries": ["iphone", "macbook", "notebook gamer", "rtx 5070", "tv oled", "tv 65 4k", "geladeira", "lava e seca", "ar condicionado", "playstation 5", "xbox series x", "drone dji"],
-  "thresholds": {"max_ratio": 0.55, "min_savings": 1000, "min_baseline": 2000, "weak_max_ratio": 0.35, "weak_min_savings": 2000, "weak_min_baseline": 3000},
-  "revalidation_limit": 12,
+  "queries": [
+    "iphone",
+    "macbook",
+    "notebook gamer",
+    "rtx 5070",
+    "tv oled",
+    "tv 65 4k",
+    "geladeira",
+    "lava e seca",
+    "ar condicionado",
+    "playstation 5",
+    "xbox series x",
+    "drone dji"
+  ],
+  "thresholds": {
+    "max_ratio": 0.55,
+    "min_savings": 1000,
+    "min_baseline": 2000,
+    "weak_max_ratio": 0.35,
+    "weak_min_savings": 2000,
+    "weak_min_baseline": 3000
+  },
+  "revalidation_limit": 18,
   "mercadolivre": {
     "limit_per_query": 50,
     "official_stores": [
@@ -23,5 +43,58 @@
       {"name": "Positivo Tecnologia", "url": "https://shopee.com.br/positivooficial", "verified_official": true, "verified_at": "2026-09-10"}
     ]
   },
-  "casas_bahia": {"max_candidates_per_query": 5}
+  "casas_bahia": {
+    "max_candidates_per_query": 5
+  },
+  "retailers": [
+    {
+      "name": "Gazin",
+      "base_url": "https://www.gazin.com.br/",
+      "direct_retailer": true,
+      "verified_at": "2026-09-10",
+      "max_items": 110,
+      "scrolls": 4,
+      "catalog_urls": [
+        "https://www.gazin.com.br/",
+        "https://www.gazin.com.br/categoria/eletrodomesticos"
+      ]
+    },
+    {
+      "name": "Fujioka",
+      "base_url": "https://www.fujioka.com.br/",
+      "direct_retailer": true,
+      "verified_at": "2026-09-10",
+      "max_items": 100,
+      "scrolls": 4,
+      "catalog_urls": [
+        "https://www.fujioka.com.br/",
+        "https://www.fujioka.com.br/tv-e-video/tv"
+      ]
+    },
+    {
+      "name": "Nagem",
+      "base_url": "https://www.nagem.com.br/",
+      "direct_retailer": true,
+      "verified_at": "2026-09-10",
+      "max_items": 100,
+      "scrolls": 3,
+      "catalog_urls": [
+        "https://www.nagem.com.br/",
+        "https://www.nagem.com.br/navegacao?busca=notebook",
+        "https://www.nagem.com.br/navegacao/Eletr%C3%B4nicos/Tvs?busca=tv&marca=samsung&ordem=3&precos=&refino="
+      ]
+    },
+    {
+      "name": "Miranda",
+      "base_url": "https://www.miranda.com.br/",
+      "direct_retailer": true,
+      "verified_at": "2026-09-10",
+      "max_items": 100,
+      "scrolls": 3,
+      "catalog_urls": [
+        "https://www.miranda.com.br/informatica",
+        "https://www.miranda.com.br/informatica/notebooks/"
+      ]
+    }
+  ]
 }
