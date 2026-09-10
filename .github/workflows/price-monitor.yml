@@ -21,7 +21,7 @@ permissions:
 
 jobs:
   scan:
-    runs-on: [self-hosted, Windows, X64]
+    runs-on: ubuntu-latest
     timeout-minutes: 35
 
     steps:
@@ -37,6 +37,9 @@ jobs:
           cache: pip
           cache-dependency-path: price-monitor/requirements.txt
 
+      - name: Chrome
+        uses: browser-actions/setup-chrome@v2
+
       - name: Dependências
         run: python -m pip install -r price-monitor/requirements.txt
 
@@ -48,33 +51,40 @@ jobs:
       - name: Atualização
         env:
           PYTHONPATH: price-monitor/src
-        shell: pwsh
         run: |
-          python -m price_monitor.run --config price-monitor/config.json --output docs/data/current.json --history price-monitor/data/history.json
-          Copy-Item docs/data/current.json price-monitor/site/data/current.json -Force
+          python -m price_monitor.run \
+            --config price-monitor/config.json \
+            --output docs/data/current.json \
+            --history price-monitor/data/history.json
+          cp docs/data/current.json price-monitor/site/data/current.json
 
       - name: Persistir dados
-        shell: pwsh
         run: |
           git config user.name "personal-monitor-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add price-monitor/data/history.json price-monitor/site/data/current.json docs/data/current.json
-          git diff --cached --quiet
-          if ($LASTEXITCODE -ne 0) {
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração para salvar."
+          else
             git commit -m "data: atualizar acompanhamento pessoal [skip ci]"
             git pull --rebase origin main
             git push origin main
-          } else {
-            Write-Host "Nenhuma alteração para salvar."
-          }
+          fi
 
       - name: Resumo
-        shell: pwsh
         run: |
-          $d = Get-Content docs/data/current.json -Raw | ConvertFrom-Json
-          "## Acompanhamento pessoal" >> $env:GITHUB_STEP_SUMMARY
-          "- Itens observados: $($d.observed_count)" >> $env:GITHUB_STEP_SUMMARY
-          "- Produtos listados: $($d.product_count)" >> $env:GITHUB_STEP_SUMMARY
-          "- Itens em vistoria encontrados: $($d.tracked_count)" >> $env:GITHUB_STEP_SUMMARY
-          "- Destaques confirmados: $($d.active_count)" >> $env:GITHUB_STEP_SUMMARY
-          "- Atualizado: $($d.generated_at)" >> $env:GITHUB_STEP_SUMMARY
+          python - <<'PY'
+          import json, os
+          with open('docs/data/current.json', encoding='utf-8') as f:
+              d = json.load(f)
+          lines = [
+              '## Acompanhamento pessoal',
+              f"- Itens observados: {d.get('observed_count', 0)}",
+              f"- Produtos listados: {d.get('product_count', 0)}",
+              f"- Itens em vistoria encontrados: {d.get('tracked_count', 0)}",
+              f"- Destaques confirmados: {d.get('active_count', 0)}",
+              f"- Atualizado: {d.get('generated_at', '-')}",
+          ]
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as f:
+              f.write('\n'.join(lines) + '\n')
+          PY
