@@ -53,6 +53,22 @@ def test_price_parser_ignores_savings_amount():
     assert pick_current_and_original(prices) == (2943.08, 3349.0)
 
 
+def test_price_parser_ignores_installment_when_site_glues_em10x():
+    text = "R$ 4.299,00 -14% R$ 3.679,08 no Pix Economize R$ 319,92 no Pix ou R$ 3.999,00 em10x de R$ 399,90 sem juros"
+    prices = extract_brl_prices(text)
+    assert 319.92 not in prices
+    assert 399.90 not in prices
+    assert pick_current_and_original(prices) == (3679.08, 4299.0)
+
+
+def test_price_parser_tcl_fridge_ignores_679_installment():
+    text = "R$ 7.489,00 -16% R$ 6.255,08 no Pix Economize R$ 543,92 no Pix ou R$ 6.799,00 em10x de R$ 679,90 sem juros"
+    prices = extract_brl_prices(text)
+    assert 543.92 not in prices
+    assert 679.90 not in prices
+    assert pick_current_and_original(prices) == (6255.08, 7489.0)
+
+
 def test_price_parser_ignores_money_discount_after_value():
     prices = extract_brl_prices("Preço R$ 2.999,00 + R$ 200,00 de desconto com cupom")
     assert prices == [2999.0]
