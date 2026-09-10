@@ -2,6 +2,7 @@ from price_monitor.detector import detect_anomalies
 from price_monitor.models import Offer
 from price_monitor.normalize import product_key
 from price_monitor.sources.mercadolivre import MercadoLivreSource
+from price_monitor.sources.retailer import RetailerSource
 from price_monitor.sources.shopee import ShopeeSource
 from price_monitor.utils import extract_brl_prices, pick_current_and_original
 
@@ -57,3 +58,16 @@ def test_ml_card_identifies_only_allowlisted_store_line():
 def test_shopee_dominant_shop_id():
     hrefs = ["https://shopee.com.br/a-i.123.1", "https://shopee.com.br/b-i.123.2", "https://shopee.com.br/c-i.999.3"]
     assert ShopeeSource._dominant_shop_id(hrefs) == "123"
+
+
+def test_retailer_accepts_only_product_links_on_own_domain():
+    source = RetailerSource({
+        "name": "Loja Teste",
+        "base_url": "https://www.exemplo.com.br/",
+        "direct_retailer": True,
+        "catalog_urls": ["https://www.exemplo.com.br/categoria/notebooks"],
+    })
+    assert source._allowed_product_url("https://www.exemplo.com.br/produto/notebook-x") is True
+    assert source._allowed_product_url("https://exemplo.com.br/categoria/notebooks") is False
+    assert source._allowed_product_url("https://www.exemplo.com.br/") is False
+    assert source._allowed_product_url("https://marketplace-outro.com/produto/notebook-x") is False
