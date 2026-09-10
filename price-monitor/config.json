@@ -1,41 +1,27 @@
 {
-  "queries": [
-    "iphone",
-    "macbook",
-    "notebook gamer",
-    "rtx 5070",
-    "tv oled",
-    "tv 65 4k",
-    "geladeira",
-    "lava e seca",
-    "ar condicionado",
-    "playstation 5",
-    "xbox series x",
-    "drone dji"
-  ],
-  "thresholds": {
-    "max_ratio": 0.55,
-    "min_savings": 1000,
-    "min_baseline": 2000,
-    "weak_max_ratio": 0.35,
-    "weak_min_savings": 2000,
-    "weak_min_baseline": 3000
-  },
+  "queries": ["iphone", "macbook", "notebook gamer", "rtx 5070", "tv oled", "tv 65 4k", "geladeira", "lava e seca", "ar condicionado", "playstation 5", "xbox series x", "drone dji"],
+  "thresholds": {"max_ratio": 0.55, "min_savings": 1000, "min_baseline": 2000, "weak_max_ratio": 0.35, "weak_min_savings": 2000, "weak_min_baseline": 3000},
   "revalidation_limit": 12,
   "mercadolivre": {
-    "limit_per_query": 50
+    "limit_per_query": 50,
+    "official_stores": [
+      {"name": "Apple", "marker": "Apple", "verified_official": true, "verified_at": "2026-09-10"},
+      {"name": "Samsung", "marker": "Samsung", "verified_official": true, "verified_at": "2026-09-10"},
+      {"name": "Motorola", "marker": "Motorola", "verified_official": true, "verified_at": "2026-09-10"},
+      {"name": "Acer", "marker": "Acer", "verified_official": true, "verified_at": "2026-09-10"},
+      {"name": "LG", "marker": "LG", "verified_official": true, "verified_at": "2026-09-10"},
+      {"name": "Electrolux", "marker": "Electrolux", "verified_official": true, "verified_at": "2026-09-10"}
+    ]
   },
   "shopee": {
     "scrolls": 6,
     "official_shops": [
-      {"name": "Acer Brasil Oficial", "url": "https://shopee.com.br/acer_brasil"},
-      {"name": "LG Oficial", "url": "https://shopee.com.br/lg_oficial"},
-      {"name": "Loja Oficial Motorola", "url": "https://shopee.com.br/lojaoficialmotorola"},
-      {"name": "Electrolux", "url": "https://shopee.com.br/electroluxoficial"},
-      {"name": "Positivo Tecnologia", "url": "https://shopee.com.br/positivooficial"}
+      {"name": "Acer Brasil Oficial", "url": "https://shopee.com.br/acer_brasil", "verified_official": true, "verified_at": "2026-09-10"},
+      {"name": "LG Oficial", "url": "https://shopee.com.br/lg_oficial", "verified_official": true, "verified_at": "2026-09-10"},
+      {"name": "Loja Oficial Motorola", "url": "https://shopee.com.br/lojaoficialmotorola", "verified_official": true, "verified_at": "2026-09-10"},
+      {"name": "Electrolux", "url": "https://shopee.com.br/electroluxoficial", "verified_official": true, "verified_at": "2026-09-10"},
+      {"name": "Positivo Tecnologia", "url": "https://shopee.com.br/positivooficial", "verified_official": true, "verified_at": "2026-09-10"}
     ]
   },
-  "casas_bahia": {
-    "max_candidates_per_query": 6
-  }
+  "casas_bahia": {"max_candidates_per_query": 5}
 }
