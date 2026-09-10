@@ -45,6 +45,19 @@ def test_price_parser_accepts_mercado_livre_without_cents():
     assert pick_current_and_original(prices) == (9539.0, 12499.0)
 
 
+def test_price_parser_ignores_savings_amount():
+    text = "R$ 3.349,00 -12% R$ 2.943,08 no Pix Economize R$ 255,92 no Pix ou R$ 3.199,00 em 10x de R$ 319,90 sem juros"
+    prices = extract_brl_prices(text)
+    assert 255.92 not in prices
+    assert 319.90 not in prices
+    assert pick_current_and_original(prices) == (2943.08, 3349.0)
+
+
+def test_price_parser_ignores_money_discount_after_value():
+    prices = extract_brl_prices("Preço R$ 2.999,00 + R$ 200,00 de desconto com cupom")
+    assert prices == [2999.0]
+
+
 def test_product_key_is_stable_enough():
     assert product_key("Apple iPhone 17 Pro Max 256GB Preto") == product_key("iPhone 17 Pro Max Apple 256 GB - Preto")
 
