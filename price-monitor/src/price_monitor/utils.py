@@ -6,7 +6,6 @@ from urllib.parse import urljoin
 
 
 BRL_RE = re.compile(r"R\$\s*([\d.]+(?:,\d{2})?)", re.I)
-INSTALLMENT_RE = re.compile(r"(?:\d+\s*x(?:\s+de)?\s*)$", re.I)
 
 
 def normalize_text(value: str) -> str:
@@ -28,12 +27,40 @@ def parse_brl(value: str) -> float | None:
     return amount if amount > 0 else None
 
 
+def _is_auxiliary_money_value(text: str, start: int, end: int) -> bool:
+    """Detecta valores monetários que não são o preço total do produto.
+
+    Exemplos descartados: parcela, economia, desconto, cashback, cupom e frete.
+    Isso evita interpretar `Economize R$ 255,92` como se o item custasse R$ 255,92.
+    """
+    prefix_raw = text[max(0, start - 55) : start]
+    suffix_raw = text[end : min(len(text), end + 45)]
+    prefix = normalize_text(prefix_raw)
+    suffix = normalize_text(suffix_raw)
+
+    prefix_patterns = (
+        r"(?:^| )\d{1,2}\s*x(?:\s+de)?$",
+        r"(?:^| )(?:parcela|parcelas)(?:\s+de)?$",
+        r"(?:^| )(?:economize|economia|poupe)(?:\s+de)?$",
+        r"(?:^| )(?:desconto|cashback|cupom|bonus|bônus|ganhe)(?:\s+de)?$",
+        r"(?:^| )frete(?:\s+por)?$",
+    )
+    if any(re.search(pattern, prefix, re.I) for pattern in prefix_patterns):
+        return True
+
+    # Também cobre textos como `R$ 200 de desconto`.
+    if re.match(r"^(?:de\s+)?(?:desconto|cashback|economia|economize|bonus|cupom)\b", suffix, re.I):
+        return True
+
+    return False
+
+
 def extract_brl_prices(text: str) -> list[float]:
-    """Extrai preços à vista e ignora valores de parcelas do tipo 10x R$ 299,90."""
+    """Extrai preços totais e ignora parcelas/benefícios monetários auxiliares."""
+    text = text or ""
     out: list[float] = []
-    for match in BRL_RE.finditer(text or ""):
-        prefix = (text[max(0, match.start() - 28) : match.start()]).lower()
-        if INSTALLMENT_RE.search(prefix.strip()) or re.search(r"\d+\s*x\s*(?:de\s*)?$", prefix):
+    for match in BRL_RE.finditer(text):
+        if _is_auxiliary_money_value(text, match.start(), match.end()):
             continue
         price = parse_brl(match.group(1))
         if price is not None:
