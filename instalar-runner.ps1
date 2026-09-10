@@ -1,7 +1,14 @@
 $ErrorActionPreference = 'Stop'
 
-# Instalador pessoal do GitHub Actions Runner para este repositório.
-# Não contém token nem credenciais. O token é solicitado somente durante a execução.
+trap {
+    Write-Host ''
+    Write-Host 'ERRO DURANTE A INSTALACAO:' -ForegroundColor Red
+    Write-Host $_.Exception.Message -ForegroundColor Red
+    Write-Host ''
+    Write-Host 'A janela vai permanecer aberta para voce poder ler a mensagem.' -ForegroundColor Yellow
+    Read-Host 'Pressione Enter para fechar'
+    break
+}
 
 $repoUrl = 'https://github.com/thenights20/viagens'
 $runnerVersion = '2.337.0'
@@ -19,17 +26,14 @@ function Test-Administrator {
 
 if (-not (Test-Administrator)) {
     Write-Host 'Abrindo novamente como Administrador...' -ForegroundColor Yellow
-    Start-Process powershell.exe -Verb RunAs -ArgumentList @(
-        '-NoProfile',
-        '-ExecutionPolicy', 'Bypass',
-        '-File', "`"$PSCommandPath`""
-    )
+    $argLine = "-NoExit -NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`""
+    Start-Process -FilePath 'powershell.exe' -Verb RunAs -ArgumentList $argLine
     exit
 }
 
 Write-Host ''
-Write-Host '=== Configuração do computador para o GitHub Actions ===' -ForegroundColor Cyan
-Write-Host "Repositório: $repoUrl"
+Write-Host '=== Configuracao do computador para o GitHub Actions ===' -ForegroundColor Cyan
+Write-Host "Repositorio: $repoUrl"
 Write-Host "Pasta:       $runnerDir"
 Write-Host ''
 
@@ -37,7 +41,7 @@ New-Item -ItemType Directory -Path $runnerDir -Force | Out-Null
 Set-Location $runnerDir
 
 if (Test-Path (Join-Path $runnerDir '.runner')) {
-    Write-Host 'Este computador já possui um runner configurado nesta pasta.' -ForegroundColor Green
+    Write-Host 'Este computador ja possui um runner configurado nesta pasta.' -ForegroundColor Green
     Write-Host 'Abra GitHub > Settings > Actions > Runners e confira se ele aparece Online/Idle.'
     Read-Host 'Pressione Enter para fechar'
     exit 0
@@ -53,7 +57,7 @@ if (-not (Test-Path (Join-Path $runnerDir 'config.cmd'))) {
     $actualHash = (Get-FileHash -Path $zipPath -Algorithm SHA256).Hash.ToLowerInvariant()
     if ($actualHash -ne $expectedHash.ToLowerInvariant()) {
         Remove-Item $zipPath -Force -ErrorAction SilentlyContinue
-        throw 'A validação SHA256 falhou. O arquivo foi removido e nada foi instalado.'
+        throw 'A validacao SHA256 falhou. O arquivo foi removido e nada foi instalado.'
     }
 
     Write-Host 'Extraindo arquivos...'
@@ -63,7 +67,7 @@ if (-not (Test-Path (Join-Path $runnerDir 'config.cmd'))) {
 Write-Host ''
 Write-Host 'IMPORTANTE:' -ForegroundColor Yellow
 Write-Host 'Use um TOKEN NOVO da tela New self-hosted runner.'
-Write-Host 'O token é temporário e não será salvo neste script.'
+Write-Host 'O token e temporario e nao sera salvo neste script.'
 Write-Host ''
 
 $secureToken = Read-Host 'Cole o token NOVO do GitHub' -AsSecureString
@@ -80,7 +84,7 @@ if ([string]::IsNullOrWhiteSpace($token)) {
 
 $runnerName = "price-monitor-$env:COMPUTERNAME"
 Write-Host ''
-Write-Host "Registrando como $runnerName e instalando como serviço..." -ForegroundColor Cyan
+Write-Host "Registrando como $runnerName e instalando como servico..." -ForegroundColor Cyan
 
 & (Join-Path $runnerDir 'config.cmd') `
     --unattended `
@@ -90,11 +94,12 @@ Write-Host "Registrando como $runnerName e instalando como serviço..." -Foregro
     --work '_work' `
     --runasservice
 
+$exitCode = $LASTEXITCODE
 $token = $null
 $secureToken = $null
 
-if ($LASTEXITCODE -ne 0) {
-    throw "A configuração terminou com código $LASTEXITCODE."
+if ($exitCode -ne 0) {
+    throw "A configuracao terminou com codigo $exitCode."
 }
 
 Start-Sleep -Seconds 3
@@ -106,10 +111,10 @@ if ($services) {
         }
     }
     Write-Host ''
-    Write-Host 'Runner instalado. Serviço encontrado:' -ForegroundColor Green
+    Write-Host 'Runner instalado. Servico encontrado:' -ForegroundColor Green
     Get-Service | Where-Object { $_.Name -like 'actions.runner.*' } | Format-Table Status, Name, DisplayName -AutoSize
 } else {
-    Write-Host 'Runner registrado, mas o serviço não foi localizado. Confira a tela de Runners no GitHub.' -ForegroundColor Yellow
+    Write-Host 'Runner registrado, mas o servico nao foi localizado. Confira a tela de Runners no GitHub.' -ForegroundColor Yellow
 }
 
 Write-Host ''
