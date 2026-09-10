@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import re
 import time
-from urllib.parse import urlparse
+from urllib.parse import quote_plus, urlparse
 
 from selenium.webdriver.common.by import By
 
@@ -15,7 +15,13 @@ from .base import Source
 
 
 class RetailerSource(Source):
-    """Coletor genérico para varejistas que vendem diretamente no próprio domínio."""
+    """Coletor genérico para varejistas e marketplaces no próprio domínio.
+
+    Quando ``seller_markers`` é informado, o item só entra como oficial depois
+    que a página do produto confirma o vendedor configurado. Isso evita que
+    anúncios de terceiros em varejistas com marketplace sejam tratados como
+    venda direta da loja.
+    """
 
     def __init__(self, config: dict):
         super().__init__()
@@ -23,10 +29,15 @@ class RetailerSource(Source):
         self.name = str(config.get("name") or "Varejista")
         self.base_url = str(config.get("base_url") or "")
         self.catalog_urls = [str(x) for x in config.get("catalog_urls", []) if x]
+        self.queries = [str(x) for x in config.get("queries", []) if x]
+        self.search_url_template = str(config.get("search_url_template") or "")
+        self.max_queries = max(0, min(int(config.get("max_queries", 12)), 40))
         self.max_items = max(10, min(int(config.get("max_items", 90)), 180))
+        self.max_seller_checks = max(5, min(int(config.get("max_seller_checks", 36)), 100))
         self.scrolls = max(0, min(int(config.get("scrolls", 3)), 10))
         self.direct_retailer = bool(config.get("direct_retailer", True))
         self.product_path_regex = re.compile(str(config.get("product_path_regex") or r".+"), re.I)
+        self.seller_markers = [str(x).strip().lower() for x in config.get("seller_markers", []) if str(x).strip()]
         self._catalog_keys = {self._url_key(x) for x in [self.base_url, *self.catalog_urls] if x}
 
     @staticmethod
@@ -54,6 +65,28 @@ class RetailerSource(Source):
         if key in self._catalog_keys or key[1] == "/":
             return False
         return bool(self.product_path_regex.search(key[1]))
+
+    def _target_urls(self) -> list[str]:
+        urls = list(self.catalog_urls)
+        if self.search_url_template:
+            for query in self.queries[: self.max_queries]:
+                encoded = quote_plus(query.strip())
+                url = self.search_url_template.replace("{query}", encoded)
+                if url:
+                    urls.append(url)
+        seen = set()
+        out = []
+        for url in urls:
+            if url not in seen:
+                seen.add(url)
+                out.append(url)
+        return out
+
+    def _seller_allowed(self, body: str) -> bool:
+        if not self.seller_markers:
+            return True
+        text = " ".join((body or "").lower().split())
+        return any(marker in text for marker in self.seller_markers)
 
     @staticmethod
     def _card_text(driver, anchor) -> str:
@@ -121,9 +154,22 @@ class RetailerSource(Source):
                 continue
         return prices
 
+    @staticmethod
+    def _seller_check_score(offer: Offer) -> float:
+        score = 0.0
+        if offer.original_price and offer.original_price > offer.price:
+            score += (1 - offer.price / offer.original_price) * 100
+            score += min(25.0, offer.original_price / 1000)
+        if expensive_product_hint(offer.title):
+            score += 35
+        if offer.price <= 1500 and expensive_product_hint(offer.title):
+            score += 20
+        return score
+
     def collect(self) -> list[Offer]:
-        if not self.direct_retailer or not self.base_url or not self.catalog_urls:
-            self.health = {"ok": False, "message": "fonte sem configuração de varejista direto", "items": 0}
+        targets = self._target_urls()
+        if not self.direct_retailer or not self.base_url or not targets:
+            self.health = {"ok": False, "message": "fonte sem configuração de varejista", "items": 0}
             return []
 
         driver = None
@@ -132,7 +178,7 @@ class RetailerSource(Source):
         errors: list[str] = []
         try:
             driver = build_driver()
-            for catalog_url in self.catalog_urls:
+            for catalog_url in targets:
                 try:
                     driver.get(catalog_url)
                     time.sleep(2.5)
@@ -164,7 +210,7 @@ class RetailerSource(Source):
                             original_price=original,
                             url=href,
                             store_name=self.name,
-                            official=True,
+                            official=not bool(self.seller_markers),
                             available="indispon" not in text.lower() and "esgotado" not in text.lower(),
                             metadata={"collector": "retailer", "direct_retailer": True, "catalog_url": catalog_url},
                         )
@@ -172,6 +218,29 @@ class RetailerSource(Source):
                         offers.append(offer)
                 except Exception as exc:
                     errors.append(f"{catalog_url}: {type(exc).__name__}")
+
+            if self.seller_markers and offers:
+                verified: list[Offer] = []
+                candidates = sorted(offers, key=self._seller_check_score, reverse=True)[: self.max_seller_checks]
+                for offer in candidates:
+                    try:
+                        driver.get(offer.url)
+                        time.sleep(2.0)
+                        body = driver.find_element(By.TAG_NAME, "body").text
+                        low = body.lower()
+                        if any(x in low for x in ("produto indisponível", "produto indisponivel", "esgotado", "sem estoque")):
+                            continue
+                        if not self._seller_allowed(body):
+                            continue
+                        prices = self._jsonld_prices(driver) + extract_brl_prices(body)
+                        if prices and not any(similar_price(p, offer.price, 0.08) for p in prices):
+                            continue
+                        offer.official = True
+                        offer.metadata["seller_verified_on_pdp"] = True
+                        verified.append(offer)
+                    except Exception as exc:
+                        errors.append(f"seller-check: {type(exc).__name__}")
+                offers = verified
         except Exception as exc:
             errors.append(f"navegador: {type(exc).__name__}")
         finally:
@@ -181,11 +250,11 @@ class RetailerSource(Source):
                 except Exception:
                     pass
 
-        self.health = {
-            "ok": bool(offers),
-            "message": "varejista direto" if offers else "; ".join(errors[:4]) or "nenhum item carregado",
-            "items": len(offers),
-        }
+        if self.seller_markers:
+            message = "vendedor oficial confirmado no produto" if offers else "; ".join(errors[:4]) or "nenhum item do vendedor oficial"
+        else:
+            message = "varejista direto" if offers else "; ".join(errors[:4]) or "nenhum item carregado"
+        self.health = {"ok": bool(offers), "message": message, "items": len(offers)}
         return offers
 
     def revalidate(self, offer: Offer) -> tuple[bool, str]:
@@ -200,10 +269,13 @@ class RetailerSource(Source):
             low = body.lower()
             if any(x in low for x in ("produto indisponível", "produto indisponivel", "esgotado", "sem estoque")):
                 return False, "produto indisponível"
+            if not self._seller_allowed(body):
+                return False, "vendedor oficial não confirmado"
             prices = self._jsonld_prices(driver) + extract_brl_prices(body)
             if not any(similar_price(p, offer.price, 0.05) for p in prices):
                 return False, "preço mudou antes da segunda confirmação"
-            return True, f"{self.name}: domínio e preço confirmados novamente"
+            seller_note = " e vendedor" if self.seller_markers else ""
+            return True, f"{self.name}: domínio{seller_note} e preço confirmados novamente"
         except Exception as exc:
             return False, f"falha ao revalidar: {type(exc).__name__}"
         finally:
