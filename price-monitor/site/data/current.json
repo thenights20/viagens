@@ -1,9 +1,38 @@
 {
   "version": "0.1.0",
-  "generated_at": null,
+  "generated_at": "2026-09-10T16:11:32.287611+00:00",
+  "timezone_hint": "America/Campo_Grande",
   "active_count": 0,
   "observed_count": 0,
-  "source_health": {},
+  "source_health": {
+    "Mercado Livre": {
+      "ok": false,
+      "message": "iphone: HTTPError; macbook: HTTPError; notebook gamer: HTTPError; rtx 5070: HTTPError",
+      "items": 0
+    },
+    "Shopee": {
+      "ok": false,
+      "message": "Acer Brasil Oficial: selo oficial não confirmado; LG Oficial: selo oficial não confirmado; Loja Oficial Motorola: selo oficial não confirmado; Electrolux: selo oficial não confirmado; Positivo Tecnologia: selo oficial não confirmado",
+      "items": 0
+    },
+    "Casas Bahia": {
+      "ok": false,
+      "message": "iphone: campo de busca não encontrado; macbook: campo de busca não encontrado; notebook gamer: campo de busca não encontrado; rtx 5070: campo de busca não encontrado; tv oled: campo de busca não encontrado",
+      "items": 0
+    }
+  },
+  "thresholds": {
+    "max_ratio": 0.55,
+    "min_savings": 1000,
+    "min_baseline": 2000,
+    "weak_max_ratio": 0.35,
+    "weak_min_savings": 2000,
+    "weak_min_baseline": 3000
+  },
   "active": [],
-  "notes": ["Aguardando a primeira varredura automática."]
+  "notes": [
+    "A lista mostra somente anomalias revalidadas como ativas.",
+    "Loja oficial é requisito obrigatório; se a verificação falhar, o item não aparece.",
+    "Possível bug é uma anomalia estatística, não uma confirmação de erro pela loja."
+  ]
 }
