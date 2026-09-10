@@ -52,10 +52,11 @@ jobs:
         env:
           PYTHONPATH: price-monitor/src
         run: |
-          python -m price_monitor.run \
+          python -m price_monitor.run_online \
             --config price-monitor/config.json \
             --output docs/data/current.json \
-            --history price-monitor/data/history.json
+            --history price-monitor/data/history.json \
+            --workers 3
           cp docs/data/current.json price-monitor/site/data/current.json
 
       - name: Persistir dados
@@ -79,6 +80,7 @@ jobs:
               d = json.load(f)
           lines = [
               '## Acompanhamento pessoal',
+              f"- Fontes respondendo: {d.get('responding_source_count', 0)}/{d.get('configured_source_count', 0)}",
               f"- Itens observados: {d.get('observed_count', 0)}",
               f"- Produtos listados: {d.get('product_count', 0)}",
               f"- Itens em vistoria encontrados: {d.get('tracked_count', 0)}",
