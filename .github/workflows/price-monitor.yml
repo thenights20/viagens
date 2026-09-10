@@ -2,6 +2,13 @@ name: Acompanhamento pessoal
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "price-monitor/config.json"
+      - "price-monitor/src/**"
+      - "price-monitor/tests/**"
+      - ".github/workflows/price-monitor.yml"
   schedule:
     - cron: "17 * * * *"
 
@@ -67,5 +74,7 @@ jobs:
           $d = Get-Content docs/data/current.json -Raw | ConvertFrom-Json
           "## Acompanhamento pessoal" >> $env:GITHUB_STEP_SUMMARY
           "- Itens observados: $($d.observed_count)" >> $env:GITHUB_STEP_SUMMARY
-          "- Destaques ativos: $($d.active_count)" >> $env:GITHUB_STEP_SUMMARY
+          "- Produtos listados: $($d.product_count)" >> $env:GITHUB_STEP_SUMMARY
+          "- Itens em vistoria encontrados: $($d.tracked_count)" >> $env:GITHUB_STEP_SUMMARY
+          "- Destaques confirmados: $($d.active_count)" >> $env:GITHUB_STEP_SUMMARY
           "- Atualizado: $($d.generated_at)" >> $env:GITHUB_STEP_SUMMARY
