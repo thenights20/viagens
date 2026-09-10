@@ -5,7 +5,7 @@ import unicodedata
 from urllib.parse import urljoin
 
 
-BRL_RE = re.compile(r"R\$\s*([\d.]+,\d{2})", re.I)
+BRL_RE = re.compile(r"R\$\s*([\d.]+(?:,\d{2})?)", re.I)
 INSTALLMENT_RE = re.compile(r"(?:\d+\s*x(?:\s+de)?\s*)$", re.I)
 
 
@@ -29,11 +29,11 @@ def parse_brl(value: str) -> float | None:
 
 
 def extract_brl_prices(text: str) -> list[float]:
-    """Extract cash prices while ignoring obvious installment values."""
+    """Extrai preços à vista e ignora valores de parcelas do tipo 10x R$ 299,90."""
     out: list[float] = []
     for match in BRL_RE.finditer(text or ""):
-        prefix = (text[max(0, match.start() - 24) : match.start()]).lower()
-        if INSTALLMENT_RE.search(prefix.strip()) or re.search(r"\d+\s*x\s*$", prefix):
+        prefix = (text[max(0, match.start() - 28) : match.start()]).lower()
+        if INSTALLMENT_RE.search(prefix.strip()) or re.search(r"\d+\s*x\s*(?:de\s*)?$", prefix):
             continue
         price = parse_brl(match.group(1))
         if price is not None:

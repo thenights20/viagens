@@ -1,44 +1,30 @@
-# Monitor de preços — lojas oficiais
+# Monitor de preços — lojas oficiais v0.2.0
 
-Monitor pessoal para localizar **preços anormalmente baixos** em produtos de maior valor, exibindo somente anúncios cuja loja oficial e preço continuam ativos na revalidação.
+Monitor pessoal para localizar **preços anormalmente baixos** em produtos de maior valor. O painel recebe somente anúncios cuja origem oficial e preço passam pela verificação e pela revalidação.
 
-## Fontes iniciais
+## Fontes
 
-- Mercado Livre: API de busca, aceitando somente resultados com identificação de loja oficial.
-- Shopee: varredura de páginas de lojas oficiais previamente configuradas, com nova checagem do anúncio quando há anomalia.
-- Casas Bahia: busca pelo site e aceitação somente quando a página do produto confirma que é vendido pela própria Casas Bahia.
+- **Mercado Livre:** tenta a API oficial; se a pesquisa pública exigir autenticação, usa o navegador e aceita apenas lojas oficiais previamente verificadas, reconfirmando o vendedor no anúncio antes de publicar uma anomalia.
+- **Shopee:** varre páginas exatas de lojas oficiais verificadas e prende cada produto ao `shop_id` daquela loja. Recomendações de outros vendedores são descartadas.
+- **Casas Bahia:** pesquisa o site e só aceita o item depois que a PDP confirma que é vendido pela própria Casas Bahia.
 
-O sistema **não tenta contornar CAPTCHA, login, bloqueios ou proteções anti-bot**. Se uma fonte bloquear a leitura, ela é marcada como indisponível e nenhum anúncio não verificado entra no painel.
+O sistema não contorna CAPTCHA, login ou proteções anti-bot. Se uma fonte impedir a leitura, ela falha de forma fechada e não produz falso positivo.
 
-## Como decide se algo é anormal
+## Detector
 
-A referência preferencial é:
-1. mediana de pelo menos 3 ofertas oficiais equivalentes no momento;
-2. mediana histórica de pelo menos 5 amostras;
-3. apenas no primeiro ciclo, preço anterior anunciado — usado somente para diferenças extremas.
+Preferência de referência: mediana de pelo menos 3 ofertas equivalentes, depois mediana histórica de pelo menos 5 amostras. No primeiro ciclo, `preço de` só pode gerar alerta em uma diferença extrema. Padrão: referência >= R$ 2.000, economia >= R$ 1.000 e preço atual <= 55% da referência. Quando só existe `preço de`, exige referência >= R$ 3.000, economia >= R$ 2.000 e preço atual <= 35%.
 
-Padrão:
-- referência >= R$ 2.000;
-- economia >= R$ 1.000;
-- preço atual <= 55% da referência;
-- quando só existe “preço de”, exige referência >= R$ 3.000, economia >= R$ 2.000 e preço atual <= 35%.
+Depois da detecção, o anúncio é aberto novamente. Só entra em `active` quando continua disponível, oficial e com o mesmo preço.
 
-Depois de detectar, o anúncio é aberto novamente. **Só entra em `active` se continuar disponível, oficial e com o mesmo preço.**
+## Execução
 
-## Execução local
+Os runners públicos do GitHub foram testados e os três e-commerces limitaram a coleta. Por isso a automação v0.2.0 usa um **GitHub Actions self-hosted runner no Windows**: o código e o agendamento ficam no GitHub, enquanto a consulta usa sua conexão normal. Veja `RUNNER_WINDOWS.md`.
 
-```bash
-python -m venv .venv
-. .venv/bin/activate
-pip install -r price-monitor/requirements.txt
-PYTHONPATH=price-monitor/src python -m price_monitor.run \
-  --config price-monitor/config.json \
-  --output price-monitor/site/data/current.json \
-  --history price-monitor/data/history.json
+Execução manual local:
+
+```powershell
+$env:PYTHONPATH="price-monitor/src"
+python -m pip install -r price-monitor/requirements.txt
+python -m pytest -q price-monitor/tests
+python -m price_monitor.run --config price-monitor/config.json --output price-monitor/site/data/current.json --history price-monitor/data/history.json
 ```
-
-Para testar só a API do Mercado Livre, acrescente `--skip-browser`.
-
-## Automação
-
-`.github/workflows/price-monitor.yml` executa a varredura de hora em hora e também pode ser acionado manualmente. Instala Python e Chrome, roda testes, coleta, salva histórico/resultado e tenta publicar `price-monitor/site` no GitHub Pages se Pages estiver habilitado.
