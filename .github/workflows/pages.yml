@@ -2,6 +2,7 @@ name: Publicar página pessoal
 
 on:
   workflow_dispatch:
+  public:
   push:
     branches: [main]
     paths:
