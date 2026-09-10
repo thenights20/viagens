@@ -1,4 +1,8 @@
 {
+  "configured_sources": [
+    "Mercado Livre", "Shopee", "Casas Bahia", "Fast Shop", "Amazon Brasil", "Magalu",
+    "Pichau", "KaBuM!", "TerabyteShop", "Gazin", "Fujioka", "Nagem", "Miranda", "Dufrio", "Loja TCL"
+  ],
   "queries": [
     "iphone", "galaxy s", "galaxy a", "motorola edge", "macbook", "notebook gamer",
     "rtx 4050", "rtx 4060", "rtx 5060 ti", "rtx 5070", "rtx 5070 ti", "rx 9070",
@@ -92,6 +96,9 @@
     "queries":["iphone","galaxy","notebook gamer","tv oled","tv qled","geladeira","lava e seca","ar condicionado","playstation 5","xbox series x","jbl","aspirador robo"]
   },
   "retailers": [
+    {"name":"Fast Shop","base_url":"https://fastshop.com.br/","direct_retailer":true,"verified_at":"2026-09-10","max_items":130,"max_seller_checks":45,"scrolls":3,"seller_markers":["vendido e entregue por fast shop","vendido por fast shop"],"catalog_urls":["https://secure3.fastshop.com.br/celular-tablet-e-smartwatch/celular-e-smartphone?page=1","https://secure3.fastshop.com.br/informatica-e-games/notebook?page=1","https://secure3.fastshop.com.br/video/tv?page=1","https://secure3.fastshop.com.br/eletrodomesticos/geladeira-e-freezer?page=1","https://secure3.fastshop.com.br/audio"]},
+    {"name":"Amazon Brasil","base_url":"https://amazon.com.br/","direct_retailer":true,"verified_at":"2026-09-10","max_items":100,"max_seller_checks":45,"max_queries":14,"scrolls":2,"product_path_regex":"/(dp|gp/product)/","seller_markers":["vendido por amazon.com.br","vendido e entregue por amazon.com.br"],"queries":["iphone 17","galaxy s25 ultra","notebook gamer","rtx 5060 ti","rtx 5070","monitor oled","tv oled","playstation 5","xbox series x","starlink mini","ssd 990 pro 2tb","jbl boombox 4","dji mini 4 pro","geladeira"],"search_url_template":"https://www.amazon.com.br/s?k={query}"},
+    {"name":"Magalu","base_url":"https://magazineluiza.com.br/","direct_retailer":true,"verified_at":"2026-09-10","max_items":110,"max_seller_checks":45,"max_queries":14,"scrolls":3,"product_path_regex":"/p/","seller_markers":["vendido por magalu","vendido e entregue por magalu"],"queries":["iphone 17","galaxy s25 ultra","notebook gamer","rtx 5060 ti","tv oled","tv qled","geladeira","lava e seca","ar condicionado inverter","playstation 5","xbox series x","jbl boombox","aspirador robo","ssd nvme 2tb"],"search_url_template":"https://www.magazineluiza.com.br/busca/{query}/"},
     {"name":"Gazin","base_url":"https://www.gazin.com.br/","direct_retailer":true,"verified_at":"2026-09-10","max_items":110,"scrolls":4,"catalog_urls":["https://www.gazin.com.br/","https://www.gazin.com.br/categoria/eletrodomesticos"]},
     {"name":"Fujioka","base_url":"https://www.fujioka.com.br/","direct_retailer":true,"verified_at":"2026-09-10","max_items":100,"scrolls":4,"catalog_urls":["https://www.fujioka.com.br/","https://www.fujioka.com.br/tv-e-video/tv"]},
     {"name":"Nagem","base_url":"https://www.nagem.com.br/","direct_retailer":true,"verified_at":"2026-09-10","max_items":100,"scrolls":3,"catalog_urls":["https://www.nagem.com.br/","https://www.nagem.com.br/navegacao?busca=notebook"]},
