@@ -27,6 +27,14 @@ class RetailerSource(Source):
         self.scrolls = max(0, min(int(config.get("scrolls", 3)), 10))
         self.direct_retailer = bool(config.get("direct_retailer", True))
         self.product_path_regex = re.compile(str(config.get("product_path_regex") or r".+"), re.I)
+        self._catalog_keys = {self._url_key(x) for x in [self.base_url, *self.catalog_urls] if x}
+
+    @staticmethod
+    def _url_key(url: str) -> tuple[str, str, str]:
+        p = urlparse(url)
+        host = p.netloc.lower().removeprefix("www.")
+        path = p.path.rstrip("/") or "/"
+        return host, path, p.query
 
     @property
     def _host(self) -> str:
@@ -42,8 +50,10 @@ class RetailerSource(Source):
     def _allowed_product_url(self, url: str) -> bool:
         if not self._same_store_domain(url):
             return False
-        path = urlparse(url).path or "/"
-        return bool(self.product_path_regex.search(path))
+        key = self._url_key(url)
+        if key in self._catalog_keys or key[1] == "/":
+            return False
+        return bool(self.product_path_regex.search(key[1]))
 
     @staticmethod
     def _card_text(driver, anchor) -> str:
@@ -144,7 +154,6 @@ class RetailerSource(Source):
                         title = self._title(anchor, text)
                         if not current or not title:
                             continue
-                        # Mantém itens caros e também produtos que parecem caros mesmo se o preço atual estiver muito baixo.
                         if current < 900 and not expensive_product_hint(title):
                             continue
                         seen.add(href)
