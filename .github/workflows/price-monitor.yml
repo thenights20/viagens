@@ -2,6 +2,11 @@ name: Monitor de preços oficiais
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "price-monitor/**"
+      - ".github/workflows/price-monitor.yml"
   schedule:
     - cron: "17 * * * *"
 
