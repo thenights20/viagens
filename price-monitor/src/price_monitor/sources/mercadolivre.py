@@ -79,14 +79,13 @@ class MercadoLivreSource(Source):
         lines = [normalize_text(x) for x in (text or "").splitlines() if x.strip()]
         full = normalize_text(text)
         for store in stores:
-            name = normalize_text(str(store.get("name") or ""))
             marker = normalize_text(str(store.get("marker") or store.get("name") or ""))
             if not marker:
                 continue
             if f"loja oficial {marker}" in full:
                 return str(store.get("name"))
             for line in lines:
-                if line == marker or re.fullmatch(rf"{re.escape(marker)}\s+[0-5](?:[.,]\d)?", line):
+                if line == marker or re.fullmatch(rf"{re.escape(marker)}\s+[0-5](?:\s+\d)?", line):
                     return str(store.get("name"))
         return None
 
