@@ -10,7 +10,7 @@ from selenium.webdriver.common.by import By
 from ..browser import build_driver
 from ..models import Offer
 from ..normalize import expensive_product_hint, product_key
-from ..utils import extract_brl_prices, pick_current_and_original, similar_price
+from ..utils import extract_brl_prices, normalize_text, pick_current_and_original, similar_price
 from .base import Source
 
 
@@ -38,7 +38,11 @@ class RetailerSource(Source):
         self.direct_retailer = bool(config.get("direct_retailer", True))
         self.product_path_regex = re.compile(str(config.get("product_path_regex") or r".+"), re.I)
         self.seller_markers = [str(x).strip().lower() for x in config.get("seller_markers", []) if str(x).strip()]
-        self._catalog_keys = {self._url_key(x) for x in [self.base_url, *self.catalog_urls] if x}
+        self._catalog_paths = {
+            (self._url_key(x)[0], self._url_key(x)[1])
+            for x in [self.base_url, *self.catalog_urls]
+            if x
+        }
 
     @staticmethod
     def _url_key(url: str) -> tuple[str, str, str]:
@@ -61,10 +65,12 @@ class RetailerSource(Source):
     def _allowed_product_url(self, url: str) -> bool:
         if not self._same_store_domain(url):
             return False
-        key = self._url_key(url)
-        if key in self._catalog_keys or key[1] == "/":
+        host, path, _query = self._url_key(url)
+        # Uma URL de catálogo continua sendo catálogo mesmo quando recebe query
+        # de filtro/ordenação (ex.: ?price=2020-5999). Nunca é um produto.
+        if (host, path) in self._catalog_paths or path == "/":
             return False
-        return bool(self.product_path_regex.search(key[1]))
+        return bool(self.product_path_regex.search(path))
 
     def _target_urls(self) -> list[str]:
         urls = list(self.catalog_urls)
@@ -106,17 +112,30 @@ class RetailerSource(Source):
         ) or ""
 
     @staticmethod
-    def _title(anchor, text: str) -> str:
+    def _valid_title(value: str) -> bool:
+        value = (value or "").strip()
+        if len(value) < 12:
+            return False
+        low = normalize_text(value)
+        invalid = {
+            "aplicar filtro", "limpar filtro", "ver mais", "ver menos",
+            "comprar", "adicionar ao carrinho", "ordenar por",
+            "pular para a lista de produtos", "carregar mais",
+        }
+        return low not in invalid
+
+    @classmethod
+    def _title(cls, anchor, text: str) -> str:
         attr = (anchor.get_attribute("title") or "").strip()
-        if len(attr) >= 12:
+        if cls._valid_title(attr):
             return attr
         lines = [x.strip() for x in (text or "").splitlines() if x.strip()]
-        ignored = ("comprar", "adicionar ao carrinho", "frete", "economize")
+        ignored = ("comprar", "adicionar ao carrinho", "frete", "economize", "aplicar filtro")
         for line in lines:
             low = line.lower()
             if "R$" in line or any(x in low for x in ignored):
                 continue
-            if len(line) >= 14:
+            if cls._valid_title(line):
                 return line
         return ""
 
