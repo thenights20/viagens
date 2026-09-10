@@ -1,0 +1,41 @@
+{
+  "queries": [
+    "iphone",
+    "macbook",
+    "notebook gamer",
+    "rtx 5070",
+    "tv oled",
+    "tv 65 4k",
+    "geladeira",
+    "lava e seca",
+    "ar condicionado",
+    "playstation 5",
+    "xbox series x",
+    "drone dji"
+  ],
+  "thresholds": {
+    "max_ratio": 0.55,
+    "min_savings": 1000,
+    "min_baseline": 2000,
+    "weak_max_ratio": 0.35,
+    "weak_min_savings": 2000,
+    "weak_min_baseline": 3000
+  },
+  "revalidation_limit": 12,
+  "mercadolivre": {
+    "limit_per_query": 50
+  },
+  "shopee": {
+    "scrolls": 6,
+    "official_shops": [
+      {"name": "Acer Brasil Oficial", "url": "https://shopee.com.br/acer_brasil"},
+      {"name": "LG Oficial", "url": "https://shopee.com.br/lg_oficial"},
+      {"name": "Loja Oficial Motorola", "url": "https://shopee.com.br/lojaoficialmotorola"},
+      {"name": "Electrolux", "url": "https://shopee.com.br/electroluxoficial"},
+      {"name": "Positivo Tecnologia", "url": "https://shopee.com.br/positivooficial"}
+    ]
+  },
+  "casas_bahia": {
+    "max_candidates_per_query": 6
+  }
+}
