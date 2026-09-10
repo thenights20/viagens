@@ -1,113 +1,105 @@
 {
   "queries": [
-    "iphone",
-    "macbook",
-    "notebook gamer",
-    "rtx 5070",
-    "tv oled",
-    "tv 65 4k",
-    "geladeira",
-    "lava e seca",
-    "ar condicionado",
-    "playstation 5",
-    "xbox series x",
-    "drone dji"
+    "iphone", "galaxy s", "galaxy a", "motorola edge", "macbook", "notebook gamer",
+    "rtx 4050", "rtx 4060", "rtx 5060 ti", "rtx 5070", "rtx 5070 ti", "rx 9070",
+    "ryzen 7", "ryzen 9", "monitor gamer", "monitor mini led", "monitor oled",
+    "tv oled", "tv qled", "tv mini led", "geladeira", "lava e seca", "ar condicionado inverter",
+    "playstation 5", "xbox series x", "steam deck oled", "nintendo switch", "drone dji",
+    "smartwatch samsung", "ssd nvme 2tb", "jbl boombox", "jbl partybox", "aspirador robo"
   ],
-  "thresholds": {
-    "max_ratio": 0.55,
-    "min_savings": 1000,
-    "min_baseline": 2000,
-    "weak_max_ratio": 0.35,
-    "weak_min_savings": 2000,
-    "weak_min_baseline": 3000
-  },
-  "revalidation_limit": 18,
+  "watchlist": [
+    {"name":"iPhone 16 Pro Max 256GB","query":"iphone 16 pro max 256gb","category":"Smartphones","priority":true},
+    {"name":"iPhone 17 256GB","query":"iphone 17 256gb","category":"Smartphones","priority":true},
+    {"name":"iPhone 17 Pro Max","query":"iphone 17 pro max","category":"Smartphones","priority":true},
+    {"name":"Galaxy A57 5G 128GB","query":"galaxy a57 128gb","category":"Smartphones","priority":true},
+    {"name":"Galaxy A57 5G 256GB","query":"galaxy a57 256gb","category":"Smartphones"},
+    {"name":"Galaxy S25 Ultra 256GB","query":"galaxy s25 ultra 256gb","category":"Smartphones","priority":true},
+    {"name":"Galaxy Watch7 LTE 40mm","query":"galaxy watch7 lte 40mm","category":"Smartwatches"},
+    {"name":"Galaxy Watch8 40mm","query":"galaxy watch8 40mm","category":"Smartwatches"},
+    {"name":"Moto G67 256GB","query":"moto g67 256gb","category":"Smartphones"},
+    {"name":"Moto G86 256GB","query":"moto g86 256gb","category":"Smartphones"},
+    {"name":"Acer Nitro V15 RTX 4050","query":"acer nitro v15 rtx 4050","category":"Notebooks","priority":true},
+    {"name":"Acer Nitro V15 RTX 4060","query":"acer nitro v15 rtx 4060","category":"Notebooks"},
+    {"name":"Predator Helios Neo 16 RTX 5070","query":"predator helios neo 16 rtx 5070","category":"Notebooks"},
+    {"name":"GeForce RTX 5060 Ti 8GB","query":"rtx 5060 ti 8gb","category":"Placas de vídeo","priority":true},
+    {"name":"GeForce RTX 5060 Ti 16GB","query":"rtx 5060 ti 16gb","category":"Placas de vídeo","priority":true},
+    {"name":"GeForce RTX 5070 12GB","query":"rtx 5070 12gb","category":"Placas de vídeo"},
+    {"name":"GeForce RTX 5070 Ti","query":"rtx 5070 ti","category":"Placas de vídeo"},
+    {"name":"Radeon RX 9070 Challenger 16GB","query":"rx 9070 challenger 16gb 90-ga5nzz-00uanf","category":"Placas de vídeo","priority":true},
+    {"name":"Radeon RX 9070 XT","query":"rx 9070 xt","category":"Placas de vídeo"},
+    {"name":"Ryzen 5 5500","query":"ryzen 5 5500","category":"Processadores"},
+    {"name":"Ryzen 7 8700F","query":"ryzen 7 8700f","category":"Processadores","priority":true},
+    {"name":"Ryzen 7 9700X","query":"ryzen 7 9700x","category":"Processadores"},
+    {"name":"Ryzen 7 9800X3D","query":"ryzen 7 9800x3d","category":"Processadores"},
+    {"name":"Ryzen 9 7900X","query":"ryzen 9 7900x","category":"Processadores","priority":true},
+    {"name":"Monitor TCL 25G64 300Hz Mini LED","query":"tcl 25g64","category":"Monitores","priority":true},
+    {"name":"Monitor OLED 27 polegadas","query":"monitor oled 27","category":"Monitores"},
+    {"name":"LG QNED70 50 polegadas","query":"lg qned70 50","category":"TVs"},
+    {"name":"LG OLED C6 55 polegadas","query":"lg oled c6 55","category":"TVs"},
+    {"name":"LG OLED C6 65 polegadas","query":"lg oled c6 65","category":"TVs"},
+    {"name":"LG OLED C6 77 polegadas","query":"lg oled c6 77","category":"TVs","priority":true},
+    {"name":"Samsung OLED S90F 55 polegadas","query":"samsung s90f 55 oled","category":"TVs"},
+    {"name":"Hisense 50 QLED","query":"hisense 50 qled","category":"TVs"},
+    {"name":"PlayStation 5 Slim Digital 825GB","query":"playstation 5 slim digital 825gb","category":"Consoles","priority":true},
+    {"name":"PlayStation 5 Slim com disco","query":"playstation 5 slim disco","category":"Consoles"},
+    {"name":"Xbox Series X","query":"xbox series x","category":"Consoles"},
+    {"name":"Steam Deck OLED 512GB","query":"steam deck oled 512gb","category":"Consoles"},
+    {"name":"Nintendo Switch 2","query":"nintendo switch 2","category":"Consoles"},
+    {"name":"Starlink Mini","query":"starlink mini","category":"Eletrônicos","priority":true},
+    {"name":"Samsung SSD 990 PRO 2TB","query":"samsung 990 pro 2tb","category":"Armazenamento","priority":true},
+    {"name":"DJI Mini 4 Pro","query":"dji mini 4 pro","category":"Drones e câmeras"},
+    {"name":"DJI Air 3S","query":"dji air 3s","category":"Drones e câmeras"},
+    {"name":"JBL Boombox 3","query":"jbl boombox 3","category":"Áudio"},
+    {"name":"JBL Boombox 4","query":"jbl boombox 4","category":"Áudio"},
+    {"name":"JBL PartyBox","query":"jbl partybox","category":"Áudio"},
+    {"name":"Geladeira Side by Side 500L","query":"geladeira side by side 500l","category":"Eletrodomésticos"},
+    {"name":"Lava e Seca 11kg","query":"lava e seca 11kg","category":"Eletrodomésticos"},
+    {"name":"Ar-condicionado Inverter 12000 BTU","query":"ar condicionado inverter 12000","category":"Climatização"},
+    {"name":"Ar-condicionado Inverter 18000 BTU","query":"ar condicionado inverter 18000","category":"Climatização"},
+    {"name":"Aspirador robô com LiDAR","query":"aspirador robo lidar","category":"Casa"}
+  ],
+  "thresholds": {"max_ratio":0.55,"min_savings":1000,"min_baseline":2000,"weak_max_ratio":0.35,"weak_min_savings":2000,"weak_min_baseline":3000},
+  "product_output_limit": 600,
+  "revalidation_limit": 24,
   "mercadolivre": {
-    "limit_per_query": 50,
+    "limit_per_query": 40,
+    "priority_watchlist_limit": 14,
+    "max_queries": 30,
     "official_stores": [
-      {"name": "Apple", "marker": "Apple", "verified_official": true, "verified_at": "2026-09-10"},
-      {"name": "Samsung", "marker": "Samsung", "verified_official": true, "verified_at": "2026-09-10"},
-      {"name": "Motorola", "marker": "Motorola", "verified_official": true, "verified_at": "2026-09-10"},
-      {"name": "Acer", "marker": "Acer", "verified_official": true, "verified_at": "2026-09-10"},
-      {"name": "LG", "marker": "LG", "verified_official": true, "verified_at": "2026-09-10"},
-      {"name": "Electrolux", "marker": "Electrolux", "verified_official": true, "verified_at": "2026-09-10"}
+      {"name":"Apple","marker":"Apple","verified_official":true,"verified_at":"2026-09-10"},
+      {"name":"Samsung","marker":"Samsung","verified_official":true,"verified_at":"2026-09-10"},
+      {"name":"Motorola","marker":"Motorola","verified_official":true,"verified_at":"2026-09-10"},
+      {"name":"Acer","marker":"Acer","verified_official":true,"verified_at":"2026-09-10"},
+      {"name":"LG","marker":"LG","verified_official":true,"verified_at":"2026-09-10"},
+      {"name":"Electrolux","marker":"Electrolux","verified_official":true,"verified_at":"2026-09-10"},
+      {"name":"KaBuM!","marker":"KaBuM","verified_official":true,"verified_at":"2026-09-10"},
+      {"name":"Fast Shop","marker":"Fast Shop","verified_official":true,"verified_at":"2026-09-10"},
+      {"name":"Casas Bahia","marker":"Casas Bahia","verified_official":true,"verified_at":"2026-09-10"}
     ]
   },
   "shopee": {
     "scrolls": 6,
     "official_shops": [
-      {"name": "Acer Brasil Oficial", "url": "https://shopee.com.br/acer_brasil", "verified_official": true, "verified_at": "2026-09-10"},
-      {"name": "LG Oficial", "url": "https://shopee.com.br/lg_oficial", "verified_official": true, "verified_at": "2026-09-10"},
-      {"name": "Loja Oficial Motorola", "url": "https://shopee.com.br/lojaoficialmotorola", "verified_official": true, "verified_at": "2026-09-10"},
-      {"name": "Electrolux", "url": "https://shopee.com.br/electroluxoficial", "verified_official": true, "verified_at": "2026-09-10"},
-      {"name": "Positivo Tecnologia", "url": "https://shopee.com.br/positivooficial", "verified_official": true, "verified_at": "2026-09-10"}
+      {"name":"Acer Brasil Oficial","url":"https://shopee.com.br/acer_brasil","verified_official":true,"verified_at":"2026-09-10"},
+      {"name":"LG Oficial","url":"https://shopee.com.br/lg_oficial","verified_official":true,"verified_at":"2026-09-10"},
+      {"name":"Loja Oficial Motorola","url":"https://shopee.com.br/lojaoficialmotorola","verified_official":true,"verified_at":"2026-09-10"},
+      {"name":"Electrolux","url":"https://shopee.com.br/electroluxoficial","verified_official":true,"verified_at":"2026-09-10"},
+      {"name":"Positivo Tecnologia","url":"https://shopee.com.br/positivooficial","verified_official":true,"verified_at":"2026-09-10"}
     ]
   },
   "casas_bahia": {
-    "max_candidates_per_query": 5
+    "max_candidates_per_query": 5,
+    "queries":["iphone","galaxy","notebook gamer","tv oled","tv qled","geladeira","lava e seca","ar condicionado","playstation 5","xbox series x","jbl","aspirador robo"]
   },
   "retailers": [
-    {
-      "name": "Gazin",
-      "base_url": "https://www.gazin.com.br/",
-      "direct_retailer": true,
-      "verified_at": "2026-09-10",
-      "max_items": 110,
-      "scrolls": 4,
-      "catalog_urls": [
-        "https://www.gazin.com.br/",
-        "https://www.gazin.com.br/categoria/eletrodomesticos"
-      ]
-    },
-    {
-      "name": "Fujioka",
-      "base_url": "https://www.fujioka.com.br/",
-      "direct_retailer": true,
-      "verified_at": "2026-09-10",
-      "max_items": 100,
-      "scrolls": 4,
-      "catalog_urls": [
-        "https://www.fujioka.com.br/",
-        "https://www.fujioka.com.br/tv-e-video/tv"
-      ]
-    },
-    {
-      "name": "Nagem",
-      "base_url": "https://www.nagem.com.br/",
-      "direct_retailer": true,
-      "verified_at": "2026-09-10",
-      "max_items": 100,
-      "scrolls": 3,
-      "catalog_urls": [
-        "https://www.nagem.com.br/",
-        "https://www.nagem.com.br/navegacao?busca=notebook",
-        "https://www.nagem.com.br/navegacao/Eletr%C3%B4nicos/Tvs?busca=tv&marca=samsung&ordem=3&precos=&refino="
-      ]
-    },
-    {
-      "name": "Miranda",
-      "base_url": "https://www.miranda.com.br/",
-      "direct_retailer": true,
-      "verified_at": "2026-09-10",
-      "max_items": 100,
-      "scrolls": 3,
-      "catalog_urls": [
-        "https://www.miranda.com.br/informatica",
-        "https://www.miranda.com.br/informatica/notebooks/"
-      ]
-    },
-    {
-      "name": "Dufrio",
-      "base_url": "https://www.dufrio.com.br/",
-      "direct_retailer": true,
-      "verified_at": "2026-09-10",
-      "max_items": 110,
-      "scrolls": 4,
-      "catalog_urls": [
-        "https://www.dufrio.com.br/",
-        "https://www.dufrio.com.br/ar-condicionado",
-        "https://www.dufrio.com.br/ar-condicionado/ar-condicionado-split"
-      ]
-    }
+    {"name":"Gazin","base_url":"https://www.gazin.com.br/","direct_retailer":true,"verified_at":"2026-09-10","max_items":110,"scrolls":4,"catalog_urls":["https://www.gazin.com.br/","https://www.gazin.com.br/categoria/eletrodomesticos"]},
+    {"name":"Fujioka","base_url":"https://www.fujioka.com.br/","direct_retailer":true,"verified_at":"2026-09-10","max_items":100,"scrolls":4,"catalog_urls":["https://www.fujioka.com.br/","https://www.fujioka.com.br/tv-e-video/tv"]},
+    {"name":"Nagem","base_url":"https://www.nagem.com.br/","direct_retailer":true,"verified_at":"2026-09-10","max_items":100,"scrolls":3,"catalog_urls":["https://www.nagem.com.br/","https://www.nagem.com.br/navegacao?busca=notebook"]},
+    {"name":"Miranda","base_url":"https://www.miranda.com.br/","direct_retailer":true,"verified_at":"2026-09-10","max_items":100,"scrolls":3,"catalog_urls":["https://www.miranda.com.br/informatica","https://www.miranda.com.br/informatica/notebooks/"]},
+    {"name":"Dufrio","base_url":"https://www.dufrio.com.br/","direct_retailer":true,"verified_at":"2026-09-10","max_items":110,"scrolls":4,"catalog_urls":["https://www.dufrio.com.br/","https://www.dufrio.com.br/ar-condicionado","https://www.dufrio.com.br/ar-condicionado/ar-condicionado-split"]},
+    {"name":"Pichau","base_url":"https://www.pichau.com.br/","direct_retailer":true,"verified_at":"2026-09-10","max_items":140,"scrolls":4,"catalog_urls":["https://www.pichau.com.br/hardware/processadores","https://www.pichau.com.br/hardware/placa-de-video","https://www.pichau.com.br/monitores"]},
+    {"name":"KaBuM!","base_url":"https://www.kabum.com.br/","direct_retailer":true,"verified_at":"2026-09-10","max_items":140,"scrolls":4,"product_path_regex":"^/produto/","catalog_urls":["https://www.kabum.com.br/hardware/processadores","https://www.kabum.com.br/hardware/placa-de-video-vga","https://www.kabum.com.br/computadores/monitores"]},
+    {"name":"TerabyteShop","base_url":"https://www.terabyteshop.com.br/","direct_retailer":true,"verified_at":"2026-09-10","max_items":140,"scrolls":4,"product_path_regex":"^/produto/","catalog_urls":["https://www.terabyteshop.com.br/hardware/processadores","https://www.terabyteshop.com.br/hardware/placas-de-video","https://www.terabyteshop.com.br/monitores"]},
+    {"name":"Loja TCL","base_url":"https://www.lojatcl.com.br/","direct_retailer":true,"verified_at":"2026-09-10","max_items":90,"scrolls":3,"catalog_urls":["https://www.lojatcl.com.br/"]}
   ]
 }
