@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
@@ -22,6 +23,45 @@ def parse_args() -> argparse.Namespace:
     return p.parse_args()
 
 
+def _rotate(values: list, take: int, slot: int) -> list:
+    if not values or take <= 0 or len(values) <= take:
+        return list(values)
+    start = (slot * take) % len(values)
+    return [values[(start + i) % len(values)] for i in range(take)]
+
+
+def tune_for_online(config: dict) -> dict:
+    """Mantém cobertura ampla, mas divide buscas pesadas entre as execuções horárias."""
+    tuned = copy.deepcopy(config)
+    slot = int(datetime.now(timezone.utc).timestamp() // 3600)
+
+    ml = tuned.setdefault("mercadolivre", {})
+    ml["max_queries"] = min(int(ml.get("max_queries", 30)), 12)
+    ml["priority_watchlist_limit"] = min(int(ml.get("priority_watchlist_limit", 14)), 7)
+    ml["limit_per_query"] = min(int(ml.get("limit_per_query", 40)), 30)
+
+    shopee = tuned.setdefault("shopee", {})
+    shopee["scrolls"] = min(int(shopee.get("scrolls", 6)), 3)
+
+    casas = tuned.setdefault("casas_bahia", {})
+    casas_queries = list(casas.get("queries", tuned.get("queries", [])))
+    casas["queries"] = _rotate(casas_queries, 6, slot)
+    casas["max_candidates_per_query"] = min(int(casas.get("max_candidates_per_query", 5)), 4)
+
+    for index, retailer in enumerate(tuned.get("retailers", [])):
+        retailer["scrolls"] = min(int(retailer.get("scrolls", 3)), 2)
+        retailer["max_items"] = min(int(retailer.get("max_items", 90)), 80)
+        retailer["max_seller_checks"] = min(int(retailer.get("max_seller_checks", 36)), 12)
+        queries = list(retailer.get("queries", []))
+        if queries:
+            selected = _rotate(queries, min(6, len(queries)), slot + index)
+            retailer["queries"] = selected
+            retailer["max_queries"] = len(selected)
+
+    tuned["revalidation_limit"] = min(int(tuned.get("revalidation_limit", 24)), 8)
+    return tuned
+
+
 def collect_one(source):
     try:
         found = source.collect()
@@ -41,7 +81,8 @@ def main() -> int:
     output_path = Path(args.output)
     history_path = Path(args.history)
 
-    config = load_config(config_path)
+    original_config = load_config(config_path)
+    config = tune_for_online(original_config)
     history = load_history(history_path)
     sources = build_sources(config, skip_browser=False)
 
@@ -60,8 +101,7 @@ def main() -> int:
 
     anomalies = detect_anomalies(offers, history, **config.get("thresholds", {}))
     active: list[dict] = []
-    revalidation_limit = min(int(config.get("revalidation_limit", 24)), 12)
-    for anomaly in anomalies[:revalidation_limit]:
+    for anomaly in anomalies[: int(config.get("revalidation_limit", 8))]:
         source = source_objects.get(anomaly.offer.source)
         if source is None:
             continue
@@ -76,31 +116,31 @@ def main() -> int:
             active.append(anomaly.to_dict())
 
     active_urls = {str(x.get("url")) for x in active if x.get("url")}
-    watchlist = [x for x in config.get("watchlist", []) if isinstance(x, dict)]
+    watchlist = [x for x in original_config.get("watchlist", []) if isinstance(x, dict)]
     products = product_rows(
         offers,
         history,
         active_urls,
         watchlist,
-        int(config.get("product_output_limit", 600)),
+        int(original_config.get("product_output_limit", 600)),
     )
 
     save_history(history_path, update_history(history, offers))
     now = datetime.now(timezone.utc)
-    configured = [str(x) for x in config.get("configured_sources", []) if x]
+    configured = [str(x) for x in original_config.get("configured_sources", []) if x]
     found_sources = sorted({x["source"] for x in products})
     categories = sorted({x["category"] for x in products})
 
-    # Inclui no diagnóstico fontes configuradas que, por algum motivo, não chegaram a ser instanciadas.
     for name in configured:
         source_health.setdefault(name, {"ok": False, "message": "sem resultado nesta execução", "items": 0})
 
     payload = {
-        "version": "0.5.0",
+        "version": "0.5.1",
         "generated_at": now.isoformat(),
         "timezone_hint": "America/Campo_Grande",
         "preview": False,
         "online": True,
+        "rotation": True,
         "active_count": len(active),
         "observed_count": len(offers),
         "product_count": len(products),
@@ -108,13 +148,14 @@ def main() -> int:
         "configured_source_count": len(configured),
         "responding_source_count": sum(1 for v in source_health.values() if v.get("ok")),
         "source_health": source_health,
-        "thresholds": config.get("thresholds", {}),
+        "thresholds": original_config.get("thresholds", {}),
         "filters": {"sources": configured or found_sources, "categories": categories},
-        "watchlist": public_watchlist(config),
+        "watchlist": public_watchlist(original_config),
         "products": products,
         "active": active,
         "notes": [
             "Atualização executada inteiramente nos servidores do GitHub.",
+            "As buscas mais pesadas são rotacionadas entre as execuções horárias para manter boa cobertura sem travar a rodada.",
             "Uma fonte que bloqueie a consulta não impede a atualização das demais.",
             "Os destaques mais fortes passam por uma segunda verificação antes da confirmação adicional.",
         ],
