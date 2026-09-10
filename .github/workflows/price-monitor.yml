@@ -1,4 +1,4 @@
-name: Monitor de preços oficiais
+name: Acompanhamento pessoal
 
 on:
   workflow_dispatch:
@@ -6,7 +6,7 @@ on:
     - cron: "17 * * * *"
 
 concurrency:
-  group: price-monitor
+  group: personal-monitor
   cancel-in-progress: false
 
 permissions:
@@ -40,20 +40,20 @@ jobs:
           PYTHONPATH: price-monitor/src
         run: python -m pytest -q price-monitor/tests
 
-      - name: Varredura
+      - name: Atualização
         env:
           PYTHONPATH: price-monitor/src
         run: python -m price_monitor.run --config price-monitor/config.json --output price-monitor/site/data/current.json --history price-monitor/data/history.json
 
-      - name: Persistir histórico e resultado
+      - name: Persistir dados
         shell: pwsh
         run: |
-          git config user.name "price-monitor-bot"
+          git config user.name "personal-monitor-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add price-monitor/data/history.json price-monitor/site/data/current.json
           git diff --cached --quiet
           if ($LASTEXITCODE -ne 0) {
-            git commit -m "data: atualizar monitor de preços [skip ci]"
+            git commit -m "data: atualizar acompanhamento pessoal [skip ci]"
             git pull --rebase origin main
             git push origin main
           } else {
@@ -64,7 +64,7 @@ jobs:
         shell: pwsh
         run: |
           $d = Get-Content price-monitor/site/data/current.json -Raw | ConvertFrom-Json
-          "## Monitor de preços" >> $env:GITHUB_STEP_SUMMARY
-          "- Ofertas oficiais observadas: $($d.observed_count)" >> $env:GITHUB_STEP_SUMMARY
-          "- Possíveis bugs ativos: $($d.active_count)" >> $env:GITHUB_STEP_SUMMARY
+          "## Acompanhamento pessoal" >> $env:GITHUB_STEP_SUMMARY
+          "- Itens observados: $($d.observed_count)" >> $env:GITHUB_STEP_SUMMARY
+          "- Destaques ativos: $($d.active_count)" >> $env:GITHUB_STEP_SUMMARY
           "- Atualizado: $($d.generated_at)" >> $env:GITHUB_STEP_SUMMARY
