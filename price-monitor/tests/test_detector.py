@@ -98,5 +98,12 @@ def test_retailer_accepts_only_product_links_on_own_domain():
     })
     assert source._allowed_product_url("https://www.exemplo.com.br/produto/notebook-x") is True
     assert source._allowed_product_url("https://exemplo.com.br/categoria/notebooks") is False
+    assert source._allowed_product_url("https://www.exemplo.com.br/categoria/notebooks?price=2000-6000") is False
     assert source._allowed_product_url("https://www.exemplo.com.br/") is False
     assert source._allowed_product_url("https://marketplace-outro.com/produto/notebook-x") is False
+
+
+def test_retailer_rejects_interface_text_as_product_title():
+    assert RetailerSource._valid_title("Aplicar filtro") is False
+    assert RetailerSource._valid_title("Adicionar ao carrinho") is False
+    assert RetailerSource._valid_title("Smart TV TCL 55 C6K Mini LED") is True
