@@ -28,29 +28,63 @@ def parse_brl(value: str) -> float | None:
 
 
 def _is_auxiliary_money_value(text: str, start: int, end: int) -> bool:
-    """Detecta valores monetários que não são o preço total do produto.
+    """Detecta valores monetários que não representam o preço total do item.
 
-    Exemplos descartados: parcela, economia, desconto, cashback, cupom e frete.
-    Isso evita interpretar `Economize R$ 255,92` como se o item custasse R$ 255,92.
+    Descarta parcelas, economia, desconto, cashback, cupom, bônus e frete.
+    Sites brasileiros frequentemente juntam texto sem espaços, por exemplo
+    `R$ 3.999,00 em10x de R$ 399,90`; por isso a detecção usa também o trecho
+    bruto imediatamente antes do valor.
     """
-    prefix_raw = text[max(0, start - 55) : start]
-    suffix_raw = text[end : min(len(text), end + 45)]
+    prefix_raw = text[max(0, start - 90) : start].replace("\xa0", " ").lower()
+    suffix_raw = text[end : min(len(text), end + 60)].replace("\xa0", " ").lower()
+    prefix_compact = re.sub(r"\s+", " ", prefix_raw).strip()
+    suffix_compact = re.sub(r"\s+", " ", suffix_raw).strip()
     prefix = normalize_text(prefix_raw)
     suffix = normalize_text(suffix_raw)
 
-    prefix_patterns = (
-        r"(?:^| )\d{1,2}\s*x(?:\s+de)?$",
-        r"(?:^| )(?:parcela|parcelas)(?:\s+de)?$",
-        r"(?:^| )(?:economize|economia|poupe)(?:\s+de)?$",
-        r"(?:^| )(?:desconto|cashback|cupom|bonus|bônus|ganhe)(?:\s+de)?$",
-        r"(?:^| )frete(?:\s+por)?$",
+    # Parcelas: 10x R$, 10x de R$, em 10x de R$, em10x de R$.
+    installment_patterns_raw = (
+        r"(?:^|\s|em)\d{1,2}\s*x\s*(?:de\s*)?$",
+        r"(?:^|\s)em\s*\d{1,2}\s*x\s*(?:de\s*)?$",
+        r"(?:^|\s)(?:parcela|parcelas)\s*(?:de\s*)?$",
+        r"(?:^|\s)(?:a partir de\s+)?\d{1,2}\s*x\s*(?:de\s*)?$",
     )
-    if any(re.search(pattern, prefix, re.I) for pattern in prefix_patterns):
+    if any(re.search(pattern, prefix_compact, re.I) for pattern in installment_patterns_raw):
         return True
 
-    # Também cobre textos como `R$ 200 de desconto`.
-    if re.match(r"^(?:de\s+)?(?:desconto|cashback|economia|economize|bonus|cupom)\b", suffix, re.I):
+    # Forma normalizada, útil quando pontuação/quebras de linha variam.
+    installment_patterns_norm = (
+        r"(?:^| )em\s*\d{1,2}\s*x(?:\s+de)?$",
+        r"(?:^| )em\d{1,2}\s*x(?:\s+de)?$",
+        r"(?:^| )\d{1,2}\s*x(?:\s+de)?$",
+        r"(?:^| )(?:parcela|parcelas)(?:\s+de)?$",
+    )
+    if any(re.search(pattern, prefix, re.I) for pattern in installment_patterns_norm):
         return True
+
+    auxiliary_prefix_patterns = (
+        r"(?:^| )(?:economize|economia|poupe)(?:\s+de)?$",
+        r"(?:^| )(?:desconto|cashback|cupom|bonus|ganhe)(?:\s+de)?$",
+        r"(?:^| )frete(?:\s+por)?$",
+        r"(?:^| )(?:vale|credito|crédito)(?:\s+de)?$",
+    )
+    if any(re.search(pattern, prefix, re.I) for pattern in auxiliary_prefix_patterns):
+        return True
+
+    # Também cobre `R$ 200 de desconto`, `R$ 50 cashback` etc.
+    if re.match(
+        r"^(?:de\s+)?(?:desconto|cashback|economia|economize|bonus|cupom|frete|credito)\b",
+        suffix,
+        re.I,
+    ):
+        return True
+
+    # Defesa extra: valor seguido de "sem juros" normalmente é parcela quando
+    # há um Nx próximo antes dele, mesmo se o HTML tiver colado palavras.
+    if re.match(r"^sem\s+juros\b", suffix_compact, re.I):
+        nearby = re.sub(r"\s+", " ", prefix_raw[-45:])
+        if re.search(r"\d{1,2}\s*x(?:\s+de)?\s*$", nearby, re.I):
+            return True
 
     return False
 
