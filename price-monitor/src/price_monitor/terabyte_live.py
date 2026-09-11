@@ -17,7 +17,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 from .bug_rules import score_product
-from .utils import extract_brl_prices, pick_current_and_original
+from .utils import extract_brl_prices, parse_brl, pick_current_and_original
 
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -278,6 +278,12 @@ def fetch_listing_page(url: str, label: str) -> tuple[list[dict], dict]:
 
 
 def extract_product_page(html: str, url: str) -> dict | None:
+    """Lê apenas o bloco principal da PDP.
+
+    A página da Terabyte inclui dezenas de produtos recomendados depois do SKU
+    principal. Usar o menor R$ da página inteira confunde recomendação, parcela
+    ou acessório com o preço do produto monitorado.
+    """
     soup = BeautifulSoup(html or "", "html.parser")
     title = ""
     h1 = soup.find("h1")
@@ -285,10 +291,36 @@ def extract_product_page(html: str, url: str) -> dict | None:
         title = " ".join(h1.stripped_strings)
     if not title:
         title = (soup.title.get_text(" ", strip=True) if soup.title else "").split("|")[0].strip()
+    if not title:
+        return None
+
     body = soup.get_text("\n", strip=True)
-    prices = extract_brl_prices(body[:18000])
-    current, original = pick_current_and_original(prices)
-    if not title or not current:
+    pos = body.find(title)
+    segment = body[pos if pos >= 0 else 0 : (pos if pos >= 0 else 0) + 2600]
+
+    # SKU esgotado não entra no radar de live; os preços que vêm depois são
+    # normalmente recomendações da própria página.
+    low = segment.lower()
+    if "produto indisponível" in low or "produto indisponivel" in low or "já que esgotou" in low or "ja que esgotou" in low:
+        return None
+
+    # Formato principal observado na PDP: "De: R$ X por: R$ Y".
+    pair = re.search(
+        r"De:\s*R\$\s*([\d.]+(?:,\d{2})?)\s*por:\s*R\$\s*([\d.]+(?:,\d{2})?)",
+        segment,
+        re.I | re.S,
+    )
+    if pair:
+        original = parse_brl(pair.group(1))
+        current = parse_brl(pair.group(2))
+    else:
+        # Sem preço riscado: o primeiro valor monetário após o H1 é o valor
+        # principal. Não usamos min() porque parcelas menores aparecem depois.
+        prices = extract_brl_prices(segment[:1400])
+        current = prices[0] if prices else None
+        original = None
+
+    if not current:
         return None
     return {
         "url": canonical(url),
@@ -476,8 +508,8 @@ def main() -> int:
             state["catalog_refreshed_at"] = now_iso
 
     listing_targets: list[tuple[str, str]] = list(HOT_PAGES)
-    hot_urls = {x[0] for x in HOT_PAGES}
-    rotating = [u for u in state.get("category_urls", []) if u not in hot_urls]
+    hot_urls = {canonical(x[0]) for x in HOT_PAGES}
+    rotating = [u for u in state.get("category_urls", []) if canonical(u) not in hot_urls]
     if rotating:
         cursor = int(state.get("category_cursor", 0)) % len(rotating)
         batch = [rotating[(cursor + i) % len(rotating)] for i in range(min(18, len(rotating)))]
