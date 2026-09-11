@@ -1,0 +1,39 @@
+name: Validar API da busca mensal
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "flight_api/**"
+      - "flight-month-search/**"
+      - "railway.json"
+      - ".github/workflows/flight-api-test.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: flight_api/requirements.txt
+      - name: Instalar dependências
+        run: pip install -r flight_api/requirements.txt
+      - name: Validar sintaxe e importação
+        env:
+          PYTHONPATH: flight-monitor:.
+        run: |
+          python -m py_compile flight_api/service.py flight-month-search/search.py flight-month-search/swoop_batch_worker.py
+          python - <<'PY'
+          from fastapi.testclient import TestClient
+          from flight_api.service import app
+          c=TestClient(app)
+          r=c.get('/health')
+          assert r.status_code == 200, r.text
+          assert r.json().get('ok') is True
+          print('API pronta:', r.json())
+          PY
