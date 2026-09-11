@@ -1,0 +1,138 @@
+name: Busca mensal de passagens
+
+on:
+  workflow_dispatch:
+    inputs:
+      origin:
+        description: "Origem (IATA)"
+        required: true
+        default: "GRU"
+        type: string
+      destination:
+        description: "Destino (IATA)"
+        required: true
+        default: "MIA"
+        type: string
+      month:
+        description: "Mês da ida (YYYY-MM)"
+        required: true
+        default: "2026-10"
+        type: string
+      min_stay:
+        description: "Mínimo de dias de viagem (2-21)"
+        required: true
+        default: "4"
+        type: string
+      max_stay:
+        description: "Máximo de dias de viagem (2-21)"
+        required: true
+        default: "10"
+        type: string
+      max_stops:
+        description: "Máximo de escalas"
+        required: true
+        default: "2"
+        type: choice
+        options:
+          - "0"
+          - "1"
+          - "2"
+  push:
+    branches:
+      - feat/monthly-flight-search
+    paths:
+      - "flight-month-search/**"
+      - ".github/workflows/flight-month-search.yml"
+
+concurrency:
+  group: flight-month-search-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: flight-explorer/requirements.txt
+
+      - name: Dependências
+        run: python -m pip install -r flight-explorer/requirements.txt
+
+      - name: Validar código
+        run: python -m py_compile flight-month-search/search.py flight-month-search/swoop_batch_worker.py
+
+      - name: Pesquisar todas as combinações do mês
+        env:
+          PYTHONPATH: flight-monitor:.
+          SEARCH_ORIGIN: ${{ github.event_name == 'workflow_dispatch' && inputs.origin || 'GRU' }}
+          SEARCH_DESTINATION: ${{ github.event_name == 'workflow_dispatch' && inputs.destination || 'MIA' }}
+          SEARCH_MONTH: ${{ github.event_name == 'workflow_dispatch' && inputs.month || '2026-10' }}
+          SEARCH_MIN_STAY: ${{ github.event_name == 'workflow_dispatch' && inputs.min_stay || '4' }}
+          SEARCH_MAX_STAY: ${{ github.event_name == 'workflow_dispatch' && inputs.max_stay || '10' }}
+          SEARCH_MAX_STOPS: ${{ github.event_name == 'workflow_dispatch' && inputs.max_stops || '2' }}
+        run: python flight-month-search/search.py
+
+      - name: Validar resultado
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('docs/data/flight-month-search.json')
+          d=json.loads(p.read_text(encoding='utf-8'))
+          assert d.get('version')=='0.1.0'
+          assert int(d['stats']['combinations']) > 0
+          assert len(d.get('results',[])) <= 100
+          for row in d.get('results',[]):
+              assert float(row['price']) > 0
+              assert row['departure_date'] < row['return_date']
+          print('Busca mensal válida:', d['request'], d['stats'])
+          PY
+
+      - name: Persistir resultado
+        run: |
+          git config user.name "flight-month-search-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/flight-month-search.json
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração para salvar."
+          else
+            git commit -m "data: atualizar busca mensal de passagens [skip ci]"
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin HEAD:"$GITHUB_REF_NAME"
+          fi
+
+      - name: Resumo
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          d=json.loads(Path('docs/data/flight-month-search.json').read_text(encoding='utf-8'))
+          r=d['request']; s=d['stats']
+          lines=[
+            '## Busca mensal de passagens',
+            f"- Rota: {r['origin']} → {r['destination']}",
+            f"- Mês da ida: {r['month']}",
+            f"- Duração: {r['min_stay']} a {r['max_stay']} dias",
+            f"- Combinações geradas: {s['combinations']}",
+            f"- Combinações com preço: {s['priced_combinations']} ({s['coverage_pct']}%)",
+            f"- Resultados exibidos: {s['result_count']}/100",
+            f"- Menor preço: R$ {s['lowest_price'] if s['lowest_price'] is not None else '-'}",
+            f"- Swoop fallback: {'sim' if s['swoop_used'] else 'não'} · {s['swoop_results']} resultados",
+          ]
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a',encoding='utf-8') as f:
+              f.write('\n'.join(lines)+'\n')
+          PY
