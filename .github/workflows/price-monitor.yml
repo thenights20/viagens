@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - "price-monitor/config.json"
+      - "price-monitor/watchlist_extra.json"
       - "price-monitor/src/**"
       - "price-monitor/tests/**"
       - ".github/workflows/price-monitor.yml"
@@ -86,7 +87,7 @@ jobs:
               f"- Produtos listados: {d.get('product_count', 0)}",
               f"- Itens em vistoria encontrados: {d.get('tracked_count', 0)}",
               f"- Destaques confirmados: {d.get('active_count', 0)}",
-              f"- Atualizado: {d.get('generated_at', '-')}",
+              f"- Atualizado: {d.get('generated_at', '-')}"
           ]
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as f:
               f.write('\n'.join(lines) + '\n')
