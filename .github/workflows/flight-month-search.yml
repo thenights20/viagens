@@ -78,11 +78,11 @@ jobs:
       - name: Pesquisar todas as combinações do mês
         env:
           PYTHONPATH: flight-monitor:.
-          SEARCH_ORIGIN: ${{ github.event_name == 'workflow_dispatch' && inputs.origin || 'GRU' }}
-          SEARCH_DESTINATION: ${{ github.event_name == 'workflow_dispatch' && inputs.destination || 'MIA' }}
+          SEARCH_ORIGIN: ${{ github.event_name == 'workflow_dispatch' && inputs.origin || 'DOU' }}
+          SEARCH_DESTINATION: ${{ github.event_name == 'workflow_dispatch' && inputs.destination || 'MCO' }}
           SEARCH_MONTH: ${{ github.event_name == 'workflow_dispatch' && inputs.month || '2026-10' }}
           SEARCH_MIN_STAY: ${{ github.event_name == 'workflow_dispatch' && inputs.min_stay || '4' }}
-          SEARCH_MAX_STAY: ${{ github.event_name == 'workflow_dispatch' && inputs.max_stay || '10' }}
+          SEARCH_MAX_STAY: ${{ github.event_name == 'workflow_dispatch' && inputs.max_stay || '7' }}
           SEARCH_MAX_STOPS: ${{ github.event_name == 'workflow_dispatch' && inputs.max_stops || '2' }}
         run: python flight-month-search/search.py
 
