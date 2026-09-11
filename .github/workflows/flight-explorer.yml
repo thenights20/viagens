@@ -22,7 +22,7 @@ on:
           - PPB
           - MII
   push:
-    branches: [main, feat/flight-explorer-100]
+    branches: [main]
     paths:
       - "flight-explorer/**"
       - "docs/flight-explorer.js"
@@ -79,7 +79,7 @@ jobs:
       - name: Buscar passagens até 6 meses
         env:
           PYTHONPATH: flight-monitor:.
-          EXPLORER_ORIGIN: ${{ github.ref_name == 'feat/flight-explorer-100' && 'DOU' || (github.event.inputs.origin != 'auto' && github.event.inputs.origin || '') }}
+          EXPLORER_ORIGIN: ${{ github.event.inputs.origin != 'auto' && github.event.inputs.origin || '' }}
         run: python flight-explorer/scan.py
 
       - name: Validar feed
