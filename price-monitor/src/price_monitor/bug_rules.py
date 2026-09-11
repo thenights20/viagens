@@ -12,6 +12,7 @@ class PriceRule:
     conservative_floor: float
     category: str
     exclude: tuple[str, ...] = ()
+    require_any: tuple[str, ...] = ()
 
 
 def _norm(value: str) -> str:
@@ -26,8 +27,8 @@ def _rx(*parts: str) -> re.Pattern[str]:
 
 CONSOLE_ACCESSORIES = (
     "case", "carrying", "capa", "bolsa", "estojo", "suporte", "base vertical",
-    "controle", "controller", "skin", "pelicula", "thumb grip", "cooler",
-    "dock", "cabo", "carregador", "headset", "volante", "adaptador", "faceplate",
+    "skin", "pelicula", "thumb grip", "cooler", "dock", "cabo", "carregador",
+    "volante", "adaptador", "faceplate",
 )
 NOTEBOOK_ACCESSORIES = (
     "carregador", "fonte para", "bateria para", "teclado para", "capa para", "case para",
@@ -52,9 +53,19 @@ RULES = [
     PriceRule("RTX 5060 Ti", _rx(r"rtx\s*5060\s*ti"), 2200, "Placas de vídeo", ("water block", "backplate", "suporte", "cabo")),
     PriceRule("Notebook gamer premium", _rx(r"notebook.*(rtx\s*4070|rtx\s*5070|i9[- ]?14900hx|rog\s*strix|predator\s*helios)"), 5000, "Notebooks", NOTEBOOK_ACCESSORIES),
     PriceRule("Notebook gamer", _rx(r"notebook\s*gamer", r"nitro\s*v15", r"rog\s*strix", r"predator"), 2800, "Notebooks", NOTEBOOK_ACCESSORIES),
-    PriceRule("PlayStation 5", _rx(r"playstation\s*5", r"ps5"), 2400, "Consoles", CONSOLE_ACCESSORIES),
-    PriceRule("Xbox Series X", _rx(r"xbox\s*series\s*x"), 2500, "Consoles", CONSOLE_ACCESSORIES),
-    PriceRule("Nintendo Switch 2", _rx(r"nintendo\s*switch\s*2"), 2200, "Consoles", CONSOLE_ACCESSORIES + ("game traveler", "screen protector", "memory card")),
+    PriceRule(
+        "PlayStation 5", _rx(r"playstation\s*5", r"ps5"), 2400, "Consoles", CONSOLE_ACCESSORIES,
+        ("console", "slim", "825gb", "825 gb", "1tb", "1 tb", "edicao digital", "digital edition", "playstation 5 pro", "ps5 pro"),
+    ),
+    PriceRule(
+        "Xbox Series X", _rx(r"xbox\s*series\s*x"), 2500, "Consoles", CONSOLE_ACCESSORIES,
+        ("console", "1tb", "1 tb", "2tb", "2 tb", "digital edition", "special edition"),
+    ),
+    PriceRule(
+        "Nintendo Switch 2", _rx(r"nintendo\s*switch\s*2"), 2200, "Consoles",
+        CONSOLE_ACCESSORIES + ("game traveler", "screen protector", "memory card"),
+        ("console", "bundle", "mario kart", "256gb", "256 gb"),
+    ),
     PriceRule("iPhone 17 Pro/Max", _rx(r"iphone\s*17.*(pro|max)"), 5200, "Smartphones", ("capa", "case", "pelicula", "carregador", "cabo", "bateria", "display", "tela")),
     PriceRule("iPhone 17", _rx(r"iphone\s*17"), 3800, "Smartphones", ("capa", "case", "pelicula", "carregador", "cabo", "bateria", "display", "tela")),
     PriceRule("iPhone 16 Pro/Max", _rx(r"iphone\s*16.*(pro|max)"), 4200, "Smartphones", ("capa", "case", "pelicula", "carregador", "cabo", "bateria", "display", "tela")),
@@ -81,6 +92,8 @@ def matching_rule(title: str) -> PriceRule | None:
     matches: list[PriceRule] = []
     for rule in RULES:
         if not rule.pattern.search(text):
+            continue
+        if rule.require_any and not any(_norm(term) in text for term in rule.require_any):
             continue
         if any(_norm(term) in text for term in rule.exclude):
             continue
@@ -174,8 +187,6 @@ def score_product(
         score += 6
         reasons.append("vendedor/loja com sinal de confiança")
 
-    # Sem identidade de produto/histórico, preço riscado sozinho nunca é suficiente
-    # para ocupar a aba principal de BUGs, mesmo quando o valor é reaberto.
     if kind == "preço anterior anunciado" and not rule:
         score = min(score, 69)
 
