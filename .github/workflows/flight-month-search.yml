@@ -33,26 +33,27 @@ on:
         required: true
         default: "2"
         type: choice
-        options:
-          - "0"
-          - "1"
-          - "2"
+        options: ["0", "1", "2"]
+  issues:
+    types: [opened]
   push:
-    branches:
-      - feat/monthly-flight-search
+    branches: [feat/monthly-flight-search]
     paths:
       - "flight-month-search/**"
+      - "docs/flight-explorer.js"
       - ".github/workflows/flight-month-search.yml"
 
 concurrency:
-  group: flight-month-search-${{ github.ref }}
-  cancel-in-progress: true
+  group: flight-month-search-${{ github.repository }}
+  cancel-in-progress: false
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   search:
+    if: github.event_name != 'issues' || (github.actor == 'thenights20' && startsWith(github.event.issue.title, 'FLIGHT_SEARCH|'))
     runs-on: ubuntu-latest
     timeout-minutes: 35
 
@@ -61,6 +62,45 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
+          ref: ${{ github.event_name == 'push' && github.ref_name || 'main' }}
+
+      - name: Preparar solicitação
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          ISSUE_TITLE: ${{ github.event.issue.title || '' }}
+          INPUT_ORIGIN: ${{ inputs.origin || '' }}
+          INPUT_DESTINATION: ${{ inputs.destination || '' }}
+          INPUT_MONTH: ${{ inputs.month || '' }}
+          INPUT_MIN: ${{ inputs.min_stay || '' }}
+          INPUT_MAX: ${{ inputs.max_stay || '' }}
+          INPUT_STOPS: ${{ inputs.max_stops || '' }}
+        run: |
+          python - <<'PY'
+          import os, re
+          event=os.environ['EVENT_NAME']
+          if event=='issues':
+              title=os.environ['ISSUE_TITLE']
+              values={}
+              for part in title.split('|')[1:]:
+                  if '=' in part:
+                      k,v=part.split('=',1); values[k]=v
+              origin=values.get('ORIGIN',''); dest=values.get('DEST',''); month=values.get('MONTH','')
+              min_stay=values.get('MIN','4'); max_stay=values.get('MAX','10'); stops=values.get('STOPS','2')
+          elif event=='workflow_dispatch':
+              origin=os.environ['INPUT_ORIGIN']; dest=os.environ['INPUT_DESTINATION']; month=os.environ['INPUT_MONTH']
+              min_stay=os.environ['INPUT_MIN']; max_stay=os.environ['INPUT_MAX']; stops=os.environ['INPUT_STOPS']
+          else:
+              origin='GRU'; dest='MIA'; month='2026-10'; min_stay='4'; max_stay='10'; stops='2'
+          origin=origin.strip().upper(); dest=dest.strip().upper(); month=month.strip()
+          if not re.fullmatch(r'[A-Z]{3}',origin) or not re.fullmatch(r'[A-Z]{3}',dest): raise SystemExit('IATA inválido')
+          if not re.fullmatch(r'20\d\d-(0[1-9]|1[0-2])',month): raise SystemExit('Mês inválido')
+          mi,ma,st=int(min_stay),int(max_stay),int(stops)
+          if not (2<=mi<=ma<=21) or st not in (0,1,2): raise SystemExit('Parâmetros inválidos')
+          with open(os.environ['GITHUB_ENV'],'a',encoding='utf-8') as f:
+              f.write(f'SEARCH_ORIGIN={origin}\nSEARCH_DESTINATION={dest}\nSEARCH_MONTH={month}\nSEARCH_MIN_STAY={mi}\nSEARCH_MAX_STAY={ma}\nSEARCH_MAX_STOPS={st}\n')
+              f.write(f'TARGET_BRANCH={os.environ.get("GITHUB_REF_NAME") if event=="push" else "main"}\n')
+          print(f'Busca solicitada: {origin}->{dest}, {month}, {mi}-{ma} dias, até {st} escalas')
+          PY
 
       - name: Python
         uses: actions/setup-python@v6
@@ -73,17 +113,13 @@ jobs:
         run: python -m pip install -r flight-explorer/requirements.txt
 
       - name: Validar código
-        run: python -m py_compile flight-month-search/search.py flight-month-search/swoop_batch_worker.py
+        run: |
+          python -m py_compile flight-month-search/search.py flight-month-search/swoop_batch_worker.py
+          node --check docs/flight-explorer.js
 
       - name: Pesquisar todas as combinações do mês
         env:
           PYTHONPATH: flight-monitor:.
-          SEARCH_ORIGIN: ${{ github.event_name == 'workflow_dispatch' && inputs.origin || 'DOU' }}
-          SEARCH_DESTINATION: ${{ github.event_name == 'workflow_dispatch' && inputs.destination || 'MCO' }}
-          SEARCH_MONTH: ${{ github.event_name == 'workflow_dispatch' && inputs.month || '2026-10' }}
-          SEARCH_MIN_STAY: ${{ github.event_name == 'workflow_dispatch' && inputs.min_stay || '4' }}
-          SEARCH_MAX_STAY: ${{ github.event_name == 'workflow_dispatch' && inputs.max_stay || '7' }}
-          SEARCH_MAX_STOPS: ${{ github.event_name == 'workflow_dispatch' && inputs.max_stops || '2' }}
         run: python flight-month-search/search.py
 
       - name: Validar resultado
@@ -91,8 +127,7 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
-          p=Path('docs/data/flight-month-search.json')
-          d=json.loads(p.read_text(encoding='utf-8'))
+          d=json.loads(Path('docs/data/flight-month-search.json').read_text(encoding='utf-8'))
           assert d.get('version')=='0.1.0'
           assert int(d['stats']['combinations']) > 0
           assert len(d.get('results',[])) <= 100
@@ -111,9 +146,17 @@ jobs:
             echo "Nenhuma alteração para salvar."
           else
             git commit -m "data: atualizar busca mensal de passagens [skip ci]"
-            git pull --rebase origin "$GITHUB_REF_NAME"
-            git push origin HEAD:"$GITHUB_REF_NAME"
+            git pull --rebase origin "$TARGET_BRANCH"
+            git push origin HEAD:"$TARGET_BRANCH"
           fi
+
+      - name: Encerrar solicitação
+        if: github.event_name == 'issues'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue close "$ISSUE_NUMBER" --comment "✅ Busca concluída. Volte ao painel de passagens; os resultados já foram atualizados."
 
       - name: Resumo
         run: |
@@ -122,17 +165,6 @@ jobs:
           from pathlib import Path
           d=json.loads(Path('docs/data/flight-month-search.json').read_text(encoding='utf-8'))
           r=d['request']; s=d['stats']
-          lines=[
-            '## Busca mensal de passagens',
-            f"- Rota: {r['origin']} → {r['destination']}",
-            f"- Mês da ida: {r['month']}",
-            f"- Duração: {r['min_stay']} a {r['max_stay']} dias",
-            f"- Combinações geradas: {s['combinations']}",
-            f"- Combinações com preço: {s['priced_combinations']} ({s['coverage_pct']}%)",
-            f"- Resultados exibidos: {s['result_count']}/100",
-            f"- Menor preço: R$ {s['lowest_price'] if s['lowest_price'] is not None else '-'}",
-            f"- Swoop fallback: {'sim' if s['swoop_used'] else 'não'} · {s['swoop_results']} resultados",
-          ]
-          with open(os.environ['GITHUB_STEP_SUMMARY'],'a',encoding='utf-8') as f:
-              f.write('\n'.join(lines)+'\n')
+          lines=['## Busca mensal de passagens',f"- Rota: {r['origin']} → {r['destination']}",f"- Mês: {r['month']}",f"- Duração: {r['min_stay']} a {r['max_stay']} dias",f"- Combinações: {s['combinations']}",f"- Com preço: {s['priced_combinations']} ({s['coverage_pct']}%)",f"- Top exibido: {s['result_count']}/100",f"- Menor preço: R$ {s['lowest_price'] if s['lowest_price'] is not None else '-'}"]
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a',encoding='utf-8') as f:f.write('\n'.join(lines)+'\n')
           PY
