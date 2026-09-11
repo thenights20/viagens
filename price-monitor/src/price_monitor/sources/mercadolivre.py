@@ -27,6 +27,7 @@ class MercadoLivreSource(Source):
         self.session = requests.Session()
         self.session.headers.update({"Accept": "application/json", "User-Agent": "PriceMonitor/0.2"})
         token = os.getenv("MELI_ACCESS_TOKEN", "").strip()
+        self.token_present = bool(token)
         if token:
             self.session.headers["Authorization"] = f"Bearer {token}"
 
@@ -48,7 +49,10 @@ class MercadoLivreSource(Source):
                     params={"q": query, "limit": self.limit_per_query}, timeout=self.timeout,
                 )
                 if r.status_code in (401, 403):
-                    errors.append(f"API {r.status_code}; usando navegador")
+                    if not self.token_present:
+                        errors.append(f"API {r.status_code}: autenticação Mercado Livre não configurada")
+                    else:
+                        errors.append(f"API {r.status_code}: token, permissões ou IP recusados pelo Mercado Livre")
                     return [], errors
                 r.raise_for_status()
                 payload = r.json()
@@ -140,7 +144,7 @@ class MercadoLivreSource(Source):
     def collect(self) -> list[Offer]:
         api_offers, api_errors = self._collect_api()
         if api_offers:
-            self.health = {"ok": True, "message": "API", "items": len(api_offers)}
+            self.health = {"ok": True, "message": "API oficial", "items": len(api_offers)}
             return api_offers
         web_offers, web_errors = self._collect_browser()
         errors = api_errors + web_errors
