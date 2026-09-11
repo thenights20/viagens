@@ -63,6 +63,14 @@ def _scope(destination: str) -> str:
     return "domestic" if destination.upper() in BRAZIL_AIRPORTS else "international"
 
 
+def _clean_place_name(value: str) -> str:
+    value = re.sub(r"\s+", " ", value or "").strip()
+    # Algumas páginas da Azul colam metadados do card antes da cidade.
+    value = re.split(r"\b(?:Reserve agora|down)\b", value, flags=re.I)[-1].strip()
+    value = re.sub(r"^(?:\d+\s+)?(?:minuto|minutos|hora|horas)\s+atrás\s+", "", value, flags=re.I).strip()
+    return value
+
+
 def _offer(*, source: str, origin: str, destination: str, origin_name: str, destination_name: str,
            price: float, departure_date: str | None = None, return_date: str | None = None,
            trip_mode: str = "unknown", url: str, origin_candidates: list[str] | None = None) -> dict:
@@ -70,9 +78,9 @@ def _offer(*, source: str, origin: str, destination: str, origin_name: str, dest
         "source": source,
         "origin": origin,
         "origin_candidates": origin_candidates or [origin],
-        "origin_name": origin_name.strip(),
+        "origin_name": _clean_place_name(origin_name),
         "destination": destination,
-        "destination_name": destination_name.strip(),
+        "destination_name": _clean_place_name(destination_name),
         "departure_date": departure_date,
         "return_date": return_date,
         "trip_mode": trip_mode,
