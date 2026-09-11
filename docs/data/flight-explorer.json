@@ -1,15 +1,250 @@
 {
   "version": "0.1.0",
-  "generated_at": null,
+  "generated_at": "2026-09-11T19:47:04.653617Z",
   "title": "Busca flexível · 100 menores opções",
   "horizon_days": 183,
-  "horizon_end": null,
+  "horizon_end": "2027-03-13",
   "catalog_count": 100,
   "max_rows_per_scope": 100,
-  "origins": [],
-  "coverage": {},
+  "origins": [
+    {
+      "code": "DOU",
+      "name": "Dourados"
+    },
+    {
+      "code": "PMG",
+      "name": "Ponta Porã"
+    },
+    {
+      "code": "JTC",
+      "name": "Bauru"
+    },
+    {
+      "code": "GRU",
+      "name": "Guarulhos"
+    },
+    {
+      "code": "CGH",
+      "name": "São Paulo / Congonhas"
+    },
+    {
+      "code": "VCP",
+      "name": "Campinas / Viracopos"
+    },
+    {
+      "code": "GIG",
+      "name": "Rio de Janeiro / Galeão"
+    },
+    {
+      "code": "TJL",
+      "name": "Três Lagoas"
+    },
+    {
+      "code": "ARU",
+      "name": "Araçatuba"
+    },
+    {
+      "code": "PPB",
+      "name": "Presidente Venceslau (via Presidente Prudente)"
+    },
+    {
+      "code": "MII",
+      "name": "Marília"
+    }
+  ],
+  "coverage": {
+    "DOU": {
+      "origin_name": "Dourados",
+      "domestic": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "international": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "last_scan_at": "2026-09-11T19:47:04.653617Z"
+    },
+    "PMG": {
+      "origin_name": "Ponta Porã",
+      "domestic": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "international": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "last_scan_at": null
+    },
+    "JTC": {
+      "origin_name": "Bauru",
+      "domestic": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "international": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "last_scan_at": null
+    },
+    "GRU": {
+      "origin_name": "Guarulhos",
+      "domestic": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "international": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "last_scan_at": null
+    },
+    "CGH": {
+      "origin_name": "São Paulo / Congonhas",
+      "domestic": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "international": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "last_scan_at": null
+    },
+    "VCP": {
+      "origin_name": "Campinas / Viracopos",
+      "domestic": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "international": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "last_scan_at": null
+    },
+    "GIG": {
+      "origin_name": "Rio de Janeiro / Galeão",
+      "domestic": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "international": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "last_scan_at": null
+    },
+    "TJL": {
+      "origin_name": "Três Lagoas",
+      "domestic": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "international": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "last_scan_at": null
+    },
+    "ARU": {
+      "origin_name": "Araçatuba",
+      "domestic": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "international": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "last_scan_at": null
+    },
+    "PPB": {
+      "origin_name": "Presidente Venceslau (via Presidente Prudente)",
+      "domestic": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "international": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "last_scan_at": null
+    },
+    "MII": {
+      "origin_name": "Marília",
+      "domestic": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "international": {
+        "options": 0,
+        "unique_destinations": 0
+      },
+      "last_scan_at": null
+    }
+  },
   "results": [],
-  "scan": {},
-  "errors": [],
-  "notes": []
+  "scan": {
+    "origin": "DOU",
+    "origin_name": "Dourados",
+    "phase": 1,
+    "phase_label": "~3 semanas",
+    "departure_date": "2026-10-02",
+    "return_date": "2026-10-06",
+    "directed_queries": 100,
+    "fast_results": 0,
+    "discovery_results": 0,
+    "observations": 0,
+    "errors": 100
+  },
+  "errors": [
+    "DOU-CGB: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-GYN: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-CGR: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-BSB: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-LDB: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-CWB: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-FLN: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-MGF: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-CGH: IndexError: list index out of range",
+    "DOU-GRU: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-SJP: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-NVT: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-IGU: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-POA: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-VCP: IndexError: list index out of range",
+    "DOU-RAO: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-SDU: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-GIG: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-CNF: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-VIX: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-UDI: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-SSA: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-FOR: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-MCZ: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-AJU: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-REC: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-NAT: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-JPA: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-THE: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-BEL: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-MAO: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-BVB: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-SLZ: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-PVH: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-JDO: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-MCP: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-PMW: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-PNZ: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-BPS: TypeError: 'NoneType' object is not subscriptable",
+    "DOU-IOS: TypeError: 'NoneType' object is not subscriptable"
+  ],
+  "notes": [
+    "Valores são os menores encontrados nas rodadas flexíveis; tarifas mudam até a emissão.",
+    "O sistema percorre seis janelas de datas entre ~3 semanas e ~5,5 meses e mantém até 100 opções por origem e tipo.",
+    "Swoop Deals complementa a busca com datas flexíveis do Google Flights; a varredura dirigida usa fast-flights."
+  ]
 }
