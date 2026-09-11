@@ -10,6 +10,7 @@ on:
       - "flight-monitor/test_airlines.py"
       - "flight-monitor/config.json"
       - "flight-monitor/requirements.txt"
+      - "docs/index.html"
       - ".github/workflows/airline-monitor.yml"
   schedule:
     - cron: "17 * * * *"
@@ -45,6 +46,18 @@ jobs:
         env:
           PYTHONPATH: flight-monitor:.
         run: python -m unittest flight-monitor/test_airlines.py -v
+
+      - name: Validar JavaScript do painel
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          html = Path('docs/index.html').read_text(encoding='utf-8')
+          match = re.search(r'<script>(.*)</script>', html, re.S)
+          assert match, 'script inline não encontrado'
+          Path('/tmp/dashboard.js').write_text(match.group(1), encoding='utf-8')
+          PY
+          node --check /tmp/dashboard.js
 
       - name: Consultar companhias
         env:
