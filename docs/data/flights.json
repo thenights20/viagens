@@ -1,13 +1,91 @@
 {
   "version": "0.1.0",
-  "generated_at": null,
+  "generated_at": "2026-09-11T13:45:41.730194Z",
   "source": "Google Flights",
   "origin_count": 8,
-  "destination_count": 64,
+  "destination_count": 62,
   "route_count": 0,
   "deal_count": 0,
-  "origins": [],
+  "origins": [
+    {
+      "code": "DOU",
+      "name": "Dourados"
+    },
+    {
+      "code": "PMG",
+      "name": "Ponta Porã"
+    },
+    {
+      "code": "JTC",
+      "name": "Bauru"
+    },
+    {
+      "code": "GRU",
+      "name": "Guarulhos"
+    },
+    {
+      "code": "TJL",
+      "name": "Três Lagoas"
+    },
+    {
+      "code": "ARU",
+      "name": "Araçatuba"
+    },
+    {
+      "code": "PPB",
+      "name": "Presidente Venceslau (via Presidente Prudente)"
+    },
+    {
+      "code": "MII",
+      "name": "Marília"
+    }
+  ],
   "deals": [],
-  "scan": {},
-  "errors": []
+  "scan": {
+    "origin_codes": [
+      "JTC",
+      "GRU"
+    ],
+    "destination_codes": [
+      "EZE",
+      "AEP",
+      "SCL",
+      "ASU",
+      "MVD",
+      "LIM",
+      "BOG",
+      "MIA"
+    ],
+    "date_phase": 2,
+    "queries": 96,
+    "results": 0,
+    "errors": 96
+  },
+  "errors": [
+    "JTC-EZE 2026-10-16/2026-10-20: No module named 'typing_extensions'",
+    "JTC-EZE 2026-12-24/2027-01-01: No module named 'typing_extensions'",
+    "JTC-EZE 2027-05-23/2027-05-27: No module named 'typing_extensions'",
+    "JTC-EZE 2027-05-23/2027-05-31: No module named 'typing_extensions'",
+    "JTC-AEP 2026-10-16/2026-10-20: No module named 'typing_extensions'",
+    "JTC-AEP 2026-10-16/2026-10-24: No module named 'typing_extensions'",
+    "JTC-AEP 2026-12-24/2026-12-28: No module named 'typing_extensions'",
+    "JTC-AEP 2026-12-24/2027-01-01: No module named 'typing_extensions'",
+    "JTC-AEP 2027-05-23/2027-05-27: No module named 'typing_extensions'",
+    "JTC-AEP 2027-05-23/2027-05-31: No module named 'typing_extensions'",
+    "JTC-SCL 2026-10-16/2026-10-20: No module named 'typing_extensions'",
+    "JTC-SCL 2026-10-16/2026-10-24: No module named 'typing_extensions'",
+    "JTC-SCL 2026-12-24/2026-12-28: No module named 'typing_extensions'",
+    "JTC-SCL 2026-12-24/2027-01-01: No module named 'typing_extensions'",
+    "JTC-SCL 2027-05-23/2027-05-27: No module named 'typing_extensions'",
+    "JTC-SCL 2027-05-23/2027-05-31: No module named 'typing_extensions'",
+    "JTC-ASU 2026-10-16/2026-10-20: No module named 'typing_extensions'",
+    "JTC-ASU 2026-10-16/2026-10-24: No module named 'typing_extensions'",
+    "JTC-ASU 2026-12-24/2026-12-28: No module named 'typing_extensions'",
+    "JTC-ASU 2026-12-24/2027-01-01: No module named 'typing_extensions'",
+    "JTC-ASU 2027-05-23/2027-05-27: No module named 'typing_extensions'",
+    "JTC-ASU 2027-05-23/2027-05-31: No module named 'typing_extensions'",
+    "JTC-MVD 2026-10-16/2026-10-20: No module named 'typing_extensions'",
+    "JTC-MVD 2026-10-16/2026-10-24: No module named 'typing_extensions'",
+    "JTC-MVD 2026-12-24/2026-12-28: No module named 'typing_extensions'"
+  ]
 }
