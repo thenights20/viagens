@@ -1,0 +1,93 @@
+name: Ofertas diretas das companhias
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, feat/airline-sources]
+    paths:
+      - "flight-monitor/airlines.py"
+      - "flight-monitor/scan_airlines.py"
+      - "flight-monitor/test_airlines.py"
+      - "flight-monitor/config.json"
+      - "flight-monitor/requirements.txt"
+      - "docs/index.html"
+      - ".github/workflows/airline-monitor.yml"
+  schedule:
+    - cron: "17 * * * *"
+
+concurrency:
+  group: airline-monitor-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: flight-monitor/requirements.txt
+
+      - name: Dependências
+        run: python -m pip install -r flight-monitor/requirements.txt
+
+      - name: Testes dos parsers
+        env:
+          PYTHONPATH: flight-monitor:.
+        run: python -m unittest flight-monitor/test_airlines.py -v
+
+      - name: Validar JavaScript do painel
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          html = Path('docs/index.html').read_text(encoding='utf-8')
+          match = re.search(r'<script>(.*)</script>', html, re.S)
+          assert match, 'script inline não encontrado'
+          Path('/tmp/dashboard.js').write_text(match.group(1), encoding='utf-8')
+          PY
+          node --check /tmp/dashboard.js
+
+      - name: Consultar companhias
+        env:
+          PYTHONPATH: flight-monitor:.
+        run: python flight-monitor/scan_airlines.py
+
+      - name: Validar saída
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('docs/data/airlines.json').read_text(encoding='utf-8'))
+          assert isinstance(data.get('offers'), list)
+          assert isinstance(data.get('sources'), dict)
+          assert set(data.get('sources', {})).issubset({'GOL', 'Azul', 'LATAM'})
+          print('Feed das companhias válido:', data.get('offer_count', 0), 'ofertas')
+          for name, info in data.get('sources', {}).items():
+              print(name, info.get('ok'), info.get('items'), info.get('message'))
+          PY
+
+      - name: Persistir dados
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "flight-monitor-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/airlines.json
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração para salvar."
+          else
+            git commit -m "data: atualizar ofertas das companhias [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          fi
