@@ -106,7 +106,6 @@ def parse_gol(html: str) -> list[dict]:
 
 def parse_azul(html: str) -> list[dict]:
     text = _text(html)
-    # Ex.: Campinas (VCP) Para Orlando (MCO) 26/02/2027 - 17/03/2027 Ida e volta ... A partir de R$4.628,63
     pattern = re.compile(
         r"([A-Za-zÀ-ÿ][A-Za-zÀ-ÿ ./'-]{1,55}?)\s*\(([A-Z]{3})\)\s*Para\s*"
         r"([A-Za-zÀ-ÿ][A-Za-zÀ-ÿ ./'-]{1,55}?)\s*\(([A-Z]{3})\)\s*"
@@ -202,8 +201,9 @@ def collect_official_airline_offers(config: dict) -> tuple[list[dict], dict[str,
 
     for source in ("GOL", "Azul", "LATAM"):
         url = AIRLINE_URLS[source]
+        source_timeout = max(timeout, 45) if source == "LATAM" else timeout
         try:
-            response = session.get(url, timeout=timeout, allow_redirects=True)
+            response = session.get(url, timeout=source_timeout, allow_redirects=True)
             response.raise_for_status()
             parsed = PARSERS[source](response.text)
             filtered = [
