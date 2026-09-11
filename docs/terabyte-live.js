@@ -1,7 +1,7 @@
 (() => {
   const q = (s) => document.querySelector(s);
   const moneyT = (v) => v == null ? '—' : new Intl.NumberFormat('pt-BR', {style:'currency',currency:'BRL'}).format(Number(v));
-  const escT = (s='') => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const escT = (s='') => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
   const safeT = (u='') => { try { const x = new URL(u); return x.protocol === 'https:' ? x.href : '#'; } catch { return '#'; } };
   let teraData = {deals:[], page_health:[]};
 
@@ -167,4 +167,13 @@
   document.addEventListener('visibilitychange', () => { if (!document.hidden) boot(); });
   boot();
   setInterval(boot, 60000);
+})();
+
+(() => {
+  if (document.querySelector('script[data-flight-explorer]')) return;
+  const s = document.createElement('script');
+  s.src = './flight-explorer.js?v=20260911-1';
+  s.defer = true;
+  s.dataset.flightExplorer = '1';
+  document.head.appendChild(s);
 })();
