@@ -8,6 +8,7 @@ on:
       - "flight-monitor/deal_hunter.py"
       - "flight-monitor/deal_sources.py"
       - "flight-monitor/scan_external_deals.py"
+      - "flight-monitor/upgrade_dashboard.py"
       - "flight-monitor/providers.py"
       - "flight-monitor/swoop_worker.py"
       - "flight-monitor/config.json"
@@ -43,6 +44,21 @@ jobs:
       - name: Dependências
         run: python -m pip install -r flight-monitor/requirements.txt
 
+      - name: Atualizar interface
+        run: python flight-monitor/upgrade_dashboard.py
+
+      - name: Validar JavaScript
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          html = Path('docs/index.html').read_text(encoding='utf-8')
+          match = re.search(r'<script>(.*)</script>', html, re.S)
+          assert match, 'script inline não encontrado'
+          Path('/tmp/dashboard.js').write_text(match.group(1), encoding='utf-8')
+          PY
+          node --check /tmp/dashboard.js
+
       - name: Coletar sinais externos
         env:
           PYTHONPATH: flight-monitor:.
@@ -74,7 +90,7 @@ jobs:
         run: |
           git config user.name "flight-monitor-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add flight-monitor/data/hunter-state.json docs/data/deal-hunter.json docs/data/external-deals.json
+          git add docs/index.html flight-monitor/data/hunter-state.json docs/data/deal-hunter.json docs/data/external-deals.json
           if git diff --cached --quiet; then
             echo "Nenhuma alteração para salvar."
           else
