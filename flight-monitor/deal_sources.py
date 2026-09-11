@@ -187,8 +187,8 @@ def _secret_detail(session: requests.Session, url: str, title: str) -> dict:
         h1 = soup.find("h1")
         if h1:
             detail["title"] = " ".join(h1.stripped_strings)
-        text_norm = _norm(title + " " + joined[:3000])
-        detail["error_fare"] = "error fare" in text_norm or "fuel dump" in text_norm
+        title_norm = _norm(title)
+        detail["error_fare"] = "error fare" in title_norm or "fuel dump" in title_norm
     except Exception as exc:  # noqa: BLE001
         detail["detail_error"] = str(exc)[:240]
     return detail
@@ -249,10 +249,14 @@ def _collect_headline_site(name: str, url: str, max_items: int = 30) -> tuple[li
             title_norm = _norm(title)
             if not any(word in title_norm for word in FLIGHT_WORDS):
                 continue
+            if name == "Melhores Destinos" and any(word in title_norm for word in ("pacote", "hotel", "hospedagem", "resort", "milhas", "pontos")):
+                continue
             price, currency = _price_from_title(title)
             if price is None:
                 continue
             href = urljoin(url, a["href"])
+            if name == "Melhores Destinos" and "/promocao/" not in href:
+                continue
             if href in seen:
                 continue
             seen.add(href)
