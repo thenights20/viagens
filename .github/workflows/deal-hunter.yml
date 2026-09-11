@@ -9,6 +9,8 @@ on:
       - "flight-monitor/deal_sources.py"
       - "flight-monitor/scan_external_deals.py"
       - "flight-monitor/upgrade_dashboard.py"
+      - "flight-monitor/refine_hunter.py"
+      - "flight-monitor/refine_dashboard.py"
       - "flight-monitor/providers.py"
       - "flight-monitor/swoop_worker.py"
       - "flight-monitor/config.json"
@@ -45,7 +47,9 @@ jobs:
         run: python -m pip install -r flight-monitor/requirements.txt
 
       - name: Atualizar interface
-        run: python flight-monitor/upgrade_dashboard.py
+        run: |
+          python flight-monitor/upgrade_dashboard.py
+          python flight-monitor/refine_dashboard.py
 
       - name: Validar JavaScript
         run: |
@@ -67,7 +71,9 @@ jobs:
       - name: Caçar tarifas excepcionais
         env:
           PYTHONPATH: flight-monitor:.
-        run: python flight-monitor/deal_hunter.py
+        run: |
+          python flight-monitor/deal_hunter.py
+          python flight-monitor/refine_hunter.py
 
       - name: Validar feeds
         run: |
@@ -77,12 +83,17 @@ jobs:
           hunter = json.loads(Path('docs/data/deal-hunter.json').read_text(encoding='utf-8'))
           external = json.loads(Path('docs/data/external-deals.json').read_text(encoding='utf-8'))
           assert hunter.get('version') == '0.1.0'
+          assert hunter.get('active_window_hours') == 3
           assert isinstance(hunter.get('deals'), list)
           assert isinstance(external.get('signals'), list)
+          routes = set()
           for row in hunter.get('deals', []):
               assert 0 <= int(row.get('hunter_score', 0)) <= 100
               assert float(row.get('price', 0)) > 0
-          print('Deal Hunter válido:', hunter.get('active_count', 0), 'ativos')
+              key = (row.get('origin'), row.get('destination'))
+              assert key not in routes, f'rota duplicada: {key}'
+              routes.add(key)
+          print('Deal Hunter válido:', hunter.get('active_count', 0), 'rotas únicas')
           print('Fontes externas:', external.get('signal_count', 0), 'sinais')
           PY
 
@@ -110,7 +121,7 @@ jobs:
           lines = [
               '## Deal Hunter',
               f"- Origens desta rodada: {', '.join(h.get('origin_codes', [])) or '-'}",
-              f"- Achados ativos: {h.get('active_count', 0)}",
+              f"- Rotas ativas (3h): {h.get('active_count', 0)}",
               f"- Score 70+: {h.get('very_cheap_count', 0)}",
               f"- Score 80+: {h.get('exceptional_count', 0)}",
               f"- Sinais externos: {e.get('signal_count', 0)}",
