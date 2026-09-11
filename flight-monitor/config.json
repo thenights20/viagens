@@ -58,12 +58,9 @@
   },
   "scan": {
     "origins_per_run": 3,
-    "destinations_per_run": 10,
+    "destinations_per_run": 6,
     "date_profiles": [
-      {"name": "curto prazo", "offsets": [7, 14, 28], "stays": [3, 7]},
-      {"name": "1 a 3 meses", "offsets": [45, 60, 90], "stays": [4, 8]},
-      {"name": "3 a 6 meses", "offsets": [120, 150, 180], "stays": [5, 10]},
-      {"name": "6 a 12 meses", "offsets": [210, 270, 330], "stays": [7, 14]}
+      {"name": "0 a 12 meses", "offsets": [7, 30, 90, 180, 330], "stays": [4, 8]}
     ],
     "max_stops": 2,
     "workers": 4,
@@ -77,8 +74,8 @@
     "min_bucket_samples": 5,
     "min_season_samples": 5,
     "mad_scale_floor": 0.03,
-    "revalidate_min_score": 70,
-    "max_revalidations_per_run": 8,
+    "revalidate_min_score": 60,
+    "max_revalidations_per_run": 10,
     "confirmation_tolerance_pct": 8,
     "repeat_improvement_pct": 5,
     "repeat_cooldown_days": 7,
