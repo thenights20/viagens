@@ -1,0 +1,107 @@
+name: Deal Hunter de passagens
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, feat/deal-hunter-v3]
+    paths:
+      - "flight-monitor/deal_hunter.py"
+      - "flight-monitor/deal_sources.py"
+      - "flight-monitor/scan_external_deals.py"
+      - "flight-monitor/providers.py"
+      - "flight-monitor/swoop_worker.py"
+      - "flight-monitor/config.json"
+      - "flight-monitor/requirements.txt"
+      - ".github/workflows/deal-hunter.yml"
+  schedule:
+    - cron: "*/15 * * * *"
+
+concurrency:
+  group: deal-hunter-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  hunt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: flight-monitor/requirements.txt
+
+      - name: Dependências
+        run: python -m pip install -r flight-monitor/requirements.txt
+
+      - name: Coletar sinais externos
+        env:
+          PYTHONPATH: flight-monitor:.
+        run: python flight-monitor/scan_external_deals.py
+
+      - name: Caçar tarifas excepcionais
+        env:
+          PYTHONPATH: flight-monitor:.
+        run: python flight-monitor/deal_hunter.py
+
+      - name: Validar feeds
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          hunter = json.loads(Path('docs/data/deal-hunter.json').read_text(encoding='utf-8'))
+          external = json.loads(Path('docs/data/external-deals.json').read_text(encoding='utf-8'))
+          assert hunter.get('version') == '0.1.0'
+          assert isinstance(hunter.get('deals'), list)
+          assert isinstance(external.get('signals'), list)
+          for row in hunter.get('deals', []):
+              assert 0 <= int(row.get('hunter_score', 0)) <= 100
+              assert float(row.get('price', 0)) > 0
+          print('Deal Hunter válido:', hunter.get('active_count', 0), 'ativos')
+          print('Fontes externas:', external.get('signal_count', 0), 'sinais')
+          PY
+
+      - name: Persistir dados
+        run: |
+          git config user.name "flight-monitor-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add flight-monitor/data/hunter-state.json docs/data/deal-hunter.json docs/data/external-deals.json
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração para salvar."
+          else
+            git commit -m "data: atualizar Deal Hunter [skip ci]"
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+
+      - name: Resumo
+        run: |
+          python - <<'PY'
+          import json, os
+          with open('docs/data/deal-hunter.json', encoding='utf-8') as f:
+              h = json.load(f)
+          with open('docs/data/external-deals.json', encoding='utf-8') as f:
+              e = json.load(f)
+          lines = [
+              '## Deal Hunter',
+              f"- Origens desta rodada: {', '.join(h.get('origin_codes', [])) or '-'}",
+              f"- Achados ativos: {h.get('active_count', 0)}",
+              f"- Score 70+: {h.get('very_cheap_count', 0)}",
+              f"- Score 80+: {h.get('exceptional_count', 0)}",
+              f"- Sinais externos: {e.get('signal_count', 0)}",
+              f"- Sinais externos rechecados: {h.get('external_verified', 0)}",
+              f"- Erros: {len(h.get('errors', []))}",
+              f"- Atualizado: {h.get('generated_at', '-')}",
+          ]
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as f:
+              f.write('\n'.join(lines) + '\n')
+          PY
