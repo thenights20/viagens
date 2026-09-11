@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-09-11T19:47:33.678990Z",
+  "generated_at": "2026-09-11T19:48:53.361276Z",
   "title": "Busca flexível · 100 menores opções",
   "horizon_days": 183,
   "horizon_end": "2027-03-13",
@@ -87,7 +87,7 @@
         "options": 0,
         "unique_destinations": 0
       },
-      "last_scan_at": null
+      "last_scan_at": "2026-09-11T19:48:53.361276Z"
     },
     "GRU": {
       "origin_name": "Guarulhos",
@@ -188,63 +188,37 @@
   },
   "results": [],
   "scan": {
-    "origin": "PMG",
-    "origin_name": "Ponta Porã",
+    "origin": "JTC",
+    "origin_name": "Bauru",
     "phase": 1,
     "phase_label": "~3 semanas",
     "departure_date": "2026-10-02",
     "return_date": "2026-10-06",
     "directed_queries": 100,
     "fast_results": 0,
+    "fast_failures": 100,
+    "fallback_attempts": 20,
+    "fallback_results": 0,
     "discovery_results": 0,
     "observations": 0,
-    "errors": 100
+    "errors": 11
   },
   "errors": [
-    "PMG-CGB: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-GYN: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-BSB: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-CGR: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-CWB: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-LDB: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-MGF: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-IGU: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-VCP: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-NVT: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-FLN: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-POA: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-GRU: IndexError: list index out of range",
-    "PMG-CGH: IndexError: list index out of range",
-    "PMG-SJP: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-RAO: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-UDI: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-CNF: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-GIG: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-SSA: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-SDU: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-VIX: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-FOR: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-REC: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-NAT: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-MCZ: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-JPA: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-AJU: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-THE: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-BEL: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-SLZ: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-MAO: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-BVB: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-PVH: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-MCP: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-JDO: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-IOS: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-PMW: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-BPS: TypeError: 'NoneType' object is not subscriptable",
-    "PMG-PNZ: TypeError: 'NoneType' object is not subscriptable"
+    "fast-flights falhou em 100 rotas de JTC; fallback rotativo ativado.",
+    "JTC-CWB: TypeError: 'NoneType' object is not subscriptable",
+    "JTC-BSB: TypeError: 'NoneType' object is not subscriptable",
+    "JTC-CGB: TypeError: 'NoneType' object is not subscriptable",
+    "JTC-LDB: TypeError: 'NoneType' object is not subscriptable",
+    "JTC-GYN: TypeError: 'NoneType' object is not subscriptable",
+    "JTC-CGR: TypeError: 'NoneType' object is not subscriptable",
+    "JTC-VCP: TypeError: 'NoneType' object is not subscriptable",
+    "JTC-NVT: TypeError: 'NoneType' object is not subscriptable",
+    "Swoop exact teve falhas em parte do lote de 20 rotas.",
+    "JTC-BVB: RuntimeError: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)"
   ],
   "notes": [
     "Valores são os menores encontrados nas rodadas flexíveis; tarifas mudam até a emissão.",
     "O sistema percorre seis janelas de datas entre ~3 semanas e ~5,5 meses e mantém até 100 opções por origem e tipo.",
-    "Swoop Deals complementa a busca com datas flexíveis do Google Flights; a varredura dirigida usa fast-flights."
+    "A busca dirigida usa fast-flights e um lote rotativo de fallback Swoop para aeroportos regionais; Swoop Deals complementa com datas flexíveis."
   ]
 }
