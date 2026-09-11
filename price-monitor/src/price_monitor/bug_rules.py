@@ -26,7 +26,7 @@ def _rx(*parts: str) -> re.Pattern[str]:
 
 CONSOLE_ACCESSORIES = (
     "case", "carrying", "capa", "bolsa", "estojo", "suporte", "base vertical",
-    "controle", "controller", "skin", "pelicula", "pelicula", "thumb grip", "cooler",
+    "controle", "controller", "skin", "pelicula", "thumb grip", "cooler",
     "dock", "cabo", "carregador", "headset", "volante", "adaptador", "faceplate",
 )
 NOTEBOOK_ACCESSORIES = (
@@ -44,8 +44,6 @@ APPLIANCE_PARTS = (
 )
 
 
-# Pisos deliberadamente conservadores. Eles não estimam o preço normal exato;
-# só reconhecem valores tão baixos que justificam rechecagem imediata.
 RULES = [
     PriceRule("RTX 5090", _rx(r"rtx\s*5090", r"geforce\s*5090"), 8500, "Placas de vídeo", ("water block", "backplate", "suporte", "cabo", "fan ")),
     PriceRule("RTX 5080", _rx(r"rtx\s*5080"), 6000, "Placas de vídeo", ("water block", "backplate", "suporte", "cabo", "fan ")),
@@ -176,7 +174,9 @@ def score_product(
         score += 6
         reasons.append("vendedor/loja com sinal de confiança")
 
-    if kind == "preço anterior anunciado" and not rule and not revalidated:
+    # Sem identidade de produto/histórico, preço riscado sozinho nunca é suficiente
+    # para ocupar a aba principal de BUGs, mesmo quando o valor é reaberto.
+    if kind == "preço anterior anunciado" and not rule:
         score = min(score, 69)
 
     score = max(0, min(100, int(round(score))))
