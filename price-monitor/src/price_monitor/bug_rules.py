@@ -105,7 +105,6 @@ def score_product(
     if reference_price and float(reference_price) > price:
         candidates.append(("histórico/mercado", float(reference_price), 1.0))
     if original_price and float(original_price) > price:
-        # Preço riscado pode ser inflado, então vale menos quando é a única referência.
         candidates.append(("preço anterior anunciado", float(original_price), 0.72))
 
     if not candidates:
@@ -122,7 +121,7 @@ def score_product(
             "reasons": ["marcado como BUG por sensor externo"] if external_bug_signal else [],
         }
 
-    kind, baseline, confidence_weight = max(candidates, key=lambda item: item[1] * item[2])
+    kind, baseline, _confidence_weight = max(candidates, key=lambda item: item[1] * item[2])
     ratio = price / baseline
     drop_pct = max(0.0, (1.0 - ratio) * 100.0)
     score = _ratio_points(ratio)
@@ -131,10 +130,13 @@ def score_product(
     if rule:
         floor_ratio = price / rule.conservative_floor
         if floor_ratio <= 0.25:
-            score += 18
-            reasons.append(f"preço muito abaixo do piso conservador de {rule.name}")
+            score += 35
+            reasons.append(f"preço impossível para a faixa de {rule.name}")
         elif floor_ratio <= 0.45:
-            score += 10
+            score += 20
+            reasons.append(f"muito abaixo do piso conservador de {rule.name}")
+        elif floor_ratio <= 0.65:
+            score += 8
             reasons.append(f"abaixo do piso conservador de {rule.name}")
 
     if external_bug_signal:
@@ -147,7 +149,6 @@ def score_product(
         score += 6
         reasons.append("vendedor/loja com sinal de confiança")
 
-    # Evita que um único preço riscado transforme uma oferta comum em BUG confirmado.
     if kind == "preço anterior anunciado" and not rule and not revalidated:
         score = min(score, 69)
 
