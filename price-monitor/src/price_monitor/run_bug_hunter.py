@@ -82,7 +82,6 @@ def _from_sensors(sensor_feed: dict) -> list[dict]:
             source=str(signal.get("store_hint") or signal.get("source") or ""),
             external_bug_signal=bool(signal.get("external_bug")),
         )
-        # Sensor é pista, não confirmação. Mantém sinais marcados como BUG ou muito extremos.
         if not signal.get("external_bug") and int(score.get("bug_score", 0)) < 70:
             continue
         rows.append({
@@ -107,14 +106,22 @@ def _from_sensors(sensor_feed: dict) -> list[dict]:
     return rows
 
 
-def _revalidate(rows: list[dict], limit: int = 8) -> tuple[list[dict], list[str]]:
+def _cap_unconfirmed(row: dict, note: str = "aguardando rechecagem") -> dict:
+    if row.get("collector") == "fast-market-scan" and not row.get("revalidated") and int(row.get("bug_score", 0)) >= 70:
+        row["bug_score"] = 69
+        row["bug_status"] = "🟡 CANDIDATO NÃO CONFIRMADO"
+        row["verification_note"] = note
+    return row
+
+
+def _revalidate(rows: list[dict], limit: int = 10) -> tuple[list[dict], list[str]]:
     targets = [x for x in rows if x.get("collector") == "fast-market-scan" and int(x.get("bug_score", 0)) >= 70]
     targets.sort(key=lambda x: (-int(x.get("bug_score", 0)), float(x.get("price") or 999999)))
     selected = targets[:limit]
-    if not selected:
-        return rows, []
     errors: list[str] = []
     by_key = {_key(x): x for x in rows}
+    selected_keys = {_key(x) for x in selected}
+
     with ThreadPoolExecutor(max_workers=3) as pool:
         futures = {pool.submit(revalidate_candidate, dict(row)): row for row in selected}
         for future in as_completed(futures):
@@ -122,17 +129,47 @@ def _revalidate(rows: list[dict], limit: int = 8) -> tuple[list[dict], list[str]
             try:
                 checked, error = future.result()
             except Exception as exc:  # noqa: BLE001
-                checked, error = original, f"{type(exc).__name__}: {exc}"
-            by_key[_key(original)] = checked
+                checked, error = dict(original), f"{type(exc).__name__}: {exc}"
             if error:
+                checked["validation_failed"] = True
+                checked["verification_note"] = error
+                checked["bug_score"] = min(59, int(checked.get("bug_score", 0)))
+                checked["bug_status"] = "DESCARTADO NA RECHECAGEM"
                 errors.append(f"{original.get('source')} · {original.get('title')}: {error}")
+            by_key[_key(original)] = checked
+
+    # Um preço de card pode ser parcela, cupom ou acessório. Sem PDP confirmado,
+    # o scanner próprio fica como candidato e nunca ocupa a aba principal 70+.
+    for key, row in by_key.items():
+        if key not in selected_keys:
+            _cap_unconfirmed(row)
     return list(by_key.values()), errors
+
+
+def _rescore_state_row(row: dict) -> dict:
+    if row.get("validation_failed"):
+        return row
+    score = score_product(
+        title=str(row.get("title") or ""),
+        price=float(row.get("price") or 0),
+        reference_price=row.get("reference_price"),
+        original_price=row.get("original_price"),
+        source=str(row.get("source") or ""),
+        trusted=bool(row.get("trusted")),
+        revalidated=bool(row.get("revalidated")),
+        external_bug_signal=bool(row.get("external_bug")),
+    )
+    row.update(score)
+    _cap_unconfirmed(row)
+    return row
 
 
 def _best_rows(rows: list[dict]) -> list[dict]:
     best: dict[str, dict] = {}
     for row in rows:
-        if not row.get("url") or float(row.get("price") or 0) <= 0:
+        if row.get("validation_failed") or not row.get("url") or float(row.get("price") or 0) <= 0:
+            continue
+        if int(row.get("bug_score", 0)) < 60:
             continue
         key = _key(row)
         old = best.get(key)
@@ -153,6 +190,14 @@ def main() -> int:
     current = load_json(CURRENT_PATH, {"products": []})
     state = load_json(STATE_PATH, {"version": "0.1.0", "items": {}, "run_counter": 0})
     state.setdefault("items", {})
+    # Reaplica as regras atuais ao estado para que uma correção de falso positivo
+    # surta efeito imediatamente, sem aguardar as quatro horas de expiração.
+    for key, stored in list(state["items"].items()):
+        rescored = _rescore_state_row(stored)
+        if rescored.get("validation_failed") or int(rescored.get("bug_score", 0)) < 60:
+            state["items"].pop(key, None)
+        else:
+            state["items"][key] = rescored
 
     sensor_feed = build_sensor_feed()
     save_json(SENSOR_OUTPUT, sensor_feed)
