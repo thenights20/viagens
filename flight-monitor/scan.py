@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-import math
 import statistics
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta, timezone
@@ -31,15 +30,15 @@ def chunks(items: list[dict], size: int) -> list[list[dict]]:
     return [items[i : i + size] for i in range(0, len(items), size)]
 
 
-def selected_slice(config: dict, now: datetime) -> tuple[list[dict], list[dict], int]:
+def selected_slice(config: dict, state: dict) -> tuple[list[dict], list[dict], int, int]:
     scan = config["scan"]
     origin_groups = chunks(config["origins"], int(scan["origins_per_run"]))
     destination_groups = chunks(config["destinations"], int(scan["destinations_per_run"]))
-    slot = int(now.timestamp() // 3600)
+    slot = max(0, int(state.get("scan_counter", 0)))
     origin_group = slot % len(origin_groups)
     destination_group = (slot // len(origin_groups)) % len(destination_groups)
     phase = (slot // (len(origin_groups) * len(destination_groups))) % int(scan["date_phases"])
-    return origin_groups[origin_group], destination_groups[destination_group], phase
+    return origin_groups[origin_group], destination_groups[destination_group], phase, slot
 
 
 def make_queries(origins: list[dict], destinations: list[dict], phase: int, config: dict) -> list[tuple]:
@@ -198,9 +197,9 @@ def main() -> None:
     config = load_json(CONFIG_PATH, {})
     if not config:
         raise SystemExit("flight-monitor/config.json não encontrado")
-    state = load_json(STATE_PATH, {"version": config.get("version", "0.1.0"), "routes": {}})
+    state = load_json(STATE_PATH, {"version": config.get("version", "0.1.0"), "routes": {}, "scan_counter": 0})
     now = datetime.now(timezone.utc)
-    origins, destinations, phase = selected_slice(config, now)
+    origins, destinations, phase, slot = selected_slice(config, state)
     queries = make_queries(origins, destinations, phase, config)
     workers = max(1, int(config["scan"].get("workers", 3)))
 
@@ -217,8 +216,10 @@ def main() -> None:
 
     prune_and_update(state, observations, now, config)
     state["version"] = config.get("version", "0.1.0")
+    state["scan_counter"] = slot + 1
     state["last_scan_at"] = now.isoformat().replace("+00:00", "Z")
     state["last_scan"] = {
+        "scan_number": slot + 1,
         "origin_codes": [x["code"] for x in origins],
         "destination_codes": [x["code"] for x in destinations],
         "date_phase": phase,
