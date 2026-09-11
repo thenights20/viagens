@@ -1,0 +1,126 @@
+name: Bug Hunter de produtos
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, feat/product-bug-hunter-impl3]
+    paths:
+      - "price-monitor/src/price_monitor/bug_rules.py"
+      - "price-monitor/src/price_monitor/product_sensors.py"
+      - "price-monitor/src/price_monitor/fast_market_scan.py"
+      - "price-monitor/src/price_monitor/run_bug_hunter.py"
+      - "price-monitor/upgrade_product_dashboard.py"
+      - "price-monitor/tests/test_bug_rules.py"
+      - "price-monitor/requirements.txt"
+      - ".github/workflows/product-bug-hunter.yml"
+  schedule:
+    - cron: "*/15 * * * *"
+
+concurrency:
+  group: product-bug-hunter-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  hunt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: price-monitor/requirements.txt
+
+      - name: Chrome
+        uses: browser-actions/setup-chrome@v2
+
+      - name: Dependências
+        run: python -m pip install -r price-monitor/requirements.txt
+
+      - name: Testes do detector
+        env:
+          PYTHONPATH: price-monitor/src
+        run: python -m pytest -q price-monitor/tests/test_bug_rules.py
+
+      - name: Atualizar interface
+        run: python price-monitor/upgrade_product_dashboard.py
+
+      - name: Validar JavaScript
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          html = Path('docs/index.html').read_text(encoding='utf-8')
+          match = re.search(r'<script>(.*)</script>', html, re.S)
+          assert match, 'script inline não encontrado'
+          Path('/tmp/dashboard.js').write_text(match.group(1), encoding='utf-8')
+          PY
+          node --check /tmp/dashboard.js
+
+      - name: Varredura rápida
+        env:
+          PYTHONPATH: price-monitor/src
+        run: python -m price_monitor.run_bug_hunter
+
+      - name: Validar feeds
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          bugs = json.loads(Path('docs/data/product-bugs.json').read_text(encoding='utf-8'))
+          sensors = json.loads(Path('docs/data/product-sensors.json').read_text(encoding='utf-8'))
+          assert bugs.get('version') == '0.1.0'
+          assert isinstance(bugs.get('bugs'), list)
+          assert isinstance(sensors.get('signals'), list)
+          for row in bugs.get('bugs', []):
+              assert 0 <= int(row.get('bug_score', 0)) <= 100
+              assert float(row.get('price', 0)) > 0
+          print('Bug Hunter válido:', bugs.get('active_count', 0), 'ativos')
+          print('Sensores:', sensors.get('signal_count', 0), 'sinais')
+          PY
+
+      - name: Persistir dados
+        run: |
+          git config user.name "product-bug-hunter-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/index.html docs/data/product-bugs.json docs/data/product-sensors.json price-monitor/data/bug-hunter-state.json
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração para salvar."
+          else
+            git commit -m "data: atualizar Bug Hunter de produtos [skip ci]"
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+
+      - name: Resumo
+        run: |
+          python - <<'PY'
+          import json, os
+          with open('docs/data/product-bugs.json', encoding='utf-8') as f:
+              b = json.load(f)
+          with open('docs/data/product-sensors.json', encoding='utf-8') as f:
+              s = json.load(f)
+          lines = [
+              '## Bug Hunter de produtos',
+              f"- Achados ativos: {b.get('active_count', 0)}",
+              f"- Score 70+: {b.get('strong_count', 0)}",
+              f"- Score 90+: {b.get('critical_count', 0)}",
+              f"- Confirmados: {b.get('confirmed_count', 0)}",
+              f"- Scanner próprio nesta rodada: {b.get('scanner_count', 0)}",
+              f"- Sinais externos: {s.get('signal_count', 0)}",
+              f"- Cupons detectados: {s.get('coupon_count', 0)}",
+              f"- Atualizado: {b.get('generated_at', '-')}"
+          ]
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as f:
+              f.write('\n'.join(lines) + '\n')
+          PY
