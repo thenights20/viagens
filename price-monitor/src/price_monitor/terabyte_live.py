@@ -58,9 +58,18 @@ ROOT_CATEGORY_PATHS = (
 )
 
 CATEGORY_PREFIXES = tuple(p.rstrip("/") for p in ROOT_CATEGORY_PATHS)
+PARSER_VERSION = 2
 USER_AGENT = (
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/152.0 Safari/537.36"
+)
+SOLD_OUT_MARKERS = (
+    "todos vendidos",
+    "produto indisponível",
+    "produto indisponivel",
+    "indisponível",
+    "indisponivel",
+    "esgotado",
 )
 
 
@@ -163,18 +172,31 @@ def _title_from_anchor(anchor, text: str) -> str:
 
 
 def _card_text(anchor) -> str:
+    """Localiza somente o card do próprio SKU.
+
+    Em itens esgotados a Terabyte não mostra preço. Se continuarmos subindo na
+    árvore DOM até um container da grade, o preço do próximo produto pode ser
+    associado ao SKU esgotado. Ao encontrar um marcador de indisponibilidade
+    num ancestral pequeno, encerramos a busca imediatamente.
+    """
     node = anchor
-    best = ""
-    for _ in range(7):
+    for _ in range(6):
         node = node.parent
         if node is None:
             break
         text = node.get_text("\n", strip=True)
-        if "R$" in text and len(text) <= 2600:
-            best = text
-            if len(text) >= 40:
-                break
-    return best
+        if not text:
+            continue
+        low = text.lower()
+        if any(marker in low for marker in SOLD_OUT_MARKERS) and "R$" not in text:
+            return ""
+        if "R$" in text and len(text) <= 1800:
+            if any(marker in low for marker in SOLD_OUT_MARKERS) and len(text) > 900:
+                return ""
+            return text
+        if len(text) > 1800:
+            break
+    return ""
 
 
 def extract_products(html: str, page_url: str, page_label: str = "") -> list[dict]:
@@ -186,6 +208,9 @@ def extract_products(html: str, page_url: str, page_label: str = "") -> list[dic
             continue
         card_text = _card_text(anchor)
         if "R$" not in card_text:
+            continue
+        low = card_text.lower()
+        if any(marker in low for marker in SOLD_OUT_MARKERS):
             continue
         prices = extract_brl_prices(card_text)
         current, original = pick_current_and_original(prices)
@@ -278,12 +303,7 @@ def fetch_listing_page(url: str, label: str) -> tuple[list[dict], dict]:
 
 
 def extract_product_page(html: str, url: str) -> dict | None:
-    """Lê apenas o bloco principal da PDP.
-
-    A página da Terabyte inclui dezenas de produtos recomendados depois do SKU
-    principal. Usar o menor R$ da página inteira confunde recomendação, parcela
-    ou acessório com o preço do produto monitorado.
-    """
+    """Lê apenas o bloco principal da PDP, nunca recomendações posteriores."""
     soup = BeautifulSoup(html or "", "html.parser")
     title = ""
     h1 = soup.find("h1")
@@ -297,14 +317,10 @@ def extract_product_page(html: str, url: str) -> dict | None:
     body = soup.get_text("\n", strip=True)
     pos = body.find(title)
     segment = body[pos if pos >= 0 else 0 : (pos if pos >= 0 else 0) + 2600]
-
-    # SKU esgotado não entra no radar de live; os preços que vêm depois são
-    # normalmente recomendações da própria página.
     low = segment.lower()
-    if "produto indisponível" in low or "produto indisponivel" in low or "já que esgotou" in low or "ja que esgotou" in low:
+    if any(marker in low for marker in SOLD_OUT_MARKERS) or "já que esgotou" in low or "ja que esgotou" in low:
         return None
 
-    # Formato principal observado na PDP: "De: R$ X por: R$ Y".
     pair = re.search(
         r"De:\s*R\$\s*([\d.]+(?:,\d{2})?)\s*por:\s*R\$\s*([\d.]+(?:,\d{2})?)",
         segment,
@@ -314,8 +330,6 @@ def extract_product_page(html: str, url: str) -> dict | None:
         original = parse_brl(pair.group(1))
         current = parse_brl(pair.group(2))
     else:
-        # Sem preço riscado: o primeiro valor monetário após o H1 é o valor
-        # principal. Não usamos min() porque parcelas menores aparecem depois.
         prices = extract_brl_prices(segment[:1400])
         current = prices[0] if prices else None
         original = None
@@ -402,11 +416,15 @@ def compute_live_score(row: dict, state_item: dict | None) -> dict:
         if history_drop >= 10:
             reasons.append(f"{history_drop:.0f}% abaixo da mediana histórica")
 
+    # Preço riscado da própria loja é um sinal visual, não uma prova de bug.
+    # Ele pode colocar o item no radar, mas sozinho nunca vira alerta 70+.
     if advertised_drop >= 60:
-        score = max(score, 74)
+        score = max(score, 64)
         reasons.append(f"{advertised_drop:.0f}% abaixo do preço anterior anunciado")
     elif advertised_drop >= 45:
-        score = max(score, 64)
+        score = max(score, 58)
+    elif advertised_drop >= 30:
+        score = max(score, 52)
 
     score = max(0, min(100, score))
     if score >= 90:
@@ -480,6 +498,7 @@ def main() -> int:
         STATE_PATH,
         {
             "version": "0.1.0",
+            "parser_version": PARSER_VERSION,
             "run_counter": 0,
             "category_cursor": 0,
             "catalog_cursor": 0,
@@ -489,6 +508,10 @@ def main() -> int:
         },
     )
     state.setdefault("items", {})
+    if int(state.get("parser_version", 0)) != PARSER_VERSION:
+        state["items"] = {}
+        state["parser_version"] = PARSER_VERSION
+        state["catalog_cursor"] = 0
     run_counter = int(state.get("run_counter", 0))
 
     s = session()
