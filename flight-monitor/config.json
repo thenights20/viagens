@@ -1,10 +1,13 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "origins": [
     {"code": "DOU", "name": "Dourados"},
     {"code": "PMG", "name": "Ponta Porã"},
     {"code": "JTC", "name": "Bauru"},
     {"code": "GRU", "name": "Guarulhos"},
+    {"code": "CGH", "name": "São Paulo / Congonhas"},
+    {"code": "VCP", "name": "Campinas / Viracopos"},
+    {"code": "GIG", "name": "Rio de Janeiro / Galeão"},
     {"code": "TJL", "name": "Três Lagoas"},
     {"code": "ARU", "name": "Araçatuba"},
     {"code": "PPB", "name": "Presidente Venceslau (via Presidente Prudente)"},
@@ -35,24 +38,50 @@
     {"code": "SCL", "name": "Santiago"}, {"code": "ASU", "name": "Assunção"},
     {"code": "MVD", "name": "Montevidéu"}, {"code": "LIM", "name": "Lima"},
     {"code": "BOG", "name": "Bogotá"}, {"code": "MIA", "name": "Miami"},
-    {"code": "MCO", "name": "Orlando"}, {"code": "JFK", "name": "Nova York"},
+    {"code": "FLL", "name": "Fort Lauderdale"}, {"code": "MCO", "name": "Orlando"},
+    {"code": "JFK", "name": "Nova York / JFK"}, {"code": "EWR", "name": "Nova York / Newark"},
     {"code": "LAX", "name": "Los Angeles"}, {"code": "LAS", "name": "Las Vegas"},
     {"code": "BOS", "name": "Boston"}, {"code": "YYZ", "name": "Toronto"},
-    {"code": "MEX", "name": "Cidade do México"}, {"code": "LIS", "name": "Lisboa"},
+    {"code": "MEX", "name": "Cidade do México"}, {"code": "CUN", "name": "Cancún"},
+    {"code": "PUJ", "name": "Punta Cana"}, {"code": "LIS", "name": "Lisboa"},
     {"code": "MAD", "name": "Madri"}, {"code": "BCN", "name": "Barcelona"},
     {"code": "CDG", "name": "Paris"}, {"code": "LHR", "name": "Londres"},
-    {"code": "FCO", "name": "Roma"}, {"code": "AMS", "name": "Amsterdã"}
+    {"code": "FCO", "name": "Roma"}, {"code": "AMS", "name": "Amsterdã"},
+    {"code": "FRA", "name": "Frankfurt"}
   ],
+  "providers": {
+    "fast_flights": true,
+    "swoop_fallback": true,
+    "swoop_discovery": true,
+    "swoop_confirm": true,
+    "include_basic_economy": true
+  },
   "scan": {
-    "origins_per_run": 2,
-    "destinations_per_run": 8,
-    "date_phases": 6,
-    "departure_offsets_days": [21, 90, 240],
-    "stay_lengths_days": [4, 8],
+    "origins_per_run": 3,
+    "destinations_per_run": 10,
+    "date_profiles": [
+      {"name": "curto prazo", "offsets": [7, 14, 28], "stays": [3, 7]},
+      {"name": "1 a 3 meses", "offsets": [45, 60, 90], "stays": [4, 8]},
+      {"name": "3 a 6 meses", "offsets": [120, 150, 180], "stays": [5, 10]},
+      {"name": "6 a 12 meses", "offsets": [210, 270, 330], "stays": [7, 14]}
+    ],
     "max_stops": 2,
-    "workers": 3,
-    "history_days": 45,
-    "active_days": 14,
-    "max_output_deals": 180
+    "workers": 4,
+    "discovery_workers": 2,
+    "history_days": 180,
+    "active_days": 21,
+    "max_route_observations": 180,
+    "max_output_deals": 220,
+    "min_output_score": 55,
+    "alert_min_score": 70,
+    "min_bucket_samples": 5,
+    "min_season_samples": 5,
+    "mad_scale_floor": 0.03,
+    "revalidate_min_score": 70,
+    "max_revalidations_per_run": 8,
+    "confirmation_tolerance_pct": 8,
+    "repeat_improvement_pct": 5,
+    "repeat_cooldown_days": 7,
+    "discovery_min_discount_pct": 10
   }
 }
