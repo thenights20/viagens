@@ -16,6 +16,18 @@ def test_ps5_449_is_critical():
     assert row["bug_score"] >= 80
 
 
+def test_ps5_bundle_with_controller_still_matches_console():
+    row = score_product(title="PlayStation 5 Edição Digital 825GB 1 Controle Branco Sony", price=449)
+    assert row["bug_score"] >= 80
+
+
+def test_ps5_game_is_not_console():
+    title = "Street Fighter 6 - PlayStation 5"
+    assert matching_rule(title) is None
+    row = score_product(title=title, price=139.90, revalidated=True)
+    assert row["bug_score"] < 70
+
+
 def test_rtx_5090_1899_is_critical():
     row = score_product(title="Placa de Video Zotac GeForce RTX 5090 Solid OC 32GB", price=1899)
     assert row["bug_score"] >= 80
