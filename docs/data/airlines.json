@@ -1,0 +1,117 @@
+{
+  "version": "0.1.0",
+  "generated_at": "2026-09-11T14:38:44.484176Z",
+  "source": "Páginas públicas oficiais GOL + Azul + LATAM",
+  "offer_count": 5,
+  "domestic_count": 3,
+  "international_count": 2,
+  "source_count": 3,
+  "responding_source_count": 2,
+  "sources": {
+    "GOL": {
+      "ok": true,
+      "items": 0,
+      "parsed": 21,
+      "status": 200,
+      "url": "https://www.voegol.com.br/web/guest/nh/ofertas",
+      "message": "ok"
+    },
+    "Azul": {
+      "ok": true,
+      "items": 5,
+      "parsed": 10,
+      "status": 200,
+      "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos",
+      "message": "ok"
+    },
+    "LATAM": {
+      "ok": false,
+      "items": 0,
+      "parsed": 0,
+      "url": "https://www.latamairlines.com/br/pt/ofertas/promocoes-latam?origin=all",
+      "message": "HTTPSConnectionPool(host='www.latamairlines.com', port=443): Read timed out. (read timeout=45)"
+    }
+  },
+  "offers": [
+    {
+      "source": "Azul",
+      "origin": "CGH",
+      "origin_candidates": [
+        "CGH"
+      ],
+      "origin_name": "horas atrás Reserve agora São Paulo",
+      "destination": "SDU",
+      "destination_name": "Rio de Janeiro",
+      "departure_date": "2026-11-18",
+      "return_date": null,
+      "trip_mode": "one_way",
+      "price": 376.04,
+      "scope": "domestic",
+      "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
+    },
+    {
+      "source": "Azul",
+      "origin": "GRU",
+      "origin_candidates": [
+        "GRU"
+      ],
+      "origin_name": "minutos atrás Reserve agora São Paulo",
+      "destination": "REC",
+      "destination_name": "Recife",
+      "departure_date": "2026-12-01",
+      "return_date": null,
+      "trip_mode": "one_way",
+      "price": 523.65,
+      "scope": "domestic",
+      "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
+    },
+    {
+      "source": "Azul",
+      "origin": "CGH",
+      "origin_candidates": [
+        "CGH"
+      ],
+      "origin_name": "hora atrás Reserve agora São Paulo",
+      "destination": "REC",
+      "destination_name": "Recife",
+      "departure_date": "2026-10-03",
+      "return_date": null,
+      "trip_mode": "one_way",
+      "price": 563.85,
+      "scope": "domestic",
+      "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
+    },
+    {
+      "source": "Azul",
+      "origin": "VCP",
+      "origin_candidates": [
+        "VCP"
+      ],
+      "origin_name": "down Campinas",
+      "destination": "LIS",
+      "destination_name": "Lisboa",
+      "departure_date": "2026-11-26",
+      "return_date": "2027-02-19",
+      "trip_mode": "round_trip",
+      "price": 4521.86,
+      "scope": "international",
+      "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
+    },
+    {
+      "source": "Azul",
+      "origin": "VCP",
+      "origin_candidates": [
+        "VCP"
+      ],
+      "origin_name": "horas atrás Reserve agora Campinas",
+      "destination": "MCO",
+      "destination_name": "Orlando",
+      "departure_date": "2027-02-22",
+      "return_date": "2027-03-09",
+      "trip_mode": "round_trip",
+      "price": 4639.02,
+      "scope": "international",
+      "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
+    }
+  ]
+}
