@@ -1,4 +1,4 @@
-from price_monitor.bug_rules import score_product
+from price_monitor.bug_rules import matching_rule, score_product
 
 
 def test_air_fryer_14_is_critical():
@@ -27,5 +27,19 @@ def test_normal_price_does_not_trigger():
 
 
 def test_fake_strikethrough_alone_is_capped():
-    row = score_product(title="Produto genérico", price=100, original_price=1000)
+    row = score_product(title="Produto genérico", price=100, original_price=1000, revalidated=True)
+    assert row["bug_score"] < 70
+
+
+def test_switch_case_is_not_console():
+    title = "Nintendo Switch 2 All-In-One Carrying Case"
+    assert matching_rule(title) is None
+    row = score_product(title=title, price=8.90, original_price=399, revalidated=True)
+    assert row["bug_score"] < 70
+
+
+def test_microwave_glass_plate_is_not_microwave():
+    title = "Placa de vidro para micro-ondas multimodelo 24 cm"
+    assert matching_rule(title) is None
+    row = score_product(title=title, price=79, original_price=125, revalidated=True)
     assert row["bug_score"] < 70
