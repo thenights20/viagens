@@ -11,6 +11,7 @@ class PriceRule:
     pattern: re.Pattern[str]
     conservative_floor: float
     category: str
+    exclude: tuple[str, ...] = ()
 
 
 def _norm(value: str) -> str:
@@ -23,43 +24,69 @@ def _rx(*parts: str) -> re.Pattern[str]:
     return re.compile("|".join(parts), re.I)
 
 
-# Pisos deliberadamente conservadores. Eles não tentam estimar o preço normal exato;
-# servem apenas para reconhecer valores tão baixos que merecem rechecagem imediata.
+CONSOLE_ACCESSORIES = (
+    "case", "carrying", "capa", "bolsa", "estojo", "suporte", "base vertical",
+    "controle", "controller", "skin", "pelicula", "pelicula", "thumb grip", "cooler",
+    "dock", "cabo", "carregador", "headset", "volante", "adaptador", "faceplate",
+)
+NOTEBOOK_ACCESSORIES = (
+    "carregador", "fonte para", "bateria para", "teclado para", "capa para", "case para",
+    "cooler para", "suporte para", "tela para", "dobradica", "memoria para",
+)
+TV_ACCESSORIES = (
+    "suporte para tv", "painel para tv", "controle remoto", "capa para tv", "base para tv",
+    "pedestal para tv", "placa principal", "placa fonte", "barra de led",
+)
+APPLIANCE_PARTS = (
+    "peca para", "peça para", "reposicao", "reposição", "resistencia", "resistência",
+    "cesto", "cesta", "grade", "prato de vidro", "placa de vidro", "porta para",
+    "borracha", "gaveta", "prateleira", "filtro para", "motor para", "painel de controle",
+)
+
+
+# Pisos deliberadamente conservadores. Eles não estimam o preço normal exato;
+# só reconhecem valores tão baixos que justificam rechecagem imediata.
 RULES = [
-    PriceRule("RTX 5090", _rx(r"rtx\s*5090", r"geforce\s*5090"), 8500, "Placas de vídeo"),
-    PriceRule("RTX 5080", _rx(r"rtx\s*5080"), 6000, "Placas de vídeo"),
-    PriceRule("RTX 5070 Ti", _rx(r"rtx\s*5070\s*ti"), 3800, "Placas de vídeo"),
-    PriceRule("RTX 5070", _rx(r"rtx\s*5070"), 2900, "Placas de vídeo"),
-    PriceRule("RTX 5060 Ti", _rx(r"rtx\s*5060\s*ti"), 2200, "Placas de vídeo"),
-    PriceRule("Notebook gamer premium", _rx(r"notebook.*(rtx\s*4070|rtx\s*5070|i9[- ]?14900hx|rog\s*strix|predator\s*helios)"), 5000, "Notebooks"),
-    PriceRule("Notebook gamer", _rx(r"notebook\s*gamer", r"nitro\s*v15", r"rog\s*strix", r"predator"), 2800, "Notebooks"),
-    PriceRule("PlayStation 5", _rx(r"playstation\s*5", r"ps5"), 2400, "Consoles"),
-    PriceRule("Xbox Series X", _rx(r"xbox\s*series\s*x"), 2500, "Consoles"),
-    PriceRule("Nintendo Switch 2", _rx(r"nintendo\s*switch\s*2"), 2200, "Consoles"),
-    PriceRule("iPhone 17 Pro/Max", _rx(r"iphone\s*17.*(pro|max)"), 5200, "Smartphones"),
-    PriceRule("iPhone 17", _rx(r"iphone\s*17"), 3800, "Smartphones"),
-    PriceRule("iPhone 16 Pro/Max", _rx(r"iphone\s*16.*(pro|max)"), 4200, "Smartphones"),
-    PriceRule("Galaxy S Ultra", _rx(r"galaxy\s*s\d+\s*ultra"), 3000, "Smartphones"),
-    PriceRule("TV 65 polegadas", _rx(r"(smart\s*)?tv.*65\s*(polegadas|\"|pol)", r"65.*(qled|oled|uhd|4k)"), 1800, "TVs"),
-    PriceRule("TV 55 polegadas", _rx(r"(smart\s*)?tv.*55\s*(polegadas|\"|pol)", r"55.*(qled|oled|uhd|4k)"), 1400, "TVs"),
-    PriceRule("TV 50 polegadas", _rx(r"(smart\s*)?tv.*(49|50)\s*(polegadas|\"|pol)", r"(49|50).*(qled|oled|uhd|4k|fhd)"), 1000, "TVs"),
-    PriceRule("Micro-ondas", _rx(r"micro[- ]?ondas"), 320, "Eletrodomésticos"),
-    PriceRule("Air Fryer 5L", _rx(r"air\s*fryer.*5\s*l", r"fritadeira.*5\s*l"), 220, "Eletrodomésticos"),
-    PriceRule("Air Fryer", _rx(r"air\s*fryer", r"fritadeira\s*(sem\s*oleo|eletrica)"), 160, "Eletrodomésticos"),
-    PriceRule("Geladeira", _rx(r"geladeira", r"refrigerador"), 1400, "Eletrodomésticos"),
-    PriceRule("Lava e seca", _rx(r"lava\s*e\s*seca"), 1700, "Eletrodomésticos"),
-    PriceRule("Ar-condicionado", _rx(r"ar[- ]?condicionado.*(9000|12000|18000|24000)", r"split.*inverter"), 1000, "Climatização"),
-    PriceRule("Monitor gamer", _rx(r"monitor.*(144hz|165hz|180hz|240hz|300hz|oled|mini\s*led)"), 750, "Monitores"),
-    PriceRule("SSD NVMe 2TB", _rx(r"ssd.*(2\s*tb|2tb).*(nvme|m\.2)", r"(nvme|m\.2).*2\s*tb"), 650, "Armazenamento"),
-    PriceRule("DJI", _rx(r"dji\s*(mini|air|mavic)"), 1600, "Drones e câmeras"),
-    PriceRule("JBL Boombox/PartyBox", _rx(r"jbl.*(boombox|partybox)"), 1200, "Áudio"),
+    PriceRule("RTX 5090", _rx(r"rtx\s*5090", r"geforce\s*5090"), 8500, "Placas de vídeo", ("water block", "backplate", "suporte", "cabo", "fan ")),
+    PriceRule("RTX 5080", _rx(r"rtx\s*5080"), 6000, "Placas de vídeo", ("water block", "backplate", "suporte", "cabo", "fan ")),
+    PriceRule("RTX 5070 Ti", _rx(r"rtx\s*5070\s*ti"), 3800, "Placas de vídeo", ("water block", "backplate", "suporte", "cabo")),
+    PriceRule("RTX 5070", _rx(r"rtx\s*5070"), 2900, "Placas de vídeo", ("water block", "backplate", "suporte", "cabo")),
+    PriceRule("RTX 5060 Ti", _rx(r"rtx\s*5060\s*ti"), 2200, "Placas de vídeo", ("water block", "backplate", "suporte", "cabo")),
+    PriceRule("Notebook gamer premium", _rx(r"notebook.*(rtx\s*4070|rtx\s*5070|i9[- ]?14900hx|rog\s*strix|predator\s*helios)"), 5000, "Notebooks", NOTEBOOK_ACCESSORIES),
+    PriceRule("Notebook gamer", _rx(r"notebook\s*gamer", r"nitro\s*v15", r"rog\s*strix", r"predator"), 2800, "Notebooks", NOTEBOOK_ACCESSORIES),
+    PriceRule("PlayStation 5", _rx(r"playstation\s*5", r"ps5"), 2400, "Consoles", CONSOLE_ACCESSORIES),
+    PriceRule("Xbox Series X", _rx(r"xbox\s*series\s*x"), 2500, "Consoles", CONSOLE_ACCESSORIES),
+    PriceRule("Nintendo Switch 2", _rx(r"nintendo\s*switch\s*2"), 2200, "Consoles", CONSOLE_ACCESSORIES + ("game traveler", "screen protector", "memory card")),
+    PriceRule("iPhone 17 Pro/Max", _rx(r"iphone\s*17.*(pro|max)"), 5200, "Smartphones", ("capa", "case", "pelicula", "carregador", "cabo", "bateria", "display", "tela")),
+    PriceRule("iPhone 17", _rx(r"iphone\s*17"), 3800, "Smartphones", ("capa", "case", "pelicula", "carregador", "cabo", "bateria", "display", "tela")),
+    PriceRule("iPhone 16 Pro/Max", _rx(r"iphone\s*16.*(pro|max)"), 4200, "Smartphones", ("capa", "case", "pelicula", "carregador", "cabo", "bateria", "display", "tela")),
+    PriceRule("Galaxy S Ultra", _rx(r"galaxy\s*s\d+\s*ultra"), 3000, "Smartphones", ("capa", "case", "pelicula", "carregador", "cabo", "bateria", "display", "tela")),
+    PriceRule("TV 65 polegadas", _rx(r"(smart\s*)?tv.*65\s*(polegadas|\"|pol)", r"65.*(qled|oled|uhd|4k)"), 1800, "TVs", TV_ACCESSORIES),
+    PriceRule("TV 55 polegadas", _rx(r"(smart\s*)?tv.*55\s*(polegadas|\"|pol)", r"55.*(qled|oled|uhd|4k)"), 1400, "TVs", TV_ACCESSORIES),
+    PriceRule("TV 50 polegadas", _rx(r"(smart\s*)?tv.*(49|50)\s*(polegadas|\"|pol)", r"(49|50).*(qled|oled|uhd|4k|fhd)"), 1000, "TVs", TV_ACCESSORIES),
+    PriceRule("Micro-ondas", _rx(r"micro[- ]?ondas"), 320, "Eletrodomésticos", APPLIANCE_PARTS),
+    PriceRule("Air Fryer 5L", _rx(r"air\s*fryer.*5\s*l", r"fritadeira.*5\s*l"), 220, "Eletrodomésticos", APPLIANCE_PARTS),
+    PriceRule("Air Fryer", _rx(r"air\s*fryer", r"fritadeira\s*(sem\s*oleo|eletrica)"), 160, "Eletrodomésticos", APPLIANCE_PARTS),
+    PriceRule("Geladeira", _rx(r"geladeira", r"refrigerador"), 1400, "Eletrodomésticos", APPLIANCE_PARTS),
+    PriceRule("Lava e seca", _rx(r"lava\s*e\s*seca"), 1700, "Eletrodomésticos", APPLIANCE_PARTS),
+    PriceRule("Ar-condicionado", _rx(r"ar[- ]?condicionado.*(9000|12000|18000|24000)", r"split.*inverter"), 1000, "Climatização", ("controle remoto", "placa", "motor", "capacitor", "suporte", "capa")),
+    PriceRule("Monitor gamer", _rx(r"monitor.*(144hz|165hz|180hz|240hz|300hz|oled|mini\s*led)"), 750, "Monitores", ("suporte para monitor", "braco para monitor", "braço para monitor", "cabo", "fonte para")),
+    PriceRule("SSD NVMe 2TB", _rx(r"ssd.*(2\s*tb|2tb).*(nvme|m\.2)", r"(nvme|m\.2).*2\s*tb"), 650, "Armazenamento", ("case", "adaptador", "dissipador", "enclosure")),
+    PriceRule("DJI", _rx(r"dji\s*(mini|air|mavic)"), 1600, "Drones e câmeras", ("helice", "hélice", "bateria", "capa", "case", "bolsa", "filtro nd", "controle", "carregador", "protetor")),
+    PriceRule("JBL Boombox/PartyBox", _rx(r"jbl.*(boombox|partybox)"), 1200, "Áudio", ("capa", "case", "bateria", "carregador", "placa", "alca", "alça")),
     PriceRule("Estante/Painel de TV", _rx(r"estante.*tv", r"painel.*tv"), 220, "Casa"),
 ]
 
 
 def matching_rule(title: str) -> PriceRule | None:
     text = _norm(title)
-    matches = [rule for rule in RULES if rule.pattern.search(text)]
+    matches: list[PriceRule] = []
+    for rule in RULES:
+        if not rule.pattern.search(text):
+            continue
+        if any(_norm(term) in text for term in rule.exclude):
+            continue
+        matches.append(rule)
     return max(matches, key=lambda rule: rule.conservative_floor) if matches else None
 
 
