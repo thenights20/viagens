@@ -22,7 +22,7 @@ permissions:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 50
 
     steps:
       - name: Checkout
@@ -40,9 +40,14 @@ jobs:
       - name: Dependências
         run: python -m pip install -r flight-monitor/requirements.txt
 
+      - name: Testes do radar
+        env:
+          PYTHONPATH: flight-monitor:.
+        run: python -m unittest discover -s flight-monitor -p "test_*.py" -v
+
       - name: Varredura de passagens
         env:
-          PYTHONPATH: .
+          PYTHONPATH: flight-monitor:.
         run: python flight-monitor/scan.py
 
       - name: Validar saída
@@ -50,10 +55,14 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
-          for name in ['flight-monitor/data/state.json', 'docs/data/flights.json']:
-              data = json.loads(Path(name).read_text(encoding='utf-8'))
-              assert isinstance(data, dict)
-          print('JSON válido.')
+          state = json.loads(Path('flight-monitor/data/state.json').read_text(encoding='utf-8'))
+          data = json.loads(Path('docs/data/flights.json').read_text(encoding='utf-8'))
+          assert isinstance(state, dict) and isinstance(data, dict)
+          assert data.get('version') == '0.2.0'
+          assert data.get('origin_count', 0) >= 11
+          for row in data.get('deals', []):
+              assert 0 <= int(row.get('deal_score', 0)) <= 100
+          print('JSON e Deal Score válidos.')
           PY
 
       - name: Persistir dados
@@ -64,7 +73,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Nenhuma alteração para salvar."
           else
-            git commit -m "data: atualizar deals de passagens [skip ci]"
+            git commit -m "data: atualizar radar de passagens [skip ci]"
             git pull --rebase origin main
             git push origin main
           fi
@@ -77,13 +86,17 @@ jobs:
               d = json.load(f)
           scan = d.get('scan', {})
           lines = [
-              '## Monitor de passagens',
+              '## Radar de passagens',
               f"- Origens nesta rodada: {', '.join(scan.get('origin_codes', [])) or '-'}",
-              f"- Destinos nesta rodada: {len(scan.get('destination_codes', []))}",
-              f"- Consultas: {scan.get('queries', 0)}",
-              f"- Resultados: {scan.get('results', 0)}",
+              f"- Perfil de datas: {scan.get('date_profile', '-')} ",
+              f"- Destinos fixos nesta rodada: {len(scan.get('destination_codes', []))}",
+              f"- Consultas dirigidas: {scan.get('queries', 0)}",
+              f"- Resultados discovery: {scan.get('discovery_results', 0)}",
+              f"- Fallbacks usados: {scan.get('fallback_results', 0)}",
+              f"- Revalidados: {scan.get('revalidated', 0)}",
               f"- Rotas com histórico: {d.get('route_count', 0)}",
-              f"- Deals exibidos: {d.get('deal_count', 0)}",
+              f"- Deals 70+: {d.get('strong_deal_count', 0)}",
+              f"- Novos alertas: {d.get('new_alert_count', 0)}",
               f"- Erros: {scan.get('errors', 0)}",
               f"- Atualizado: {d.get('generated_at', '-')}"
           ]
