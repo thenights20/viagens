@@ -62,6 +62,8 @@ jobs:
       - name: Validar código e catálogo
         run: |
           python -m py_compile flight-explorer/scan.py
+          node --check docs/flight-explorer.js
+          node --check docs/terabyte-live.js
           python - <<'PY'
           import json
           from pathlib import Path
@@ -84,7 +86,6 @@ jobs:
         run: |
           python - <<'PY'
           import json
-          from datetime import date, timedelta
           from pathlib import Path
           d=json.loads(Path('docs/data/flight-explorer.json').read_text(encoding='utf-8'))
           assert d.get('version')=='0.1.0'
@@ -125,10 +126,11 @@ jobs:
             f"- Janela: {s.get('phase','-')}/6 · {s.get('departure_date','-')} → {s.get('return_date','-')}",
             f"- Consultas dirigidas: {s.get('directed_queries',0)}",
             f"- Resultados fast-flights: {s.get('fast_results',0)}",
+            f"- Fallback Swoop: {s.get('fallback_results',0)}/{s.get('fallback_attempts',0)}",
             f"- Resultados flexíveis Swoop: {s.get('discovery_results',0)}",
             f"- Nacionais disponíveis: {c.get('domestic',{}).get('options',0)}/100",
             f"- Internacionais disponíveis: {c.get('international',{}).get('options',0)}/100",
-            f"- Erros: {s.get('errors',0)}",
+            f"- Erros resumidos: {s.get('errors',0)}",
           ]
           with open(os.environ['GITHUB_STEP_SUMMARY'],'a',encoding='utf-8') as f:
               f.write('\n'.join(lines)+'\n')
