@@ -10,7 +10,7 @@ from selenium.webdriver.common.by import By
 
 from .browser import build_driver
 from .bug_rules import score_product
-from .utils import extract_brl_prices, pick_current_and_original, similar_price
+from .utils import extract_brl_prices, normalize_text, parse_brl, pick_current_and_original, similar_price
 
 
 FIXED_QUERIES = ["notebook gamer", "playstation 5", "smart tv", "placa de video"]
@@ -86,6 +86,111 @@ def _title(anchor, text: str) -> str:
     return max(candidates, key=len)[:300] if candidates else ""
 
 
+def _query_relevant(query: str, title: str) -> bool:
+    q = normalize_text(query)
+    t = normalize_text(title)
+    families = {
+        "placa de video": ("placa de video", "geforce", "radeon", "rtx ", "rx ", "gpu"),
+        "playstation 5": ("playstation 5", "ps5"),
+        "smart tv": ("smart tv", "televisor", " tv "),
+        "notebook gamer": ("notebook", "laptop", "rog strix", "predator", "nitro"),
+        "microondas": ("micro ondas", "microondas"),
+        "air fryer": ("air fryer", "fritadeira"),
+        "nintendo switch 2": ("nintendo switch 2", "switch 2"),
+        "geladeira": ("geladeira", "refrigerador"),
+        "lava e seca": ("lava e seca",),
+        "ar condicionado inverter": ("ar condicionado", "split inverter"),
+        "monitor gamer": ("monitor",),
+        "ssd nvme 2tb": ("ssd", "nvme", "m 2"),
+        "jbl boombox": ("jbl", "boombox"),
+        "jbl partybox": ("jbl", "partybox"),
+        "dji mini": ("dji",),
+        "aspirador robo": ("aspirador", "robo"),
+        "estante tv": ("estante", "tv"),
+        "painel tv": ("painel", "tv"),
+    }
+    for prefix, markers in families.items():
+        if q.startswith(prefix):
+            if prefix in {"ssd nvme 2tb", "jbl boombox", "jbl partybox", "aspirador robo", "estante tv", "painel tv"}:
+                return all(marker in t for marker in markers)
+            return any(marker in t for marker in markers)
+    if q.startswith("rtx "):
+        model = q.replace(" ", "")
+        return model in t.replace(" ", "")
+    if q.startswith("smart tv 50"):
+        return "tv" in t and ("50" in t or "49" in t)
+    if q.startswith("smart tv 65"):
+        return "tv" in t and "65" in t
+    if q.startswith("iphone 17"):
+        return "iphone 17" in t
+    if q.startswith("galaxy s ultra"):
+        return "galaxy" in t and "ultra" in t
+    if q.startswith("xbox series x"):
+        return "xbox series x" in t
+    return True
+
+
+def _amazon_card(anchor) -> tuple[str | None, float | None, float | None]:
+    try:
+        card = anchor.find_element(By.XPATH, "./ancestor::div[@data-component-type='s-search-result'][1]")
+    except Exception:
+        return None, None, None
+    title = ""
+    for selector in ("h2 span", "h2 a span"):
+        try:
+            title = (card.find_element(By.CSS_SELECTOR, selector).text or "").strip()
+        except Exception:
+            continue
+        if title:
+            break
+    current: float | None = None
+    for selector in (".a-price:not(.a-text-price) .a-offscreen", ".a-price .a-offscreen"):
+        try:
+            elements = card.find_elements(By.CSS_SELECTOR, selector)
+        except Exception:
+            elements = []
+        for element in elements:
+            value = parse_brl(element.get_attribute("textContent") or element.text or "")
+            if value:
+                current = value
+                break
+        if current:
+            break
+    originals: list[float] = []
+    try:
+        elements = card.find_elements(By.CSS_SELECTOR, ".a-text-price .a-offscreen")
+    except Exception:
+        elements = []
+    for element in elements:
+        value = parse_brl(element.get_attribute("textContent") or element.text or "")
+        if value and (not current or value > current * 1.03):
+            originals.append(value)
+    original = max(originals) if originals else None
+    return title[:300] if title else None, current, original
+
+
+def _amazon_pdp_prices(driver) -> list[float]:
+    selectors = (
+        "#corePrice_feature_div .a-price .a-offscreen",
+        "#corePriceDisplay_desktop_feature_div .a-price .a-offscreen",
+        "#apex_desktop .a-price .a-offscreen",
+        "#price_inside_buybox",
+        "#priceblock_ourprice",
+        "#priceblock_dealprice",
+    )
+    values: list[float] = []
+    for selector in selectors:
+        try:
+            elements = driver.find_elements(By.CSS_SELECTOR, selector)
+        except Exception:
+            continue
+        for element in elements:
+            value = parse_brl(element.get_attribute("textContent") or element.text or "")
+            if value and value not in values:
+                values.append(value)
+    return values
+
+
 def selected_queries(slot: int) -> list[str]:
     if not ROTATING_QUERIES:
         return list(FIXED_QUERIES)
@@ -117,15 +222,21 @@ def scan_source(name: str, cfg: dict, queries: list[str]) -> tuple[list[dict], d
                     if href in seen:
                         continue
                     text = _card_text(driver, anchor)
-                    if "R$" not in text:
-                        continue
-                    prices = extract_brl_prices(text)
-                    current, original = pick_current_and_original(prices)
-                    title = _title(anchor, text)
-                    if not current or not title:
+                    if name == "Amazon Brasil":
+                        amz_title, current, original = _amazon_card(anchor)
+                        title = amz_title or _title(anchor, text)
+                        if current is None:
+                            prices = extract_brl_prices(text)
+                            current, original = pick_current_and_original(prices)
+                    else:
+                        if "R$" not in text:
+                            continue
+                        prices = extract_brl_prices(text)
+                        current, original = pick_current_and_original(prices)
+                        title = _title(anchor, text)
+                    if not current or not title or not _query_relevant(query, title):
                         continue
                     score = score_product(title=title, price=current, original_price=original, source=name)
-                    # O scanner rápido guarda apenas candidatos; preços comuns não justificam abrir PDP.
                     if int(score.get("bug_score", 0)) < 55:
                         continue
                     seen.add(href)
@@ -154,10 +265,12 @@ def scan_source(name: str, cfg: dict, queries: list[str]) -> tuple[list[dict], d
             except Exception:
                 pass
     rows.sort(key=lambda x: (-int(x.get("bug_score", 0)), float(x.get("price", 0))))
-    return rows[:35], {
-        "ok": not bool(errors) or bool(rows),
-        "items": len(rows),
-        "message": "scanner rápido" if rows else ("; ".join(errors[:4]) or "nenhum candidato extremo nesta rodada"),
+    returned = rows[:35]
+    return returned, {
+        "ok": not bool(errors) or bool(returned),
+        "items": len(returned),
+        "candidates_seen": len(rows),
+        "message": "scanner rápido" if returned else ("; ".join(errors[:4]) or "nenhum candidato extremo nesta rodada"),
         "errors": errors[:8],
     }
 
@@ -194,7 +307,10 @@ def revalidate_candidate(row: dict) -> tuple[dict, str | None]:
         if any(x in low for x in ("produto indisponível", "produto indisponivel", "esgotado", "anúncio pausado", "anuncio pausado")):
             row["available"] = False
             return row, "produto indisponível na rechecagem"
-        prices = extract_brl_prices(body)
+        if str(row.get("source")) == "Amazon Brasil":
+            prices = _amazon_pdp_prices(driver)
+        else:
+            prices = extract_brl_prices(body)
         current = float(row.get("price") or 0)
         if not any(similar_price(p, current, 0.05) for p in prices):
             return row, "preço não apareceu novamente na página"
