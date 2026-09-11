@@ -3,7 +3,7 @@ name: Monitor de passagens
 on:
   workflow_dispatch:
   push:
-    branches: [main, feat/flight-radar-v2]
+    branches: [main]
     paths:
       - "flight-monitor/**"
       - "search_core.py"
@@ -13,7 +13,7 @@ on:
     - cron: "37 * * * *"
 
 concurrency:
-  group: flight-monitor-${{ github.ref }}
+  group: flight-monitor
   cancel-in-progress: true
 
 permissions:
@@ -45,20 +45,6 @@ jobs:
           PYTHONPATH: flight-monitor:.
         run: python -m unittest discover -s flight-monitor -p "test_*.py" -v
 
-      - name: Diagnóstico Swoop na branch
-        if: github.ref == 'refs/heads/feat/flight-radar-v2'
-        run: |
-          python - <<'PY'
-          from swoop import TransportConfig, deals
-          try:
-              result = deals('GRU', include_basic_economy=True, transport=TransportConfig(country='BR', timeout=70, retries=1))
-              print('Swoop discovery GRU:', len(result.deals), 'partial=', result.partial)
-              for item in result.deals[:3]:
-                  print(item.origin, item.destination, item.price, item.typical_price, item.discount_pct)
-          except Exception as exc:
-              print('Swoop discovery GRU ERRO:', type(exc).__name__, str(exc))
-          PY
-
       - name: Varredura de passagens
         env:
           PYTHONPATH: flight-monitor:.
@@ -84,7 +70,6 @@ jobs:
           PY
 
       - name: Persistir dados
-        if: github.ref == 'refs/heads/main'
         run: |
           git config user.name "flight-monitor-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
