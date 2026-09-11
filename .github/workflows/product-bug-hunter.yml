@@ -10,6 +10,7 @@ on:
       - "price-monitor/src/price_monitor/fast_market_scan.py"
       - "price-monitor/src/price_monitor/run_bug_hunter.py"
       - "price-monitor/upgrade_product_dashboard.py"
+      - "price-monitor/finalize_product_dashboard.py"
       - "price-monitor/tests/test_bug_rules.py"
       - "price-monitor/requirements.txt"
       - ".github/workflows/product-bug-hunter.yml"
@@ -53,7 +54,9 @@ jobs:
         run: python -m pytest -q price-monitor/tests/test_bug_rules.py
 
       - name: Atualizar interface
-        run: python price-monitor/upgrade_product_dashboard.py
+        run: |
+          python price-monitor/upgrade_product_dashboard.py
+          python price-monitor/finalize_product_dashboard.py
 
       - name: Validar JavaScript
         run: |
