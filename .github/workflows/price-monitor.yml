@@ -51,6 +51,7 @@ jobs:
       - name: Atualização
         env:
           PYTHONPATH: price-monitor/src
+          MELI_ACCESS_TOKEN: ${{ secrets.MELI_ACCESS_TOKEN }}
         run: |
           python -m price_monitor.run_online \
             --config price-monitor/config.json \
