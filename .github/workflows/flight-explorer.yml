@@ -54,10 +54,10 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-          cache-dependency-path: flight-monitor/requirements.txt
+          cache-dependency-path: flight-explorer/requirements.txt
 
       - name: Dependências
-        run: python -m pip install -r flight-monitor/requirements.txt
+        run: python -m pip install -r flight-explorer/requirements.txt
 
       - name: Validar código e catálogo
         run: |
@@ -79,7 +79,7 @@ jobs:
       - name: Buscar passagens até 6 meses
         env:
           PYTHONPATH: flight-monitor:.
-          EXPLORER_ORIGIN: ${{ github.event.inputs.origin != 'auto' && github.event.inputs.origin || '' }}
+          EXPLORER_ORIGIN: ${{ github.ref_name == 'feat/flight-explorer-100' && 'DOU' || (github.event.inputs.origin != 'auto' && github.event.inputs.origin || '') }}
         run: python flight-explorer/scan.py
 
       - name: Validar feed
