@@ -1,14 +1,36 @@
 from __future__ import annotations
 
+import json
+import subprocess
+import sys
 from datetime import date
+from pathlib import Path
 from typing import Any
 
 from search_core import query_cheapest
 
+WORKER = Path(__file__).resolve().with_name("swoop_worker.py")
 
-def _google_query_url(origin: str, destination: str, dep: date, ret: date) -> str:
-    from search_core import google_url
-    return google_url(origin, destination, dep, ret)
+
+def _run_swoop(payload: dict, timeout: int = 90) -> Any:
+    proc = subprocess.run(
+        [sys.executable, str(WORKER)],
+        input=json.dumps(payload, ensure_ascii=False),
+        text=True,
+        capture_output=True,
+        timeout=timeout,
+        check=False,
+    )
+    raw = (proc.stdout or "").strip()
+    if not raw:
+        raise RuntimeError((proc.stderr or "Swoop sem saída").strip()[-800:])
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(f"saída Swoop inválida: {raw[-500:]}") from exc
+    if not data.get("ok"):
+        raise RuntimeError(str(data.get("error") or "erro desconhecido no Swoop"))
+    return data.get("result")
 
 
 def search_fast_flights(origin: str, destination: str, dep: date, ret: date, params: dict[str, Any]) -> dict | None:
@@ -33,74 +55,16 @@ def search_fast_flights(origin: str, destination: str, dep: date, ret: date, par
     }
 
 
-def _swoop_airline(option: Any) -> str:
-    names: list[str] = []
-    for leg in getattr(option, "legs", []) or []:
-        itinerary = getattr(leg, "itinerary", None)
-        if itinerary is None:
-            continue
-        for name in getattr(itinerary, "airline_names", []) or []:
-            if name and name not in names:
-                names.append(str(name))
-    return ", ".join(names) if names else "Google Flights"
-
-
-def _swoop_duration_and_stops(option: Any) -> tuple[int, int]:
-    duration = 0
-    stops = 0
-    for leg in getattr(option, "legs", []) or []:
-        itinerary = getattr(leg, "itinerary", None)
-        if itinerary is None:
-            continue
-        segments = list(getattr(itinerary, "segments", []) or [])
-        if segments:
-            stops += max(0, len(segments) - 1)
-        value = getattr(itinerary, "duration_minutes", None)
-        if value is None:
-            value = getattr(itinerary, "duration", None)
-        try:
-            duration += int(value or 0)
-        except (TypeError, ValueError):
-            pass
-    return duration, stops
-
-
 def search_swoop(origin: str, destination: str, dep: date, ret: date, params: dict[str, Any]) -> dict | None:
-    from swoop import Passengers, SORT_CHEAPEST, TransportConfig, search
-
-    result = search(
-        origin,
-        destination,
-        dep.isoformat(),
-        return_date=ret.isoformat(),
-        cabin="economy",
-        passengers=Passengers(adults=int(params.get("adults", 1))),
-        max_stops=int(params.get("max_stops", 2)),
-        sort=SORT_CHEAPEST,
-        include_basic_economy=True,
-        transport=TransportConfig(country="BR", timeout=70, retries=1),
-    )
-    options = [x for x in (result.results or []) if getattr(x, "price", None)]
-    if not options:
-        return None
-    option = min(options, key=lambda x: int(x.price))
-    duration, stops = _swoop_duration_and_stops(option)
-    return {
+    return _run_swoop({
+        "mode": "exact",
         "origin": origin,
         "destination": destination,
         "departure_date": dep.isoformat(),
         "return_date": ret.isoformat(),
-        "airline": _swoop_airline(option),
-        "price": round(float(option.price), 2),
-        "duration": f"{duration // 60}h {duration % 60:02d}min" if duration else "",
-        "duration_minutes": duration,
-        "stops": "Direto" if stops == 0 else f"{stops} escala" + ("s" if stops != 1 else ""),
-        "stops_count": stops,
-        "departure": "",
-        "arrival": "",
-        "url": _google_query_url(origin, destination, dep, ret),
-        "provider": "swoop",
-    }
+        "max_stops": int(params.get("max_stops", 2)),
+        "adults": int(params.get("adults", 1)),
+    })
 
 
 def search_with_fallback(origin: str, destination: str, dep: date, ret: date, params: dict[str, Any], config: dict) -> tuple[dict | None, list[str]]:
@@ -129,53 +93,24 @@ def discover_swoop_deals(origin: dict, config: dict) -> tuple[list[dict], str | 
     if not config.get("providers", {}).get("swoop_discovery", True):
         return [], None
     try:
-        from swoop import Passengers, TransportConfig, deals
-
-        result = deals(
-            origin["code"],
-            cabin="economy",
-            max_stops=int(config["scan"].get("max_stops", 2)),
-            passengers=Passengers(adults=1),
-            include_basic_economy=bool(config.get("providers", {}).get("include_basic_economy", True)),
-            min_discount_pct=int(config["scan"].get("discovery_min_discount_pct", 0)) or None,
-            transport=TransportConfig(country="BR", timeout=70, retries=1),
-        )
-        rows: list[dict] = []
-        for item in result.deals or []:
-            if not item.destination or not item.departure_date or not item.return_date or not item.price:
-                continue
-            rows.append({
-                "origin": item.origin or origin["code"],
-                "origin_name": origin["name"],
-                "destination": item.destination,
-                "destination_name": item.destination_city or item.destination,
-                "destination_country": item.destination_country or "",
-                "departure_date": item.departure_date,
-                "return_date": item.return_date,
-                "airline": ", ".join(item.airline_names or []) or ", ".join(item.airlines or []) or "Google Flights",
-                "price": round(float(item.price), 2),
-                "duration": f"{int(item.duration_minutes) // 60}h {int(item.duration_minutes) % 60:02d}min" if item.duration_minutes else "",
-                "duration_minutes": int(item.duration_minutes or 0),
-                "stops": "Direto" if item.stops == 0 else (f"{item.stops} escala" + ("s" if item.stops != 1 else "") if item.stops is not None else ""),
-                "stops_count": int(item.stops or 0),
-                "departure": "",
-                "arrival": "",
-                "url": item.booking_url or _google_query_url(origin["code"], item.destination, date.fromisoformat(item.departure_date), date.fromisoformat(item.return_date)),
-                "provider": "swoop-deals",
-                "provider_typical_price": float(item.typical_price) if item.typical_price else None,
-                "provider_discount_pct": float(item.discount_pct) if item.discount_pct is not None else None,
-                "discovered": True,
-            })
+        rows = _run_swoop({
+            "mode": "discovery",
+            "origin": origin["code"],
+            "max_stops": int(config["scan"].get("max_stops", 2)),
+            "min_discount_pct": int(config["scan"].get("discovery_min_discount_pct", 0)),
+        }) or []
+        for row in rows:
+            row["origin_name"] = origin["name"]
         return rows, None
     except Exception as exc:  # noqa: BLE001
         return [], str(exc)
 
 
 def revalidate_candidate(candidate: dict, config: dict) -> tuple[str, float | None, str | None]:
-    """Reconsulta o mesmo itinerário com a implementação alternativa.
+    """Reconsulta o mesmo itinerário com uma implementação alternativa.
 
-    Retorna (status, preço, erro). Ambos os coletores consultam Google Flights,
-    portanto isto confirma por uma segunda implementação, não por uma segunda OTA.
+    Os dois coletores consultam Google Flights; a confirmação é técnica por
+    implementação independente, não uma confirmação por uma segunda OTA.
     """
     if not config.get("providers", {}).get("swoop_confirm", True):
         return "none", None, None
