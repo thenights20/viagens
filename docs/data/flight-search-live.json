@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T22:40:12.590215Z",
-  "updated_at": "2026-09-12T22:40:12.590215Z",
+  "generated_at": "2026-09-12T22:40:21.217021Z",
+  "updated_at": "2026-09-12T22:40:21.217021Z",
   "started_at": "2026-09-12T21:32:44.344668Z",
   "status": "running",
   "stage": "fallback",
@@ -21,9 +21,9 @@
     "processed_combinations": 7140,
     "primary_completed": 7140,
     "primary_total": 7140,
-    "fallback_done": 1949,
+    "fallback_done": 1951,
     "fallback_total": 4532,
-    "priced_combinations": 4326,
+    "priced_combinations": 4328,
     "coverage_pct": 60.6,
     "lowest_price": 2338.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 2,
     "same": 250,
-    "new": 4074
+    "new": 4076
   },
   "daily_min": [
     {
@@ -62035,6 +62035,31 @@
     {
       "origin": "GRU",
       "destination": "MIA",
+      "departure_date": "2026-12-09",
+      "return_date": "2027-02-28",
+      "airline": "Arajet",
+      "price": 3859.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-12-09+returning+2027-02-28",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 81,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
       "departure_date": "2026-12-31",
       "return_date": "2027-02-07",
       "airline": "Arajet",
@@ -86424,6 +86449,31 @@
       "provider": "swoop",
       "source_kind": "swoop",
       "trip_days": 69,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2026-12-10",
+      "return_date": "2026-12-20",
+      "airline": "Arajet",
+      "price": 4396.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-12-10+returning+2026-12-20",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 10,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -113821,7 +113871,7 @@
     "2026-12-09->2027-02-12: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
   ],
   "current_pair": {
-    "departure_date": "2026-12-09",
-    "return_date": "2027-02-26"
+    "departure_date": "2026-12-10",
+    "return_date": "2026-12-20"
   }
 }
