@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T21:44:40.762195Z",
-  "updated_at": "2026-09-12T21:44:40.762195Z",
+  "generated_at": "2026-09-12T21:44:42.427089Z",
+  "updated_at": "2026-09-12T21:44:42.427089Z",
   "started_at": "2026-09-12T21:32:44.344668Z",
   "status": "running",
   "stage": "google",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 7140,
-    "processed_combinations": 4368,
-    "primary_completed": 4368,
+    "processed_combinations": 4380,
+    "primary_completed": 4380,
     "primary_total": 7140,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 1983,
+    "priced_combinations": 1985,
     "coverage_pct": 27.8,
     "lowest_price": 2338.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 2,
     "same": 250,
-    "new": 1731
+    "new": 1733
   },
   "daily_min": [
     {
@@ -784,6 +784,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 41,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2026-12-16",
+      "return_date": "2026-12-23",
+      "airline": "Arajet",
+      "price": 3377.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2026, 12, 16] [5, 20]",
+      "arrival": "[2026, 12, 16] [15, 8]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-12-16+returning+2026-12-23",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 7,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -25124,6 +25149,31 @@
     {
       "origin": "GRU",
       "destination": "MIA",
+      "departure_date": "2026-12-16",
+      "return_date": "2026-12-23",
+      "airline": "Arajet",
+      "price": 3377.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2026, 12, 16] [5, 20]",
+      "arrival": "[2026, 12, 16] [15, 8]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-12-16+returning+2026-12-23",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 7,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
       "departure_date": "2026-11-05",
       "return_date": "2027-01-20",
       "airline": "Arajet",
@@ -44549,6 +44599,31 @@
     {
       "origin": "GRU",
       "destination": "MIA",
+      "departure_date": "2026-12-16",
+      "return_date": "2026-12-22",
+      "airline": "Arajet",
+      "price": 4340.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2026, 12, 16] [5, 20]",
+      "arrival": "[2026, 12, 16] [15, 8]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-12-16+returning+2026-12-22",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 6,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
       "departure_date": "2026-11-23",
       "return_date": "2026-12-20",
       "airline": "Aerolineas Argentinas",
@@ -53136,6 +53211,6 @@
   ],
   "current_pair": {
     "departure_date": "2026-12-16",
-    "return_date": "2026-12-21"
+    "return_date": "2027-01-01"
   }
 }
