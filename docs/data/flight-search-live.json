@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T21:56:40.604708Z",
-  "updated_at": "2026-09-12T21:56:40.604708Z",
+  "generated_at": "2026-09-12T21:56:48.877528Z",
+  "updated_at": "2026-09-12T21:56:48.877528Z",
   "started_at": "2026-09-12T21:32:44.344668Z",
   "status": "running",
   "stage": "fallback",
@@ -21,9 +21,9 @@
     "processed_combinations": 7140,
     "primary_completed": 7140,
     "primary_total": 7140,
-    "fallback_done": 150,
+    "fallback_done": 152,
     "fallback_total": 4532,
-    "priced_combinations": 2733,
+    "priced_combinations": 2734,
     "coverage_pct": 38.3,
     "lowest_price": 2338.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 2,
     "same": 250,
-    "new": 2481
+    "new": 2482
   },
   "daily_min": [
     {
@@ -45408,6 +45408,31 @@
     {
       "origin": "GRU",
       "destination": "MIA",
+      "departure_date": "2026-11-08",
+      "return_date": "2026-12-11",
+      "airline": "Avianca",
+      "price": 4016.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-11-08+returning+2026-12-11",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 33,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
       "departure_date": "2026-11-11",
       "return_date": "2026-11-21",
       "airline": "Avianca",
@@ -73557,7 +73582,6 @@
     }
   ],
   "errors": [
-    "2026-11-20->2027-01-29: ProviderResponseError: Google document has no flight data script",
     "2026-11-20->2027-02-04: ProviderResponseError: Google document has no flight data script",
     "2026-11-20->2027-01-31: ProviderResponseError: Google document has no flight data script",
     "2026-11-20->2027-02-15: ProviderResponseError: Google document has no flight data script",
@@ -73616,10 +73640,11 @@
     "2026-11-07->2027-01-20: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
     "2026-11-07->2027-01-08: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
     "2026-11-07->2027-01-17: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "2026-11-07->2027-02-12: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
+    "2026-11-07->2027-02-12: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "2026-11-07->2027-02-25: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
   ],
   "current_pair": {
-    "departure_date": "2026-11-07",
-    "return_date": "2027-02-24"
+    "departure_date": "2026-11-08",
+    "return_date": "2026-12-11"
   }
 }
