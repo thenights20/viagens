@@ -1,4 +1,5 @@
 name: Busca de passagens sob demanda
+run-name: "Busca ${{ inputs.request_id }} · ${{ inputs.origin }} → ${{ inputs.destination }} · ${{ inputs.month }}"
 
 on:
   workflow_dispatch:
