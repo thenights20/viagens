@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T21:45:35.433980Z",
-  "updated_at": "2026-09-12T21:45:35.433980Z",
+  "generated_at": "2026-09-12T21:45:36.967901Z",
+  "updated_at": "2026-09-12T21:45:36.967901Z",
   "started_at": "2026-09-12T21:32:44.344668Z",
   "status": "running",
   "stage": "google",
@@ -18,13 +18,13 @@
   },
   "stats": {
     "combinations": 7140,
-    "processed_combinations": 4788,
-    "primary_completed": 4788,
+    "processed_combinations": 4800,
+    "primary_completed": 4800,
     "primary_total": 7140,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 2066,
-    "coverage_pct": 28.9,
+    "priced_combinations": 2068,
+    "coverage_pct": 29.0,
     "lowest_price": 2338.0,
     "result_count": 100
   },
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 2,
     "same": 250,
-    "new": 1814
+    "new": 1816
   },
   "daily_min": [
     {
@@ -934,6 +934,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 51,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2026-12-22",
+      "return_date": "2026-12-23",
+      "airline": "Arajet",
+      "price": 4473.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2026, 12, 22] [1]",
+      "arrival": "[2026, 12, 22] [11, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-12-22+returning+2026-12-23",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 1,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -47174,6 +47199,31 @@
     {
       "origin": "GRU",
       "destination": "MIA",
+      "departure_date": "2026-12-22",
+      "return_date": "2026-12-23",
+      "airline": "Arajet",
+      "price": 4473.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2026, 12, 22] [1]",
+      "arrival": "[2026, 12, 22] [11, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-12-22+returning+2026-12-23",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 1,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
       "departure_date": "2026-11-02",
       "return_date": "2027-01-17",
       "airline": "Arajet",
@@ -54349,6 +54399,31 @@
     {
       "origin": "GRU",
       "destination": "MIA",
+      "departure_date": "2026-12-22",
+      "return_date": "2026-12-25",
+      "airline": "LATAM",
+      "price": 5126.0,
+      "duration": "10h 30min",
+      "duration_minutes": 630,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2026, 12, 22] [16, 15]",
+      "arrival": "[2026, 12, 23] [12, 30]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-12-22+returning+2026-12-25",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 3,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
       "departure_date": "2026-11-12",
       "return_date": "2027-01-03",
       "airline": "Arajet",
@@ -55360,7 +55435,7 @@
     "2026-11-22->2026-11-30: ProviderResponseError: Google document has no flight data script"
   ],
   "current_pair": {
-    "departure_date": "2026-12-21",
-    "return_date": "2027-02-28"
+    "departure_date": "2026-12-22",
+    "return_date": "2026-12-29"
   }
 }
