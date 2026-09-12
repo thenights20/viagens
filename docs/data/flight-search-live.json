@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T22:30:04.676718Z",
-  "updated_at": "2026-09-12T22:30:04.676718Z",
+  "generated_at": "2026-09-12T22:30:13.456044Z",
+  "updated_at": "2026-09-12T22:30:13.456044Z",
   "started_at": "2026-09-12T21:32:44.344668Z",
   "status": "running",
   "stage": "fallback",
@@ -21,10 +21,10 @@
     "processed_combinations": 7140,
     "primary_completed": 7140,
     "primary_total": 7140,
-    "fallback_done": 1496,
+    "fallback_done": 1499,
     "fallback_total": 4532,
-    "priced_combinations": 3923,
-    "coverage_pct": 54.9,
+    "priced_combinations": 3925,
+    "coverage_pct": 55.0,
     "lowest_price": 2338.0,
     "result_count": 100
   },
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 2,
     "same": 250,
-    "new": 3671
+    "new": 3673
   },
   "daily_min": [
     {
@@ -29083,6 +29083,31 @@
     {
       "origin": "GRU",
       "destination": "MIA",
+      "departure_date": "2026-12-04",
+      "return_date": "2027-01-21",
+      "airline": "Arajet",
+      "price": 3183.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-12-04+returning+2027-01-21",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 48,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
       "departure_date": "2027-01-27",
       "return_date": "2027-02-07",
       "airline": "Arajet",
@@ -36022,6 +36047,31 @@
       "provider": "swoop",
       "source_kind": "swoop",
       "trip_days": 40,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2026-12-04",
+      "return_date": "2027-01-28",
+      "airline": "Arajet",
+      "price": 3444.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-12-04+returning+2027-01-28",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 55,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -103532,7 +103582,6 @@
     }
   ],
   "errors": [
-    "2026-11-14->2027-02-27: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
     "2026-11-14->2027-02-26: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
     "2026-11-15->2026-12-18: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
     "2026-11-15->2026-12-25: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
@@ -103591,10 +103640,11 @@
     "2026-12-03->2027-01-13: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying.",
     "2026-12-03->2027-02-19: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
     "2026-12-04->2026-12-26: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying.",
-    "2026-12-04->2027-01-08: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying."
+    "2026-12-04->2027-01-08: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying.",
+    "2026-12-04->2027-01-22: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
   ],
   "current_pair": {
     "departure_date": "2026-12-04",
-    "return_date": "2027-01-23"
+    "return_date": "2027-01-22"
   }
 }
