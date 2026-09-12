@@ -1,7 +1,17 @@
-name: Auditoria isolada de passagens
+name: Testes de busca de passagens
 on:
   push:
-    branches: [audit/flight-search-20260912]
+    branches: [main, audit/flight-search-20260912]
+    paths:
+      - 'flight_response.py'
+      - 'search_core.py'
+      - 'flight-month-search/**'
+      - 'docs/flight-explorer.js'
+      - 'docs/terabyte-live.js'
+      - 'docs/index.html'
+      - 'apps-script/**'
+      - 'tests/**'
+      - '.github/workflows/audit-flight-search.yml'
 permissions:
   contents: read
 jobs:
