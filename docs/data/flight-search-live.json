@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T23:51:33.767591Z",
-  "updated_at": "2026-09-12T23:51:33.767591Z",
+  "generated_at": "2026-09-12T23:51:35.528873Z",
+  "updated_at": "2026-09-12T23:51:35.528873Z",
   "started_at": "2026-09-12T23:31:44.359739Z",
   "status": "running",
   "stage": "google",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 7140,
-    "processed_combinations": 6036,
-    "primary_completed": 6036,
+    "processed_combinations": 6048,
+    "primary_completed": 6048,
     "primary_total": 7140,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 1114,
+    "priced_combinations": 1115,
     "coverage_pct": 15.6,
     "lowest_price": 2415.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 1114
+    "new": 1115
   },
   "daily_min": [
     {
@@ -16413,6 +16413,31 @@
     {
       "origin": "GRU",
       "destination": "EWR",
+      "departure_date": "2027-03-14",
+      "return_date": "2027-04-10",
+      "airline": "United",
+      "price": 5065.0,
+      "duration": "9h 45min",
+      "duration_minutes": 585,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2027, 3, 14] [22, 25]",
+      "arrival": "[2027, 3, 15] [7, 10]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+EWR+on+2027-03-14+returning+2027-04-10",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 27,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "EWR",
       "departure_date": "2027-01-12",
       "return_date": "2027-01-20",
       "airline": "Arajet",
@@ -32025,6 +32050,6 @@
   ],
   "current_pair": {
     "departure_date": "2027-03-14",
-    "return_date": "2027-04-09"
+    "return_date": "2027-04-18"
   }
 }
