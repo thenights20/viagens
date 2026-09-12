@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T23:54:10.233882Z",
-  "updated_at": "2026-09-12T23:54:10.233882Z",
+  "generated_at": "2026-09-12T23:54:12.097423Z",
+  "updated_at": "2026-09-12T23:54:12.097423Z",
   "started_at": "2026-09-12T23:31:44.359739Z",
   "status": "running",
   "stage": "google",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 7140,
-    "processed_combinations": 6840,
-    "primary_completed": 6840,
+    "processed_combinations": 6852,
+    "primary_completed": 6852,
     "primary_total": 7140,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 1148,
+    "priced_combinations": 1149,
     "coverage_pct": 16.1,
     "lowest_price": 2415.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 1148
+    "new": 1149
   },
   "daily_min": [
     {
@@ -1778,6 +1778,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 12,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "EWR",
+      "departure_date": "2027-04-05",
+      "return_date": "2027-04-30",
+      "airline": "United",
+      "price": 4941.0,
+      "duration": "11h 26min",
+      "duration_minutes": 686,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 4, 5] [21, 30]",
+      "arrival": "[2027, 4, 6] [9, 46]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+EWR+on+2027-04-05+returning+2027-04-30",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 25,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -16582,6 +16607,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 20,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "EWR",
+      "departure_date": "2027-04-05",
+      "return_date": "2027-04-30",
+      "airline": "United",
+      "price": 4941.0,
+      "duration": "11h 26min",
+      "duration_minutes": 686,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 4, 5] [21, 30]",
+      "arrival": "[2027, 4, 6] [9, 46]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+EWR+on+2027-04-05+returning+2027-04-30",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 25,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -33254,7 +33304,7 @@
     "2027-01-09->2027-04-18: ProviderResponseError: Google returned a provider error"
   ],
   "current_pair": {
-    "departure_date": "2027-04-05",
-    "return_date": "2027-04-29"
+    "departure_date": "2027-04-06",
+    "return_date": "2027-04-15"
   }
 }
