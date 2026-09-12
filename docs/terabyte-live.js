@@ -175,7 +175,7 @@
   const loadExplorer = () => {
     if (document.querySelector('script[data-flight-explorer]')) return;
     const s = document.createElement('script');
-    s.src = './flight-explorer.js?v=20260912-4';
+    s.src = './flight-explorer.js?v=20260912-5';
     s.defer = true;
     s.dataset.flightExplorer = '1';
     document.head.appendChild(s);

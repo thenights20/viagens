@@ -33,3 +33,19 @@ test('failed workflow preserves partial results with partial status',async()=>{
  vm.runInContext(section('  async function pollSearch','  function postBridge'),ctx);
  const result=await ctx.pollSearch(request,Date.now(),15);assert.equal(result.status,'partial');assert.equal(result.results.length,1);
 });
+test('Apps Script routes root URL requests with query parameters',()=>{
+ const bridge=fs.readFileSync('apps-script/Code.gs','utf8');
+ const ctx=vm.createContext({});vm.runInContext(bridge,ctx);
+ ctx.json_=x=>x;ctx.startSearch_=x=>({accepted:x.request_id});ctx.progressUpdate_=x=>x;ctx.cancelSearch_=x=>({cancelled:x.request_id});ctx.getProgress_=id=>({request_id:id,status:'queued'});ctx.jsonp_=(x,callback)=>({payload:x,callback});
+ const post=ctx.doPost({parameter:{route:'api/search'},postData:{contents:JSON.stringify({request_id:'web_test_request'})}});
+ assert.equal(post.accepted,'web_test_request');
+ const progress=ctx.doGet({parameter:{route:'api/progress/web_test_request',callback:'flightCallback'}});
+ assert.equal(progress.payload.request_id,'web_test_request');assert.equal(progress.callback,'flightCallback');
+ assert.equal(ctx.doPost({parameter:{route:'api/cancel'},postData:{contents:'{"request_id":"web_test_request"}'}}).cancelled,'web_test_request');
+ assert.equal(ctx.doGet({parameter:{}}).version,'0.3.1');
+});
+test('transport sends to exec query instead of appending a path',async()=>{
+ let url;const ctx=vm.createContext({apiBase:'https://script.google.com/macros/s/test/exec',AbortController,setTimeout,clearTimeout,fetch:async u=>{url=u;return {type:'opaque'}}});
+ vm.runInContext(section('  function postBridge','  function dispatchWithoutCors'),ctx);
+ await ctx.postBridge('api/search',{});assert.equal(url,'https://script.google.com/macros/s/test/exec?route=api%2Fsearch');
+});

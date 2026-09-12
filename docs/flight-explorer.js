@@ -62,7 +62,7 @@
 
   const panel=document.createElement('div');panel.id='flightMonthPanel';panel.hidden=true;
   panel.innerHTML=`
-    <div class="month-titlebar"><div><strong>🔎 Buscar passagens · v0.4.1</strong><small>Os achados são salvos durante a pesquisa. Se a execução parar, o que já foi encontrado continua disponível.</small></div><div class="pill"><span class="dot"></span><span id="monthSearchUpdated">Aguardando busca</span></div></div>
+    <div class="month-titlebar"><div><strong>🔎 Buscar passagens · v0.4.2</strong><small>Os achados são salvos durante a pesquisa. Se a execução parar, o que já foi encontrado continua disponível.</small></div><div class="pill"><span class="dot"></span><span id="monthSearchUpdated">Aguardando busca</span></div></div>
     <section class="panel">
       <div class="month-search-grid">
         <div><label>Origem</label><select id="monthOrigin"></select></div>
@@ -151,7 +151,7 @@
       const finish=value=>{clearTimeout(timer);script.remove();delete window[callback];resolve(value)};
       const timer=setTimeout(()=>finish(null),8000);
       window[callback]=finish;script.onerror=()=>finish(null);
-      script.src=`${apiBase}/api/progress/${request.request_id}?callback=${callback}&t=${Date.now()}`;
+      script.src=`${apiBase}?route=${encodeURIComponent(`api/progress/${request.request_id}`)}&callback=${callback}&t=${Date.now()}`;
       document.head.appendChild(script);
     });
   }
@@ -176,7 +176,7 @@
 
   function postBridge(path,body){
     const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);
-    return fetch(`${apiBase}/${path}`,{method:'POST',mode:'no-cors',cache:'no-store',signal:controller.signal,headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(body)}).finally(()=>clearTimeout(timer));
+    return fetch(`${apiBase}?route=${encodeURIComponent(path)}`,{method:'POST',mode:'no-cors',cache:'no-store',signal:controller.signal,headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(body)}).finally(()=>clearTimeout(timer));
   }
   function dispatchWithoutCors(request){
     // An opaque response cannot confirm acceptance. Poll the job even if its redirect stalls.

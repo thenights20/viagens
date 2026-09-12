@@ -223,7 +223,7 @@ function pollSearch_(jobId) {
 
 function doPost(e) {
   try {
-    const path = String((e && e.pathInfo) || '').replace(/^\/+|\/+$/g, '');
+    const path = String((e && e.parameter && e.parameter.route) || (e && e.pathInfo) || '').replace(/^\/+|\/+$/g, '');
     const body = JSON.parse((e && e.postData && e.postData.contents) || '{}');
     if (path === 'api/search') return json_(startSearch_(body));
     if (path === 'api/progress') return json_(progressUpdate_(body));
@@ -236,8 +236,8 @@ function doPost(e) {
 
 function doGet(e) {
   try {
-    const path = String((e && e.pathInfo) || '').replace(/^\/+|\/+$/g, '');
-    if (!path || path === 'health') return json_({ ok: true, service: 'flight-search-bridge', version: '0.3.0' });
+    const path = String((e && e.parameter && e.parameter.route) || (e && e.pathInfo) || '').replace(/^\/+|\/+$/g, '');
+    if (!path || path === 'health') return json_({ ok: true, service: 'flight-search-bridge', version: '0.3.1' });
     let match = path.match(/^api\/progress\/([A-Za-z0-9_-]{8,80})$/);
     if (match) return jsonp_(getProgress_(match[1]), e && e.parameter && e.parameter.callback);
     match = path.match(/^api\/search\/([A-Za-z0-9_-]{8,80})$/);
