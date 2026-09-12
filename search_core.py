@@ -494,7 +494,8 @@ def _supported(func: Any, values: dict[str, Any]) -> dict[str, Any]:
 
 
 def query_cheapest(origin: str, destination: str, dep: date, ret: date, params: dict[str, Any]) -> Deal | None:
-    from fast_flights import FlightQuery, Passengers, create_query, get_flights
+    from fast_flights import FlightQuery, Passengers, create_query
+    from flight_response import get_flights
 
     outbound = FlightQuery(**_supported(FlightQuery, {
         "date": dep.isoformat(), "from_airport": origin, "to_airport": destination,
