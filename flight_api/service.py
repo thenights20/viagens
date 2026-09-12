@@ -24,7 +24,7 @@ if spec is None or spec.loader is None:
 engine = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(engine)
 
-app = FastAPI(title="Busca mensal de passagens", version="1.0.0")
+app = FastAPI(title="Busca mensal de passagens", version="2.0.0")
 origins = ["https://thenights20.github.io", "http://localhost:8000", "http://127.0.0.1:8000"]
 extra = os.environ.get("ALLOWED_ORIGIN", "").strip().rstrip("/")
 if extra:
@@ -42,8 +42,6 @@ class SearchRequest(BaseModel):
     origin: str = Field(min_length=3, max_length=3)
     destination: str = Field(min_length=3, max_length=3)
     month: str = Field(pattern=r"^\d{4}-\d{2}$")
-    min_stay: int = Field(default=4, ge=2, le=21)
-    max_stay: int = Field(default=10, ge=2, le=21)
     max_stops: int = Field(default=2, ge=0, le=2)
 
 
@@ -67,8 +65,6 @@ def _normalize(req: SearchRequest) -> dict[str, Any]:
         raise HTTPException(400, "Origem e destino precisam ser códigos IATA de 3 letras.")
     if origin == destination:
         raise HTTPException(400, "Origem e destino não podem ser iguais.")
-    if req.min_stay > req.max_stay:
-        raise HTTPException(400, "A duração mínima não pode ser maior que a máxima.")
     try:
         y, m = (int(x) for x in req.month.split("-", 1))
         selected = date(y, m, 1)
@@ -80,8 +76,6 @@ def _normalize(req: SearchRequest) -> dict[str, Any]:
         "origin": origin,
         "destination": destination,
         "month": req.month,
-        "min_stay": int(req.min_stay),
-        "max_stay": int(req.max_stay),
         "max_stops": int(req.max_stops),
     }
 
@@ -102,12 +96,12 @@ def _purge() -> None:
 
 def _search(payload: dict[str, Any]) -> dict[str, Any]:
     now = datetime.now(timezone.utc)
-    combos = engine.build_combinations(payload["month"], payload["min_stay"], payload["max_stay"], now.date())
+    combos = engine.build_combinations(payload["month"], now.date())
     if not combos:
-        raise RuntimeError("O mês selecionado não possui datas futuras.")
+        raise RuntimeError("O mês selecionado não possui pares de datas futuras.")
 
-    fast_workers = int(os.environ.get("SEARCH_FAST_WORKERS", "10"))
-    swoop_workers = int(os.environ.get("SEARCH_SWOOP_WORKERS", "4"))
+    fast_workers = int(os.environ.get("SEARCH_FAST_WORKERS", "12"))
+    swoop_workers = int(os.environ.get("SEARCH_SWOOP_WORKERS", "6"))
     fast_rows, missing, fast_errors = engine.run_fast(
         payload["origin"], payload["destination"], combos, payload["max_stops"], fast_workers
     )
@@ -127,7 +121,8 @@ def _search(payload: dict[str, Any]) -> dict[str, Any]:
     for rank, row in enumerate(top, 1):
         row["rank"] = rank
     return {
-        "version": "1.0.0",
+        "version": "2.0.0",
+        "mode": "full_month_matrix",
         "generated_at": now.isoformat().replace("+00:00", "Z"),
         "request": payload,
         "stats": {
@@ -143,7 +138,7 @@ def _search(payload: dict[str, Any]) -> dict[str, Any]:
         },
         "daily_min": engine.daily_min(rows),
         "results": top,
-        "errors": (fast_errors + swoop_errors)[:40],
+        "errors": (fast_errors + swoop_errors)[:50],
     }
 
 
@@ -174,14 +169,14 @@ def _execute(job_id: str, payload: dict[str, Any]) -> None:
 
 @app.get("/")
 def root() -> dict[str, Any]:
-    return {"ok": True, "service": "flight-month-search"}
+    return {"ok": True, "service": "flight-month-search", "mode": "full_month_matrix"}
 
 
 @app.get("/health")
 def health() -> dict[str, Any]:
     with LOCK:
         running = sum(1 for job in JOBS.values() if job.get("status") in {"queued", "running"})
-    return {"ok": True, "running": running}
+    return {"ok": True, "running": running, "mode": "full_month_matrix"}
 
 
 @app.post("/api/search")
