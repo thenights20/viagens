@@ -1,4 +1,4 @@
-name: Corrigir histórico e progresso da busca
+name: Corrigir botão e interface da busca
 
 on:
   push:
@@ -18,16 +18,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Aplicar correções v0.4.6
-        run: python scripts/hotfix_flight_ui_v046.py
+      - name: Aplicar correções v0.4.7
+        run: python scripts/hotfix_flight_button_v047.py
 
       - name: Validar JavaScript
         run: |
           node --check docs/flight-explorer.js
           node --check docs/terabyte-live.js
-          grep -q 'v0.4.6' docs/flight-explorer.js
+          grep -q 'v0.4.7' docs/flight-explorer.js
+          grep -q "const searchBtn=q('#monthSearchButton')" docs/flight-explorer.js
           grep -q 'resultMonth' docs/flight-explorer.js
-          grep -q 'Etapa 2/2' docs/flight-explorer.js
 
       - name: Salvar correções
         run: |
@@ -37,7 +37,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Nada para atualizar."
           else
-            git commit -m "fix: preservar histórico por mês e sincronizar progresso real [skip ci]"
+            git commit -m "fix: restaurar botão pesquisar e proteger eventos [skip ci]"
             git pull --rebase origin main
             git push origin HEAD:main
           fi
