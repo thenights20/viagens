@@ -18,26 +18,27 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Aplicar correções v0.4.7
-        run: python scripts/hotfix_flight_button_v047.py
+      - name: Aplicar correções v0.4.8
+        run: python scripts/hotfix_flight_ui_v048.py
 
       - name: Validar JavaScript
         run: |
           node --check docs/flight-explorer.js
           node --check docs/terabyte-live.js
-          grep -q 'v0.4.7' docs/flight-explorer.js
-          grep -q "const searchBtn=q('#monthSearchButton')" docs/flight-explorer.js
-          grep -q 'resultMonth' docs/flight-explorer.js
+          grep -q 'v0.4.8' docs/flight-explorer.js
+          grep -q 'reportStartError' docs/flight-explorer.js
+          grep -q 'getMonth()+18' docs/flight-explorer.js
+          grep -q 'flight-explorer.js?v=20260912-12' docs/terabyte-live.js
 
       - name: Salvar correções
         run: |
           git config user.name "flight-ui-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/flight-explorer.js docs/terabyte-live.js
+          git add docs/flight-explorer.js docs/terabyte-live.js docs/index.html
           if git diff --cached --quiet; then
             echo "Nada para atualizar."
           else
-            git commit -m "fix: restaurar botão pesquisar e proteger eventos [skip ci]"
+            git commit -m "fix: tornar pesquisa robusta e liberar meses de 2027 [skip ci]"
             git pull --rebase origin main
             git push origin HEAD:main
           fi
