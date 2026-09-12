@@ -1,10 +1,11 @@
-name: Hotfix flight UI v0.4.4
+name: Hotfix flight UI v0.4.5
 
 on:
   push:
     branches: [main]
     paths:
       - '.github/workflows/hotfix-flight-ui-v044.yml'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -17,46 +18,26 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Corrigir acompanhamento da busca
+      - name: Aplicar melhorias v0.4.5
+        run: python scripts/hotfix_flight_ui_v045.py
+
+      - name: Validar alterações
         run: |
-          python - <<'PY'
-          from pathlib import Path
+          node --check docs/flight-explorer.js
+          python -m py_compile flight-month-search/search.py
+          grep -q 'v0.4.5' docs/flight-explorer.js
+          grep -q 'monthViewSavedButton' docs/flight-explorer.js
+          grep -q 'resultMonth' docs/flight-explorer.js
 
-          p = Path('docs/flight-explorer.js')
-          text = p.read_text(encoding='utf-8')
-
-          text = text.replace('Buscar passagens · v0.4.3', 'Buscar passagens · v0.4.4')
-
-          old = "function resultMatches(result,request,started){if(!result||!result.request)return false;if(request.request_id&&result.request_id!==request.request_id)return false;const r=result.request;if(r.origin!==request.origin||r.destination!==request.destination)return false;if(Number(r.max_stops)!==Number(request.max_stops))return false;if(request.period_mode==='range'){if(r.period_mode!=='range'||r.start_date!==request.start_date||r.end_date!==request.end_date)return false}else if(r.month!==request.month||r.period_mode==='range')return false;const t=Date.parse(result.started_at||result.generated_at||'');return!started||!Number.isFinite(t)||t>=started-30000;}"
-          new = "function resultMatches(result,request,started){if(!result||!result.request)return false;const r=result.request;if(r.origin!==request.origin||r.destination!==request.destination)return false;if(Number(r.max_stops)!==Number(request.max_stops))return false;if(request.period_mode==='range'){if(r.period_mode!=='range'||r.start_date!==request.start_date||r.end_date!==request.end_date)return false}else if(r.month!==request.month||r.period_mode==='range')return false;const t=Date.parse(result.started_at||result.generated_at||'');if(started&&Number.isFinite(t)&&t<started-30000)return false;if(request.request_id&&result.request_id!==request.request_id){if(!started||!Number.isFinite(t)||t<started-30000)return false;}return true;}"
-          assert old in text, 'resultMatches antigo não encontrado'
-          text = text.replace(old, new, 1)
-
-          old = "if(a)state=a;if(a?.failed)"
-          new = "if(a)state=a;if(!state&&bridge&&bridge.status&&bridge.status!=='error'){const bs=String(bridge.status||'');state={pct:Number(bridge.percent||3),stage:bs==='queued'?'Pesquisa recebida pelo serviço…':bs==='completed'||bs==='done'?'Finalizando resultado…':'Pesquisa confirmada pelo serviço…',done:Number(bridge.completed||0),total:Number(bridge.total||total),priced:Number(bridge.priced||0),detail:bridge.message||'serviço confirmou o envio'};}if(a?.failed)"
-          assert old in text, 'bloco de confirmação antigo não encontrado'
-          text = text.replace(old, new, 1)
-
-          old = "if(Date.now()-started>120000)throw new Error('O serviço não confirmou o início. Verifique se o aplicativo Google Apps Script permite acesso a Qualquer pessoa e se a implantação está ativa');"
-          new = "if(Date.now()-started>120000){status.className='month-search-status wait';status.textContent='⏳ A confirmação está demorando, mas a pesquisa pode estar rodando. O sistema continuará acompanhando automaticamente.';}if(Date.now()-started>900000)throw new Error('O serviço não confirmou o início após 15 minutos. Tente novamente.');"
-          assert old in text, 'timeout antigo não encontrado'
-          text = text.replace(old, new, 1)
-
-          p.write_text(text, encoding='utf-8')
-          PY
-
-      - name: Validar JavaScript
-        run: node --check docs/flight-explorer.js
-
-      - name: Salvar correção
+      - name: Salvar melhorias
         run: |
           git config user.name "flight-ui-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/flight-explorer.js
+          git add docs/flight-explorer.js docs/terabyte-live.js flight-month-search/search.py
           if git diff --cached --quiet; then
             echo "Nada para atualizar."
           else
-            git commit -m "fix: acompanhar busca longa sem falso timeout [skip ci]"
+            git commit -m "feat: histórico durante busca e progresso real [skip ci]"
             git pull --rebase origin main
             git push origin HEAD:main
           fi
