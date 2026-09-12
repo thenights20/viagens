@@ -49,3 +49,24 @@ test('transport sends to exec query instead of appending a path',async()=>{
  vm.runInContext(section('  function postBridge','  function dispatchWithoutCors'),ctx);
  await ctx.postBridge('api/search',{});assert.equal(url,'https://script.google.com/macros/s/test/exec?route=api%2Fsearch');
 });
+test('route filters and ascending/descending prices work independently of input order',()=>{
+ const ctx=vm.createContext({});vm.runInContext(section('  function filterRows','  function resultOptions'),ctx);
+ const rows=[{origin:'DOU',destination:'GRU',price:400},{origin:'DOU',destination:'MIA',price:200},{origin:'GRU',destination:'MIA',price:100},{origin:'DOU',destination:'GRU',price:300}];
+ assert.deepEqual(Array.from(ctx.filterRows(rows,'DOU','GRU','price_asc'),x=>x.price),[300,400]);
+ assert.deepEqual(Array.from(ctx.filterRows(rows,'DOU','','price_desc'),x=>x.price),[400,300,200]);
+ assert.equal(ctx.filterRows(rows,'GRU','GRU','price_asc').length,0);
+});
+test('calendar keeps the cheapest return for each origin, destination and full date',()=>{
+ const ctx=vm.createContext({});vm.runInContext(section('  function calendarRows','  function render'),ctx);
+ const rows=[{origin:'DOU',destination:'GRU',departure_date:'2026-10-10',return_date:'2026-10-15',price:400},{origin:'DOU',destination:'GRU',departure_date:'2026-10-10',return_date:'2026-10-12',price:300},{origin:'DOU',destination:'MIA',departure_date:'2026-10-10',price:900}];
+ const result=ctx.calendarRows(rows);assert.equal(result.length,2);assert.equal(result[0].return_date,'2026-10-12');
+});
+test('calendar and price table render route names and links with matching travel dates',()=>{
+ const elements=new Map(),q=id=>{if(!elements.has(id))elements.set(id,{value:'',innerHTML:'',textContent:''});return elements.get(id)};
+ q('#resultScope').value='current';q('#resultSort').value='price_asc';
+ const ctx=vm.createContext({q,URL,ORIGINS:[['DOU','Dourados']],DESTINATIONS:[['GRU','Guarulhos']],savedPairs:{},data:{request:{origin:'DOU',destination:'GRU',max_stops:2},results:[{price:1114,departure_date:'2026-10-14',return_date:'2026-10-15',trip_days:1}]},safe:u=>u.startsWith('https:')?u:'#',esc:s=>String(s),dateKey:()=> '2026-09-12',fmtDate:x=>x,money:x=>String(x),trendHtml:()=>'',setResultView:()=>{},resultView:'calendar'});
+ vm.runInContext(section('  function airportName','  function clearForSearch'),ctx);ctx.render();
+ assert.match(q('#monthRows').innerHTML,/Dourados/);assert.match(q('#monthRows').innerHTML,/Guarulhos/);
+ assert.match(q('#monthCalendar').innerHTML,/<a class="month-day/);
+ assert.match(decodeURIComponent(q('#monthCalendar').innerHTML),/Flights from DOU to GRU on 2026-10-14 returning 2026-10-15/);
+});

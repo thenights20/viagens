@@ -24,6 +24,7 @@
   const PAIRS_PER_ORIGIN = 465;
 
   let data = {request:{},stats:{},results:[],daily_min:[],history_summary:{}};
+  let savedPairs = {};
   let apiBase = '';
   let searching = false;
   let stopRequested = false;
@@ -54,6 +55,7 @@
     @media(max-width:1180px){.month-search-grid{grid-template-columns:repeat(3,1fr)}.month-search-grid .month-search-action{grid-column:auto}.month-cards{grid-template-columns:repeat(3,1fr)}}
     @media(max-width:760px){body.flight-search-focus header h1{font-size:21px}.month-search-grid{grid-template-columns:1fr 1fr}.month-search-grid .dest-field{grid-column:1/-1}.month-search-grid .period-cell{grid-column:1/-1}.month-search-grid .month-search-action{grid-column:1/-1}.month-search-btn{width:100%}.month-calendar{grid-template-columns:repeat(2,1fr)}.month-cards{grid-template-columns:repeat(2,1fr)}.month-progress-head{align-items:flex-start}.month-progress-title{flex-wrap:wrap}}
   `;
+  style.textContent += `.month-result-filters{display:flex;gap:12px;flex-wrap:wrap;align-items:end;padding:12px;margin-bottom:10px}.month-result-filters>div{flex:1;min-width:170px}.month-result-filters label{display:block;margin-bottom:5px}.month-result-filters select{width:100%}.month-day{display:block;text-decoration:none;color:inherit}.month-day:hover,.month-day:focus-visible{border-color:#79a7ff;outline:2px solid #79a7ff;outline-offset:2px}.month-route{font-size:12px;line-height:1.5;color:#a9c5f5}.month-result-caption{padding:4px 12px 12px;color:#9db1ce}`;
   document.head.appendChild(style);
 
   const btn = document.createElement('button');
@@ -62,7 +64,7 @@
 
   const panel=document.createElement('div');panel.id='flightMonthPanel';panel.hidden=true;
   panel.innerHTML=`
-    <div class="month-titlebar"><div><strong>🔎 Buscar passagens · v0.4.2</strong><small>Os achados são salvos durante a pesquisa. Se a execução parar, o que já foi encontrado continua disponível.</small></div><div class="pill"><span class="dot"></span><span id="monthSearchUpdated">Aguardando busca</span></div></div>
+    <div class="month-titlebar"><div><strong>🔎 Buscar passagens · v0.4.3</strong><small>Os achados são salvos durante a pesquisa. Se a execução parar, o que já foi encontrado continua disponível.</small></div><div class="pill"><span class="dot"></span><span id="monthSearchUpdated">Aguardando busca</span></div></div>
     <section class="panel">
       <div class="month-search-grid">
         <div><label>Origem</label><select id="monthOrigin"></select></div>
@@ -79,11 +81,19 @@
       </div>
       <div class="month-search-status" id="monthSearchStatus">Escolha a rota e o período. Em um mês de 31 dias são até 465 combinações.</div>
     </section>
+    <div class="month-result-caption">Resumo da busca atual</div>
     <section class="cards month-cards"><div class="card"><span>Menor preço</span><b id="monthLowest">—</b></div><div class="card"><span>Combinações</span><b id="monthCombos">—</b></div><div class="card"><span>Com preço</span><b id="monthPriced">—</b></div><div class="card"><span>Melhores</span><b id="monthCount">—</b></div><div class="card"><span>Desde a última busca</span><b id="monthHistory">—</b></div></section>
-    <div class="month-view-tabs"><button class="month-view-btn active" data-result-view="calendar">▦ Calendário</button><button class="month-view-btn" data-result-view="prices">↕ Mais baratos</button><button class="month-view-btn" data-result-view="history">◴ Histórico</button></div>
-    <section class="panel" id="monthCalendarPanel"><h3 class="section-title" style="padding:0 10px">Menor preço para cada dia de ida</h3><div class="month-calendar" id="monthCalendar"></div><div class="empty" id="monthCalendarEmpty"><strong>Aguardando preços.</strong>Os dias aparecerão aqui conforme forem encontrados.</div></section>
-    <section class="panel" id="monthPricesPanel" hidden><div class="table-wrap"><table><thead><tr><th>#</th><th>Ida</th><th>Volta</th><th>Dias</th><th>Preço</th><th>Variação</th><th>Companhia / escalas</th><th></th></tr></thead><tbody id="monthRows"></tbody></table></div><div class="empty" id="monthEmpty"><strong>Aguardando preços.</strong>Os menores valores aparecerão aqui ainda durante a pesquisa.</div></section>
-    <section class="panel" id="monthHistoryPanel" hidden><div class="table-wrap"><table><thead><tr><th>Ida</th><th>Volta</th><th>Agora</th><th>Anterior</th><th>Mudança</th><th>Menor histórico</th><th>Amostras anteriores</th></tr></thead><tbody id="monthHistoryRows"></tbody></table></div><div class="empty" id="monthHistoryEmpty"><strong>Ainda não há comparação.</strong>Na próxima pesquisa das mesmas datas o sistema mostrará se o preço subiu ou baixou.</div></section>
+    <div class="month-view-tabs"><button class="month-view-btn active" data-result-view="calendar">▦ Calendário</button><button class="month-view-btn" data-result-view="prices">↕ Preços e rotas</button><button class="month-view-btn" data-result-view="history">◴ Histórico</button></div>
+    <div class="panel month-result-filters">
+      <div><label for="resultScope">Resultados</label><select id="resultScope"><option value="current">Busca atual</option><option value="all">Todas as buscas salvas</option></select></div>
+      <div><label for="resultOrigin">Filtrar origem</label><select id="resultOrigin"><option value="">Todas as origens</option></select></div>
+      <div><label for="resultDestination">Filtrar destino</label><select id="resultDestination"><option value="">Todos os destinos</option></select></div>
+      <div><label for="resultSort">Ordenar por</label><select id="resultSort"><option value="price_asc">Menor preço primeiro</option><option value="price_desc">Maior preço primeiro</option><option value="date_asc">Data de ida</option></select></div>
+    </div>
+    <div id="resultCaption" class="month-result-caption"></div>
+    <section class="panel" id="monthCalendarPanel"><h3 class="section-title" style="padding:0 10px">Menor preço para cada dia de ida</h3><div class="month-calendar" id="monthCalendar"></div><div class="empty" id="monthCalendarEmpty"><strong>Nenhum preço para os filtros selecionados.</strong>Altere os filtros ou faça uma nova busca.</div></section>
+    <section class="panel" id="monthPricesPanel" hidden><div class="table-wrap"><table><thead><tr><th>#</th><th>Origem</th><th>Destino</th><th>Ida</th><th>Volta</th><th>Dias</th><th>Preço</th><th>Variação</th><th>Companhia / escalas</th><th></th></tr></thead><tbody id="monthRows"></tbody></table></div><div class="empty" id="monthEmpty"><strong>Nenhum resultado para os filtros selecionados.</strong>Selecione outra origem ou destino, ou faça uma nova busca.</div></section>
+    <section class="panel" id="monthHistoryPanel" hidden><div class="table-wrap"><table><thead><tr><th>Rota</th><th>Ida</th><th>Volta</th><th>Agora</th><th>Anterior</th><th>Mudança</th><th>Menor histórico</th><th>Amostras anteriores</th></tr></thead><tbody id="monthHistoryRows"></tbody></table></div><div class="empty" id="monthHistoryEmpty"><strong>Ainda não há comparação.</strong>Na próxima pesquisa das mesmas datas o sistema mostrará se o preço subiu ou baixou.</div></section>
     <div class="note"><b>Salvamento progressivo:</b> durante a busca o sistema publica os achados parciais em uma área separada do site. Uma nova pesquisa das mesmas datas compara automaticamente o valor atual com o último valor salvo.</div>`;
   app.insertBefore(panel,q('#hunterPanel')||null);
 
@@ -120,22 +130,60 @@
   function trendHtml(x){if(x.previous_price==null)return'<span class="trend new">novo</span>';const cls=x.trend||'same';if(cls==='down')return`<span class="trend down">↓ ${money(Math.abs(x.change_amount))} (${Math.abs(Number(x.change_pct||0)).toFixed(1)}%)</span>`;if(cls==='up')return`<span class="trend up">↑ ${money(Math.abs(x.change_amount))} (${Math.abs(Number(x.change_pct||0)).toFixed(1)}%)</span>`;return'<span class="trend same">= igual</span>';}
 
   function setResultView(view){resultView=view;document.querySelectorAll('.month-view-btn').forEach(b=>b.classList.toggle('active',b.dataset.resultView===view));q('#monthCalendarPanel').hidden=view!=='calendar';q('#monthPricesPanel').hidden=view!=='prices';q('#monthHistoryPanel').hidden=view!=='history';}
+  function airportName(code){return [...ORIGINS,...DESTINATIONS].find(x=>x[0]===code)?.[1]||code||'—'}
+  function routeLabel(row){return `${airportName(row.origin)} (${row.origin}) → ${airportName(row.destination)} (${row.destination})`}
+  function flightLink(row){
+    if(row.url&&safe(row.url)!=='#')return safe(row.url);
+    const query=`Flights from ${row.origin} to ${row.destination} on ${row.departure_date} returning ${row.return_date}`;
+    return `https://www.google.com/travel/flights?q=${encodeURIComponent(query)}&curr=BRL`;
+  }
+  function resultKey(row){return [row.origin,row.destination,row.departure_date,row.return_date,row.max_stops??data.request?.max_stops??2].join('|')}
+  function availableRows(){
+    const rows=new Map(),all=q('#resultScope').value==='all';
+    if(all)for(const pair of Object.values(savedPairs)){
+      if(!pair.departure_date||pair.departure_date<dateKey(new Date())||!(Number(pair.last_price)>0))continue;
+      const obs=pair.observations||[],previous=obs.length>1?Number(obs[obs.length-2].price):null,price=Number(pair.last_price),change=previous==null?null:price-previous;
+      const row={...pair,price,previous_price:previous,change_amount:change,change_pct:previous?change/previous*100:null,trend:change==null?'new':change<0?'down':change>0?'up':'same',historical_min:pair.min_price,history_samples:Math.max(0,(pair.samples||1)-1),trip_days:Math.round((Date.parse(pair.return_date)-Date.parse(pair.departure_date))/86400000),airline:'Não informada',stops:'',saved_at:pair.last_seen};
+      rows.set(resultKey(row),row);
+    }
+    for(const row of [...(data.daily_min||[]),...(data.results||[])]){
+      const normalized={...data.request,...row,saved_at:data.updated_at||data.generated_at};
+      if(Number(normalized.price)>0)rows.set(resultKey(normalized),normalized);
+    }
+    return [...rows.values()];
+  }
+  function filterRows(rows,origin,destination,sort){
+    return rows.filter(x=>(!origin||x.origin===origin)&&(!destination||x.destination===destination)).sort((a,b)=>sort==='date_asc'?a.departure_date.localeCompare(b.departure_date)||Number(a.price)-Number(b.price):sort==='price_desc'?Number(b.price)-Number(a.price):Number(a.price)-Number(b.price));
+  }
+  function resultOptions(rows){
+    for(const [id,key,label] of [['#resultOrigin','origin','Todas as origens'],['#resultDestination','destination','Todos os destinos']]){
+      const el=q(id),selected=el.value,codes=[...new Set(rows.map(x=>x[key]).filter(Boolean))].sort((a,b)=>airportName(a).localeCompare(airportName(b),'pt-BR'));
+      el.innerHTML=`<option value="">${label}</option>`+codes.map(code=>`<option value="${esc(code)}">${esc(airportName(code))} (${esc(code)})</option>`).join('');
+      el.value=codes.includes(selected)?selected:'';
+    }
+  }
+  function calendarRows(rows){
+    const days=new Map();for(const row of rows){const key=[row.origin,row.destination,row.departure_date].join('|');if(!days.has(key)||Number(row.price)<Number(days.get(key).price))days.set(key,row)}
+    return [...days.values()].sort((a,b)=>a.departure_date.localeCompare(b.departure_date)||Number(a.price)-Number(b.price));
+  }
   function render(){
-    const rows=[...(data.results||[])].sort((a,b)=>Number(a.price||1e12)-Number(b.price||1e12)),stats=data.stats||{},req=data.request||{},hist=data.history_summary||{};
-    q('#monthRows').innerHTML=rows.map((x,i)=>`<tr><td><span class="month-rank">${i+1}</span></td><td><b>${fmtDate(x.departure_date)}</b></td><td><b>${fmtDate(x.return_date)}</b></td><td>${Number(x.trip_days||0)} dias</td><td class="month-result-price">${money(x.price)}<br>${trendHtml(x)}</td><td>${x.previous_price==null?'—':`${money(x.previous_price)} → ${money(x.price)}`}</td><td><b>${esc(x.airline||'Google Flights')}</b><small class="statline">${esc(x.stops||'')} ${x.duration?'· '+esc(x.duration):''}</small></td><td><a class="btn" href="${safe(x.url)}" target="_blank" rel="noopener">Ver voo</a></td></tr>`).join('');
+    const available=availableRows();resultOptions(available);
+    const filtered=filterRows(available,q('#resultOrigin').value,q('#resultDestination').value,q('#resultSort').value),rows=filtered.slice(0,100),stats=data.stats||{},req=data.request||{},hist=data.history_summary||{};
+    q('#resultCaption').textContent=`${filtered.length} opções encontradas${filtered.length>100?' · exibindo as primeiras 100':''} · ${q('#resultScope').value==='all'?'Buscas salvas — confira o preço atualizado ao abrir o voo':(req.origin&&req.destination?routeLabel(req):'Escolha a rota para pesquisar')}`;
+    q('#monthRows').innerHTML=rows.map((x,i)=>`<tr><td><span class="month-rank">${i+1}</span></td><td><b>${esc(airportName(x.origin))}</b><small class="statline">${esc(x.origin)}</small></td><td><b>${esc(airportName(x.destination))}</b><small class="statline">${esc(x.destination)}</small></td><td><b>${fmtDate(x.departure_date)}</b></td><td><b>${fmtDate(x.return_date)}</b></td><td>${Number(x.trip_days||0)} dias</td><td class="month-result-price">${money(x.price)}<br>${trendHtml(x)}</td><td>${x.previous_price==null?'—':`${money(x.previous_price)} → ${money(x.price)}`}</td><td><b>${esc(x.airline||'Google Flights')}</b><small class="statline">${esc(x.stops||'')} ${x.duration?'· '+esc(x.duration):''}</small></td><td><a class="btn" href="${esc(flightLink(x))}" target="_blank" rel="noopener">Ver voo</a></td></tr>`).join('');
     q('#monthEmpty').hidden=rows.length>0;
     q('#monthLowest').textContent=money(stats.lowest_price);
     const processed=stats.processed_combinations??stats.combinations;q('#monthCombos').textContent=stats.combinations!=null?`${processed}/${stats.combinations}`:'—';
-    q('#monthPriced').textContent=stats.priced_combinations!=null?`${stats.priced_combinations} · ${stats.coverage_pct||0}%`:'—';q('#monthCount').textContent=rows.length?`${rows.length}/100`:'—';q('#monthHistory').textContent=(hist.compared||hist.cheaper||hist.higher)?`↓${hist.cheaper||0} ↑${hist.higher||0}`:'sem comparação';
+    q('#monthPriced').textContent=stats.priced_combinations!=null?`${stats.priced_combinations} · ${stats.coverage_pct||0}%`:'—';q('#monthCount').textContent=data.results?.length?`${data.results.length}/100`:'—';q('#monthHistory').textContent=(hist.compared||hist.cheaper||hist.higher)?`↓${hist.cheaper||0} ↑${hist.higher||0}`:'sem comparação';
     if(data.updated_at||data.generated_at)q('#monthSearchUpdated').textContent=`Salvo ${fmtDateTime(data.updated_at||data.generated_at)} · ${req.origin||''}→${req.destination||''}`;
-    const daily=data.daily_min||[],cal=q('#monthCalendar');
-    if(daily.length){const low=Math.min(...daily.map(x=>Number(x.price)||Infinity));cal.innerHTML=daily.map(x=>{const d=Number((x.departure_date||'').slice(-2)),hot=Number(x.price)<=low*1.06?' hot':'';return`<div class="month-day${hot}"><b>Dia ${d}</b><strong>${money(x.price)}</strong><small class="statline">volta ${fmtDate(x.return_date)} · ${Number(x.trip_days||0)} dias</small>${trendHtml(x)}</div>`}).join('');q('#monthCalendarEmpty').hidden=true;}else{cal.innerHTML='';q('#monthCalendarEmpty').hidden=false;}
+    const daily=calendarRows(filtered),cal=q('#monthCalendar');
+    if(daily.length){const low=Math.min(...daily.map(x=>Number(x.price)||Infinity));cal.innerHTML=daily.map(x=>{const d=Number((x.departure_date||'').slice(-2)),hot=Number(x.price)<=low*1.06?' hot':'';return`<a class="month-day${hot}" href="${esc(flightLink(x))}" target="_blank" rel="noopener" aria-label="${esc(`Pesquisar ${routeLabel(x)}, ida ${fmtDate(x.departure_date)}, volta ${fmtDate(x.return_date)}`)}"><b>${fmtDate(x.departure_date)}</b><small class="month-route">${esc(routeLabel(x))}</small><strong>${money(x.price)}</strong><small class="statline">volta ${fmtDate(x.return_date)} · ${Number(x.trip_days||0)} dias</small>${trendHtml(x)}<small class="statline">Pesquisar este voo ↗</small></a>`}).join('');q('#monthCalendarEmpty').hidden=true;}else{cal.innerHTML='';q('#monthCalendarEmpty').hidden=false;}
     const compared=rows.filter(x=>x.previous_price!=null).sort((a,b)=>Math.abs(Number(b.change_pct||0))-Math.abs(Number(a.change_pct||0)));
-    q('#monthHistoryRows').innerHTML=compared.map(x=>`<tr><td><b>${fmtDate(x.departure_date)}</b></td><td><b>${fmtDate(x.return_date)}</b></td><td class="month-result-price">${money(x.price)}</td><td>${money(x.previous_price)}</td><td class="history-diff ${esc(x.trend||'same')}">${x.trend==='down'?'↓':x.trend==='up'?'↑':'='} ${x.change_amount==null?'—':money(Math.abs(x.change_amount))} ${x.change_pct==null?'':`(${Math.abs(Number(x.change_pct)).toFixed(1)}%)`}</td><td>${money(x.historical_min)}</td><td>${Number(x.history_samples||0)}</td></tr>`).join('');
+    q('#monthHistoryRows').innerHTML=compared.map(x=>`<tr><td class="month-route">${esc(routeLabel(x))}</td><td><b>${fmtDate(x.departure_date)}</b></td><td><b>${fmtDate(x.return_date)}</b></td><td class="month-result-price">${money(x.price)}</td><td>${money(x.previous_price)}</td><td class="history-diff ${esc(x.trend||'same')}">${x.trend==='down'?'↓':x.trend==='up'?'↑':'='} ${x.change_amount==null?'—':money(Math.abs(x.change_amount))} ${x.change_pct==null?'':`(${Math.abs(Number(x.change_pct)).toFixed(1)}%)`}</td><td>${money(x.historical_min)}</td><td>${Number(x.history_samples||0)}</td></tr>`).join('');
     q('#monthHistoryEmpty').hidden=compared.length>0;setResultView(resultView);
   }
 
-  function clearForSearch(request,total){data={request:{origin:request.origin,destination:request.destination,month:request.month,period_mode:request.period_mode,start_date:request.start_date,end_date:request.end_date,max_stops:request.max_stops},stats:{combinations:total,processed_combinations:0,priced_combinations:0,coverage_pct:0},results:[],daily_min:[],history_summary:{}};render();}
+  function clearForSearch(request,total){q('#resultScope').value='current';q('#resultOrigin').value='';q('#resultDestination').value='';data={request:{origin:request.origin,destination:request.destination,month:request.month,period_mode:request.period_mode,start_date:request.start_date,end_date:request.end_date,max_stops:request.max_stops},stats:{combinations:total,processed_combinations:0,priced_combinations:0,coverage_pct:0},results:[],daily_min:[],history_summary:{}};render();}
   function showProgress(total){q('#monthProgress').hidden=false;q('#monthStopButton').disabled=false;updateProgress({pct:1,stage:'Enviando solicitação…',done:0,total,priced:0,remaining:total,elapsed:0,detail:'✓ salvamento automático'});}
   function updateProgress({pct,stage,done,total,priced,remaining,elapsed,detail}){pct=Math.max(0,Math.min(100,Math.round(Number(pct)||0)));done=Math.max(0,Math.min(Number(total)||0,Math.round(Number(done)||0)));q('#monthProgressFill').style.width=`${pct}%`;q('#monthProgressPct').textContent=`${pct}%`;q('#monthProgressStage').textContent=stage||'Pesquisa em andamento…';q('#monthProgressCombos').textContent=`${done} / ${total} combinações`;q('#monthProgressPriced').textContent=`${Number(priced||0)} com preço`;q('#monthProgressRemaining').textContent=`faltam ${remaining==null?Math.max(0,total-done):Math.max(0,remaining)}`;q('#monthProgressElapsed').textContent=`${Math.max(0,Math.round(elapsed||0))}s`;q('#monthProgressSaved').textContent=detail||'✓ salvamento automático';}
 
@@ -155,6 +203,7 @@
       document.head.appendChild(script);
     });
   }
+  async function loadSavedPairs(){const saved=await fetchJson('./data/flight-price-history.json');if(saved?.pairs)savedPairs=saved.pairs;}
   async function loadLastResult(){const[final,live]=await Promise.all([fetchJson(RESULT_RAW),fetchJson(LIVE_RAW)]);const ft=Date.parse(final?.updated_at||final?.generated_at||'')||0,lt=Date.parse(live?.updated_at||live?.generated_at||'')||0;const chosen=lt>ft?live:final;if(chosen&&chosen.results)data=chosen;}
 
   function resultMatches(result,request,started){if(!result||!result.request)return false;if(request.request_id&&result.request_id!==request.request_id)return false;const r=result.request;if(r.origin!==request.origin||r.destination!==request.destination)return false;if(Number(r.max_stops)!==Number(request.max_stops))return false;if(request.period_mode==='range'){if(r.period_mode!=='range'||r.start_date!==request.start_date||r.end_date!==request.end_date)return false}else if(r.month!==request.month||r.period_mode==='range')return false;const t=Date.parse(result.started_at||result.generated_at||'');return!started||!Number.isFinite(t)||t>=started-30000;}
@@ -194,10 +243,11 @@
   async function searchInsidePage(){if(searching)return;const request=formRequest(),status=q('#monthSearchStatus'),button=q('#monthSearchButton'),error=validateRequest(request);if(error){status.className='month-search-status bad';status.textContent=error;return}if(!apiBase){status.className='month-search-status bad';status.textContent='O serviço de pesquisa ainda não está conectado.';return}const total=comboTotal(request);if(total<1){status.className='month-search-status bad';status.textContent='Esse período não possui combinações futuras de ida e volta.';return}
     request.request_id='web_'+crypto.randomUUID().replace(/-/g,'');searching=true;stopRequested=false;activeRun=null;activeRequest=request;button.disabled=true;button.textContent='⏳ Pesquisando…';clearForSearch(request,total);showProgress(total);status.className='month-search-status wait';status.textContent='🔎 Enviando pesquisa. Os achados começarão a aparecer assim que forem encontrados.';const started=Date.now(),clock=setInterval(()=>{q('#monthProgressElapsed').textContent=`${Math.round((Date.now()-started)/1000)}s`},1000);try{dispatchWithoutCors(request);data=await pollSearch(request,started,total);render();updateProgress({pct:100,stage:data.status==='partial'?'Parcial preservado':'Pesquisa concluída',done:Number(data.stats?.processed_combinations??data.stats?.combinations??total),total:Number(data.stats?.combinations||total),priced:Number(data.stats?.priced_combinations||0),remaining:0,elapsed:(Date.now()-started)/1000,detail:'✓ resultado salvo'});q('#monthStopButton').disabled=true;status.className=data.status==='partial'?'month-search-status bad':'month-search-status ok';status.textContent=data.status==='partial'?'⚠ A pesquisa parou antes do fim, mas tudo o que havia sido encontrado ficou salvo.':`✅ Busca concluída. ${data.stats?.priced_combinations||0} combinações com preço foram salvas.`;}catch(e){if(String(e.message||e)==='__STOPPED__'){status.className='month-search-status bad';status.textContent='⛔ Acompanhamento interrompido. O cancelamento no servidor foi solicitado; os achados salvos permanecem abaixo.';}else{status.className='month-search-status bad';status.textContent=`Não foi possível concluir a busca: ${e.message||e}. Se já havia resultados, eles permanecem salvos.`;}}finally{clearInterval(clock);if(stopRequested||data.status!=='completed'){q('#monthProgressStage').textContent=stopRequested?'Acompanhamento interrompido':'Pesquisa não concluída';}searching=false;button.disabled=false;button.textContent='🔎 Pesquisar agora';const stop=q('#monthStopButton');stop.disabled=true;stop.textContent='■ Parar pesquisa';}}
 
-  async function boot(){await Promise.all([loadConfig(),loadLastResult()]);render();periodModeChanged();}
+  async function boot(){await Promise.all([loadConfig(),loadLastResult(),loadSavedPairs()]);render();periodModeChanged();}
   function setFocus(on){document.body.classList.toggle('flight-search-focus',!!on)}
   function activate(){document.querySelectorAll('#flightTabs .tab').forEach(x=>x.classList.remove('active'));btn.classList.add('active');['hunterPanel','radarPanel','externalPanel','airlinesPanel'].forEach(id=>{const el=q('#'+id);if(el)el.hidden=true});panel.hidden=false;setFocus(true);render();}
 
+  for(const id of ['#resultScope','#resultOrigin','#resultDestination','#resultSort'])q(id).addEventListener('change',()=>{render();if(id==='#resultScope'&&q(id).value==='all')loadSavedPairs().then(render)});
   q('#monthSearchButton').addEventListener('click',searchInsidePage);q('#monthStopButton').addEventListener('click',stopSearch);q('#monthPeriodMode').addEventListener('change',periodModeChanged);q('#rangeStart').addEventListener('change',()=>{if(q('#rangeEnd').value<q('#rangeStart').value)q('#rangeEnd').value=q('#rangeStart').value});document.querySelectorAll('.month-view-btn').forEach(b=>b.addEventListener('click',()=>setResultView(b.dataset.resultView)));
   btn.addEventListener('click',activate);document.querySelectorAll('#flightTabs .tab').forEach(b=>{if(b!==btn)b.addEventListener('click',()=>{panel.hidden=true;setFocus(false)})});const productsMain=document.querySelector('.main-tab[data-main="products"]');if(productsMain)productsMain.addEventListener('click',()=>{panel.hidden=true;setFocus(false)});const flightsMain=document.querySelector('.main-tab[data-main="flights"]');if(flightsMain)flightsMain.addEventListener('click',()=>{if(btn.classList.contains('active')&&!panel.hidden)setFocus(true)});document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!searching){loadConfig();loadLastResult().then(render)}});boot();
 })();
