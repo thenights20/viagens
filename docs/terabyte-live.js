@@ -170,16 +170,26 @@
 })();
 
 (() => {
-  if (document.querySelector('script[data-flight-explorer]')) return;
-
-  const loadExplorer = () => {
-    if (document.querySelector('script[data-flight-explorer]')) return;
+  const loadMiles = () => {
+    if (document.querySelector('script[data-miles-search]') || document.querySelector('#milesSearchPanel')) return;
     const s = document.createElement('script');
-    s.src = './flight-explorer.js?v=20260912-audit-1';
+    s.src = './miles-search.js?v=20260912-miles-1';
     s.defer = true;
-    s.dataset.flightExplorer = '1';
+    s.dataset.milesSearch = '1';
     document.head.appendChild(s);
   };
 
-  loadExplorer();
+  const existing = document.querySelector('script[data-flight-explorer]');
+  if (existing) {
+    if (document.querySelector('#flightMonthPanel')) loadMiles();
+    else existing.addEventListener('load', loadMiles, {once:true});
+    return;
+  }
+
+  const s = document.createElement('script');
+  s.src = './flight-explorer.js?v=20260912-audit-1';
+  s.defer = true;
+  s.dataset.flightExplorer = '1';
+  s.addEventListener('load', loadMiles, {once:true});
+  document.head.appendChild(s);
 })();
