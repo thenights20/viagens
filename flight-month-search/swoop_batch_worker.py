@@ -2,8 +2,7 @@ from __future__ import annotations
 
 import json
 import sys
-import time
-import urllib.request
+import traceback
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from urllib.parse import quote_plus
 
@@ -34,7 +33,7 @@ def duration_stops(option) -> tuple[int, int]:
             continue
         segments = list(getattr(itinerary, "segments", []) or [])
         if segments:
-            stops += max(0, len(segments) - 1)
+            stops = max(stops, len(segments) - 1)
         try:
             duration += int(getattr(itinerary, "duration_minutes", None) or getattr(itinerary, "duration", None) or 0)
         except (TypeError, ValueError):
@@ -56,9 +55,9 @@ def one(payload: dict, query: dict) -> tuple[dict | None, str | None]:
             max_stops=int(payload.get("max_stops", 2)),
             sort=SORT_CHEAPEST,
             include_basic_economy=True,
-            transport=TransportConfig(country="BR", timeout=35, retries=0),
+            transport=TransportConfig(country="BR", timeout=35, retries=1),
         )
-        options = [x for x in (result.results or []) if getattr(x, "price", None)]
+        options = [x for x in (getattr(result, 'results', None) or []) if getattr(x, "price", None)]
         if not options:
             return None, None
         option = min(options, key=lambda x: float(x.price))
@@ -81,70 +80,30 @@ def one(payload: dict, query: dict) -> tuple[dict | None, str | None]:
             "provider": "swoop",
         }, None
     except Exception as exc:  # noqa: BLE001
+        traceback.print_exc(file=sys.stderr)
         return None, f"{query['departure_date']}->{query['return_date']}: {type(exc).__name__}: {exc}"
-
-
-def send_progress(payload: dict, done: int, total: int, priced: int, query: dict) -> None:
-    url = str(payload.get("progress_url") or "").strip()
-    request_id = str(payload.get("request_id") or "").strip()
-    if not url or not request_id:
-        return
-    total_combos = int(payload.get("total_combos") or 0)
-    fast_priced = int(payload.get("fast_priced") or 0)
-    pct = 76 + round((done / max(1, total)) * 18)
-    body = {
-        "request_id": request_id,
-        "status": "running",
-        "stage": "fallback",
-        "percent": min(94, pct),
-        "total": total_combos,
-        "completed": total_combos,
-        "remaining": 0,
-        "priced": fast_priced + priced,
-        "fallback_done": done,
-        "fallback_total": total,
-        "current_pair": f"{query.get('departure_date','')}→{query.get('return_date','')}",
-        "message": "Complementando datas sem preço na primeira fonte.",
-    }
-    try:
-        req = urllib.request.Request(
-            url,
-            data=json.dumps(body, ensure_ascii=False).encode("utf-8"),
-            headers={"Content-Type": "text/plain;charset=UTF-8", "User-Agent": "flight-search-swoop-progress/0.3"},
-            method="POST",
-        )
-        with urllib.request.urlopen(req, timeout=8) as response:  # noqa: S310
-            response.read(32)
-    except Exception:
-        pass
 
 
 def main() -> None:
     payload = json.loads(sys.stdin.read())
     queries = list(payload.get("queries") or [])
     workers = max(1, min(6, int(payload.get("workers", 4))))
-    results: list[dict] = []
-    errors: list[str] = []
-    done = 0
-    last_sent_at = 0.0
-    last_sent_done = -1
-    step = max(3, len(queries) // 45)
+    results, errors = [], []
     with ThreadPoolExecutor(max_workers=workers) as pool:
         futures = {pool.submit(one, payload, query): query for query in queries}
         for future in as_completed(futures):
             query = futures[future]
             row, error = future.result()
-            done += 1
             if row:
                 results.append(row)
-            if error and len(errors) < 30:
+            if error:
                 errors.append(error)
-            now = time.monotonic()
-            if done == len(queries) or done - last_sent_done >= step or now - last_sent_at >= 3.0:
-                send_progress(payload, done, len(queries), len(results), query)
-                last_sent_at = now
-                last_sent_done = done
-    sys.stdout.write(json.dumps({"results": results, "errors": errors}, ensure_ascii=False))
+            if payload.get("stream"):
+                print(json.dumps({"type": "result", "query": query, "row": row,
+                    "price": row["price"] if row else None,
+                    "status": "error" if error else "priced" if row else "no_result",
+                    "error": error}, ensure_ascii=False), flush=True)
+    print(json.dumps({"type": "complete", "results": results, "errors": errors}, ensure_ascii=False), flush=True)
 
 
 if __name__ == "__main__":

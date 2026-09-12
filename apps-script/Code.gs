@@ -46,8 +46,8 @@ function setProgress_(jobId, patch) {
 
 function getProgress_(jobId) {
   const raw = PropertiesService.getScriptProperties().getProperty('PROGRESS_' + jobId);
-  if (!raw) return { request_id: jobId, status: 'queued', stage: 'queued', percent: 1, message: 'Aguardando início da execução.' };
-  try { return JSON.parse(raw); } catch (err) { return { request_id: jobId, status: 'running', stage: 'starting', percent: 2 }; }
+  if (!raw) return { request_id: jobId, status: 'unknown', stage: 'unconfirmed', percent: 0, message: 'Solicitação ainda não recebida.' };
+  try { return JSON.parse(raw); } catch (err) { return { request_id: jobId, status: 'error', stage: 'error', percent: 0, error: 'Registro de progresso inválido.' }; }
 }
 
 function dispatchSearch_(job) {
@@ -98,9 +98,10 @@ function startSearch_(body) {
 
   const props = PropertiesService.getScriptProperties();
   props.setProperty('JOB_' + jobId, JSON.stringify(job));
-  setProgress_(jobId, { status: 'queued', stage: 'queued', percent: 1, completed: 0, priced: 0, message: 'Pesquisa recebida. Aguardando GitHub Actions.' });
+  setProgress_(jobId, { status: 'received', stage: 'received', percent: 0, completed: 0, priced: 0, message: 'Solicitação recebida pelo serviço.' });
   try {
     dispatchSearch_(job);
+    setProgress_(jobId, { status: 'queued', stage: 'queued', percent: 0, message: 'GitHub aceitou a solicitação. Aguardando execução.' });
   } catch (err) {
     props.deleteProperty('JOB_' + jobId);
     setProgress_(jobId, { status: 'error', stage: 'error', percent: 0, error: String(err.message || err) });

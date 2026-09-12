@@ -5,6 +5,10 @@ import calendar
 import json
 import os
 import subprocess
+import queue
+import threading
+import tempfile
+import traceback
 import sys
 import time
 import urllib.error
@@ -24,7 +28,7 @@ if str(MONITOR) not in sys.path:
 from providers import search_fast_flights  # noqa: E402
 
 OUTPUT_PATH = Path(os.environ.get("SEARCH_OUTPUT_PATH") or (ROOT / "docs" / "data" / "flight-month-search.json"))
-HISTORY_PATH = ROOT / "docs" / "data" / "flight-price-history.json"
+HISTORY_PATH = Path(os.environ.get("SEARCH_HISTORY_PATH") or (ROOT / "docs" / "data" / "flight-price-history.json"))
 LIVE_PATH = "docs/data/flight-search-live.json"
 LIVE_BRANCH = os.environ.get("SEARCH_LIVE_BRANCH", "flight-live")
 VERSION = "0.4.0"
@@ -138,6 +142,7 @@ def fast_query(origin: str, destination: str, dep: date, ret: date, max_stops: i
         row["url"] = row.get("url") or google_url(origin, destination, dep.isoformat(), ret.isoformat())
         return row, None
     except Exception as exc:  # noqa: BLE001
+        traceback.print_exc(file=sys.stderr)
         return None, f"{dep.isoformat()}->{ret.isoformat()}: {type(exc).__name__}: {exc}"
 
 
@@ -169,41 +174,73 @@ def run_fast_streaming(
     return rows, missing, errors
 
 
-def run_swoop_batch(origin: str, destination: str, combos: list[tuple[date, date]], max_stops: int, workers: int) -> tuple[list[dict], list[str]]:
+def run_swoop_batch(origin: str, destination: str, combos: list[tuple[date, date]], max_stops: int, workers: int, progress=None) -> tuple[list[dict], list[str]]:
     if not combos:
         return [], []
-    worker = Path(__file__).with_name("swoop_batch_worker.py")
-    payload = {
-        "origin": origin,
-        "destination": destination,
-        "max_stops": max_stops,
-        "workers": workers,
-        "queries": [{"departure_date": dep.isoformat(), "return_date": ret.isoformat()} for dep, ret in combos],
-    }
-    proc = subprocess.run(
-        [sys.executable, str(worker)],
-        input=json.dumps(payload),
-        text=True,
-        capture_output=True,
-        timeout=max(180, min(900, len(combos) * 6)),
-        check=False,
-    )
-    raw = (proc.stdout or "").strip()
-    if not raw:
-        return [], [(proc.stderr or "Swoop batch sem saída")[-1200:]]
-    try:
-        data = json.loads(raw)
-    except json.JSONDecodeError:
-        return [], ["Swoop batch retornou JSON inválido: " + raw[-900:]]
-    rows = list(data.get("results") or [])
-    errors = list(data.get("errors") or [])[:60]
-    for row in rows:
-        row["source_kind"] = "swoop"
+    payload = {"origin": origin, "destination": destination, "max_stops": max_stops,
+               "workers": workers, "stream": True,
+               "queries": [{"departure_date": dep.isoformat(), "return_date": ret.isoformat()} for dep, ret in combos]}
+    rows, errors, completed = [], [], 0
+    current_pair = payload["queries"][0]
+    messages = queue.Queue()
+    with tempfile.TemporaryFile(mode="w+t") as stderr:
+        proc = subprocess.Popen([sys.executable, str(Path(__file__).with_name("swoop_batch_worker.py"))],
+                                stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=stderr, text=True)
+        def read_stdout():
+            for line in proc.stdout:
+                messages.put(line)
+            messages.put(None)
+        threading.Thread(target=read_stdout, daemon=True).start()
         try:
-            row["trip_days"] = (date.fromisoformat(row["return_date"]) - date.fromisoformat(row["departure_date"])).days
-        except Exception:
-            row["trip_days"] = 0
-        row["url"] = row.get("url") or google_url(origin, destination, row["departure_date"], row["return_date"])
+            proc.stdin.write(json.dumps(payload))
+            proc.stdin.close()
+            deadline = time.monotonic() + max(180, min(900, len(combos) * 6))
+            while True:
+                if time.monotonic() >= deadline:
+                    errors.append("Swoop timeout; partial results preserved")
+                    break
+                try:
+                    line = messages.get(timeout=2)
+                except queue.Empty:
+                    if progress:
+                        progress(completed, rows, errors, current_pair)
+                    continue
+                if line is None:
+                    break
+                try:
+                    event = json.loads(line)
+                except json.JSONDecodeError:
+                    errors.append("Invalid Swoop progress message")
+                    continue
+                if event.get("type") != "result":
+                    continue
+                completed += 1
+                current_pair = event["query"]
+                row = event.get("row")
+                if row:
+                    row["source_kind"] = "swoop"
+                    row["trip_days"] = (date.fromisoformat(row["return_date"]) - date.fromisoformat(row["departure_date"])).days
+                    rows.append(row)
+                if event.get("error"):
+                    errors.append(event["error"])
+                if progress:
+                    progress(completed, rows, errors, current_pair)
+        finally:
+            if proc.poll() is None:
+                proc.terminate()
+            try:
+                proc.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                proc.kill()
+                proc.wait()
+            stderr.seek(0)
+            diagnostic = stderr.read()
+            if diagnostic:
+                print(diagnostic, file=sys.stderr)
+        if completed < len(combos):
+            errors.append(f"Swoop stopped after {completed}/{len(combos)} combinations")
+            if progress:
+                progress(completed, rows, errors, current_pair)
     return rows, errors
 
 
@@ -234,13 +271,12 @@ def pair_key(origin: str, destination: str, row: dict, max_stops: int) -> str:
 
 
 def load_history() -> dict:
-    try:
-        data = json.loads(HISTORY_PATH.read_text(encoding="utf-8"))
-        if isinstance(data, dict) and isinstance(data.get("pairs"), dict):
-            return data
-    except Exception:
-        pass
-    return {"version": 1, "updated_at": None, "pairs": {}}
+    if not HISTORY_PATH.exists():
+        return {"version": 1, "updated_at": None, "pairs": {}}
+    data = json.loads(HISTORY_PATH.read_text(encoding="utf-8"))
+    if not isinstance(data, dict) or not isinstance(data.get("pairs"), dict):
+        raise ValueError("Invalid history; refusing to overwrite saved searches")
+    return data
 
 
 def enrich_with_history(rows: list[dict], history: dict, origin: str, destination: str, max_stops: int) -> list[dict]:
@@ -258,7 +294,7 @@ def enrich_with_history(rows: list[dict], history: dict, origin: str, destinatio
             row["change_amount"] = round(change, 2)
             row["change_pct"] = round(pct, 1)
             row["trend"] = "down" if change < -0.01 else "up" if change > 0.01 else "same"
-            row["historical_min"] = round(float(old.get("min_price", previous)), 2)
+            row["historical_min"] = round(min(current, float(old.get("min_price", previous))), 2)
             row["history_samples"] = int(old.get("samples", 1))
             row["previous_seen_at"] = old.get("last_seen")
         else:
@@ -302,9 +338,6 @@ def merge_rows_into_history(history: dict, rows: list[dict], origin: str, destin
             "samples": samples,
             "observations": observations,
         }
-    if len(pairs) > HISTORY_MAX_PAIRS:
-        keep = sorted(pairs.items(), key=lambda kv: str(kv[1].get("last_seen") or ""), reverse=True)[:HISTORY_MAX_PAIRS]
-        history["pairs"] = dict(keep)
     history["updated_at"] = observed_at
     history["version"] = 1
     return history
@@ -467,6 +500,7 @@ def make_payload(
         "history_summary": history_summary(enriched),
         "daily_min": daily_min(enriched),
         "results": top,
+        "all_results": enriched,
         "errors": errors[-60:],
     }
 
@@ -479,7 +513,6 @@ def main() -> None:
     request_id = str(os.environ.get("SEARCH_REQUEST_ID") or "manual").strip()[:80]
     fast_workers = int(os.environ.get("SEARCH_FAST_WORKERS") or 12)
     swoop_workers = int(os.environ.get("SEARCH_SWOOP_WORKERS") or 6)
-    force_swoop = str(os.environ.get("SEARCH_FORCE_SWOOP") or "").lower() in {"1", "true", "yes"}
 
     origin, period_start, period_end, period_mode = decode_origin_and_period(raw_origin, month)
 
@@ -508,7 +541,7 @@ def main() -> None:
             if prior_origin and prior_destination:
                 merge_rows_into_history(
                     history,
-                    prior_live["results"],
+                    prior_live.get("all_results", prior_live["results"]),
                     prior_origin,
                     prior_destination,
                     int(prior_req.get("max_stops", 2)),
@@ -551,31 +584,34 @@ def main() -> None:
         all_errors = list(fast_errors)
         primary_completed = len(combos)
 
-        fast_ratio = len(fast_rows) / len(combos)
-        regional = origin in {"DOU", "PMG", "JTC", "TJL", "ARU", "PPB", "MII"}
-        use_swoop = force_swoop or regional or fast_ratio < 0.18
         swoop_rows: list[dict] = []
         swoop_errors: list[str] = []
 
-        if use_swoop and missing:
+        if missing:
             fallback_total = len(missing)
             batch_size = 30
             for offset in range(0, len(missing), batch_size):
                 chunk = missing[offset: offset + batch_size]
-                rows_chunk, errors_chunk = run_swoop_batch(origin, destination, chunk, max_stops, swoop_workers)
+                processed_before = fallback_done
+                def fallback_progress(done, rows, errors, current_pair):
+                    nonlocal fallback_done, all_rows, all_errors
+                    fallback_done = processed_before + done
+                    all_rows = fast_rows + swoop_rows + list(rows)
+                    all_errors = (fast_errors + swoop_errors + list(errors))[-60:]
+                    payload = make_payload(
+                        request_id=request_id, origin=origin, destination=destination, month=month, max_stops=max_stops,
+                        start_date=period_start, end_date=period_end, mode=period_mode, all_rows=all_rows, history=history,
+                        total=len(combos), primary_completed=len(combos), primary_total=len(combos),
+                        fallback_done=fallback_done, fallback_total=fallback_total, status="running", stage="fallback",
+                        started_at=started_iso, errors=all_errors,
+                    )
+                    payload["current_pair"] = current_pair
+                    publisher.publish(payload, f"live: {request_id} confirmação {fallback_done}/{fallback_total}",
+                                      completed=len(combos) + fallback_done)
+                fallback_progress(0, [], [], {"departure_date": chunk[0][0].isoformat(), "return_date": chunk[0][1].isoformat()})
+                rows_chunk, errors_chunk = run_swoop_batch(origin, destination, chunk, max_stops, swoop_workers, fallback_progress)
                 swoop_rows.extend(rows_chunk)
                 swoop_errors.extend(errors_chunk)
-                fallback_done = min(len(missing), offset + len(chunk))
-                all_rows = fast_rows + swoop_rows
-                all_errors = (fast_errors + swoop_errors)[-60:]
-                payload = make_payload(
-                    request_id=request_id, origin=origin, destination=destination, month=month, max_stops=max_stops,
-                    start_date=period_start, end_date=period_end, mode=period_mode, all_rows=all_rows, history=history,
-                    total=len(combos), primary_completed=len(combos), primary_total=len(combos),
-                    fallback_done=fallback_done, fallback_total=fallback_total, status="running", stage="fallback",
-                    started_at=started_iso, errors=all_errors,
-                )
-                publisher.publish(payload, f"live: {request_id} confirmação {fallback_done}/{fallback_total}", force=True, completed=len(combos) + fallback_done)
 
         all_rows = dedupe(fast_rows + swoop_rows)
         all_errors = (fast_errors + swoop_errors)[-60:]
@@ -584,7 +620,8 @@ def main() -> None:
             request_id=request_id, origin=origin, destination=destination, month=month, max_stops=max_stops,
             start_date=period_start, end_date=period_end, mode=period_mode, all_rows=all_rows, history=history,
             total=len(combos), primary_completed=len(combos), primary_total=len(combos), fallback_done=fallback_done,
-            fallback_total=fallback_total, status="completed", stage="completed", started_at=started_iso, errors=all_errors,
+            fallback_total=fallback_total, status="completed" if fallback_done == fallback_total else "partial",
+            stage="completed" if fallback_done == fallback_total else "interrupted", started_at=started_iso, errors=all_errors,
         )
 
         observed_at = final["generated_at"]
