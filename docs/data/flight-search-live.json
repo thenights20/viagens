@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T21:50:53.219763Z",
-  "updated_at": "2026-09-12T21:50:53.219763Z",
+  "generated_at": "2026-09-12T21:50:54.822205Z",
+  "updated_at": "2026-09-12T21:50:54.822205Z",
   "started_at": "2026-09-12T21:32:44.344668Z",
   "status": "running",
   "stage": "google",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 7140,
-    "processed_combinations": 6672,
-    "primary_completed": 6672,
+    "processed_combinations": 6684,
+    "primary_completed": 6684,
     "primary_total": 7140,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 2520,
+    "priced_combinations": 2522,
     "coverage_pct": 35.3,
     "lowest_price": 2338.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 2,
     "same": 250,
-    "new": 2268
+    "new": 2270
   },
   "daily_min": [
     {
@@ -1894,6 +1894,31 @@
       "history_samples": 0,
       "previous_seen_at": null,
       "rank": 30
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-01-29",
+      "return_date": "2027-01-31",
+      "airline": "Arajet",
+      "price": 4145.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 29] [23, 30]",
+      "arrival": "[2027, 1, 30] [11, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-01-29+returning+2027-01-31",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 2,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
     }
   ],
   "results": [
@@ -26377,6 +26402,31 @@
     {
       "origin": "GRU",
       "destination": "MIA",
+      "departure_date": "2027-01-28",
+      "return_date": "2027-02-27",
+      "airline": "Arajet",
+      "price": 3321.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 28] [1]",
+      "arrival": "[2027, 1, 28] [11, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-01-28+returning+2027-02-27",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 30,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
       "departure_date": "2026-11-10",
       "return_date": "2027-01-23",
       "airline": "Arajet",
@@ -45566,6 +45616,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 34,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-01-29",
+      "return_date": "2027-01-31",
+      "airline": "Arajet",
+      "price": 4145.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 29] [23, 30]",
+      "arrival": "[2027, 1, 30] [11, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-01-29+returning+2027-01-31",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 2,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -67663,7 +67738,7 @@
     "2026-11-22->2026-11-30: ProviderResponseError: Google document has no flight data script"
   ],
   "current_pair": {
-    "departure_date": "2027-01-28",
-    "return_date": "2027-02-26"
+    "departure_date": "2027-01-29",
+    "return_date": "2027-02-05"
   }
 }
