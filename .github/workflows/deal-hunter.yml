@@ -56,12 +56,31 @@ jobs:
           python - <<'PY'
           import re
           from pathlib import Path
+
           html = Path('docs/index.html').read_text(encoding='utf-8')
-          match = re.search(r'<script>(.*)</script>', html, re.S)
-          assert match, 'script inline não encontrado'
-          Path('/tmp/dashboard.js').write_text(match.group(1), encoding='utf-8')
+          scripts = re.findall(
+              r'<script(?![^>]*\bsrc=)[^>]*>(.*?)</script\s*>',
+              html,
+              flags=re.I | re.S,
+          )
+          scripts = [script for script in scripts if script.strip()]
+          if not scripts:
+              raise SystemExit('script inline não encontrado')
+
+          for index, script in enumerate(scripts):
+              Path(f'/tmp/dashboard-{index}.js').write_text(script, encoding='utf-8')
+          print(f'{len(scripts)} script(s) inline separado(s) para validação')
           PY
-          node --check /tmp/dashboard.js
+
+          for f in /tmp/dashboard-*.js; do
+            node --check "$f"
+          done
+
+          for f in docs/flight-explorer.js docs/terabyte-live.js docs/flight-fetch-fix.js; do
+            if [ -f "$f" ]; then
+              node --check "$f"
+            fi
+          done
 
       - name: Coletar sinais externos
         env:
