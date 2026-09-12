@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T20:28:56.691892Z",
-  "updated_at": "2026-09-12T20:28:56.691892Z",
+  "generated_at": "2026-09-12T20:29:43.284532Z",
+  "updated_at": "2026-09-12T20:29:43.284532Z",
   "started_at": "2026-09-12T20:26:10.310583Z",
   "status": "running",
   "stage": "fallback",
@@ -21,10 +21,10 @@
     "processed_combinations": 465,
     "primary_completed": 465,
     "primary_total": 465,
-    "fallback_done": 150,
+    "fallback_done": 180,
     "fallback_total": 465,
-    "priced_combinations": 109,
-    "coverage_pct": 23.4,
+    "priced_combinations": 128,
+    "coverage_pct": 27.5,
     "lowest_price": 627.0,
     "result_count": 100
   },
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 25,
-    "new": 84
+    "new": 103
   },
   "daily_min": [
     {
@@ -157,6 +157,57 @@
       "provider": "swoop",
       "source_kind": "swoop",
       "trip_days": 2,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 52
+    },
+    {
+      "origin": "DOU",
+      "destination": "GRU",
+      "departure_date": "2027-01-06",
+      "return_date": "2027-01-20",
+      "airline": "LATAM",
+      "price": 1160.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+DOU+to+GRU+on+2027-01-06+returning+2027-01-20",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 14,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "DOU",
+      "destination": "GRU",
+      "departure_date": "2027-01-07",
+      "return_date": "2027-01-12",
+      "airline": "LATAM",
+      "price": 876.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+DOU+to+GRU+on+2027-01-07+returning+2027-01-12",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 5,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -1419,6 +1470,84 @@
     {
       "origin": "DOU",
       "destination": "GRU",
+      "departure_date": "2027-01-07",
+      "return_date": "2027-01-12",
+      "airline": "LATAM",
+      "price": 876.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+DOU+to+GRU+on+2027-01-07+returning+2027-01-12",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 5,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 49
+    },
+    {
+      "origin": "DOU",
+      "destination": "GRU",
+      "departure_date": "2027-01-07",
+      "return_date": "2027-01-13",
+      "airline": "LATAM",
+      "price": 876.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+DOU+to+GRU+on+2027-01-07+returning+2027-01-13",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 6,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 50
+    },
+    {
+      "origin": "DOU",
+      "destination": "GRU",
+      "departure_date": "2027-01-07",
+      "return_date": "2027-01-20",
+      "airline": "LATAM",
+      "price": 876.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+DOU+to+GRU+on+2027-01-07+returning+2027-01-20",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 13,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 51
+    },
+    {
+      "origin": "DOU",
+      "destination": "GRU",
       "departure_date": "2027-01-05",
       "return_date": "2027-01-07",
       "airline": "LATAM",
@@ -1440,7 +1569,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 49
+      "rank": 52
     },
     {
       "origin": "DOU",
@@ -1466,7 +1595,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 50
+      "rank": 53
     },
     {
       "origin": "DOU",
@@ -1492,7 +1621,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 51
+      "rank": 54
     },
     {
       "origin": "DOU",
@@ -1518,7 +1647,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 52
+      "rank": 55
     },
     {
       "origin": "DOU",
@@ -1544,7 +1673,7 @@
       "historical_min": 981.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-12T20:19:04.566391Z",
-      "rank": 53
+      "rank": 56
     },
     {
       "origin": "DOU",
@@ -1570,7 +1699,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 54
+      "rank": 57
     },
     {
       "origin": "DOU",
@@ -1596,7 +1725,7 @@
       "historical_min": 981.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-12T20:19:04.566391Z",
-      "rank": 55
+      "rank": 58
     },
     {
       "origin": "DOU",
@@ -1622,7 +1751,7 @@
       "historical_min": 981.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-12T20:19:04.566391Z",
-      "rank": 56
+      "rank": 59
     },
     {
       "origin": "DOU",
@@ -1648,7 +1777,7 @@
       "historical_min": 981.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-12T20:19:04.566391Z",
-      "rank": 57
+      "rank": 60
     },
     {
       "origin": "DOU",
@@ -1674,7 +1803,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 58
+      "rank": 61
     },
     {
       "origin": "DOU",
@@ -1700,7 +1829,7 @@
       "historical_min": 981.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-12T20:19:04.566391Z",
-      "rank": 59
+      "rank": 62
     },
     {
       "origin": "DOU",
@@ -1726,7 +1855,7 @@
       "historical_min": 981.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-12T20:19:04.566391Z",
-      "rank": 60
+      "rank": 63
     },
     {
       "origin": "DOU",
@@ -1752,7 +1881,7 @@
       "historical_min": 981.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-12T20:19:04.566391Z",
-      "rank": 61
+      "rank": 64
     },
     {
       "origin": "DOU",
@@ -1778,7 +1907,7 @@
       "historical_min": 981.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-12T20:19:04.566391Z",
-      "rank": 62
+      "rank": 65
     },
     {
       "origin": "DOU",
@@ -1804,7 +1933,7 @@
       "historical_min": 981.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-12T20:19:04.566391Z",
-      "rank": 63
+      "rank": 66
     },
     {
       "origin": "DOU",
@@ -1830,7 +1959,7 @@
       "historical_min": 981.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-12T20:19:04.566391Z",
-      "rank": 64
+      "rank": 67
     },
     {
       "origin": "DOU",
@@ -1856,7 +1985,7 @@
       "historical_min": 981.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-12T20:19:04.566391Z",
-      "rank": 65
+      "rank": 68
     },
     {
       "origin": "DOU",
@@ -1882,7 +2011,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 66
+      "rank": 69
     },
     {
       "origin": "DOU",
@@ -1908,7 +2037,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 67
+      "rank": 70
     },
     {
       "origin": "DOU",
@@ -1934,7 +2063,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 68
+      "rank": 71
     },
     {
       "origin": "DOU",
@@ -1960,7 +2089,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 69
+      "rank": 72
     },
     {
       "origin": "DOU",
@@ -1986,7 +2115,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 70
+      "rank": 73
     },
     {
       "origin": "DOU",
@@ -2012,7 +2141,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 71
+      "rank": 74
     },
     {
       "origin": "DOU",
@@ -2038,7 +2167,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 72
+      "rank": 75
     },
     {
       "origin": "DOU",
@@ -2064,7 +2193,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 73
+      "rank": 76
     },
     {
       "origin": "DOU",
@@ -2090,7 +2219,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 74
+      "rank": 77
     },
     {
       "origin": "DOU",
@@ -2116,7 +2245,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 75
+      "rank": 78
     },
     {
       "origin": "DOU",
@@ -2142,7 +2271,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 76
+      "rank": 79
     },
     {
       "origin": "DOU",
@@ -2168,7 +2297,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 77
+      "rank": 80
     },
     {
       "origin": "DOU",
@@ -2194,7 +2323,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 78
+      "rank": 81
     },
     {
       "origin": "DOU",
@@ -2220,7 +2349,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 79
+      "rank": 82
     },
     {
       "origin": "DOU",
@@ -2246,7 +2375,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 80
+      "rank": 83
     },
     {
       "origin": "DOU",
@@ -2272,7 +2401,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 81
+      "rank": 84
     },
     {
       "origin": "DOU",
@@ -2298,7 +2427,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 82
+      "rank": 85
     },
     {
       "origin": "DOU",
@@ -2324,7 +2453,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 83
+      "rank": 86
     },
     {
       "origin": "DOU",
@@ -2350,7 +2479,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 84
+      "rank": 87
     },
     {
       "origin": "DOU",
@@ -2376,7 +2505,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 85
+      "rank": 88
     },
     {
       "origin": "DOU",
@@ -2402,7 +2531,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 86
+      "rank": 89
     },
     {
       "origin": "DOU",
@@ -2428,7 +2557,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 87
+      "rank": 90
     },
     {
       "origin": "DOU",
@@ -2454,7 +2583,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 88
+      "rank": 91
     },
     {
       "origin": "DOU",
@@ -2480,7 +2609,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 89
+      "rank": 92
     },
     {
       "origin": "DOU",
@@ -2506,7 +2635,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 90
+      "rank": 93
     },
     {
       "origin": "DOU",
@@ -2532,7 +2661,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 91
+      "rank": 94
     },
     {
       "origin": "DOU",
@@ -2558,7 +2687,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 92
+      "rank": 95
     },
     {
       "origin": "DOU",
@@ -2584,7 +2713,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 93
+      "rank": 96
     },
     {
       "origin": "DOU",
@@ -2610,7 +2739,33 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 94
+      "rank": 97
+    },
+    {
+      "origin": "DOU",
+      "destination": "GRU",
+      "departure_date": "2027-01-07",
+      "return_date": "2027-01-15",
+      "airline": "LATAM",
+      "price": 981.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+DOU+to+GRU+on+2027-01-07+returning+2027-01-15",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 8,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 98
     },
     {
       "origin": "DOU",
@@ -2636,7 +2791,7 @@
       "historical_min": 1049.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-12T20:19:04.566391Z",
-      "rank": 95
+      "rank": 99
     },
     {
       "origin": "DOU",
@@ -2662,125 +2817,10 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 96
-    },
-    {
-      "origin": "DOU",
-      "destination": "GRU",
-      "departure_date": "2027-01-04",
-      "return_date": "2027-01-05",
-      "airline": "LATAM",
-      "price": 1230.0,
-      "duration": "",
-      "duration_minutes": 0,
-      "stops": "Direto",
-      "stops_count": 0,
-      "departure": "",
-      "arrival": "",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+DOU+to+GRU+on+2027-01-04+returning+2027-01-05",
-      "provider": "swoop",
-      "source_kind": "swoop",
-      "trip_days": 1,
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 97
-    },
-    {
-      "origin": "DOU",
-      "destination": "GRU",
-      "departure_date": "2027-01-04",
-      "return_date": "2027-01-06",
-      "airline": "LATAM",
-      "price": 1230.0,
-      "duration": "",
-      "duration_minutes": 0,
-      "stops": "Direto",
-      "stops_count": 0,
-      "departure": "",
-      "arrival": "",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+DOU+to+GRU+on+2027-01-04+returning+2027-01-06",
-      "provider": "swoop",
-      "source_kind": "swoop",
-      "trip_days": 2,
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 98
-    },
-    {
-      "origin": "DOU",
-      "destination": "GRU",
-      "departure_date": "2027-01-04",
-      "return_date": "2027-01-11",
-      "airline": "LATAM",
-      "price": 1230.0,
-      "duration": "",
-      "duration_minutes": 0,
-      "stops": "Direto",
-      "stops_count": 0,
-      "departure": "",
-      "arrival": "",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+DOU+to+GRU+on+2027-01-04+returning+2027-01-11",
-      "provider": "swoop",
-      "source_kind": "swoop",
-      "trip_days": 7,
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 99
-    },
-    {
-      "origin": "DOU",
-      "destination": "GRU",
-      "departure_date": "2027-01-04",
-      "return_date": "2027-01-16",
-      "airline": "LATAM",
-      "price": 1230.0,
-      "duration": "",
-      "duration_minutes": 0,
-      "stops": "Direto",
-      "stops_count": 0,
-      "departure": "",
-      "arrival": "",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+DOU+to+GRU+on+2027-01-04+returning+2027-01-16",
-      "provider": "swoop",
-      "source_kind": "swoop",
-      "trip_days": 12,
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
       "rank": 100
     }
   ],
   "errors": [
-    "2027-01-02->2027-01-15: TypeError: 'NoneType' object is not subscriptable",
-    "2027-01-02->2027-01-17: TypeError: 'NoneType' object is not subscriptable",
-    "2027-01-02->2027-01-11: TypeError: 'NoneType' object is not subscriptable",
-    "2027-01-02->2027-01-10: TypeError: 'NoneType' object is not subscriptable",
-    "2027-01-02->2027-01-18: TypeError: 'NoneType' object is not subscriptable",
-    "2027-01-02->2027-01-19: TypeError: 'NoneType' object is not subscriptable",
-    "2027-01-02->2027-01-20: TypeError: 'NoneType' object is not subscriptable",
-    "2027-01-02->2027-01-23: TypeError: 'NoneType' object is not subscriptable",
-    "2027-01-02->2027-01-21: TypeError: 'NoneType' object is not subscriptable",
-    "2027-01-02->2027-01-29: TypeError: 'NoneType' object is not subscriptable",
-    "2027-01-02->2027-01-25: TypeError: 'NoneType' object is not subscriptable",
     "2027-01-02->2027-01-27: TypeError: 'NoneType' object is not subscriptable",
     "2027-01-02->2027-01-24: TypeError: 'NoneType' object is not subscriptable",
     "2027-01-02->2027-01-22: TypeError: 'NoneType' object is not subscriptable",
@@ -2829,6 +2869,17 @@
     "2027-01-05->2027-01-13: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
     "2027-01-05->2027-01-17: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
     "2027-01-05->2027-01-11: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
-    "2027-01-05->2027-01-19: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)"
+    "2027-01-05->2027-01-19: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
+    "2027-01-06->2027-01-28: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying.",
+    "2027-01-06->2027-01-30: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying.",
+    "2027-01-07->2027-01-09: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying.",
+    "2027-01-07->2027-01-08: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying.",
+    "2027-01-06->2027-01-25: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "2027-01-06->2027-01-27: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "2027-01-07->2027-01-14: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying.",
+    "2027-01-07->2027-01-10: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "2027-01-07->2027-01-17: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying.",
+    "2027-01-07->2027-01-22: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying.",
+    "2027-01-07->2027-01-21: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
   ]
 }
