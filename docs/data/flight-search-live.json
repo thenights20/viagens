@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T22:45:57.482888Z",
-  "updated_at": "2026-09-12T22:45:57.482888Z",
+  "generated_at": "2026-09-12T22:46:05.504238Z",
+  "updated_at": "2026-09-12T22:46:05.504238Z",
   "started_at": "2026-09-12T21:32:44.344668Z",
   "status": "running",
   "stage": "fallback",
@@ -21,10 +21,10 @@
     "processed_combinations": 7140,
     "primary_completed": 7140,
     "primary_total": 7140,
-    "fallback_done": 2172,
+    "fallback_done": 2177,
     "fallback_total": 4532,
-    "priced_combinations": 4542,
-    "coverage_pct": 63.6,
+    "priced_combinations": 4545,
+    "coverage_pct": 63.7,
     "lowest_price": 2338.0,
     "result_count": 100
   },
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 2,
     "same": 250,
-    "new": 4290
+    "new": 4293
   },
   "daily_min": [
     {
@@ -55999,6 +55999,81 @@
       "provider": "swoop",
       "source_kind": "swoop",
       "trip_days": 67,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2026-12-12",
+      "return_date": "2027-02-20",
+      "airline": "Avianca",
+      "price": 3634.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-12-12+returning+2027-02-20",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 70,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2026-12-12",
+      "return_date": "2027-02-22",
+      "airline": "Avianca",
+      "price": 3634.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-12-12+returning+2027-02-22",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 72,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2026-12-12",
+      "return_date": "2027-02-23",
+      "airline": "Avianca",
+      "price": 3634.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-12-12+returning+2027-02-23",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 73,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -119159,8 +119234,6 @@
     }
   ],
   "errors": [
-    "2026-12-03->2027-02-19: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "2026-12-04->2026-12-26: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying.",
     "2026-12-04->2027-01-08: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying.",
     "2026-12-04->2027-01-22: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
     "2026-12-05->2027-01-17: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
@@ -119218,10 +119291,12 @@
     "2026-12-11->2027-01-23: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
     "2026-12-11->2027-02-05: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
     "2026-12-12->2027-01-15: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "2026-12-12->2027-02-06: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
+    "2026-12-12->2027-02-06: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "2026-12-12->2027-02-19: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "2026-12-12->2027-02-21: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
   ],
   "current_pair": {
     "departure_date": "2026-12-12",
-    "return_date": "2027-02-09"
+    "return_date": "2027-02-23"
   }
 }
