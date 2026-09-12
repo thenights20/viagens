@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T23:50:15.743133Z",
-  "updated_at": "2026-09-12T23:50:15.743133Z",
+  "generated_at": "2026-09-12T23:50:19.592180Z",
+  "updated_at": "2026-09-12T23:50:19.592180Z",
   "started_at": "2026-09-12T23:31:44.359739Z",
   "status": "running",
   "stage": "google",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 7140,
-    "processed_combinations": 5616,
-    "primary_completed": 5616,
+    "processed_combinations": 5628,
+    "primary_completed": 5628,
     "primary_total": 7140,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 1082,
+    "priced_combinations": 1083,
     "coverage_pct": 15.2,
     "lowest_price": 2415.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 1082
+    "new": 1083
   },
   "daily_min": [
     {
@@ -14628,6 +14628,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 26,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "EWR",
+      "departure_date": "2027-03-06",
+      "return_date": "2027-03-28",
+      "airline": "American",
+      "price": 4941.0,
+      "duration": "11h 49min",
+      "duration_minutes": 709,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 6] [None, 5]",
+      "arrival": "[2027, 3, 6] [11, 58]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+EWR+on+2027-03-06+returning+2027-03-28",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 22,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -31026,6 +31051,6 @@
   ],
   "current_pair": {
     "departure_date": "2027-03-06",
-    "return_date": "2027-03-22"
+    "return_date": "2027-04-01"
   }
 }
