@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T19:24:44.744536Z",
-  "updated_at": "2026-09-12T19:24:44.744536Z",
+  "generated_at": "2026-09-12T19:25:07.791122Z",
+  "updated_at": "2026-09-12T19:25:07.791122Z",
   "started_at": "2026-09-12T19:21:40.295830Z",
   "status": "running",
   "stage": "fallback",
@@ -21,10 +21,10 @@
     "processed_combinations": 465,
     "primary_completed": 465,
     "primary_total": 465,
-    "fallback_done": 150,
+    "fallback_done": 180,
     "fallback_total": 465,
-    "priced_combinations": 143,
-    "coverage_pct": 30.8,
+    "priced_combinations": 171,
+    "coverage_pct": 36.8,
     "lowest_price": 732.0,
     "result_count": 100
   },
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 143
+    "new": 171
   },
   "daily_min": [
     {
@@ -183,6 +183,31 @@
       "provider": "swoop",
       "source_kind": "swoop",
       "trip_days": 3,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "DOU",
+      "destination": "GRU",
+      "departure_date": "2026-12-07",
+      "return_date": "2026-12-09",
+      "airline": "LATAM",
+      "price": 981.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+DOU+to+GRU+on+2026-12-07+returning+2026-12-09",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 2,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -2795,8 +2820,6 @@
     }
   ],
   "errors": [
-    "2026-12-01->2026-12-06: TypeError: 'NoneType' object is not subscriptable",
-    "2026-12-01->2026-12-12: TypeError: 'NoneType' object is not subscriptable",
     "2026-12-01->2026-12-10: TypeError: 'NoneType' object is not subscriptable",
     "2026-12-01->2026-12-08: TypeError: 'NoneType' object is not subscriptable",
     "2026-12-01->2026-12-04: TypeError: 'NoneType' object is not subscriptable",
@@ -2854,6 +2877,8 @@
     "2026-12-05->2026-12-11: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
     "2026-12-05->2026-12-28: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
     "2026-12-06->2026-12-07: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "2026-12-06->2026-12-14: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
+    "2026-12-06->2026-12-14: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "2026-12-07->2026-12-22: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "2026-12-06->2026-12-21: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
   ]
 }
