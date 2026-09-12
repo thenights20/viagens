@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T22:06:03.811826Z",
-  "updated_at": "2026-09-12T22:06:03.811826Z",
+  "generated_at": "2026-09-12T22:06:13.335133Z",
+  "updated_at": "2026-09-12T22:06:13.335133Z",
   "started_at": "2026-09-12T21:32:44.344668Z",
   "status": "running",
   "stage": "fallback",
@@ -21,9 +21,9 @@
     "processed_combinations": 7140,
     "primary_completed": 7140,
     "primary_total": 7140,
-    "fallback_done": 556,
+    "fallback_done": 557,
     "fallback_total": 4532,
-    "priced_combinations": 3010,
+    "priced_combinations": 3011,
     "coverage_pct": 42.2,
     "lowest_price": 2338.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 2,
     "same": 250,
-    "new": 2758
+    "new": 2759
   },
   "daily_min": [
     {
@@ -29872,6 +29872,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 63,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2026-11-23",
+      "return_date": "2027-02-10",
+      "airline": "Arajet",
+      "price": 3403.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-11-23+returning+2027-02-10",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 79,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -80545,6 +80570,6 @@
   ],
   "current_pair": {
     "departure_date": "2026-11-23",
-    "return_date": "2027-02-09"
+    "return_date": "2027-02-10"
   }
 }
