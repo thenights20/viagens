@@ -100,15 +100,30 @@
   function cloneCatalogs(){
     const paidOrigin=q('#monthOrigin'), paidDest=q('#monthDestinations'), origin=q('#milesOrigin'), dest=q('#milesDestinations');
     if (paidOrigin && paidOrigin.options.length) origin.innerHTML=paidOrigin.innerHTML;
-    else origin.innerHTML='<option value="GRU">Guarulhos (GRU)</option><option value="CGH">São Paulo / Congonhas (CGH)</option><option value="VCP">Campinas / Viracopos (VCP)</option><option value="GIG">Rio de Janeiro / Galeão (GIG)</option><option value="DOU">Dourados (DOU)</option>';
+    else origin.innerHTML='<option value="GRU">GRU · Guarulhos</option><option value="CGH">CGH · São Paulo / Congonhas</option><option value="VCP">VCP · Campinas / Viracopos</option><option value="GIG">GIG · Rio de Janeiro / Galeão</option><option value="DOU">DOU · Dourados</option>';
     if (paidDest && paidDest.children.length) dest.innerHTML=paidDest.innerHTML;
   }
 
   function defaults(){
-    const now=new Date(), future=new Date(now.getFullYear(),now.getMonth()+1,1), y=future.getFullYear(), m=String(future.getMonth()+1).padStart(2,'0');
-    q('#milesMonthValue').value=`${y}-${m}`;
-    const start=new Date(now.getFullYear(),now.getMonth(),now.getDate()+7), end=new Date(now.getFullYear(),now.getMonth(),now.getDate()+14);
-    q('#milesRangeStart').value=start.toISOString().slice(0,10);q('#milesRangeEnd').value=end.toISOString().slice(0,10);
+    const now=new Date(),pad=n=>String(n).padStart(2,'0'),monthKey=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}`,dateKey=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+    const monthInput=q('#milesMonthValue');
+    monthInput.min=monthKey(new Date(now.getFullYear(),now.getMonth(),1));
+    monthInput.max=monthKey(new Date(now.getFullYear(),now.getMonth()+18,1));
+    monthInput.value=monthKey(new Date(now.getFullYear(),now.getMonth()+1,1));
+    const defaultRangeStart=new Date(now.getFullYear(),now.getMonth()+1,10),defaultRangeEnd=new Date(now.getFullYear(),now.getMonth()+1,15);
+    const start=q('#milesRangeStart'),end=q('#milesRangeEnd');
+    start.min=dateKey(new Date(now.getFullYear(),now.getMonth(),now.getDate()+1));
+    start.max=dateKey(new Date(now.getFullYear(),now.getMonth()+19,0));
+    start.value=dateKey(defaultRangeStart);
+    end.min=start.min;end.max=start.max;end.value=dateKey(defaultRangeEnd);
+  }
+
+  function optionCode(o){
+    const value=String(o?.value||'').trim(),label=String(o?.label||o?.textContent||'').trim();
+    if(/^[A-Z]{3}$/i.test(value))return value.toUpperCase();
+    if(/^[A-Z]{3}$/i.test(label))return label.toUpperCase();
+    const m=(value+' '+label).match(/\b([A-Z]{3})\b/i);
+    return m?m[1].toUpperCase():'';
   }
 
   function resolveDestination(raw){
@@ -116,12 +131,12 @@
     const code=value.match(/\(([A-Z]{3})\)\s*$/i);
     if(code)return code[1].toUpperCase();
     if(/^[a-z]{3}$/i.test(value))return value.toUpperCase();
-    const opts=[...q('#milesDestinations').options];
-    const n=norm(value), exact=opts.find(o=>norm(o.value)===n);
-    if(exact){const m=String(exact.value).match(/\(([A-Z]{3})\)\s*$/i);return m?m[1].toUpperCase():String(exact.value).slice(-3).toUpperCase();}
-    const partial=opts.filter(o=>norm(o.value).includes(n));
-    if(partial.length===1){const m=String(partial[0].value).match(/\(([A-Z]{3})\)\s*$/i);return m?m[1].toUpperCase():String(partial[0].value).slice(-3).toUpperCase();}
-    return '';
+    const opts=[...q('#milesDestinations').options],n=norm(value);
+    const exact=opts.find(o=>norm(o.value)===n||norm(o.label||o.textContent)===n);
+    if(exact)return optionCode(exact);
+    const partial=opts.filter(o=>norm(o.value).includes(n)||norm(o.label||o.textContent).includes(n));
+    const codes=[...new Set(partial.map(optionCode).filter(Boolean))];
+    return codes.length===1?codes[0]:'';
   }
 
   function periodChanged(){const range=q('#milesPeriodMode').value==='range';q('#milesPeriodMonth').hidden=range;q('#milesPeriodRange').hidden=!range;}
@@ -155,7 +170,7 @@
   function rowDestination(x){return String(x.destination||'').toUpperCase();}
 
   function inPeriod(x,query){
-    const dep=String(x.departure_date||'').slice(0,10), ret=String(x.return_date||'').slice(0,10);
+    const dep=String(x.departure_date||'').slice(0,10),ret=String(x.return_date||'').slice(0,10);
     if(query.period_mode==='month')return dep.startsWith(query.month)||(ret&&ret.startsWith(query.month));
     if(!dep)return false;
     return dep>=query.start_date&&dep<=query.end_date&&(!ret||(ret>=query.start_date&&ret<=query.end_date));
@@ -221,7 +236,7 @@
 
   cloneCatalogs();defaults();periodChanged();renderProviderActions(null);renderSources();loadData();
   q('#milesPeriodMode').addEventListener('change',periodChanged);
-  q('#milesRangeStart').addEventListener('change',()=>{const end=q('#milesRangeEnd');if(end.value<q('#milesRangeStart').value)end.value=q('#milesRangeStart').value;});
+  q('#milesRangeStart').addEventListener('change',()=>{const start=q('#milesRangeStart'),end=q('#milesRangeEnd');end.min=start.value||start.min;if(end.value<start.value)end.value=start.value;});
   q('#milesSearchButton').addEventListener('click',e=>{e.preventDefault();search().catch(err=>{const status=q('#milesStatus');status.className='miles-status bad';status.textContent='Não foi possível carregar a consulta: '+String(err?.message||err);});});
   btn.addEventListener('click',activate);
   document.querySelectorAll('#flightTabs .tab').forEach(b=>{if(b!==btn)b.addEventListener('click',()=>{panel.hidden=true;if(b.dataset.flightView!=='monthsearch')setFocus(false);});});
