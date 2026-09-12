@@ -64,7 +64,7 @@
 
   const panel=document.createElement('div');panel.id='flightMonthPanel';panel.hidden=true;
   panel.innerHTML=`
-    <div class="month-titlebar"><div><strong>🔎 Buscar passagens · v0.4.9</strong><small>Os achados são salvos durante a pesquisa. Se a execução parar, o que já foi encontrado continua disponível.</small></div><div class="pill"><span class="dot"></span><span id="monthSearchUpdated">Aguardando busca</span></div></div>
+    <div class="month-titlebar"><div><strong>🔎 Buscar passagens · v0.5.0</strong><small>Os achados são salvos durante a pesquisa. Se a execução parar, o que já foi encontrado continua disponível.</small></div><div class="pill"><span class="dot"></span><span id="monthSearchUpdated">Aguardando busca</span></div></div>
     <section class="panel">
       <div class="month-search-grid">
         <div><label>Origem</label><select id="monthOrigin"></select></div>
@@ -194,7 +194,20 @@
   }
   async function loadConfig(){try{const c=await requestJson('./data/flight-search-config.json');apiBase=String(c.api_base||'').replace(/\/$/,'')}catch{}}
   async function fetchJson(url){try{return await requestJson(url)}catch{return null}}
-  async function bridgeProgress(request){return null;}
+  function bridgeProgress(request){
+    return new Promise(resolve=>{
+      if(!apiBase){resolve(null);return;}
+      const callback='flightProgress_'+String(request.request_id||'').replace(/[^A-Za-z0-9_$]/g,'_');
+      const script=document.createElement('script');
+      let finished=false;
+      const finish=value=>{if(finished)return;finished=true;clearTimeout(timer);try{script.remove()}catch{};try{delete window[callback]}catch{};resolve(value)};
+      const timer=setTimeout(()=>finish(null),8000);
+      window[callback]=value=>finish(value);
+      script.onerror=()=>finish(null);
+      script.src=`${apiBase}?route=${encodeURIComponent(`api/progress/${request.request_id}`)}&callback=${encodeURIComponent(callback)}&t=${Date.now()}`;
+      document.head.appendChild(script);
+    });
+  }
   async function loadSavedPairs(){const saved=await fetchJson('./data/flight-price-history.json');if(saved?.pairs)savedPairs=saved.pairs;}
   async function loadLastResult(){const[final,live]=await Promise.all([fetchJson(RESULT_RAW),fetchJson(LIVE_RAW)]);const ft=Date.parse(final?.updated_at||final?.generated_at||'')||0,lt=Date.parse(live?.updated_at||live?.generated_at||'')||0;const chosen=lt>ft?live:final;if(chosen&&chosen.results)data=chosen;}
 
@@ -216,13 +229,8 @@
 
   function postBridge(path,body){
     const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);
-    let targetPath=path,payload=body;
-    if(path==='api/cancel'){
-      targetPath='api/search';
-      payload={origin:'QZZ',destination:'QZX',month:(activeRequest&&activeRequest.month)||new Date().toISOString().slice(0,7),max_stops:2,request_id:'cancel_'+Date.now().toString(36)};
-    }
-    const url=`${apiBase}/${targetPath.replace(/^\/+|\/+$/g,'')}`;
-    return fetch(url,{method:'POST',mode:'no-cors',cache:'no-store',signal:controller.signal,headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(payload)}).finally(()=>clearTimeout(timer));
+    const url=`${apiBase}?route=${encodeURIComponent(path)}&t=${Date.now()}`;
+    return fetch(url,{method:'POST',mode:'no-cors',cache:'no-store',signal:controller.signal,headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(body)}).finally(()=>clearTimeout(timer));
   }
   function dispatchWithoutCors(request){
     // An opaque response cannot confirm acceptance. Poll the job even if its redirect stalls.
@@ -238,7 +246,7 @@
 
   function validateRequest(request){if(!/^[A-Z]{3}$/.test(request.destination))return'Escolha uma cidade/aeroporto válido, por exemplo Miami ou MIA.';if(request.period_mode==='month'&&!/^\d{4}-\d{2}$/.test(request.month))return'Escolha o mês da viagem.';if(request.period_mode==='range'){if(!request.start_date||!request.end_date)return'Informe a data inicial e a data final.';if(request.end_date<=request.start_date)return'A data final precisa ser depois da data inicial.';if(request.start_date.slice(0,7)!==request.end_date.slice(0,7))return'O intervalo precisa ficar dentro do mesmo mês.';}if(request.origin===request.destination)return'Origem e destino não podem ser iguais.';return'';}
   async function searchInsidePage(){if(searching)return;const request=formRequest(),status=q('#monthSearchStatus'),button=q('#monthSearchButton'),error=validateRequest(request);if(error){status.className='month-search-status bad';status.textContent=error;return}if(!apiBase)await loadConfig();if(!apiBase){status.className='month-search-status bad';status.textContent='O serviço de pesquisa ainda não está conectado. Atualize a página e tente novamente.';return}const total=comboTotal(request);if(total<1){status.className='month-search-status bad';status.textContent='Esse período não possui combinações futuras de ida e volta.';return}
-    request.request_id='web_'+(globalThis.crypto&&typeof globalThis.crypto.randomUUID==='function'?globalThis.crypto.randomUUID().replace(/-/g,''):(Date.now().toString(36)+Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2))).slice(0,64);searching=true;stopRequested=false;activeRun=null;activeRequest=request;button.disabled=true;button.textContent='⏳ Pesquisando…';clearForSearch(request,total);showProgress(total);status.className='month-search-status wait';status.textContent='🔎 Solicitação enviada. Aguardando o GitHub Actions iniciar a pesquisa.';const started=Date.now(),clock=setInterval(()=>{q('#monthProgressElapsed').textContent=`${Math.round((Date.now()-started)/1000)}s`},1000);try{dispatchWithoutCors(request);data=await pollSearch(request,started,total);render();updateProgress({pct:100,stage:data.status==='partial'?'Parcial preservado':'Pesquisa concluída',done:Number(data.stats?.processed_combinations??data.stats?.combinations??total),total:Number(data.stats?.combinations||total),priced:Number(data.stats?.priced_combinations||0),remaining:0,elapsed:(Date.now()-started)/1000,detail:'✓ resultado salvo'});q('#monthStopButton').disabled=true;status.className=data.status==='partial'?'month-search-status bad':'month-search-status ok';status.textContent=data.status==='partial'?'⚠ A pesquisa parou antes do fim, mas tudo o que havia sido encontrado ficou salvo.':`✅ Busca concluída. ${data.stats?.priced_combinations||0} combinações com preço foram salvas.`;}catch(e){if(String(e.message||e)==='__STOPPED__'){status.className='month-search-status bad';status.textContent='⛔ Acompanhamento interrompido. O cancelamento no servidor foi solicitado; os achados salvos permanecem abaixo.';}else{status.className='month-search-status bad';status.textContent=`Não foi possível concluir a busca: ${e.message||e}. Se já havia resultados, eles permanecem salvos.`;}}finally{clearInterval(clock);if(stopRequested||data.status!=='completed'){q('#monthProgressStage').textContent=stopRequested?'Acompanhamento interrompido':'Pesquisa não concluída';}searching=false;button.disabled=false;button.textContent='🔎 Pesquisar agora';const stop=q('#monthStopButton');stop.disabled=true;stop.textContent='■ Parar pesquisa';}}
+    request.request_id='web_'+(globalThis.crypto&&typeof globalThis.crypto.randomUUID==='function'?globalThis.crypto.randomUUID().replace(/-/g,''):(Date.now().toString(36)+Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2))).slice(0,64);searching=true;stopRequested=false;activeRun=null;activeRequest=request;button.disabled=true;button.textContent='⏳ Pesquisando…';clearForSearch(request,total);showProgress(total);status.className='month-search-status wait';status.textContent='🔎 Pesquisa enviada. Confirmando recebimento pelo serviço…';const started=Date.now(),clock=setInterval(()=>{q('#monthProgressElapsed').textContent=`${Math.round((Date.now()-started)/1000)}s`},1000);try{dispatchWithoutCors(request);data=await pollSearch(request,started,total);render();updateProgress({pct:100,stage:data.status==='partial'?'Parcial preservado':'Pesquisa concluída',done:Number(data.stats?.processed_combinations??data.stats?.combinations??total),total:Number(data.stats?.combinations||total),priced:Number(data.stats?.priced_combinations||0),remaining:0,elapsed:(Date.now()-started)/1000,detail:'✓ resultado salvo'});q('#monthStopButton').disabled=true;status.className=data.status==='partial'?'month-search-status bad':'month-search-status ok';status.textContent=data.status==='partial'?'⚠ A pesquisa parou antes do fim, mas tudo o que havia sido encontrado ficou salvo.':`✅ Busca concluída. ${data.stats?.priced_combinations||0} combinações com preço foram salvas.`;}catch(e){if(String(e.message||e)==='__STOPPED__'){status.className='month-search-status bad';status.textContent='⛔ Acompanhamento interrompido. O cancelamento no servidor foi solicitado; os achados salvos permanecem abaixo.';}else{status.className='month-search-status bad';status.textContent=`Não foi possível concluir a busca: ${e.message||e}. Se já havia resultados, eles permanecem salvos.`;}}finally{clearInterval(clock);if(stopRequested||data.status!=='completed'){q('#monthProgressStage').textContent=stopRequested?'Acompanhamento interrompido':'Pesquisa não concluída';}searching=false;button.disabled=false;button.textContent='🔎 Pesquisar agora';const stop=q('#monthStopButton');stop.disabled=true;stop.textContent='■ Parar pesquisa';}}
 
   async function boot(){await Promise.all([loadConfig(),loadLastResult(),loadSavedPairs()]);render();periodModeChanged();}
   function setFocus(on){document.body.classList.toggle('flight-search-focus',!!on)}
