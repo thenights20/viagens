@@ -1,11 +1,10 @@
-name: Corrigir botão e interface da busca
+name: Corrigir congelamento da busca
 
 on:
   push:
     branches: [main]
     paths:
       - '.github/workflows/hotfix-flight-ui-v044.yml'
-      - 'scripts/hotfix_flight_button_v047.py'
   workflow_dispatch:
 
 permissions:
@@ -19,27 +18,34 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Aplicar correções v0.4.9
-        run: python scripts/hotfix_flight_button_v047.py
+      - name: Atualizar cache da interface corrigida
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p = Path('docs/terabyte-live.js')
+          s = p.read_text(encoding='utf-8')
+          s = re.sub(r"flight-explorer-enhancements\.js\?v=[^'\"]+", "flight-explorer-enhancements.js?v=20260912-3", s)
+          p.write_text(s, encoding='utf-8')
+          PY
 
       - name: Validar JavaScript
         run: |
           node --check docs/flight-explorer.js
+          node --check docs/flight-explorer-enhancements.js
           node --check docs/terabyte-live.js
-          grep -q 'v0.4.9' docs/flight-explorer.js
-          grep -q "api/search'" docs/flight-explorer.js
-          grep -q 'flight-explorer.js?v=20260912-13' docs/terabyte-live.js
-          grep -q 'getMonth()+18' docs/flight-explorer.js
+          ! grep -q 'MutationObserver' docs/flight-explorer-enhancements.js
+          grep -q 'flight-explorer-enhancements.js?v=20260912-3' docs/terabyte-live.js
 
-      - name: Salvar correções
+      - name: Salvar correção
         run: |
           git config user.name "flight-ui-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/flight-explorer.js docs/terabyte-live.js
+          git add docs/flight-explorer-enhancements.js docs/terabyte-live.js
           if git diff --cached --quiet; then
             echo "Nada para atualizar."
           else
-            git commit -m "fix: restaurar envio da pesquisa pelo Apps Script [skip ci]"
+            git commit -m "fix: remover loop que congelava a busca [skip ci]"
             git pull --rebase origin main
             git push origin HEAD:main
           fi
