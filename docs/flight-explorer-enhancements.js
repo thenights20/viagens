@@ -2,8 +2,7 @@
   const LIVE_RAW = 'https://raw.githubusercontent.com/thenights20/viagens/flight-live/docs/data/flight-search-live.json';
   const q = s => document.querySelector(s);
   const sleep = ms => new Promise(r => setTimeout(r, ms));
-  let lastExact = null;
-  let applying = false;
+  let lastSignature = '';
 
   function fmt(v){
     if(!v) return '';
@@ -69,9 +68,10 @@
   }
 
   function applyProgress(p){
-    if(!p || applying) return;
-    applying = true;
-    lastExact = p;
+    if(!p) return;
+    const signature = JSON.stringify([p.stage,Math.round(Number(p.pct)||0),p.done,p.total,p.priced,p.remaining,p.detail]);
+    if(signature === lastSignature) return;
+    lastSignature = signature;
     const pct = Math.max(0,Math.min(100,Math.round(Number(p.pct)||0)));
     const fill=q('#monthProgressFill'), pctEl=q('#monthProgressPct'), stage=q('#monthProgressStage');
     const combos=q('#monthProgressCombos'), priced=q('#monthProgressPriced'), remaining=q('#monthProgressRemaining'), saved=q('#monthProgressSaved');
@@ -82,15 +82,20 @@
     if(priced) priced.textContent = `${p.priced} com preço`;
     if(remaining) remaining.textContent = p.stage === 'fallback' ? `faltam ${p.remaining} confirmações` : `faltam ${p.remaining}`;
     if(saved) saved.textContent = '✓ ' + p.detail;
-    applying = false;
   }
 
   function showWaitingReal(){
-    if(!isSearching() || lastExact) return;
+    if(!isSearching()) return;
     const pct=q('#monthProgressPct'), fill=q('#monthProgressFill'), stage=q('#monthProgressStage');
-    if(pct) pct.textContent='0%';
-    if(fill) fill.style.width='0%';
-    if(stage && /aguardando|enviando|preparando|github/i.test(stage.textContent||'')) stage.textContent='Aguardando início no GitHub Actions · 0%';
+    const stageText = String(stage?.textContent || '');
+    if(/aguardando|enviando|preparando|github/i.test(stageText)){
+      const signature='waiting';
+      if(signature===lastSignature) return;
+      lastSignature=signature;
+      if(pct) pct.textContent='0%';
+      if(fill) fill.style.width='0%';
+      if(stage) stage.textContent='Aguardando início no GitHub Actions · 0%';
+    }
   }
 
   function installSavedButtons(){
@@ -103,12 +108,15 @@
     current.id='monthViewCurrentButton'; current.className='month-saved-live-btn'; current.type='button'; current.textContent='🔎 Voltar à busca atual'; current.hidden=true;
     stop.parentElement?.insertBefore(saved, stop);
     stop.parentElement?.insertBefore(current, stop);
-    const style=document.createElement('style');
-    style.textContent='.month-saved-live-btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);font-weight:800;border-radius:8px;padding:6px 9px;cursor:pointer;font-size:11px;white-space:nowrap;margin-right:5px}.month-saved-live-btn:hover{border-color:var(--accent);color:var(--accent)}';
-    document.head.appendChild(style);
+    if(!q('#monthSavedButtonsStyle')){
+      const style=document.createElement('style');
+      style.id='monthSavedButtonsStyle';
+      style.textContent='.month-saved-live-btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);font-weight:800;border-radius:8px;padding:6px 9px;cursor:pointer;font-size:11px;white-space:nowrap;margin-right:5px}.month-saved-live-btn:hover{border-color:var(--accent);color:var(--accent)}';
+      document.head.appendChild(style);
+    }
     const sync=()=>{const all=q('#resultScope')?.value==='all';saved.hidden=all;current.hidden=!all;};
-    saved.addEventListener('click',()=>{const scope=q('#resultScope');if(scope){scope.value='all';scope.dispatchEvent(new Event('change',{bubbles:true}));}sync();setTimeout(()=>q('#resultCaption')?.scrollIntoView({behavior:'smooth',block:'center'}),150);});
-    current.addEventListener('click',()=>{const scope=q('#resultScope');if(scope){scope.value='current';scope.dispatchEvent(new Event('change',{bubbles:true}));}sync();setTimeout(()=>q('#resultCaption')?.scrollIntoView({behavior:'smooth',block:'center'}),150);});
+    saved.addEventListener('click',()=>{const scope=q('#resultScope');if(scope){scope.value='all';scope.dispatchEvent(new Event('change',{bubbles:true}));}sync();});
+    current.addEventListener('click',()=>{const scope=q('#resultScope');if(scope){scope.value='current';scope.dispatchEvent(new Event('change',{bubbles:true}));}sync();});
     q('#resultScope')?.addEventListener('change',sync); sync();
   }
 
@@ -125,19 +133,14 @@
       installSavedButtons();
       if(isSearching()){
         const live=await readLive();
-        if(live && matchesCurrent(live)){
-          lastExact=exactProgress(live); applyProgress(lastExact);
-        }else{
-          lastExact=null; showWaitingReal();
-        }
+        if(live && matchesCurrent(live)) applyProgress(exactProgress(live));
+        else showWaitingReal();
       }else{
-        lastExact=null;
+        lastSignature='';
       }
-      await sleep(2500);
+      await sleep(3500);
     }
   }
 
-  const observer=new MutationObserver(()=>{installSavedButtons();if(lastExact) setTimeout(()=>applyProgress(lastExact),0);else showWaitingReal();});
-  observer.observe(document.documentElement,{subtree:true,childList:true,characterData:true});
   loop();
 })();
