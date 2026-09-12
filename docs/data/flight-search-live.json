@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T23:53:12.066986Z",
-  "updated_at": "2026-09-12T23:53:12.066986Z",
+  "generated_at": "2026-09-12T23:53:14.084108Z",
+  "updated_at": "2026-09-12T23:53:14.084108Z",
   "started_at": "2026-09-12T23:31:44.359739Z",
   "status": "running",
   "stage": "google",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 7140,
-    "processed_combinations": 6528,
-    "primary_completed": 6528,
+    "processed_combinations": 6540,
+    "primary_completed": 6540,
     "primary_total": 7140,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 1141,
+    "priced_combinations": 1142,
     "coverage_pct": 16.0,
     "lowest_price": 2415.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 1141
+    "new": 1142
   },
   "daily_min": [
     {
@@ -10832,6 +10832,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 2,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "EWR",
+      "departure_date": "2027-03-26",
+      "return_date": "2027-04-23",
+      "airline": "Arajet",
+      "price": 4575.0,
+      "duration": "11h 20min",
+      "duration_minutes": 680,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 26] [5, 20]",
+      "arrival": "[2027, 3, 26] [23, 30]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+EWR+on+2027-03-26+returning+2027-04-23",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 28,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -32955,6 +32980,6 @@
   ],
   "current_pair": {
     "departure_date": "2027-03-26",
-    "return_date": "2027-04-14"
+    "return_date": "2027-04-24"
   }
 }
