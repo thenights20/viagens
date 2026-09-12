@@ -1,370 +1,171 @@
 (() => {
   const q = s => document.querySelector(s);
-  const money = v => v == null ? '—' : new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(v));
+  const money = v => v == null || Number.isNaN(Number(v)) ? '—' : new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(v));
   const esc = (s='') => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const safe = (u='') => { try { const x=new URL(u); return x.protocol==='https:'?x.href:'#'; } catch { return '#'; } };
-  const fmtDate = v => { if(!v) return '—'; const [y,m,d]=v.split('-').map(Number); return new Intl.DateTimeFormat('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'}).format(new Date(y,m-1,d)); };
+  const fmtDate = v => { if(!v) return '—'; const [y,m,d]=String(v).slice(0,10).split('-').map(Number); return new Intl.DateTimeFormat('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'}).format(new Date(y,m-1,d)); };
+  const fmtDateTime = v => v ? new Date(v).toLocaleString('pt-BR') : '—';
   const norm = s => String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
   const sleep = ms => new Promise(r=>setTimeout(r,ms));
   const RESULT_RAW = 'https://raw.githubusercontent.com/thenights20/viagens/main/docs/data/flight-month-search.json';
+  const LIVE_RAW = 'https://raw.githubusercontent.com/thenights20/viagens/flight-live/docs/data/flight-search-live.json';
   const ACTIONS_RUNS = 'https://api.github.com/repos/thenights20/viagens/actions/workflows/flight-month-search.yml/runs?event=workflow_dispatch&per_page=15';
   const ACTIONS_RUN = id => `https://api.github.com/repos/thenights20/viagens/actions/runs/${id}/jobs?per_page=10`;
 
   const ORIGINS = [
     ['DOU','Dourados'],['PMG','Ponta Porã'],['JTC','Bauru'],['GRU','Guarulhos'],['CGH','São Paulo / Congonhas'],['VCP','Campinas / Viracopos'],['GIG','Rio de Janeiro / Galeão'],['TJL','Três Lagoas'],['ARU','Araçatuba'],['PPB','Presidente Prudente / Pres. Venceslau'],['MII','Marília']
   ];
-  const REGIONAL = new Set(['DOU','PMG','JTC','TJL','ARU','PPB','MII']);
   const DESTINATIONS = [
     ['CGR','Campo Grande'],['CGB','Cuiabá'],['BSB','Brasília'],['GYN','Goiânia'],['CWB','Curitiba'],['LDB','Londrina'],['MGF','Maringá'],['IGU','Foz do Iguaçu'],['FLN','Florianópolis'],['NVT','Navegantes'],['POA','Porto Alegre'],['VCP','Campinas'],['CGH','São Paulo / Congonhas'],['GRU','São Paulo / Guarulhos'],['SJP','São José do Rio Preto'],['RAO','Ribeirão Preto'],['UDI','Uberlândia'],['CNF','Belo Horizonte'],['GIG','Rio de Janeiro / Galeão'],['SDU','Rio de Janeiro / Santos Dumont'],['VIX','Vitória'],['SSA','Salvador'],['REC','Recife'],['FOR','Fortaleza'],['NAT','Natal'],['MCZ','Maceió'],['AJU','Aracaju'],['JPA','João Pessoa'],['THE','Teresina'],['SLZ','São Luís'],['BEL','Belém'],['MAO','Manaus'],['PVH','Porto Velho'],['BVB','Boa Vista'],['MCP','Macapá'],['PMW','Palmas'],['JDO','Juazeiro do Norte'],['IOS','Ilhéus'],['BPS','Porto Seguro'],['PNZ','Petrolina'],['RBR','Rio Branco'],['STM','Santarém'],['IMP','Imperatriz'],['MOC','Montes Claros'],['JOI','Joinville'],['XAP','Chapecó'],['PFB','Passo Fundo'],['ROO','Rondonópolis'],['FEN','Fernando de Noronha'],['CAC','Cascavel'],
     ['EZE','Buenos Aires / Ezeiza'],['AEP','Buenos Aires / Aeroparque'],['SCL','Santiago'],['ASU','Assunção'],['MVD','Montevidéu'],['LIM','Lima'],['BOG','Bogotá'],['UIO','Quito'],['GYE','Guayaquil'],['VVI','Santa Cruz de la Sierra'],['PTY','Cidade do Panamá'],['SJO','San José'],['GUA','Cidade da Guatemala'],['MEX','Cidade do México'],['CUN','Cancún'],['PUJ','Punta Cana'],['SDQ','Santo Domingo'],['MIA','Miami'],['FLL','Fort Lauderdale'],['MCO','Orlando'],['JFK','Nova York / JFK'],['EWR','Nova York / Newark'],['BOS','Boston'],['IAD','Washington / Dulles'],['ATL','Atlanta'],['ORD','Chicago'],['DFW','Dallas / Fort Worth'],['IAH','Houston'],['LAX','Los Angeles'],['SFO','San Francisco'],['LAS','Las Vegas'],['YYZ','Toronto'],['YUL','Montreal'],['YVR','Vancouver'],['LIS','Lisboa'],['OPO','Porto'],['MAD','Madri'],['BCN','Barcelona'],['CDG','Paris'],['LHR','Londres / Heathrow'],['FCO','Roma'],['MXP','Milão'],['FRA','Frankfurt'],['AMS','Amsterdã'],['ZRH','Zurique'],['VIE','Viena'],['ATH','Atenas'],['IST','Istambul'],['DXB','Dubai'],['DOH','Doha']
   ];
+  const RESERVED = new Set([...ORIGINS.map(x=>x[0]),...DESTINATIONS.map(x=>x[0]),'QZZ','QZX']);
+  const RANGE_CODES = (()=>{const out=[];for(const a of 'QRSTUVWXYZ')for(const b of 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')for(const c of 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'){const code=a+b+c;if(!RESERVED.has(code))out.push(code)}return out})();
+  const PAIRS_PER_ORIGIN = 465;
 
-  let data = {request:{},stats:{},results:[],daily_min:[]};
+  let data = {request:{},stats:{},results:[],daily_min:[],history_summary:{}};
   let apiBase = '';
   let searching = false;
   let stopRequested = false;
   let activeRun = null;
+  let activeRequest = null;
+  let resultView = 'calendar';
   const tabs = q('#flightTabs');
   const app = q('#flightsApp');
   if (!tabs || !app || q('#flightMonthPanel')) return;
 
   const style = document.createElement('style');
   style.textContent = `
-    body.flight-search-focus .wrap{padding-top:12px}
-    body.flight-search-focus header{margin-bottom:5px;align-items:center}
-    body.flight-search-focus header h1{font-size:clamp(24px,2.2vw,31px);margin:0}
-    body.flight-search-focus header .sub{display:none}
-    body.flight-search-focus .main-tabs{margin:5px 0 8px;padding-bottom:8px}
-    body.flight-search-focus .main-tab{padding:8px 12px;font-size:13px}
-    body.flight-search-focus #flightsApp>.flight-head{display:none!important}
-    body.flight-search-focus #flightTabs{margin:5px 0 8px;gap:5px}
-    body.flight-search-focus #flightTabs .tab{padding:7px 10px;font-size:12px;border-radius:9px}
-    body.flight-search-focus #flightsApp>.foot{display:none}
-    .month-titlebar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:2px 0 7px;flex-wrap:wrap}
-    .month-titlebar strong{font-size:16px}.month-titlebar small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
-    .month-titlebar .pill{padding:6px 9px;font-size:11px}
-    .month-search-grid{display:grid;grid-template-columns:1.1fr 1.3fr .95fr .72fr auto;gap:8px;align-items:end;padding:10px}
-    .month-search-grid label{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.07em;font-weight:800;margin:0 0 4px}
-    .month-search-grid input,.month-search-grid select{padding:8px 10px;border-radius:9px;min-height:37px}
-    .month-search-btn{border:0;background:var(--accent);color:#07111f;font-weight:900;border-radius:9px;padding:9px 14px;cursor:pointer;min-height:37px;white-space:nowrap}
-    .month-search-btn:disabled{opacity:.6;cursor:wait}.month-search-btn:hover{filter:brightness(1.07)}
-    .month-progress{border-top:1px solid var(--line);padding:9px 10px 8px;background:rgba(119,167,255,.035)}
-    .month-progress-head{display:flex;align-items:center;gap:10px;justify-content:space-between;margin-bottom:7px}
-    .month-progress-title{display:flex;align-items:center;gap:8px;min-width:0;flex:1}.month-progress-title b{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.month-progress-title strong{color:var(--accent);font-size:13px;min-width:40px;text-align:right}
-    .month-progress-track{height:8px;border-radius:999px;background:var(--panel2);border:1px solid var(--line);overflow:hidden}.month-progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--ok));transition:width .45s ease}
-    .month-progress-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}.month-progress-meta span{font-size:10px;color:var(--muted);border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:4px 7px}
+    body.flight-search-focus .wrap{padding-top:10px}body.flight-search-focus header{margin-bottom:4px;align-items:center}body.flight-search-focus header h1{font-size:clamp(23px,2vw,30px);margin:0}body.flight-search-focus header .sub{display:none}
+    body.flight-search-focus .main-tabs{margin:4px 0 7px;padding-bottom:7px}body.flight-search-focus .main-tab{padding:7px 11px;font-size:13px}body.flight-search-focus #flightsApp>.flight-head{display:none!important}
+    body.flight-search-focus #flightTabs{margin:4px 0 7px;gap:5px}body.flight-search-focus #flightTabs .tab{padding:7px 10px;font-size:12px;border-radius:9px}body.flight-search-focus #flightsApp>.foot{display:none}
+    .month-titlebar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:1px 0 6px;flex-wrap:wrap}.month-titlebar strong{font-size:16px}.month-titlebar small{display:block;color:var(--muted);font-size:11px;margin-top:2px}.month-titlebar .pill{padding:6px 9px;font-size:11px}
+    .month-search-grid{display:grid;grid-template-columns:1.05fr 1.25fr .85fr 1.25fr .68fr auto;gap:7px;align-items:end;padding:9px}.month-search-grid label{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.07em;font-weight:800;margin:0 0 4px}.month-search-grid input,.month-search-grid select{padding:8px 9px;border-radius:9px;min-height:37px}
+    .month-period-range{display:grid;grid-template-columns:1fr 1fr;gap:6px}.month-search-btn{border:0;background:var(--accent);color:#07111f;font-weight:900;border-radius:9px;padding:9px 13px;cursor:pointer;min-height:37px;white-space:nowrap}.month-search-btn:disabled{opacity:.6;cursor:wait}.month-search-btn:hover{filter:brightness(1.07)}
+    .month-progress{border-top:1px solid var(--line);padding:8px 9px;background:rgba(119,167,255,.035)}.month-progress-head{display:flex;align-items:center;gap:10px;justify-content:space-between;margin-bottom:6px}.month-progress-title{display:flex;align-items:center;gap:8px;min-width:0;flex:1}.month-progress-title b{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.month-progress-title strong{color:var(--accent);font-size:13px;min-width:40px;text-align:right}.month-progress-track{height:8px;border-radius:999px;background:var(--panel2);border:1px solid var(--line);overflow:hidden}.month-progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--ok));transition:width .35s ease}.month-progress-meta{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}.month-progress-meta span{font-size:10px;color:var(--muted);border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:4px 7px}
     .month-stop-btn{border:1px solid rgba(255,104,116,.5);background:rgba(255,104,116,.08);color:var(--hot);font-weight:900;border-radius:8px;padding:6px 9px;cursor:pointer;font-size:11px;white-space:nowrap}.month-stop-btn:hover{background:rgba(255,104,116,.16)}.month-stop-btn:disabled{opacity:.55;cursor:wait}
-    .month-search-status{padding:7px 10px;border-top:1px solid var(--line);color:var(--muted);font-size:11px;line-height:1.4}.month-search-status.wait{color:var(--warn)}.month-search-status.ok{color:var(--ok)}.month-search-status.bad{color:var(--hot)}
-    .month-cards{gap:8px;margin:9px 0}.month-cards .card{padding:10px 12px;border-radius:12px}.month-cards .card span{font-size:9px}.month-cards .card b{font-size:21px;margin-top:2px}
-    .month-calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;padding:9px}.month-day{min-height:58px;border:1px solid var(--line);background:var(--panel2);border-radius:9px;padding:7px}.month-day b{display:block;font-size:10px;color:var(--muted);margin-bottom:3px}.month-day strong{font-size:12px}.month-day.hot{border-color:var(--ok)}.month-day.hot strong{color:var(--ok)}
-    .month-result-price{font-size:18px;font-weight:900;white-space:nowrap}.month-rank{font-size:16px;font-weight:900;color:var(--accent)}
-    #flightMonthPanel .section-title{margin:10px 0 5px;font-size:15px}
-    #flightMonthPanel .note{margin-top:9px;padding:9px 11px}
-    @media(max-width:1100px){.month-search-grid{grid-template-columns:repeat(2,1fr)}.month-search-grid .month-search-action{grid-column:1/-1}.month-search-btn{width:100%}}
-    @media(max-width:700px){body.flight-search-focus header h1{font-size:22px}.month-search-grid{grid-template-columns:1fr 1fr}.month-calendar{grid-template-columns:repeat(3,1fr)}.month-search-grid .dest-field{grid-column:1/-1}.month-progress-head{align-items:flex-start}.month-progress-title{flex-wrap:wrap}.month-cards{grid-template-columns:repeat(2,1fr)}}
+    .month-search-status{padding:7px 9px;border-top:1px solid var(--line);color:var(--muted);font-size:11px;line-height:1.4}.month-search-status.wait{color:var(--warn)}.month-search-status.ok{color:var(--ok)}.month-search-status.bad{color:var(--hot)}
+    .month-cards{gap:7px;margin:8px 0;grid-template-columns:repeat(5,1fr)}.month-cards .card{padding:9px 11px;border-radius:11px}.month-cards .card span{font-size:9px}.month-cards .card b{font-size:19px;margin-top:2px}
+    .month-view-tabs{display:flex;gap:6px;margin:8px 0}.month-view-btn{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:9px;padding:7px 10px;font-weight:800;font-size:11px;cursor:pointer}.month-view-btn.active{background:var(--accent);color:#07111f;border-color:transparent}
+    .month-calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;padding:9px}.month-day{min-height:63px;border:1px solid var(--line);background:var(--panel2);border-radius:9px;padding:7px}.month-day b{display:block;font-size:10px;color:var(--muted);margin-bottom:3px}.month-day strong{font-size:12px}.month-day.hot{border-color:var(--ok)}.month-day.hot strong{color:var(--ok)}
+    .trend{display:inline-flex;align-items:center;font-weight:900;font-size:10px;border-radius:999px;padding:2px 6px;margin-top:3px;border:1px solid var(--line)}.trend.down{color:var(--ok);border-color:rgba(91,214,160,.45)}.trend.up{color:var(--hot);border-color:rgba(255,104,116,.45)}.trend.same{color:var(--muted)}.trend.new{color:var(--accent)}
+    .month-result-price{font-size:17px;font-weight:900;white-space:nowrap}.month-rank{font-size:15px;font-weight:900;color:var(--accent)}.saved-pill{color:var(--ok)!important}
+    #flightMonthPanel .section-title{margin:9px 0 5px;font-size:15px}#flightMonthPanel .note{margin-top:8px;padding:8px 10px}.history-diff.down{color:var(--ok);font-weight:900}.history-diff.up{color:var(--hot);font-weight:900}.history-diff.same{color:var(--muted);font-weight:800}
+    @media(max-width:1180px){.month-search-grid{grid-template-columns:repeat(3,1fr)}.month-search-grid .month-search-action{grid-column:auto}.month-cards{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:760px){body.flight-search-focus header h1{font-size:21px}.month-search-grid{grid-template-columns:1fr 1fr}.month-search-grid .dest-field{grid-column:1/-1}.month-search-grid .period-cell{grid-column:1/-1}.month-search-grid .month-search-action{grid-column:1/-1}.month-search-btn{width:100%}.month-calendar{grid-template-columns:repeat(2,1fr)}.month-cards{grid-template-columns:repeat(2,1fr)}.month-progress-head{align-items:flex-start}.month-progress-title{flex-wrap:wrap}}
   `;
   document.head.appendChild(style);
 
   const btn = document.createElement('button');
-  btn.className = 'tab';
-  btn.dataset.flightView = 'monthsearch';
-  btn.textContent = '🔎 Buscar passagens';
-  tabs.insertBefore(btn, tabs.children[1] || null);
+  btn.className = 'tab';btn.dataset.flightView='monthsearch';btn.textContent='🔎 Buscar passagens';
+  tabs.insertBefore(btn,tabs.children[1]||null);
 
-  const panel = document.createElement('div');
-  panel.id = 'flightMonthPanel';
-  panel.hidden = true;
-  panel.innerHTML = `
-    <div class="month-titlebar">
-      <div><strong>🔎 Buscar passagens</strong><small>Escolha a rota e o mês. A varredura só começa quando você clicar em Pesquisar agora.</small></div>
-      <div class="pill"><span class="dot"></span><span id="monthSearchUpdated">Aguardando busca</span></div>
-    </div>
+  const panel=document.createElement('div');panel.id='flightMonthPanel';panel.hidden=true;
+  panel.innerHTML=`
+    <div class="month-titlebar"><div><strong>🔎 Buscar passagens</strong><small>Os achados são salvos durante a pesquisa. Se a execução parar, o que já foi encontrado continua disponível.</small></div><div class="pill"><span class="dot"></span><span id="monthSearchUpdated">Aguardando busca</span></div></div>
     <section class="panel">
       <div class="month-search-grid">
         <div><label>Origem</label><select id="monthOrigin"></select></div>
         <div class="dest-field"><label>Destino</label><input id="monthDestination" list="monthDestinations" placeholder="Ex.: Miami ou MIA"><datalist id="monthDestinations"></datalist></div>
-        <div><label>Mês a pesquisar</label><input id="monthValue" type="month"></div>
+        <div><label>Período</label><select id="monthPeriodMode"><option value="month">Mês inteiro</option><option value="range">Intervalo de datas</option></select></div>
+        <div class="period-cell"><div id="monthPeriodMonth"><label>Mês a pesquisar</label><input id="monthValue" type="month"></div><div id="monthPeriodRange" hidden><label>Datas</label><div class="month-period-range"><input id="rangeStart" type="date" title="Data inicial"><input id="rangeEnd" type="date" title="Data final"></div></div></div>
         <div><label>Escalas</label><select id="monthStops"><option value="0">Direto</option><option value="1">Até 1</option><option value="2" selected>Até 2</option></select></div>
         <div class="month-search-action"><button class="month-search-btn" id="monthSearchButton">🔎 Pesquisar agora</button></div>
       </div>
       <div class="month-progress" id="monthProgress" hidden>
-        <div class="month-progress-head">
-          <div class="month-progress-title"><b id="monthProgressStage">Preparando pesquisa…</b><strong id="monthProgressPct">0%</strong></div>
-          <button class="month-stop-btn" id="monthStopButton">■ Parar pesquisa</button>
-        </div>
+        <div class="month-progress-head"><div class="month-progress-title"><b id="monthProgressStage">Preparando pesquisa…</b><strong id="monthProgressPct">0%</strong></div><button class="month-stop-btn" id="monthStopButton">■ Parar pesquisa</button></div>
         <div class="month-progress-track"><div class="month-progress-fill" id="monthProgressFill"></div></div>
-        <div class="month-progress-meta"><span id="monthProgressCombos">0 / 0 combinações</span><span id="monthProgressRemaining">faltam —</span><span id="monthProgressElapsed">0s</span><span id="monthProgressStep">aguardando início</span></div>
+        <div class="month-progress-meta"><span id="monthProgressCombos">0 / 0 combinações</span><span id="monthProgressPriced">0 com preço</span><span id="monthProgressRemaining">faltam —</span><span id="monthProgressElapsed">0s</span><span class="saved-pill" id="monthProgressSaved">✓ salvamento automático</span></div>
       </div>
-      <div class="month-search-status" id="monthSearchStatus">Em um mês de 31 dias são até 465 combinações possíveis de ida e volta.</div>
+      <div class="month-search-status" id="monthSearchStatus">Escolha a rota e o período. Em um mês de 31 dias são até 465 combinações.</div>
     </section>
-    <section class="cards month-cards"><div class="card"><span>Menor preço</span><b id="monthLowest">—</b></div><div class="card"><span>Combinações</span><b id="monthCombos">—</b></div><div class="card"><span>Com preço</span><b id="monthPriced">—</b></div><div class="card"><span>Melhores exibidas</span><b id="monthCount">—</b></div></section>
-    <section class="panel" id="monthCalendarPanel" hidden><h3 class="section-title" style="padding:0 10px">Menor preço para cada dia de ida</h3><div class="month-calendar" id="monthCalendar"></div></section>
-    <section class="panel" style="margin-top:9px"><div class="table-wrap"><table><thead><tr><th>#</th><th>Ida</th><th>Volta</th><th>Dias</th><th>Companhia / escalas</th><th>Preço</th><th>Fonte</th><th></th></tr></thead><tbody id="monthRows"></tbody></table></div><div class="empty" id="monthEmpty"><strong>Faça uma pesquisa.</strong>As melhores combinações aparecerão aqui.</div></section>
-    <div class="note"><b>Varredura completa:</b> o sistema testa todos os pares de ida e volta dentro do mês, ordena as tarifas encontradas e mostra as 100 mais baratas.</div>`;
-  app.insertBefore(panel, q('#hunterPanel') || null);
+    <section class="cards month-cards"><div class="card"><span>Menor preço</span><b id="monthLowest">—</b></div><div class="card"><span>Combinações</span><b id="monthCombos">—</b></div><div class="card"><span>Com preço</span><b id="monthPriced">—</b></div><div class="card"><span>Melhores</span><b id="monthCount">—</b></div><div class="card"><span>Desde a última busca</span><b id="monthHistory">—</b></div></section>
+    <div class="month-view-tabs"><button class="month-view-btn active" data-result-view="calendar">▦ Calendário</button><button class="month-view-btn" data-result-view="prices">↕ Mais baratos</button><button class="month-view-btn" data-result-view="history">◴ Histórico</button></div>
+    <section class="panel" id="monthCalendarPanel"><h3 class="section-title" style="padding:0 10px">Menor preço para cada dia de ida</h3><div class="month-calendar" id="monthCalendar"></div><div class="empty" id="monthCalendarEmpty"><strong>Aguardando preços.</strong>Os dias aparecerão aqui conforme forem encontrados.</div></section>
+    <section class="panel" id="monthPricesPanel" hidden><div class="table-wrap"><table><thead><tr><th>#</th><th>Ida</th><th>Volta</th><th>Dias</th><th>Preço</th><th>Variação</th><th>Companhia / escalas</th><th></th></tr></thead><tbody id="monthRows"></tbody></table></div><div class="empty" id="monthEmpty"><strong>Aguardando preços.</strong>Os menores valores aparecerão aqui ainda durante a pesquisa.</div></section>
+    <section class="panel" id="monthHistoryPanel" hidden><div class="table-wrap"><table><thead><tr><th>Ida</th><th>Volta</th><th>Agora</th><th>Anterior</th><th>Mudança</th><th>Menor histórico</th><th>Amostras anteriores</th></tr></thead><tbody id="monthHistoryRows"></tbody></table></div><div class="empty" id="monthHistoryEmpty"><strong>Ainda não há comparação.</strong>Na próxima pesquisa das mesmas datas o sistema mostrará se o preço subiu ou baixou.</div></section>
+    <div class="note"><b>Salvamento progressivo:</b> durante a busca o sistema publica os achados parciais em uma área separada do site. Uma nova pesquisa das mesmas datas compara automaticamente o valor atual com o último valor salvo.</div>`;
+  app.insertBefore(panel,q('#hunterPanel')||null);
 
-  q('#monthOrigin').innerHTML = ORIGINS.map(([c,n])=>`<option value="${c}">${c} · ${esc(n)}</option>`).join('');
-  q('#monthDestinations').innerHTML = DESTINATIONS.map(([c,n])=>`<option value="${esc(n)}">${c}</option><option value="${c}">${esc(n)}</option>`).join('');
-  const monthInput=q('#monthValue'), now=new Date(), pad=n=>String(n).padStart(2,'0'), monthKey=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}`;
-  monthInput.min=monthKey(new Date(now.getFullYear(),now.getMonth(),1));
-  monthInput.max=monthKey(new Date(now.getFullYear(),now.getMonth()+6,1));
-  monthInput.value=monthKey(new Date(now.getFullYear(),now.getMonth()+1,1));
+  q('#monthOrigin').innerHTML=ORIGINS.map(([c,n])=>`<option value="${c}">${c} · ${esc(n)}</option>`).join('');
+  q('#monthDestinations').innerHTML=DESTINATIONS.map(([c,n])=>`<option value="${esc(n)}">${c}</option><option value="${c}">${esc(n)}</option>`).join('');
 
-  function resolveDestination(raw){
-    const value=String(raw||'').trim();
-    if(/^[a-z]{3}$/i.test(value)) return value.toUpperCase();
-    const n=norm(value);
-    const exact=DESTINATIONS.find(([c,name])=>norm(name)===n||norm(`${name} (${c})`)===n);
-    if(exact) return exact[0];
-    const partial=DESTINATIONS.filter(([c,name])=>norm(name).includes(n)||norm(c)===n);
-    return partial.length===1?partial[0][0]:'';
-  }
+  const now=new Date(),pad=n=>String(n).padStart(2,'0'),monthKey=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}`,dateKey=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+  const monthInput=q('#monthValue');monthInput.min=monthKey(new Date(now.getFullYear(),now.getMonth(),1));monthInput.max=monthKey(new Date(now.getFullYear(),now.getMonth()+6,1));monthInput.value=monthKey(new Date(now.getFullYear(),now.getMonth()+1,1));
+  const defaultRangeStart=new Date(now.getFullYear(),now.getMonth()+1,10),defaultRangeEnd=new Date(now.getFullYear(),now.getMonth()+1,15);
+  q('#rangeStart').min=dateKey(new Date(now.getFullYear(),now.getMonth(),now.getDate()+1));q('#rangeStart').max=dateKey(new Date(now.getFullYear(),now.getMonth()+7,0));q('#rangeStart').value=dateKey(defaultRangeStart);
+  q('#rangeEnd').min=q('#rangeStart').min;q('#rangeEnd').max=q('#rangeStart').max;q('#rangeEnd').value=dateKey(defaultRangeEnd);
 
+  function resolveDestination(raw){const value=String(raw||'').trim();if(/^[a-z]{3}$/i.test(value))return value.toUpperCase();const n=norm(value);const exact=DESTINATIONS.find(([c,name])=>norm(name)===n||norm(`${name} (${c})`)===n);if(exact)return exact[0];const partial=DESTINATIONS.filter(([c,name])=>norm(name).includes(n)||norm(c)===n);return partial.length===1?partial[0][0]:'';}
+  function pairIndex(startDay,endDay){let pos=0;for(let s=1;s<=30;s++)for(let e=s+1;e<=31;e++){if(s===startDay&&e===endDay)return pos;pos++}return-1}
+  function encodeRangeOrigin(origin,startDate,endDate){const oi=ORIGINS.findIndex(x=>x[0]===origin);if(oi<0)return origin;const s=Number(startDate.slice(-2)),e=Number(endDate.slice(-2)),pi=pairIndex(s,e);if(pi<0)return origin;const code=RANGE_CODES[oi*PAIRS_PER_ORIGIN+pi];return code||origin}
+
+  function periodModeChanged(){const range=q('#monthPeriodMode').value==='range';q('#monthPeriodMonth').hidden=range;q('#monthPeriodRange').hidden=!range;}
   function formRequest(){
-    return {origin:q('#monthOrigin').value.trim().toUpperCase(),destination:resolveDestination(q('#monthDestination').value),month:q('#monthValue').value,max_stops:Number(q('#monthStops').value||2)};
+    const origin=q('#monthOrigin').value.trim().toUpperCase(),destination=resolveDestination(q('#monthDestination').value),mode=q('#monthPeriodMode').value,max_stops=Number(q('#monthStops').value||2);
+    if(mode==='range'){
+      const start=q('#rangeStart').value,end=q('#rangeEnd').value,month=start.slice(0,7);
+      return{origin,destination,period_mode:'range',start_date:start,end_date:end,month,max_stops,dispatch_origin:encodeRangeOrigin(origin,start,end)};
+    }
+    const month=q('#monthValue').value;
+    return{origin,destination,period_mode:'month',start_date:`${month}-01`,end_date:'',month,max_stops,dispatch_origin:origin};
   }
-
-  function comboTotal(month){
-    if(!/^\d{4}-\d{2}$/.test(month)) return 0;
-    const [y,m]=month.split('-').map(Number);
-    const last=new Date(y,m,0).getDate();
-    const today=new Date();
-    let first=1;
-    if(today.getFullYear()===y && today.getMonth()+1===m) first=Math.min(last,today.getDate()+1);
-    const available=Math.max(0,last-first+1);
-    return Math.max(0,(available*(available-1))/2);
+  function comboTotal(request){
+    let start,end;
+    if(request.period_mode==='range'){start=new Date(request.start_date+'T12:00:00');end=new Date(request.end_date+'T12:00:00');}
+    else{const[y,m]=request.month.split('-').map(Number);start=new Date(y,m-1,1,12);end=new Date(y,m,0,12);}
+    const today=new Date();today.setHours(12,0,0,0);const tomorrow=new Date(today);tomorrow.setDate(tomorrow.getDate()+1);if(start<tomorrow)start=tomorrow;
+    const days=Math.floor((end-start)/86400000)+1;return days>=2?(days*(days-1))/2:0;
   }
+  function trendHtml(x){if(x.previous_price==null)return'<span class="trend new">novo</span>';const cls=x.trend||'same';if(cls==='down')return`<span class="trend down">↓ ${money(Math.abs(x.change_amount))} (${Math.abs(Number(x.change_pct||0)).toFixed(1)}%)</span>`;if(cls==='up')return`<span class="trend up">↑ ${money(Math.abs(x.change_amount))} (${Math.abs(Number(x.change_pct||0)).toFixed(1)}%)</span>`;return'<span class="trend same">= igual</span>';}
 
-  function resetActiveMetrics(total){
-    q('#monthLowest').textContent='—';
-    q('#monthCombos').textContent=`0/${total}`;
-    q('#monthPriced').textContent='calculando';
-    q('#monthCount').textContent='aguardando';
-  }
-
+  function setResultView(view){resultView=view;document.querySelectorAll('.month-view-btn').forEach(b=>b.classList.toggle('active',b.dataset.resultView===view));q('#monthCalendarPanel').hidden=view!=='calendar';q('#monthPricesPanel').hidden=view!=='prices';q('#monthHistoryPanel').hidden=view!=='history';}
   function render(){
-    const rows=data.results||[],stats=data.stats||{},req=data.request||{};
-    q('#monthRows').innerHTML=rows.map((x,i)=>`<tr><td><span class="month-rank">${i+1}</span></td><td><b>${fmtDate(x.departure_date)}</b></td><td><b>${fmtDate(x.return_date)}</b></td><td>${Number(x.trip_days||0)} dias</td><td><b>${esc(x.airline||'Google Flights')}</b><small class="statline">${esc(x.stops||'')} ${x.duration?'· '+esc(x.duration):''}</small></td><td class="month-result-price">${money(x.price)}</td><td><span class="badge official">${esc(x.source_kind==='swoop'?'Swoop':'Google')}</span></td><td><a class="btn" href="${safe(x.url)}" target="_blank" rel="noopener">Ver voo</a></td></tr>`).join('');
+    const rows=[...(data.results||[])].sort((a,b)=>Number(a.price||1e12)-Number(b.price||1e12)),stats=data.stats||{},req=data.request||{},hist=data.history_summary||{};
+    q('#monthRows').innerHTML=rows.map((x,i)=>`<tr><td><span class="month-rank">${i+1}</span></td><td><b>${fmtDate(x.departure_date)}</b></td><td><b>${fmtDate(x.return_date)}</b></td><td>${Number(x.trip_days||0)} dias</td><td class="month-result-price">${money(x.price)}<br>${trendHtml(x)}</td><td>${x.previous_price==null?'—':`${money(x.previous_price)} → ${money(x.price)}`}</td><td><b>${esc(x.airline||'Google Flights')}</b><small class="statline">${esc(x.stops||'')} ${x.duration?'· '+esc(x.duration):''}</small></td><td><a class="btn" href="${safe(x.url)}" target="_blank" rel="noopener">Ver voo</a></td></tr>`).join('');
     q('#monthEmpty').hidden=rows.length>0;
     q('#monthLowest').textContent=money(stats.lowest_price);
-    q('#monthCombos').textContent=stats.combinations??'—';
-    q('#monthPriced').textContent=stats.priced_combinations!=null?`${stats.priced_combinations} · ${stats.coverage_pct||0}%`:'—';
-    q('#monthCount').textContent=rows.length?`${rows.length}/100`:'—';
-    if(data.generated_at) q('#monthSearchUpdated').textContent=`Atualizado ${new Date(data.generated_at).toLocaleString('pt-BR')} · ${req.origin||''}→${req.destination||''}`;
+    const processed=stats.processed_combinations??stats.combinations;q('#monthCombos').textContent=stats.combinations!=null?`${processed}/${stats.combinations}`:'—';
+    q('#monthPriced').textContent=stats.priced_combinations!=null?`${stats.priced_combinations} · ${stats.coverage_pct||0}%`:'—';q('#monthCount').textContent=rows.length?`${rows.length}/100`:'—';q('#monthHistory').textContent=(hist.compared||hist.cheaper||hist.higher)?`↓${hist.cheaper||0} ↑${hist.higher||0}`:'sem comparação';
+    if(data.updated_at||data.generated_at)q('#monthSearchUpdated').textContent=`Salvo ${fmtDateTime(data.updated_at||data.generated_at)} · ${req.origin||''}→${req.destination||''}`;
     const daily=data.daily_min||[],cal=q('#monthCalendar');
-    if(daily.length){
-      const low=Math.min(...daily.map(x=>Number(x.price)||Infinity));
-      cal.innerHTML=daily.map(x=>{const d=Number((x.departure_date||'').slice(-2)),hot=Number(x.price)<=low*1.06?' hot':'';return`<div class="month-day${hot}"><b>Dia ${d}</b><strong>${money(x.price)}</strong><small class="statline">volta ${fmtDate(x.return_date)} · ${Number(x.trip_days||0)} dias</small></div>`}).join('');
-      q('#monthCalendarPanel').hidden=false;
-    }else{cal.innerHTML='';q('#monthCalendarPanel').hidden=true;}
+    if(daily.length){const low=Math.min(...daily.map(x=>Number(x.price)||Infinity));cal.innerHTML=daily.map(x=>{const d=Number((x.departure_date||'').slice(-2)),hot=Number(x.price)<=low*1.06?' hot':'';return`<div class="month-day${hot}"><b>Dia ${d}</b><strong>${money(x.price)}</strong><small class="statline">volta ${fmtDate(x.return_date)} · ${Number(x.trip_days||0)} dias</small>${trendHtml(x)}</div>`}).join('');q('#monthCalendarEmpty').hidden=true;}else{cal.innerHTML='';q('#monthCalendarEmpty').hidden=false;}
+    const compared=rows.filter(x=>x.previous_price!=null).sort((a,b)=>Math.abs(Number(b.change_pct||0))-Math.abs(Number(a.change_pct||0)));
+    q('#monthHistoryRows').innerHTML=compared.map(x=>`<tr><td><b>${fmtDate(x.departure_date)}</b></td><td><b>${fmtDate(x.return_date)}</b></td><td class="month-result-price">${money(x.price)}</td><td>${money(x.previous_price)}</td><td class="history-diff ${esc(x.trend||'same')}">${x.trend==='down'?'↓':x.trend==='up'?'↑':'='} ${x.change_amount==null?'—':money(Math.abs(x.change_amount))} ${x.change_pct==null?'':`(${Math.abs(Number(x.change_pct)).toFixed(1)}%)`}</td><td>${money(x.historical_min)}</td><td>${Number(x.history_samples||0)}</td></tr>`).join('');
+    q('#monthHistoryEmpty').hidden=compared.length>0;setResultView(resultView);
   }
 
-  function showProgress(total){
-    q('#monthProgress').hidden=false;
-    q('#monthStopButton').disabled=false;
-    updateProgress({pct:1,stage:'Enviando solicitação…',done:0,total,detail:'iniciando',elapsed:0});
-  }
+  function clearForSearch(request,total){data={request:{origin:request.origin,destination:request.destination,month:request.month,period_mode:request.period_mode,start_date:request.start_date,end_date:request.end_date,max_stops:request.max_stops},stats:{combinations:total,processed_combinations:0,priced_combinations:0,coverage_pct:0},results:[],daily_min:[],history_summary:{}};render();}
+  function showProgress(total){q('#monthProgress').hidden=false;q('#monthStopButton').disabled=false;updateProgress({pct:1,stage:'Enviando solicitação…',done:0,total,priced:0,remaining:total,elapsed:0,detail:'✓ salvamento automático'});}
+  function updateProgress({pct,stage,done,total,priced,remaining,elapsed,detail}){pct=Math.max(0,Math.min(100,Math.round(Number(pct)||0)));done=Math.max(0,Math.min(Number(total)||0,Math.round(Number(done)||0)));q('#monthProgressFill').style.width=`${pct}%`;q('#monthProgressPct').textContent=`${pct}%`;q('#monthProgressStage').textContent=stage||'Pesquisa em andamento…';q('#monthProgressCombos').textContent=`${done} / ${total} combinações`;q('#monthProgressPriced').textContent=`${Number(priced||0)} com preço`;q('#monthProgressRemaining').textContent=`faltam ${remaining==null?Math.max(0,total-done):Math.max(0,remaining)}`;q('#monthProgressElapsed').textContent=`${Math.max(0,Math.round(elapsed||0))}s`;q('#monthProgressSaved').textContent=detail||'✓ salvamento automático';}
 
-  function updateProgress({pct,stage,done,total,detail,elapsed}){
-    pct=Math.max(0,Math.min(100,Math.round(Number(pct)||0)));
-    done=Math.max(0,Math.min(total,Math.round(Number(done)||0)));
-    q('#monthProgressFill').style.width=`${pct}%`;
-    q('#monthProgressPct').textContent=`${pct}%`;
-    q('#monthProgressStage').textContent=stage||'Pesquisa em andamento…';
-    q('#monthProgressCombos').textContent=`${done} / ${total} combinações${pct<100?' (estimativa)':''}`;
-    q('#monthProgressRemaining').textContent=`faltam ${Math.max(0,total-done)}`;
-    q('#monthProgressElapsed').textContent=`${Math.max(0,Math.round(elapsed||0))}s`;
-    q('#monthProgressStep').textContent=detail||'processando';
-    if(searching && total) q('#monthCombos').textContent=`~${done}/${total}`;
-  }
+  async function loadConfig(){try{const r=await fetch('./data/flight-search-config.json?t='+Date.now(),{cache:'no-store'});if(r.ok){const c=await r.json();apiBase=String(c.api_base||'').replace(/\/$/,'')}}catch{}}
+  async function fetchJson(url){try{const r=await fetch(`${url}${url.includes('?')?'&':'?'}t=${Date.now()}`,{cache:'no-store'});if(r.ok)return await r.json()}catch{}return null}
+  async function loadLastResult(){const[final,live]=await Promise.all([fetchJson(RESULT_RAW),fetchJson(LIVE_RAW)]);const ft=Date.parse(final?.updated_at||final?.generated_at||'')||0,lt=Date.parse(live?.updated_at||live?.generated_at||'')||0;const chosen=lt>ft?live:final;if(chosen&&chosen.results)data=chosen;}
 
-  async function loadConfig(){
-    try{const r=await fetch('./data/flight-search-config.json?t='+Date.now(),{cache:'no-store'});if(r.ok){const c=await r.json();apiBase=String(c.api_base||'').replace(/\/$/,'');}}catch{}
-  }
+  function resultMatches(result,request,started){if(!result||!result.request)return false;const r=result.request;if(r.origin!==request.origin||r.destination!==request.destination)return false;if(Number(r.max_stops)!==Number(request.max_stops))return false;if(request.period_mode==='range'){if(r.period_mode!=='range'||r.start_date!==request.start_date||r.end_date!==request.end_date)return false}else if(r.month!==request.month||r.period_mode==='range')return false;const t=Date.parse(result.started_at||result.generated_at||'');return!started||!Number.isFinite(t)||t>=started-30000;}
+  function liveProgress(live,elapsed){const s=live.stats||{},stage=live.stage||'google',total=Number(s.combinations||0),primary=Number(s.primary_completed??s.processed_combinations??0),primaryTotal=Number(s.primary_total||total),fb=Number(s.fallback_done||0),fbTotal=Number(s.fallback_total||0);let pct=4,label='Preparando pesquisa…',done=Math.min(primary,total),detail='✓ achados salvos';if(stage==='google'){pct=5+(primaryTotal?primary/primaryTotal:0)*67;label='Pesquisando combinações no Google Flights…';}else if(stage==='fallback'){pct=72+(fbTotal?fb/fbTotal:0)*24;label='Confirmando datas sem preço na segunda consulta…';detail=`✓ salvo · confirmação ${fb}/${fbTotal}`;}else if(stage==='completed'){pct=100;label='Pesquisa concluída';done=total;}else if(stage==='interrupted'){pct=total?Math.min(95,(primary/total)*70):0;label='Pesquisa interrompida — parcial preservado';}
+    return{pct,stage:label,done,total,priced:Number(s.priced_combinations||0),remaining:Math.max(0,total-done),elapsed,detail};}
 
-  async function loadLastResult(){
-    try{const r=await fetch('./data/flight-month-search.json?t='+Date.now(),{cache:'no-store'});if(r.ok){const old=await r.json();if(old&&old.results)data=old;}}catch{}
-  }
+  async function fetchRunState(request,started,total){try{const rr=await fetch(`${ACTIONS_RUNS}&t=${Date.now()}`,{cache:'no-store'});if(!rr.ok)return null;const runs=(await rr.json()).workflow_runs||[];const run=runs.find(x=>{const created=Date.parse(x.created_at||'');const title=String(x.display_title||'');return created>=started-90000&&title.includes(`${request.dispatch_origin} → ${request.destination}`)&&title.includes(request.month)});if(!run)return null;activeRun=run;if(run.status==='queued')return{pct:3,stage:'Aguardando executor do GitHub…',done:0,total,priced:0,detail:'na fila',run};if(run.status==='completed'){if(run.conclusion==='success')return{pct:98,stage:'Finalizando resultado…',done:total,total,priced:Number(data.stats?.priced_combinations||0),detail:'publicando',run};if(run.conclusion==='cancelled')return{cancelled:true,run};return{failed:true,error:`A execução terminou com status ${run.conclusion||'erro'}.`,run};}const jr=await fetch(`${ACTIONS_RUN(run.id)}&t=${Date.now()}`,{cache:'no-store'});if(!jr.ok)return{pct:8,stage:'Preparando ambiente…',done:0,total,priced:0,detail:'workflow iniciado',run};const jobs=(await jr.json()).jobs||[],steps=jobs[0]?.steps||[],current=steps.find(s=>s.status==='in_progress')||[...steps].reverse().find(s=>s.status==='completed'),name=String(current?.name||'Preparando ambiente');return{pct:name==='Pesquisar matriz completa do período'?15:8,stage:name==='Dependências'?'Preparando motor de pesquisa…':'Preparando pesquisa…',done:0,total,priced:0,detail:name,run};}catch{return null}}
 
-  function resultMatches(result,request,started,previousGeneratedAt){
-    if(!result||!result.request) return false;
-    const r=result.request;
-    if(r.origin!==request.origin||r.destination!==request.destination||r.month!==request.month) return false;
-    if(Number(r.max_stops)!==Number(request.max_stops)) return false;
-    if(previousGeneratedAt && result.generated_at===previousGeneratedAt) return false;
-    const generated=Date.parse(result.generated_at||'');
-    return Number.isFinite(generated) && generated >= started-15000;
-  }
+  async function pollSearch(request,started,total){const status=q('#monthSearchStatus');let lastActionsCheck=0,state=null;for(let i=0;i<675;i++){if(stopRequested)throw new Error('__STOPPED__');await sleep(4000);if(stopRequested)throw new Error('__STOPPED__');const elapsed=Math.round((Date.now()-started)/1000);const live=await fetchJson(LIVE_RAW);if(live&&resultMatches(live,request,started)){data=live;render();const p=liveProgress(live,elapsed);updateProgress(p);status.className=live.status==='partial'?'month-search-status bad':'month-search-status wait';status.textContent=live.status==='partial'?'⚠ A execução parou, mas todos os resultados encontrados até aqui foram preservados.':`🔎 ${p.stage} Os resultados já encontrados estão sendo salvos e exibidos abaixo.`;if(live.status==='completed')return live;}
+      if(Date.now()-lastActionsCheck>30000||!activeRun){lastActionsCheck=Date.now();const a=await fetchRunState(request,started,total);if(a)state=a;if(a?.failed){if(data.results?.length){status.className='month-search-status bad';status.textContent='⚠ A execução terminou com erro, mas os achados parciais exibidos abaixo ficaram salvos.';return data;}throw new Error(a.error)}if(a?.cancelled&&!stopRequested){if(data.results?.length)return data;throw new Error('A pesquisa foi cancelada no servidor.')}}
+      if(!live&&state)updateProgress({...state,elapsed,priced:Number(data.stats?.priced_combinations||0),remaining:Math.max(0,total-Number(state.done||0))});
+      const final=await fetchJson(RESULT_RAW);if(final&&resultMatches(final,request,started)&&final.status!=='running'){data=final;render();return final;}
+    }throw new Error('A busca excedeu o tempo máximo de espera.');}
 
-  async function fetchRunState(request,started,total){
-    try{
-      const rr=await fetch(`${ACTIONS_RUNS}&t=${Date.now()}`,{cache:'no-store'});
-      if(!rr.ok) return null;
-      const runs=(await rr.json()).workflow_runs||[];
-      const run=runs.find(x=>{
-        const created=Date.parse(x.created_at||'');
-        const title=String(x.display_title||'');
-        return created>=started-90000 && title.includes(`${request.origin} → ${request.destination}`) && title.includes(request.month);
-      });
-      if(!run) return null;
-      activeRun=run;
-      if(run.status==='queued') return {pct:4,stage:'Aguardando executor do GitHub…',done:0,total,detail:'na fila',run};
-      if(run.status==='completed'){
-        if(run.conclusion==='success') return {pct:98,stage:'Finalizando e publicando resultado…',done:total,total,detail:'publicando',run};
-        if(run.conclusion==='cancelled') return {cancelled:true,run};
-        return {failed:true,error:`A execução terminou com status ${run.conclusion||'erro'}.`,run};
-      }
-      const jr=await fetch(`${ACTIONS_RUN(run.id)}&t=${Date.now()}`,{cache:'no-store'});
-      if(!jr.ok) return {pct:10,stage:'Preparando ambiente…',done:0,total,detail:'workflow iniciado',run};
-      const jobs=(await jr.json()).jobs||[];
-      const job=jobs[0];
-      const steps=job?.steps||[];
-      const current=steps.find(s=>s.status==='in_progress') || [...steps].reverse().find(s=>s.status==='completed');
-      const name=String(current?.name||'Preparando ambiente');
-      const stepBase={
-        'Checkout':5,
-        'Preparar solicitação':8,
-        'Python':11,
-        'Dependências':14,
-        'Validar código':18,
-        'Pesquisar matriz completa do período':20,
-        'Validar resultado':91,
-        'Persistir resultado':96,
-        'Resumo':99
-      };
-      if(name==='Pesquisar matriz completa do período'){
-        const stepStart=Date.parse(current.started_at||run.run_started_at||run.created_at||'') || started;
-        const sec=Math.max(0,(Date.now()-stepStart)/1000);
-        const expected=REGIONAL.has(request.origin)?Math.max(420,total*2.5):Math.max(150,total*.9);
-        const frac=Math.min(.96,sec/expected);
-        const pct=20+frac*69;
-        const done=Math.floor(total*frac);
-        return {pct,stage:'Pesquisando todas as combinações…',done,total,detail:`etapa de preços · ~${done}/${total}`,run};
-      }
-      const pct=stepBase[name]??12;
-      const done=pct>=90?total:0;
-      return {pct,stage:name==='Persistir resultado'?'Salvando resultado…':name==='Validar resultado'?'Validando as melhores tarifas…':'Preparando a pesquisa…',done,total,detail:name,run};
-    }catch{return null;}
-  }
+  async function dispatchWithoutCors(request){await fetch(`${apiBase}/api/search`,{method:'POST',mode:'no-cors',cache:'no-store',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify({origin:request.dispatch_origin,destination:request.destination,month:request.month,max_stops:request.max_stops,request_id:`web_${Date.now().toString(36)}`})});}
+  async function stopSearch(){if(!searching)return;stopRequested=true;const stop=q('#monthStopButton'),status=q('#monthSearchStatus');stop.disabled=true;stop.textContent='⏳ Parando…';status.className='month-search-status wait';status.textContent='⛔ Solicitando cancelamento…';try{await fetch(`${apiBase}/api/search`,{method:'POST',mode:'no-cors',cache:'no-store',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify({origin:'QZZ',destination:'QZX',month:activeRequest?.month||monthKey(new Date()),max_stops:0})});status.className='month-search-status bad';status.textContent='⛔ Pesquisa interrompida. Os resultados já salvos permanecem disponíveis.';}catch{status.className='month-search-status bad';status.textContent='A tela foi interrompida. Os resultados já salvos continuam disponíveis.';}}
 
-  function fallbackProgress(request,started,total){
-    const elapsed=(Date.now()-started)/1000;
-    const expected=REGIONAL.has(request.origin)?Math.max(480,total*2.7):Math.max(180,total*1.0);
-    const frac=Math.min(.92,elapsed/expected);
-    const pct=8+frac*80;
-    const done=Math.floor(total*frac);
-    return {pct,stage:'Pesquisando combinações…',done,total,detail:'progresso estimado'};
-  }
+  function validateRequest(request){if(!/^[A-Z]{3}$/.test(request.destination))return'Escolha uma cidade/aeroporto válido, por exemplo Miami ou MIA.';if(request.period_mode==='month'&&!/^\d{4}-\d{2}$/.test(request.month))return'Escolha o mês da viagem.';if(request.period_mode==='range'){if(!request.start_date||!request.end_date)return'Informe a data inicial e a data final.';if(request.end_date<=request.start_date)return'A data final precisa ser depois da data inicial.';if(request.start_date.slice(0,7)!==request.end_date.slice(0,7))return'O intervalo precisa ficar dentro do mesmo mês.';}if(request.origin===request.destination)return'Origem e destino não podem ser iguais.';return'';}
+  async function searchInsidePage(){if(searching)return;const request=formRequest(),status=q('#monthSearchStatus'),button=q('#monthSearchButton'),error=validateRequest(request);if(error){status.className='month-search-status bad';status.textContent=error;return}if(!apiBase){status.className='month-search-status bad';status.textContent='O serviço de pesquisa ainda não está conectado.';return}const total=comboTotal(request);if(total<1){status.className='month-search-status bad';status.textContent='Esse período não possui combinações futuras de ida e volta.';return}
+    searching=true;stopRequested=false;activeRun=null;activeRequest=request;button.disabled=true;button.textContent='⏳ Pesquisando…';clearForSearch(request,total);showProgress(total);status.className='month-search-status wait';status.textContent='🔎 Enviando pesquisa. Os achados começarão a aparecer assim que forem encontrados.';const started=Date.now();try{await dispatchWithoutCors(request);data=await pollSearch(request,started,total);render();updateProgress({pct:100,stage:data.status==='partial'?'Parcial preservado':'Pesquisa concluída',done:Number(data.stats?.processed_combinations??data.stats?.combinations??total),total:Number(data.stats?.combinations||total),priced:Number(data.stats?.priced_combinations||0),remaining:0,elapsed:(Date.now()-started)/1000,detail:'✓ resultado salvo'});q('#monthStopButton').disabled=true;status.className=data.status==='partial'?'month-search-status bad':'month-search-status ok';status.textContent=data.status==='partial'?'⚠ A pesquisa parou antes do fim, mas tudo o que havia sido encontrado ficou salvo.':`✅ Busca concluída. ${data.stats?.priced_combinations||0} combinações com preço foram salvas.`;}catch(e){if(String(e.message||e)==='__STOPPED__'){status.className='month-search-status bad';status.textContent='⛔ Pesquisa interrompida. Os achados salvos permanecem abaixo.';}else{status.className='month-search-status bad';status.textContent=`Não foi possível concluir a busca: ${e.message||e}. Se já havia resultados, eles permanecem salvos.`;}}finally{searching=false;button.disabled=false;button.textContent='🔎 Pesquisar agora';const stop=q('#monthStopButton');stop.disabled=true;stop.textContent='■ Parar pesquisa';}}
 
-  async function pollPublicResult(request,started,previousGeneratedAt,total){
-    const status=q('#monthSearchStatus');
-    let lastActionsCheck=0;
-    let state=null;
-    for(let i=0;i<540;i++){
-      if(stopRequested) throw new Error('__STOPPED__');
-      await sleep(5000);
-      if(stopRequested) throw new Error('__STOPPED__');
-      const elapsed=Math.round((Date.now()-started)/1000);
+  async function boot(){await Promise.all([loadConfig(),loadLastResult()]);render();periodModeChanged();}
+  function setFocus(on){document.body.classList.toggle('flight-search-focus',!!on)}
+  function activate(){document.querySelectorAll('#flightTabs .tab').forEach(x=>x.classList.remove('active'));btn.classList.add('active');['hunterPanel','radarPanel','externalPanel','airlinesPanel'].forEach(id=>{const el=q('#'+id);if(el)el.hidden=true});panel.hidden=false;setFocus(true);render();}
 
-      if(Date.now()-lastActionsCheck>30000 || !activeRun){
-        lastActionsCheck=Date.now();
-        const live=await fetchRunState(request,started,total);
-        if(live) state=live;
-        if(live?.failed) throw new Error(live.error);
-        if(live?.cancelled && !stopRequested) throw new Error('A pesquisa foi cancelada no servidor.');
-      }
-
-      const p=state||fallbackProgress(request,started,total);
-      updateProgress({...p,elapsed});
-      status.className='month-search-status wait';
-      status.textContent=`🔎 ${p.stage} Você pode continuar nesta página enquanto o sistema trabalha.`;
-
-      try{
-        const r=await fetch(`${RESULT_RAW}?t=${Date.now()}`,{cache:'no-store'});
-        if(r.ok){
-          const fresh=await r.json();
-          if(resultMatches(fresh,request,started,previousGeneratedAt)) return fresh;
-        }
-      }catch{}
-    }
-    throw new Error('A busca excedeu o tempo máximo de espera.');
-  }
-
-  async function dispatchWithoutCors(request){
-    await fetch(`${apiBase}/api/search`,{method:'POST',mode:'no-cors',cache:'no-store',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(request)});
-  }
-
-  async function stopSearch(){
-    if(!searching) return;
-    stopRequested=true;
-    const stop=q('#monthStopButton'),status=q('#monthSearchStatus');
-    stop.disabled=true;stop.textContent='⏳ Parando…';
-    status.className='month-search-status wait';status.textContent='⛔ Solicitando o cancelamento da pesquisa…';
-    try{
-      const cancelMonth=q('#monthValue').value || monthKey(new Date());
-      await dispatchWithoutCors({origin:'QZZ',destination:'QZX',month:cancelMonth,max_stops:0});
-      updateProgress({pct:0,stage:'Pesquisa interrompida',done:0,total:comboTotal(q('#monthValue').value),detail:'cancelada',elapsed:0});
-      status.className='month-search-status bad';status.textContent='⛔ Pesquisa interrompida. Você já pode iniciar outra busca.';
-    }catch{
-      status.className='month-search-status bad';status.textContent='A tela foi interrompida. O servidor pode levar alguns segundos para encerrar a execução.';
-    }
-  }
-
-  async function searchInsidePage(){
-    if(searching) return;
-    const request=formRequest(),status=q('#monthSearchStatus'),button=q('#monthSearchButton');
-    if(!/^[A-Z]{3}$/.test(request.destination)){status.className='month-search-status bad';status.textContent='Escolha uma cidade/aeroporto válido, por exemplo Miami ou MIA.';return;}
-    if(!request.month){status.className='month-search-status bad';status.textContent='Escolha o mês que deseja pesquisar.';return;}
-    if(!apiBase){status.className='month-search-status bad';status.textContent='O Google Apps Script da pesquisa ainda não foi conectado.';return;}
-
-    searching=true;stopRequested=false;activeRun=null;
-    button.disabled=true;button.textContent='⏳ Pesquisando…';
-    const total=comboTotal(request.month);
-    resetActiveMetrics(total);
-    showProgress(total);
-    status.className='month-search-status wait';status.textContent='🔎 Enviando a pesquisa para o motor…';
-    const started=Date.now();
-    const previousGeneratedAt=data.generated_at||'';
-    try{
-      await dispatchWithoutCors(request);
-      updateProgress({pct:3,stage:'Pesquisa enviada. Aguardando início…',done:0,total,detail:'solicitação recebida',elapsed:0});
-      data=await pollPublicResult(request,started,previousGeneratedAt,total);
-      render();
-      updateProgress({pct:100,stage:'Pesquisa concluída',done:Number(data.stats?.combinations||total),total:Number(data.stats?.combinations||total),detail:'resultado publicado',elapsed:(Date.now()-started)/1000});
-      q('#monthStopButton').disabled=true;
-      status.className='month-search-status ok';
-      status.textContent=`✅ Busca concluída em ${Math.round((Date.now()-started)/1000)}s. Foram pesquisadas ${data.stats?.combinations||0} combinações e as menores tarifas estão abaixo.`;
-    }catch(e){
-      if(String(e.message||e)==='__STOPPED__'){
-        status.className='month-search-status bad';
-        status.textContent='⛔ Pesquisa interrompida. Você já pode iniciar outra busca.';
-      }else{
-        status.className='month-search-status bad';
-        status.textContent=`Não foi possível concluir a busca: ${e.message||e}`;
-      }
-    }finally{
-      searching=false;button.disabled=false;button.textContent='🔎 Pesquisar agora';
-      const stop=q('#monthStopButton');stop.disabled=true;stop.textContent='■ Parar pesquisa';
-    }
-  }
-
-  async function boot(){await Promise.all([loadConfig(),loadLastResult()]);if(!panel.hidden)render();}
-  function setFocus(on){document.body.classList.toggle('flight-search-focus',!!on);}
-  function activate(){
-    document.querySelectorAll('#flightTabs .tab').forEach(x=>x.classList.remove('active'));
-    btn.classList.add('active');
-    ['hunterPanel','radarPanel','externalPanel','airlinesPanel'].forEach(id=>{const el=q('#'+id);if(el)el.hidden=true;});
-    panel.hidden=false;setFocus(true);render();
-  }
-
-  q('#monthSearchButton').addEventListener('click',searchInsidePage);
-  q('#monthStopButton').addEventListener('click',stopSearch);
-  btn.addEventListener('click',activate);
-  document.querySelectorAll('#flightTabs .tab').forEach(b=>{if(b!==btn)b.addEventListener('click',()=>{panel.hidden=true;setFocus(false);});});
-  const productsMain=document.querySelector('.main-tab[data-main="products"]');
-  if(productsMain)productsMain.addEventListener('click',()=>{panel.hidden=true;setFocus(false);});
-  const flightsMain=document.querySelector('.main-tab[data-main="flights"]');
-  if(flightsMain)flightsMain.addEventListener('click',()=>{if(btn.classList.contains('active')&&!panel.hidden)setFocus(true);});
-  document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!searching)loadConfig();});
-  boot();
+  q('#monthSearchButton').addEventListener('click',searchInsidePage);q('#monthStopButton').addEventListener('click',stopSearch);q('#monthPeriodMode').addEventListener('change',periodModeChanged);q('#rangeStart').addEventListener('change',()=>{if(q('#rangeEnd').value<q('#rangeStart').value)q('#rangeEnd').value=q('#rangeStart').value});document.querySelectorAll('.month-view-btn').forEach(b=>b.addEventListener('click',()=>setResultView(b.dataset.resultView)));
+  btn.addEventListener('click',activate);document.querySelectorAll('#flightTabs .tab').forEach(b=>{if(b!==btn)b.addEventListener('click',()=>{panel.hidden=true;setFocus(false)})});const productsMain=document.querySelector('.main-tab[data-main="products"]');if(productsMain)productsMain.addEventListener('click',()=>{panel.hidden=true;setFocus(false)});const flightsMain=document.querySelector('.main-tab[data-main="flights"]');if(flightsMain)flightsMain.addEventListener('click',()=>{if(btn.classList.contains('active')&&!panel.hidden)setFocus(true)});document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!searching){loadConfig();loadLastResult().then(render)}});boot();
 })();
