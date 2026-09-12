@@ -1,4 +1,4 @@
-name: Busca mensal de passagens
+name: Busca de passagens sob demanda
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ on:
         default: "MIA"
         type: string
       month:
-        description: "Mês (YYYY-MM)"
+        description: "Mês pesquisado (YYYY-MM)"
         required: true
         default: "2026-10"
         type: string
@@ -24,10 +24,15 @@ on:
         default: "2"
         type: choice
         options: ["0", "1", "2"]
+      request_id:
+        description: "ID da solicitação do Pages/Apps Script"
+        required: false
+        default: "manual"
+        type: string
 
 concurrency:
-  group: flight-month-search-manual
-  cancel-in-progress: true
+  group: flight-search-${{ inputs.request_id }}
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -50,6 +55,7 @@ jobs:
           INPUT_DESTINATION: ${{ inputs.destination }}
           INPUT_MONTH: ${{ inputs.month }}
           INPUT_STOPS: ${{ inputs.max_stops }}
+          INPUT_REQUEST_ID: ${{ inputs.request_id }}
         run: |
           python - <<'PY'
           import os, re
@@ -57,12 +63,14 @@ jobs:
           dest=os.environ['INPUT_DESTINATION'].strip().upper()
           month=os.environ['INPUT_MONTH'].strip()
           stops=int(os.environ['INPUT_STOPS'])
+          request_id=(os.environ.get('INPUT_REQUEST_ID') or 'manual').strip()[:80]
           if not re.fullmatch(r'[A-Z]{3}',origin) or not re.fullmatch(r'[A-Z]{3}',dest): raise SystemExit('IATA inválido')
           if not re.fullmatch(r'20\d\d-(0[1-9]|1[0-2])',month): raise SystemExit('Mês inválido')
           if stops not in (0,1,2): raise SystemExit('Escalas inválidas')
+          if not re.fullmatch(r'[A-Za-z0-9_-]{1,80}',request_id): raise SystemExit('request_id inválido')
           with open(os.environ['GITHUB_ENV'],'a',encoding='utf-8') as f:
-              f.write(f'SEARCH_ORIGIN={origin}\nSEARCH_DESTINATION={dest}\nSEARCH_MONTH={month}\nSEARCH_MAX_STOPS={stops}\n')
-          print(f'Matriz completa solicitada: {origin}->{dest}, {month}, até {stops} escalas')
+              f.write(f'SEARCH_ORIGIN={origin}\nSEARCH_DESTINATION={dest}\nSEARCH_MONTH={month}\nSEARCH_MAX_STOPS={stops}\nSEARCH_REQUEST_ID={request_id}\n')
+          print(f'Busca solicitada: {origin}->{dest}, {month}, até {stops} escalas, id={request_id}')
           PY
 
       - name: Python
@@ -80,7 +88,7 @@ jobs:
           python -m py_compile flight-month-search/search.py flight-month-search/swoop_batch_worker.py
           node --check docs/flight-explorer.js
 
-      - name: Pesquisar matriz completa do mês
+      - name: Pesquisar matriz completa do período
         env:
           PYTHONPATH: flight-monitor:.
         run: python flight-month-search/search.py
@@ -95,12 +103,13 @@ jobs:
           assert d.get('mode')=='full_month_matrix'
           assert int(d['stats']['combinations']) > 0
           assert len(d.get('results',[])) <= 100
+          assert d.get('request_id')
           for row in d.get('results',[]):
               assert float(row['price']) > 0
               assert row['departure_date'] < row['return_date']
               assert row['departure_date'][:7] == d['request']['month']
               assert row['return_date'][:7] == d['request']['month']
-          print('Matriz mensal válida:', d['request'], d['stats'])
+          print('Busca válida:', d['request_id'], d['request'], d['stats'])
           PY
 
       - name: Persistir resultado
@@ -111,7 +120,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Nenhuma alteração para salvar."
           else
-            git commit -m "data: atualizar matriz mensal de passagens [skip ci]"
+            git commit -m "data: atualizar busca de passagens [skip ci]"
             git pull --rebase origin main
             git push origin HEAD:main
           fi
@@ -123,6 +132,6 @@ jobs:
           from pathlib import Path
           d=json.loads(Path('docs/data/flight-month-search.json').read_text(encoding='utf-8'))
           r=d['request']; s=d['stats']
-          lines=['## Matriz completa do mês',f"- Rota: {r['origin']} → {r['destination']}",f"- Mês: {r['month']}",f"- Combinações: {s['combinations']}",f"- Com preço: {s['priced_combinations']} ({s['coverage_pct']}%)",f"- Top exibido: {s['result_count']}/100",f"- Menor preço: R$ {s['lowest_price'] if s['lowest_price'] is not None else '-'}"]
+          lines=['## Busca de passagens sob demanda',f"- ID: {d.get('request_id')}",f"- Rota: {r['origin']} → {r['destination']}",f"- Mês: {r['month']}",f"- Combinações: {s['combinations']}",f"- Com preço: {s['priced_combinations']} ({s['coverage_pct']}%)",f"- Top exibido: {s['result_count']}/100",f"- Menor preço: R$ {s['lowest_price'] if s['lowest_price'] is not None else '-'}"]
           with open(os.environ['GITHUB_STEP_SUMMARY'],'a',encoding='utf-8') as f:f.write('\n'.join(lines)+'\n')
           PY
