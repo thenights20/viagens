@@ -64,7 +64,7 @@
 
   const panel=document.createElement('div');panel.id='flightMonthPanel';panel.hidden=true;
   panel.innerHTML=`
-    <div class="month-titlebar"><div><strong>🔎 Buscar passagens · v0.4.6</strong><small>Os achados são salvos durante a pesquisa. Se a execução parar, o que já foi encontrado continua disponível.</small></div><div class="pill"><span class="dot"></span><span id="monthSearchUpdated">Aguardando busca</span></div></div>
+    <div class="month-titlebar"><div><strong>🔎 Buscar passagens · v0.4.7</strong><small>Os achados são salvos durante a pesquisa. Se a execução parar, o que já foi encontrado continua disponível.</small></div><div class="pill"><span class="dot"></span><span id="monthSearchUpdated">Aguardando busca</span></div></div>
     <section class="panel">
       <div class="month-search-grid">
         <div><label>Origem</label><select id="monthOrigin"></select></div>
@@ -184,7 +184,7 @@
     q('#monthHistoryEmpty').hidden=compared.length>0;setResultView(resultView);
   }
 
-  function clearForSearch(request,total){q('#resultScope').value='current';q('#resultOrigin').value='';q('#resultDestination').value='';data={request:{origin:request.origin,destination:request.destination,month:request.month,period_mode:request.period_mode,start_date:request.start_date,end_date:request.end_date,max_stops:request.max_stops},stats:{combinations:total,processed_combinations:0,priced_combinations:0,coverage_pct:0},results:[],daily_min:[],history_summary:{}};render();}
+  function clearForSearch(request,total){q('#resultScope').value='current';q('#resultOrigin').value='';q('#resultDestination').value='';if(q('#resultMonth'))q('#resultMonth').value='';data={request:{origin:request.origin,destination:request.destination,month:request.month,period_mode:request.period_mode,start_date:request.start_date,end_date:request.end_date,max_stops:request.max_stops},stats:{combinations:total,processed_combinations:0,priced_combinations:0,coverage_pct:0},results:[],daily_min:[],history_summary:{}};render();}
   function showProgress(total){q('#monthProgress').hidden=false;q('#monthStopButton').disabled=false;updateProgress({pct:0,stage:'Enviando solicitação…',done:0,total,priced:0,remaining:total,elapsed:0,detail:'✓ salvamento automático'});}
   function updateProgress({pct,stage,done,total,priced,remaining,elapsed,detail}){pct=Math.max(0,Math.min(100,Math.round(Number(pct)||0)));done=Math.max(0,Math.min(Number(total)||0,Math.round(Number(done)||0)));q('#monthProgressFill').style.width=`${pct}%`;q('#monthProgressPct').textContent=`${pct}%`;q('#monthProgressStage').textContent=stage||'Pesquisa em andamento…';q('#monthProgressCombos').textContent=`${done} / ${total} combinações`;q('#monthProgressPriced').textContent=`${Number(priced||0)} com preço`;q('#monthProgressRemaining').textContent=`faltam ${remaining==null?Math.max(0,total-done):Math.max(0,remaining)}`;q('#monthProgressElapsed').textContent=`${Math.max(0,Math.round(elapsed||0))}s`;q('#monthProgressSaved').textContent=detail||'✓ salvamento automático';}
 
@@ -247,7 +247,12 @@
   function setFocus(on){document.body.classList.toggle('flight-search-focus',!!on)}
   function activate(){document.querySelectorAll('#flightTabs .tab').forEach(x=>x.classList.remove('active'));btn.classList.add('active');['hunterPanel','radarPanel','externalPanel','airlinesPanel'].forEach(id=>{const el=q('#'+id);if(el)el.hidden=true});panel.hidden=false;setFocus(true);render();}
 
-  for(const id of ['#resultScope','#resultOrigin','#resultDestination','#resultMonth','#resultSort'])q(id).addEventListener('change',()=>{render();if(id==='#resultScope'&&q(id).value==='all')loadSavedPairs().then(render)});
-  q('#monthSearchButton').addEventListener('click',searchInsidePage);q('#monthStopButton').addEventListener('click',stopSearch);q('#monthPeriodMode').addEventListener('change',periodModeChanged);q('#rangeStart').addEventListener('change',()=>{if(q('#rangeEnd').value<q('#rangeStart').value)q('#rangeEnd').value=q('#rangeStart').value});document.querySelectorAll('.month-view-btn').forEach(b=>b.addEventListener('click',()=>setResultView(b.dataset.resultView)));
+  for(const id of ['#resultScope','#resultOrigin','#resultDestination','#resultMonth','#resultSort']){const el=q(id);if(el)el.addEventListener('change',()=>{render();if(id==='#resultScope'&&el.value==='all')loadSavedPairs().then(render)});}
+  const searchBtn=q('#monthSearchButton');if(searchBtn)searchBtn.addEventListener('click',e=>{e.preventDefault();searchInsidePage();});
+  const stopBtn=q('#monthStopButton');if(stopBtn)stopBtn.addEventListener('click',e=>{e.preventDefault();stopSearch();});
+  const periodMode=q('#monthPeriodMode');if(periodMode)periodMode.addEventListener('change',periodModeChanged);
+  const rangeStartEl=q('#rangeStart');if(rangeStartEl)rangeStartEl.addEventListener('change',()=>{const end=q('#rangeEnd');if(end&&end.value<rangeStartEl.value)end.value=rangeStartEl.value});
+  document.querySelectorAll('.month-view-btn').forEach(b=>b.addEventListener('click',()=>setResultView(b.dataset.resultView)));
+  document.addEventListener('click',e=>{const t=e.target&&e.target.closest?e.target.closest('#monthSearchButton'):null;if(!t||t.disabled)return;if(!searching){e.preventDefault();searchInsidePage();}},true);
   btn.addEventListener('click',activate);document.querySelectorAll('#flightTabs .tab').forEach(b=>{if(b!==btn)b.addEventListener('click',()=>{panel.hidden=true;setFocus(false)})});const productsMain=document.querySelector('.main-tab[data-main="products"]');if(productsMain)productsMain.addEventListener('click',()=>{panel.hidden=true;setFocus(false)});const flightsMain=document.querySelector('.main-tab[data-main="flights"]');if(flightsMain)flightsMain.addEventListener('click',()=>{if(btn.classList.contains('active')&&!panel.hidden)setFocus(true)});document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!searching){loadConfig();loadLastResult().then(render)}});boot();
 })();
