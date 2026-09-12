@@ -175,17 +175,11 @@
   const loadExplorer = () => {
     if (document.querySelector('script[data-flight-explorer]')) return;
     const s = document.createElement('script');
-    s.src = './flight-explorer.js?v=20260912-3';
+    s.src = './flight-explorer.js?v=20260912-4';
     s.defer = true;
     s.dataset.flightExplorer = '1';
     document.head.appendChild(s);
   };
 
-  const fix = document.createElement('script');
-  fix.src = './flight-fetch-fix.js?v=20260912-1';
-  fix.defer = true;
-  fix.dataset.flightDispatchFix = '1';
-  fix.onload = loadExplorer;
-  fix.onerror = loadExplorer;
-  document.head.appendChild(fix);
+  loadExplorer();
 })();
