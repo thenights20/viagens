@@ -33,3 +33,6 @@ jobs:
           npm install --no-save playwright
           npx playwright install --with-deps chromium
           node tests/flight-browser.cjs
+      - name: Intervalo real de janeiro com histórico isolado
+        if: github.ref == 'refs/heads/audit/flight-search-20260912'
+        run: python scripts/check_flight_range.py
