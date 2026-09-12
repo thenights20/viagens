@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T22:00:40.125959Z",
-  "updated_at": "2026-09-12T22:00:40.125959Z",
+  "generated_at": "2026-09-12T22:00:49.398226Z",
+  "updated_at": "2026-09-12T22:00:49.398226Z",
   "started_at": "2026-09-12T21:32:44.344668Z",
   "status": "running",
   "stage": "fallback",
@@ -21,9 +21,9 @@
     "processed_combinations": 7140,
     "primary_completed": 7140,
     "primary_total": 7140,
-    "fallback_done": 359,
+    "fallback_done": 361,
     "fallback_total": 4532,
-    "priced_combinations": 2827,
+    "priced_combinations": 2829,
     "coverage_pct": 39.6,
     "lowest_price": 2338.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 2,
     "same": 250,
-    "new": 2575
+    "new": 2577
   },
   "daily_min": [
     {
@@ -22834,6 +22834,31 @@
       "origin": "GRU",
       "destination": "MIA",
       "departure_date": "2026-11-20",
+      "return_date": "2026-12-10",
+      "airline": "Avianca",
+      "price": 3069.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-11-20+returning+2026-12-10",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 20,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2026-11-20",
       "return_date": "2026-12-11",
       "airline": "Avianca",
       "price": 3069.0,
@@ -22872,6 +22897,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 22,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2026-11-20",
+      "return_date": "2026-12-13",
+      "airline": "Avianca",
+      "price": 3069.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-11-20+returning+2026-12-13",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 23,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -75969,7 +76019,7 @@
     "2026-11-18->2027-02-12: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
   ],
   "current_pair": {
-    "departure_date": "2026-11-19",
-    "return_date": "2027-02-12"
+    "departure_date": "2026-11-20",
+    "return_date": "2026-12-13"
   }
 }
