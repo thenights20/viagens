@@ -1,6 +1,7 @@
 """Update the existing Apps Script deployment without changing its public URL."""
 import json
 import os
+import re
 import sys
 import urllib.error
 import urllib.parse
@@ -48,11 +49,15 @@ def deploy(call, project, deployment_id, source):
     files = content['files']
     if not any(f.get('name') == 'appsscript' and f.get('type') == 'JSON' for f in files):
         raise RuntimeError('Manifesto remoto ausente; publicação interrompida.')
+    candidates = [f for f in files if f.get('type') == 'SERVER_JS' and re.search(r'function\s+startSearch_\s*\(', f.get('source', '')) and re.search(r'function\s+dispatchSearch_\s*\(', f.get('source', ''))]
+    if len(candidates) != 1:
+        raise RuntimeError('Não foi possível identificar um único arquivo do serviço de pesquisa.')
+    target_name = candidates[0]['name']
     updated = []
     replaced = False
     for remote in files:
         file = {k: remote[k] for k in ('name', 'type', 'source') if k in remote}
-        if file['name'] == 'Code' and file['type'] == 'SERVER_JS':
+        if file['name'] == target_name and file['type'] == 'SERVER_JS':
             file['source'] = source
             replaced = True
         updated.append(file)
