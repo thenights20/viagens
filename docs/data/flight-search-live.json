@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T23:40:24.625723Z",
-  "updated_at": "2026-09-12T23:40:24.625723Z",
+  "generated_at": "2026-09-12T23:40:26.638478Z",
+  "updated_at": "2026-09-12T23:40:26.638478Z",
   "started_at": "2026-09-12T23:31:44.359739Z",
   "status": "running",
   "stage": "google",
@@ -18,13 +18,13 @@
   },
   "stats": {
     "combinations": 7140,
-    "processed_combinations": 2784,
-    "primary_completed": 2784,
+    "processed_combinations": 2796,
+    "primary_completed": 2796,
     "primary_total": 7140,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 1010,
-    "coverage_pct": 14.1,
+    "priced_combinations": 1011,
+    "coverage_pct": 14.2,
     "lowest_price": 3535.0,
     "result_count": 100
   },
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 1010
+    "new": 1011
   },
   "daily_min": [
     {
@@ -10468,6 +10468,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 107,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "EWR",
+      "departure_date": "2027-01-27",
+      "return_date": "2027-02-13",
+      "airline": "Air Canada",
+      "price": 4801.0,
+      "duration": "12h 05min",
+      "duration_minutes": 725,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 27] [21, 45]",
+      "arrival": "[2027, 1, 28] [9, 45]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+EWR+on+2027-01-27+returning+2027-02-13",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 17,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -28741,6 +28766,6 @@
   ],
   "current_pair": {
     "departure_date": "2027-01-27",
-    "return_date": "2027-02-11"
+    "return_date": "2027-02-26"
   }
 }
