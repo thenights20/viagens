@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T23:49:12.463731Z",
-  "updated_at": "2026-09-12T23:49:12.463731Z",
+  "generated_at": "2026-09-12T23:49:14.268251Z",
+  "updated_at": "2026-09-12T23:49:14.268251Z",
   "started_at": "2026-09-12T23:31:44.359739Z",
   "status": "running",
   "stage": "google",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 7140,
-    "processed_combinations": 5304,
-    "primary_completed": 5304,
+    "processed_combinations": 5316,
+    "primary_completed": 5316,
     "primary_total": 7140,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 1055,
+    "priced_combinations": 1056,
     "coverage_pct": 14.8,
     "lowest_price": 2415.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 1055
+    "new": 1056
   },
   "daily_min": [
     {
@@ -1055,6 +1055,31 @@
       "history_samples": 0,
       "previous_seen_at": null,
       "rank": 25
+    },
+    {
+      "origin": "GRU",
+      "destination": "EWR",
+      "departure_date": "2027-03-01",
+      "return_date": "2027-03-04",
+      "airline": "COPA, United",
+      "price": 4565.0,
+      "duration": "13h 12min",
+      "duration_minutes": 792,
+      "stops": "2 escalas",
+      "stops_count": 2,
+      "departure": "[2027, 3, 1] [11, 10]",
+      "arrival": "[2027, 3, 2] [7, 31]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+EWR+on+2027-03-01+returning+2027-03-04",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 3,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
     }
   ],
   "results": [
@@ -9102,6 +9127,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 32,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "EWR",
+      "departure_date": "2027-03-01",
+      "return_date": "2027-03-04",
+      "airline": "COPA, United",
+      "price": 4565.0,
+      "duration": "13h 12min",
+      "duration_minutes": 792,
+      "stops": "2 escalas",
+      "stops_count": 2,
+      "departure": "[2027, 3, 1] [11, 10]",
+      "arrival": "[2027, 3, 2] [7, 31]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+EWR+on+2027-03-01+returning+2027-03-04",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 3,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -30199,7 +30249,7 @@
     "2027-01-09->2027-04-18: ProviderResponseError: Google returned a provider error"
   ],
   "current_pair": {
-    "departure_date": "2027-02-28",
-    "return_date": "2027-04-29"
+    "departure_date": "2027-03-01",
+    "return_date": "2027-03-06"
   }
 }
