@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T23:48:59.454009Z",
-  "updated_at": "2026-09-12T23:48:59.454009Z",
+  "generated_at": "2026-09-12T23:49:03.334281Z",
+  "updated_at": "2026-09-12T23:49:03.334281Z",
   "started_at": "2026-09-12T23:31:44.359739Z",
   "status": "running",
   "stage": "google",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 7140,
-    "processed_combinations": 5244,
-    "primary_completed": 5244,
+    "processed_combinations": 5256,
+    "primary_completed": 5256,
     "primary_total": 7140,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 1050,
+    "priced_combinations": 1051,
     "coverage_pct": 14.7,
     "lowest_price": 2415.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 1050
+    "new": 1051
   },
   "daily_min": [
     {
@@ -1023,6 +1023,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 3,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "EWR",
+      "departure_date": "2027-02-28",
+      "return_date": "2027-03-02",
+      "airline": "Air Canada",
+      "price": 4507.0,
+      "duration": "12h 02min",
+      "duration_minutes": 722,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 2, 28] [21, 45]",
+      "arrival": "[2027, 3, 1] [9, 42]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+EWR+on+2027-02-28+returning+2027-03-02",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 2,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -8227,6 +8252,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 18,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "EWR",
+      "departure_date": "2027-02-28",
+      "return_date": "2027-03-02",
+      "airline": "Air Canada",
+      "price": 4507.0,
+      "duration": "12h 02min",
+      "duration_minutes": 722,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 2, 28] [21, 45]",
+      "arrival": "[2027, 3, 1] [9, 42]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+EWR+on+2027-02-28+returning+2027-03-02",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 2,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -30049,7 +30099,7 @@
     "2027-01-09->2027-04-18: ProviderResponseError: Google returned a provider error"
   ],
   "current_pair": {
-    "departure_date": "2027-02-27",
-    "return_date": "2027-04-26"
+    "departure_date": "2027-02-28",
+    "return_date": "2027-03-08"
   }
 }
