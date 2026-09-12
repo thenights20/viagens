@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T22:02:09.603995Z",
-  "updated_at": "2026-09-12T22:02:09.603995Z",
+  "generated_at": "2026-09-12T22:02:18.372253Z",
+  "updated_at": "2026-09-12T22:02:18.372253Z",
   "started_at": "2026-09-12T21:32:44.344668Z",
   "status": "running",
   "stage": "fallback",
@@ -21,9 +21,9 @@
     "processed_combinations": 7140,
     "primary_completed": 7140,
     "primary_total": 7140,
-    "fallback_done": 417,
+    "fallback_done": 422,
     "fallback_total": 4532,
-    "priced_combinations": 2882,
+    "priced_combinations": 2883,
     "coverage_pct": 40.4,
     "lowest_price": 2338.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 2,
     "same": 250,
-    "new": 2630
+    "new": 2631
   },
   "daily_min": [
     {
@@ -40484,6 +40484,31 @@
       "origin": "GRU",
       "destination": "MIA",
       "departure_date": "2026-11-21",
+      "return_date": "2027-01-12",
+      "airline": "Avianca",
+      "price": 3756.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-11-21+returning+2027-01-12",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 52,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2026-11-21",
       "return_date": "2027-01-18",
       "airline": "Avianca",
       "price": 3756.0,
@@ -77282,10 +77307,6 @@
     }
   ],
   "errors": [
-    "2026-11-14->2027-01-19: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
-    "2026-11-14->2027-01-23: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
-    "2026-11-14->2027-01-22: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
-    "2026-11-14->2027-01-25: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
     "2026-11-14->2027-01-20: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
     "2026-11-14->2027-01-24: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
     "2026-11-14->2027-01-27: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
@@ -77341,10 +77362,14 @@
     "2026-11-18->2027-02-12: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
     "2026-11-20->2027-01-08: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
     "2026-11-20->2027-02-12: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "2026-11-20->2027-01-15: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
+    "2026-11-20->2027-01-15: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "2026-11-21->2027-01-11: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "2026-11-21->2027-01-07: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "2026-11-21->2027-01-23: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "2026-11-21->2027-01-22: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
   ],
   "current_pair": {
     "departure_date": "2026-11-21",
-    "return_date": "2027-01-20"
+    "return_date": "2027-01-22"
   }
 }
