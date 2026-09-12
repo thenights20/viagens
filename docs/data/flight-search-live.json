@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T21:49:10.887327Z",
-  "updated_at": "2026-09-12T21:49:10.887327Z",
+  "generated_at": "2026-09-12T21:49:12.568858Z",
+  "updated_at": "2026-09-12T21:49:12.568858Z",
   "started_at": "2026-09-12T21:32:44.344668Z",
   "status": "running",
   "stage": "google",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 7140,
-    "processed_combinations": 6144,
-    "primary_completed": 6144,
+    "processed_combinations": 6156,
+    "primary_completed": 6156,
     "primary_total": 7140,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 2412,
+    "priced_combinations": 2413,
     "coverage_pct": 33.8,
     "lowest_price": 2338.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 2,
     "same": 250,
-    "new": 2160
+    "new": 2161
   },
   "daily_min": [
     {
@@ -1534,6 +1534,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 11,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-01-15",
+      "return_date": "2027-01-18",
+      "airline": "Arajet",
+      "price": 4918.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 15] [23, 30]",
+      "arrival": "[2027, 1, 16] [11, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-01-15+returning+2027-01-18",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 3,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -58224,6 +58249,31 @@
     {
       "origin": "GRU",
       "destination": "MIA",
+      "departure_date": "2027-01-15",
+      "return_date": "2027-01-18",
+      "airline": "Arajet",
+      "price": 4918.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 15] [23, 30]",
+      "arrival": "[2027, 1, 16] [11, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-01-15+returning+2027-01-18",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 3,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
       "departure_date": "2026-11-01",
       "return_date": "2026-12-22",
       "airline": "Arajet",
@@ -64610,7 +64660,7 @@
     "2026-11-22->2026-11-30: ProviderResponseError: Google document has no flight data script"
   ],
   "current_pair": {
-    "departure_date": "2027-01-14",
-    "return_date": "2027-02-25"
+    "departure_date": "2027-01-15",
+    "return_date": "2027-01-24"
   }
 }
