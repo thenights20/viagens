@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T21:46:52.364917Z",
-  "updated_at": "2026-09-12T21:46:52.364917Z",
+  "generated_at": "2026-09-12T21:46:53.826187Z",
+  "updated_at": "2026-09-12T21:46:53.826187Z",
   "started_at": "2026-09-12T21:32:44.344668Z",
   "status": "running",
   "stage": "google",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 7140,
-    "processed_combinations": 5364,
-    "primary_completed": 5364,
+    "processed_combinations": 5376,
+    "primary_completed": 5376,
     "primary_total": 7140,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 2207,
+    "priced_combinations": 2208,
     "coverage_pct": 30.9,
     "lowest_price": 2338.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 2,
     "same": 250,
-    "new": 1955
+    "new": 1956
   },
   "daily_min": [
     {
@@ -55549,6 +55549,31 @@
     {
       "origin": "GRU",
       "destination": "MIA",
+      "departure_date": "2026-12-30",
+      "return_date": "2027-02-28",
+      "airline": "Arajet",
+      "price": 4949.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2026, 12, 30] [5, 20]",
+      "arrival": "[2026, 12, 30] [15, 8]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-12-30+returning+2027-02-28",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 60,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
       "departure_date": "2026-12-27",
       "return_date": "2026-12-30",
       "airline": "Arajet",
@@ -59110,7 +59135,7 @@
     "2026-11-22->2026-11-30: ProviderResponseError: Google document has no flight data script"
   ],
   "current_pair": {
-    "departure_date": "2026-12-30",
-    "return_date": "2027-02-18"
+    "departure_date": "2026-12-31",
+    "return_date": "2027-01-08"
   }
 }
