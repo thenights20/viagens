@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T22:06:31.684882Z",
-  "updated_at": "2026-09-12T22:06:31.684882Z",
+  "generated_at": "2026-09-12T22:06:41.116562Z",
+  "updated_at": "2026-09-12T22:06:41.116562Z",
   "started_at": "2026-09-12T21:32:44.344668Z",
   "status": "running",
   "stage": "fallback",
@@ -21,9 +21,9 @@
     "processed_combinations": 7140,
     "primary_completed": 7140,
     "primary_total": 7140,
-    "fallback_done": 568,
+    "fallback_done": 569,
     "fallback_total": 4532,
-    "priced_combinations": 3021,
+    "priced_combinations": 3022,
     "coverage_pct": 42.3,
     "lowest_price": 2338.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 2,
     "same": 250,
-    "new": 2769
+    "new": 2770
   },
   "daily_min": [
     {
@@ -49533,6 +49533,31 @@
     {
       "origin": "GRU",
       "destination": "MIA",
+      "departure_date": "2026-11-23",
+      "return_date": "2027-02-27",
+      "airline": "Arajet",
+      "price": 3997.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-11-23+returning+2027-02-27",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 96,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
       "departure_date": "2026-11-25",
       "return_date": "2027-02-08",
       "airline": "Arajet",
@@ -80819,7 +80844,7 @@
     "2026-11-23->2027-02-19: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying."
   ],
   "current_pair": {
-    "departure_date": "2026-11-24",
-    "return_date": "2026-11-27"
+    "departure_date": "2026-11-23",
+    "return_date": "2027-02-27"
   }
 }
