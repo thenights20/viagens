@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T23:57:05.337124Z",
-  "updated_at": "2026-09-12T23:57:05.337124Z",
+  "generated_at": "2026-09-12T23:57:13.446826Z",
+  "updated_at": "2026-09-12T23:57:13.446826Z",
   "started_at": "2026-09-12T23:31:44.359739Z",
   "status": "running",
   "stage": "fallback",
@@ -21,9 +21,9 @@
     "processed_combinations": 7140,
     "primary_completed": 7140,
     "primary_total": 7140,
-    "fallback_done": 149,
+    "fallback_done": 153,
     "fallback_total": 5976,
-    "priced_combinations": 1233,
+    "priced_combinations": 1236,
     "coverage_pct": 17.3,
     "lowest_price": 2415.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 1233
+    "new": 1236
   },
   "daily_min": [
     {
@@ -35045,6 +35045,31 @@
       "origin": "GRU",
       "destination": "EWR",
       "departure_date": "2027-01-02",
+      "return_date": "2027-04-02",
+      "airline": "Air Canada",
+      "price": 11560.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+EWR+on+2027-01-02+returning+2027-04-02",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 90,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "EWR",
+      "departure_date": "2027-01-02",
       "return_date": "2027-04-03",
       "airline": "Air Canada",
       "price": 11560.0,
@@ -35083,6 +35108,56 @@
       "provider": "swoop",
       "source_kind": "swoop",
       "trip_days": 96,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "EWR",
+      "departure_date": "2027-01-02",
+      "return_date": "2027-04-10",
+      "airline": "Air Canada",
+      "price": 11560.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+EWR+on+2027-01-02+returning+2027-04-10",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 98,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "EWR",
+      "departure_date": "2027-01-02",
+      "return_date": "2027-04-15",
+      "airline": "Air Canada",
+      "price": 11560.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+EWR+on+2027-01-02+returning+2027-04-15",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 103,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -35618,7 +35693,6 @@
     }
   ],
   "errors": [
-    "2027-01-01->2027-03-22: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
     "2027-01-01->2027-03-20: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
     "2027-01-01->2027-03-21: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
     "2027-01-01->2027-03-25: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
@@ -35677,10 +35751,11 @@
     "2027-01-02->2027-03-11: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying.",
     "2027-01-02->2027-03-05: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying.",
     "2027-01-02->2027-03-13: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying.",
-    "2027-01-02->2027-04-01: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying."
+    "2027-01-02->2027-04-01: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying.",
+    "2027-01-02->2027-04-05: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying."
   ],
   "current_pair": {
     "departure_date": "2027-01-02",
-    "return_date": "2027-04-03"
+    "return_date": "2027-04-10"
   }
 }
