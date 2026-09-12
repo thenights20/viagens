@@ -91,3 +91,9 @@ test('unknown bridge job never pretends to be queued',()=>{
  vm.runInContext(fs.readFileSync('apps-script/Code.gs','utf8'),ctx);
  assert.equal(ctx.getProgress_('web_unreceived').status,'unknown');
 });
+
+test('inline dashboard script is valid independently of external script tags',()=>{
+ const html=fs.readFileSync('docs/index.html','utf8');
+ const match=html.match(/<script>([\\s\\S]*?)<\/script>/);
+ assert.ok(match);new vm.Script(match[1]);
+});

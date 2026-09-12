@@ -53,7 +53,7 @@ jobs:
           import re
           from pathlib import Path
           html = Path('docs/index.html').read_text(encoding='utf-8')
-          match = re.search(r'<script>(.*)</script>', html, re.S)
+          match = re.search(r'<script>(.*?)</script>', html, re.S)
           assert match, 'script inline não encontrado'
           Path('/tmp/dashboard.js').write_text(match.group(1), encoding='utf-8')
           PY
