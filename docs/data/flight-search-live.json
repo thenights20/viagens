@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T23:52:27.870839Z",
-  "updated_at": "2026-09-12T23:52:27.870839Z",
+  "generated_at": "2026-09-12T23:52:30.170239Z",
+  "updated_at": "2026-09-12T23:52:30.170239Z",
   "started_at": "2026-09-12T23:31:44.359739Z",
   "status": "running",
   "stage": "google",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 7140,
-    "processed_combinations": 6324,
-    "primary_completed": 6324,
+    "processed_combinations": 6336,
+    "primary_completed": 6336,
     "primary_total": 7140,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 1133,
+    "priced_combinations": 1134,
     "coverage_pct": 15.9,
     "lowest_price": 2415.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 1133
+    "new": 1134
   },
   "daily_min": [
     {
@@ -1527,6 +1527,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 9,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "EWR",
+      "departure_date": "2027-03-21",
+      "return_date": "2027-03-25",
+      "airline": "United",
+      "price": 6032.0,
+      "duration": "9h 45min",
+      "duration_minutes": 585,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2027, 3, 21] [22, 25]",
+      "arrival": "[2027, 3, 22] [7, 10]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+EWR+on+2027-03-21+returning+2027-03-25",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 4,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -23317,6 +23342,31 @@
     {
       "origin": "GRU",
       "destination": "EWR",
+      "departure_date": "2027-03-21",
+      "return_date": "2027-03-25",
+      "airline": "United",
+      "price": 6032.0,
+      "duration": "9h 45min",
+      "duration_minutes": 585,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2027, 3, 21] [22, 25]",
+      "arrival": "[2027, 3, 22] [7, 10]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+EWR+on+2027-03-21+returning+2027-03-25",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 4,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "EWR",
       "departure_date": "2027-01-16",
       "return_date": "2027-01-17",
       "airline": "LATAM, Delta",
@@ -32629,6 +32679,6 @@
   ],
   "current_pair": {
     "departure_date": "2027-03-21",
-    "return_date": "2027-03-28"
+    "return_date": "2027-04-08"
   }
 }
