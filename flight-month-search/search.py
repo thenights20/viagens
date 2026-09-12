@@ -18,8 +18,8 @@ if str(MONITOR) not in sys.path:
 
 from providers import search_fast_flights  # noqa: E402
 
-OUTPUT_PATH = ROOT / "docs" / "data" / "flight-month-search.json"
-VERSION = "0.1.0"
+OUTPUT_PATH = Path(os.environ.get("SEARCH_OUTPUT_PATH") or (ROOT / "docs" / "data" / "flight-month-search.json"))
+VERSION = "0.2.0"
 MAX_RESULTS = 100
 
 
@@ -45,13 +45,17 @@ def month_bounds(value: str) -> tuple[date, date]:
     return date(year, month, 1), date(year, month, last)
 
 
-def build_combinations(month: str, min_stay: int, max_stay: int, today: date) -> list[tuple[date, date]]:
+def build_combinations(month: str, today: date) -> list[tuple[date, date]]:
+    """Gera a matriz completa dentro do mês: 01→02, 01→03 ... 30→31."""
     first, last = month_bounds(month)
-    dep = max(first, today + timedelta(days=1))
+    first_departure = max(first, today + timedelta(days=1))
     combos: list[tuple[date, date]] = []
-    while dep <= last:
-        for stay in range(min_stay, max_stay + 1):
-            combos.append((dep, dep + timedelta(days=stay)))
+    dep = first_departure
+    while dep < last:
+        ret = dep + timedelta(days=1)
+        while ret <= last:
+            combos.append((dep, ret))
+            ret += timedelta(days=1)
         dep += timedelta(days=1)
     return combos
 
@@ -87,7 +91,7 @@ def run_fast(origin: str, destination: str, combos: list[tuple[date, date]], max
                 rows.append(row)
             else:
                 missing.append((dep, ret))
-            if error and len(errors) < 30:
+            if error and len(errors) < 40:
                 errors.append(error)
     return rows, missing, errors
 
@@ -108,7 +112,7 @@ def run_swoop_batch(origin: str, destination: str, combos: list[tuple[date, date
         input=json.dumps(payload),
         text=True,
         capture_output=True,
-        timeout=max(180, min(1200, len(combos) * 5)),
+        timeout=max(240, min(1800, len(combos) * 5)),
         check=False,
     )
     raw = (proc.stdout or "").strip()
@@ -119,7 +123,7 @@ def run_swoop_batch(origin: str, destination: str, combos: list[tuple[date, date
     except json.JSONDecodeError:
         return [], ["Swoop batch retornou JSON inválido: " + raw[-700:]]
     rows = list(data.get("results") or [])
-    errors = list(data.get("errors") or [])[:30]
+    errors = list(data.get("errors") or [])[:40]
     for row in rows:
         row["source_kind"] = "swoop"
         try:
@@ -156,24 +160,22 @@ def main() -> None:
     origin = str(os.environ.get("SEARCH_ORIGIN") or "GRU").strip().upper()
     destination = str(os.environ.get("SEARCH_DESTINATION") or "MIA").strip().upper()
     month = str(os.environ.get("SEARCH_MONTH") or "2026-10").strip()
-    min_stay = int(os.environ.get("SEARCH_MIN_STAY") or 4)
-    max_stay = int(os.environ.get("SEARCH_MAX_STAY") or 10)
     max_stops = int(os.environ.get("SEARCH_MAX_STOPS") or 2)
-    fast_workers = int(os.environ.get("SEARCH_FAST_WORKERS") or 10)
-    swoop_workers = int(os.environ.get("SEARCH_SWOOP_WORKERS") or 4)
+    fast_workers = int(os.environ.get("SEARCH_FAST_WORKERS") or 12)
+    swoop_workers = int(os.environ.get("SEARCH_SWOOP_WORKERS") or 6)
     force_swoop = str(os.environ.get("SEARCH_FORCE_SWOOP") or "").lower() in {"1", "true", "yes"}
 
     if len(origin) != 3 or len(destination) != 3 or not origin.isalpha() or not destination.isalpha():
         raise SystemExit("Origem e destino precisam ser códigos IATA de 3 letras")
     if origin == destination:
         raise SystemExit("Origem e destino não podem ser iguais")
-    if not (2 <= min_stay <= max_stay <= 21):
-        raise SystemExit("Duração deve ficar entre 2 e 21 dias")
+    if not 0 <= max_stops <= 2:
+        raise SystemExit("Escalas precisa ficar entre 0 e 2")
 
     now = datetime.now(timezone.utc)
-    combos = build_combinations(month, min_stay, max_stay, now.date())
+    combos = build_combinations(month, now.date())
     if not combos:
-        raise SystemExit("O mês selecionado não possui datas futuras")
+        raise SystemExit("O mês selecionado não possui pares de datas futuras")
 
     fast_rows, missing, fast_errors = run_fast(origin, destination, combos, max_stops, fast_workers)
     fast_ratio = len(fast_rows) / len(combos)
@@ -194,12 +196,11 @@ def main() -> None:
     payload = {
         "version": VERSION,
         "generated_at": now.isoformat().replace("+00:00", "Z"),
+        "mode": "full_month_matrix",
         "request": {
             "origin": origin,
             "destination": destination,
             "month": month,
-            "min_stay": min_stay,
-            "max_stay": max_stay,
             "max_stops": max_stops,
         },
         "stats": {
@@ -215,17 +216,18 @@ def main() -> None:
         },
         "daily_min": daily_min(rows),
         "results": top,
-        "errors": (fast_errors + swoop_errors)[:40],
+        "errors": (fast_errors + swoop_errors)[:50],
         "notes": [
-            "O mês selecionado é o mês da ida; a volta pode cair no mês seguinte conforme a duração escolhida.",
-            "A matriz inclui todas as combinações entre a duração mínima e máxima selecionadas para cada dia de ida disponível no mês.",
+            "A busca testa todos os pares de ida e volta possíveis dentro do mês selecionado.",
+            "Exemplo: 01→02, 01→03, 01→04 ... 02→03, 02→04 ... até o último par possível do mês.",
+            "Em um mês completo de 31 dias são 465 combinações possíveis.",
             "Os preços são dinâmicos e precisam ser confirmados antes da emissão.",
         ],
     }
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(
-        f"Busca mensal {origin}->{destination} {month}: {len(rows)}/{len(combos)} combinações com preço, "
+        f"Matriz mensal {origin}->{destination} {month}: {len(rows)}/{len(combos)} combinações com preço, "
         f"top {len(top)}, menor R$ {payload['stats']['lowest_price'] if top else '-'}"
     )
 
