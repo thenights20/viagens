@@ -181,7 +181,7 @@
     s.onload = () => {
       if (document.querySelector('script[data-flight-enhancements]')) return;
       const e = document.createElement('script');
-      e.src = './flight-explorer-enhancements.js?v=20260912-2';
+      e.src = './flight-explorer-enhancements.js?v=20260912-3';
       e.defer = true;
       e.dataset.flightEnhancements = '1';
       document.head.appendChild(e);
