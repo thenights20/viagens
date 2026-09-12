@@ -1,0 +1,30 @@
+name: Publicar serviço de pesquisa
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'apps-script/**'
+      - 'scripts/deploy_apps_script.py'
+      - '.github/workflows/deploy-apps-script.yml'
+permissions:
+  contents: read
+concurrency:
+  group: apps-script-production
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v6
+      - name: Validar código
+        run: |
+          node --test tests/flight-search.test.cjs
+          python -m py_compile scripts/deploy_apps_script.py
+      - name: Atualizar implantação existente
+        env:
+          CLASPRC_JSON: ${{ secrets.CLASPRC_JSON }}
+          SCRIPT_ID: 1-b6d2YM-ovOD-MlELxQHLSvH7mQRnwToFiAgvi6ydCMkCvGRztdl6Bks
+          DEPLOYMENT_ID: AKfycbwtSVJjgTVzxk6iZywi-0TREphbR53PWZ0olC5rtLfA6FOQ7tnHXZdxHXSNx8fguu3NpA
+        run: python scripts/deploy_apps_script.py
