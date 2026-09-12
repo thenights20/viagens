@@ -16,7 +16,12 @@ jobs:
       - run: python -m pip install -r flight-explorer/requirements.txt
       - name: Regressões Python
         run: python tests/test_flight_search.py
-      - name: Parser e amostra real sem publicar resultados
-        run: python scripts/audit_flight_search.py
       - name: Testes existentes
         run: node --test tests/flight-search.test.cjs
+      - name: Amostra real sem publicar resultados
+        run: python scripts/audit_flight_search.py
+      - name: Navegador
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+          node tests/flight-browser.cjs

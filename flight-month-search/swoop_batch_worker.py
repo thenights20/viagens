@@ -55,7 +55,7 @@ def one(payload: dict, query: dict) -> tuple[dict | None, str | None]:
             max_stops=int(payload.get("max_stops", 2)),
             sort=SORT_CHEAPEST,
             include_basic_economy=True,
-            transport=TransportConfig(country="BR", timeout=35, retries=0),
+            transport=TransportConfig(country="BR", timeout=35, retries=1),
         )
         options = [x for x in (getattr(result, 'results', None) or []) if getattr(x, "price", None)]
         if not options:
