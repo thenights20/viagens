@@ -161,6 +161,7 @@ def main() -> None:
     destination = str(os.environ.get("SEARCH_DESTINATION") or "MIA").strip().upper()
     month = str(os.environ.get("SEARCH_MONTH") or "2026-10").strip()
     max_stops = int(os.environ.get("SEARCH_MAX_STOPS") or 2)
+    request_id = str(os.environ.get("SEARCH_REQUEST_ID") or "manual").strip()[:80]
     fast_workers = int(os.environ.get("SEARCH_FAST_WORKERS") or 12)
     swoop_workers = int(os.environ.get("SEARCH_SWOOP_WORKERS") or 6)
     force_swoop = str(os.environ.get("SEARCH_FORCE_SWOOP") or "").lower() in {"1", "true", "yes"}
@@ -197,6 +198,7 @@ def main() -> None:
         "version": VERSION,
         "generated_at": now.isoformat().replace("+00:00", "Z"),
         "mode": "full_month_matrix",
+        "request_id": request_id,
         "request": {
             "origin": origin,
             "destination": destination,
@@ -218,7 +220,8 @@ def main() -> None:
         "results": top,
         "errors": (fast_errors + swoop_errors)[:50],
         "notes": [
-            "A busca testa todos os pares de ida e volta possíveis dentro do mês selecionado.",
+            "A busca é executada sob demanda quando o usuário clica no botão Pesquisar agora.",
+            "O mês selecionado apenas delimita o período: são testados todos os pares de ida e volta possíveis dentro dele.",
             "Exemplo: 01→02, 01→03, 01→04 ... 02→03, 02→04 ... até o último par possível do mês.",
             "Em um mês completo de 31 dias são 465 combinações possíveis.",
             "Os preços são dinâmicos e precisam ser confirmados antes da emissão.",
@@ -227,7 +230,7 @@ def main() -> None:
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(
-        f"Matriz mensal {origin}->{destination} {month}: {len(rows)}/{len(combos)} combinações com preço, "
+        f"Busca {request_id} {origin}->{destination} {month}: {len(rows)}/{len(combos)} combinações com preço, "
         f"top {len(top)}, menor R$ {payload['stats']['lowest_price'] if top else '-'}"
     )
 
