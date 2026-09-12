@@ -514,7 +514,24 @@ def main() -> None:
     fast_workers = int(os.environ.get("SEARCH_FAST_WORKERS") or 12)
     swoop_workers = int(os.environ.get("SEARCH_SWOOP_WORKERS") or 6)
 
-    origin, period_start, period_end, period_mode = decode_origin_and_period(raw_origin, month)
+    requested_mode = str(os.environ.get("SEARCH_PERIOD_MODE") or "month").strip().lower()
+    requested_start = str(os.environ.get("SEARCH_START_DATE") or "").strip()
+    requested_end = str(os.environ.get("SEARCH_END_DATE") or "").strip()
+
+    if requested_mode == "range" and requested_start and requested_end:
+        try:
+            period_start = date.fromisoformat(requested_start)
+            period_end = date.fromisoformat(requested_end)
+        except ValueError as exc:
+            raise SystemExit("Datas do intervalo inválidas") from exc
+        if period_end <= period_start:
+            raise SystemExit("A data final precisa ser posterior à data inicial")
+        origin = raw_origin
+        period_mode = "range"
+        month = period_start.strftime("%Y-%m")
+    else:
+        # Compatibilidade com chamadas antigas que codificavam um intervalo dentro da origem.
+        origin, period_start, period_end, period_mode = decode_origin_and_period(raw_origin, month)
 
     if len(origin) != 3 or len(destination) != 3 or not origin.isalpha() or not destination.isalpha():
         raise SystemExit("Origem e destino precisam ser códigos IATA de 3 letras")

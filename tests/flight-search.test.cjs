@@ -42,7 +42,7 @@ test('Apps Script routes root URL requests with query parameters',()=>{
  const progress=ctx.doGet({parameter:{route:'api/progress/web_test_request',callback:'flightCallback'}});
  assert.equal(progress.payload.request_id,'web_test_request');assert.equal(progress.callback,'flightCallback');
  assert.equal(ctx.doPost({parameter:{route:'api/cancel'},postData:{contents:'{"request_id":"web_test_request"}'}}).cancelled,'web_test_request');
- assert.equal(ctx.doGet({parameter:{}}).version,'0.3.1');
+ assert.equal(ctx.doGet({parameter:{}}).version,'0.4.0');
 });
 test('transport sends to exec query instead of appending a path',async()=>{
  let url;const ctx=vm.createContext({apiBase:'https://script.google.com/macros/s/test/exec',AbortController,setTimeout,clearTimeout,fetch:async u=>{url=u;return {type:'opaque'}}});
@@ -90,4 +90,19 @@ test('unknown bridge job never pretends to be queued',()=>{
  const ctx=vm.createContext({PropertiesService:{getScriptProperties:()=>({getProperty:()=>null})}});
  vm.runInContext(fs.readFileSync('apps-script/Code.gs','utf8'),ctx);
  assert.equal(ctx.getProgress_('web_unreceived').status,'unknown');
+});
+
+
+test('multi-month range is accepted and dispatched with explicit dates',()=>{
+ const source=fs.readFileSync('docs/flight-explorer.js','utf8');
+ const validateSource=source.slice(source.indexOf('  function validateRequest'),source.indexOf('  async function searchInsidePage'));
+ const ctx=vm.createContext({});vm.runInContext(validateSource,ctx);
+ const req={origin:'DOU',destination:'GRU',period_mode:'range',start_date:'2026-10-01',end_date:'2027-03-31',month:'2026-10',max_stops:2};
+ assert.equal(ctx.validateRequest(req),'');
+ const dispatchSource=source.slice(source.indexOf('  function dispatchWithoutCors'),source.indexOf('  async function stopSearch'));
+ const calls=[];const dctx=vm.createContext({postBridge:(...args)=>{calls.push(args);return Promise.resolve()}});vm.runInContext(dispatchSource,dctx);
+ req.dispatch_origin='DOU';req.request_id='web_multimonth';dctx.dispatchWithoutCors(req);
+ assert.equal(calls[0][1].period_mode,'range');
+ assert.equal(calls[0][1].start_date,'2026-10-01');
+ assert.equal(calls[0][1].end_date,'2027-03-31');
 });
