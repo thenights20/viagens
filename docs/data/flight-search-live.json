@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T22:26:04.247011Z",
-  "updated_at": "2026-09-12T22:26:04.247011Z",
+  "generated_at": "2026-09-12T22:26:14.077727Z",
+  "updated_at": "2026-09-12T22:26:14.077727Z",
   "started_at": "2026-09-12T21:32:44.344668Z",
   "status": "running",
   "stage": "fallback",
@@ -21,9 +21,9 @@
     "processed_combinations": 7140,
     "primary_completed": 7140,
     "primary_total": 7140,
-    "fallback_done": 1347,
+    "fallback_done": 1350,
     "fallback_total": 4532,
-    "priced_combinations": 3781,
+    "priced_combinations": 3782,
     "coverage_pct": 53.0,
     "lowest_price": 2338.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 2,
     "same": 250,
-    "new": 3529
+    "new": 3530
   },
   "daily_min": [
     {
@@ -76158,6 +76158,31 @@
     {
       "origin": "GRU",
       "destination": "MIA",
+      "departure_date": "2026-12-02",
+      "return_date": "2027-02-14",
+      "airline": "COPA",
+      "price": 4421.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-12-02+returning+2027-02-14",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 74,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
       "departure_date": "2026-11-15",
       "return_date": "2027-01-11",
       "airline": "Arajet",
@@ -99932,8 +99957,6 @@
     }
   ],
   "errors": [
-    "2026-11-14->2027-02-23: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
-    "2026-11-14->2027-02-22: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
     "2026-11-14->2027-02-17: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
     "2026-11-14->2027-02-24: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
     "2026-11-14->2027-02-21: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
@@ -99991,10 +100014,12 @@
     "2026-12-02->2027-01-13: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
     "2026-12-02->2027-01-26: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
     "2026-12-02->2027-02-15: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "2026-12-02->2027-02-17: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
+    "2026-12-02->2027-02-17: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "2026-12-02->2027-02-08: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "2026-12-02->2027-02-12: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
   ],
   "current_pair": {
     "departure_date": "2026-12-02",
-    "return_date": "2027-02-18"
+    "return_date": "2027-02-12"
   }
 }
