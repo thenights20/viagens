@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T23:52:16.641142Z",
-  "updated_at": "2026-09-12T23:52:16.641142Z",
+  "generated_at": "2026-09-12T23:52:18.707334Z",
+  "updated_at": "2026-09-12T23:52:18.707334Z",
   "started_at": "2026-09-12T23:31:44.359739Z",
   "status": "running",
   "stage": "google",
@@ -18,13 +18,13 @@
   },
   "stats": {
     "combinations": 7140,
-    "processed_combinations": 6276,
-    "primary_completed": 6276,
+    "processed_combinations": 6288,
+    "primary_completed": 6288,
     "primary_total": 7140,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 1131,
-    "coverage_pct": 15.8,
+    "priced_combinations": 1132,
+    "coverage_pct": 15.9,
     "lowest_price": 2415.0,
     "result_count": 100
   },
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 1131
+    "new": 1132
   },
   "daily_min": [
     {
@@ -1509,6 +1509,31 @@
       "history_samples": 0,
       "previous_seen_at": null,
       "rank": 12
+    },
+    {
+      "origin": "GRU",
+      "destination": "EWR",
+      "departure_date": "2027-03-20",
+      "return_date": "2027-03-29",
+      "airline": "American",
+      "price": 4941.0,
+      "duration": "11h 53min",
+      "duration_minutes": 713,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 20] [None, 5]",
+      "arrival": "[2027, 3, 20] [17, 39]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+EWR+on+2027-03-20+returning+2027-03-29",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 9,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
     }
   ],
   "results": [
@@ -15956,6 +15981,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 14,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "EWR",
+      "departure_date": "2027-03-20",
+      "return_date": "2027-03-29",
+      "airline": "American",
+      "price": 4941.0,
+      "duration": "11h 53min",
+      "duration_minutes": 713,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 20] [None, 5]",
+      "arrival": "[2027, 3, 20] [17, 39]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+EWR+on+2027-03-20+returning+2027-03-29",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 9,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -32553,7 +32603,7 @@
     "2027-01-09->2027-04-18: ProviderResponseError: Google returned a provider error"
   ],
   "current_pair": {
-    "departure_date": "2027-03-19",
-    "return_date": "2027-04-28"
+    "departure_date": "2027-03-20",
+    "return_date": "2027-04-02"
   }
 }
