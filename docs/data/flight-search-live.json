@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T22:56:23.968784Z",
-  "updated_at": "2026-09-12T22:56:23.968784Z",
+  "generated_at": "2026-09-12T22:56:26.717519Z",
+  "updated_at": "2026-09-12T22:56:26.717519Z",
   "started_at": "2026-09-12T22:49:01.340141Z",
   "status": "running",
   "stage": "google",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 11325,
-    "processed_combinations": 2856,
-    "primary_completed": 2856,
+    "processed_combinations": 2868,
+    "primary_completed": 2868,
     "primary_total": 11325,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 2119,
+    "priced_combinations": 2121,
     "coverage_pct": 18.7,
     "lowest_price": 3459.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 2119
+    "new": 2121
   },
   "daily_min": [
     {
@@ -21112,6 +21112,56 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 47,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-21",
+      "return_date": "2027-03-11",
+      "airline": "Azul",
+      "price": 6053.0,
+      "duration": "10h 25min",
+      "duration_minutes": 625,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 21] [7, 25]",
+      "arrival": "[2027, 1, 21] [19, 30]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-21+returning+2027-03-11",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 49,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-21",
+      "return_date": "2027-03-18",
+      "airline": "Azul",
+      "price": 6053.0,
+      "duration": "10h 25min",
+      "duration_minutes": 625,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 21] [7, 25]",
+      "arrival": "[2027, 1, 21] [19, 30]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-21+returning+2027-03-18",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 56,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -56310,6 +56360,6 @@
   ],
   "current_pair": {
     "departure_date": "2027-01-21",
-    "return_date": "2027-03-07"
+    "return_date": "2027-03-20"
   }
 }
