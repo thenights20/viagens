@@ -31,8 +31,6 @@ on:
         default: "manual"
         type: string
 
-# Há um único resultado público no painel. Nova busca (ou comando de cancelamento)
-# encerra a execução anterior para impedir que duas pesquisas se misturem.
 concurrency:
   group: flight-search-live
   cancel-in-progress: true
@@ -110,6 +108,7 @@ jobs:
         if: env.SEARCH_CANCEL_ONLY != '1'
         env:
           PYTHONPATH: flight-monitor:.
+          SEARCH_PROGRESS_URL: https://script.google.com/macros/s/AKfycbwtSVJjgTVzxk6iZywi-0TREphbR53PWZ0olC5rtLfA6FOQ7tnHXZdxHXSNx8fguu3NpA/exec/api/progress
         run: python flight-month-search/search.py
 
       - name: Validar resultado
@@ -119,7 +118,7 @@ jobs:
           import json
           from pathlib import Path
           d=json.loads(Path('docs/data/flight-month-search.json').read_text(encoding='utf-8'))
-          assert d.get('version')=='0.2.0'
+          assert d.get('version')=='0.3.0'
           assert d.get('mode')=='full_month_matrix'
           assert int(d['stats']['combinations']) > 0
           assert len(d.get('results',[])) <= 100
@@ -146,6 +145,29 @@ jobs:
             git push origin HEAD:main
           fi
 
+      - name: Marcar busca concluída
+        if: env.SEARCH_CANCEL_ONLY != '1'
+        env:
+          REQUEST_ID: ${{ inputs.request_id }}
+          PROGRESS_URL: https://script.google.com/macros/s/AKfycbwtSVJjgTVzxk6iZywi-0TREphbR53PWZ0olC5rtLfA6FOQ7tnHXZdxHXSNx8fguu3NpA/exec/api/progress
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          from pathlib import Path
+          d=json.loads(Path('docs/data/flight-month-search.json').read_text(encoding='utf-8'))
+          s=d['stats']
+          body={
+              'request_id': os.environ['REQUEST_ID'], 'status':'done', 'stage':'done', 'percent':100,
+              'total':s['combinations'], 'completed':s['combinations'], 'remaining':0,
+              'priced':s['priced_combinations'], 'message':'Busca concluída e resultado publicado.'
+          }
+          try:
+              req=urllib.request.Request(os.environ['PROGRESS_URL'],data=json.dumps(body).encode(),headers={'Content-Type':'text/plain;charset=UTF-8'},method='POST')
+              urllib.request.urlopen(req,timeout=10).read(32)
+          except Exception as exc:
+              print('Aviso: não foi possível publicar o progresso final:',exc)
+          PY
+
       - name: Resumo
         if: env.SEARCH_CANCEL_ONLY != '1'
         run: |
@@ -154,6 +176,6 @@ jobs:
           from pathlib import Path
           d=json.loads(Path('docs/data/flight-month-search.json').read_text(encoding='utf-8'))
           r=d['request']; s=d['stats']
-          lines=['## Busca de passagens sob demanda',f"- ID: {d.get('request_id')}",f"- Rota: {r['origin']} → {r['destination']}",f"- Mês: {r['month']}",f"- Combinações: {s['combinations']}",f"- Com preço: {s['priced_combinations']} ({s['coverage_pct']}%)",f"- Top exibido: {s['result_count']}/100",f"- Menor preço: R$ {s['lowest_price'] if s['lowest_price'] is not None else '-'}"]
+          lines=['## Busca de passagens sob demanda',f"- ID: {d.get('request_id')}",f"- Rota: {r['origin']} → {r['destination']}",f"- Mês: {r['month']}",f"- Combinações: {s['combinations']}",f"- Com preço: {s['priced_combinations']} ({s['coverage_pct']}%)",f"- Top exibido: {s['result_count']}/100",f"- Menor preço: R$ {s['lowest_price'] if s['lowest_price'] is not None else '-'}",f"- Tempo: {s.get('elapsed_seconds','-')}s"]
           with open(os.environ['GITHUB_STEP_SUMMARY'],'a',encoding='utf-8') as f:f.write('\n'.join(lines)+'\n')
           PY
