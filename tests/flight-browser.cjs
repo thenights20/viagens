@@ -25,7 +25,7 @@ const fs=require('node:fs');
    if(u.pathname.endsWith('flight-search-config.json'))return route.fulfill({json:{api_base:'https://script.google.com/macros/s/test/exec'}});
    if(u.pathname.endsWith('flight-price-history.json'))return route.fulfill({json:saved});
    if(u.pathname.endsWith('flight-search-live.json')){
-    const data=request?{request:{...request,period_mode:'month'},request_id:request.request_id,status:'running',stage,updated_at:stage,stats:{combinations:465,primary_total:465,primary_completed:stage==='google'?456:465,fallback_total:300,fallback_done:120,priced_combinations:1},results:[{origin:'DOU',destination:'GRU',departure_date:'2027-01-13',return_date:'2027-01-15',price:1265}]}:final;
+    const data=request?{request:{...request,period_mode:'month'},request_id:request.request_id,status:'running',started_at:new Date().toISOString(),stage,updated_at:stage,stats:{combinations:465,primary_total:465,primary_completed:stage==='google'?456:465,fallback_total:300,fallback_done:120,priced_combinations:1},results:[{origin:'DOU',destination:'GRU',departure_date:'2027-01-13',return_date:'2027-01-15',price:1265}]}:final;
     return route.fulfill({json:data});
    }
    if(u.pathname.endsWith('flight-month-search.json'))return route.fulfill({json:final});
@@ -53,6 +53,11 @@ const fs=require('node:fs');
   assert.equal(posts,1);
   stage='fallback';
   await page.waitForFunction(()=>document.querySelector('#monthProgressPct').textContent==='40%',{},{timeout:20000});
+  await page.reload();
+  await page.locator('.main-tab[data-main="flights"]').click();
+  await page.locator('[data-flight-view="monthsearch"]').click();
+  await page.waitForFunction(()=>document.querySelector('#monthProgressPct').textContent==='40%',{},{timeout:20000});
+  assert.equal(posts,1);
   await page.locator('#showSavedSearches').click();
   await page.locator('#resultMonth').selectOption('2026-11');
   assert.match(await page.locator('#monthLowest').innerText(),/680/);

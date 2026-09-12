@@ -9,7 +9,6 @@ import queue
 import threading
 import tempfile
 import traceback
-import signal
 import sys
 import time
 import urllib.error
@@ -295,7 +294,7 @@ def enrich_with_history(rows: list[dict], history: dict, origin: str, destinatio
             row["change_amount"] = round(change, 2)
             row["change_pct"] = round(pct, 1)
             row["trend"] = "down" if change < -0.01 else "up" if change > 0.01 else "same"
-            row["historical_min"] = round(float(old.get("min_price", previous)), 2)
+            row["historical_min"] = round(min(current, float(old.get("min_price", previous))), 2)
             row["history_samples"] = int(old.get("samples", 1))
             row["previous_seen_at"] = old.get("last_seen")
         else:
