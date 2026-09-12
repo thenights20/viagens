@@ -31,6 +31,10 @@ function validJobId_(value) {
   return /^[A-Za-z0-9_-]{8,80}$/.test(String(value || ''));
 }
 
+function validDate_(value) {
+  return /^20\d\d-(0[1-9]|1[0-2])-([012]\d|3[01])$/.test(String(value || ''));
+}
+
 function setProgress_(jobId, patch) {
   const props = PropertiesService.getScriptProperties();
   const key = 'PROGRESS_' + jobId;
@@ -62,6 +66,9 @@ function dispatchSearch_(job) {
         origin: job.origin,
         destination: job.destination,
         month: job.month,
+        period_mode: job.period_mode || 'month',
+        start_date: job.start_date || '',
+        end_date: job.end_date || '',
         max_stops: String(job.max_stops),
         request_id: job.job_id
       }
@@ -76,13 +83,25 @@ function dispatchSearch_(job) {
 function startSearch_(body) {
   const origin = String(body.origin || '').trim().toUpperCase();
   const destination = String(body.destination || '').trim().toUpperCase();
-  const month = String(body.month || '').trim();
+  let month = String(body.month || '').trim();
+  const periodMode = String(body.period_mode || 'month').trim().toLowerCase();
+  let startDate = String(body.start_date || '').trim();
+  let endDate = String(body.end_date || '').trim();
   const maxStops = Number(body.max_stops == null ? 2 : body.max_stops);
   const requestedId = String(body.request_id || '').trim();
 
   if (!/^[A-Z]{3}$/.test(origin) || !/^[A-Z]{3}$/.test(destination)) throw new Error('Origem/destino inválidos.');
   if (origin === destination) throw new Error('Origem e destino não podem ser iguais.');
-  if (!/^20\d\d-(0[1-9]|1[0-2])$/.test(month)) throw new Error('Mês inválido.');
+  if (!['month', 'range'].includes(periodMode)) throw new Error('Tipo de período inválido.');
+  if (periodMode === 'range') {
+    if (!validDate_(startDate) || !validDate_(endDate)) throw new Error('Datas do intervalo inválidas.');
+    if (endDate <= startDate) throw new Error('A data final precisa ser posterior à data inicial.');
+    month = startDate.slice(0, 7);
+  } else {
+    if (!/^20\d\d-(0[1-9]|1[0-2])$/.test(month)) throw new Error('Mês inválido.');
+    startDate = '';
+    endDate = '';
+  }
   if (![0, 1, 2].includes(maxStops)) throw new Error('Escalas inválidas.');
 
   const jobId = validJobId_(requestedId) ? requestedId : Utilities.getUuid().replace(/-/g, '').slice(0, 16);
@@ -92,6 +111,9 @@ function startSearch_(body) {
     origin: origin,
     destination: destination,
     month: month,
+    period_mode: periodMode,
+    start_date: startDate,
+    end_date: endDate,
     max_stops: maxStops,
     started_at: new Date().toISOString()
   };
@@ -120,7 +142,11 @@ function readResult_(job) {
     const data = JSON.parse(response.getContentText());
     if (String(data.request_id || '') !== String(job.job_id)) return null;
     if (!data.request) return null;
-    if (data.request.origin !== job.origin || data.request.destination !== job.destination || data.request.month !== job.month) return null;
+    if (data.request.origin !== job.origin || data.request.destination !== job.destination) return null;
+    if ((data.request.period_mode || 'month') !== (job.period_mode || 'month')) return null;
+    if ((job.period_mode || 'month') === 'range') {
+      if (data.request.start_date !== job.start_date || data.request.end_date !== job.end_date) return null;
+    } else if (data.request.month !== job.month) return null;
     return data;
   } catch (err) {
     return null;
@@ -201,9 +227,9 @@ function pollSearch_(jobId) {
   const job = JSON.parse(raw);
   if (job.status === 'cancel_requested') return { job_id: jobId, status: 'canceled' };
   const ageMs = Date.now() - new Date(job.started_at).getTime();
-  if (ageMs > 45 * 60 * 1000) {
+  if (ageMs > 3 * 60 * 60 * 1000) {
     props.deleteProperty(key);
-    return { job_id: jobId, status: 'error', error: 'A pesquisa excedeu 45 minutos.' };
+    return { job_id: jobId, status: 'error', error: 'A pesquisa excedeu 3 horas.' };
   }
 
   const result = readResult_(job);
@@ -238,7 +264,7 @@ function doPost(e) {
 function doGet(e) {
   try {
     const path = String((e && e.parameter && e.parameter.route) || (e && e.pathInfo) || '').replace(/^\/+|\/+$/g, '');
-    if (!path || path === 'health') return json_({ ok: true, service: 'flight-search-bridge', version: '0.3.1' });
+    if (!path || path === 'health') return json_({ ok: true, service: 'flight-search-bridge', version: '0.4.0' });
     let match = path.match(/^api\/progress\/([A-Za-z0-9_-]{8,80})$/);
     if (match) return jsonp_(getProgress_(match[1]), e && e.parameter && e.parameter.callback);
     match = path.match(/^api\/search\/([A-Za-z0-9_-]{8,80})$/);
