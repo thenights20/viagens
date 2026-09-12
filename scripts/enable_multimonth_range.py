@@ -36,8 +36,8 @@ s = replace_once(
 # O request_id é único; não dependa do texto do período no título do Actions.
 s = replace_once(
     s,
-    "return title.startsWith(`Busca ${request.request_id} ·`)&&created>=started-90000&&title.includes(`${request.dispatch_origin} → ${request.destination}`)&&title.includes(request.month)",
-    "return title.startsWith(`Busca ${request.request_id} ·`)&&created>=started-90000&&title.includes(`${request.dispatch_origin} → ${request.destination}`)",
+    "return title.startsWith(`Busca ${request.request_id} ·`)&&title.includes(`${request.dispatch_origin} → ${request.destination}`)&&title.includes(request.month)",
+    "return title.startsWith(`Busca ${request.request_id} ·`)&&title.includes(`${request.dispatch_origin} → ${request.destination}`)",
     'localização do workflow',
 )
 js_path.write_text(s, encoding='utf-8')
