@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-12T21:59:40.624634Z",
-  "updated_at": "2026-09-12T21:59:40.624634Z",
+  "generated_at": "2026-09-12T21:59:50.195437Z",
+  "updated_at": "2026-09-12T21:59:50.195437Z",
   "started_at": "2026-09-12T21:32:44.344668Z",
   "status": "running",
   "stage": "fallback",
@@ -21,9 +21,9 @@
     "processed_combinations": 7140,
     "primary_completed": 7140,
     "primary_total": 7140,
-    "fallback_done": 323,
+    "fallback_done": 327,
     "fallback_total": 4532,
-    "priced_combinations": 2796,
+    "priced_combinations": 2798,
     "coverage_pct": 39.2,
     "lowest_price": 2338.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 2,
     "same": 250,
-    "new": 2544
+    "new": 2546
   },
   "daily_min": [
     {
@@ -36409,6 +36409,31 @@
       "origin": "GRU",
       "destination": "MIA",
       "departure_date": "2026-11-18",
+      "return_date": "2026-12-29",
+      "airline": "Arajet",
+      "price": 3633.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-11-18+returning+2026-12-29",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 41,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2026-11-18",
       "return_date": "2027-01-05",
       "airline": "Arajet",
       "price": 3633.0,
@@ -54597,6 +54622,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 88,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2026-11-17",
+      "return_date": "2027-02-28",
+      "airline": "Arajet",
+      "price": 4294.0,
+      "duration": "",
+      "duration_minutes": 0,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2026-11-17+returning+2027-02-28",
+      "provider": "swoop",
+      "source_kind": "swoop",
+      "trip_days": 103,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -75132,8 +75182,6 @@
     }
   ],
   "errors": [
-    "2026-11-14->2027-01-11: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
-    "2026-11-14->2027-01-13: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
     "2026-11-14->2027-01-15: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
     "2026-11-14->2027-01-10: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
     "2026-11-14->2027-01-16: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
@@ -75191,10 +75239,12 @@
     "2026-11-14->2027-02-07: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
     "2026-11-14->2027-02-08: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
     "2026-11-17->2027-01-01: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "2026-11-17->2027-01-15: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
+    "2026-11-17->2027-01-15: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "2026-11-17->2027-02-12: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "2026-11-17->2027-02-19: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
   ],
   "current_pair": {
     "departure_date": "2026-11-17",
-    "return_date": "2027-01-15"
+    "return_date": "2027-02-19"
   }
 }
