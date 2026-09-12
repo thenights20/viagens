@@ -1,3 +1,4 @@
+// Bridge de pesquisa com suporte a intervalos que atravessam meses.
 const OWNER = 'thenights20';
 const REPO = 'viagens';
 const WORKFLOW = 'flight-month-search.yml';
