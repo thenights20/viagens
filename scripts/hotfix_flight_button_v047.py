@@ -6,28 +6,49 @@ loader_path = ROOT / 'docs' / 'terabyte-live.js'
 
 s = js_path.read_text(encoding='utf-8')
 
-s = s.replace('Buscar passagens · v0.4.6', 'Buscar passagens · v0.4.7')
+# Versão visível.
+s = s.replace('Buscar passagens · v0.4.8', 'Buscar passagens · v0.4.9')
 
-old_clear = "function clearForSearch(request,total){q('#resultScope').value='current';q('#resultOrigin').value='';q('#resultDestination').value='';data="
-new_clear = "function clearForSearch(request,total){q('#resultScope').value='current';q('#resultOrigin').value='';q('#resultDestination').value='';if(q('#resultMonth'))q('#resultMonth').value='';data="
-if old_clear in s:
-    s = s.replace(old_clear, new_clear, 1)
+# O Apps Script que está efetivamente implantado aceita /api/search via pathInfo.
+# A versão anterior da interface passou a enviar ?route=api/search, que depende de
+# uma versão mais nova do Code.gs ainda não necessariamente implantada e fazia o
+# clique parecer morto. Volta para a rota compatível com a implantação existente.
+old_post = """  function postBridge(path,body){
+    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);
+    return fetch(`${apiBase}?route=${encodeURIComponent(path)}`,{method:'POST',mode:'no-cors',cache:'no-store',signal:controller.signal,headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(body)}).finally(()=>clearTimeout(timer));
+  }
+"""
+new_post = """  function postBridge(path,body){
+    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);
+    let targetPath=path,payload=body;
+    if(path==='api/cancel'){
+      targetPath='api/search';
+      payload={origin:'QZZ',destination:'QZX',month:(activeRequest&&activeRequest.month)||new Date().toISOString().slice(0,7),max_stops:2,request_id:'cancel_'+Date.now().toString(36)};
+    }
+    const url=`${apiBase}/${targetPath.replace(/^\\/+|\\/+$/g,'')}`;
+    return fetch(url,{method:'POST',mode:'no-cors',cache:'no-store',signal:controller.signal,headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(payload)}).finally(()=>clearTimeout(timer));
+  }
+"""
+if old_post not in s:
+    raise SystemExit('função postBridge esperada não encontrada')
+s = s.replace(old_post, new_post, 1)
 
-old_bind = "for(const id of ['#resultScope','#resultOrigin','#resultDestination','#resultMonth','#resultSort'])q(id).addEventListener('change',()=>{render();if(id==='#resultScope'&&q(id).value==='all')loadSavedPairs().then(render)});\n  q('#monthSearchButton').addEventListener('click',searchInsidePage);q('#monthStopButton').addEventListener('click',stopSearch);q('#monthPeriodMode').addEventListener('change',periodModeChanged);q('#rangeStart').addEventListener('change',()=>{if(q('#rangeEnd').value<q('#rangeStart').value)q('#rangeEnd').value=q('#rangeStart').value});document.querySelectorAll('.month-view-btn').forEach(b=>b.addEventListener('click',()=>setResultView(b.dataset.resultView)));"
-new_bind = "for(const id of ['#resultScope','#resultOrigin','#resultDestination','#resultMonth','#resultSort']){const el=q(id);if(el)el.addEventListener('change',()=>{render();if(id==='#resultScope'&&el.value==='all')loadSavedPairs().then(render)});}\n  const searchBtn=q('#monthSearchButton');if(searchBtn)searchBtn.addEventListener('click',e=>{e.preventDefault();searchInsidePage();});\n  const stopBtn=q('#monthStopButton');if(stopBtn)stopBtn.addEventListener('click',e=>{e.preventDefault();stopSearch();});\n  const periodMode=q('#monthPeriodMode');if(periodMode)periodMode.addEventListener('change',periodModeChanged);\n  const rangeStartEl=q('#rangeStart');if(rangeStartEl)rangeStartEl.addEventListener('change',()=>{const end=q('#rangeEnd');if(end&&end.value<rangeStartEl.value)end.value=rangeStartEl.value});\n  document.querySelectorAll('.month-view-btn').forEach(b=>b.addEventListener('click',()=>setResultView(b.dataset.resultView)));"
-if old_bind not in s:
-    raise SystemExit('bloco de eventos esperado não encontrado')
-s = s.replace(old_bind, new_bind, 1)
+# Não dependa do endpoint JSONP de progresso do Code.gs mais novo. O progresso
+# real já é lido do arquivo live e do GitHub Actions público.
+start = s.find('  function bridgeProgress(request){')
+end = s.find('  async function loadSavedPairs()', start)
+if start < 0 or end < 0:
+    raise SystemExit('bloco bridgeProgress não encontrado')
+s = s[:start] + "  async function bridgeProgress(request){return null;}\n" + s[end:]
 
-# Fallback global: mesmo que algum plugin interfira no listener direto, o clique continua funcionando.
-anchor = "btn.addEventListener('click',activate);"
-if anchor not in s:
-    raise SystemExit('âncora de ativação não encontrada')
-fallback = "document.addEventListener('click',e=>{const t=e.target&&e.target.closest?e.target.closest('#monthSearchButton'):null;if(!t||t.disabled)return;if(!searching){e.preventDefault();searchInsidePage();}},true);\n  "
-s = s.replace(anchor, fallback + anchor, 1)
+# Verifique o Actions em frequência suficiente sem estourar a cota pública.
+s = s.replace('if(Date.now()-lastActionsCheck>30000)', 'if(Date.now()-lastActionsCheck>20000)')
+
+# Mensagem mais fiel logo após o clique.
+s = s.replace("status.textContent='🔎 Enviando pesquisa. Os achados começarão a aparecer assim que forem encontrados.';", "status.textContent='🔎 Solicitação enviada. Aguardando o GitHub Actions iniciar a pesquisa.';")
 
 js_path.write_text(s, encoding='utf-8')
 
 loader = loader_path.read_text(encoding='utf-8')
-loader = loader.replace('./flight-explorer.js?v=20260912-9', './flight-explorer.js?v=20260912-10')
+loader = loader.replace('./flight-explorer.js?v=20260912-12', './flight-explorer.js?v=20260912-13')
 loader_path.write_text(loader, encoding='utf-8')
