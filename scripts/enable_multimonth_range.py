@@ -33,7 +33,6 @@ s = replace_once(
     "postBridge('api/search',{origin:request.dispatch_origin,destination:request.destination,month:request.month,period_mode:request.period_mode,start_date:request.start_date,end_date:request.end_date,max_stops:request.max_stops,request_id:request.request_id}).catch(()=>{});",
     'payload de dispatch',
 )
-# O request_id é único; não dependa do texto do período no título do Actions.
 s = replace_once(
     s,
     "return title.startsWith(`Busca ${request.request_id} ·`)&&title.includes(`${request.dispatch_origin} → ${request.destination}`)&&title.includes(request.month)",
@@ -49,8 +48,9 @@ new = '''    requested_mode = str(os.environ.get("SEARCH_PERIOD_MODE") or "month
 p = replace_once(p, old, new, 'período explícito no motor')
 py_path.write_text(p, encoding='utf-8')
 
-# Teste de regressão: faixa multi-mês deve ser aceita e enviada com as datas explícitas.
+# Testes de regressão.
 t = test_path.read_text(encoding='utf-8')
+t = t.replace("assert.equal(ctx.doGet({parameter:{}}).version,'0.3.1');", "assert.equal(ctx.doGet({parameter:{}}).version,'0.4.0');")
 append = r'''
 
 test('multi-month range is accepted and dispatched with explicit dates',()=>{
