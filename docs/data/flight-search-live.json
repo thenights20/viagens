@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-13T04:55:23.854930Z",
-  "updated_at": "2026-09-13T04:55:23.854930Z",
+  "generated_at": "2026-09-13T04:55:25.912992Z",
+  "updated_at": "2026-09-13T04:55:25.912992Z",
   "started_at": "2026-09-13T04:31:25.690349Z",
   "status": "running",
   "stage": "google",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 11325,
-    "processed_combinations": 8160,
-    "primary_completed": 8160,
+    "processed_combinations": 8172,
+    "primary_completed": 8172,
     "primary_total": 11325,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 778,
+    "priced_combinations": 779,
     "coverage_pct": 6.9,
     "lowest_price": 4232.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 778
+    "new": 779
   },
   "daily_min": [
     {
@@ -1552,6 +1552,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 21,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "SFO",
+      "departure_date": "2027-03-13",
+      "return_date": "2027-03-22",
+      "airline": "LATAM, Delta",
+      "price": 5737.0,
+      "duration": "15h 47min",
+      "duration_minutes": 947,
+      "stops": "2 escalas",
+      "stops_count": 2,
+      "departure": "[2027, 3, 13] [8, 25]",
+      "arrival": "[2027, 3, 13] [21, 35]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+SFO+on+2027-03-13+returning+2027-03-22",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 9,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -9356,6 +9381,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 30,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "SFO",
+      "departure_date": "2027-03-13",
+      "return_date": "2027-03-22",
+      "airline": "LATAM, Delta",
+      "price": 5737.0,
+      "duration": "15h 47min",
+      "duration_minutes": 947,
+      "stops": "2 escalas",
+      "stops_count": 2,
+      "departure": "[2027, 3, 13] [8, 25]",
+      "arrival": "[2027, 3, 13] [21, 35]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+SFO+on+2027-03-13+returning+2027-03-22",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 9,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -23778,7 +23828,7 @@
     "2027-01-16->2027-03-16: ProviderResponseError: Google document has no flight data script"
   ],
   "current_pair": {
-    "departure_date": "2027-03-12",
-    "return_date": "2027-05-28"
+    "departure_date": "2027-03-13",
+    "return_date": "2027-03-22"
   }
 }
