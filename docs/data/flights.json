@@ -1,12 +1,12 @@
 {
   "version": "0.2.0",
-  "generated_at": "2026-09-12T22:31:38.966050Z",
+  "generated_at": "2026-09-13T00:16:48.282250Z",
   "source": "Google Flights via fast-flights + Swoop",
   "algorithm": "Radar robusto: mediana + MAD + percentis + z-score + booking window + histórico + revalidação",
   "origin_count": 11,
   "destination_count": 126,
   "configured_destination_count": 67,
-  "route_count": 283,
+  "route_count": 284,
   "deal_count": 132,
   "strong_deal_count": 34,
   "new_alert_count": 0,
@@ -6626,12 +6626,11 @@
   ],
   "new_alerts": [],
   "scan": {
-    "scan_number": 15,
-    "scan_id": "20260912T223138Z-15",
+    "scan_number": 16,
+    "scan_id": "20260913T001648Z-16",
     "origin_codes": [
-      "GIG",
-      "TJL",
-      "ARU"
+      "PPB",
+      "MII"
     ],
     "destination_codes": [
       "GIG",
@@ -6642,33 +6641,25 @@
       "FOR"
     ],
     "date_profile": "datas distribuídas até ~9 meses",
-    "queries": 170,
-    "regular_results": 75,
-    "discovery_results": 12,
-    "fallback_results": 21,
-    "results": 87,
+    "queries": 120,
+    "regular_results": 37,
+    "discovery_results": 13,
+    "fallback_results": 14,
+    "results": 50,
     "revalidated": 0,
-    "errors": 19
+    "errors": 11
   },
   "errors": [
-    "GIG-SDU 2027-03-11/2027-03-15: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
-    "TJL-SDU 2026-09-19/2026-09-23: fast-flights: Google returned a provider error",
-    "TJL-SDU 2026-09-19/2026-09-23: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
-    "TJL-GIG 2027-06-09/2027-06-17: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
-    "TJL-SDU 2026-12-11/2026-12-19: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
-    "TJL-VIX 2026-09-19/2026-09-23: fast-flights: Google returned a provider error",
-    "TJL-VIX 2027-03-11/2027-03-15: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
-    "TJL-SSA 2027-03-11/2027-03-15: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
-    "TJL-REC 2026-09-19/2026-09-23: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
-    "TJL-REC 2027-03-11/2027-03-19: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
-    "ARU-GIG 2027-03-11/2027-03-15: fast-flights: Google returned a provider error",
-    "ARU-GIG 2026-12-11/2026-12-19: fast-flights: Google returned a provider error",
-    "ARU-VIX 2026-09-19/2026-09-27: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
-    "ARU-VIX 2027-06-09/2027-06-17: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
-    "ARU-SSA 2026-10-12/2026-10-20: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
-    "ARU-REC 2027-03-11/2027-03-19: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
-    "ARU-FOR 2026-09-19/2026-09-27: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
-    "ARU-SDU 2027-03-11/2027-03-19: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "discovery GIG: ConnectError: error sending request for url (https://www.google.com/travel/flights/deals?gl=BR) > Network is unreachable (os error 101)"
+    "PPB-GIG 2026-10-13/2026-10-17: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
+    "PPB-GIG 2027-06-10/2027-06-14: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
+    "PPB-SDU 2027-06-10/2027-06-14: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
+    "PPB-SSA 2027-03-12/2027-03-20: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
+    "MII-GIG 2026-12-12/2026-12-20: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
+    "MII-SDU 2026-10-13/2026-10-17: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
+    "MII-VIX 2026-09-20/2026-09-24: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
+    "MII-SSA 2026-09-20/2026-09-28: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
+    "MII-SSA 2026-12-12/2026-12-16: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
+    "MII-REC 2027-03-12/2027-03-16: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)",
+    "MII-FOR 2026-12-12/2026-12-20: swoop: ConnectError: error sending request for url (https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/GetShoppingResults?gl=BR) > Network is unreachable (os error 101)"
   ]
 }
