@@ -1,0 +1,73 @@
+{
+  "version": "0.4.0",
+  "generated_at": "2026-09-13T16:06:55.089846Z",
+  "updated_at": "2026-09-13T16:06:55.089846Z",
+  "started_at": "2026-09-13T16:06:55.085509Z",
+  "status": "running",
+  "stage": "multisource",
+  "mode": "date_range_matrix",
+  "request_id": "web_3a1c862c34174d48809f4d9d9f5656c6",
+  "request": {
+    "origin": "GRU",
+    "destination": "SEA",
+    "month": "2027-08",
+    "period_mode": "range",
+    "start_date": "2027-08-01",
+    "end_date": "2027-08-30",
+    "max_stops": 2
+  },
+  "stats": {
+    "combinations": 435,
+    "processed_combinations": 0,
+    "primary_completed": 0,
+    "primary_total": 435,
+    "fallback_done": 0,
+    "fallback_total": 0,
+    "priced_combinations": 0,
+    "coverage_pct": 0.0,
+    "lowest_price": null,
+    "result_count": 0
+  },
+  "history_summary": {
+    "compared": 0,
+    "cheaper": 0,
+    "higher": 0,
+    "same": 0,
+    "new": 0
+  },
+  "daily_min": [],
+  "results": [],
+  "all_results": [],
+  "errors": [],
+  "currency": "BRL",
+  "source_strategy": "google_flights_with_ita_verification",
+  "sources": {
+    "google": {
+      "label": "Google Flights",
+      "auto_candidate": true
+    },
+    "ita": {
+      "label": "ITA Matrix",
+      "auto_candidate": false
+    }
+  },
+  "source_health": {
+    "google": {
+      "enabled": true,
+      "label": "Google Flights",
+      "reason": "structured fare collector"
+    },
+    "ita": {
+      "enabled": false,
+      "label": "ITA Matrix",
+      "reason": "verification/search link only; no stable public fare API"
+    }
+  },
+  "active_sources": [
+    "google"
+  ],
+  "source_counts": {
+    "google": 0,
+    "ita": 0
+  }
+}
