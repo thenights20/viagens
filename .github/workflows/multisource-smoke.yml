@@ -32,15 +32,14 @@ jobs:
           PYTHONPATH: flight-monitor:flight-month-search:.
         run: |
           python - <<'PY'
-          from datetime import date
           import multisource as m
-          assert m.source_for_index(0) == 'google'
-          assert m.source_for_index(1) == 'decolar'
+          assert [m.source_for_index(i) for i in range(5)] == ['google','decolar','kayak','skyscanner','momondo']
           assert m.extract_brl_prices('Tarifa R$ 1.234,56') == [1234.56]
           links=m.search_links('GRU','MIA','2026-10-15','2026-10-18')
           assert 'GRU/MIA/2026-10-15/2026-10-18' in links['decolar']
           assert 'curr=BRL' in links['google']
           assert 'matrix.itasoftware.com' in links['ita']
+          assert set(['vaidepromo','viajanet','cvc','edestinos','trip']).issubset(links)
           print('unit smoke ok', m.ACTIVE_SOURCES)
           PY
       - name: Live provider smoke
@@ -51,14 +50,12 @@ jobs:
           from datetime import date
           import multisource as m
           dep=date(2026,10,15); ret=date(2026,10,18)
-          row, errors, assigned=m.query_one(0,'GRU','MIA',dep,ret,2)
-          print('google assigned=', assigned, 'row=', bool(row), 'provider=', (row or {}).get('provider'), 'price=', (row or {}).get('price'), 'errors=', errors[:2])
-          if row:
-              assert row['currency']=='BRL'
-              assert row['departure_date']=='2026-10-15'
-              assert row['return_date']=='2026-10-18'
-          row2, errors2, assigned2=m.query_one(1,'GRU','MIA',dep,ret,2)
-          print('decolar assigned=', assigned2, 'row=', bool(row2), 'provider=', (row2 or {}).get('provider'), 'fallback=', (row2 or {}).get('fallback_used'), 'price=', (row2 or {}).get('price'), 'errors=', errors2[:2])
-          if row2:
-              assert row2['currency']=='BRL'
+          for idx, expected in enumerate(m.ACTIVE_SOURCES):
+              row, errors, assigned=m.query_one(idx,'GRU','MIA',dep,ret,2)
+              print(expected, 'assigned=', assigned, 'row=', bool(row), 'provider=', (row or {}).get('provider'), 'fallback=', (row or {}).get('fallback_used'), 'price=', (row or {}).get('price'), 'errors=', errors[:2])
+              assert assigned == expected
+              if row:
+                  assert row['currency']=='BRL'
+                  assert row['departure_date']=='2026-10-15'
+                  assert row['return_date']=='2026-10-18'
           PY
