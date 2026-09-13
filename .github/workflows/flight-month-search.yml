@@ -142,16 +142,17 @@ jobs:
       - name: Validar código
         if: env.SEARCH_CANCEL_ONLY != '1'
         run: |
-          python -m py_compile flight-month-search/search.py flight-month-search/swoop_batch_worker.py
+          python -m py_compile flight-month-search/search.py flight-month-search/multisource.py flight-month-search/swoop_batch_worker.py
           node --check docs/flight-explorer.js
 
-      - name: Pesquisar matriz completa do período
+      - name: Pesquisar período em múltiplas fontes
         if: env.SEARCH_CANCEL_ONLY != '1'
         env:
           PYTHONPATH: flight-monitor:.
           GITHUB_TOKEN: ${{ github.token }}
           SEARCH_LIVE_BRANCH: flight-live
-        run: python flight-month-search/search.py
+          SEARCH_MULTI_WORKERS: "10"
+        run: python flight-month-search/multisource.py
 
       - name: Validar resultado
         if: env.SEARCH_CANCEL_ONLY != '1'
@@ -163,6 +164,8 @@ jobs:
           assert d.get('version')=='0.4.0'
           assert d.get('mode') in {'full_month_matrix','date_range_matrix'}
           assert d.get('status')=='completed'
+          assert d.get('currency')=='BRL'
+          assert d.get('source_strategy')=='sharded'
           assert int(d['stats']['combinations']) > 0
           assert len(d.get('results',[])) <= 100
           assert d.get('request_id')
@@ -172,7 +175,8 @@ jobs:
               assert row['departure_date'] < row['return_date']
               assert r['start_date'] <= row['departure_date'] <= r['end_date']
               assert r['start_date'] <= row['return_date'] <= r['end_date']
-          print('Busca válida:', d['request_id'], r, d['stats'])
+              assert row.get('currency','BRL') == 'BRL'
+          print('Busca multifonte válida:', d['request_id'], r, d['stats'], d.get('source_counts'))
           PY
 
       - name: Persistir resultado e histórico
@@ -184,7 +188,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Nenhuma alteração para salvar."
           else
-            git commit -m "data: salvar busca e histórico de passagens [skip ci]"
+            git commit -m "data: salvar busca multifonte de passagens [skip ci]"
             for tentativa in 1 2 3; do
               git pull --rebase origin main && git push origin HEAD:main && break
               echo "Conflito temporário ao salvar; tentativa $tentativa/3"
@@ -200,19 +204,23 @@ jobs:
           import json, os
           from pathlib import Path
           d=json.loads(Path('docs/data/flight-month-search.json').read_text(encoding='utf-8'))
-          r=d['request']; s=d['stats']; h=d.get('history_summary') or {}
+          r=d['request']; s=d['stats']; h=d.get('history_summary') or {}; sources=d.get('source_counts') or {}
           periodo = r['month'] if r.get('period_mode') == 'month' else f"{r['start_date']} → {r['end_date']}"
+          source_text = ', '.join(f'{k}:{v}' for k,v in sources.items()) or '-'
           lines=[
-              '## Busca de passagens sob demanda',
+              '## Busca de passagens sob demanda · multifonte',
               f"- ID: {d.get('request_id')}",
               f"- Rota: {r['origin']} → {r['destination']}",
               f"- Período: {periodo}",
+              f"- Moeda: BRL (R$)",
               f"- Combinações: {s['combinations']}",
               f"- Com preço: {s['priced_combinations']} ({s['coverage_pct']}%)",
+              f"- Distribuição por fonte: {source_text}",
               f"- Top exibido: {s['result_count']}/100",
               f"- Menor preço: R$ {s['lowest_price'] if s['lowest_price'] is not None else '-'}",
               f"- Comparadas ao histórico: {h.get('compared',0)} · baixaram {h.get('cheaper',0)} · subiram {h.get('higher',0)}",
-              '- Durante a execução, achados parciais foram salvos na branch flight-live.'
+              '- Datas são repartidas entre fontes; falhas pontuais usam fallback controlado no Google Flights.',
+              '- Durante a execução, achados parciais são salvos na branch flight-live.'
           ]
           with open(os.environ['GITHUB_STEP_SUMMARY'],'a',encoding='utf-8') as f:f.write('\n'.join(lines)+'\n')
           PY
