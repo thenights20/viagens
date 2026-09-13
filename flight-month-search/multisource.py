@@ -14,7 +14,6 @@ from urllib.parse import quote_plus
 
 import requests
 
-# Reuse the stable persistence/history/live-publication layer already used by the project.
 from search import (
     GitHubLivePublisher,
     HISTORY_PATH,
@@ -32,35 +31,34 @@ USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0 Safari/537.36"
 )
-REQUEST_TIMEOUT = 16
+REQUEST_TIMEOUT = 14
 MAX_ERRORS = 60
 
-# All sites requested by the user are part of the search ecosystem. Sites with
-# a dependable exact-date public URL participate in automatic price collection.
-# The remaining sites are exposed as alternate search links because accepting a
-# price from a generic landing page would create false fares.
 SOURCE_CATALOG = {
-    "google": {"label": "Google Flights", "auto_price": True},
-    "decolar": {"label": "Decolar", "auto_price": True},
-    "kayak": {"label": "KAYAK", "auto_price": True},
-    "skyscanner": {"label": "Skyscanner", "auto_price": True},
-    "momondo": {"label": "Momondo", "auto_price": True},
-    "vaidepromo": {"label": "Vai de Promo", "auto_price": False},
-    "viajanet": {"label": "ViajaNet", "auto_price": False},
-    "cvc": {"label": "CVC", "auto_price": False},
-    "edestinos": {"label": "eDestinos", "auto_price": False},
-    "trip": {"label": "Trip.com", "auto_price": False},
-    "ita": {"label": "ITA Matrix", "auto_price": False},
+    "google": {"label": "Google Flights", "auto_candidate": True},
+    "decolar": {"label": "Decolar", "auto_candidate": True},
+    "kayak": {"label": "KAYAK", "auto_candidate": True},
+    "skyscanner": {"label": "Skyscanner", "auto_candidate": True},
+    "momondo": {"label": "Momondo", "auto_candidate": True},
+    "vaidepromo": {"label": "Vai de Promo", "auto_candidate": True},
+    "viajanet": {"label": "ViajaNet", "auto_candidate": True},
+    "cvc": {"label": "CVC", "auto_candidate": True},
+    "edestinos": {"label": "eDestinos", "auto_candidate": True},
+    "trip": {"label": "Trip.com", "auto_candidate": True},
+    # ITA Matrix is useful as a research/validation tool, but it does not expose
+    # a stable public URL/API that can safely return fares to this job.
+    "ita": {"label": "ITA Matrix", "auto_candidate": False},
 }
 
-# Dates are divided between these sources instead of sending every date to every
-# site. Failed shards fall back to Google only for that date pair.
-ACTIVE_SOURCES = ["google", "decolar", "kayak", "skyscanner", "momondo"]
+AUTO_CANDIDATES = [
+    "decolar", "kayak", "skyscanner", "momondo", "vaidepromo",
+    "viajanet", "cvc", "edestinos", "trip",
+]
 
 
 def google_url(origin: str, destination: str, dep: str, ret: str) -> str:
-    q = f"Flights from {origin} to {destination} on {dep} returning {ret}"
-    return f"https://www.google.com/travel/flights?q={quote_plus(q)}&curr=BRL&hl=pt-BR"
+    query = f"Flights from {origin} to {destination} on {dep} returning {ret}"
+    return f"https://www.google.com/travel/flights?q={quote_plus(query)}&curr=BRL&hl=pt-BR"
 
 
 def decolar_url(origin: str, destination: str, dep: str, ret: str) -> str:
@@ -121,8 +119,6 @@ def trip_url(origin: str, destination: str, dep: str, ret: str) -> str:
 
 
 def ita_url(origin: str, destination: str, dep: str, ret: str) -> str:
-    # ITA Matrix has no stable/documented URL-only query contract. The fragment
-    # keeps the requested context visible without pretending it is an API.
     return (
         "https://matrix.itasoftware.com/search"
         f"#from={origin}&to={destination}&depart={dep}&return={ret}&currency=BRL"
@@ -161,23 +157,53 @@ def _brl_number(raw: str) -> float | None:
         number = float(value)
     except ValueError:
         return None
-    # Avoid tiny taxes/installments and absurd parser artifacts.
     return round(number, 2) if 40 <= number <= 200000 else None
 
 
+def _looks_like_translation_context(context: str) -> bool:
+    return bool(re.search(
+        r"(?:WIZARD_|PLACEHOLDER|PROMPT_|SUGGESTION_|AUTOCOMPLETE_|\\\"ui\.|ui\.[a-z0-9_.-]+)",
+        context,
+        flags=re.I,
+    ))
+
+
 def extract_brl_prices(text: str) -> list[float]:
+    """Extract only BRL values with local currency evidence.
+
+    Generic JSON keys such as `price: 50` are intentionally ignored because
+    meta-search pages contain many unrelated values (cars, hotels, examples,
+    baggage, ads). Visible R$ examples inside translation dictionaries are also
+    ignored. When no trustworthy fare remains, the shard falls back to Google.
+    """
     text = unescape(text or "")
     candidates: list[float] = []
-    patterns = [
+
+    for match in re.finditer(
         r"R\$\s*([0-9]{1,3}(?:\.[0-9]{3})*(?:,[0-9]{2})?|[0-9]+(?:,[0-9]{2})?)",
-        r'"(?:price|amount|totalPrice|displayPrice|farePrice)"\s*:\s*"?([0-9]+(?:\.[0-9]{1,2})?)"?',
-        r'"currency"\s*:\s*"BRL".{0,160}?"(?:amount|price|value)"\s*:\s*"?([0-9]+(?:\.[0-9]{1,2})?)"?',
+        text,
+        flags=re.I,
+    ):
+        context = text[max(0, match.start() - 240): min(len(text), match.end() + 240)]
+        if _looks_like_translation_context(context):
+            continue
+        value = _brl_number(match.group(1))
+        if value is not None:
+            candidates.append(value)
+
+    currency_patterns = [
+        r'"currency"\s*:\s*"BRL".{0,180}?"(?:amount|price|value|totalPrice|farePrice)"\s*:\s*"?([0-9]+(?:\.[0-9]{1,2})?)"?',
+        r'"(?:amount|price|value|totalPrice|farePrice)"\s*:\s*"?([0-9]+(?:\.[0-9]{1,2})?)"?.{0,180}?"currency"\s*:\s*"BRL"',
     ]
-    for pattern in patterns:
+    for pattern in currency_patterns:
         for match in re.finditer(pattern, text, flags=re.I | re.S):
+            context = text[max(0, match.start() - 120): min(len(text), match.end() + 120)]
+            if _looks_like_translation_context(context):
+                continue
             value = _brl_number(match.group(1))
             if value is not None:
                 candidates.append(value)
+
     return sorted(set(candidates))
 
 
@@ -189,12 +215,12 @@ def _page_matches_query(response: requests.Response, origin: str, destination: s
     combined = (str(response.url) + "\n" + (response.text or "")).upper()
     if origin.upper() not in combined or destination.upper() not in combined:
         return False
-    lower = combined.lower()
-    if not any(word in lower for word in ("flight", "voo", "passagem", "fare", "airfare")):
-        return False
     dep_ok = any(token.upper() in combined for token in _date_tokens(dep_s))
     ret_ok = any(token.upper() in combined for token in _date_tokens(ret_s))
-    return dep_ok and ret_ok
+    if not dep_ok or not ret_ok:
+        return False
+    lower = combined.lower()
+    return any(word in lower for word in ("flight", "voo", "passagem", "fare", "airfare"))
 
 
 def _page_probe(
@@ -205,8 +231,6 @@ def _page_probe(
     ret: date,
     max_stops: int,
 ) -> tuple[dict | None, str | None]:
-    # Static public pages rarely expose reliable stop-count data. Respect strict
-    # 0/1-stop requests by using Google, which can enforce that filter.
     if max_stops < 2:
         return None, f"{source}: filtro de escalas exige coletor estruturado"
 
@@ -230,7 +254,7 @@ def _page_probe(
             return None, f"{source}: página não confirmou rota/datas exatas"
         prices = extract_brl_prices(response.text)
         if not prices:
-            return None, f"{source}: nenhum preço BRL legível"
+            return None, f"{source}: nenhum preço BRL confiável no HTML público"
         price = prices[0]
         label = SOURCE_CATALOG[source]["label"]
         return {
@@ -277,19 +301,74 @@ def _google_probe(
     return row, error
 
 
-def source_for_index(index: int) -> str:
-    return ACTIVE_SOURCES[index % len(ACTIVE_SOURCES)]
+def preflight_sources(
+    origin: str,
+    destination: str,
+    dep: date,
+    ret: date,
+    max_stops: int,
+) -> tuple[list[str], dict[str, dict]]:
+    """Test each secondary source once, concurrently, before splitting dates.
+
+    This avoids paying a timeout/403 penalty hundreds of times. A source is used
+    for date shards only when it returns a route/date-specific BRL fare in the
+    current run. Otherwise it remains available as an alternate click-through.
+    """
+    health: dict[str, dict] = {
+        "google": {"enabled": True, "label": SOURCE_CATALOG["google"]["label"], "reason": "structured collector"}
+    }
+    enabled = ["google"]
+
+    if max_stops < 2:
+        for source in AUTO_CANDIDATES:
+            health[source] = {
+                "enabled": False,
+                "label": SOURCE_CATALOG[source]["label"],
+                "reason": "strict stop filter uses structured collector",
+            }
+        return enabled, health
+
+    with ThreadPoolExecutor(max_workers=min(9, len(AUTO_CANDIDATES))) as pool:
+        futures = {
+            pool.submit(_page_probe, source, origin, destination, dep, ret, max_stops): source
+            for source in AUTO_CANDIDATES
+        }
+        for future in as_completed(futures):
+            source = futures[future]
+            try:
+                row, error = future.result()
+            except Exception as exc:  # noqa: BLE001
+                row, error = None, f"{type(exc).__name__}: {exc}"
+            if row:
+                enabled.append(source)
+                health[source] = {
+                    "enabled": True,
+                    "label": SOURCE_CATALOG[source]["label"],
+                    "reason": "exact route/date BRL fare available",
+                    "preflight_price": row.get("price"),
+                }
+            else:
+                health[source] = {
+                    "enabled": False,
+                    "label": SOURCE_CATALOG[source]["label"],
+                    "reason": error or "no trusted public fare",
+                }
+    health["ita"] = {
+        "enabled": False,
+        "label": SOURCE_CATALOG["ita"]["label"],
+        "reason": "research link only; no stable public fare API",
+    }
+    return enabled, health
 
 
 def query_one(
-    index: int,
+    assigned: str,
     origin: str,
     destination: str,
     dep: date,
     ret: date,
     max_stops: int,
 ) -> tuple[dict | None, list[str], str]:
-    assigned = source_for_index(index)
     errors: list[str] = []
     if assigned == "google":
         row, error = _google_probe(origin, destination, dep, ret, max_stops)
@@ -301,8 +380,6 @@ def query_one(
         row["assigned_source"] = assigned
         return row, errors, assigned
 
-    # Only the shard that failed is retried; this keeps load far below a
-    # traditional every-date x every-site matrix.
     row, error = _google_probe(origin, destination, dep, ret, max_stops)
     if error:
         errors.append(f"fallback Google: {error}")
@@ -319,19 +396,21 @@ def run_sharded(
     combos: list[tuple[date, date]],
     max_stops: int,
     workers: int,
+    active_sources: list[str],
     progress: Callable[[int, list[dict], list[str], tuple[date, date], dict[str, int]], None],
 ) -> tuple[list[dict], list[str], dict[str, int]]:
     rows: list[dict] = []
     errors: list[str] = []
-    source_counts = {key: 0 for key in ACTIVE_SOURCES}
+    source_counts = {key: 0 for key in SOURCE_CATALOG}
     lock = threading.Lock()
     completed = 0
 
     with ThreadPoolExecutor(max_workers=workers) as pool:
-        futures = {
-            pool.submit(query_one, idx, origin, destination, dep, ret, max_stops): (dep, ret)
-            for idx, (dep, ret) in enumerate(combos)
-        }
+        futures = {}
+        for index, (dep, ret) in enumerate(combos):
+            assigned = active_sources[index % len(active_sources)]
+            futures[pool.submit(query_one, assigned, origin, destination, dep, ret, max_stops)] = (dep, ret)
+
         for future in as_completed(futures):
             dep, ret = futures[future]
             try:
@@ -348,6 +427,7 @@ def run_sharded(
                     if len(errors) < MAX_ERRORS:
                         errors.append(f"{dep.isoformat()}->{ret.isoformat()} {error}")
                 progress(completed, rows, errors, (dep, ret), dict(source_counts))
+
     return rows, errors, source_counts
 
 
@@ -388,42 +468,35 @@ def main() -> None:
     if not combos:
         raise SystemExit("O período selecionado não possui pares de datas futuras")
 
+    # One concurrent health check decides which public sources are worth using
+    # for this exact route. Blocked/dynamic sources do not slow every date.
+    active_sources, source_health = preflight_sources(
+        origin, destination, combos[0][0], combos[0][1], max_stops
+    )
+
     publisher = GitHubLivePublisher()
     history = load_history()
     all_rows: list[dict] = []
     all_errors: list[str] = []
     completed = 0
-    source_counts = {key: 0 for key in ACTIVE_SOURCES}
+    source_counts = {key: 0 for key in SOURCE_CATALOG}
     workers = max(4, min(14, int(os.environ.get("SEARCH_MULTI_WORKERS") or 10)))
 
     def decorate(payload: dict, counts: dict[str, int]) -> dict:
         payload["currency"] = "BRL"
-        payload["source_strategy"] = "sharded"
+        payload["source_strategy"] = "preflight_sharded"
         payload["sources"] = SOURCE_CATALOG
+        payload["source_health"] = source_health
+        payload["active_sources"] = active_sources
         payload["source_counts"] = counts
         return payload
 
     initial = decorate(
         make_payload(
-            request_id=request_id,
-            origin=origin,
-            destination=destination,
-            month=month,
-            max_stops=max_stops,
-            start_date=period_start,
-            end_date=period_end,
-            mode=period_mode,
-            all_rows=[],
-            history=history,
-            total=len(combos),
-            primary_completed=0,
-            primary_total=len(combos),
-            fallback_done=0,
-            fallback_total=0,
-            status="running",
-            stage="multisource",
-            started_at=started_iso,
-            errors=[],
+            request_id=request_id, origin=origin, destination=destination, month=month, max_stops=max_stops,
+            start_date=period_start, end_date=period_end, mode=period_mode, all_rows=[], history=history,
+            total=len(combos), primary_completed=0, primary_total=len(combos), fallback_done=0, fallback_total=0,
+            status="running", stage="multisource", started_at=started_iso, errors=[],
         ),
         source_counts,
     )
@@ -443,25 +516,10 @@ def main() -> None:
         source_counts = counts
         payload = decorate(
             make_payload(
-                request_id=request_id,
-                origin=origin,
-                destination=destination,
-                month=month,
-                max_stops=max_stops,
-                start_date=period_start,
-                end_date=period_end,
-                mode=period_mode,
-                all_rows=all_rows,
-                history=history,
-                total=len(combos),
-                primary_completed=done,
-                primary_total=len(combos),
-                fallback_done=0,
-                fallback_total=0,
-                status="running",
-                stage="multisource",
-                started_at=started_iso,
-                errors=all_errors,
+                request_id=request_id, origin=origin, destination=destination, month=month, max_stops=max_stops,
+                start_date=period_start, end_date=period_end, mode=period_mode, all_rows=all_rows, history=history,
+                total=len(combos), primary_completed=done, primary_total=len(combos), fallback_done=0, fallback_total=0,
+                status="running", stage="multisource", started_at=started_iso, errors=all_errors,
             ),
             counts,
         )
@@ -473,32 +531,17 @@ def main() -> None:
 
     try:
         rows, errors, source_counts = run_sharded(
-            origin, destination, combos, max_stops, workers, publish_progress
+            origin, destination, combos, max_stops, workers, active_sources, publish_progress
         )
         all_rows = dedupe(rows)
         all_errors = errors[-MAX_ERRORS:]
 
         final = decorate(
             make_payload(
-                request_id=request_id,
-                origin=origin,
-                destination=destination,
-                month=month,
-                max_stops=max_stops,
-                start_date=period_start,
-                end_date=period_end,
-                mode=period_mode,
-                all_rows=all_rows,
-                history=history,
-                total=len(combos),
-                primary_completed=len(combos),
-                primary_total=len(combos),
-                fallback_done=0,
-                fallback_total=0,
-                status="completed",
-                stage="completed",
-                started_at=started_iso,
-                errors=all_errors,
+                request_id=request_id, origin=origin, destination=destination, month=month, max_stops=max_stops,
+                start_date=period_start, end_date=period_end, mode=period_mode, all_rows=all_rows, history=history,
+                total=len(combos), primary_completed=len(combos), primary_total=len(combos), fallback_done=0,
+                fallback_total=0, status="completed", stage="completed", started_at=started_iso, errors=all_errors,
             ),
             source_counts,
         )
@@ -516,29 +559,15 @@ def main() -> None:
             f"Busca multifonte {request_id} {origin}->{destination} "
             f"{period_start.isoformat()}..{period_end.isoformat()}: "
             f"{len(all_rows)}/{len(combos)} combinações com preço; "
-            f"fontes={source_counts}; moeda=BRL"
+            f"ativas={active_sources}; fontes={source_counts}; moeda=BRL"
         )
     except BaseException as exc:
         partial = decorate(
             make_payload(
-                request_id=request_id,
-                origin=origin,
-                destination=destination,
-                month=month,
-                max_stops=max_stops,
-                start_date=period_start,
-                end_date=period_end,
-                mode=period_mode,
-                all_rows=all_rows,
-                history=history,
-                total=len(combos),
-                primary_completed=completed,
-                primary_total=len(combos),
-                fallback_done=0,
-                fallback_total=0,
-                status="partial",
-                stage="interrupted",
-                started_at=started_iso,
+                request_id=request_id, origin=origin, destination=destination, month=month, max_stops=max_stops,
+                start_date=period_start, end_date=period_end, mode=period_mode, all_rows=all_rows, history=history,
+                total=len(combos), primary_completed=completed, primary_total=len(combos), fallback_done=0,
+                fallback_total=0, status="partial", stage="interrupted", started_at=started_iso,
                 errors=all_errors + [f"{type(exc).__name__}: {exc}"],
             ),
             source_counts,
