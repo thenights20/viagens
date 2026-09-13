@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-13T04:56:59.493964Z",
-  "updated_at": "2026-09-13T04:56:59.493964Z",
+  "generated_at": "2026-09-13T04:57:03.278445Z",
+  "updated_at": "2026-09-13T04:57:03.278445Z",
   "started_at": "2026-09-13T04:31:25.690349Z",
   "status": "running",
   "stage": "google",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 11325,
-    "processed_combinations": 8724,
-    "primary_completed": 8724,
+    "processed_combinations": 8736,
+    "primary_completed": 8736,
     "primary_total": 11325,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 836,
+    "priced_combinations": 837,
     "coverage_pct": 7.4,
     "lowest_price": 4232.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 836
+    "new": 837
   },
   "daily_min": [
     {
@@ -11431,6 +11431,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 25,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "SFO",
+      "departure_date": "2027-03-20",
+      "return_date": "2027-04-17",
+      "airline": "LATAM, Delta",
+      "price": 5824.0,
+      "duration": "15h 44min",
+      "duration_minutes": 944,
+      "stops": "2 escalas",
+      "stops_count": 2,
+      "departure": "[2027, 3, 20] [23]",
+      "arrival": "[2027, 3, 21] [13, 29]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+SFO+on+2027-03-20+returning+2027-04-17",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 28,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -25429,6 +25454,6 @@
   ],
   "current_pair": {
     "departure_date": "2027-03-20",
-    "return_date": "2027-04-15"
+    "return_date": "2027-05-01"
   }
 }
