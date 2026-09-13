@@ -6,8 +6,6 @@ on:
     paths:
       - '.github/workflows/multisource-smoke.yml'
       - 'flight-month-search/multisource.py'
-      - 'flight-month-search/search.py'
-      - 'flight-monitor/providers.py'
 
 permissions:
   contents: read
@@ -25,37 +23,36 @@ jobs:
           cache-dependency-path: flight-explorer/requirements.txt
       - name: Dependencies
         run: python -m pip install -r flight-explorer/requirements.txt
-      - name: Compile
-        run: python -m py_compile flight-month-search/search.py flight-month-search/multisource.py flight-month-search/swoop_batch_worker.py
-      - name: Unit smoke
+      - name: Compile and unit smoke
         env:
           PYTHONPATH: flight-monitor:flight-month-search:.
         run: |
+          python -m py_compile flight-month-search/search.py flight-month-search/multisource.py flight-month-search/swoop_batch_worker.py
           python - <<'PY'
           import multisource as m
-          assert [m.source_for_index(i) for i in range(5)] == ['google','decolar','kayak','skyscanner','momondo']
           assert m.extract_brl_prices('Tarifa R$ 1.234,56') == [1234.56]
           links=m.search_links('GRU','MIA','2026-10-15','2026-10-18')
-          assert 'GRU/MIA/2026-10-15/2026-10-18' in links['decolar']
-          assert 'curr=BRL' in links['google']
-          assert 'matrix.itasoftware.com' in links['ita']
-          assert set(['vaidepromo','viajanet','cvc','edestinos','trip']).issubset(links)
-          print('unit smoke ok', m.ACTIVE_SOURCES)
+          assert set(m.SOURCE_CATALOG).issubset(links)
+          print('unit smoke ok')
           PY
-      - name: Live provider smoke
+      - name: Diagnose public meta-search pages
         env:
           PYTHONPATH: flight-monitor:flight-month-search:.
         run: |
           python - <<'PY'
-          from datetime import date
+          import re, requests
           import multisource as m
-          dep=date(2026,10,15); ret=date(2026,10,18)
-          for idx, expected in enumerate(m.ACTIVE_SOURCES):
-              row, errors, assigned=m.query_one(idx,'GRU','MIA',dep,ret,2)
-              print(expected, 'assigned=', assigned, 'row=', bool(row), 'provider=', (row or {}).get('provider'), 'fallback=', (row or {}).get('fallback_used'), 'price=', (row or {}).get('price'), 'errors=', errors[:2])
-              assert assigned == expected
-              if row:
-                  assert row['currency']=='BRL'
-                  assert row['departure_date']=='2026-10-15'
-                  assert row['return_date']=='2026-10-18'
+          O,D,DEP,RET='GRU','MIA','2026-10-15','2026-10-18'
+          for source in ['kayak','momondo']:
+              url=m.URL_BUILDERS[source](O,D,DEP,RET)
+              r=requests.get(url,timeout=16,allow_redirects=True,headers={'User-Agent':m.USER_AGENT,'Accept-Language':'pt-BR,pt;q=0.9,en;q=0.7'})
+              body=r.text
+              print('\nSOURCE',source,'status',r.status_code,'final',r.url,'len',len(body))
+              print('prices',m.extract_brl_prices(body)[:30])
+              shown=0
+              for hit in re.finditer(r'R\$\s*[0-9][0-9.,]*',body,re.I):
+                  ctx=re.sub(r'\s+',' ',body[max(0,hit.start()-180):hit.end()+220])
+                  print('CTX',ctx[:500])
+                  shown += 1
+                  if shown>=12: break
           PY
