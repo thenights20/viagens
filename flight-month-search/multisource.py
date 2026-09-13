@@ -36,24 +36,10 @@ MAX_ERRORS = 60
 
 SOURCE_CATALOG = {
     "google": {"label": "Google Flights", "auto_candidate": True},
-    "decolar": {"label": "Decolar", "auto_candidate": True},
-    "kayak": {"label": "KAYAK", "auto_candidate": True},
-    "skyscanner": {"label": "Skyscanner", "auto_candidate": True},
-    "momondo": {"label": "Momondo", "auto_candidate": True},
-    "vaidepromo": {"label": "Vai de Promo", "auto_candidate": True},
-    "viajanet": {"label": "ViajaNet", "auto_candidate": True},
-    "cvc": {"label": "CVC", "auto_candidate": True},
-    "edestinos": {"label": "eDestinos", "auto_candidate": True},
-    "trip": {"label": "Trip.com", "auto_candidate": True},
-    # ITA Matrix is useful as a research/validation tool, but it does not expose
-    # a stable public URL/API that can safely return fares to this job.
     "ita": {"label": "ITA Matrix", "auto_candidate": False},
 }
 
-AUTO_CANDIDATES = [
-    "decolar", "kayak", "skyscanner", "momondo", "vaidepromo",
-    "viajanet", "cvc", "edestinos", "trip",
-]
+AUTO_CANDIDATES = []
 
 
 def google_url(origin: str, destination: str, dep: str, ret: str) -> str:
@@ -127,15 +113,6 @@ def ita_url(origin: str, destination: str, dep: str, ret: str) -> str:
 
 URL_BUILDERS = {
     "google": google_url,
-    "decolar": decolar_url,
-    "kayak": kayak_url,
-    "skyscanner": skyscanner_url,
-    "momondo": momondo_url,
-    "vaidepromo": vaidepromo_url,
-    "viajanet": viajanet_url,
-    "cvc": cvc_url,
-    "edestinos": edestinos_url,
-    "trip": trip_url,
     "ita": ita_url,
 }
 
@@ -308,58 +285,25 @@ def preflight_sources(
     ret: date,
     max_stops: int,
 ) -> tuple[list[str], dict[str, dict]]:
-    """Test each secondary source once, concurrently, before splitting dates.
+    """Only Google Flights may create automatic fare rows.
 
-    This avoids paying a timeout/403 penalty hundreds of times. A source is used
-    for date shards only when it returns a route/date-specific BRL fare in the
-    current run. Otherwise it remains available as an alternate click-through.
+    ITA Matrix remains available as a route/date verification link. Generic
+    agency HTML is intentionally excluded because unrelated promotional values
+    can be mistaken for airfare.
     """
-    health: dict[str, dict] = {
-        "google": {"enabled": True, "label": SOURCE_CATALOG["google"]["label"], "reason": "structured collector"}
+    health = {
+        "google": {
+            "enabled": True,
+            "label": SOURCE_CATALOG["google"]["label"],
+            "reason": "structured fare collector",
+        },
+        "ita": {
+            "enabled": False,
+            "label": SOURCE_CATALOG["ita"]["label"],
+            "reason": "verification/search link only; no stable public fare API",
+        },
     }
-    enabled = ["google"]
-
-    if max_stops < 2:
-        for source in AUTO_CANDIDATES:
-            health[source] = {
-                "enabled": False,
-                "label": SOURCE_CATALOG[source]["label"],
-                "reason": "strict stop filter uses structured collector",
-            }
-        return enabled, health
-
-    with ThreadPoolExecutor(max_workers=min(9, len(AUTO_CANDIDATES))) as pool:
-        futures = {
-            pool.submit(_page_probe, source, origin, destination, dep, ret, max_stops): source
-            for source in AUTO_CANDIDATES
-        }
-        for future in as_completed(futures):
-            source = futures[future]
-            try:
-                row, error = future.result()
-            except Exception as exc:  # noqa: BLE001
-                row, error = None, f"{type(exc).__name__}: {exc}"
-            if row:
-                enabled.append(source)
-                health[source] = {
-                    "enabled": True,
-                    "label": SOURCE_CATALOG[source]["label"],
-                    "reason": "exact route/date BRL fare available",
-                    "preflight_price": row.get("price"),
-                }
-            else:
-                health[source] = {
-                    "enabled": False,
-                    "label": SOURCE_CATALOG[source]["label"],
-                    "reason": error or "no trusted public fare",
-                }
-    health["ita"] = {
-        "enabled": False,
-        "label": SOURCE_CATALOG["ita"]["label"],
-        "reason": "research link only; no stable public fare API",
-    }
-    return enabled, health
-
+    return ["google"], health
 
 def query_one(
     assigned: str,
@@ -484,7 +428,7 @@ def main() -> None:
 
     def decorate(payload: dict, counts: dict[str, int]) -> dict:
         payload["currency"] = "BRL"
-        payload["source_strategy"] = "preflight_sharded"
+        payload["source_strategy"] = "google_flights_with_ita_verification"
         payload["sources"] = SOURCE_CATALOG
         payload["source_health"] = source_health
         payload["active_sources"] = active_sources
@@ -556,7 +500,7 @@ def main() -> None:
         publisher.publish(final, f"live: concluir busca multifonte {request_id}", force=True, completed=len(combos))
 
         print(
-            f"Busca multifonte {request_id} {origin}->{destination} "
+            f"Busca Google+ITA {request_id} {origin}->{destination} "
             f"{period_start.isoformat()}..{period_end.isoformat()}: "
             f"{len(all_rows)}/{len(combos)} combinações com preço; "
             f"ativas={active_sources}; fontes={source_counts}; moeda=BRL"
