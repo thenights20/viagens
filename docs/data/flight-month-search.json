@@ -1,30 +1,21 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-13T05:21:43.009276Z",
-  "updated_at": "2026-09-13T05:21:43.009276Z",
-  "started_at": "2026-09-13T05:20:34.282494Z",
+  "generated_at": "2026-09-13T16:01:00Z",
+  "updated_at": "2026-09-13T16:01:00Z",
   "status": "completed",
   "stage": "completed",
   "mode": "full_month_matrix",
-  "request_id": "web_40b1a91d239648a7966826a61b38398c",
-  "request": {
-    "origin": "DOU",
-    "destination": "BAU",
-    "month": "2026-11",
-    "period_mode": "month",
-    "start_date": "2026-11-01",
-    "end_date": "2026-11-30",
-    "max_stops": 2
-  },
+  "request_id": "clean_after_source_restriction",
+  "request": {},
   "stats": {
-    "combinations": 435,
-    "processed_combinations": 435,
-    "primary_completed": 435,
-    "primary_total": 435,
+    "combinations": 0,
+    "processed_combinations": 0,
+    "primary_completed": 0,
+    "primary_total": 0,
     "fallback_done": 0,
     "fallback_total": 0,
     "priced_combinations": 0,
-    "coverage_pct": 0.0,
+    "coverage_pct": 0,
     "lowest_price": null,
     "result_count": 0
   },
@@ -33,7 +24,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 217
+    "new": 0
   },
   "daily_min": [],
   "results": [],
@@ -55,74 +46,17 @@
     "google": {
       "enabled": true,
       "label": "Google Flights",
-      "reason": "structured collector"
-    },
-    "decolar": {
-      "enabled": false,
-      "label": "Decolar",
-      "reason": "decolar: HTTP 403"
-    },
-    "edestinos": {
-      "enabled": false,
-      "label": "eDestinos",
-      "reason": "edestinos: HTTP 403"
-    },
-    "trip": {
-      "enabled": false,
-      "label": "Trip.com",
-      "reason": "trip: nenhum preço BRL confiável no HTML público"
-    },
-    "viajanet": {
-      "enabled": false,
-      "label": "ViajaNet",
-      "reason": "viajanet: HTTP 403"
-    },
-    "skyscanner": {
-      "enabled": false,
-      "label": "Skyscanner",
-      "reason": "skyscanner: HTTP 403"
-    },
-    "kayak": {
-      "enabled": false,
-      "label": "KAYAK",
-      "reason": "kayak: nenhum preço BRL confiável no HTML público"
-    },
-    "cvc": {
-      "enabled": true,
-      "label": "CVC",
-      "reason": "exact route/date BRL fare available",
-      "preflight_price": 101.0
-    },
-    "momondo": {
-      "enabled": false,
-      "label": "Momondo",
-      "reason": "momondo: nenhum preço BRL confiável no HTML público"
-    },
-    "vaidepromo": {
-      "enabled": false,
-      "label": "Vai de Promo",
-      "reason": "vaidepromo: nenhum preço BRL confiável no HTML público"
+      "reason": "structured fare collector"
     },
     "ita": {
       "enabled": false,
       "label": "ITA Matrix",
-      "reason": "research link only; no stable public fare API"
+      "reason": "verification/search link only; no stable public fare API"
     }
   },
-  "active_sources": [
-    "google"
-  ],
+  "active_sources": ["google"],
   "source_counts": {
-    "google": 218,
-    "decolar": 0,
-    "kayak": 0,
-    "skyscanner": 0,
-    "momondo": 0,
-    "vaidepromo": 0,
-    "viajanet": 0,
-    "cvc": 217,
-    "edestinos": 0,
-    "trip": 0,
+    "google": 0,
     "ita": 0
   }
 }
