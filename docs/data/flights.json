@@ -1,12 +1,12 @@
 {
   "version": "0.2.0",
-  "generated_at": "2026-09-13T18:19:53.854181Z",
+  "generated_at": "2026-09-13T21:06:50.092019Z",
   "source": "Google Flights via fast-flights + Swoop",
   "algorithm": "Radar robusto: mediana + MAD + percentis + z-score + booking window + histórico + revalidação",
   "origin_count": 11,
   "destination_count": 126,
   "configured_destination_count": 67,
-  "route_count": 310,
+  "route_count": 316,
   "deal_count": 134,
   "strong_deal_count": 36,
   "new_alert_count": 0,
@@ -6726,40 +6726,34 @@
   ],
   "new_alerts": [],
   "scan": {
-    "scan_number": 20,
-    "scan_id": "20260913T181953Z-20",
+    "scan_number": 21,
+    "scan_id": "20260913T210650Z-21",
     "origin_codes": [
-      "PPB",
-      "MII"
+      "DOU",
+      "PMG",
+      "JTC"
     ],
     "destination_codes": [
-      "NAT",
-      "MCZ",
-      "AJU",
-      "JPA",
-      "THE",
-      "SLZ"
+      "BEL",
+      "MAO",
+      "PVH",
+      "BVB",
+      "MCP",
+      "PMW"
     ],
     "date_profile": "datas distribuídas até ~9 meses",
-    "queries": 120,
-    "regular_results": 8,
-    "discovery_results": 13,
-    "fallback_results": 3,
-    "results": 21,
+    "queries": 180,
+    "regular_results": 56,
+    "discovery_results": 0,
+    "fallback_results": 56,
+    "results": 56,
     "revalidated": 0,
-    "errors": 11
+    "errors": 4
   },
   "errors": [
-    "PPB-MCZ 2027-06-10/2027-06-14: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-AJU 2027-03-12/2027-03-16: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-AJU 2027-03-12/2027-03-20: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-AJU 2027-06-10/2027-06-14: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-THE 2026-09-20/2026-09-24: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-JPA 2026-10-13/2026-10-21: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-JPA 2027-06-10/2027-06-18: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-THE 2026-12-12/2026-12-16: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-THE 2027-03-12/2027-03-16: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-THE 2027-06-10/2027-06-14: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-SLZ 2026-09-20/2026-09-28: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
+    "DOU-BEL 2027-03-12/2027-03-20: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "DOU-BVB 2026-10-13/2026-10-17: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "DOU-BVB 2027-06-10/2027-06-18: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "DOU-MCP 2027-03-12/2027-03-20: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
   ]
 }
