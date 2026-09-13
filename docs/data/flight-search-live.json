@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-13T05:01:38.057007Z",
-  "updated_at": "2026-09-13T05:01:38.057007Z",
+  "generated_at": "2026-09-13T05:01:40.036748Z",
+  "updated_at": "2026-09-13T05:01:40.036748Z",
   "started_at": "2026-09-13T04:31:25.690349Z",
   "status": "running",
   "stage": "google",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 11325,
-    "processed_combinations": 10176,
-    "primary_completed": 10176,
+    "processed_combinations": 10188,
+    "primary_completed": 10188,
     "primary_total": 11325,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 1106,
+    "priced_combinations": 1107,
     "coverage_pct": 9.8,
     "lowest_price": 4232.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 1106
+    "new": 1107
   },
   "daily_min": [
     {
@@ -13456,6 +13456,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 29,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "SFO",
+      "departure_date": "2027-04-13",
+      "return_date": "2027-05-15",
+      "airline": "Avianca",
+      "price": 5549.0,
+      "duration": "14h 55min",
+      "duration_minutes": 895,
+      "stops": "2 escalas",
+      "stops_count": 2,
+      "departure": "[2027, 4, 13] [7, 35]",
+      "arrival": "[2027, 4, 13] [22, 35]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+SFO+on+2027-04-13+returning+2027-05-15",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 32,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -32779,6 +32804,6 @@
   ],
   "current_pair": {
     "departure_date": "2027-04-13",
-    "return_date": "2027-05-12"
+    "return_date": "2027-05-25"
   }
 }
