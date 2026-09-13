@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-13T05:02:27.239023Z",
-  "updated_at": "2026-09-13T05:02:27.239023Z",
+  "generated_at": "2026-09-13T05:02:28.915489Z",
+  "updated_at": "2026-09-13T05:02:28.915489Z",
   "started_at": "2026-09-13T04:31:25.690349Z",
   "status": "running",
   "stage": "google",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 11325,
-    "processed_combinations": 10488,
-    "primary_completed": 10488,
+    "processed_combinations": 10500,
+    "primary_completed": 10500,
     "primary_total": 11325,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 1169,
+    "priced_combinations": 1171,
     "coverage_pct": 10.3,
     "lowest_price": 4232.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 1169
+    "new": 1171
   },
   "daily_min": [
     {
@@ -14456,6 +14456,56 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 22,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "SFO",
+      "departure_date": "2027-04-20",
+      "return_date": "2027-05-16",
+      "airline": "Avianca",
+      "price": 5549.0,
+      "duration": "14h 55min",
+      "duration_minutes": 895,
+      "stops": "2 escalas",
+      "stops_count": 2,
+      "departure": "[2027, 4, 20] [7, 35]",
+      "arrival": "[2027, 4, 20] [22, 35]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+SFO+on+2027-04-20+returning+2027-05-16",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 26,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "SFO",
+      "departure_date": "2027-04-20",
+      "return_date": "2027-05-21",
+      "airline": "Avianca",
+      "price": 5549.0,
+      "duration": "14h 55min",
+      "duration_minutes": 895,
+      "stops": "2 escalas",
+      "stops_count": 2,
+      "departure": "[2027, 4, 20] [7, 35]",
+      "arrival": "[2027, 4, 20] [22, 35]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+SFO+on+2027-04-20+returning+2027-05-21",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 31,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -34529,6 +34579,6 @@
   ],
   "current_pair": {
     "departure_date": "2027-04-20",
-    "return_date": "2027-05-22"
+    "return_date": "2027-05-28"
   }
 }
