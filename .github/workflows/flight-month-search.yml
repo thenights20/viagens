@@ -165,7 +165,9 @@ jobs:
           assert d.get('mode') in {'full_month_matrix','date_range_matrix'}
           assert d.get('status')=='completed'
           assert d.get('currency')=='BRL'
-          assert d.get('source_strategy')=='sharded'
+          assert d.get('source_strategy')=='preflight_sharded'
+          assert isinstance(d.get('source_health'), dict)
+          assert 'google' in (d.get('active_sources') or [])
           assert int(d['stats']['combinations']) > 0
           assert len(d.get('results',[])) <= 100
           assert d.get('request_id')
@@ -176,7 +178,7 @@ jobs:
               assert r['start_date'] <= row['departure_date'] <= r['end_date']
               assert r['start_date'] <= row['return_date'] <= r['end_date']
               assert row.get('currency','BRL') == 'BRL'
-          print('Busca multifonte válida:', d['request_id'], r, d['stats'], d.get('source_counts'))
+          print('Busca multifonte válida:', d['request_id'], r, d['stats'], d.get('active_sources'), d.get('source_counts'))
           PY
 
       - name: Persistir resultado e histórico
@@ -206,20 +208,23 @@ jobs:
           d=json.loads(Path('docs/data/flight-month-search.json').read_text(encoding='utf-8'))
           r=d['request']; s=d['stats']; h=d.get('history_summary') or {}; sources=d.get('source_counts') or {}
           periodo = r['month'] if r.get('period_mode') == 'month' else f"{r['start_date']} → {r['end_date']}"
-          source_text = ', '.join(f'{k}:{v}' for k,v in sources.items()) or '-'
+          source_text = ', '.join(f'{k}:{v}' for k,v in sources.items() if v) or '-'
+          active_text = ', '.join(d.get('active_sources') or [])
           lines=[
               '## Busca de passagens sob demanda · multifonte',
               f"- ID: {d.get('request_id')}",
               f"- Rota: {r['origin']} → {r['destination']}",
               f"- Período: {periodo}",
               f"- Moeda: BRL (R$)",
+              f"- Fontes aprovadas no pré-teste: {active_text}",
               f"- Combinações: {s['combinations']}",
               f"- Com preço: {s['priced_combinations']} ({s['coverage_pct']}%)",
               f"- Distribuição por fonte: {source_text}",
               f"- Top exibido: {s['result_count']}/100",
               f"- Menor preço: R$ {s['lowest_price'] if s['lowest_price'] is not None else '-'}",
               f"- Comparadas ao histórico: {h.get('compared',0)} · baixaram {h.get('cheaper',0)} · subiram {h.get('higher',0)}",
-              '- Datas são repartidas entre fontes; falhas pontuais usam fallback controlado no Google Flights.',
+              '- Cada fonte externa é testada uma vez para a rota. Só as que retornam tarifa BRL confiável recebem datas.',
+              '- Fontes bloqueadas/dinâmicas ficam como links de pesquisa e não atrasam centenas de combinações.',
               '- Durante a execução, achados parciais são salvos na branch flight-live.'
           ]
           with open(os.environ['GITHUB_STEP_SUMMARY'],'a',encoding='utf-8') as f:f.write('\n'.join(lines)+'\n')
