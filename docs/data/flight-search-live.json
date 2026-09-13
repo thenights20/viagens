@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-13T04:53:12.882238Z",
-  "updated_at": "2026-09-13T04:53:12.882238Z",
+  "generated_at": "2026-09-13T04:53:14.593429Z",
+  "updated_at": "2026-09-13T04:53:14.593429Z",
   "started_at": "2026-09-13T04:31:25.690349Z",
   "status": "running",
   "stage": "google",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 11325,
-    "processed_combinations": 7488,
-    "primary_completed": 7488,
+    "processed_combinations": 7500,
+    "primary_completed": 7500,
     "primary_total": 11325,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 743,
+    "priced_combinations": 744,
     "coverage_pct": 6.6,
     "lowest_price": 4232.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 743
+    "new": 744
   },
   "daily_min": [
     {
@@ -1377,6 +1377,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 11,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "SFO",
+      "departure_date": "2027-03-05",
+      "return_date": "2027-03-06",
+      "airline": "COPA",
+      "price": 5777.0,
+      "duration": "14h 37min",
+      "duration_minutes": 877,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 5] [4, 50]",
+      "arrival": "[2027, 3, 5] [17, 28]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+SFO+on+2027-03-05+returning+2027-03-06",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 1,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -8781,6 +8806,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 30,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "SFO",
+      "departure_date": "2027-03-05",
+      "return_date": "2027-03-06",
+      "airline": "COPA",
+      "price": 5777.0,
+      "duration": "14h 37min",
+      "duration_minutes": 877,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 5] [4, 50]",
+      "arrival": "[2027, 3, 5] [17, 28]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+SFO+on+2027-03-05+returning+2027-03-06",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 1,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -22728,7 +22778,7 @@
     "2027-01-16->2027-03-16: ProviderResponseError: Google document has no flight data script"
   ],
   "current_pair": {
-    "departure_date": "2027-03-04",
-    "return_date": "2027-05-26"
+    "departure_date": "2027-03-05",
+    "return_date": "2027-03-09"
   }
 }
