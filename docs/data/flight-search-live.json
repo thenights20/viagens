@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-13T04:44:55.549544Z",
-  "updated_at": "2026-09-13T04:44:55.549544Z",
+  "generated_at": "2026-09-13T04:44:57.285022Z",
+  "updated_at": "2026-09-13T04:44:57.285022Z",
   "started_at": "2026-09-13T04:31:25.690349Z",
   "status": "running",
   "stage": "google",
@@ -18,13 +18,13 @@
   },
   "stats": {
     "combinations": 11325,
-    "processed_combinations": 4800,
-    "primary_completed": 4800,
+    "processed_combinations": 4812,
+    "primary_completed": 4812,
     "primary_total": 11325,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 628,
-    "coverage_pct": 5.5,
+    "priced_combinations": 629,
+    "coverage_pct": 5.6,
     "lowest_price": 4232.0,
     "result_count": 100
   },
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 628
+    "new": 629
   },
   "daily_min": [
     {
@@ -8123,6 +8123,31 @@
       "provider": "fast-flights",
       "source_kind": "fast-flights",
       "trip_days": 20,
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "SFO",
+      "departure_date": "2027-02-06",
+      "return_date": "2027-02-27",
+      "airline": "United",
+      "price": 6058.0,
+      "duration": "14h 25min",
+      "duration_minutes": 865,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 2, 6] [22, 15]",
+      "arrival": "[2027, 2, 7] [9, 35]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+SFO+on+2027-02-06+returning+2027-02-27",
+      "provider": "fast-flights",
+      "source_kind": "fast-flights",
+      "trip_days": 21,
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -19321,6 +19346,6 @@
   ],
   "current_pair": {
     "departure_date": "2027-02-06",
-    "return_date": "2027-03-08"
+    "return_date": "2027-03-21"
   }
 }
