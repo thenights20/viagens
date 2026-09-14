@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-14T19:36:36.750369Z",
-  "updated_at": "2026-09-14T19:36:36.750369Z",
+  "generated_at": "2026-09-14T19:36:45.748120Z",
+  "updated_at": "2026-09-14T19:36:45.748120Z",
   "started_at": "2026-09-14T19:29:42.201429Z",
   "status": "running",
   "stage": "multisource",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 7381,
-    "processed_combinations": 1128,
-    "primary_completed": 1128,
+    "processed_combinations": 1129,
+    "primary_completed": 1129,
     "primary_total": 7381,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 745,
+    "priced_combinations": 746,
     "coverage_pct": 10.1,
     "lowest_price": 3303.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 745
+    "new": 746
   },
   "daily_min": [
     {
@@ -26103,6 +26103,38 @@
     {
       "origin": "GRU",
       "destination": "MCO",
+      "departure_date": "2027-04-10",
+      "return_date": "2027-06-26",
+      "airline": "Azul",
+      "price": 4572.0,
+      "duration": "10h 25min",
+      "duration_minutes": 625,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 4, 10] [7]",
+      "arrival": "[2027, 4, 10] [20, 30]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-04-10+returning+2027-06-26&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 77,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-04-10+returning+2027-06-26&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-04-10&return=2027-06-26&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
       "departure_date": "2027-04-01",
       "return_date": "2027-05-29",
       "airline": "Azul",
@@ -27634,7 +27666,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 1128,
+    "google": 1129,
     "ita": 0
   },
   "resume": {
@@ -27642,16 +27674,16 @@
     "window_minutes": 60,
     "cache_id": "d110c22a24aefd98e6b59bf8",
     "reused_combinations": 0,
-    "searched_this_run": 1128,
-    "remaining_this_run": 6253,
-    "reusable_now": 1128,
-    "retryable_for_next_run": 6253,
-    "saved_records": 1128,
+    "searched_this_run": 1129,
+    "remaining_this_run": 6252,
+    "reusable_now": 1129,
+    "retryable_for_next_run": 6252,
+    "saved_records": 1129,
     "saved_errors": 0,
     "checkpoint_path": "docs/data/flight-search-checkpoints/d110c22a24aefd98e6b59bf8.json"
   },
   "current_pair": {
     "departure_date": "2027-04-10",
-    "return_date": "2027-06-24"
+    "return_date": "2027-06-26"
   }
 }
