@@ -324,6 +324,8 @@ def query_one(
     if row:
         row["assigned_source"] = assigned
         return row, errors, assigned
+    if assigned == "google":
+        return None, errors, assigned
 
     row, error = _google_probe(origin, destination, dep, ret, max_stops)
     if error:
