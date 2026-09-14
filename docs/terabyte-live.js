@@ -187,7 +187,7 @@
   }
 
   const s = document.createElement('script');
-  s.src = './flight-explorer.js?v=20260913-airports-1';
+  s.src = './flight-explorer.js?v=20260914-resume-1';
   s.defer = true;
   s.dataset.flightExplorer = '1';
   s.addEventListener('load', loadMiles, {once:true});

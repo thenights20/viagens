@@ -26,6 +26,7 @@ from search import (
     make_payload,
     merge_rows_into_history,
 )
+from resume_cache import FlightResumeCache, combo_key
 
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -341,7 +342,7 @@ def run_sharded(
     max_stops: int,
     workers: int,
     active_sources: list[str],
-    progress: Callable[[int, list[dict], list[str], tuple[date, date], dict[str, int]], None],
+    progress: Callable[..., None],
 ) -> tuple[list[dict], list[str], dict[str, int]]:
     rows: list[dict] = []
     errors: list[str] = []
@@ -370,7 +371,10 @@ def run_sharded(
                 for error in worker_errors:
                     if len(errors) < MAX_ERRORS:
                         errors.append(f"{dep.isoformat()}->{ret.isoformat()} {error}")
-                progress(completed, rows, errors, (dep, ret), dict(source_counts))
+                progress(
+                    completed, rows, errors, (dep, ret), dict(source_counts),
+                    {"row": dict(row) if row else None, "errors": list(worker_errors), "assigned_source": assigned},
+                )
 
     return rows, errors, source_counts
 
@@ -420,31 +424,60 @@ def main() -> None:
 
     publisher = GitHubLivePublisher()
     history = load_history()
-    all_rows: list[dict] = []
+    resume_cache = FlightResumeCache(
+        publisher,
+        origin=origin,
+        destination=destination,
+        start_date=period_start,
+        end_date=period_end,
+        max_stops=max_stops,
+    )
+    resume_cache.load()
+    reusable_records = resume_cache.reusable_records()
+    reused_keys = set(reusable_records)
+    reused_rows = resume_cache.reusable_rows()
+    pending_combos = [(dep, ret) for dep, ret in combos if combo_key(dep, ret) not in reused_keys]
+
+    all_rows: list[dict] = list(reused_rows)
     all_errors: list[str] = []
-    completed = 0
+    completed = len(reused_keys)
+    attempted_this_run = 0
     source_counts = {key: 0 for key in SOURCE_CATALOG}
-    workers = max(4, min(14, int(os.environ.get("SEARCH_MULTI_WORKERS") or 10)))
+    workers = max(2, min(6, int(os.environ.get("SEARCH_MULTI_WORKERS") or 4)))
 
     def decorate(payload: dict, counts: dict[str, int]) -> dict:
+        cache_counts = resume_cache.counts()
         payload["currency"] = "BRL"
         payload["source_strategy"] = "google_flights_with_ita_verification"
         payload["sources"] = SOURCE_CATALOG
         payload["source_health"] = source_health
         payload["active_sources"] = active_sources
         payload["source_counts"] = counts
+        payload["resume"] = {
+            "enabled": True,
+            "window_minutes": 60,
+            "cache_id": resume_cache.cache_id,
+            "reused_combinations": len(reused_keys),
+            "searched_this_run": attempted_this_run,
+            "remaining_this_run": max(0, len(pending_combos) - attempted_this_run),
+            "reusable_now": cache_counts["reusable"],
+            "retryable_for_next_run": max(0, len(combos) - cache_counts["reusable"]),
+            "saved_records": cache_counts["saved_records"],
+            "saved_errors": cache_counts["errors"],
+            "checkpoint_path": resume_cache.path,
+        }
         return payload
 
     initial = decorate(
         make_payload(
             request_id=request_id, origin=origin, destination=destination, month=month, max_stops=max_stops,
-            start_date=period_start, end_date=period_end, mode=period_mode, all_rows=[], history=history,
-            total=len(combos), primary_completed=0, primary_total=len(combos), fallback_done=0, fallback_total=0,
+            start_date=period_start, end_date=period_end, mode=period_mode, all_rows=all_rows, history=history,
+            total=len(combos), primary_completed=completed, primary_total=len(combos), fallback_done=0, fallback_total=0,
             status="running", stage="multisource", started_at=started_iso, errors=[],
         ),
         source_counts,
     )
-    publisher.publish(initial, f"live: iniciar busca multifonte {request_id}", force=True, completed=0)
+    publisher.publish(initial, f"live: iniciar busca Google+ITA {request_id}", force=True, completed=completed)
 
     def publish_progress(
         done: int,
@@ -452,17 +485,26 @@ def main() -> None:
         errors: list[str],
         current_pair: tuple[date, date],
         counts: dict[str, int],
+        event: dict,
     ) -> None:
-        nonlocal completed, all_rows, all_errors, source_counts
-        completed = done
-        all_rows = list(rows)
+        nonlocal completed, attempted_this_run, all_rows, all_errors, source_counts
+        attempted_this_run = done
+        completed = len(reused_keys) + done
+        resume_cache.record(
+            current_pair[0], current_pair[1],
+            row=event.get("row"),
+            errors=event.get("errors") or [],
+            source=str(event.get("assigned_source") or "google"),
+        )
+        resume_cache.save()
+        all_rows = list(reused_rows) + list(rows)
         all_errors = list(errors)[-MAX_ERRORS:]
         source_counts = counts
         payload = decorate(
             make_payload(
                 request_id=request_id, origin=origin, destination=destination, month=month, max_stops=max_stops,
                 start_date=period_start, end_date=period_end, mode=period_mode, all_rows=all_rows, history=history,
-                total=len(combos), primary_completed=done, primary_total=len(combos), fallback_done=0, fallback_total=0,
+                total=len(combos), primary_completed=completed, primary_total=len(combos), fallback_done=0, fallback_total=0,
                 status="running", stage="multisource", started_at=started_iso, errors=all_errors,
             ),
             counts,
@@ -471,14 +513,17 @@ def main() -> None:
             "departure_date": current_pair[0].isoformat(),
             "return_date": current_pair[1].isoformat(),
         }
-        publisher.publish(payload, f"live: {request_id} multifonte {done}/{len(combos)}", completed=done)
+        publisher.publish(payload, f"live: {request_id} Google+ITA {completed}/{len(combos)}", completed=completed)
 
     try:
         rows, errors, source_counts = run_sharded(
-            origin, destination, combos, max_stops, workers, active_sources, publish_progress
+            origin, destination, pending_combos, max_stops, workers, active_sources, publish_progress
         )
-        all_rows = dedupe(rows)
+        attempted_this_run = len(pending_combos)
+        completed = len(reused_keys) + len(pending_combos)
+        all_rows = dedupe(list(reused_rows) + list(rows))
         all_errors = errors[-MAX_ERRORS:]
+        resume_cache.save(force=True)
 
         final = decorate(
             make_payload(
@@ -497,15 +542,17 @@ def main() -> None:
 
         OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
         OUTPUT_PATH.write_text(json.dumps(final, ensure_ascii=False, indent=2), encoding="utf-8")
-        publisher.publish(final, f"live: concluir busca multifonte {request_id}", force=True, completed=len(combos))
+        publisher.publish(final, f"live: concluir busca Google+ITA {request_id}", force=True, completed=len(combos))
 
         print(
             f"Busca Google+ITA {request_id} {origin}->{destination} "
             f"{period_start.isoformat()}..{period_end.isoformat()}: "
             f"{len(all_rows)}/{len(combos)} combinações com preço; "
+            f"reaproveitadas={len(reused_keys)}; pesquisadas_agora={len(pending_combos)}; "
             f"ativas={active_sources}; fontes={source_counts}; moeda=BRL"
         )
     except BaseException as exc:
+        resume_cache.save(force=True)
         partial = decorate(
             make_payload(
                 request_id=request_id, origin=origin, destination=destination, month=month, max_stops=max_stops,
