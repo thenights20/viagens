@@ -64,9 +64,13 @@ jobs:
           import re
           from pathlib import Path
           html = Path('docs/index.html').read_text(encoding='utf-8')
-          match = re.search(r'<script>(.*)</script>', html, re.S)
+          # O regex anterior era guloso e capturava também os <script src="...">
+          # posteriores ao script inline, fazendo o node --check acusar erro falso.
+          match = re.search(r'<script>(.*?)</script>', html, re.S | re.I)
           assert match, 'script inline não encontrado'
-          Path('/tmp/dashboard.js').write_text(match.group(1), encoding='utf-8')
+          script = match.group(1).strip()
+          assert script, 'script inline vazio'
+          Path('/tmp/dashboard.js').write_text(script, encoding='utf-8')
           PY
           node --check /tmp/dashboard.js
 
