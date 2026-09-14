@@ -1,6 +1,19 @@
 import { chromium } from 'playwright-core';
 
 const URL = 'https://indigoneo.com.br/pt/booking/99980448';
+const payload = {
+  Criteria: [{
+    LotId: '99980448',
+    ParkingBeginDateTime: '2026/09/15 12:00:0',
+    ParkingEndDateTime: '2026/10/06 07:00:0',
+    SalesChannelKey: 'Web',
+    CustomerFlowType: 'RAD',
+    ISOLangCode: 'PT'
+  }],
+  SalesChannelKey: 'Web',
+  ISOLangCode: 'PT'
+};
+
 const browser = await chromium.launch({
   headless: true,
   executablePath: process.env.CHROME_PATH || '/usr/bin/google-chrome',
@@ -12,39 +25,55 @@ const context = await browser.newContext({
   userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36'
 });
 const page = await context.newPage();
-const seen = new Set();
-const interesting = [];
-page.on('request', req => {
-  const u = req.url();
-  if (seen.has(u)) return;
-  seen.add(u);
-  if (/api|booking|rate|tariff|avail|product|parking|price|quote|reservation/i.test(u)) {
-    interesting.push({method:req.method(), type:req.resourceType(), url:u, post:req.postData() || ''});
-  }
-});
+const apiBodies = [];
 page.on('response', async res => {
   const u = res.url();
-  if (/api|booking|rate|tariff|avail|product|parking|price|quote|reservation/i.test(u)) {
-    console.log('RESPONSE', res.status(), u);
+  if (u.includes('/brApi/')) {
+    try {
+      const txt = await res.text();
+      apiBodies.push({status:res.status(), url:u, body:txt.slice(0,20000)});
+    } catch (e) {
+      apiBodies.push({status:res.status(), url:u, body:'<unreadable '+e+'>'});
+    }
   }
 });
 try {
   const resp = await page.goto(URL, {waitUntil:'domcontentloaded', timeout:60000});
   console.log('NAV_STATUS', resp?.status());
   await page.waitForTimeout(12000);
-  for (const text of ['Aceitar todos','Aceitar','Concordar']) {
-    const b = page.getByText(text, {exact:false}).first();
-    if (await b.count()) { try { await b.click({timeout:1500}); break; } catch {} }
+
+  const sameOrigin = await page.evaluate(async (body) => {
+    const r = await fetch('/brApi/GetMultipleRates', {
+      method:'POST',
+      credentials:'include',
+      headers:{'Content-Type':'application/json','Accept':'application/json, text/plain, */*'},
+      body:JSON.stringify(body)
+    });
+    return {status:r.status, text:await r.text()};
+  }, payload);
+  console.log('SAME_ORIGIN_RATE_STATUS', sameOrigin.status);
+  console.log('SAME_ORIGIN_RATE_BODY', sameOrigin.text.slice(0,50000));
+
+  try {
+    const direct = await fetch('https://indigoneo.com.br/brApi/GetMultipleRates', {
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'Accept':'application/json, text/plain, */*',
+        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36',
+        'Referer':URL,
+        'Origin':'https://indigoneo.com.br'
+      },
+      body:JSON.stringify(payload)
+    });
+    console.log('DIRECT_RATE_STATUS', direct.status);
+    console.log('DIRECT_RATE_BODY', (await direct.text()).slice(0,50000));
+  } catch (e) {
+    console.log('DIRECT_RATE_ERROR', String(e));
   }
-  await page.waitForTimeout(5000);
-  console.log('TITLE', await page.title());
-  const body = (await page.locator('body').innerText()).replace(/\s+/g,' ').slice(0,5000);
-  console.log('BODY', body);
-  console.log('REQUESTS_JSON', JSON.stringify(interesting, null, 2));
-  const inputs = await page.locator('input').evaluateAll(xs => xs.map(x => ({type:x.type,name:x.name,id:x.id,placeholder:x.placeholder,value:x.value,aria:x.getAttribute('aria-label')})));
-  console.log('INPUTS_JSON', JSON.stringify(inputs, null, 2));
-  const buttons = await page.locator('button').evaluateAll(xs => xs.slice(0,80).map(x => ({text:(x.innerText||'').trim(),disabled:x.disabled,aria:x.getAttribute('aria-label'),cls:x.className})));
-  console.log('BUTTONS_JSON', JSON.stringify(buttons, null, 2));
+
+  await page.waitForTimeout(2000);
+  console.log('API_BODIES', JSON.stringify(apiBodies, null, 2));
 } finally {
   await browser.close();
 }
