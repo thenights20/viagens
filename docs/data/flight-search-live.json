@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-14T18:10:04.717382Z",
-  "updated_at": "2026-09-14T18:10:04.717382Z",
+  "generated_at": "2026-09-14T18:10:08.303291Z",
+  "updated_at": "2026-09-14T18:10:08.303291Z",
   "started_at": "2026-09-14T18:10:04.710884Z",
   "status": "running",
   "stage": "multisource",
@@ -18,8 +18,8 @@
   },
   "stats": {
     "combinations": 4095,
-    "processed_combinations": 0,
-    "primary_completed": 0,
+    "processed_combinations": 12,
+    "primary_completed": 12,
     "primary_total": 4095,
     "fallback_done": 0,
     "fallback_total": 0,
@@ -38,7 +38,32 @@
   "daily_min": [],
   "results": [],
   "all_results": [],
-  "errors": [],
+  "errors": [
+    "2027-09-01->2027-09-02 2027-09-01->2027-09-02: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-02 fallback Google: 2027-09-01->2027-09-02: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-11 2027-09-01->2027-09-11: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-11 fallback Google: 2027-09-01->2027-09-11: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-03 2027-09-01->2027-09-03: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-03 fallback Google: 2027-09-01->2027-09-03: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-06 2027-09-01->2027-09-06: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-06 fallback Google: 2027-09-01->2027-09-06: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-04 2027-09-01->2027-09-04: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-04 fallback Google: 2027-09-01->2027-09-04: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-07 2027-09-01->2027-09-07: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-07 fallback Google: 2027-09-01->2027-09-07: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-05 2027-09-01->2027-09-05: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-05 fallback Google: 2027-09-01->2027-09-05: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-10 2027-09-01->2027-09-10: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-10 fallback Google: 2027-09-01->2027-09-10: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-09 2027-09-01->2027-09-09: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-09 fallback Google: 2027-09-01->2027-09-09: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-08 2027-09-01->2027-09-08: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-08 fallback Google: 2027-09-01->2027-09-08: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-17 2027-09-01->2027-09-17: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-17 fallback Google: 2027-09-01->2027-09-17: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-15 2027-09-01->2027-09-15: ProviderResponseError: Google returned a provider error",
+    "2027-09-01->2027-09-15 fallback Google: 2027-09-01->2027-09-15: ProviderResponseError: Google returned a provider error"
+  ],
   "currency": "BRL",
   "source_strategy": "google_flights_with_ita_verification",
   "sources": {
@@ -67,7 +92,11 @@
     "google"
   ],
   "source_counts": {
-    "google": 0,
+    "google": 12,
     "ita": 0
+  },
+  "current_pair": {
+    "departure_date": "2027-09-01",
+    "return_date": "2027-09-15"
   }
 }
