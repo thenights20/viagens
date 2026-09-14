@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-09-14T06:55:37.269349Z",
+  "generated_at": "2026-09-14T13:48:03.500376Z",
   "source": "Sinais públicos de sites especializados em promoções",
   "signal_count": 14,
   "responding_source_count": 3,
@@ -8,14 +8,14 @@
   "sources": {
     "Secret Flying": {
       "ok": true,
-      "items": 4,
+      "items": 5,
       "status": 200,
       "url": "https://www.secretflying.com/south-america-flight-deals/",
       "message": "ok"
     },
     "Melhores Destinos": {
       "ok": true,
-      "items": 10,
+      "items": 9,
       "status": 200,
       "url": "https://www.melhoresdestinos.com.br/",
       "message": "ok"
@@ -74,6 +74,22 @@
         "25th Feb – 6th Mar",
         "25th Feb – 10th Mar"
       ],
+      "error_fare": false
+    },
+    {
+      "source": "Secret Flying",
+      "title": "Sao Paulo, Brazil to Sanford, Florida for only $466 USD roundtrip",
+      "url": "https://www.secretflying.com/posts/sao-paulo-brazil-to-sanford-florida-for-only-467-usd-roundtrip/",
+      "price": 466.0,
+      "currency": "USD",
+      "trip_mode": "round_trip",
+      "origin_name": "Sao Paulo",
+      "destination_name": "Sanford, Florida",
+      "origin": "GRU",
+      "destination": null,
+      "external_signal": true,
+      "airline": "Arajet",
+      "example_dates": [],
       "error_fare": false
     },
     {
@@ -150,7 +166,7 @@
     },
     {
       "source": "Melhores Destinos",
-      "title": "há 2 dias Voos pelo Brasil! Passagens nacionais a partir de R$ 315 ida e volta com Azul, Gol e Latam",
+      "title": "há 3 dias Voos pelo Brasil! Passagens nacionais a partir de R$ 315 ida e volta com Azul, Gol e Latam",
       "url": "https://www.melhoresdestinos.com.br/promocao/voos-pelo-brasil-passagens-nacioanis-336",
       "price": 315.0,
       "currency": "BRL",
@@ -189,12 +205,12 @@
     },
     {
       "source": "Melhores Destinos",
-      "title": "há 2 dias Compras no Paraguai! Voos para Foz do Iguaçu ou Assunção a partir de R$ 596 ida e volta",
+      "title": "há 3 dias Compras no Paraguai! Voos para Foz do Iguaçu ou Assunção a partir de R$ 596 ida e volta",
       "url": "https://www.melhoresdestinos.com.br/promocao/compras-no-paraguai-foz-asuncao-596",
       "price": 596.0,
       "currency": "BRL",
       "trip_mode": "round_trip",
-      "origin_name": "há 2 dias Compras no Paraguai! Voos",
+      "origin_name": "há 3 dias Compras no Paraguai! Voos",
       "destination_name": "Foz do Iguaçu ou Assunção",
       "origin": null,
       "destination": null,
@@ -215,39 +231,26 @@
     },
     {
       "source": "Melhores Destinos",
-      "title": "Passagens para Orlando a partir de R$ 2.136 ou nas férias de fim de ano e Carnaval por R$ 2.530!",
-      "url": "https://www.melhoresdestinos.com.br/promocao/passagens-para-orlando-09set26",
-      "price": 2136.0,
+      "title": "Viagem para Orlando! Passagens a partir de R$ 2.496 ida e volta saindo de várias cidades",
+      "url": "https://www.melhoresdestinos.com.br/promocao/viagem-para-orlando-passagens-aereas-2496",
+      "price": 2496.0,
       "currency": "BRL",
-      "trip_mode": "unknown",
-      "origin_name": "Passagens",
-      "destination_name": "Orlando",
+      "trip_mode": "round_trip",
+      "origin_name": "Viagem",
+      "destination_name": "Orlando! Passagens",
       "origin": null,
       "destination": "MCO",
       "external_signal": true
     },
     {
       "source": "Melhores Destinos",
-      "title": "Portugal 🇵🇹 Voos para Lisboa ou Porto a partir de R$ 3.352 ida e volta, saindo de 41 cidades brasileiras!",
-      "url": "https://www.melhoresdestinos.com.br/promocao/passagens-aereas-portugal-09-09-26",
-      "price": 3352.0,
-      "currency": "BRL",
-      "trip_mode": "round_trip",
-      "origin_name": "Portugal 🇵🇹 Voos",
-      "destination_name": "Lisboa ou Porto",
-      "origin": null,
-      "destination": "LIS",
-      "external_signal": true
-    },
-    {
-      "source": "Melhores Destinos",
-      "title": "Papai Noel na Lapônia e aurora boreal! Viaje para a Finlândia pagando pouco com passagens a partir de R$ 3.429",
-      "url": "https://www.melhoresdestinos.com.br/promocao/viaje-para-a-finlandia-com-passagens-a11set26",
-      "price": 3429.0,
+      "title": "Muito bom! Passagens da Latam para Viena a partir de R$ 3.858 com datas neste fim de ano",
+      "url": "https://www.melhoresdestinos.com.br/promocao/muito-bom-passagens-da-latam-para-viena-14set26",
+      "price": 3858.0,
       "currency": "BRL",
       "trip_mode": "unknown",
-      "origin_name": "Papai Noel na Lapônia e aurora boreal! Viaje",
-      "destination_name": "a Finlândia pagando pouco com passagens",
+      "origin_name": "Muito bom! Passagens da Latam",
+      "destination_name": "Viena",
       "origin": null,
       "destination": null,
       "external_signal": true
