@@ -80,7 +80,11 @@ def main():
     token = request('https://oauth2.googleapis.com/token', 'POST', auth, form=True)['access_token']
     def call(url, **kwargs):
         return request(url, token=token, **kwargs)
-    deploy(call, os.environ['SCRIPT_ID'], os.environ['DEPLOYMENT_ID'], Path('apps-script/Code.gs').read_text())
+    source = '\n\n'.join([
+        Path('apps-script/Code.gs').read_text(encoding='utf-8'),
+        Path('apps-script/Indigo.gs').read_text(encoding='utf-8'),
+    ])
+    deploy(call, os.environ['SCRIPT_ID'], os.environ['DEPLOYMENT_ID'], source)
 
 
 if __name__ == '__main__':

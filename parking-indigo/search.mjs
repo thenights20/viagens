@@ -65,7 +65,7 @@ async function main() {
   const toTime=assertTime(env('INDIGO_TO_TIME','18:00'), 'Horário final');
   const step=Number(env('INDIGO_STEP_MINUTES','30'));
   const product=env('INDIGO_PRODUCT','terminal3_garage');
-  if (![15,30,60].includes(step)) throw new Error('Intervalo deve ser 15, 30 ou 60 minutos.');
+  if (![30,60].includes(step)) throw new Error('Intervalo deve ser 30 ou 60 minutos.');
   if (!ALLOWED_PRODUCTS.has(product)) throw new Error('Produto Indigo inválido.');
   const entryDay=new Date(entryDate+'T12:00:00');
   const exitDay=new Date(exitDate+'T12:00:00');

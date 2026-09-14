@@ -44,7 +44,7 @@ function startIndigoSearch_(body) {
   if (!validDate_(entryDate) || !validDate_(exitDate)) throw new Error('Datas inválidas.');
   if (exitDate < entryDate) throw new Error('A data de saída precisa ser igual ou posterior à entrada.');
   if (!indigoValidTime_(exitTime) || !indigoValidTime_(fromTime) || !indigoValidTime_(toTime)) throw new Error('Horário inválido.');
-  if (![15, 30, 60].includes(step)) throw new Error('Intervalo deve ser 15, 30 ou 60 minutos.');
+  if (![30, 60].includes(step)) throw new Error('Intervalo deve ser 30 ou 60 minutos.');
   if (!['terminal3_garage','terminal3_flex','terminal2_standard','terminal1','any'].includes(product)) throw new Error('Produto Indigo inválido.');
   if (toTime < fromTime) throw new Error('O último horário precisa ser igual ou posterior ao primeiro.');
 
