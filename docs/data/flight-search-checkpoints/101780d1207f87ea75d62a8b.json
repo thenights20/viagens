@@ -3,7 +3,7 @@
   "cache_id": "101780d1207f87ea75d62a8b",
   "signature": "GRU|MCO|2027-08-01|2027-11-30|2|BRL|economy|1",
   "created_at": "2026-09-14T20:36:48.401814Z",
-  "updated_at": "2026-09-14T20:36:51.303903Z",
+  "updated_at": "2026-09-14T20:36:53.302984Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "GRU",
@@ -287,6 +287,116 @@
       "row": null,
       "errors": [
         "2027-08-01->2027-08-12: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-01|2027-08-10": {
+      "departure_date": "2027-08-01",
+      "return_date": "2027-08-10",
+      "status": "priced",
+      "completed_at": "2026-09-14T20:36:52.351999Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MCO",
+        "departure_date": "2027-08-01",
+        "return_date": "2027-08-10",
+        "airline": "COPA",
+        "price": 3637.0,
+        "duration": "10h 12min",
+        "duration_minutes": 612,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 8, 1] [5, 25]",
+        "arrival": "[2027, 8, 1] [18, 40]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-01+returning+2027-08-10&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 9,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-01+returning+2027-08-10&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-08-01&return=2027-08-10&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-08-01|2027-08-11": {
+      "departure_date": "2027-08-01",
+      "return_date": "2027-08-11",
+      "status": "error",
+      "completed_at": "2026-09-14T20:36:52.352074Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-01->2027-08-11: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-01|2027-08-13": {
+      "departure_date": "2027-08-01",
+      "return_date": "2027-08-13",
+      "status": "error",
+      "completed_at": "2026-09-14T20:36:52.352175Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-01->2027-08-13: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-01|2027-08-14": {
+      "departure_date": "2027-08-01",
+      "return_date": "2027-08-14",
+      "status": "error",
+      "completed_at": "2026-09-14T20:36:53.302673Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-01->2027-08-14: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-01|2027-08-15": {
+      "departure_date": "2027-08-01",
+      "return_date": "2027-08-15",
+      "status": "error",
+      "completed_at": "2026-09-14T20:36:53.302807Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-01->2027-08-15: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-01|2027-08-16": {
+      "departure_date": "2027-08-01",
+      "return_date": "2027-08-16",
+      "status": "error",
+      "completed_at": "2026-09-14T20:36:53.302873Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-01->2027-08-16: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-01|2027-08-18": {
+      "departure_date": "2027-08-01",
+      "return_date": "2027-08-18",
+      "status": "error",
+      "completed_at": "2026-09-14T20:36:53.302927Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-01->2027-08-18: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-01|2027-08-17": {
+      "departure_date": "2027-08-01",
+      "return_date": "2027-08-17",
+      "status": "error",
+      "completed_at": "2026-09-14T20:36:53.302978Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-01->2027-08-17: ProviderResponseError: Google returned a provider error"
       ]
     }
   }
