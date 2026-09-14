@@ -1,0 +1,76 @@
+name: Validate resumable flight search
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/validate-flight-resume.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: main
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Apply follow-up patch
+        run: python tools/fix_flight_resume_followup.py
+      - name: Validate code and resume cache
+        run: |
+          python -m py_compile flight-month-search/search.py flight-month-search/multisource.py flight-month-search/resume_cache.py
+          node --check docs/flight-explorer.js
+          python - <<'PY'
+          import base64, json, sys
+          from datetime import date, timedelta
+          sys.path.insert(0,'flight-month-search')
+          from resume_cache import FlightResumeCache, combo_key, iso_now
+
+          class FakePublisher:
+              branch='flight-live'
+              def __init__(self): self.files={}
+              def ensure_branch(self): return True
+              def _request(self,method,path,payload=None):
+                  clean=path.split('?ref=',1)[0]
+                  if not clean.startswith('/contents/'): return 404,None
+                  key=clean[len('/contents/'):]
+                  if method=='GET':
+                      if key not in self.files: return 404,None
+                      raw=self.files[key]
+                      return 200,{'sha':'fake','content':base64.b64encode(raw.encode()).decode()}
+                  if method=='PUT':
+                      self.files[key]=base64.b64decode(payload['content']).decode()
+                      return 200,{}
+                  return 400,None
+
+          pub=FakePublisher()
+          c=FlightResumeCache(pub,origin='GRU',destination='MCO',start_date=date(2027,11,1),end_date=date(2027,11,30),max_stops=2)
+          c.load()
+          c.record(date(2027,11,1),date(2027,11,2),row={'departure_date':'2027-11-01','return_date':'2027-11-02','price':1000},errors=[],source='google')
+          c.record(date(2027,11,1),date(2027,11,3),row=None,errors=[],source='google')
+          c.record(date(2027,11,1),date(2027,11,4),row=None,errors=['provider error'],source='google')
+          assert c.save(force=True)
+          c2=FlightResumeCache(pub,origin='GRU',destination='MCO',start_date=date(2027,11,1),end_date=date(2027,11,30),max_stops=2)
+          c2.load(); reusable=c2.reusable_records()
+          assert combo_key(date(2027,11,1),date(2027,11,2)) in reusable
+          assert combo_key(date(2027,11,1),date(2027,11,3)) in reusable
+          assert combo_key(date(2027,11,1),date(2027,11,4)) not in reusable
+          assert len(c2.reusable_rows())==1
+          counts=c2.counts(); assert counts['reusable']==2 and counts['errors']==1
+          print('Resume cache OK:',counts)
+          PY
+      - name: Commit follow-up patch
+        run: |
+          git config user.name "flight-resume-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add flight-month-search/multisource.py
+          git commit -m "fix: avoid duplicate Google flight queries [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main
