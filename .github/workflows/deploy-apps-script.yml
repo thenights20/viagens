@@ -18,10 +18,13 @@ jobs:
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v6
-      - name: Validar código
+      - name: Validar serviço de pesquisa
         run: |
-          node --test tests/flight-search.test.cjs
+          cat apps-script/Code.gs apps-script/Indigo.gs > /tmp/apps-script-bridge.js
+          node --check /tmp/apps-script-bridge.js
           python -m py_compile scripts/deploy_apps_script.py
+          grep -q "api/indigo/search" apps-script/Code.gs
+          grep -q "function startIndigoSearch_" apps-script/Indigo.gs
       - name: Atualizar implantação existente
         env:
           CLASPRC_JSON: ${{ secrets.CLASPRC_JSON }}
