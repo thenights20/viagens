@@ -254,6 +254,7 @@ function doPost(e) {
     const path = String((e && e.parameter && e.parameter.route) || (e && e.pathInfo) || '').replace(/^\/+|\/+$/g, '');
     const body = JSON.parse((e && e.postData && e.postData.contents) || '{}');
     if (path === 'api/search') return json_(startSearch_(body));
+    if (path === 'api/indigo/search') return json_(startIndigoSearch_(body));
     if (path === 'api/progress') return json_(progressUpdate_(body));
     if (path === 'api/cancel') return json_(cancelSearch_(body));
     return json_({ error: 'Rota inválida.' });
