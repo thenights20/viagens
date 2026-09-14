@@ -142,16 +142,16 @@ jobs:
       - name: Validar código
         if: env.SEARCH_CANCEL_ONLY != '1'
         run: |
-          python -m py_compile flight-month-search/search.py flight-month-search/multisource.py flight-month-search/swoop_batch_worker.py
+          python -m py_compile flight-month-search/search.py flight-month-search/multisource.py flight-month-search/resume_cache.py flight-month-search/swoop_batch_worker.py
           node --check docs/flight-explorer.js
 
-      - name: Pesquisar período em múltiplas fontes
+      - name: Pesquisar Google Flights + ITA
         if: env.SEARCH_CANCEL_ONLY != '1'
         env:
           PYTHONPATH: flight-monitor:.
           GITHUB_TOKEN: ${{ github.token }}
           SEARCH_LIVE_BRANCH: flight-live
-          SEARCH_MULTI_WORKERS: "10"
+          SEARCH_MULTI_WORKERS: "4"
         run: python flight-month-search/multisource.py
 
       - name: Validar resultado
@@ -165,12 +165,15 @@ jobs:
           assert d.get('mode') in {'full_month_matrix','date_range_matrix'}
           assert d.get('status')=='completed'
           assert d.get('currency')=='BRL'
-          assert d.get('source_strategy')=='preflight_sharded'
+          assert d.get('source_strategy')=='google_flights_with_ita_verification'
           assert isinstance(d.get('source_health'), dict)
           assert 'google' in (d.get('active_sources') or [])
           assert int(d['stats']['combinations']) > 0
           assert len(d.get('results',[])) <= 100
           assert d.get('request_id')
+          resume=d.get('resume') or {}
+          assert resume.get('enabled') is True
+          assert int(resume.get('window_minutes') or 0)==60
           r=d['request']
           for row in d.get('results',[]):
               assert float(row['price']) > 0
@@ -178,7 +181,7 @@ jobs:
               assert r['start_date'] <= row['departure_date'] <= r['end_date']
               assert r['start_date'] <= row['return_date'] <= r['end_date']
               assert row.get('currency','BRL') == 'BRL'
-          print('Busca multifonte válida:', d['request_id'], r, d['stats'], d.get('active_sources'), d.get('source_counts'))
+          print('Busca Google+ITA válida:', d['request_id'], r, d['stats'], resume)
           PY
 
       - name: Persistir resultado e histórico
@@ -190,7 +193,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Nenhuma alteração para salvar."
           else
-            git commit -m "data: salvar busca multifonte de passagens [skip ci]"
+            git commit -m "data: salvar busca Google+ITA de passagens [skip ci]"
             for tentativa in 1 2 3; do
               git pull --rebase origin main && git push origin HEAD:main && break
               echo "Conflito temporário ao salvar; tentativa $tentativa/3"
@@ -206,26 +209,25 @@ jobs:
           import json, os
           from pathlib import Path
           d=json.loads(Path('docs/data/flight-month-search.json').read_text(encoding='utf-8'))
-          r=d['request']; s=d['stats']; h=d.get('history_summary') or {}; sources=d.get('source_counts') or {}
+          r=d['request']; s=d['stats']; h=d.get('history_summary') or {}; resume=d.get('resume') or {}
           periodo = r['month'] if r.get('period_mode') == 'month' else f"{r['start_date']} → {r['end_date']}"
-          source_text = ', '.join(f'{k}:{v}' for k,v in sources.items() if v) or '-'
-          active_text = ', '.join(d.get('active_sources') or [])
           lines=[
-              '## Busca de passagens sob demanda · multifonte',
+              '## Busca de passagens sob demanda · Google Flights + ITA',
               f"- ID: {d.get('request_id')}",
               f"- Rota: {r['origin']} → {r['destination']}",
               f"- Período: {periodo}",
               f"- Moeda: BRL (R$)",
-              f"- Fontes aprovadas no pré-teste: {active_text}",
               f"- Combinações: {s['combinations']}",
+              f"- Reaproveitadas da última hora: {resume.get('reused_combinations',0)}",
+              f"- Pesquisadas nesta execução: {resume.get('searched_this_run',0)}",
+              f"- Para tentar novamente depois: {resume.get('retryable_for_next_run',0)}",
               f"- Com preço: {s['priced_combinations']} ({s['coverage_pct']}%)",
-              f"- Distribuição por fonte: {source_text}",
               f"- Top exibido: {s['result_count']}/100",
               f"- Menor preço: R$ {s['lowest_price'] if s['lowest_price'] is not None else '-'}",
               f"- Comparadas ao histórico: {h.get('compared',0)} · baixaram {h.get('cheaper',0)} · subiram {h.get('higher',0)}",
-              '- Cada fonte externa é testada uma vez para a rota. Só as que retornam tarifa BRL confiável recebem datas.',
-              '- Fontes bloqueadas/dinâmicas ficam como links de pesquisa e não atrasam centenas de combinações.',
-              '- Durante a execução, achados parciais são salvos na branch flight-live.'
+              '- Checkpoint por rota/período/escalas fica salvo por 1 hora na branch flight-live.',
+              '- Combinações concluídas com ou sem tarifa são reaproveitadas; combinações que deram erro são tentadas novamente.',
+              '- ITA Matrix permanece como link de conferência; preços automáticos vêm do Google Flights.'
           ]
           with open(os.environ['GITHUB_STEP_SUMMARY'],'a',encoding='utf-8') as f:f.write('\n'.join(lines)+'\n')
           PY
