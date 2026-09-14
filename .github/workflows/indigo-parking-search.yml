@@ -14,20 +14,25 @@ on:
         required: true
         default: "2026-10-06"
         type: string
-      exit_time:
-        description: "Hora de saída (HH:MM)"
+      entry_from_time:
+        description: "Entrada a partir de"
         required: true
-        default: "07:00"
+        default: "12:00"
         type: string
-      from_time:
-        description: "Primeiro horário de entrada"
+      entry_to_time:
+        description: "Entrada até"
         required: true
-        default: "05:00"
+        default: "15:00"
         type: string
-      to_time:
-        description: "Último horário de entrada"
+      exit_from_time:
+        description: "Saída a partir de"
         required: true
-        default: "14:00"
+        default: "06:00"
+        type: string
+      exit_to_time:
+        description: "Saída até"
+        required: true
+        default: "09:00"
         type: string
       step_minutes:
         description: "Intervalo entre horários"
@@ -86,9 +91,10 @@ jobs:
           CHROME_PATH: /usr/bin/google-chrome
           INDIGO_ENTRY_DATE: ${{ inputs.entry_date || '2026-09-15' }}
           INDIGO_EXIT_DATE: ${{ inputs.exit_date || '2026-10-06' }}
-          INDIGO_EXIT_TIME: ${{ inputs.exit_time || '07:00' }}
-          INDIGO_FROM_TIME: ${{ inputs.from_time || '05:00' }}
-          INDIGO_TO_TIME: ${{ inputs.to_time || '14:00' }}
+          INDIGO_ENTRY_FROM_TIME: ${{ inputs.entry_from_time || '12:00' }}
+          INDIGO_ENTRY_TO_TIME: ${{ inputs.entry_to_time || '15:00' }}
+          INDIGO_EXIT_FROM_TIME: ${{ inputs.exit_from_time || '06:00' }}
+          INDIGO_EXIT_TO_TIME: ${{ inputs.exit_to_time || '09:00' }}
           INDIGO_STEP_MINUTES: ${{ inputs.step_minutes || '30' }}
           INDIGO_PRODUCT: ${{ inputs.product || 'terminal3_garage' }}
           INDIGO_REQUEST_ID: ${{ inputs.request_id || 'manual' }}
@@ -100,9 +106,10 @@ jobs:
           const fs=require('fs');
           const d=JSON.parse(fs.readFileSync('docs/data/indigo-parking-search.json','utf8'));
           if(d.status!=='completed') throw new Error(d.error||'Pesquisa Indigo não concluída');
-          if(!Array.isArray(d.results)||!d.results.length) throw new Error('Nenhum horário foi testado');
-          if(!d.results.every(x=>x.entry_time && ['available','sold_out','not_offered','error'].includes(x.status))) throw new Error('Resultado inválido');
-          console.log(`Indigo: ${d.stats.available_times}/${d.stats.tested_times} horários disponíveis`);
+          if(!Array.isArray(d.results)||!d.results.length) throw new Error('Nenhuma combinação foi testada');
+          if(!d.results.every(x=>x.entry_time && x.exit_time && ['available','sold_out','not_offered','error'].includes(x.status))) throw new Error('Resultado inválido');
+          console.log(`Indigo: ${d.stats.available_combinations}/${d.stats.tested_combinations} combinações disponíveis`);
+          if(d.best_combination) console.log('Melhor:',d.best_combination);
           NODE
 
       - name: Publicar resultado no painel
