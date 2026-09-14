@@ -3,7 +3,7 @@
   "cache_id": "d110c22a24aefd98e6b59bf8",
   "signature": "GRU|MCO|2027-04-01|2027-07-31|2|BRL|economy|1",
   "created_at": "2026-09-14T19:29:42.736434Z",
-  "updated_at": "2026-09-14T20:21:58.830538Z",
+  "updated_at": "2026-09-14T20:22:01.378521Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "GRU",
@@ -161211,6 +161211,248 @@
         "search_links": {
           "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-06-23+returning+2027-07-03&curr=BRL&hl=pt-BR",
           "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-06-23&return=2027-07-03&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-06-23|2027-07-06": {
+      "departure_date": "2027-06-23",
+      "return_date": "2027-07-06",
+      "status": "error",
+      "completed_at": "2026-09-14T20:22:01.275474Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-06-23->2027-07-06: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-06-23|2027-07-05": {
+      "departure_date": "2027-06-23",
+      "return_date": "2027-07-05",
+      "status": "priced",
+      "completed_at": "2026-09-14T20:22:01.291074Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MCO",
+        "departure_date": "2027-06-23",
+        "return_date": "2027-07-05",
+        "airline": "United",
+        "price": 3658.0,
+        "duration": "13h 05min",
+        "duration_minutes": 785,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 6, 23] [22, 20]",
+        "arrival": "[2027, 6, 24] [14, 45]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-06-23+returning+2027-07-05&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 12,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-06-23+returning+2027-07-05&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-06-23&return=2027-07-05&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-06-23|2027-07-04": {
+      "departure_date": "2027-06-23",
+      "return_date": "2027-07-04",
+      "status": "priced",
+      "completed_at": "2026-09-14T20:22:01.306214Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MCO",
+        "departure_date": "2027-06-23",
+        "return_date": "2027-07-04",
+        "airline": "United",
+        "price": 3332.0,
+        "duration": "13h 05min",
+        "duration_minutes": 785,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 6, 23] [22, 20]",
+        "arrival": "[2027, 6, 24] [14, 45]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-06-23+returning+2027-07-04&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 11,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-06-23+returning+2027-07-04&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-06-23&return=2027-07-04&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-06-23|2027-07-07": {
+      "departure_date": "2027-06-23",
+      "return_date": "2027-07-07",
+      "status": "priced",
+      "completed_at": "2026-09-14T20:22:01.320448Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MCO",
+        "departure_date": "2027-06-23",
+        "return_date": "2027-07-07",
+        "airline": "United",
+        "price": 3658.0,
+        "duration": "13h 05min",
+        "duration_minutes": 785,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 6, 23] [22, 20]",
+        "arrival": "[2027, 6, 24] [14, 45]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-06-23+returning+2027-07-07&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 14,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-06-23+returning+2027-07-07&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-06-23&return=2027-07-07&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-06-23|2027-07-08": {
+      "departure_date": "2027-06-23",
+      "return_date": "2027-07-08",
+      "status": "priced",
+      "completed_at": "2026-09-14T20:22:01.334532Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MCO",
+        "departure_date": "2027-06-23",
+        "return_date": "2027-07-08",
+        "airline": "United",
+        "price": 3332.0,
+        "duration": "13h 05min",
+        "duration_minutes": 785,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 6, 23] [22, 20]",
+        "arrival": "[2027, 6, 24] [14, 45]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-06-23+returning+2027-07-08&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 15,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-06-23+returning+2027-07-08&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-06-23&return=2027-07-08&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-06-23|2027-07-09": {
+      "departure_date": "2027-06-23",
+      "return_date": "2027-07-09",
+      "status": "priced",
+      "completed_at": "2026-09-14T20:22:01.348938Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MCO",
+        "departure_date": "2027-06-23",
+        "return_date": "2027-07-09",
+        "airline": "United",
+        "price": 3658.0,
+        "duration": "13h 05min",
+        "duration_minutes": 785,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 6, 23] [22, 20]",
+        "arrival": "[2027, 6, 24] [14, 45]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-06-23+returning+2027-07-09&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 16,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-06-23+returning+2027-07-09&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-06-23&return=2027-07-09&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-06-23|2027-07-10": {
+      "departure_date": "2027-06-23",
+      "return_date": "2027-07-10",
+      "status": "priced",
+      "completed_at": "2026-09-14T20:22:01.363220Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MCO",
+        "departure_date": "2027-06-23",
+        "return_date": "2027-07-10",
+        "airline": "United",
+        "price": 3332.0,
+        "duration": "13h 05min",
+        "duration_minutes": 785,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 6, 23] [22, 20]",
+        "arrival": "[2027, 6, 24] [14, 45]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-06-23+returning+2027-07-10&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 17,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-06-23+returning+2027-07-10&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-06-23&return=2027-07-10&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-06-23|2027-07-11": {
+      "departure_date": "2027-06-23",
+      "return_date": "2027-07-11",
+      "status": "priced",
+      "completed_at": "2026-09-14T20:22:01.378507Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MCO",
+        "departure_date": "2027-06-23",
+        "return_date": "2027-07-11",
+        "airline": "United",
+        "price": 3658.0,
+        "duration": "13h 05min",
+        "duration_minutes": 785,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 6, 23] [22, 20]",
+        "arrival": "[2027, 6, 24] [14, 45]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-06-23+returning+2027-07-11&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 18,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-06-23+returning+2027-07-11&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-06-23&return=2027-07-11&currency=BRL"
         },
         "assigned_source": "google"
       },
