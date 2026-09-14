@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-14T22:14:20.398236Z",
-  "updated_at": "2026-09-14T22:14:20.398236Z",
+  "generated_at": "2026-09-14T22:14:28.634921Z",
+  "updated_at": "2026-09-14T22:14:28.634921Z",
   "started_at": "2026-09-14T21:22:01.179504Z",
   "status": "running",
   "stage": "multisource",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 7381,
-    "processed_combinations": 5658,
-    "primary_completed": 5658,
+    "processed_combinations": 5659,
+    "primary_completed": 5659,
     "primary_total": 7381,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 5506,
+    "priced_combinations": 5507,
     "coverage_pct": 74.6,
     "lowest_price": 2585.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 5506
+    "new": 5507
   },
   "daily_min": [
     {
@@ -118169,6 +118169,38 @@
     {
       "origin": "GIG",
       "destination": "MCO",
+      "departure_date": "2027-05-02",
+      "return_date": "2027-06-19",
+      "airline": "Azul",
+      "price": 5027.0,
+      "duration": "10h 10min",
+      "duration_minutes": 610,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 5, 2] [6, 10]",
+      "arrival": "[2027, 5, 2] [20, 30]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-05-02+returning+2027-06-19&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 48,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-05-02+returning+2027-06-19&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-05-02&return=2027-06-19&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GIG",
+      "destination": "MCO",
       "departure_date": "2027-03-01",
       "return_date": "2027-04-05",
       "airline": "Azul",
@@ -181745,7 +181777,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 5658,
+    "google": 5659,
     "ita": 0
   },
   "resume": {
@@ -181753,16 +181785,16 @@
     "window_minutes": 60,
     "cache_id": "8efec0a65f186d676350176a",
     "reused_combinations": 0,
-    "searched_this_run": 5658,
-    "remaining_this_run": 1723,
-    "reusable_now": 5506,
-    "retryable_for_next_run": 1875,
-    "saved_records": 5658,
+    "searched_this_run": 5659,
+    "remaining_this_run": 1722,
+    "reusable_now": 5507,
+    "retryable_for_next_run": 1874,
+    "saved_records": 5659,
     "saved_errors": 152,
     "checkpoint_path": "docs/data/flight-search-checkpoints/8efec0a65f186d676350176a.json"
   },
   "current_pair": {
     "departure_date": "2027-05-02",
-    "return_date": "2027-06-18"
+    "return_date": "2027-06-19"
   }
 }
