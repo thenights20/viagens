@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-14T23:49:11.771441Z",
-  "updated_at": "2026-09-14T23:49:11.771441Z",
+  "generated_at": "2026-09-14T23:49:14.464421Z",
+  "updated_at": "2026-09-14T23:49:14.464421Z",
   "started_at": "2026-09-14T23:48:34.622486Z",
   "status": "running",
   "stage": "multisource",
@@ -18,21 +18,21 @@
   },
   "stats": {
     "combinations": 7381,
-    "processed_combinations": 132,
-    "primary_completed": 132,
+    "processed_combinations": 144,
+    "primary_completed": 144,
     "primary_total": 7381,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 97,
-    "coverage_pct": 1.3,
+    "priced_combinations": 105,
+    "coverage_pct": 1.4,
     "lowest_price": 2512.0,
-    "result_count": 97
+    "result_count": 100
   },
   "history_summary": {
-    "compared": 96,
-    "cheaper": 19,
-    "higher": 3,
-    "same": 74,
+    "compared": 104,
+    "cheaper": 23,
+    "higher": 6,
+    "same": 75,
     "new": 1
   },
   "daily_min": [
@@ -668,6 +668,105 @@
     {
       "origin": "GIG",
       "destination": "MCO",
+      "departure_date": "2027-03-02",
+      "return_date": "2027-03-18",
+      "airline": "American",
+      "price": 2512.0,
+      "duration": "10h 00min",
+      "duration_minutes": 600,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 2] [23, 55]",
+      "arrival": "[2027, 3, 3] [16, 57]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-18&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 16,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-18&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-02&return=2027-03-18&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": 2614.0,
+      "change_amount": -102.0,
+      "change_pct": -3.9,
+      "trend": "down",
+      "historical_min": 2512.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
+      "rank": 18
+    },
+    {
+      "origin": "GIG",
+      "destination": "MCO",
+      "departure_date": "2027-03-02",
+      "return_date": "2027-03-22",
+      "airline": "American",
+      "price": 2512.0,
+      "duration": "10h 00min",
+      "duration_minutes": 600,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 2] [23, 55]",
+      "arrival": "[2027, 3, 3] [16, 57]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-22&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 20,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-22&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-02&return=2027-03-22&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": 2614.0,
+      "change_amount": -102.0,
+      "change_pct": -3.9,
+      "trend": "down",
+      "historical_min": 2512.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
+      "rank": 19
+    },
+    {
+      "origin": "GIG",
+      "destination": "MCO",
+      "departure_date": "2027-03-02",
+      "return_date": "2027-03-23",
+      "airline": "American",
+      "price": 2512.0,
+      "duration": "10h 00min",
+      "duration_minutes": 600,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 2] [23, 55]",
+      "arrival": "[2027, 3, 3] [16, 57]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-23&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 21,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-23&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-02&return=2027-03-23&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": 2614.0,
+      "change_amount": -102.0,
+      "change_pct": -3.9,
+      "trend": "down",
+      "historical_min": 2512.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
+      "rank": 20
+    },
+    {
+      "origin": "GIG",
+      "destination": "MCO",
       "departure_date": "2027-03-01",
       "return_date": "2027-03-10",
       "airline": "American",
@@ -696,7 +795,40 @@
       "historical_min": 2548.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 18
+      "rank": 21
+    },
+    {
+      "origin": "GIG",
+      "destination": "MCO",
+      "departure_date": "2027-03-02",
+      "return_date": "2027-03-14",
+      "airline": "American",
+      "price": 2548.0,
+      "duration": "10h 00min",
+      "duration_minutes": 600,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 2] [23, 55]",
+      "arrival": "[2027, 3, 3] [16, 57]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-14&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 12,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-14&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-02&return=2027-03-14&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": 2585.0,
+      "change_amount": -37.0,
+      "change_pct": -1.4,
+      "trend": "down",
+      "historical_min": 2548.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
+      "rank": 22
     },
     {
       "origin": "GIG",
@@ -729,7 +861,7 @@
       "historical_min": 2585.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 19
+      "rank": 23
     },
     {
       "origin": "GIG",
@@ -762,7 +894,7 @@
       "historical_min": 2585.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 20
+      "rank": 24
     },
     {
       "origin": "GIG",
@@ -795,7 +927,7 @@
       "historical_min": 2585.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 21
+      "rank": 25
     },
     {
       "origin": "GIG",
@@ -828,7 +960,7 @@
       "historical_min": 2585.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 22
+      "rank": 26
     },
     {
       "origin": "GIG",
@@ -861,7 +993,7 @@
       "historical_min": 2585.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 23
+      "rank": 27
     },
     {
       "origin": "GIG",
@@ -894,7 +1026,40 @@
       "historical_min": 2585.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 24
+      "rank": 28
+    },
+    {
+      "origin": "GIG",
+      "destination": "MCO",
+      "departure_date": "2027-03-02",
+      "return_date": "2027-03-17",
+      "airline": "Avianca",
+      "price": 2585.0,
+      "duration": "10h 35min",
+      "duration_minutes": 635,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 2] [1, 40]",
+      "arrival": "[2027, 3, 2] [14, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-17&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 15,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-17&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-02&return=2027-03-17&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": 2585.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 2585.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
+      "rank": 29
     },
     {
       "origin": "GIG",
@@ -927,7 +1092,7 @@
       "historical_min": 2662.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 25
+      "rank": 30
     },
     {
       "origin": "GIG",
@@ -960,7 +1125,7 @@
       "historical_min": 2662.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 26
+      "rank": 31
     },
     {
       "origin": "GIG",
@@ -993,7 +1158,7 @@
       "historical_min": 2662.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 27
+      "rank": 32
     },
     {
       "origin": "GIG",
@@ -1026,7 +1191,106 @@
       "historical_min": 2662.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 28
+      "rank": 33
+    },
+    {
+      "origin": "GIG",
+      "destination": "MCO",
+      "departure_date": "2027-03-02",
+      "return_date": "2027-03-19",
+      "airline": "COPA",
+      "price": 2990.0,
+      "duration": "10h 46min",
+      "duration_minutes": 646,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 2] [5, 5]",
+      "arrival": "[2027, 3, 2] [22, 22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-19&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 17,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-19&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-02&return=2027-03-19&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": 2888.0,
+      "change_amount": 102.0,
+      "change_pct": 3.5,
+      "trend": "up",
+      "historical_min": 2888.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
+      "rank": 34
+    },
+    {
+      "origin": "GIG",
+      "destination": "MCO",
+      "departure_date": "2027-03-02",
+      "return_date": "2027-03-20",
+      "airline": "COPA",
+      "price": 2990.0,
+      "duration": "10h 46min",
+      "duration_minutes": 646,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 2] [5, 5]",
+      "arrival": "[2027, 3, 2] [22, 22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-20&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 18,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-20&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-02&return=2027-03-20&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": 2888.0,
+      "change_amount": 102.0,
+      "change_pct": 3.5,
+      "trend": "up",
+      "historical_min": 2888.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
+      "rank": 35
+    },
+    {
+      "origin": "GIG",
+      "destination": "MCO",
+      "departure_date": "2027-03-02",
+      "return_date": "2027-03-21",
+      "airline": "COPA",
+      "price": 2990.0,
+      "duration": "10h 46min",
+      "duration_minutes": 646,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 2] [5, 5]",
+      "arrival": "[2027, 3, 2] [22, 22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-21&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 19,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-21&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-02&return=2027-03-21&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": 2888.0,
+      "change_amount": 102.0,
+      "change_pct": 3.5,
+      "trend": "up",
+      "historical_min": 2888.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
+      "rank": 36
     },
     {
       "origin": "GIG",
@@ -1059,7 +1323,7 @@
       "historical_min": 3082.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 29
+      "rank": 37
     },
     {
       "origin": "GIG",
@@ -1092,7 +1356,7 @@
       "historical_min": 3082.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 30
+      "rank": 38
     },
     {
       "origin": "GIG",
@@ -1125,7 +1389,7 @@
       "historical_min": 3082.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 31
+      "rank": 39
     },
     {
       "origin": "GIG",
@@ -1158,7 +1422,7 @@
       "historical_min": 3347.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 32
+      "rank": 40
     },
     {
       "origin": "GIG",
@@ -1191,7 +1455,7 @@
       "historical_min": 4844.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 33
+      "rank": 41
     },
     {
       "origin": "GIG",
@@ -1224,7 +1488,7 @@
       "historical_min": 4844.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 34
+      "rank": 42
     },
     {
       "origin": "GIG",
@@ -1257,7 +1521,7 @@
       "historical_min": 4844.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 35
+      "rank": 43
     },
     {
       "origin": "GIG",
@@ -1290,7 +1554,7 @@
       "historical_min": 4844.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 36
+      "rank": 44
     },
     {
       "origin": "GIG",
@@ -1323,7 +1587,7 @@
       "historical_min": 4844.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 37
+      "rank": 45
     },
     {
       "origin": "GIG",
@@ -1356,7 +1620,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 38
+      "rank": 46
     },
     {
       "origin": "GIG",
@@ -1389,7 +1653,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 39
+      "rank": 47
     },
     {
       "origin": "GIG",
@@ -1422,7 +1686,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 40
+      "rank": 48
     },
     {
       "origin": "GIG",
@@ -1455,7 +1719,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 41
+      "rank": 49
     },
     {
       "origin": "GIG",
@@ -1488,7 +1752,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 42
+      "rank": 50
     },
     {
       "origin": "GIG",
@@ -1521,7 +1785,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 43
+      "rank": 51
     },
     {
       "origin": "GIG",
@@ -1554,7 +1818,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 44
+      "rank": 52
     },
     {
       "origin": "GIG",
@@ -1587,7 +1851,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 45
+      "rank": 53
     },
     {
       "origin": "GIG",
@@ -1620,7 +1884,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 46
+      "rank": 54
     },
     {
       "origin": "GIG",
@@ -1653,7 +1917,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 47
+      "rank": 55
     },
     {
       "origin": "GIG",
@@ -1686,7 +1950,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 48
+      "rank": 56
     },
     {
       "origin": "GIG",
@@ -1719,7 +1983,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 49
+      "rank": 57
     },
     {
       "origin": "GIG",
@@ -1752,7 +2016,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 50
+      "rank": 58
     },
     {
       "origin": "GIG",
@@ -1785,7 +2049,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 51
+      "rank": 59
     },
     {
       "origin": "GIG",
@@ -1818,7 +2082,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 52
+      "rank": 60
     },
     {
       "origin": "GIG",
@@ -1851,7 +2115,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 53
+      "rank": 61
     },
     {
       "origin": "GIG",
@@ -1884,7 +2148,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 54
+      "rank": 62
     },
     {
       "origin": "GIG",
@@ -1917,7 +2181,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 55
+      "rank": 63
     },
     {
       "origin": "GIG",
@@ -1950,7 +2214,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 56
+      "rank": 64
     },
     {
       "origin": "GIG",
@@ -1983,7 +2247,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 57
+      "rank": 65
     },
     {
       "origin": "GIG",
@@ -2016,7 +2280,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 58
+      "rank": 66
     },
     {
       "origin": "GIG",
@@ -2049,7 +2313,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 59
+      "rank": 67
     },
     {
       "origin": "GIG",
@@ -2082,7 +2346,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 60
+      "rank": 68
     },
     {
       "origin": "GIG",
@@ -2115,7 +2379,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 61
+      "rank": 69
     },
     {
       "origin": "GIG",
@@ -2148,7 +2412,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 62
+      "rank": 70
     },
     {
       "origin": "GIG",
@@ -2181,7 +2445,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 63
+      "rank": 71
     },
     {
       "origin": "GIG",
@@ -2214,7 +2478,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 64
+      "rank": 72
     },
     {
       "origin": "GIG",
@@ -2247,7 +2511,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 65
+      "rank": 73
     },
     {
       "origin": "GIG",
@@ -2280,7 +2544,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 66
+      "rank": 74
     },
     {
       "origin": "GIG",
@@ -2313,7 +2577,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 67
+      "rank": 75
     },
     {
       "origin": "GIG",
@@ -2346,7 +2610,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 68
+      "rank": 76
     },
     {
       "origin": "GIG",
@@ -2379,7 +2643,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 69
+      "rank": 77
     },
     {
       "origin": "GIG",
@@ -2412,7 +2676,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 70
+      "rank": 78
     },
     {
       "origin": "GIG",
@@ -2445,7 +2709,7 @@
       "historical_min": 5062.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 71
+      "rank": 79
     },
     {
       "origin": "GIG",
@@ -2478,7 +2742,7 @@
       "historical_min": 5062.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 72
+      "rank": 80
     },
     {
       "origin": "GIG",
@@ -2511,7 +2775,7 @@
       "historical_min": 5062.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 73
+      "rank": 81
     },
     {
       "origin": "GIG",
@@ -2544,7 +2808,7 @@
       "historical_min": 5062.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 74
+      "rank": 82
     },
     {
       "origin": "GIG",
@@ -2577,7 +2841,7 @@
       "historical_min": 5062.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 75
+      "rank": 83
     },
     {
       "origin": "GIG",
@@ -2610,7 +2874,7 @@
       "historical_min": 5146.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 76
+      "rank": 84
     },
     {
       "origin": "GIG",
@@ -2643,7 +2907,7 @@
       "historical_min": 5146.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 77
+      "rank": 85
     },
     {
       "origin": "GIG",
@@ -2676,7 +2940,7 @@
       "historical_min": 5146.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 78
+      "rank": 86
     },
     {
       "origin": "GIG",
@@ -2709,7 +2973,7 @@
       "historical_min": 5332.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 79
+      "rank": 87
     },
     {
       "origin": "GIG",
@@ -2742,7 +3006,7 @@
       "historical_min": 5332.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 80
+      "rank": 88
     },
     {
       "origin": "GIG",
@@ -2775,7 +3039,7 @@
       "historical_min": 5467.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 81
+      "rank": 89
     },
     {
       "origin": "GIG",
@@ -2808,7 +3072,7 @@
       "historical_min": 5467.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 82
+      "rank": 90
     },
     {
       "origin": "GIG",
@@ -2841,7 +3105,7 @@
       "historical_min": 5706.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 83
+      "rank": 91
     },
     {
       "origin": "GIG",
@@ -2874,7 +3138,7 @@
       "historical_min": 5776.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 84
+      "rank": 92
     },
     {
       "origin": "GIG",
@@ -2907,7 +3171,7 @@
       "historical_min": 5776.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 85
+      "rank": 93
     },
     {
       "origin": "GIG",
@@ -2940,7 +3204,7 @@
       "historical_min": 5776.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 86
+      "rank": 94
     },
     {
       "origin": "GIG",
@@ -2973,7 +3237,7 @@
       "historical_min": 5776.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 87
+      "rank": 95
     },
     {
       "origin": "GIG",
@@ -3006,7 +3270,7 @@
       "historical_min": 5776.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 88
+      "rank": 96
     },
     {
       "origin": "GIG",
@@ -3039,7 +3303,7 @@
       "historical_min": 5776.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 89
+      "rank": 97
     },
     {
       "origin": "GIG",
@@ -3072,7 +3336,7 @@
       "historical_min": 5776.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 90
+      "rank": 98
     },
     {
       "origin": "GIG",
@@ -3105,7 +3369,7 @@
       "historical_min": 5776.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 91
+      "rank": 99
     },
     {
       "origin": "GIG",
@@ -3138,172 +3402,7 @@
       "historical_min": 5776.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 92
-    },
-    {
-      "origin": "GIG",
-      "destination": "MCO",
-      "departure_date": "2027-03-01",
-      "return_date": "2027-06-18",
-      "airline": "Azul",
-      "price": 5776.0,
-      "duration": "10h 10min",
-      "duration_minutes": 610,
-      "stops": "1 escala",
-      "stops_count": 1,
-      "departure": "[2027, 3, 1] [20, 55]",
-      "arrival": "[2027, 3, 2] [19, 30]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-01+returning+2027-06-18&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 109,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-01+returning+2027-06-18&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-01&return=2027-06-18&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": 5776.0,
-      "change_amount": 0.0,
-      "change_pct": 0.0,
-      "trend": "same",
-      "historical_min": 5776.0,
-      "history_samples": 1,
-      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 93
-    },
-    {
-      "origin": "GIG",
-      "destination": "MCO",
-      "departure_date": "2027-03-01",
-      "return_date": "2027-06-21",
-      "airline": "Azul",
-      "price": 5776.0,
-      "duration": "10h 10min",
-      "duration_minutes": 610,
-      "stops": "1 escala",
-      "stops_count": 1,
-      "departure": "[2027, 3, 1] [20, 55]",
-      "arrival": "[2027, 3, 2] [19, 30]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-01+returning+2027-06-21&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 112,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-01+returning+2027-06-21&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-01&return=2027-06-21&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": 5776.0,
-      "change_amount": 0.0,
-      "change_pct": 0.0,
-      "trend": "same",
-      "historical_min": 5776.0,
-      "history_samples": 1,
-      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 94
-    },
-    {
-      "origin": "GIG",
-      "destination": "MCO",
-      "departure_date": "2027-03-01",
-      "return_date": "2027-05-29",
-      "airline": "Azul",
-      "price": 5934.0,
-      "duration": "10h 10min",
-      "duration_minutes": 610,
-      "stops": "1 escala",
-      "stops_count": 1,
-      "departure": "[2027, 3, 1] [20, 55]",
-      "arrival": "[2027, 3, 2] [19, 30]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-01+returning+2027-05-29&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 89,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-01+returning+2027-05-29&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-01&return=2027-05-29&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": 5934.0,
-      "change_amount": 0.0,
-      "change_pct": 0.0,
-      "trend": "same",
-      "historical_min": 5934.0,
-      "history_samples": 1,
-      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 95
-    },
-    {
-      "origin": "GIG",
-      "destination": "MCO",
-      "departure_date": "2027-03-01",
-      "return_date": "2027-06-25",
-      "airline": "Azul",
-      "price": 5934.0,
-      "duration": "10h 10min",
-      "duration_minutes": 610,
-      "stops": "1 escala",
-      "stops_count": 1,
-      "departure": "[2027, 3, 1] [20, 55]",
-      "arrival": "[2027, 3, 2] [19, 30]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-01+returning+2027-06-25&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 116,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-01+returning+2027-06-25&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-01&return=2027-06-25&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": 5934.0,
-      "change_amount": 0.0,
-      "change_pct": 0.0,
-      "trend": "same",
-      "historical_min": 5934.0,
-      "history_samples": 1,
-      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 96
-    },
-    {
-      "origin": "GIG",
-      "destination": "MCO",
-      "departure_date": "2027-03-01",
-      "return_date": "2027-05-30",
-      "airline": "Azul",
-      "price": 7325.0,
-      "duration": "10h 10min",
-      "duration_minutes": 610,
-      "stops": "1 escala",
-      "stops_count": 1,
-      "departure": "[2027, 3, 1] [20, 55]",
-      "arrival": "[2027, 3, 2] [19, 30]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-01+returning+2027-05-30&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 90,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-01+returning+2027-05-30&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-01&return=2027-05-30&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": 7325.0,
-      "change_amount": 0.0,
-      "change_pct": 0.0,
-      "trend": "same",
-      "historical_min": 7325.0,
-      "history_samples": 1,
-      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 97
+      "rank": 100
     }
   ],
   "all_results": [
@@ -3871,6 +3970,105 @@
     {
       "origin": "GIG",
       "destination": "MCO",
+      "departure_date": "2027-03-02",
+      "return_date": "2027-03-18",
+      "airline": "American",
+      "price": 2512.0,
+      "duration": "10h 00min",
+      "duration_minutes": 600,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 2] [23, 55]",
+      "arrival": "[2027, 3, 3] [16, 57]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-18&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 16,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-18&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-02&return=2027-03-18&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": 2614.0,
+      "change_amount": -102.0,
+      "change_pct": -3.9,
+      "trend": "down",
+      "historical_min": 2512.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
+      "rank": 18
+    },
+    {
+      "origin": "GIG",
+      "destination": "MCO",
+      "departure_date": "2027-03-02",
+      "return_date": "2027-03-22",
+      "airline": "American",
+      "price": 2512.0,
+      "duration": "10h 00min",
+      "duration_minutes": 600,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 2] [23, 55]",
+      "arrival": "[2027, 3, 3] [16, 57]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-22&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 20,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-22&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-02&return=2027-03-22&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": 2614.0,
+      "change_amount": -102.0,
+      "change_pct": -3.9,
+      "trend": "down",
+      "historical_min": 2512.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
+      "rank": 19
+    },
+    {
+      "origin": "GIG",
+      "destination": "MCO",
+      "departure_date": "2027-03-02",
+      "return_date": "2027-03-23",
+      "airline": "American",
+      "price": 2512.0,
+      "duration": "10h 00min",
+      "duration_minutes": 600,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 2] [23, 55]",
+      "arrival": "[2027, 3, 3] [16, 57]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-23&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 21,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-23&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-02&return=2027-03-23&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": 2614.0,
+      "change_amount": -102.0,
+      "change_pct": -3.9,
+      "trend": "down",
+      "historical_min": 2512.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
+      "rank": 20
+    },
+    {
+      "origin": "GIG",
+      "destination": "MCO",
       "departure_date": "2027-03-01",
       "return_date": "2027-03-10",
       "airline": "American",
@@ -3899,7 +4097,40 @@
       "historical_min": 2548.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 18
+      "rank": 21
+    },
+    {
+      "origin": "GIG",
+      "destination": "MCO",
+      "departure_date": "2027-03-02",
+      "return_date": "2027-03-14",
+      "airline": "American",
+      "price": 2548.0,
+      "duration": "10h 00min",
+      "duration_minutes": 600,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 2] [23, 55]",
+      "arrival": "[2027, 3, 3] [16, 57]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-14&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 12,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-14&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-02&return=2027-03-14&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": 2585.0,
+      "change_amount": -37.0,
+      "change_pct": -1.4,
+      "trend": "down",
+      "historical_min": 2548.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
+      "rank": 22
     },
     {
       "origin": "GIG",
@@ -3932,7 +4163,7 @@
       "historical_min": 2585.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 19
+      "rank": 23
     },
     {
       "origin": "GIG",
@@ -3965,7 +4196,7 @@
       "historical_min": 2585.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 20
+      "rank": 24
     },
     {
       "origin": "GIG",
@@ -3998,7 +4229,7 @@
       "historical_min": 2585.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 21
+      "rank": 25
     },
     {
       "origin": "GIG",
@@ -4031,7 +4262,7 @@
       "historical_min": 2585.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 22
+      "rank": 26
     },
     {
       "origin": "GIG",
@@ -4064,7 +4295,7 @@
       "historical_min": 2585.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 23
+      "rank": 27
     },
     {
       "origin": "GIG",
@@ -4097,7 +4328,40 @@
       "historical_min": 2585.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 24
+      "rank": 28
+    },
+    {
+      "origin": "GIG",
+      "destination": "MCO",
+      "departure_date": "2027-03-02",
+      "return_date": "2027-03-17",
+      "airline": "Avianca",
+      "price": 2585.0,
+      "duration": "10h 35min",
+      "duration_minutes": 635,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 2] [1, 40]",
+      "arrival": "[2027, 3, 2] [14, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-17&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 15,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-17&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-02&return=2027-03-17&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": 2585.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 2585.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
+      "rank": 29
     },
     {
       "origin": "GIG",
@@ -4130,7 +4394,7 @@
       "historical_min": 2662.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 25
+      "rank": 30
     },
     {
       "origin": "GIG",
@@ -4163,7 +4427,7 @@
       "historical_min": 2662.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 26
+      "rank": 31
     },
     {
       "origin": "GIG",
@@ -4196,7 +4460,7 @@
       "historical_min": 2662.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 27
+      "rank": 32
     },
     {
       "origin": "GIG",
@@ -4229,7 +4493,106 @@
       "historical_min": 2662.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 28
+      "rank": 33
+    },
+    {
+      "origin": "GIG",
+      "destination": "MCO",
+      "departure_date": "2027-03-02",
+      "return_date": "2027-03-19",
+      "airline": "COPA",
+      "price": 2990.0,
+      "duration": "10h 46min",
+      "duration_minutes": 646,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 2] [5, 5]",
+      "arrival": "[2027, 3, 2] [22, 22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-19&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 17,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-19&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-02&return=2027-03-19&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": 2888.0,
+      "change_amount": 102.0,
+      "change_pct": 3.5,
+      "trend": "up",
+      "historical_min": 2888.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
+      "rank": 34
+    },
+    {
+      "origin": "GIG",
+      "destination": "MCO",
+      "departure_date": "2027-03-02",
+      "return_date": "2027-03-20",
+      "airline": "COPA",
+      "price": 2990.0,
+      "duration": "10h 46min",
+      "duration_minutes": 646,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 2] [5, 5]",
+      "arrival": "[2027, 3, 2] [22, 22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-20&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 18,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-20&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-02&return=2027-03-20&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": 2888.0,
+      "change_amount": 102.0,
+      "change_pct": 3.5,
+      "trend": "up",
+      "historical_min": 2888.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
+      "rank": 35
+    },
+    {
+      "origin": "GIG",
+      "destination": "MCO",
+      "departure_date": "2027-03-02",
+      "return_date": "2027-03-21",
+      "airline": "COPA",
+      "price": 2990.0,
+      "duration": "10h 46min",
+      "duration_minutes": 646,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 2] [5, 5]",
+      "arrival": "[2027, 3, 2] [22, 22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-21&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 19,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-02+returning+2027-03-21&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-02&return=2027-03-21&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": 2888.0,
+      "change_amount": 102.0,
+      "change_pct": 3.5,
+      "trend": "up",
+      "historical_min": 2888.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
+      "rank": 36
     },
     {
       "origin": "GIG",
@@ -4262,7 +4625,7 @@
       "historical_min": 3082.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 29
+      "rank": 37
     },
     {
       "origin": "GIG",
@@ -4295,7 +4658,7 @@
       "historical_min": 3082.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 30
+      "rank": 38
     },
     {
       "origin": "GIG",
@@ -4328,7 +4691,7 @@
       "historical_min": 3082.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 31
+      "rank": 39
     },
     {
       "origin": "GIG",
@@ -4361,7 +4724,7 @@
       "historical_min": 3347.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 32
+      "rank": 40
     },
     {
       "origin": "GIG",
@@ -4394,7 +4757,7 @@
       "historical_min": 4844.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 33
+      "rank": 41
     },
     {
       "origin": "GIG",
@@ -4427,7 +4790,7 @@
       "historical_min": 4844.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 34
+      "rank": 42
     },
     {
       "origin": "GIG",
@@ -4460,7 +4823,7 @@
       "historical_min": 4844.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 35
+      "rank": 43
     },
     {
       "origin": "GIG",
@@ -4493,7 +4856,7 @@
       "historical_min": 4844.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 36
+      "rank": 44
     },
     {
       "origin": "GIG",
@@ -4526,7 +4889,7 @@
       "historical_min": 4844.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 37
+      "rank": 45
     },
     {
       "origin": "GIG",
@@ -4559,7 +4922,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 38
+      "rank": 46
     },
     {
       "origin": "GIG",
@@ -4592,7 +4955,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 39
+      "rank": 47
     },
     {
       "origin": "GIG",
@@ -4625,7 +4988,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 40
+      "rank": 48
     },
     {
       "origin": "GIG",
@@ -4658,7 +5021,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 41
+      "rank": 49
     },
     {
       "origin": "GIG",
@@ -4691,7 +5054,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 42
+      "rank": 50
     },
     {
       "origin": "GIG",
@@ -4724,7 +5087,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 43
+      "rank": 51
     },
     {
       "origin": "GIG",
@@ -4757,7 +5120,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 44
+      "rank": 52
     },
     {
       "origin": "GIG",
@@ -4790,7 +5153,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 45
+      "rank": 53
     },
     {
       "origin": "GIG",
@@ -4823,7 +5186,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 46
+      "rank": 54
     },
     {
       "origin": "GIG",
@@ -4856,7 +5219,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 47
+      "rank": 55
     },
     {
       "origin": "GIG",
@@ -4889,7 +5252,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 48
+      "rank": 56
     },
     {
       "origin": "GIG",
@@ -4922,7 +5285,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 49
+      "rank": 57
     },
     {
       "origin": "GIG",
@@ -4955,7 +5318,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 50
+      "rank": 58
     },
     {
       "origin": "GIG",
@@ -4988,7 +5351,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 51
+      "rank": 59
     },
     {
       "origin": "GIG",
@@ -5021,7 +5384,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 52
+      "rank": 60
     },
     {
       "origin": "GIG",
@@ -5054,7 +5417,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 53
+      "rank": 61
     },
     {
       "origin": "GIG",
@@ -5087,7 +5450,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 54
+      "rank": 62
     },
     {
       "origin": "GIG",
@@ -5120,7 +5483,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 55
+      "rank": 63
     },
     {
       "origin": "GIG",
@@ -5153,7 +5516,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 56
+      "rank": 64
     },
     {
       "origin": "GIG",
@@ -5186,7 +5549,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 57
+      "rank": 65
     },
     {
       "origin": "GIG",
@@ -5219,7 +5582,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 58
+      "rank": 66
     },
     {
       "origin": "GIG",
@@ -5252,7 +5615,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 59
+      "rank": 67
     },
     {
       "origin": "GIG",
@@ -5285,7 +5648,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 60
+      "rank": 68
     },
     {
       "origin": "GIG",
@@ -5318,7 +5681,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 61
+      "rank": 69
     },
     {
       "origin": "GIG",
@@ -5351,7 +5714,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 62
+      "rank": 70
     },
     {
       "origin": "GIG",
@@ -5384,7 +5747,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 63
+      "rank": 71
     },
     {
       "origin": "GIG",
@@ -5417,7 +5780,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 64
+      "rank": 72
     },
     {
       "origin": "GIG",
@@ -5450,7 +5813,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 65
+      "rank": 73
     },
     {
       "origin": "GIG",
@@ -5483,7 +5846,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 66
+      "rank": 74
     },
     {
       "origin": "GIG",
@@ -5516,7 +5879,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 67
+      "rank": 75
     },
     {
       "origin": "GIG",
@@ -5549,7 +5912,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 68
+      "rank": 76
     },
     {
       "origin": "GIG",
@@ -5582,7 +5945,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 69
+      "rank": 77
     },
     {
       "origin": "GIG",
@@ -5615,7 +5978,7 @@
       "historical_min": 5027.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 70
+      "rank": 78
     },
     {
       "origin": "GIG",
@@ -5648,7 +6011,7 @@
       "historical_min": 5062.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 71
+      "rank": 79
     },
     {
       "origin": "GIG",
@@ -5681,7 +6044,7 @@
       "historical_min": 5062.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 72
+      "rank": 80
     },
     {
       "origin": "GIG",
@@ -5714,7 +6077,7 @@
       "historical_min": 5062.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 73
+      "rank": 81
     },
     {
       "origin": "GIG",
@@ -5747,7 +6110,7 @@
       "historical_min": 5062.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 74
+      "rank": 82
     },
     {
       "origin": "GIG",
@@ -5780,7 +6143,7 @@
       "historical_min": 5062.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 75
+      "rank": 83
     },
     {
       "origin": "GIG",
@@ -5813,7 +6176,7 @@
       "historical_min": 5146.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 76
+      "rank": 84
     },
     {
       "origin": "GIG",
@@ -5846,7 +6209,7 @@
       "historical_min": 5146.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 77
+      "rank": 85
     },
     {
       "origin": "GIG",
@@ -5879,7 +6242,7 @@
       "historical_min": 5146.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 78
+      "rank": 86
     },
     {
       "origin": "GIG",
@@ -5912,7 +6275,7 @@
       "historical_min": 5332.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 79
+      "rank": 87
     },
     {
       "origin": "GIG",
@@ -5945,7 +6308,7 @@
       "historical_min": 5332.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 80
+      "rank": 88
     },
     {
       "origin": "GIG",
@@ -5978,7 +6341,7 @@
       "historical_min": 5467.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 81
+      "rank": 89
     },
     {
       "origin": "GIG",
@@ -6011,7 +6374,7 @@
       "historical_min": 5467.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 82
+      "rank": 90
     },
     {
       "origin": "GIG",
@@ -6044,7 +6407,7 @@
       "historical_min": 5706.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 83
+      "rank": 91
     },
     {
       "origin": "GIG",
@@ -6077,7 +6440,7 @@
       "historical_min": 5776.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 84
+      "rank": 92
     },
     {
       "origin": "GIG",
@@ -6110,7 +6473,7 @@
       "historical_min": 5776.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 85
+      "rank": 93
     },
     {
       "origin": "GIG",
@@ -6143,7 +6506,7 @@
       "historical_min": 5776.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 86
+      "rank": 94
     },
     {
       "origin": "GIG",
@@ -6176,7 +6539,7 @@
       "historical_min": 5776.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 87
+      "rank": 95
     },
     {
       "origin": "GIG",
@@ -6209,7 +6572,7 @@
       "historical_min": 5776.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 88
+      "rank": 96
     },
     {
       "origin": "GIG",
@@ -6242,7 +6605,7 @@
       "historical_min": 5776.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 89
+      "rank": 97
     },
     {
       "origin": "GIG",
@@ -6275,7 +6638,7 @@
       "historical_min": 5776.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 90
+      "rank": 98
     },
     {
       "origin": "GIG",
@@ -6308,7 +6671,7 @@
       "historical_min": 5776.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 91
+      "rank": 99
     },
     {
       "origin": "GIG",
@@ -6341,7 +6704,7 @@
       "historical_min": 5776.0,
       "history_samples": 1,
       "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 92
+      "rank": 100
     },
     {
       "origin": "GIG",
@@ -6373,8 +6736,7 @@
       "trend": "same",
       "historical_min": 5776.0,
       "history_samples": 1,
-      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 93
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z"
     },
     {
       "origin": "GIG",
@@ -6406,8 +6768,7 @@
       "trend": "same",
       "historical_min": 5776.0,
       "history_samples": 1,
-      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 94
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z"
     },
     {
       "origin": "GIG",
@@ -6439,8 +6800,7 @@
       "trend": "same",
       "historical_min": 5934.0,
       "history_samples": 1,
-      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 95
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z"
     },
     {
       "origin": "GIG",
@@ -6472,8 +6832,7 @@
       "trend": "same",
       "historical_min": 5934.0,
       "history_samples": 1,
-      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 96
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z"
     },
     {
       "origin": "GIG",
@@ -6505,8 +6864,7 @@
       "trend": "same",
       "historical_min": 7325.0,
       "history_samples": 1,
-      "previous_seen_at": "2026-09-14T22:44:34.991425Z",
-      "rank": 97
+      "previous_seen_at": "2026-09-14T22:44:34.991425Z"
     }
   ],
   "errors": [
@@ -6544,7 +6902,11 @@
     "2027-03-01->2027-06-28 2027-03-01->2027-06-28: ProviderResponseError: Google returned a provider error",
     "2027-03-01->2027-06-30 2027-03-01->2027-06-30: ProviderResponseError: Google returned a provider error",
     "2027-03-02->2027-03-04 2027-03-02->2027-03-04: ProviderResponseError: Google returned a provider error",
-    "2027-03-02->2027-03-09 2027-03-02->2027-03-09: ProviderResponseError: Google returned a provider error"
+    "2027-03-02->2027-03-09 2027-03-02->2027-03-09: ProviderResponseError: Google returned a provider error",
+    "2027-03-02->2027-03-16 2027-03-02->2027-03-16: ProviderResponseError: Google returned a provider error",
+    "2027-03-02->2027-03-15 2027-03-02->2027-03-15: ProviderResponseError: Google returned a provider error",
+    "2027-03-02->2027-03-24 2027-03-02->2027-03-24: ProviderResponseError: Google returned a provider error",
+    "2027-03-02->2027-03-26 2027-03-02->2027-03-26: ProviderResponseError: Google returned a provider error"
   ],
   "currency": "BRL",
   "source_strategy": "google_flights_with_ita_verification",
@@ -6574,7 +6936,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 132,
+    "google": 144,
     "ita": 0
   },
   "resume": {
@@ -6582,16 +6944,16 @@
     "window_minutes": 60,
     "cache_id": "8efec0a65f186d676350176a",
     "reused_combinations": 0,
-    "searched_this_run": 132,
-    "remaining_this_run": 7249,
-    "reusable_now": 97,
-    "retryable_for_next_run": 7284,
-    "saved_records": 132,
-    "saved_errors": 35,
+    "searched_this_run": 144,
+    "remaining_this_run": 7237,
+    "reusable_now": 105,
+    "retryable_for_next_run": 7276,
+    "saved_records": 144,
+    "saved_errors": 39,
     "checkpoint_path": "docs/data/flight-search-checkpoints/8efec0a65f186d676350176a.json"
   },
   "current_pair": {
     "departure_date": "2027-03-02",
-    "return_date": "2027-03-13"
+    "return_date": "2027-03-26"
   }
 }
