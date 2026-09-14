@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-14T20:38:16.897602Z",
-  "updated_at": "2026-09-14T20:38:16.897602Z",
+  "generated_at": "2026-09-14T20:38:20.636983Z",
+  "updated_at": "2026-09-14T20:38:20.636983Z",
   "started_at": "2026-09-14T20:36:48.013617Z",
   "status": "running",
   "stage": "multisource",
@@ -18,22 +18,22 @@
   },
   "stats": {
     "combinations": 7381,
-    "processed_combinations": 360,
-    "primary_completed": 360,
+    "processed_combinations": 372,
+    "primary_completed": 372,
     "primary_total": 7381,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 24,
-    "coverage_pct": 0.3,
+    "priced_combinations": 30,
+    "coverage_pct": 0.4,
     "lowest_price": 3303.0,
-    "result_count": 24
+    "result_count": 30
   },
   "history_summary": {
     "compared": 0,
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 24
+    "new": 30
   },
   "daily_min": [
     {
@@ -67,7 +67,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 16
+      "rank": 22
     },
     {
       "origin": "GRU",
@@ -100,7 +100,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 8
+      "rank": 14
     },
     {
       "origin": "GRU",
@@ -134,6 +134,39 @@
       "history_samples": 0,
       "previous_seen_at": null,
       "rank": 1
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-05",
+      "airline": "Avianca",
+      "price": 3303.0,
+      "duration": "10h 25min",
+      "duration_minutes": 625,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 8, 4] [1, 20]",
+      "arrival": "[2027, 8, 4] [14, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-05&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 1,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-05&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-08-04&return=2027-08-05&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 8
     }
   ],
   "results": [
@@ -371,6 +404,204 @@
     {
       "origin": "GRU",
       "destination": "MCO",
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-05",
+      "airline": "Avianca",
+      "price": 3303.0,
+      "duration": "10h 25min",
+      "duration_minutes": 625,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 8, 4] [1, 20]",
+      "arrival": "[2027, 8, 4] [14, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-05&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 1,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-05&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-08-04&return=2027-08-05&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 8
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-06",
+      "airline": "Avianca",
+      "price": 3303.0,
+      "duration": "10h 25min",
+      "duration_minutes": 625,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 8, 4] [1, 20]",
+      "arrival": "[2027, 8, 4] [14, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-06&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 2,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-06&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-08-04&return=2027-08-06&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 9
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-07",
+      "airline": "Avianca",
+      "price": 3303.0,
+      "duration": "10h 25min",
+      "duration_minutes": 625,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 8, 4] [1, 20]",
+      "arrival": "[2027, 8, 4] [14, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-07&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 3,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-07&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-08-04&return=2027-08-07&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 10
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-08",
+      "airline": "Avianca",
+      "price": 3303.0,
+      "duration": "10h 25min",
+      "duration_minutes": 625,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 8, 4] [1, 20]",
+      "arrival": "[2027, 8, 4] [14, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-08&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 4,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-08&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-08-04&return=2027-08-08&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 11
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-09",
+      "airline": "Avianca",
+      "price": 3303.0,
+      "duration": "10h 25min",
+      "duration_minutes": 625,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 8, 4] [1, 20]",
+      "arrival": "[2027, 8, 4] [14, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-09&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 5,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-09&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-08-04&return=2027-08-09&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 12
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-10",
+      "airline": "Avianca",
+      "price": 3303.0,
+      "duration": "10h 25min",
+      "duration_minutes": 625,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 8, 4] [1, 20]",
+      "arrival": "[2027, 8, 4] [14, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-10&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 6,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-10&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-08-04&return=2027-08-10&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 13
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
       "departure_date": "2027-08-02",
       "return_date": "2027-08-03",
       "airline": "COPA",
@@ -399,7 +630,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 8
+      "rank": 14
     },
     {
       "origin": "GRU",
@@ -432,7 +663,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 9
+      "rank": 15
     },
     {
       "origin": "GRU",
@@ -465,7 +696,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 10
+      "rank": 16
     },
     {
       "origin": "GRU",
@@ -498,7 +729,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 11
+      "rank": 17
     },
     {
       "origin": "GRU",
@@ -531,7 +762,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 12
+      "rank": 18
     },
     {
       "origin": "GRU",
@@ -564,7 +795,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 13
+      "rank": 19
     },
     {
       "origin": "GRU",
@@ -597,7 +828,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 14
+      "rank": 20
     },
     {
       "origin": "GRU",
@@ -630,7 +861,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 15
+      "rank": 21
     },
     {
       "origin": "GRU",
@@ -663,7 +894,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 16
+      "rank": 22
     },
     {
       "origin": "GRU",
@@ -696,7 +927,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 17
+      "rank": 23
     },
     {
       "origin": "GRU",
@@ -729,7 +960,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 18
+      "rank": 24
     },
     {
       "origin": "GRU",
@@ -762,7 +993,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 19
+      "rank": 25
     },
     {
       "origin": "GRU",
@@ -795,7 +1026,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 20
+      "rank": 26
     },
     {
       "origin": "GRU",
@@ -828,7 +1059,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 21
+      "rank": 27
     },
     {
       "origin": "GRU",
@@ -861,7 +1092,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 22
+      "rank": 28
     },
     {
       "origin": "GRU",
@@ -894,7 +1125,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 23
+      "rank": 29
     },
     {
       "origin": "GRU",
@@ -927,7 +1158,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 24
+      "rank": 30
     }
   ],
   "all_results": [
@@ -1165,6 +1396,204 @@
     {
       "origin": "GRU",
       "destination": "MCO",
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-05",
+      "airline": "Avianca",
+      "price": 3303.0,
+      "duration": "10h 25min",
+      "duration_minutes": 625,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 8, 4] [1, 20]",
+      "arrival": "[2027, 8, 4] [14, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-05&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 1,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-05&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-08-04&return=2027-08-05&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 8
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-06",
+      "airline": "Avianca",
+      "price": 3303.0,
+      "duration": "10h 25min",
+      "duration_minutes": 625,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 8, 4] [1, 20]",
+      "arrival": "[2027, 8, 4] [14, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-06&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 2,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-06&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-08-04&return=2027-08-06&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 9
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-07",
+      "airline": "Avianca",
+      "price": 3303.0,
+      "duration": "10h 25min",
+      "duration_minutes": 625,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 8, 4] [1, 20]",
+      "arrival": "[2027, 8, 4] [14, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-07&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 3,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-07&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-08-04&return=2027-08-07&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 10
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-08",
+      "airline": "Avianca",
+      "price": 3303.0,
+      "duration": "10h 25min",
+      "duration_minutes": 625,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 8, 4] [1, 20]",
+      "arrival": "[2027, 8, 4] [14, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-08&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 4,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-08&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-08-04&return=2027-08-08&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 11
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-09",
+      "airline": "Avianca",
+      "price": 3303.0,
+      "duration": "10h 25min",
+      "duration_minutes": 625,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 8, 4] [1, 20]",
+      "arrival": "[2027, 8, 4] [14, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-09&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 5,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-09&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-08-04&return=2027-08-09&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 12
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-10",
+      "airline": "Avianca",
+      "price": 3303.0,
+      "duration": "10h 25min",
+      "duration_minutes": 625,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 8, 4] [1, 20]",
+      "arrival": "[2027, 8, 4] [14, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-10&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 6,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-10&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-08-04&return=2027-08-10&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 13
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
       "departure_date": "2027-08-02",
       "return_date": "2027-08-03",
       "airline": "COPA",
@@ -1193,7 +1622,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 8
+      "rank": 14
     },
     {
       "origin": "GRU",
@@ -1226,7 +1655,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 9
+      "rank": 15
     },
     {
       "origin": "GRU",
@@ -1259,7 +1688,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 10
+      "rank": 16
     },
     {
       "origin": "GRU",
@@ -1292,7 +1721,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 11
+      "rank": 17
     },
     {
       "origin": "GRU",
@@ -1325,7 +1754,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 12
+      "rank": 18
     },
     {
       "origin": "GRU",
@@ -1358,7 +1787,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 13
+      "rank": 19
     },
     {
       "origin": "GRU",
@@ -1391,7 +1820,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 14
+      "rank": 20
     },
     {
       "origin": "GRU",
@@ -1424,7 +1853,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 15
+      "rank": 21
     },
     {
       "origin": "GRU",
@@ -1457,7 +1886,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 16
+      "rank": 22
     },
     {
       "origin": "GRU",
@@ -1490,7 +1919,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 17
+      "rank": 23
     },
     {
       "origin": "GRU",
@@ -1523,7 +1952,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 18
+      "rank": 24
     },
     {
       "origin": "GRU",
@@ -1556,7 +1985,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 19
+      "rank": 25
     },
     {
       "origin": "GRU",
@@ -1589,7 +2018,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 20
+      "rank": 26
     },
     {
       "origin": "GRU",
@@ -1622,7 +2051,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 21
+      "rank": 27
     },
     {
       "origin": "GRU",
@@ -1655,7 +2084,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 22
+      "rank": 28
     },
     {
       "origin": "GRU",
@@ -1688,7 +2117,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 23
+      "rank": 29
     },
     {
       "origin": "GRU",
@@ -1721,7 +2150,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 24
+      "rank": 30
     }
   ],
   "errors": [
@@ -1814,7 +2243,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 360,
+    "google": 372,
     "ita": 0
   },
   "resume": {
@@ -1822,16 +2251,16 @@
     "window_minutes": 60,
     "cache_id": "101780d1207f87ea75d62a8b",
     "reused_combinations": 0,
-    "searched_this_run": 360,
-    "remaining_this_run": 7021,
-    "reusable_now": 24,
-    "retryable_for_next_run": 7357,
-    "saved_records": 360,
-    "saved_errors": 336,
+    "searched_this_run": 372,
+    "remaining_this_run": 7009,
+    "reusable_now": 30,
+    "retryable_for_next_run": 7351,
+    "saved_records": 372,
+    "saved_errors": 342,
     "checkpoint_path": "docs/data/flight-search-checkpoints/101780d1207f87ea75d62a8b.json"
   },
   "current_pair": {
-    "departure_date": "2027-08-03",
-    "return_date": "2027-11-30"
+    "departure_date": "2027-08-04",
+    "return_date": "2027-08-14"
   }
 }
