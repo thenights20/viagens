@@ -3,7 +3,7 @@
   "cache_id": "8efec0a65f186d676350176a",
   "signature": "GIG|MCO|2027-03-01|2027-06-30|2|BRL|economy|1",
   "created_at": "2026-09-14T21:22:01.818696Z",
-  "updated_at": "2026-09-14T22:21:29.579234Z",
+  "updated_at": "2026-09-14T22:21:36.503467Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "GIG",
@@ -195699,6 +195699,39 @@
         "search_links": {
           "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-05-09+returning+2027-06-09&curr=BRL&hl=pt-BR",
           "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-05-09&return=2027-06-09&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-05-09|2027-06-11": {
+      "departure_date": "2027-05-09",
+      "return_date": "2027-06-11",
+      "status": "priced",
+      "completed_at": "2026-09-14T22:21:36.503443Z",
+      "source": "google",
+      "row": {
+        "origin": "GIG",
+        "destination": "MCO",
+        "departure_date": "2027-05-09",
+        "return_date": "2027-06-11",
+        "airline": "Azul",
+        "price": 5776.0,
+        "duration": "10h 10min",
+        "duration_minutes": 610,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 5, 9] [6, 10]",
+        "arrival": "[2027, 5, 9] [20, 30]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-05-09+returning+2027-06-11&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 33,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-05-09+returning+2027-06-11&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-05-09&return=2027-06-11&currency=BRL"
         },
         "assigned_source": "google"
       },
