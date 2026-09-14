@@ -1,0 +1,123 @@
+name: Indigo GRU availability search
+run-name: "Indigo ${{ inputs.request_id || 'manual' }} · ${{ inputs.entry_date || '2026-09-15' }} → ${{ inputs.exit_date || '2026-10-06' }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      entry_date:
+        description: "Data de entrada (YYYY-MM-DD)"
+        required: true
+        default: "2026-09-15"
+        type: string
+      exit_date:
+        description: "Data de saída (YYYY-MM-DD)"
+        required: true
+        default: "2026-10-06"
+        type: string
+      exit_time:
+        description: "Hora de saída (HH:MM)"
+        required: true
+        default: "07:00"
+        type: string
+      from_time:
+        description: "Primeiro horário de entrada"
+        required: true
+        default: "05:00"
+        type: string
+      to_time:
+        description: "Último horário de entrada"
+        required: true
+        default: "14:00"
+        type: string
+      step_minutes:
+        description: "Intervalo entre horários"
+        required: true
+        default: "30"
+        type: choice
+        options: ["15", "30", "60"]
+      product:
+        description: "Produto"
+        required: true
+        default: "terminal3_garage"
+        type: choice
+        options: ["terminal3_garage", "terminal3_flex", "terminal2_standard", "terminal1", "any"]
+      request_id:
+        description: "ID da solicitação"
+        required: false
+        default: "manual"
+        type: string
+  push:
+    branches: [main]
+    paths:
+      - 'parking-indigo/**'
+      - '.github/workflows/indigo-parking-search.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: indigo-gru-search
+  cancel-in-progress: true
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+
+      - name: Dependências
+        run: npm install --no-save playwright-core@1.55.0
+
+      - name: Validar motor
+        run: node --check parking-indigo/search.mjs
+
+      - name: Consultar disponibilidade Indigo
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+          INDIGO_ENTRY_DATE: ${{ inputs.entry_date || '2026-09-15' }}
+          INDIGO_EXIT_DATE: ${{ inputs.exit_date || '2026-10-06' }}
+          INDIGO_EXIT_TIME: ${{ inputs.exit_time || '07:00' }}
+          INDIGO_FROM_TIME: ${{ inputs.from_time || '05:00' }}
+          INDIGO_TO_TIME: ${{ inputs.to_time || '14:00' }}
+          INDIGO_STEP_MINUTES: ${{ inputs.step_minutes || '30' }}
+          INDIGO_PRODUCT: ${{ inputs.product || 'terminal3_garage' }}
+          INDIGO_REQUEST_ID: ${{ inputs.request_id || 'manual' }}
+        run: node parking-indigo/search.mjs
+
+      - name: Validar resultado
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const d=JSON.parse(fs.readFileSync('docs/data/indigo-parking-search.json','utf8'));
+          if(d.status!=='completed') throw new Error(d.error||'Pesquisa Indigo não concluída');
+          if(!Array.isArray(d.results)||!d.results.length) throw new Error('Nenhum horário foi testado');
+          if(!d.results.every(x=>x.entry_time && ['available','sold_out','not_offered','error'].includes(x.status))) throw new Error('Resultado inválido');
+          console.log(`Indigo: ${d.stats.available_times}/${d.stats.tested_times} horários disponíveis`);
+          NODE
+
+      - name: Publicar resultado no painel
+        run: |
+          git config user.name "indigo-parking-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/indigo-parking-search.json
+          if git diff --cached --quiet; then
+            echo "Sem alterações."
+          else
+            git commit -m "data: atualizar disponibilidade Indigo GRU [skip ci]"
+            for tentativa in 1 2 3; do
+              git pull --rebase origin main && git push origin HEAD:main && break
+              echo "Tentativa $tentativa/3 para publicar resultado"
+              git rebase --abort >/dev/null 2>&1 || true
+              sleep 3
+            done
+          fi
