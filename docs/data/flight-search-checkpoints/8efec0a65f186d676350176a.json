@@ -3,7 +3,7 @@
   "cache_id": "8efec0a65f186d676350176a",
   "signature": "GIG|MCO|2027-03-01|2027-06-30|2|BRL|economy|1",
   "created_at": "2026-09-14T23:48:35.216011Z",
-  "updated_at": "2026-09-14T23:57:13.521998Z",
+  "updated_at": "2026-09-14T23:57:15.007766Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "GIG",
@@ -44046,6 +44046,160 @@
         "assigned_source": "google"
       },
       "errors": []
+    },
+    "2027-03-14|2027-05-20": {
+      "departure_date": "2027-03-14",
+      "return_date": "2027-05-20",
+      "status": "error",
+      "completed_at": "2026-09-14T23:57:14.952831Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-03-14->2027-05-20: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-03-14|2027-05-21": {
+      "departure_date": "2027-03-14",
+      "return_date": "2027-05-21",
+      "status": "error",
+      "completed_at": "2026-09-14T23:57:14.960076Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-03-14->2027-05-21: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-03-14|2027-05-22": {
+      "departure_date": "2027-03-14",
+      "return_date": "2027-05-22",
+      "status": "error",
+      "completed_at": "2026-09-14T23:57:14.967003Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-03-14->2027-05-22: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-03-14|2027-05-24": {
+      "departure_date": "2027-03-14",
+      "return_date": "2027-05-24",
+      "status": "priced",
+      "completed_at": "2026-09-14T23:57:14.974343Z",
+      "source": "google",
+      "row": {
+        "origin": "GIG",
+        "destination": "MCO",
+        "departure_date": "2027-03-14",
+        "return_date": "2027-05-24",
+        "airline": "Azul",
+        "price": 5776.0,
+        "duration": "10h 10min",
+        "duration_minutes": 610,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 3, 14] [6, 10]",
+        "arrival": "[2027, 3, 14] [20, 30]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-14+returning+2027-05-24&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 71,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-14+returning+2027-05-24&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-14&return=2027-05-24&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-03-14|2027-05-23": {
+      "departure_date": "2027-03-14",
+      "return_date": "2027-05-23",
+      "status": "priced",
+      "completed_at": "2026-09-14T23:57:14.982778Z",
+      "source": "google",
+      "row": {
+        "origin": "GIG",
+        "destination": "MCO",
+        "departure_date": "2027-03-14",
+        "return_date": "2027-05-23",
+        "airline": "Azul",
+        "price": 5027.0,
+        "duration": "10h 10min",
+        "duration_minutes": 610,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 3, 14] [6, 10]",
+        "arrival": "[2027, 3, 14] [20, 30]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-14+returning+2027-05-23&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 70,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-14+returning+2027-05-23&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-14&return=2027-05-23&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-03-14|2027-05-25": {
+      "departure_date": "2027-03-14",
+      "return_date": "2027-05-25",
+      "status": "priced",
+      "completed_at": "2026-09-14T23:57:14.991825Z",
+      "source": "google",
+      "row": {
+        "origin": "GIG",
+        "destination": "MCO",
+        "departure_date": "2027-03-14",
+        "return_date": "2027-05-25",
+        "airline": "Azul",
+        "price": 5027.0,
+        "duration": "10h 10min",
+        "duration_minutes": 610,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 3, 14] [6, 10]",
+        "arrival": "[2027, 3, 14] [20, 30]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-14+returning+2027-05-25&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 72,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-14+returning+2027-05-25&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-14&return=2027-05-25&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-03-14|2027-05-26": {
+      "departure_date": "2027-03-14",
+      "return_date": "2027-05-26",
+      "status": "error",
+      "completed_at": "2026-09-14T23:57:14.998787Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-03-14->2027-05-26: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-03-14|2027-05-27": {
+      "departure_date": "2027-03-14",
+      "return_date": "2027-05-27",
+      "status": "error",
+      "completed_at": "2026-09-14T23:57:15.007753Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-03-14->2027-05-27: ProviderResponseError: Google returned a provider error"
+      ]
     }
   }
 }
