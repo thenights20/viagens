@@ -193,3 +193,12 @@
   s.addEventListener('load', loadMiles, {once:true});
   document.head.appendChild(s);
 })();
+
+(() => {
+  if (document.querySelector('script[data-indigo-parking]') || document.querySelector('#indigoApp')) return;
+  const s = document.createElement('script');
+  s.src = './indigo-parking.js?v=20260914-1';
+  s.defer = true;
+  s.dataset.indigoParking = '1';
+  document.head.appendChild(s);
+})();
