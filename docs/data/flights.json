@@ -1,6 +1,6 @@
 {
   "version": "0.2.0",
-  "generated_at": "2026-09-14T01:36:34.632656Z",
+  "generated_at": "2026-09-14T07:06:08.932240Z",
   "source": "Google Flights via fast-flights + Swoop",
   "algorithm": "Radar robusto: mediana + MAD + percentis + z-score + booking window + histórico + revalidação",
   "origin_count": 11,
@@ -6824,12 +6824,11 @@
   ],
   "new_alerts": [],
   "scan": {
-    "scan_number": 23,
-    "scan_id": "20260914T013634Z-23",
+    "scan_number": 24,
+    "scan_id": "20260914T070608Z-24",
     "origin_codes": [
-      "GIG",
-      "TJL",
-      "ARU"
+      "PPB",
+      "MII"
     ],
     "destination_codes": [
       "BEL",
@@ -6840,20 +6839,27 @@
       "PMW"
     ],
     "date_profile": "datas distribuídas até ~9 meses",
-    "queries": 180,
-    "regular_results": 60,
-    "discovery_results": 42,
-    "fallback_results": 6,
-    "results": 102,
+    "queries": 120,
+    "regular_results": 0,
+    "discovery_results": 13,
+    "fallback_results": 0,
+    "results": 13,
     "revalidated": 0,
-    "errors": 6
+    "errors": 13
   },
   "errors": [
-    "ARU-PVH 2026-12-13/2026-12-21: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "ARU-PVH 2027-06-11/2027-06-15: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "ARU-PVH 2027-03-13/2027-03-17: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "ARU-MCP 2026-12-13/2026-12-17: fast-flights: Google document has no flight data script",
-    "ARU-PMW 2026-12-13/2026-12-21: fast-flights: Google document has no flight data script",
-    "ARU-PMW 2027-06-11/2027-06-19: fast-flights: Google document has no flight data script"
+    "PPB-BEL 2026-12-13/2026-12-17: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-BEL 2027-03-13/2027-03-21: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-MAO 2027-03-13/2027-03-21: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-MAO 2026-10-14/2026-10-22: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-PVH 2027-06-11/2027-06-15: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-BVB 2026-10-14/2026-10-18: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-PVH 2027-03-13/2027-03-17: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-PVH 2027-03-13/2027-03-21: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-BVB 2026-12-13/2026-12-17: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-BVB 2027-03-13/2027-03-17: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-PMW 2027-06-11/2027-06-15: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-MCP 2027-06-11/2027-06-15: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-PMW 2026-10-14/2026-10-22: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
   ]
 }
