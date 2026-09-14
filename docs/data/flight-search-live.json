@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-14T13:52:11.406479Z",
-  "updated_at": "2026-09-14T13:52:11.406479Z",
+  "generated_at": "2026-09-14T13:52:13.229126Z",
+  "updated_at": "2026-09-14T13:52:13.229126Z",
   "started_at": "2026-09-14T13:51:13.803458Z",
   "status": "running",
   "stage": "multisource",
@@ -18,13 +18,13 @@
   },
   "stats": {
     "combinations": 465,
-    "processed_combinations": 312,
-    "primary_completed": 312,
+    "processed_combinations": 324,
+    "primary_completed": 324,
     "primary_total": 465,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 310,
-    "coverage_pct": 66.7,
+    "priced_combinations": 322,
+    "coverage_pct": 69.2,
     "lowest_price": 4872.0,
     "result_count": 100
   },
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 310
+    "new": 322
   },
   "daily_min": [
     {
@@ -67,7 +67,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 56
+      "rank": 68
     },
     {
       "origin": "GRU",
@@ -132,7 +132,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 64
+      "rank": 76
     },
     {
       "origin": "GRU",
@@ -229,7 +229,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 81
+      "rank": 93
     },
     {
       "origin": "GRU",
@@ -261,8 +261,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 89
+      "previous_seen_at": null
     },
     {
       "origin": "GRU",
@@ -326,8 +325,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 97
+      "previous_seen_at": null
     },
     {
       "origin": "GRU",
@@ -392,7 +390,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 30
+      "rank": 42
     },
     {
       "origin": "GRU",
@@ -425,7 +423,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 12
+      "rank": 21
     },
     {
       "origin": "GRU",
@@ -459,6 +457,39 @@
       "history_samples": 0,
       "previous_seen_at": null,
       "rank": 1
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-15",
+      "airline": "COPA",
+      "price": 4872.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-15&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 1,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-15&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-15&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 9
     }
   ],
   "results": [
@@ -729,6 +760,237 @@
     {
       "origin": "GRU",
       "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-15",
+      "airline": "COPA",
+      "price": 4872.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-15&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 1,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-15&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-15&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 9
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-18",
+      "airline": "COPA",
+      "price": 4872.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-18&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 4,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-18&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-18&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 10
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-19",
+      "airline": "COPA",
+      "price": 4872.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-19&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 5,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-19&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-19&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 11
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-20",
+      "airline": "COPA",
+      "price": 4872.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-20&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 6,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-20&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-20&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 12
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-24",
+      "airline": "COPA",
+      "price": 4872.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-24&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 10,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-24&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-24&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 13
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-25",
+      "airline": "COPA",
+      "price": 4872.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-25&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 11,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-25&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-25&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 14
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-26",
+      "airline": "COPA",
+      "price": 4872.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-26&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 12,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-26&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-26&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 15
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
       "departure_date": "2027-01-13",
       "return_date": "2027-01-14",
       "airline": "COPA",
@@ -757,7 +1019,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 9
+      "rank": 16
     },
     {
       "origin": "GRU",
@@ -790,7 +1052,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 10
+      "rank": 17
     },
     {
       "origin": "GRU",
@@ -823,7 +1085,73 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 11
+      "rank": 18
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-17",
+      "airline": "COPA",
+      "price": 4901.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-17&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 3,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-17&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-17&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 19
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-23",
+      "airline": "COPA",
+      "price": 4901.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-23&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 9,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-23&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-23&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 20
     },
     {
       "origin": "GRU",
@@ -856,7 +1184,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 12
+      "rank": 21
     },
     {
       "origin": "GRU",
@@ -889,7 +1217,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 13
+      "rank": 22
     },
     {
       "origin": "GRU",
@@ -922,7 +1250,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 14
+      "rank": 23
     },
     {
       "origin": "GRU",
@@ -955,7 +1283,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 15
+      "rank": 24
     },
     {
       "origin": "GRU",
@@ -988,7 +1316,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 16
+      "rank": 25
     },
     {
       "origin": "GRU",
@@ -1021,7 +1349,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 17
+      "rank": 26
     },
     {
       "origin": "GRU",
@@ -1054,7 +1382,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 18
+      "rank": 27
     },
     {
       "origin": "GRU",
@@ -1087,7 +1415,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 19
+      "rank": 28
     },
     {
       "origin": "GRU",
@@ -1120,7 +1448,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 20
+      "rank": 29
     },
     {
       "origin": "GRU",
@@ -1153,7 +1481,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 21
+      "rank": 30
     },
     {
       "origin": "GRU",
@@ -1186,7 +1514,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 22
+      "rank": 31
     },
     {
       "origin": "GRU",
@@ -1219,7 +1547,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 23
+      "rank": 32
     },
     {
       "origin": "GRU",
@@ -1252,7 +1580,73 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 24
+      "rank": 33
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-21",
+      "airline": "COPA",
+      "price": 5094.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-21&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 7,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-21&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-21&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 34
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-22",
+      "airline": "COPA",
+      "price": 5094.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-22&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 8,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-22&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-22&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 35
     },
     {
       "origin": "GRU",
@@ -1285,7 +1679,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 25
+      "rank": 36
     },
     {
       "origin": "GRU",
@@ -1318,7 +1712,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 26
+      "rank": 37
     },
     {
       "origin": "GRU",
@@ -1351,7 +1745,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 27
+      "rank": 38
     },
     {
       "origin": "GRU",
@@ -1384,7 +1778,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 28
+      "rank": 39
     },
     {
       "origin": "GRU",
@@ -1417,7 +1811,40 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 29
+      "rank": 40
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-16",
+      "airline": "COPA",
+      "price": 5133.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-16&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 2,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-16&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-16&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 41
     },
     {
       "origin": "GRU",
@@ -1450,7 +1877,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 30
+      "rank": 42
     },
     {
       "origin": "GRU",
@@ -1483,7 +1910,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 31
+      "rank": 43
     },
     {
       "origin": "GRU",
@@ -1516,7 +1943,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 32
+      "rank": 44
     },
     {
       "origin": "GRU",
@@ -1549,7 +1976,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 33
+      "rank": 45
     },
     {
       "origin": "GRU",
@@ -1582,7 +2009,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 34
+      "rank": 46
     },
     {
       "origin": "GRU",
@@ -1615,7 +2042,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 35
+      "rank": 47
     },
     {
       "origin": "GRU",
@@ -1648,7 +2075,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 36
+      "rank": 48
     },
     {
       "origin": "GRU",
@@ -1681,7 +2108,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 37
+      "rank": 49
     },
     {
       "origin": "GRU",
@@ -1714,7 +2141,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 38
+      "rank": 50
     },
     {
       "origin": "GRU",
@@ -1747,7 +2174,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 39
+      "rank": 51
     },
     {
       "origin": "GRU",
@@ -1780,7 +2207,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 40
+      "rank": 52
     },
     {
       "origin": "GRU",
@@ -1813,7 +2240,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 41
+      "rank": 53
     },
     {
       "origin": "GRU",
@@ -1846,7 +2273,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 42
+      "rank": 54
     },
     {
       "origin": "GRU",
@@ -1879,7 +2306,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 43
+      "rank": 55
     },
     {
       "origin": "GRU",
@@ -1912,7 +2339,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 44
+      "rank": 56
     },
     {
       "origin": "GRU",
@@ -1945,7 +2372,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 45
+      "rank": 57
     },
     {
       "origin": "GRU",
@@ -1978,7 +2405,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 46
+      "rank": 58
     },
     {
       "origin": "GRU",
@@ -2011,7 +2438,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 47
+      "rank": 59
     },
     {
       "origin": "GRU",
@@ -2044,7 +2471,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 48
+      "rank": 60
     },
     {
       "origin": "GRU",
@@ -2077,7 +2504,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 49
+      "rank": 61
     },
     {
       "origin": "GRU",
@@ -2110,7 +2537,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 50
+      "rank": 62
     },
     {
       "origin": "GRU",
@@ -2143,7 +2570,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 51
+      "rank": 63
     },
     {
       "origin": "GRU",
@@ -2176,7 +2603,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 52
+      "rank": 64
     },
     {
       "origin": "GRU",
@@ -2209,7 +2636,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 53
+      "rank": 65
     },
     {
       "origin": "GRU",
@@ -2242,7 +2669,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 54
+      "rank": 66
     },
     {
       "origin": "GRU",
@@ -2275,7 +2702,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 55
+      "rank": 67
     },
     {
       "origin": "GRU",
@@ -2308,7 +2735,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 56
+      "rank": 68
     },
     {
       "origin": "GRU",
@@ -2341,7 +2768,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 57
+      "rank": 69
     },
     {
       "origin": "GRU",
@@ -2374,7 +2801,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 58
+      "rank": 70
     },
     {
       "origin": "GRU",
@@ -2407,7 +2834,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 59
+      "rank": 71
     },
     {
       "origin": "GRU",
@@ -2440,7 +2867,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 60
+      "rank": 72
     },
     {
       "origin": "GRU",
@@ -2475,7 +2902,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 61
+      "rank": 73
     },
     {
       "origin": "GRU",
@@ -2508,7 +2935,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 62
+      "rank": 74
     },
     {
       "origin": "GRU",
@@ -2541,7 +2968,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 63
+      "rank": 75
     },
     {
       "origin": "GRU",
@@ -2574,7 +3001,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 64
+      "rank": 76
     },
     {
       "origin": "GRU",
@@ -2607,7 +3034,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 65
+      "rank": 77
     },
     {
       "origin": "GRU",
@@ -2640,7 +3067,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 66
+      "rank": 78
     },
     {
       "origin": "GRU",
@@ -2673,7 +3100,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 67
+      "rank": 79
     },
     {
       "origin": "GRU",
@@ -2706,7 +3133,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 68
+      "rank": 80
     },
     {
       "origin": "GRU",
@@ -2739,7 +3166,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 69
+      "rank": 81
     },
     {
       "origin": "GRU",
@@ -2772,7 +3199,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 70
+      "rank": 82
     },
     {
       "origin": "GRU",
@@ -2805,7 +3232,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 71
+      "rank": 83
     },
     {
       "origin": "GRU",
@@ -2838,7 +3265,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 72
+      "rank": 84
     },
     {
       "origin": "GRU",
@@ -2871,7 +3298,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 73
+      "rank": 85
     },
     {
       "origin": "GRU",
@@ -2904,7 +3331,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 74
+      "rank": 86
     },
     {
       "origin": "GRU",
@@ -2937,7 +3364,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 75
+      "rank": 87
     },
     {
       "origin": "GRU",
@@ -2970,7 +3397,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 76
+      "rank": 88
     },
     {
       "origin": "GRU",
@@ -3003,7 +3430,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 77
+      "rank": 89
     },
     {
       "origin": "GRU",
@@ -3036,7 +3463,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 78
+      "rank": 90
     },
     {
       "origin": "GRU",
@@ -3069,7 +3496,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 79
+      "rank": 91
     },
     {
       "origin": "GRU",
@@ -3102,7 +3529,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 80
+      "rank": 92
     },
     {
       "origin": "GRU",
@@ -3135,7 +3562,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 81
+      "rank": 93
     },
     {
       "origin": "GRU",
@@ -3168,7 +3595,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 82
+      "rank": 94
     },
     {
       "origin": "GRU",
@@ -3201,7 +3628,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 83
+      "rank": 95
     },
     {
       "origin": "GRU",
@@ -3234,7 +3661,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 84
+      "rank": 96
     },
     {
       "origin": "GRU",
@@ -3267,7 +3694,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 85
+      "rank": 97
     },
     {
       "origin": "GRU",
@@ -3300,7 +3727,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 86
+      "rank": 98
     },
     {
       "origin": "GRU",
@@ -3333,7 +3760,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 87
+      "rank": 99
     },
     {
       "origin": "GRU",
@@ -3361,402 +3788,6 @@
       "assigned_source": "google",
       "fallback_used": false,
       "fallback_from": "Google Flights",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 88
-    },
-    {
-      "origin": "GRU",
-      "destination": "MCO",
-      "departure_date": "2027-01-07",
-      "return_date": "2027-01-15",
-      "airline": "American",
-      "price": 5666.0,
-      "duration": "12h 50min",
-      "duration_minutes": 770,
-      "stops": "2 escalas",
-      "stops_count": 2,
-      "departure": "[2027, 1, 7] [None, 5]",
-      "arrival": "[2027, 1, 7] [21, 10]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-07+returning+2027-01-15&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 8,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-07+returning+2027-01-15&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-07&return=2027-01-15&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 89
-    },
-    {
-      "origin": "GRU",
-      "destination": "MCO",
-      "departure_date": "2027-01-07",
-      "return_date": "2027-01-18",
-      "airline": "American",
-      "price": 5666.0,
-      "duration": "12h 50min",
-      "duration_minutes": 770,
-      "stops": "2 escalas",
-      "stops_count": 2,
-      "departure": "[2027, 1, 7] [None, 5]",
-      "arrival": "[2027, 1, 7] [21, 10]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-07+returning+2027-01-18&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 11,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-07+returning+2027-01-18&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-07&return=2027-01-18&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 90
-    },
-    {
-      "origin": "GRU",
-      "destination": "MCO",
-      "departure_date": "2027-01-07",
-      "return_date": "2027-01-19",
-      "airline": "American",
-      "price": 5666.0,
-      "duration": "12h 50min",
-      "duration_minutes": 770,
-      "stops": "2 escalas",
-      "stops_count": 2,
-      "departure": "[2027, 1, 7] [None, 5]",
-      "arrival": "[2027, 1, 7] [21, 10]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-07+returning+2027-01-19&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 12,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-07+returning+2027-01-19&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-07&return=2027-01-19&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 91
-    },
-    {
-      "origin": "GRU",
-      "destination": "MCO",
-      "departure_date": "2027-01-07",
-      "return_date": "2027-01-20",
-      "airline": "American",
-      "price": 5666.0,
-      "duration": "12h 50min",
-      "duration_minutes": 770,
-      "stops": "2 escalas",
-      "stops_count": 2,
-      "departure": "[2027, 1, 7] [None, 5]",
-      "arrival": "[2027, 1, 7] [21, 10]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-07+returning+2027-01-20&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 13,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-07+returning+2027-01-20&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-07&return=2027-01-20&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 92
-    },
-    {
-      "origin": "GRU",
-      "destination": "MCO",
-      "departure_date": "2027-01-07",
-      "return_date": "2027-01-24",
-      "airline": "American",
-      "price": 5666.0,
-      "duration": "12h 50min",
-      "duration_minutes": 770,
-      "stops": "2 escalas",
-      "stops_count": 2,
-      "departure": "[2027, 1, 7] [None, 5]",
-      "arrival": "[2027, 1, 7] [21, 10]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-07+returning+2027-01-24&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 17,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-07+returning+2027-01-24&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-07&return=2027-01-24&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 93
-    },
-    {
-      "origin": "GRU",
-      "destination": "MCO",
-      "departure_date": "2027-01-07",
-      "return_date": "2027-01-25",
-      "airline": "American",
-      "price": 5666.0,
-      "duration": "12h 50min",
-      "duration_minutes": 770,
-      "stops": "2 escalas",
-      "stops_count": 2,
-      "departure": "[2027, 1, 7] [None, 5]",
-      "arrival": "[2027, 1, 7] [21, 10]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-07+returning+2027-01-25&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 18,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-07+returning+2027-01-25&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-07&return=2027-01-25&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 94
-    },
-    {
-      "origin": "GRU",
-      "destination": "MCO",
-      "departure_date": "2027-01-07",
-      "return_date": "2027-01-26",
-      "airline": "American",
-      "price": 5666.0,
-      "duration": "12h 50min",
-      "duration_minutes": 770,
-      "stops": "2 escalas",
-      "stops_count": 2,
-      "departure": "[2027, 1, 7] [None, 5]",
-      "arrival": "[2027, 1, 7] [21, 10]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-07+returning+2027-01-26&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 19,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-07+returning+2027-01-26&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-07&return=2027-01-26&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 95
-    },
-    {
-      "origin": "GRU",
-      "destination": "MCO",
-      "departure_date": "2027-01-07",
-      "return_date": "2027-01-27",
-      "airline": "American",
-      "price": 5666.0,
-      "duration": "12h 50min",
-      "duration_minutes": 770,
-      "stops": "2 escalas",
-      "stops_count": 2,
-      "departure": "[2027, 1, 7] [None, 5]",
-      "arrival": "[2027, 1, 7] [21, 10]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-07+returning+2027-01-27&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 20,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-07+returning+2027-01-27&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-07&return=2027-01-27&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 96
-    },
-    {
-      "origin": "GRU",
-      "destination": "MCO",
-      "departure_date": "2027-01-09",
-      "return_date": "2027-01-15",
-      "airline": "American",
-      "price": 5666.0,
-      "duration": "12h 30min",
-      "duration_minutes": 750,
-      "stops": "2 escalas",
-      "stops_count": 2,
-      "departure": "[2027, 1, 9] [23, 10]",
-      "arrival": "[2027, 1, 10] [21, 10]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-09+returning+2027-01-15&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 6,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-09+returning+2027-01-15&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-09&return=2027-01-15&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 97
-    },
-    {
-      "origin": "GRU",
-      "destination": "MCO",
-      "departure_date": "2027-01-09",
-      "return_date": "2027-01-18",
-      "airline": "American",
-      "price": 5666.0,
-      "duration": "12h 30min",
-      "duration_minutes": 750,
-      "stops": "2 escalas",
-      "stops_count": 2,
-      "departure": "[2027, 1, 9] [23, 10]",
-      "arrival": "[2027, 1, 10] [21, 10]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-09+returning+2027-01-18&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 9,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-09+returning+2027-01-18&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-09&return=2027-01-18&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 98
-    },
-    {
-      "origin": "GRU",
-      "destination": "MCO",
-      "departure_date": "2027-01-09",
-      "return_date": "2027-01-19",
-      "airline": "American",
-      "price": 5666.0,
-      "duration": "12h 30min",
-      "duration_minutes": 750,
-      "stops": "2 escalas",
-      "stops_count": 2,
-      "departure": "[2027, 1, 9] [23, 10]",
-      "arrival": "[2027, 1, 10] [21, 10]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-09+returning+2027-01-19&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 10,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-09+returning+2027-01-19&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-09&return=2027-01-19&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 99
-    },
-    {
-      "origin": "GRU",
-      "destination": "MCO",
-      "departure_date": "2027-01-09",
-      "return_date": "2027-01-20",
-      "airline": "American",
-      "price": 5666.0,
-      "duration": "12h 30min",
-      "duration_minutes": 750,
-      "stops": "2 escalas",
-      "stops_count": 2,
-      "departure": "[2027, 1, 9] [23, 10]",
-      "arrival": "[2027, 1, 10] [21, 10]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-09+returning+2027-01-20&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 11,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-09+returning+2027-01-20&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-09&return=2027-01-20&currency=BRL"
-      },
-      "assigned_source": "google",
       "previous_price": null,
       "change_amount": null,
       "change_pct": null,
@@ -4035,6 +4066,237 @@
     {
       "origin": "GRU",
       "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-15",
+      "airline": "COPA",
+      "price": 4872.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-15&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 1,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-15&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-15&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 9
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-18",
+      "airline": "COPA",
+      "price": 4872.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-18&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 4,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-18&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-18&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 10
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-19",
+      "airline": "COPA",
+      "price": 4872.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-19&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 5,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-19&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-19&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 11
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-20",
+      "airline": "COPA",
+      "price": 4872.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-20&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 6,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-20&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-20&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 12
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-24",
+      "airline": "COPA",
+      "price": 4872.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-24&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 10,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-24&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-24&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 13
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-25",
+      "airline": "COPA",
+      "price": 4872.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-25&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 11,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-25&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-25&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 14
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-26",
+      "airline": "COPA",
+      "price": 4872.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-26&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 12,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-26&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-26&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 15
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
       "departure_date": "2027-01-13",
       "return_date": "2027-01-14",
       "airline": "COPA",
@@ -4063,7 +4325,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 9
+      "rank": 16
     },
     {
       "origin": "GRU",
@@ -4096,7 +4358,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 10
+      "rank": 17
     },
     {
       "origin": "GRU",
@@ -4129,7 +4391,73 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 11
+      "rank": 18
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-17",
+      "airline": "COPA",
+      "price": 4901.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-17&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 3,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-17&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-17&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 19
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-23",
+      "airline": "COPA",
+      "price": 4901.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-23&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 9,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-23&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-23&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 20
     },
     {
       "origin": "GRU",
@@ -4162,7 +4490,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 12
+      "rank": 21
     },
     {
       "origin": "GRU",
@@ -4195,7 +4523,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 13
+      "rank": 22
     },
     {
       "origin": "GRU",
@@ -4228,7 +4556,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 14
+      "rank": 23
     },
     {
       "origin": "GRU",
@@ -4261,7 +4589,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 15
+      "rank": 24
     },
     {
       "origin": "GRU",
@@ -4294,7 +4622,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 16
+      "rank": 25
     },
     {
       "origin": "GRU",
@@ -4327,7 +4655,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 17
+      "rank": 26
     },
     {
       "origin": "GRU",
@@ -4360,7 +4688,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 18
+      "rank": 27
     },
     {
       "origin": "GRU",
@@ -4393,7 +4721,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 19
+      "rank": 28
     },
     {
       "origin": "GRU",
@@ -4426,7 +4754,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 20
+      "rank": 29
     },
     {
       "origin": "GRU",
@@ -4459,7 +4787,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 21
+      "rank": 30
     },
     {
       "origin": "GRU",
@@ -4492,7 +4820,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 22
+      "rank": 31
     },
     {
       "origin": "GRU",
@@ -4525,7 +4853,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 23
+      "rank": 32
     },
     {
       "origin": "GRU",
@@ -4558,7 +4886,73 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 24
+      "rank": 33
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-21",
+      "airline": "COPA",
+      "price": 5094.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-21&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 7,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-21&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-21&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 34
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-22",
+      "airline": "COPA",
+      "price": 5094.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-22&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 8,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-22&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-22&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 35
     },
     {
       "origin": "GRU",
@@ -4591,7 +4985,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 25
+      "rank": 36
     },
     {
       "origin": "GRU",
@@ -4624,7 +5018,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 26
+      "rank": 37
     },
     {
       "origin": "GRU",
@@ -4657,7 +5051,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 27
+      "rank": 38
     },
     {
       "origin": "GRU",
@@ -4690,7 +5084,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 28
+      "rank": 39
     },
     {
       "origin": "GRU",
@@ -4723,7 +5117,40 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 29
+      "rank": 40
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "departure_date": "2027-01-14",
+      "return_date": "2027-01-16",
+      "airline": "COPA",
+      "price": 5133.0,
+      "duration": "10h 20min",
+      "duration_minutes": 620,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 14] [4, 50]",
+      "arrival": "[2027, 1, 14] [22]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-16&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 2,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-01-14+returning+2027-01-16&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-01-14&return=2027-01-16&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 41
     },
     {
       "origin": "GRU",
@@ -4756,7 +5183,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 30
+      "rank": 42
     },
     {
       "origin": "GRU",
@@ -4789,7 +5216,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 31
+      "rank": 43
     },
     {
       "origin": "GRU",
@@ -4822,7 +5249,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 32
+      "rank": 44
     },
     {
       "origin": "GRU",
@@ -4855,7 +5282,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 33
+      "rank": 45
     },
     {
       "origin": "GRU",
@@ -4888,7 +5315,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 34
+      "rank": 46
     },
     {
       "origin": "GRU",
@@ -4921,7 +5348,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 35
+      "rank": 47
     },
     {
       "origin": "GRU",
@@ -4954,7 +5381,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 36
+      "rank": 48
     },
     {
       "origin": "GRU",
@@ -4987,7 +5414,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 37
+      "rank": 49
     },
     {
       "origin": "GRU",
@@ -5020,7 +5447,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 38
+      "rank": 50
     },
     {
       "origin": "GRU",
@@ -5053,7 +5480,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 39
+      "rank": 51
     },
     {
       "origin": "GRU",
@@ -5086,7 +5513,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 40
+      "rank": 52
     },
     {
       "origin": "GRU",
@@ -5119,7 +5546,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 41
+      "rank": 53
     },
     {
       "origin": "GRU",
@@ -5152,7 +5579,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 42
+      "rank": 54
     },
     {
       "origin": "GRU",
@@ -5185,7 +5612,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 43
+      "rank": 55
     },
     {
       "origin": "GRU",
@@ -5218,7 +5645,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 44
+      "rank": 56
     },
     {
       "origin": "GRU",
@@ -5251,7 +5678,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 45
+      "rank": 57
     },
     {
       "origin": "GRU",
@@ -5284,7 +5711,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 46
+      "rank": 58
     },
     {
       "origin": "GRU",
@@ -5317,7 +5744,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 47
+      "rank": 59
     },
     {
       "origin": "GRU",
@@ -5350,7 +5777,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 48
+      "rank": 60
     },
     {
       "origin": "GRU",
@@ -5383,7 +5810,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 49
+      "rank": 61
     },
     {
       "origin": "GRU",
@@ -5416,7 +5843,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 50
+      "rank": 62
     },
     {
       "origin": "GRU",
@@ -5449,7 +5876,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 51
+      "rank": 63
     },
     {
       "origin": "GRU",
@@ -5482,7 +5909,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 52
+      "rank": 64
     },
     {
       "origin": "GRU",
@@ -5515,7 +5942,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 53
+      "rank": 65
     },
     {
       "origin": "GRU",
@@ -5548,7 +5975,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 54
+      "rank": 66
     },
     {
       "origin": "GRU",
@@ -5581,7 +6008,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 55
+      "rank": 67
     },
     {
       "origin": "GRU",
@@ -5614,7 +6041,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 56
+      "rank": 68
     },
     {
       "origin": "GRU",
@@ -5647,7 +6074,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 57
+      "rank": 69
     },
     {
       "origin": "GRU",
@@ -5680,7 +6107,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 58
+      "rank": 70
     },
     {
       "origin": "GRU",
@@ -5713,7 +6140,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 59
+      "rank": 71
     },
     {
       "origin": "GRU",
@@ -5746,7 +6173,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 60
+      "rank": 72
     },
     {
       "origin": "GRU",
@@ -5781,7 +6208,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 61
+      "rank": 73
     },
     {
       "origin": "GRU",
@@ -5814,7 +6241,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 62
+      "rank": 74
     },
     {
       "origin": "GRU",
@@ -5847,7 +6274,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 63
+      "rank": 75
     },
     {
       "origin": "GRU",
@@ -5880,7 +6307,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 64
+      "rank": 76
     },
     {
       "origin": "GRU",
@@ -5913,7 +6340,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 65
+      "rank": 77
     },
     {
       "origin": "GRU",
@@ -5946,7 +6373,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 66
+      "rank": 78
     },
     {
       "origin": "GRU",
@@ -5979,7 +6406,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 67
+      "rank": 79
     },
     {
       "origin": "GRU",
@@ -6012,7 +6439,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 68
+      "rank": 80
     },
     {
       "origin": "GRU",
@@ -6045,7 +6472,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 69
+      "rank": 81
     },
     {
       "origin": "GRU",
@@ -6078,7 +6505,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 70
+      "rank": 82
     },
     {
       "origin": "GRU",
@@ -6111,7 +6538,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 71
+      "rank": 83
     },
     {
       "origin": "GRU",
@@ -6144,7 +6571,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 72
+      "rank": 84
     },
     {
       "origin": "GRU",
@@ -6177,7 +6604,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 73
+      "rank": 85
     },
     {
       "origin": "GRU",
@@ -6210,7 +6637,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 74
+      "rank": 86
     },
     {
       "origin": "GRU",
@@ -6243,7 +6670,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 75
+      "rank": 87
     },
     {
       "origin": "GRU",
@@ -6276,7 +6703,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 76
+      "rank": 88
     },
     {
       "origin": "GRU",
@@ -6309,7 +6736,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 77
+      "rank": 89
     },
     {
       "origin": "GRU",
@@ -6342,7 +6769,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 78
+      "rank": 90
     },
     {
       "origin": "GRU",
@@ -6375,7 +6802,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 79
+      "rank": 91
     },
     {
       "origin": "GRU",
@@ -6408,7 +6835,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 80
+      "rank": 92
     },
     {
       "origin": "GRU",
@@ -6441,7 +6868,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 81
+      "rank": 93
     },
     {
       "origin": "GRU",
@@ -6474,7 +6901,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 82
+      "rank": 94
     },
     {
       "origin": "GRU",
@@ -6507,7 +6934,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 83
+      "rank": 95
     },
     {
       "origin": "GRU",
@@ -6540,7 +6967,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 84
+      "rank": 96
     },
     {
       "origin": "GRU",
@@ -6573,7 +7000,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 85
+      "rank": 97
     },
     {
       "origin": "GRU",
@@ -6606,7 +7033,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 86
+      "rank": 98
     },
     {
       "origin": "GRU",
@@ -6639,7 +7066,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 87
+      "rank": 99
     },
     {
       "origin": "GRU",
@@ -6674,7 +7101,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 88
+      "rank": 100
     },
     {
       "origin": "GRU",
@@ -6706,8 +7133,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 89
+      "previous_seen_at": null
     },
     {
       "origin": "GRU",
@@ -6739,8 +7165,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 90
+      "previous_seen_at": null
     },
     {
       "origin": "GRU",
@@ -6772,8 +7197,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 91
+      "previous_seen_at": null
     },
     {
       "origin": "GRU",
@@ -6805,8 +7229,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 92
+      "previous_seen_at": null
     },
     {
       "origin": "GRU",
@@ -6838,8 +7261,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 93
+      "previous_seen_at": null
     },
     {
       "origin": "GRU",
@@ -6871,8 +7293,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 94
+      "previous_seen_at": null
     },
     {
       "origin": "GRU",
@@ -6904,8 +7325,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 95
+      "previous_seen_at": null
     },
     {
       "origin": "GRU",
@@ -6937,8 +7357,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 96
+      "previous_seen_at": null
     },
     {
       "origin": "GRU",
@@ -6970,8 +7389,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 97
+      "previous_seen_at": null
     },
     {
       "origin": "GRU",
@@ -7003,8 +7421,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 98
+      "previous_seen_at": null
     },
     {
       "origin": "GRU",
@@ -7036,8 +7453,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 99
+      "previous_seen_at": null
     },
     {
       "origin": "GRU",
@@ -7069,8 +7485,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 100
+      "previous_seen_at": null
     },
     {
       "origin": "GRU",
@@ -13853,11 +14268,11 @@
     "google"
   ],
   "source_counts": {
-    "google": 312,
+    "google": 324,
     "ita": 0
   },
   "current_pair": {
-    "departure_date": "2027-01-13",
-    "return_date": "2027-01-31"
+    "departure_date": "2027-01-14",
+    "return_date": "2027-01-26"
   }
 }
