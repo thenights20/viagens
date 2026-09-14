@@ -3,7 +3,7 @@
   "cache_id": "8efec0a65f186d676350176a",
   "signature": "GIG|MCO|2027-03-01|2027-06-30|2|BRL|economy|1",
   "created_at": "2026-09-14T23:48:35.216011Z",
-  "updated_at": "2026-09-14T23:58:02.822403Z",
+  "updated_at": "2026-09-14T23:58:06.036319Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "GIG",
@@ -46356,6 +46356,116 @@
       "errors": [
         "2027-03-15->2027-06-18: ProviderResponseError: Google returned a provider error"
       ]
+    },
+    "2027-03-15|2027-06-19": {
+      "departure_date": "2027-03-15",
+      "return_date": "2027-06-19",
+      "status": "error",
+      "completed_at": "2026-09-14T23:58:04.598312Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-03-15->2027-06-19: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-03-15|2027-06-17": {
+      "departure_date": "2027-03-15",
+      "return_date": "2027-06-17",
+      "status": "error",
+      "completed_at": "2026-09-14T23:58:04.605461Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-03-15->2027-06-17: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-03-15|2027-06-20": {
+      "departure_date": "2027-03-15",
+      "return_date": "2027-06-20",
+      "status": "error",
+      "completed_at": "2026-09-14T23:58:04.613537Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-03-15->2027-06-20: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-03-15|2027-06-21": {
+      "departure_date": "2027-03-15",
+      "return_date": "2027-06-21",
+      "status": "error",
+      "completed_at": "2026-09-14T23:58:04.620632Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-03-15->2027-06-21: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-03-15|2027-06-23": {
+      "departure_date": "2027-03-15",
+      "return_date": "2027-06-23",
+      "status": "error",
+      "completed_at": "2026-09-14T23:58:04.628273Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-03-15->2027-06-23: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-03-15|2027-06-22": {
+      "departure_date": "2027-03-15",
+      "return_date": "2027-06-22",
+      "status": "error",
+      "completed_at": "2026-09-14T23:58:04.636149Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-03-15->2027-06-22: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-03-15|2027-06-25": {
+      "departure_date": "2027-03-15",
+      "return_date": "2027-06-25",
+      "status": "error",
+      "completed_at": "2026-09-14T23:58:04.644143Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-03-15->2027-06-25: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-03-15|2027-06-24": {
+      "departure_date": "2027-03-15",
+      "return_date": "2027-06-24",
+      "status": "priced",
+      "completed_at": "2026-09-14T23:58:06.036294Z",
+      "source": "google",
+      "row": {
+        "origin": "GIG",
+        "destination": "MCO",
+        "departure_date": "2027-03-15",
+        "return_date": "2027-06-24",
+        "airline": "Azul",
+        "price": 5146.0,
+        "duration": "10h 10min",
+        "duration_minutes": 610,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 3, 15] [20, 55]",
+        "arrival": "[2027, 3, 16] [20, 30]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-15+returning+2027-06-24&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 101,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-15+returning+2027-06-24&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-15&return=2027-06-24&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
     }
   }
 }
