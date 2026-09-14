@@ -3,7 +3,7 @@
   "cache_id": "101780d1207f87ea75d62a8b",
   "signature": "GRU|MCO|2027-08-01|2027-11-30|2|BRL|economy|1",
   "created_at": "2026-09-14T20:36:48.401814Z",
-  "updated_at": "2026-09-14T20:39:43.572144Z",
+  "updated_at": "2026-09-14T20:39:45.634324Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "GRU",
@@ -8736,6 +8736,138 @@
         "assigned_source": "google"
       },
       "errors": []
+    },
+    "2027-08-07|2027-08-09": {
+      "departure_date": "2027-08-07",
+      "return_date": "2027-08-09",
+      "status": "priced",
+      "completed_at": "2026-09-14T20:39:44.620442Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MCO",
+        "departure_date": "2027-08-07",
+        "return_date": "2027-08-09",
+        "airline": "Avianca",
+        "price": 3400.0,
+        "duration": "10h 05min",
+        "duration_minutes": 605,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 8, 7] [7, 35]",
+        "arrival": "[2027, 8, 7] [21, 20]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-07+returning+2027-08-09&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 2,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-07+returning+2027-08-09&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-08-07&return=2027-08-09&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-08-07|2027-08-10": {
+      "departure_date": "2027-08-07",
+      "return_date": "2027-08-10",
+      "status": "priced",
+      "completed_at": "2026-09-14T20:39:44.620678Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MCO",
+        "departure_date": "2027-08-07",
+        "return_date": "2027-08-10",
+        "airline": "Avianca",
+        "price": 3400.0,
+        "duration": "10h 05min",
+        "duration_minutes": 605,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 8, 7] [7, 35]",
+        "arrival": "[2027, 8, 7] [21, 20]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-07+returning+2027-08-10&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 3,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-07+returning+2027-08-10&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-08-07&return=2027-08-10&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-08-07|2027-08-12": {
+      "departure_date": "2027-08-07",
+      "return_date": "2027-08-12",
+      "status": "error",
+      "completed_at": "2026-09-14T20:39:44.620886Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-07->2027-08-12: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-07|2027-08-13": {
+      "departure_date": "2027-08-07",
+      "return_date": "2027-08-13",
+      "status": "error",
+      "completed_at": "2026-09-14T20:39:44.621087Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-07->2027-08-13: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-07|2027-08-15": {
+      "departure_date": "2027-08-07",
+      "return_date": "2027-08-15",
+      "status": "error",
+      "completed_at": "2026-09-14T20:39:44.621312Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-07->2027-08-15: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-07|2027-08-14": {
+      "departure_date": "2027-08-07",
+      "return_date": "2027-08-14",
+      "status": "error",
+      "completed_at": "2026-09-14T20:39:44.621515Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-07->2027-08-14: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-07|2027-08-16": {
+      "departure_date": "2027-08-07",
+      "return_date": "2027-08-16",
+      "status": "error",
+      "completed_at": "2026-09-14T20:39:44.621728Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-07->2027-08-16: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-07|2027-08-17": {
+      "departure_date": "2027-08-07",
+      "return_date": "2027-08-17",
+      "status": "error",
+      "completed_at": "2026-09-14T20:39:45.634302Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-07->2027-08-17: ProviderResponseError: Google returned a provider error"
+      ]
     }
   }
 }
