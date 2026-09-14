@@ -3,7 +3,7 @@
   "cache_id": "8efec0a65f186d676350176a",
   "signature": "GIG|MCO|2027-03-01|2027-06-30|2|BRL|economy|1",
   "created_at": "2026-09-14T23:48:35.216011Z",
-  "updated_at": "2026-09-14T23:57:15.007766Z",
+  "updated_at": "2026-09-14T23:57:18.363382Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "GIG",
@@ -44200,6 +44200,204 @@
       "errors": [
         "2027-03-14->2027-05-27: ProviderResponseError: Google returned a provider error"
       ]
+    },
+    "2027-03-14|2027-05-28": {
+      "departure_date": "2027-03-14",
+      "return_date": "2027-05-28",
+      "status": "priced",
+      "completed_at": "2026-09-14T23:57:16.781614Z",
+      "source": "google",
+      "row": {
+        "origin": "GIG",
+        "destination": "MCO",
+        "departure_date": "2027-03-14",
+        "return_date": "2027-05-28",
+        "airline": "Azul",
+        "price": 5934.0,
+        "duration": "10h 10min",
+        "duration_minutes": 610,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 3, 14] [6, 10]",
+        "arrival": "[2027, 3, 14] [20, 30]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-14+returning+2027-05-28&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 75,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-14+returning+2027-05-28&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-14&return=2027-05-28&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-03-14|2027-05-30": {
+      "departure_date": "2027-03-14",
+      "return_date": "2027-05-30",
+      "status": "priced",
+      "completed_at": "2026-09-14T23:57:16.788629Z",
+      "source": "google",
+      "row": {
+        "origin": "GIG",
+        "destination": "MCO",
+        "departure_date": "2027-03-14",
+        "return_date": "2027-05-30",
+        "airline": "Azul",
+        "price": 7325.0,
+        "duration": "10h 10min",
+        "duration_minutes": 610,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 3, 14] [6, 10]",
+        "arrival": "[2027, 3, 14] [20, 30]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-14+returning+2027-05-30&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 77,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-14+returning+2027-05-30&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-14&return=2027-05-30&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-03-14|2027-05-31": {
+      "departure_date": "2027-03-14",
+      "return_date": "2027-05-31",
+      "status": "error",
+      "completed_at": "2026-09-14T23:57:16.795473Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-03-14->2027-05-31: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-03-14|2027-05-29": {
+      "departure_date": "2027-03-14",
+      "return_date": "2027-05-29",
+      "status": "priced",
+      "completed_at": "2026-09-14T23:57:18.331442Z",
+      "source": "google",
+      "row": {
+        "origin": "GIG",
+        "destination": "MCO",
+        "departure_date": "2027-03-14",
+        "return_date": "2027-05-29",
+        "airline": "Azul",
+        "price": 5934.0,
+        "duration": "10h 10min",
+        "duration_minutes": 610,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 3, 14] [6, 10]",
+        "arrival": "[2027, 3, 14] [20, 30]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-14+returning+2027-05-29&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 76,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-14+returning+2027-05-29&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-14&return=2027-05-29&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-03-14|2027-06-01": {
+      "departure_date": "2027-03-14",
+      "return_date": "2027-06-01",
+      "status": "error",
+      "completed_at": "2026-09-14T23:57:18.341775Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-03-14->2027-06-01: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-03-14|2027-06-02": {
+      "departure_date": "2027-03-14",
+      "return_date": "2027-06-02",
+      "status": "error",
+      "completed_at": "2026-09-14T23:57:18.349527Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-03-14->2027-06-02: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-03-14|2027-06-03": {
+      "departure_date": "2027-03-14",
+      "return_date": "2027-06-03",
+      "status": "priced",
+      "completed_at": "2026-09-14T23:57:18.356526Z",
+      "source": "google",
+      "row": {
+        "origin": "GIG",
+        "destination": "MCO",
+        "departure_date": "2027-03-14",
+        "return_date": "2027-06-03",
+        "airline": "Azul",
+        "price": 5027.0,
+        "duration": "10h 10min",
+        "duration_minutes": 610,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 3, 14] [6, 10]",
+        "arrival": "[2027, 3, 14] [20, 30]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-14+returning+2027-06-03&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 81,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-14+returning+2027-06-03&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-14&return=2027-06-03&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-03-14|2027-06-05": {
+      "departure_date": "2027-03-14",
+      "return_date": "2027-06-05",
+      "status": "priced",
+      "completed_at": "2026-09-14T23:57:18.363370Z",
+      "source": "google",
+      "row": {
+        "origin": "GIG",
+        "destination": "MCO",
+        "departure_date": "2027-03-14",
+        "return_date": "2027-06-05",
+        "airline": "Azul",
+        "price": 5027.0,
+        "duration": "10h 10min",
+        "duration_minutes": 610,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 3, 14] [6, 10]",
+        "arrival": "[2027, 3, 14] [20, 30]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-14+returning+2027-06-05&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 83,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-14+returning+2027-06-05&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-14&return=2027-06-05&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
     }
   }
 }
