@@ -1,0 +1,27 @@
+name: Indigo booking probe
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/indigo_probe.mjs'
+      - '.github/workflows/indigo-probe.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Install browser driver
+        run: npm install --no-save playwright-core@1.55.0
+      - name: Inspect Indigo booking page
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: node tools/indigo_probe.mjs
