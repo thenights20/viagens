@@ -67,7 +67,7 @@ concurrency:
 jobs:
   search:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -107,9 +107,11 @@ jobs:
           const d=JSON.parse(fs.readFileSync('docs/data/indigo-parking-search.json','utf8'));
           if(d.status!=='completed') throw new Error(d.error||'Pesquisa Indigo não concluída');
           if(!Array.isArray(d.results)||!d.results.length) throw new Error('Nenhuma combinação foi testada');
-          if(!d.results.every(x=>x.entry_time && x.exit_time && ['available','sold_out','not_offered','error'].includes(x.status))) throw new Error('Resultado inválido');
-          console.log(`Indigo: ${d.stats.available_combinations}/${d.stats.tested_combinations} combinações disponíveis`);
-          if(d.best_combination) console.log('Melhor:',d.best_combination);
+          if(!d.results.every(x=>x.entry_time && x.exit_time && ['available','sold_out','not_offered','unstable','error'].includes(x.status))) throw new Error('Resultado inválido');
+          const greens=d.results.filter(x=>x.available===true);
+          if(!greens.every(x=>x.confirmed===true && x.verification?.attempts>=3 && Number(x.price)>0)) throw new Error('Disponibilidade verde sem confirmação suficiente');
+          console.log(`Indigo: ${d.stats.available_combinations}/${d.stats.tested_combinations} combinações confirmadas; ${d.stats.unstable_combinations||0} instáveis descartadas`);
+          if(d.best_combination) console.log('Melhor confirmada:',d.best_combination);
           NODE
 
       - name: Publicar resultado no painel
