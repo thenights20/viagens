@@ -3,7 +3,7 @@
   "cache_id": "101780d1207f87ea75d62a8b",
   "signature": "GRU|MCO|2027-08-01|2027-11-30|2|BRL|economy|1",
   "created_at": "2026-09-14T20:36:48.401814Z",
-  "updated_at": "2026-09-14T20:38:15.403696Z",
+  "updated_at": "2026-09-14T20:38:18.239770Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "GRU",
@@ -4424,6 +4424,116 @@
       "errors": [
         "2027-08-03->2027-11-24: ProviderResponseError: Google returned a provider error"
       ]
+    },
+    "2027-08-03|2027-11-23": {
+      "departure_date": "2027-08-03",
+      "return_date": "2027-11-23",
+      "status": "error",
+      "completed_at": "2026-09-14T20:38:16.896801Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-03->2027-11-23: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-03|2027-11-25": {
+      "departure_date": "2027-08-03",
+      "return_date": "2027-11-25",
+      "status": "error",
+      "completed_at": "2026-09-14T20:38:16.896943Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-03->2027-11-25: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-03|2027-11-26": {
+      "departure_date": "2027-08-03",
+      "return_date": "2027-11-26",
+      "status": "error",
+      "completed_at": "2026-09-14T20:38:16.897070Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-03->2027-11-26: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-03|2027-11-27": {
+      "departure_date": "2027-08-03",
+      "return_date": "2027-11-27",
+      "status": "error",
+      "completed_at": "2026-09-14T20:38:16.897195Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-03->2027-11-27: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-03|2027-11-29": {
+      "departure_date": "2027-08-03",
+      "return_date": "2027-11-29",
+      "status": "error",
+      "completed_at": "2026-09-14T20:38:16.897351Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-03->2027-11-29: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-03|2027-11-28": {
+      "departure_date": "2027-08-03",
+      "return_date": "2027-11-28",
+      "status": "error",
+      "completed_at": "2026-09-14T20:38:16.897477Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-03->2027-11-28: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-03|2027-11-30": {
+      "departure_date": "2027-08-03",
+      "return_date": "2027-11-30",
+      "status": "error",
+      "completed_at": "2026-09-14T20:38:16.897595Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-03->2027-11-30: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-04|2027-08-06": {
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-06",
+      "status": "priced",
+      "completed_at": "2026-09-14T20:38:18.239746Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MCO",
+        "departure_date": "2027-08-04",
+        "return_date": "2027-08-06",
+        "airline": "Avianca",
+        "price": 3303.0,
+        "duration": "10h 25min",
+        "duration_minutes": 625,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 8, 4] [1, 20]",
+        "arrival": "[2027, 8, 4] [14, 50]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-06&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 2,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MCO+on+2027-08-04+returning+2027-08-06&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MCO&depart=2027-08-04&return=2027-08-06&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
     }
   }
 }
