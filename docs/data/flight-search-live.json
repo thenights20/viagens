@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-14T22:25:21.521385Z",
-  "updated_at": "2026-09-14T22:25:21.521385Z",
+  "generated_at": "2026-09-14T22:25:29.934800Z",
+  "updated_at": "2026-09-14T22:25:29.934800Z",
   "started_at": "2026-09-14T21:22:01.179504Z",
   "status": "running",
   "stage": "multisource",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 7381,
-    "processed_combinations": 6312,
-    "primary_completed": 6312,
+    "processed_combinations": 6313,
+    "primary_completed": 6313,
     "primary_total": 7381,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 6156,
+    "priced_combinations": 6157,
     "coverage_pct": 83.4,
     "lowest_price": 2585.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 6156
+    "new": 6157
   },
   "daily_min": [
     {
@@ -71628,6 +71628,38 @@
       "search_links": {
         "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-05-15+returning+2027-05-27&curr=BRL&hl=pt-BR",
         "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-05-15&return=2027-05-27&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GIG",
+      "destination": "MCO",
+      "departure_date": "2027-05-15",
+      "return_date": "2027-05-28",
+      "airline": "Avianca",
+      "price": 3018.0,
+      "duration": "10h 45min",
+      "duration_minutes": 645,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 5, 15] [1, 35]",
+      "arrival": "[2027, 5, 15] [14, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-05-15+returning+2027-05-28&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 13,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-05-15+returning+2027-05-28&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-05-15&return=2027-05-28&currency=BRL"
       },
       "assigned_source": "google",
       "previous_price": null,
@@ -202961,7 +202993,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 6312,
+    "google": 6313,
     "ita": 0
   },
   "resume": {
@@ -202969,16 +203001,16 @@
     "window_minutes": 60,
     "cache_id": "8efec0a65f186d676350176a",
     "reused_combinations": 0,
-    "searched_this_run": 6312,
-    "remaining_this_run": 1069,
-    "reusable_now": 5648,
-    "retryable_for_next_run": 1733,
-    "saved_records": 6312,
+    "searched_this_run": 6313,
+    "remaining_this_run": 1068,
+    "reusable_now": 5634,
+    "retryable_for_next_run": 1747,
+    "saved_records": 6313,
     "saved_errors": 156,
     "checkpoint_path": "docs/data/flight-search-checkpoints/8efec0a65f186d676350176a.json"
   },
   "current_pair": {
     "departure_date": "2027-05-15",
-    "return_date": "2027-05-27"
+    "return_date": "2027-05-28"
   }
 }
