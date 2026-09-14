@@ -6,6 +6,7 @@ const LOCATION_ID = '99980448';
 const BOOKING_URL = `https://indigoneo.com.br/pt/booking/${LOCATION_ID}`;
 const OUTPUT_PATH = path.resolve('docs/data/indigo-parking-search.json');
 const ALLOWED_PRODUCTS = new Set(['terminal3_garage','terminal3_flex','terminal2_standard','terminal1','any']);
+const CONFIRMATIONS_REQUIRED = 3;
 
 function env(name, fallback='') { return String(process.env[name] ?? fallback).trim(); }
 function assertDate(v, label) { if (!/^20\d\d-\d{2}-\d{2}$/.test(v) || Number.isNaN(Date.parse(v+'T12:00:00'))) throw new Error(`${label} inválida`); return v; }
@@ -33,7 +34,6 @@ function cleanRate(rate={}) {
     price: Number(rate.GrandTotalAmount ?? rate.Amount ?? 0) || null,
     currency: String(rate.CurrencyCode || 'BRL'),
     sold_out: Boolean(rate.SoldOut),
-    available: !Boolean(rate.SoldOut),
     covered: icons.some(x=>/coberto/i.test(x)),
     icons,
     description: String(rate.ShortDescription || '').trim(),
@@ -52,15 +52,100 @@ function slotTimes(fromTime, toTime, step) {
 }
 function targetFor(products, filter) {
   const hourly=products.filter(x=>x.product_type !== 'MonthlyPass');
-  if (filter === 'any') return hourly.filter(x=>x.available).sort((a,b)=>(a.price??Infinity)-(b.price??Infinity))[0] || null;
+  if (filter === 'any') {
+    return hourly.filter(x=>!x.sold_out && Number(x.price)>0).sort((a,b)=>(a.price??Infinity)-(b.price??Infinity))[0] || null;
+  }
   return hourly.find(x=>x.key===filter) || null;
 }
+function alternativesFor(products) {
+  return products.filter(x=>!x.sold_out && Number(x.price)>0).sort((a,b)=>(a.price??Infinity)-(b.price??Infinity)).map(x=>({key:x.key,name:x.name,price:x.price,covered:x.covered}));
+}
 function bestAvailable(rows) {
-  return [...rows].filter(x=>x.available===true).sort((a,b)=>
+  return [...rows].filter(x=>x.available===true && x.confirmed===true).sort((a,b)=>
     (Number(a.price ?? Infinity)-Number(b.price ?? Infinity)) ||
     String(a.entry_time).localeCompare(String(b.entry_time)) ||
     String(a.exit_time).localeCompare(String(b.exit_time))
   )[0] || null;
+}
+function makeBody(entryDate,entryTime,exitDate,exitTime){
+  return {
+    Criteria:[{
+      LotId:LOCATION_ID,
+      ParkingBeginDateTime:indigoDate(entryDate,entryTime),
+      ParkingEndDateTime:indigoDate(exitDate,exitTime),
+      SalesChannelKey:'Web',
+      CustomerFlowType:'RAD',
+      ISOLangCode:'PT'
+    }],
+    SalesChannelKey:'Web',
+    ISOLangCode:'PT'
+  };
+}
+function parseResponse(text,product,entryDate,entryTime,exitDate,exitTime){
+  const outer=JSON.parse(text);
+  const decoded=typeof outer.d==='string'?JSON.parse(outer.d):outer.d;
+  const root=Array.isArray(decoded)?decoded[0]:decoded;
+  const products=(root?.DisplayRateList||[]).map(cleanRate).filter(x=>x.name && x.product_type!=='MonthlyPass');
+  const target=targetFor(products,product);
+  const base={
+    entry_date:entryDate,entry_time:entryTime,exit_date:exitDate,exit_time:exitTime,
+    product_key:product,product_name:target?.name||null,rate_id:target?.rate_id||null,
+    price:target?.price??null,currency:'BRL',covered:Boolean(target?.covered),sold_out:target?target.sold_out:null,
+    icons:target?.icons||[],description:target?.description||'',booking_url:BOOKING_URL,
+    alternatives:alternativesFor(products),products
+  };
+  if(!target) return {...base,status:'not_offered',available:false};
+  // Reproduce the visible Indigo rule conservatively: product must exist, not be SoldOut and have a real price.
+  if(target.sold_out) return {...base,status:'sold_out',available:false};
+  if(!(Number(target.price)>0)) return {...base,status:'unstable',available:false};
+  return {...base,status:'available',available:true};
+}
+async function queryOnce(page,{entryDate,entryTime,exitDate,exitTime,product}){
+  const body=makeBody(entryDate,entryTime,exitDate,exitTime);
+  const raw=await page.evaluate(async body=>{
+    try{
+      const r=await fetch('/brApi/GetMultipleRates',{
+        method:'POST',credentials:'include',cache:'no-store',
+        headers:{'Content-Type':'application/json','Accept':'application/json, text/plain, */*','Cache-Control':'no-cache'},
+        body:JSON.stringify(body)
+      });
+      return {status:r.status,text:await r.text()};
+    }catch(e){return {status:0,error:String(e),text:''};}
+  },body);
+  if(raw.status!==200){
+    return {entry_date:entryDate,entry_time:entryTime,exit_date:exitDate,exit_time:exitTime,status:'error',available:null,error:raw.error||`HTTP ${raw.status}`,booking_url:BOOKING_URL,products:[],alternatives:[]};
+  }
+  try{return parseResponse(raw.text,product,entryDate,entryTime,exitDate,exitTime);}
+  catch(e){return {entry_date:entryDate,entry_time:entryTime,exit_date:exitDate,exit_time:exitTime,status:'error',available:null,error:`Resposta inválida: ${e}`,booking_url:BOOKING_URL,products:[],alternatives:[]};}
+}
+async function verifyCombination(page,args){
+  const observations=[];
+  const first=await queryOnce(page,args);
+  observations.push(first.status);
+  if(first.status!=='available') return {...first,confirmed:false,verification:{attempts:1,required:CONFIRMATIONS_REQUIRED,observations}};
+
+  let latest=first;
+  for(let attempt=2;attempt<=CONFIRMATIONS_REQUIRED;attempt++){
+    await page.waitForTimeout(550);
+    const check=await queryOnce(page,args);
+    observations.push(check.status);
+    latest=check;
+    if(check.status!=='available'){
+      return {
+        ...first,
+        status:'unstable',available:false,confirmed:false,
+        price:null,
+        verification:{attempts:attempt,required:CONFIRMATIONS_REQUIRED,observations},
+        note:'A Indigo respondeu de forma diferente ao repetir a mesma combinação; não considerada disponível.'
+      };
+    }
+  }
+  return {
+    ...latest,
+    status:'available',available:true,confirmed:true,
+    verification:{attempts:CONFIRMATIONS_REQUIRED,required:CONFIRMATIONS_REQUIRED,observations},
+    note:`Disponibilidade confirmada ${CONFIRMATIONS_REQUIRED} vezes seguidas.`
+  };
 }
 
 async function main() {
@@ -98,8 +183,7 @@ async function main() {
     args:['--no-sandbox','--disable-dev-shm-usage','--disable-blink-features=AutomationControlled']
   });
   const context=await browser.newContext({
-    locale:'pt-BR',
-    timezoneId:'America/Sao_Paulo',
+    locale:'pt-BR',timezoneId:'America/Sao_Paulo',
     userAgent:'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36'
   });
   const page=await context.newPage();
@@ -111,107 +195,45 @@ async function main() {
     await page.waitForResponse(r=>r.url().includes('/brApi/GetLocationDataBind') && r.status()===200,{timeout:30000}).catch(()=>{});
     await page.waitForTimeout(2200);
 
-    const BATCH=8;
-    for(let i=0;i<combinations.length;i+=BATCH){
-      const batch=combinations.slice(i,i+BATCH);
-      const payloads=batch.map(({entryTime,exitTime})=>({
-        entryTime,exitTime,
-        body:{
-          Criteria:[{
-            LotId:LOCATION_ID,
-            ParkingBeginDateTime:indigoDate(entryDate,entryTime),
-            ParkingEndDateTime:indigoDate(exitDate,exitTime),
-            SalesChannelKey:'Web',
-            CustomerFlowType:'RAD',
-            ISOLangCode:'PT'
-          }],
-          SalesChannelKey:'Web',
-          ISOLangCode:'PT'
-        }
-      }));
-      const raw=await page.evaluate(async payloads=>Promise.all(payloads.map(async item=>{
-        try{
-          const r=await fetch('/brApi/GetMultipleRates',{
-            method:'POST',credentials:'include',
-            headers:{'Content-Type':'application/json','Accept':'application/json, text/plain, */*'},
-            body:JSON.stringify(item.body)
-          });
-          return {entryTime:item.entryTime,exitTime:item.exitTime,status:r.status,text:await r.text()};
-        }catch(e){return {entryTime:item.entryTime,exitTime:item.exitTime,status:0,error:String(e),text:''};}
-      })),payloads);
-
-      for(const item of raw){
-        if(item.status!==200){
-          results.push({entry_date:entryDate,entry_time:item.entryTime,exit_date:exitDate,exit_time:item.exitTime,status:'error',available:null,error:item.error||`HTTP ${item.status}`,booking_url:BOOKING_URL,products:[],alternatives:[]});
-          continue;
-        }
-        try{
-          const outer=JSON.parse(item.text);
-          const decoded=typeof outer.d==='string'?JSON.parse(outer.d):outer.d;
-          const root=Array.isArray(decoded)?decoded[0]:decoded;
-          const products=(root?.DisplayRateList||[]).map(cleanRate).filter(x=>x.name && x.product_type!=='MonthlyPass');
-          const target=targetFor(products,product);
-          const alternatives=products.filter(x=>x.available).sort((a,b)=>(a.price??Infinity)-(b.price??Infinity)).map(x=>({key:x.key,name:x.name,price:x.price,covered:x.covered}));
-          results.push({
-            entry_date:entryDate,entry_time:item.entryTime,exit_date:exitDate,exit_time:item.exitTime,
-            status:target?(target.available?'available':'sold_out'):'not_offered',
-            available:target?target.available:false,
-            product_key:product,
-            product_name:target?.name || null,
-            rate_id:target?.rate_id || null,
-            price:target?.price ?? null,
-            currency:'BRL',
-            covered:Boolean(target?.covered),
-            sold_out:target?target.sold_out:null,
-            icons:target?.icons || [],
-            description:target?.description || '',
-            booking_url:BOOKING_URL,
-            alternatives,
-            products
-          });
-        }catch(e){
-          results.push({entry_date:entryDate,entry_time:item.entryTime,exit_date:exitDate,exit_time:item.exitTime,status:'error',available:null,error:`Resposta inválida: ${e}`,booking_url:BOOKING_URL,products:[],alternatives:[]});
-        }
-      }
-      if(i+BATCH<combinations.length) await page.waitForTimeout(250);
+    // Important: no parallel availability requests. Indigo can return inconsistent results when many combinations share the same browser session concurrently.
+    for(let i=0;i<combinations.length;i++){
+      const {entryTime,exitTime}=combinations[i];
+      const row=await verifyCombination(page,{entryDate,entryTime,exitDate,exitTime,product});
+      results.push(row);
+      if(i+1<combinations.length) await page.waitForTimeout(180);
     }
   } finally {
     await browser.close();
   }
 
   results.sort((a,b)=>String(a.entry_time).localeCompare(String(b.entry_time)) || String(a.exit_time).localeCompare(String(b.exit_time)));
-  const available=results.filter(x=>x.available===true);
+  const available=results.filter(x=>x.available===true && x.confirmed===true);
+  const unstable=results.filter(x=>x.status==='unstable');
   const valid=results.filter(x=>x.status!=='error');
-  const prices=valid.map(x=>Number(x.price)).filter(x=>Number.isFinite(x)&&x>0);
+  const prices=available.map(x=>Number(x.price)).filter(x=>Number.isFinite(x)&&x>0);
   const best=bestAvailable(results);
   const payload={
-    version:'2.0.0',status:'completed',generated_at:new Date().toISOString(),started_at:startedAt,request_id:requestId,
+    version:'2.1.0',status:'completed',generated_at:new Date().toISOString(),started_at:startedAt,request_id:requestId,
+    reliability:{mode:'sequential-confirmed',confirmations_required:CONFIRMATIONS_REQUIRED,green_means:`produto presente, não esgotado, com preço, confirmado ${CONFIRMATIONS_REQUIRED} vezes seguidas`},
     location:{id:LOCATION_ID,name:'Aeroporto de Guarulhos (GRU)',booking_url:BOOKING_URL,timezone:'America/Sao_Paulo'},
-    request:{
-      entry_date:entryDate,exit_date:exitDate,
-      entry_from_time:entryFromTime,entry_to_time:entryToTime,
-      exit_from_time:exitFromTime,exit_to_time:exitToTime,
-      step_minutes:step,product,
-      from_time:entryFromTime,to_time:entryToTime,exit_time:exitFromTime
-    },
+    request:{entry_date:entryDate,exit_date:exitDate,entry_from_time:entryFromTime,entry_to_time:entryToTime,exit_from_time:exitFromTime,exit_to_time:exitToTime,step_minutes:step,product,from_time:entryFromTime,to_time:entryToTime,exit_time:exitFromTime},
     stats:{
-      entry_times:entryTimes.length,exit_times:exitTimes.length,
-      tested_combinations:results.length,available_combinations:available.length,
-      unavailable_combinations:valid.length-available.length,error_combinations:results.length-valid.length,
-      tested_times:results.length,available_times:available.length,
-      lowest_price:prices.length?Math.min(...prices):null
+      entry_times:entryTimes.length,exit_times:exitTimes.length,tested_combinations:results.length,
+      available_combinations:available.length,unstable_combinations:unstable.length,
+      unavailable_combinations:valid.length-available.length-unstable.length,error_combinations:results.length-valid.length,
+      tested_times:results.length,available_times:available.length,lowest_price:prices.length?Math.min(...prices):null
     },
-    best_combination:best?{entry_time:best.entry_time,exit_time:best.exit_time,price:best.price,currency:best.currency,product_name:best.product_name}:null,
+    best_combination:best?{entry_time:best.entry_time,exit_time:best.exit_time,price:best.price,currency:best.currency,product_name:best.product_name,confirmed:true}:null,
     results
   };
   await fs.mkdir(path.dirname(OUTPUT_PATH),{recursive:true});
   await fs.writeFile(OUTPUT_PATH,JSON.stringify(payload,null,2),'utf8');
-  console.log(`Indigo GRU: ${available.length}/${results.length} combinações disponíveis para ${product}.`);
-  if(best) console.log(`Melhor combinação: entrada ${best.entry_time}, saída ${best.exit_time}, preço ${best.price ?? 'n/d'}.`);
+  console.log(`Indigo GRU: ${available.length}/${results.length} combinações confirmadas para ${product}; ${unstable.length} instáveis descartadas.`);
+  if(best) console.log(`Melhor combinação confirmada: entrada ${best.entry_time}, saída ${best.exit_time}, preço ${best.price ?? 'n/d'}.`);
 }
 
 main().catch(async err=>{
-  const payload={version:'2.0.0',status:'error',generated_at:new Date().toISOString(),request_id:env('INDIGO_REQUEST_ID','manual'),error:String(err?.stack||err)};
+  const payload={version:'2.1.0',status:'error',generated_at:new Date().toISOString(),request_id:env('INDIGO_REQUEST_ID','manual'),error:String(err?.stack||err)};
   await fs.mkdir(path.dirname(OUTPUT_PATH),{recursive:true}).catch(()=>{});
   await fs.writeFile(OUTPUT_PATH,JSON.stringify(payload,null,2),'utf8').catch(()=>{});
   console.error(err);
