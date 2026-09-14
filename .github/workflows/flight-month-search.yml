@@ -48,7 +48,7 @@ on:
         type: string
 
 concurrency:
-  group: flight-search-live
+  group: ${{ startsWith(inputs.request_id, 'park_') && 'indigo-parking-live' || 'flight-search-live' }}
   cancel-in-progress: true
 
 permissions:
@@ -91,8 +91,11 @@ jobs:
           request_id=(os.environ.get('INPUT_REQUEST_ID') or 'manual').strip()[:80]
 
           cancel_only = origin == 'QZZ' and dest == 'QZX'
+          parking_match = re.fullmatch(r'park_(\d{4})_(\d{4})_(\d{4})_(\d{4})_(30|60|120)_(t3|all)_([A-Za-z0-9]+)', request_id)
+          parking_only = origin == 'GRU' and dest == 'PKG' and parking_match is not None
           with open(os.environ['GITHUB_ENV'],'a',encoding='utf-8') as f:
               f.write(f"SEARCH_CANCEL_ONLY={'1' if cancel_only else '0'}\n")
+              f.write(f"SEARCH_PARKING_ONLY={'1' if parking_only else '0'}\n")
           if cancel_only:
               print('Cancelamento solicitado pelo painel. A execução anterior foi encerrada pelo concurrency.')
               raise SystemExit(0)
@@ -113,14 +116,28 @@ jobs:
               end_date = ''
           if stops not in (0,1,2): raise SystemExit('Escalas inválidas')
           if not re.fullmatch(r'[A-Za-z0-9_-]{1,80}',request_id): raise SystemExit('request_id inválido')
+
           with open(os.environ['GITHUB_ENV'],'a',encoding='utf-8') as f:
               f.write(
                   f'SEARCH_ORIGIN={origin}\nSEARCH_DESTINATION={dest}\nSEARCH_MONTH={month}\n'
                   f'SEARCH_PERIOD_MODE={period_mode}\nSEARCH_START_DATE={start_date}\nSEARCH_END_DATE={end_date}\n'
                   f'SEARCH_MAX_STOPS={stops}\nSEARCH_REQUEST_ID={request_id}\n'
               )
-          periodo = month if period_mode == 'month' else f'{start_date} → {end_date}'
-          print(f'Busca solicitada: {origin}->{dest}, {periodo}, até {stops} escalas, id={request_id}')
+              if parking_only:
+                  entry_from,entry_to,exit_from,exit_to,step,mode,_ = parking_match.groups()
+                  hhmm=lambda v:v[:2]+':'+v[2:]
+                  f.write(
+                      f'INDIGO_REQUEST_ID={request_id}\nINDIGO_ENTRY_DATE={start_date}\nINDIGO_EXIT_DATE={end_date}\n'
+                      f'INDIGO_ENTRY_FROM={hhmm(entry_from)}\nINDIGO_ENTRY_TO={hhmm(entry_to)}\n'
+                      f'INDIGO_EXIT_FROM={hhmm(exit_from)}\nINDIGO_EXIT_TO={hhmm(exit_to)}\n'
+                      f'INDIGO_STEP_MINUTES={step}\nINDIGO_PARKING_MODE={"t3_covered" if mode == "t3" else "all"}\n'
+                  )
+
+          if parking_only:
+              print(f'Busca Indigo GRU: {start_date} {hhmm(entry_from)}–{hhmm(entry_to)} → {end_date} {hhmm(exit_from)}–{hhmm(exit_to)}, passo {step} min, modo={mode}, id={request_id}')
+          else:
+              periodo = month if period_mode == 'month' else f'{start_date} → {end_date}'
+              print(f'Busca solicitada: {origin}->{dest}, {periodo}, até {stops} escalas, id={request_id}')
           PY
 
       - name: Cancelamento confirmado
@@ -133,20 +150,34 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-          cache-dependency-path: flight-explorer/requirements.txt
+          cache-dependency-path: |
+            flight-explorer/requirements.txt
+            indigo-parking/requirements.txt
 
-      - name: Dependências
-        if: env.SEARCH_CANCEL_ONLY != '1'
+      - name: Dependências de passagens
+        if: env.SEARCH_CANCEL_ONLY != '1' && env.SEARCH_PARKING_ONLY != '1'
         run: python -m pip install -r flight-explorer/requirements.txt
 
-      - name: Validar código
-        if: env.SEARCH_CANCEL_ONLY != '1'
+      - name: Dependências do estacionamento
+        if: env.SEARCH_CANCEL_ONLY != '1' && env.SEARCH_PARKING_ONLY == '1'
+        run: |
+          python -m pip install -r indigo-parking/requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Validar código de passagens
+        if: env.SEARCH_CANCEL_ONLY != '1' && env.SEARCH_PARKING_ONLY != '1'
         run: |
           python -m py_compile flight-month-search/search.py flight-month-search/multisource.py flight-month-search/swoop_batch_worker.py
           node --check docs/flight-explorer.js
 
+      - name: Validar código do estacionamento
+        if: env.SEARCH_CANCEL_ONLY != '1' && env.SEARCH_PARKING_ONLY == '1'
+        run: |
+          python -m py_compile indigo-parking/search.py
+          node --check docs/indigo-parking.js
+
       - name: Pesquisar período em múltiplas fontes
-        if: env.SEARCH_CANCEL_ONLY != '1'
+        if: env.SEARCH_CANCEL_ONLY != '1' && env.SEARCH_PARKING_ONLY != '1'
         env:
           PYTHONPATH: flight-monitor:.
           GITHUB_TOKEN: ${{ github.token }}
@@ -154,8 +185,14 @@ jobs:
           SEARCH_MULTI_WORKERS: "10"
         run: python flight-month-search/multisource.py
 
-      - name: Validar resultado
-        if: env.SEARCH_CANCEL_ONLY != '1'
+      - name: Pesquisar estacionamento Indigo GRU
+        if: env.SEARCH_CANCEL_ONLY != '1' && env.SEARCH_PARKING_ONLY == '1'
+        env:
+          INDIGO_OUTPUT_PATH: docs/data/indigo-parking.json
+        run: python indigo-parking/search.py
+
+      - name: Validar resultado de passagens
+        if: env.SEARCH_CANCEL_ONLY != '1' && env.SEARCH_PARKING_ONLY != '1'
         run: |
           python - <<'PY'
           import json
@@ -181,8 +218,26 @@ jobs:
           print('Busca multifonte válida:', d['request_id'], r, d['stats'], d.get('active_sources'), d.get('source_counts'))
           PY
 
+      - name: Validar resultado do estacionamento
+        if: env.SEARCH_CANCEL_ONLY != '1' && env.SEARCH_PARKING_ONLY == '1'
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          d=json.loads(Path('docs/data/indigo-parking.json').read_text(encoding='utf-8'))
+          assert d.get('version') == '0.1.0'
+          assert d.get('status') == 'completed'
+          assert d.get('request_id') == os.environ['SEARCH_REQUEST_ID']
+          assert d.get('request',{}).get('airport') == 'GRU'
+          assert int(d.get('stats',{}).get('combinations',0)) > 0
+          assert int(d.get('stats',{}).get('combinations',0)) <= 48
+          assert isinstance(d.get('results'), list)
+          assert isinstance(d.get('checks'), list)
+          print('Busca Indigo válida:', d['request_id'], d['stats'])
+          PY
+
       - name: Persistir resultado e histórico
-        if: env.SEARCH_CANCEL_ONLY != '1'
+        if: env.SEARCH_CANCEL_ONLY != '1' && env.SEARCH_PARKING_ONLY != '1'
         run: |
           git config user.name "flight-month-search-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -199,8 +254,26 @@ jobs:
             done
           fi
 
-      - name: Resumo
-        if: env.SEARCH_CANCEL_ONLY != '1'
+      - name: Persistir resultado do estacionamento
+        if: env.SEARCH_CANCEL_ONLY != '1' && env.SEARCH_PARKING_ONLY == '1'
+        run: |
+          git config user.name "indigo-parking-search-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/indigo-parking.json
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração para salvar."
+          else
+            git commit -m "data: salvar disponibilidade Indigo GRU [skip ci]"
+            for tentativa in 1 2 3; do
+              git pull --rebase origin main && git push origin HEAD:main && break
+              echo "Conflito temporário ao salvar; tentativa $tentativa/3"
+              git rebase --abort >/dev/null 2>&1 || true
+              sleep 3
+            done
+          fi
+
+      - name: Resumo de passagens
+        if: env.SEARCH_CANCEL_ONLY != '1' && env.SEARCH_PARKING_ONLY != '1'
         run: |
           python - <<'PY'
           import json, os
@@ -226,6 +299,30 @@ jobs:
               '- Cada fonte externa é testada uma vez para a rota. Só as que retornam tarifa BRL confiável recebem datas.',
               '- Fontes bloqueadas/dinâmicas ficam como links de pesquisa e não atrasam centenas de combinações.',
               '- Durante a execução, achados parciais são salvos na branch flight-live.'
+          ]
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a',encoding='utf-8') as f:f.write('\n'.join(lines)+'\n')
+          PY
+
+      - name: Resumo do estacionamento
+        if: env.SEARCH_CANCEL_ONLY != '1' && env.SEARCH_PARKING_ONLY == '1'
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          d=json.loads(Path('docs/data/indigo-parking.json').read_text(encoding='utf-8'))
+          r=d['request']; s=d['stats']
+          lines=[
+              '## Indigo Neo · Estacionamento GRU',
+              f"- ID: {d.get('request_id')}",
+              f"- Entrada: {r['entry_date']} · {r['entry_from']}–{r['entry_to']}",
+              f"- Saída: {r['exit_date']} · {r['exit_from']}–{r['exit_to']}",
+              f"- Intervalo: {r['step_minutes']} min",
+              f"- Modo: {r['parking_mode']}",
+              f"- Combinações: {s['combinations']}",
+              f"- Testadas: {s['tested']}",
+              f"- Com vaga: {s['available_combinations']}",
+              f"- Erros: {s['errors']}",
+              '- A automação apenas consulta disponibilidade; não efetua reserva nem pagamento.'
           ]
           with open(os.environ['GITHUB_STEP_SUMMARY'],'a',encoding='utf-8') as f:f.write('\n'.join(lines)+'\n')
           PY
