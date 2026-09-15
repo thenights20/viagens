@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-15T09:53:05.062690Z",
-  "updated_at": "2026-09-15T09:53:05.062690Z",
+  "generated_at": "2026-09-15T09:53:09.604141Z",
+  "updated_at": "2026-09-15T09:53:09.604141Z",
   "started_at": "2026-09-15T09:51:20.438349Z",
   "status": "running",
   "stage": "multisource",
@@ -18,8 +18,8 @@
   },
   "stats": {
     "combinations": 378,
-    "processed_combinations": 312,
-    "primary_completed": 312,
+    "processed_combinations": 324,
+    "primary_completed": 324,
     "primary_total": 378,
     "fallback_done": 0,
     "fallback_total": 0,
@@ -39,7 +39,9 @@
   "results": [],
   "all_results": [],
   "errors": [
-    "2027-02-09->2027-02-12 2027-02-09->2027-02-12: ProviderResponseError: Google returned a provider error"
+    "2027-02-09->2027-02-12 2027-02-09->2027-02-12: ProviderResponseError: Google returned a provider error",
+    "2027-02-17->2027-02-19 2027-02-17->2027-02-19: ProviderResponseError: Google returned a provider error",
+    "2027-02-17->2027-02-25 2027-02-17->2027-02-25: ProviderResponseError: Google returned a provider error"
   ],
   "currency": "BRL",
   "source_strategy": "google_flights_with_ita_verification",
@@ -69,7 +71,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 312,
+    "google": 324,
     "ita": 0
   },
   "resume": {
@@ -77,16 +79,16 @@
     "window_minutes": 60,
     "cache_id": "94f33d3c2c8ea25211bd4a4c",
     "reused_combinations": 0,
-    "searched_this_run": 312,
-    "remaining_this_run": 66,
-    "reusable_now": 311,
-    "retryable_for_next_run": 67,
-    "saved_records": 312,
-    "saved_errors": 1,
+    "searched_this_run": 324,
+    "remaining_this_run": 54,
+    "reusable_now": 321,
+    "retryable_for_next_run": 57,
+    "saved_records": 324,
+    "saved_errors": 3,
     "checkpoint_path": "docs/data/flight-search-checkpoints/94f33d3c2c8ea25211bd4a4c.json"
   },
   "current_pair": {
-    "departure_date": "2027-02-16",
-    "return_date": "2027-02-26"
+    "departure_date": "2027-02-18",
+    "return_date": "2027-02-19"
   }
 }
