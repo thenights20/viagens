@@ -3,7 +3,7 @@
   "cache_id": "8efec0a65f186d676350176a",
   "signature": "GIG|MCO|2027-03-01|2027-06-30|2|BRL|economy|1",
   "created_at": "2026-09-14T23:48:35.216011Z",
-  "updated_at": "2026-09-15T00:01:54.323641Z",
+  "updated_at": "2026-09-15T00:01:59.703008Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "GIG",
@@ -62654,6 +62654,204 @@
         "search_links": {
           "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-22+returning+2027-03-27&curr=BRL&hl=pt-BR",
           "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-22&return=2027-03-27&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-03-22|2027-03-29": {
+      "departure_date": "2027-03-22",
+      "return_date": "2027-03-29",
+      "status": "error",
+      "completed_at": "2026-09-15T00:01:57.652384Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-03-22->2027-03-29: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-03-22|2027-03-30": {
+      "departure_date": "2027-03-22",
+      "return_date": "2027-03-30",
+      "status": "error",
+      "completed_at": "2026-09-15T00:01:57.662079Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-03-22->2027-03-30: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-03-22|2027-03-31": {
+      "departure_date": "2027-03-22",
+      "return_date": "2027-03-31",
+      "status": "priced",
+      "completed_at": "2026-09-15T00:01:57.671638Z",
+      "source": "google",
+      "row": {
+        "origin": "GIG",
+        "destination": "MCO",
+        "departure_date": "2027-03-22",
+        "return_date": "2027-03-31",
+        "airline": "COPA",
+        "price": 2990.0,
+        "duration": "10h 41min",
+        "duration_minutes": 641,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 3, 22] [16, 10]",
+        "arrival": "[2027, 3, 23] [11, 1]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-22+returning+2027-03-31&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 9,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-22+returning+2027-03-31&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-22&return=2027-03-31&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-03-22|2027-04-02": {
+      "departure_date": "2027-03-22",
+      "return_date": "2027-04-02",
+      "status": "error",
+      "completed_at": "2026-09-15T00:01:59.661406Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-03-22->2027-04-02: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-03-22|2027-04-01": {
+      "departure_date": "2027-03-22",
+      "return_date": "2027-04-01",
+      "status": "priced",
+      "completed_at": "2026-09-15T00:01:59.673279Z",
+      "source": "google",
+      "row": {
+        "origin": "GIG",
+        "destination": "MCO",
+        "departure_date": "2027-03-22",
+        "return_date": "2027-04-01",
+        "airline": "American",
+        "price": 2512.0,
+        "duration": "10h 04min",
+        "duration_minutes": 604,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 3, 22] [23, 55]",
+        "arrival": "[2027, 3, 23] [18, 9]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-22+returning+2027-04-01&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 10,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-22+returning+2027-04-01&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-22&return=2027-04-01&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-03-22|2027-04-03": {
+      "departure_date": "2027-03-22",
+      "return_date": "2027-04-03",
+      "status": "priced",
+      "completed_at": "2026-09-15T00:01:59.683426Z",
+      "source": "google",
+      "row": {
+        "origin": "GIG",
+        "destination": "MCO",
+        "departure_date": "2027-03-22",
+        "return_date": "2027-04-03",
+        "airline": "COPA",
+        "price": 3140.0,
+        "duration": "10h 41min",
+        "duration_minutes": 641,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 3, 22] [16, 10]",
+        "arrival": "[2027, 3, 23] [11, 1]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-22+returning+2027-04-03&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 12,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-22+returning+2027-04-03&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-22&return=2027-04-03&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-03-22|2027-04-05": {
+      "departure_date": "2027-03-22",
+      "return_date": "2027-04-05",
+      "status": "priced",
+      "completed_at": "2026-09-15T00:01:59.693484Z",
+      "source": "google",
+      "row": {
+        "origin": "GIG",
+        "destination": "MCO",
+        "departure_date": "2027-03-22",
+        "return_date": "2027-04-05",
+        "airline": "American",
+        "price": 2512.0,
+        "duration": "10h 04min",
+        "duration_minutes": 604,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 3, 22] [23, 55]",
+        "arrival": "[2027, 3, 23] [18, 9]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-22+returning+2027-04-05&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 14,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-22+returning+2027-04-05&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-22&return=2027-04-05&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-03-22|2027-04-04": {
+      "departure_date": "2027-03-22",
+      "return_date": "2027-04-04",
+      "status": "priced",
+      "completed_at": "2026-09-15T00:01:59.702997Z",
+      "source": "google",
+      "row": {
+        "origin": "GIG",
+        "destination": "MCO",
+        "departure_date": "2027-03-22",
+        "return_date": "2027-04-04",
+        "airline": "American",
+        "price": 2512.0,
+        "duration": "10h 04min",
+        "duration_minutes": 604,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 3, 22] [23, 55]",
+        "arrival": "[2027, 3, 23] [18, 9]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-22+returning+2027-04-04&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 13,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+MCO+on+2027-03-22+returning+2027-04-04&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GIG&to=MCO&depart=2027-03-22&return=2027-04-04&currency=BRL"
         },
         "assigned_source": "google"
       },
