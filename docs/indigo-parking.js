@@ -48,16 +48,18 @@
     </div>
 
     <section class="panel indigo-form">
-      <div class="indigo-field"><label>Dia de entrada</label><input id="indigoEntryDate" type="date"></div>
+      <div class="indigo-field"><label>Entrada · data inicial</label><input id="indigoEntryDateFrom" type="date"></div>
+      <div class="indigo-field"><label>Entrada · data final</label><input id="indigoEntryDateTo" type="date"></div>
       <div class="indigo-field"><label>Entrada a partir de</label><input id="indigoEntryFrom" type="time" step="1800" value="12:00"></div>
       <div class="indigo-field"><label>Entrada até</label><input id="indigoEntryTo" type="time" step="1800" value="15:00"></div>
-      <div class="indigo-field"><label>Estacionamento</label><select id="indigoProduct"><option value="terminal3_garage" selected>T3 Edifício Garagem · coberto</option><option value="terminal3_flex">T3 Flex</option><option value="terminal2_standard">Terminal 2 Standard</option><option value="terminal1">Terminal 1</option><option value="any">Qualquer opção disponível</option></select></div>
 
-      <div class="indigo-field"><label>Dia de saída</label><input id="indigoExitDate" type="date"></div>
+      <div class="indigo-field"><label>Saída · data inicial</label><input id="indigoExitDateFrom" type="date"></div>
+      <div class="indigo-field"><label>Saída · data final</label><input id="indigoExitDateTo" type="date"></div>
       <div class="indigo-field"><label>Saída a partir de</label><input id="indigoExitFrom" type="time" step="1800" value="06:00"></div>
       <div class="indigo-field"><label>Saída até</label><input id="indigoExitTo" type="time" step="1800" value="09:00"></div>
-      <div class="indigo-field"><label>Intervalo</label><select id="indigoStep"><option value="30" selected>30 minutos · Indigo</option><option value="60">60 minutos · rápido</option></select></div>
 
+      <div class="indigo-field"><label>Estacionamento</label><select id="indigoProduct"><option value="terminal3_garage" selected>T3 Edifício Garagem · coberto</option><option value="terminal3_flex">T3 Flex</option><option value="terminal2_standard">Terminal 2 Standard</option><option value="terminal1">Terminal 1</option><option value="any">Qualquer opção disponível</option></select></div>
+      <div class="indigo-field"><label>Intervalo</label><select id="indigoStep"><option value="30" selected>30 minutos · recomendado</option><option value="60">60 minutos · rápido</option></select></div>
       <div class="indigo-field"><label>Exibição</label><select id="indigoShow"><option value="all" selected>Todas as combinações</option><option value="available">Só disponíveis</option></select></div>
       <div class="indigo-actions"><button class="indigo-search" id="indigoSearchButton">🔎 Pesquisar combinações</button><span class="indigo-hint" id="indigoHint">Calculando combinações…</span></div>
     </section>
@@ -78,17 +80,22 @@
   if (flightsApp) flightsApp.after(app); else document.querySelector('.wrap').appendChild(app);
 
   function localDate(days=0){const d=new Date();d.setDate(d.getDate()+days);const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');return `${y}-${m}-${day}`;}
-  qs('#indigoEntryDate').value=localDate(1);
-  qs('#indigoExitDate').value=localDate(22);
+  qs('#indigoEntryDateFrom').value=localDate(1);
+  qs('#indigoEntryDateTo').value=localDate(1);
+  qs('#indigoExitDateFrom').value=localDate(22);
+  qs('#indigoExitDateTo').value=localDate(22);
 
   async function loadConfig(){try{const r=await fetch('./data/flight-search-config.json?t='+Date.now(),{cache:'no-store'});const d=await r.json();apiBase=String(d.api_base||'').trim();}catch{apiBase='';}}
   function requestId(){const suffix=globalThis.crypto&&crypto.randomUUID?crypto.randomUUID().replace(/-/g,''):Date.now().toString(36)+Math.random().toString(36).slice(2);return ('indigo_'+suffix).slice(0,64);}
   function mins(v){const [h,m]=String(v||'').split(':').map(Number);return h*60+m;}
   function slots(a,b,step){if(!a||!b||mins(b)<mins(a))return 0;return Math.floor((mins(b)-mins(a))/step)+1;}
   function halfHour(v){return /^(?:[01]\d|2[0-3]):(?:00|30)$/.test(String(v||''));}
+  function dates(a,b){if(!a||!b||b<a)return[];const out=[];for(let d=new Date(a+'T12:00:00Z'),end=new Date(b+'T12:00:00Z');d<=end;d.setUTCDate(d.getUTCDate()+1))out.push(d.toISOString().slice(0,10));return out;}
   function formRequest(){return{
-    entry_date:qs('#indigoEntryDate').value,
-    exit_date:qs('#indigoExitDate').value,
+    entry_date_from:qs('#indigoEntryDateFrom').value,
+    entry_date_to:qs('#indigoEntryDateTo').value,
+    exit_date_from:qs('#indigoExitDateFrom').value,
+    exit_date_to:qs('#indigoExitDateTo').value,
     entry_from_time:qs('#indigoEntryFrom').value,
     entry_to_time:qs('#indigoEntryTo').value,
     exit_from_time:qs('#indigoExitFrom').value,
@@ -97,24 +104,28 @@
     product:qs('#indigoProduct').value,
     request_id:requestId()
   };}
-  function estimated(r){return slots(r.entry_from_time,r.entry_to_time,r.step_minutes)*slots(r.exit_from_time,r.exit_to_time,r.step_minutes);}
-  function updateHint(){const r=formRequest(),n=estimated(r);qs('#indigoHint').innerHTML=n?`Serão testadas <strong>${n}</strong> combinações de entrada × saída.`:'Defina faixas válidas.';}
+  function timeValues(a,b,step){const out=[];if(!a||!b||mins(b)<mins(a))return out;for(let m=mins(a);m<=mins(b);m+=step)out.push(`${String(Math.floor(m/60)).padStart(2,'0')}:${String(m%60).padStart(2,'0')}`);return out;}
+  function estimated(r){const ed=dates(r.entry_date_from,r.entry_date_to),xd=dates(r.exit_date_from,r.exit_date_to),et=timeValues(r.entry_from_time,r.entry_to_time,r.step_minutes),xt=timeValues(r.exit_from_time,r.exit_to_time,r.step_minutes);let n=0;for(const a of ed)for(const at of et)for(const b of xd)for(const bt of xt)if(`${b}T${bt}`>`${a}T${at}`)n++;return n;}
+  function updateHint(){const r=formRequest(),n=estimated(r),ed=dates(r.entry_date_from,r.entry_date_to).length,xd=dates(r.exit_date_from,r.exit_date_to).length;qs('#indigoHint').innerHTML=n?`Serão testadas <strong>${n}</strong> combinações · ${ed} dia(s) de entrada × ${xd} dia(s) de saída.`:'Defina faixas válidas.';}
   function validate(r){
-    if(!r.entry_date||!r.exit_date)return'Informe as datas de entrada e saída.';
-    if(r.exit_date<r.entry_date)return'A saída não pode ser antes da entrada.';
+    if(!r.entry_date_from||!r.entry_date_to||!r.exit_date_from||!r.exit_date_to)return'Informe as quatro datas da faixa.';
+    if(r.entry_date_to<r.entry_date_from)return'A data final de entrada precisa ser igual ou posterior à inicial.';
+    if(r.exit_date_to<r.exit_date_from)return'A data final de saída precisa ser igual ou posterior à inicial.';
+    if(r.exit_date_to<r.entry_date_from)return'A faixa de saída termina antes da faixa de entrada.';
+    if(dates(r.entry_date_from,r.entry_date_to).length>7||dates(r.exit_date_from,r.exit_date_to).length>7)return'Cada faixa de datas pode ter no máximo 7 dias.';
     if(![r.entry_from_time,r.entry_to_time,r.exit_from_time,r.exit_to_time].every(halfHour))return'Na Indigo os horários precisam terminar em :00 ou :30.';
     if(r.entry_to_time<r.entry_from_time)return'O fim da faixa de entrada precisa ser depois do início.';
     if(r.exit_to_time<r.exit_from_time)return'O fim da faixa de saída precisa ser depois do início.';
-    const n=estimated(r);if(!n)return'Nenhuma combinação válida.';if(n>250)return`Essa faixa gera ${n} combinações. Reduza uma faixa ou use 60 minutos.`;
+    const n=estimated(r);if(!n)return'Nenhuma combinação válida.';if(n>3000)return`Essa faixa gera ${n} combinações. O máximo por varredura é 3.000; reduza datas ou horários.`;
     return'';
   }
   function postSearch(r){const url=`${apiBase}?route=${encodeURIComponent('api/indigo/search')}&t=${Date.now()}`;return fetch(url,{method:'POST',mode:'no-cors',cache:'no-store',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(r)});}
   async function readResult(){try{const x=await fetch(RESULT_URL+'?t='+Date.now(),{cache:'no-store'});if(!x.ok)return null;return await x.json();}catch{return null;}}
   function bridgeJsonp(route,timeoutMs=12000){return new Promise((resolve,reject)=>{if(!apiBase){reject(new Error('Serviço de pesquisa não conectado.'));return;}const cb='indigoCb_'+Date.now().toString(36)+Math.random().toString(36).slice(2);const script=document.createElement('script');const timer=setTimeout(()=>finish(new Error('Serviço demorou para responder.')),timeoutMs);function finish(err,value){clearTimeout(timer);try{delete window[cb]}catch{}script.remove();err?reject(err):resolve(value);}window[cb]=value=>finish(null,value);script.onerror=()=>finish(new Error('Não foi possível consultar o serviço.'));script.src=`${apiBase}?route=${encodeURIComponent(route)}&callback=${encodeURIComponent(cb)}&t=${Date.now()}`;document.head.appendChild(script);});}
-  function sameRequest(data,r){const q=data?.request||{};return data?.request_id===r.request_id&&q.entry_date===r.entry_date&&q.exit_date===r.exit_date&&String(q.entry_from_time||q.from_time||'')===r.entry_from_time&&String(q.entry_to_time||q.to_time||'')===r.entry_to_time&&String(q.exit_from_time||q.exit_time||'')===r.exit_from_time&&String(q.exit_to_time||q.exit_time||'')===r.exit_to_time&&Number(q.step_minutes)===Number(r.step_minutes)&&q.product===r.product;}
+  function sameRequest(data,r){const q=data?.request||{};return data?.request_id===r.request_id&&String(q.entry_date_from||q.entry_date||'')===r.entry_date_from&&String(q.entry_date_to||q.entry_date||'')===r.entry_date_to&&String(q.exit_date_from||q.exit_date||'')===r.exit_date_from&&String(q.exit_date_to||q.exit_date||'')===r.exit_date_to&&String(q.entry_from_time||q.from_time||'')===r.entry_from_time&&String(q.entry_to_time||q.to_time||'')===r.entry_to_time&&String(q.exit_from_time||q.exit_time||'')===r.exit_from_time&&String(q.exit_to_time||q.exit_time||'')===r.exit_to_time&&Number(q.step_minutes)===Number(r.step_minutes)&&q.product===r.product;}
   function fmtDateTime(v){try{return new Date(v).toLocaleString('pt-BR')}catch{return'—'}}
   function money(v){return Number.isFinite(Number(v))&&Number(v)>0?new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(v)):'';}
-  function pickBest(data){if(data?.best_combination)return data.best_combination;return [...(data?.results||[])].filter(x=>x.available===true).sort((a,b)=>(Number(a.price??Infinity)-Number(b.price??Infinity))||String(a.entry_time).localeCompare(String(b.entry_time))||String(a.exit_time).localeCompare(String(b.exit_time)))[0]||null;}
+  function pickBest(data){if(data?.best_combination)return data.best_combination;return [...(data?.results||[])].filter(x=>x.available===true).sort((a,b)=>(Number(a.price??Infinity)-Number(b.price??Infinity))||String(a.entry_date).localeCompare(String(b.entry_date))||String(a.entry_time).localeCompare(String(b.entry_time))||String(a.exit_date).localeCompare(String(b.exit_date))||String(a.exit_time).localeCompare(String(b.exit_time)))[0]||null;}
   function render(data){
     lastData=data;
     const all=[...(data.results||[])];
@@ -124,21 +135,22 @@
     const best=pickBest(data);
     qs('#indigoTested').textContent=String(data.stats?.tested_combinations??all.length);
     qs('#indigoAvailable').textContent=String(data.stats?.available_combinations??available.length);
-    qs('#indigoBest').textContent=best?`${best.entry_time} → ${best.exit_time}`:'Nenhuma';
+    qs('#indigoBest').textContent=best?`${best.entry_date.slice(5).split('-').reverse().join('/')} ${best.entry_time} → ${best.exit_date.slice(5).split('-').reverse().join('/')} ${best.exit_time}`:'Nenhuma';
     qs('#indigoUpdated').textContent=data.generated_at?fmtDateTime(data.generated_at):'—';
     const box=qs('#indigoSlots');box.innerHTML='';qs('#indigoEmpty').hidden=rows.length>0;
     if(!rows.length){qs('#indigoEmpty').textContent=show==='available'?'Nenhuma combinação disponível nesta varredura.':'Nenhuma combinação retornada.';return;}
     for(const x of rows){
-      const div=document.createElement('div');const isBest=best&&x.available===true&&x.entry_time===best.entry_time&&x.exit_time===best.exit_time;const cls=x.available===true?'available':x.status==='error'?'error':'sold_out';const label=x.available===true?'DISPONÍVEL':x.status==='error'?'ERRO':x.status==='not_offered'?'NÃO OFERTADO':'ESGOTADO';
+      const div=document.createElement('div');const isBest=best&&x.available===true&&x.entry_date===best.entry_date&&x.entry_time===best.entry_time&&x.exit_date===best.exit_date&&x.exit_time===best.exit_time;const cls=x.available===true?'available':x.status==='error'?'error':'sold_out';const label=x.available===true?'DISPONÍVEL':x.status==='error'?'ERRO':x.status==='not_offered'?'NÃO OFERTADO':'ESGOTADO';
       div.className='indigo-slot '+cls;
-      div.innerHTML=`<div>${isBest?'<div class="indigo-best">★ MELHOR COMBINAÇÃO</div>':''}<div class="indigo-route-time"><div><span class="indigo-time-label">Entrada</span><strong>${String(x.entry_time||'—')}</strong></div><span class="indigo-arrow">→</span><div><span class="indigo-time-label">Saída</span><strong>${String(x.exit_time||'—')}</strong></div></div></div><div><div class="indigo-state">${label}</div>${x.available===true&&money(x.price)?`<div class="indigo-price">${money(x.price)}</div>`:''}<small>${x.available===true?'Essa combinação liberou vaga':'Combinação testada'}</small></div>`;
+      const ed=String(x.entry_date||'').slice(5).split('-').reverse().join('/'),xd=String(x.exit_date||'').slice(5).split('-').reverse().join('/');
+      div.innerHTML=`<div>${isBest?'<div class="indigo-best">★ MELHOR COMBINAÇÃO</div>':''}<div class="indigo-route-time"><div><span class="indigo-time-label">Entrada · ${ed}</span><strong>${String(x.entry_time||'—')}</strong></div><span class="indigo-arrow">→</span><div><span class="indigo-time-label">Saída · ${xd}</span><strong>${String(x.exit_time||'—')}</strong></div></div></div><div><div class="indigo-state">${label}</div>${x.available===true&&money(x.price)?`<div class="indigo-price">${money(x.price)}</div>`:''}<small>${x.available===true?'Essa combinação liberou vaga':'Combinação testada'}</small></div>`;
       box.appendChild(div);
     }
     const status=qs('#indigoStatus');status.className='indigo-status '+(available.length?'ok':'bad');
-    status.textContent=available.length?`✅ ${available.length} combinação(ões) liberaram vaga. Melhor: entrada ${best.entry_time} · saída ${best.exit_time}${money(best.price)?' · '+money(best.price):''}.`:'Nenhuma combinação disponível nas faixas testadas. Amplie a entrada, a saída ou altere o dia.';
+    status.textContent=available.length?`✅ ${available.length} combinação(ões) liberaram vaga. Melhor: entrada ${best.entry_date} ${best.entry_time} · saída ${best.exit_date} ${best.exit_time}${money(best.price)?' · '+money(best.price):''}.`:'Nenhuma combinação disponível nas faixas testadas. Amplie as datas ou os horários.';
   }
   async function poll(r){
-    const status=qs('#indigoStatus'),started=Date.now(),timeoutMs=15*60*1000;
+    const status=qs('#indigoStatus'),started=Date.now(),timeoutMs=45*60*1000;
     while(Date.now()-started<timeoutMs){
       await new Promise(ok=>setTimeout(ok,2500));let bridge=null;try{bridge=await bridgeJsonp('api/indigo/search/'+r.request_id,10000);}catch{}
       if(bridge?.status==='error')throw new Error(bridge.error||'A pesquisa terminou com erro.');
@@ -146,7 +158,7 @@
       const data=await readResult();if(data?.status==='error'&&data.request_id===r.request_id)throw new Error(data.error||'A pesquisa terminou com erro.');if(data?.status==='completed'&&sameRequest(data,r)){render(data);return data;}
       const sec=Math.round((Date.now()-started)/1000),phase=bridge?.status==='queued'?'na fila':bridge?.status==='in_progress'?'testando combinações na Indigo':bridge?.status==='running'?'iniciando busca':'aguardando execução';status.textContent=`🔎 ${phase}… ${sec}s`;
     }
-    throw new Error('A pesquisa excedeu 15 minutos. Tente reduzir as faixas e pesquisar novamente.');
+    throw new Error('A pesquisa excedeu 45 minutos. Tente reduzir as datas ou horários e pesquisar novamente.');
   }
   async function search(){
     if(searching)return;const r=formRequest(),err=validate(r),status=qs('#indigoStatus'),btn=qs('#indigoSearchButton');if(err){status.className='indigo-status bad';status.textContent=err;return;}if(!apiBase)await loadConfig();if(!apiBase){status.className='indigo-status bad';status.textContent='Serviço de pesquisa não conectado. Atualize a página e tente novamente.';return;}
@@ -155,7 +167,7 @@
   }
   function activate(){if(typeof window.setMain==='function')window.setMain('indigo');else{qs('#productsApp')&&(qs('#productsApp').hidden=true);qs('#flightsApp')&&(qs('#flightsApp').hidden=true);document.querySelectorAll('.main-tab').forEach(x=>x.classList.toggle('active',x===tab));}app.hidden=false;}
   tab.addEventListener('click',activate);document.querySelectorAll('.main-tab').forEach(b=>{if(b!==tab)b.addEventListener('click',()=>{app.hidden=true;});});
-  qs('#indigoSearchButton').addEventListener('click',search);qs('#indigoShow').addEventListener('change',()=>{if(lastData)render(lastData);});qs('#indigoEntryDate').addEventListener('change',()=>{if(qs('#indigoExitDate').value<qs('#indigoEntryDate').value)qs('#indigoExitDate').value=qs('#indigoEntryDate').value;});
-  ['indigoEntryFrom','indigoEntryTo','indigoExitFrom','indigoExitTo','indigoStep'].forEach(id=>qs('#'+id).addEventListener('change',updateHint));
+  qs('#indigoSearchButton').addEventListener('click',search);qs('#indigoShow').addEventListener('change',()=>{if(lastData)render(lastData);});
+  ['indigoEntryDateFrom','indigoEntryDateTo','indigoExitDateFrom','indigoExitDateTo','indigoEntryFrom','indigoEntryTo','indigoExitFrom','indigoExitTo','indigoStep'].forEach(id=>qs('#'+id).addEventListener('change',updateHint));
   loadConfig();updateHint();
 })();
