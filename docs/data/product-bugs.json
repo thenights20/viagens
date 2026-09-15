@@ -1,19 +1,15 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-09-15T00:37:19.410316Z",
+  "generated_at": "2026-09-15T05:20:30.778492Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 3,
-  "strong_count": 2,
-  "critical_count": 2,
-  "confirmed_count": 2,
+  "active_count": 0,
+  "strong_count": 0,
+  "critical_count": 0,
+  "confirmed_count": 0,
   "sensor_bug_count": 0,
-  "scanner_count": 5,
-  "queries_this_run": [
-    "lava e seca",
-    "nintendo switch 2",
-    "notebook gamer"
-  ],
+  "scanner_count": 0,
+  "queries_this_run": [],
   "source_health": {
     "Magalu": {
       "ok": true,
@@ -29,119 +25,21 @@
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     },
-    "Shopee": {
+    "Amazon Brasil": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     },
-    "Amazon Brasil": {
+    "Shopee": {
       "ok": true,
-      "items": 5,
-      "candidates_seen": 5,
-      "message": "scanner rápido",
+      "items": 0,
+      "candidates_seen": 0,
+      "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     }
   },
-  "validation_errors": [
-    "Amazon Brasil · C3Tech Base para notebook Gamer NBC-100BK 17,3\" Refrigerada, 4 Ventiladores, Led Azul, controle de velocidade, regulagem de altura em 5 posições, Display digital em LCD: preço não apareceu novamente na página",
-    "Amazon Brasil · Panos lava e seca 5 peças - Simplo: preço não apareceu novamente na página",
-    "Amazon Brasil · Nintendo, Cartão Samsung microSD Express, 256 GB, Cartão de Memória, Nintendo Switch 2: preço não apareceu novamente na página"
-  ],
-  "bugs": [
-    {
-      "source": "Amazon Brasil",
-      "store_name": "Amazon Brasil",
-      "title": "Mop Lava e Seca com Balde Separador, Prensa para Secagem, Base Flexível 360°, Pano de Microfibra Reutilizável para Limpeza de Pisos, Vidros e Superfícies",
-      "price": 104.49,
-      "original_price": 109.99,
-      "url": "https://www.amazon.com.br/Separador-Flex%C3%ADvel-Microfibra-Reutiliz%C3%A1vel-Superf%C3%ADcies/dp/B0H7WZ2Z1Z/ref=sr_1_37",
-      "search_query": "lava e seca",
-      "available": true,
-      "trusted": false,
-      "revalidated": true,
-      "collector": "fast-market-scan",
-      "bug_score": 100,
-      "bug_status": "🚨 BUG PROVÁVEL",
-      "category_rule": "Lava e seca",
-      "category": "Eletrodomésticos",
-      "baseline_price": 1700.0,
-      "baseline_kind": "piso conservador da categoria",
-      "drop_pct": 93.9,
-      "savings": 1595.51,
-      "reasons": [
-        "94% abaixo de piso conservador da categoria",
-        "preço impossível para a faixa de Lava e seca",
-        "preço reaberto e confirmado"
-      ],
-      "verification_note": "preço confirmado; vendedor precisa conferência manual",
-      "first_seen": "2026-09-15T00:37:19.410316Z",
-      "last_seen": "2026-09-15T00:37:19.410316Z",
-      "sightings": 1,
-      "fresh": true
-    },
-    {
-      "source": "Amazon Brasil",
-      "store_name": "Amazon Brasil",
-      "title": "Mario Kart World - Nintendo Switch 2",
-      "price": 425.89,
-      "original_price": 499.9,
-      "url": "https://www.amazon.com.br/Nintendo-Mario-World-Digital-Switch/dp/B0F6DB3Y8P/ref=sr_1_14",
-      "search_query": "nintendo switch 2",
-      "available": true,
-      "trusted": false,
-      "revalidated": true,
-      "collector": "fast-market-scan",
-      "bug_score": 97,
-      "bug_status": "🚨 BUG PROVÁVEL",
-      "category_rule": "Nintendo Switch 2",
-      "category": "Consoles",
-      "baseline_price": 2200.0,
-      "baseline_kind": "piso conservador da categoria",
-      "drop_pct": 80.6,
-      "savings": 1774.11,
-      "reasons": [
-        "81% abaixo de piso conservador da categoria",
-        "preço impossível para a faixa de Nintendo Switch 2",
-        "preço reaberto e confirmado"
-      ],
-      "verification_note": "preço confirmado; vendedor precisa conferência manual",
-      "first_seen": "2026-09-15T00:37:19.410316Z",
-      "last_seen": "2026-09-15T00:37:19.410316Z",
-      "sightings": 1,
-      "fresh": true
-    },
-    {
-      "source": "Loja TCL",
-      "store_name": "Loja TCL",
-      "title": "Mais Vendido",
-      "price": 1011.08,
-      "original_price": 1169.0,
-      "reference_price": 3421.48,
-      "url": "https://www.lojatcl.com.br/smart-tv-semp-32-polegadas-led-hd-s42-wifi-bluetooth-google-tv-2-hdmi-hdr10-dolby-audio-32s42-32398/p",
-      "category": null,
-      "available": true,
-      "trusted": true,
-      "revalidated": true,
-      "collector": "radar-historico",
-      "collected_at": "2026-09-14T23:16:00.257482+00:00",
-      "bug_score": 62,
-      "bug_status": "🟢 SUSPEITO",
-      "category_rule": null,
-      "baseline_price": 3421.48,
-      "baseline_kind": "histórico/mercado",
-      "drop_pct": 70.4,
-      "savings": 2410.4,
-      "reasons": [
-        "70% abaixo de histórico/mercado",
-        "preço reaberto e confirmado",
-        "vendedor/loja com sinal de confiança"
-      ],
-      "first_seen": "2026-09-11T16:56:52.586049Z",
-      "last_seen": "2026-09-15T00:37:19.410316Z",
-      "sightings": 6,
-      "fresh": false
-    }
-  ]
+  "validation_errors": [],
+  "bugs": []
 }
