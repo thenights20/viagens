@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-09-15T15:01:07.196941Z",
+  "generated_at": "2026-09-15T18:45:56.336970Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
   "active_count": 0,
@@ -8,17 +8,20 @@
   "critical_count": 0,
   "confirmed_count": 0,
   "sensor_bug_count": 0,
-  "scanner_count": 0,
-  "queries_this_run": [],
+  "scanner_count": 2,
+  "queries_this_run": [
+    "dji mini",
+    "playstation 5"
+  ],
   "source_health": {
-    "Mercado Livre": {
+    "Magalu": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     },
-    "Magalu": {
+    "Mercado Livre": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
@@ -34,12 +37,14 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 0,
-      "candidates_seen": 0,
-      "message": "nenhum candidato extremo nesta rodada",
+      "items": 2,
+      "candidates_seen": 2,
+      "message": "scanner rápido",
       "errors": []
     }
   },
-  "validation_errors": [],
+  "validation_errors": [
+    "Amazon Brasil · Hub de Carregamento DJI Mini 2 - DJI1034: preço não apareceu novamente na página"
+  ],
   "bugs": []
 }
