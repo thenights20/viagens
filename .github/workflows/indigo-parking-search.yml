@@ -1,16 +1,26 @@
 name: Indigo GRU availability search
-run-name: "Indigo ${{ inputs.request_id || 'manual' }} · ${{ inputs.entry_date || '2026-09-15' }} → ${{ inputs.exit_date || '2026-10-06' }}"
+run-name: "Indigo ${{ inputs.request_id || 'manual' }} · ${{ inputs.entry_date_from || '2026-09-15' }}..${{ inputs.entry_date_to || inputs.entry_date_from || '2026-09-15' }} → ${{ inputs.exit_date_from || '2026-10-06' }}..${{ inputs.exit_date_to || inputs.exit_date_from || '2026-10-06' }}"
 
 on:
   workflow_dispatch:
     inputs:
-      entry_date:
-        description: "Data de entrada (YYYY-MM-DD)"
+      entry_date_from:
+        description: "Entrada: data inicial (YYYY-MM-DD)"
         required: true
         default: "2026-09-15"
         type: string
-      exit_date:
-        description: "Data de saída (YYYY-MM-DD)"
+      entry_date_to:
+        description: "Entrada: data final (YYYY-MM-DD)"
+        required: true
+        default: "2026-09-15"
+        type: string
+      exit_date_from:
+        description: "Saída: data inicial (YYYY-MM-DD)"
+        required: true
+        default: "2026-10-06"
+        type: string
+      exit_date_to:
+        description: "Saída: data final (YYYY-MM-DD)"
         required: true
         default: "2026-10-06"
         type: string
@@ -67,7 +77,7 @@ concurrency:
 jobs:
   search:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 55
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -89,8 +99,10 @@ jobs:
       - name: Consultar disponibilidade Indigo
         env:
           CHROME_PATH: /usr/bin/google-chrome
-          INDIGO_ENTRY_DATE: ${{ inputs.entry_date || '2026-09-15' }}
-          INDIGO_EXIT_DATE: ${{ inputs.exit_date || '2026-10-06' }}
+          INDIGO_ENTRY_DATE_FROM: ${{ inputs.entry_date_from || '2026-09-15' }}
+          INDIGO_ENTRY_DATE_TO: ${{ inputs.entry_date_to || inputs.entry_date_from || '2026-09-15' }}
+          INDIGO_EXIT_DATE_FROM: ${{ inputs.exit_date_from || '2026-10-06' }}
+          INDIGO_EXIT_DATE_TO: ${{ inputs.exit_date_to || inputs.exit_date_from || '2026-10-06' }}
           INDIGO_ENTRY_FROM_TIME: ${{ inputs.entry_from_time || '12:00' }}
           INDIGO_ENTRY_TO_TIME: ${{ inputs.entry_to_time || '15:00' }}
           INDIGO_EXIT_FROM_TIME: ${{ inputs.exit_from_time || '06:00' }}
@@ -107,10 +119,10 @@ jobs:
           const d=JSON.parse(fs.readFileSync('docs/data/indigo-parking-search.json','utf8'));
           if(d.status!=='completed') throw new Error(d.error||'Pesquisa Indigo não concluída');
           if(!Array.isArray(d.results)||!d.results.length) throw new Error('Nenhuma combinação foi testada');
-          if(!d.results.every(x=>x.entry_time && x.exit_time && ['available','sold_out','not_offered','unstable','error'].includes(x.status))) throw new Error('Resultado inválido');
+          if(!d.results.every(x=>x.entry_date && x.exit_date && x.entry_time && x.exit_time && ['available','sold_out','not_offered','unstable','error'].includes(x.status))) throw new Error('Resultado inválido');
           const greens=d.results.filter(x=>x.available===true);
           if(!greens.every(x=>x.confirmed===true && x.verification?.attempts>=3 && Number(x.price)>0)) throw new Error('Disponibilidade verde sem confirmação suficiente');
-          console.log(`Indigo: ${d.stats.available_combinations}/${d.stats.tested_combinations} combinações confirmadas; ${d.stats.unstable_combinations||0} instáveis descartadas`);
+          console.log(`Indigo: ${d.stats.available_combinations}/${d.stats.tested_combinations} combinações confirmadas; ${d.stats.entry_days||1} dia(s) de entrada × ${d.stats.exit_days||1} dia(s) de saída`);
           if(d.best_combination) console.log('Melhor confirmada:',d.best_combination);
           NODE
 
