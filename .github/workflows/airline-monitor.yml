@@ -52,12 +52,24 @@ jobs:
           python - <<'PY'
           import re
           from pathlib import Path
+
           html = Path('docs/index.html').read_text(encoding='utf-8')
-          match = re.search(r'<script>(.*)</script>', html, re.S)
-          assert match, 'script inline não encontrado'
-          Path('/tmp/dashboard.js').write_text(match.group(1), encoding='utf-8')
+          scripts = re.findall(
+              r'<script\b(?![^>]*\bsrc\s*=)[^>]*>(.*?)</script>',
+              html,
+              flags=re.I | re.S,
+          )
+          assert scripts, 'nenhum script inline encontrado'
+          for index, script in enumerate(scripts):
+              Path(f'/tmp/dashboard-inline-{index}.js').write_text(script, encoding='utf-8')
+          print(f'{len(scripts)} script(s) inline preparado(s) para validação')
           PY
-          node --check /tmp/dashboard.js
+          for file in /tmp/dashboard-inline-*.js; do
+            echo "Validando $file"
+            node --check "$file"
+          done
+          node --check docs/terabyte-live.js
+          node --check docs/flight-explorer.js
 
       - name: Consultar companhias
         env:
