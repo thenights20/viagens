@@ -1,9 +1,9 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-09-17T15:50:36.320069Z",
+  "generated_at": "2026-09-17T19:23:58.505134Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 0,
+  "active_count": 1,
   "strong_count": 0,
   "critical_count": 0,
   "confirmed_count": 0,
@@ -11,6 +11,13 @@
   "scanner_count": 0,
   "queries_this_run": [],
   "source_health": {
+    "Amazon Brasil": {
+      "ok": true,
+      "items": 0,
+      "candidates_seen": 0,
+      "message": "nenhum candidato extremo nesta rodada",
+      "errors": []
+    },
     "Magalu": {
       "ok": true,
       "items": 0,
@@ -19,13 +26,6 @@
       "errors": []
     },
     "Mercado Livre": {
-      "ok": true,
-      "items": 0,
-      "candidates_seen": 0,
-      "message": "nenhum candidato extremo nesta rodada",
-      "errors": []
-    },
-    "Amazon Brasil": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
@@ -41,5 +41,37 @@
     }
   },
   "validation_errors": [],
-  "bugs": []
+  "bugs": [
+    {
+      "source": "Loja TCL",
+      "store_name": "Loja TCL",
+      "title": "Mais Vendido",
+      "price": 1011.08,
+      "original_price": 1169.0,
+      "reference_price": 3495.08,
+      "url": "https://www.lojatcl.com.br/smart-tv-semp-32-polegadas-led-hd-s42-wifi-bluetooth-google-tv-2-hdmi-hdr10-dolby-audio-32s42-32398/p",
+      "category": null,
+      "available": true,
+      "trusted": true,
+      "revalidated": true,
+      "collector": "radar-historico",
+      "collected_at": "2026-09-17T18:22:34.184737+00:00",
+      "bug_score": 62,
+      "bug_status": "🟢 SUSPEITO",
+      "category_rule": null,
+      "baseline_price": 3495.08,
+      "baseline_kind": "histórico/mercado",
+      "drop_pct": 71.1,
+      "savings": 2484.0,
+      "reasons": [
+        "71% abaixo de histórico/mercado",
+        "preço reaberto e confirmado",
+        "vendedor/loja com sinal de confiança"
+      ],
+      "first_seen": "2026-09-17T19:23:58.505134Z",
+      "last_seen": "2026-09-17T19:23:58.505134Z",
+      "sightings": 1,
+      "fresh": true
+    }
+  ]
 }
