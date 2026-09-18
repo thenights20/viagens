@@ -1,24 +1,27 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-09-18T17:22:42.143848Z",
+  "generated_at": "2026-09-18T19:48:48.807331Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 1,
-  "strong_count": 0,
-  "critical_count": 0,
-  "confirmed_count": 0,
+  "active_count": 2,
+  "strong_count": 1,
+  "critical_count": 1,
+  "confirmed_count": 1,
   "sensor_bug_count": 0,
-  "scanner_count": 0,
-  "queries_this_run": [],
+  "scanner_count": 3,
+  "queries_this_run": [
+    "dji mini",
+    "playstation 5"
+  ],
   "source_health": {
-    "Mercado Livre": {
+    "Magalu": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     },
-    "Magalu": {
+    "Mercado Livre": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
@@ -34,14 +37,47 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 0,
-      "candidates_seen": 0,
-      "message": "nenhum candidato extremo nesta rodada",
+      "items": 3,
+      "candidates_seen": 3,
+      "message": "scanner rápido",
       "errors": []
     }
   },
-  "validation_errors": [],
+  "validation_errors": [
+    "Amazon Brasil · Hub de Carregamento DJI Mini 2 - DJI1034: preço não apareceu novamente na página"
+  ],
   "bugs": [
+    {
+      "source": "Amazon Brasil",
+      "store_name": "Amazon Brasil",
+      "title": "Mini 3 / Mini 3 Pro Propeller Holder,Prop Strap Guard Protector Stabilizer for DJI Mini 3 Series RC Drone Accessories(Orange)",
+      "price": 43.99,
+      "original_price": 54.99,
+      "url": "https://www.amazon.com.br/HeiyRC-Prop-Strap-Guard-Accessories/dp/B0BW49FSC1/ref=sr_1_47",
+      "search_query": "dji mini",
+      "available": true,
+      "trusted": false,
+      "revalidated": true,
+      "collector": "fast-market-scan",
+      "bug_score": 100,
+      "bug_status": "🚨 BUG PROVÁVEL",
+      "category_rule": "DJI",
+      "category": "Drones e câmeras",
+      "baseline_price": 1600.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 97.3,
+      "savings": 1556.01,
+      "reasons": [
+        "97% abaixo de piso conservador da categoria",
+        "preço impossível para a faixa de DJI",
+        "preço reaberto e confirmado"
+      ],
+      "verification_note": "preço confirmado; vendedor precisa conferência manual",
+      "first_seen": "2026-09-18T19:48:48.807331Z",
+      "last_seen": "2026-09-18T19:48:48.807331Z",
+      "sightings": 1,
+      "fresh": true
+    },
     {
       "source": "Loja TCL",
       "store_name": "Loja TCL",
@@ -55,7 +91,7 @@
       "trusted": true,
       "revalidated": true,
       "collector": "radar-historico",
-      "collected_at": "2026-09-18T16:33:33.696082+00:00",
+      "collected_at": "2026-09-18T19:46:28.470729+00:00",
       "bug_score": 62,
       "bug_status": "🟢 SUSPEITO",
       "category_rule": null,
@@ -69,8 +105,8 @@
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-09-17T19:23:58.505134Z",
-      "last_seen": "2026-09-18T17:22:42.143848Z",
-      "sightings": 7,
+      "last_seen": "2026-09-18T19:48:48.807331Z",
+      "sightings": 8,
       "fresh": false
     }
   ]
