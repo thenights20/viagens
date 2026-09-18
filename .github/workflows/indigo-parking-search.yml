@@ -1,5 +1,5 @@
 name: Indigo GRU availability search
-run-name: "Indigo ${{ inputs.request_id || 'manual' }} · ${{ inputs.entry_date_from || '2026-09-15' }}..${{ inputs.entry_date_to || inputs.entry_date_from || '2026-09-15' }} → ${{ inputs.exit_date_from || '2026-10-06' }}..${{ inputs.exit_date_to || inputs.exit_date_from || '2026-10-06' }}"
+run-name: "Indigo ${{ inputs.request_id || 'automatico' }} · ${{ inputs.entry_date_from || 'amanhã' }}..${{ inputs.entry_date_to || inputs.entry_date_from || 'amanhã' }} → ${{ inputs.exit_date_from || 'depois de amanhã' }}..${{ inputs.exit_date_to || inputs.exit_date_from || 'depois de amanhã' }}"
 
 on:
   workflow_dispatch:
@@ -45,11 +45,11 @@ on:
         default: "09:00"
         type: string
       step_minutes:
-        description: "Intervalo entre horários"
+        description: "Intervalo fixo da Indigo"
         required: true
         default: "30"
         type: choice
-        options: ["30", "60"]
+        options: ["30"]
       product:
         description: "Produto"
         required: true
@@ -60,6 +60,11 @@ on:
         description: "ID da solicitação"
         required: false
         default: "manual"
+        type: string
+      search_key:
+        description: "Chave do checkpoint da pesquisa"
+        required: false
+        default: ""
         type: string
   push:
     branches: [main]
@@ -77,7 +82,7 @@ concurrency:
 jobs:
   search:
     runs-on: ubuntu-latest
-    timeout-minutes: 55
+    timeout-minutes: 350
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -94,22 +99,29 @@ jobs:
         run: npm install --no-save playwright-core@1.55.0
 
       - name: Validar motor
-        run: node --check parking-indigo/search.mjs
+        run: |
+          node --check parking-indigo/search.mjs
+          node --check docs/indigo-parking.js
+          node --test tests/indigo-parking.test.mjs
 
       - name: Consultar disponibilidade Indigo
         env:
           CHROME_PATH: /usr/bin/google-chrome
-          INDIGO_ENTRY_DATE_FROM: ${{ inputs.entry_date_from || '2026-09-15' }}
-          INDIGO_ENTRY_DATE_TO: ${{ inputs.entry_date_to || inputs.entry_date_from || '2026-09-15' }}
-          INDIGO_EXIT_DATE_FROM: ${{ inputs.exit_date_from || '2026-10-06' }}
-          INDIGO_EXIT_DATE_TO: ${{ inputs.exit_date_to || inputs.exit_date_from || '2026-10-06' }}
+          GITHUB_TOKEN: ${{ github.token }}
+          INDIGO_LIVE_BRANCH: indigo-live
+          INDIGO_CHECKPOINT_BATCH_SIZE: "25"
+          INDIGO_ENTRY_DATE_FROM: ${{ inputs.entry_date_from }}
+          INDIGO_ENTRY_DATE_TO: ${{ inputs.entry_date_to }}
+          INDIGO_EXIT_DATE_FROM: ${{ inputs.exit_date_from }}
+          INDIGO_EXIT_DATE_TO: ${{ inputs.exit_date_to }}
           INDIGO_ENTRY_FROM_TIME: ${{ inputs.entry_from_time || '12:00' }}
           INDIGO_ENTRY_TO_TIME: ${{ inputs.entry_to_time || '15:00' }}
           INDIGO_EXIT_FROM_TIME: ${{ inputs.exit_from_time || '06:00' }}
           INDIGO_EXIT_TO_TIME: ${{ inputs.exit_to_time || '09:00' }}
-          INDIGO_STEP_MINUTES: ${{ inputs.step_minutes || '30' }}
+          INDIGO_STEP_MINUTES: "30"
           INDIGO_PRODUCT: ${{ inputs.product || 'terminal3_garage' }}
           INDIGO_REQUEST_ID: ${{ inputs.request_id || 'manual' }}
+          INDIGO_SEARCH_KEY: ${{ inputs.search_key }}
         run: node parking-indigo/search.mjs
 
       - name: Validar resultado
@@ -119,10 +131,14 @@ jobs:
           const d=JSON.parse(fs.readFileSync('docs/data/indigo-parking-search.json','utf8'));
           if(d.status!=='completed') throw new Error(d.error||'Pesquisa Indigo não concluída');
           if(!Array.isArray(d.results)||!d.results.length) throw new Error('Nenhuma combinação foi testada');
+          if(d.version!=='3.0.0') throw new Error('Versão inesperada do resultado Indigo');
           if(!d.results.every(x=>x.entry_date && x.exit_date && x.entry_time && x.exit_time && ['available','sold_out','not_offered','unstable','error'].includes(x.status))) throw new Error('Resultado inválido');
           const greens=d.results.filter(x=>x.available===true);
-          if(!greens.every(x=>x.confirmed===true && x.verification?.attempts>=3 && Number(x.price)>0)) throw new Error('Disponibilidade verde sem confirmação suficiente');
+          if(!greens.every(x=>x.status==='available' && x.confirmed===true && x.verification?.attempts>=2 && x.verification?.consistent===true && Number(x.price)>0 && x.evidence?.product_found===true && x.evidence?.sold_out===false && x.evidence?.valid_price===true)) throw new Error('Disponibilidade verde sem confirmação suficiente');
+          if(d.results.some(x=>x.status==='unstable' && (x.available===true || x.confirmed===true))) throw new Error('Resultado instável marcado como disponível');
+          if(Number(d.progress?.completed)!==Number(d.progress?.total)) throw new Error('Progresso final incompleto');
           console.log(`Indigo: ${d.stats.available_combinations}/${d.stats.tested_combinations} combinações confirmadas; ${d.stats.entry_days||1} dia(s) de entrada × ${d.stats.exit_days||1} dia(s) de saída`);
+          console.log(`Checkpoint: ${d.resume?.reused_combinations||0} reaproveitadas; ${d.resume?.searched_this_run||0} pesquisadas nesta execução`);
           if(d.best_combination) console.log('Melhor confirmada:',d.best_combination);
           NODE
 
