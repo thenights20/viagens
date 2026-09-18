@@ -251,7 +251,7 @@ function payloadFor({status,requestId,searchKey,startedAt,config,shape,total,row
     version:'3.0.0',status,generated_at:new Date().toISOString(),started_at:startedAt,request_id:requestId,search_key:searchKey,
     reliability:{mode:'sequential-double-confirmation',confirmations_required:CONFIRMATIONS_REQUIRED,green_means:'produto correto presente, SoldOut=false, preço válido e a mesma resposta confirmada novamente pela Indigo'},
     checkpoint:{enabled:true,branch:LIVE_BRANCH,window_minutes:60,batch_size:CHECKPOINT_BATCH_SIZE},
-    resume:{enabled:true,window_minutes:60,reused_combinations:reused,searched_this_run:searched,retryable_for_next_run:ordered.filter(x=>!reusableRow(x)).length},
+    resume:{enabled:true,window_minutes:60,reused_combinations:reused,searched_this_run:searched,retryable_for_next_run:(total-ordered.length)+ordered.filter(x=>!reusableRow(x)).length},
     progress:{completed:stats.processed_combinations,total,remaining:stats.remaining_combinations,percent},
     location:{id:LOCATION_ID,name:'Aeroporto de Guarulhos (GRU)',booking_url:BOOKING_URL,timezone:'America/Sao_Paulo'},
     request:{entry_date_from:config.entryDateFrom,entry_date_to:config.entryDateTo,exit_date_from:config.exitDateFrom,exit_date_to:config.exitDateTo,entry_from_time:config.entryFromTime,entry_to_time:config.entryToTime,exit_from_time:config.exitFromTime,exit_to_time:config.exitToTime,step_minutes:30,product:config.product},
@@ -306,12 +306,14 @@ async function main() {
   }
   const reused=resultsByKey.size;
   let searched=0;
+  let lastCheckpointAt=0;
   const total=combinations.length;
   const currentRows=()=>[...resultsByKey.values()].map(row=>({...row,center_distance_minutes:Number.isFinite(Number(row.center_distance_minutes))?Number(row.center_distance_minutes):centerDistance(row,centers)}));
   const persist=async status=>{
     const payload=payloadFor({status,requestId,searchKey,startedAt,config,shape,total,rows:currentRows(),reused,searched});
     await writeOutput(payload);
     try{await store.save(payload);}catch(error){console.warn(`Não foi possível publicar o checkpoint: ${error.message}`);}
+    lastCheckpointAt=Date.now();
     return payload;
   };
   await persist('running');
@@ -345,8 +347,8 @@ async function main() {
           row.center_distance_minutes=centerDistance(row,centers);
           resultsByKey.set(combinationKey(combo),row);
           searched++;
-          // Uma vaga confirmada é publicada sem esperar o fim do lote.
-          if(row.available===true&&row.confirmed===true)await persist('running');
+          // Uma vaga confirmada aparece rapidamente, sem gerar um commit para cada resposta.
+          if(row.available===true&&row.confirmed===true&&Date.now()-lastCheckpointAt>=5000)await persist('running');
           if(offset+i+1<remaining.length)await page.waitForTimeout(180);
         }
         await persist('running');
