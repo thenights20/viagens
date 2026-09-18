@@ -1,6 +1,6 @@
 {
   "version": "0.2.0",
-  "generated_at": "2026-09-18T00:46:23.715576Z",
+  "generated_at": "2026-09-18T06:37:24.889524Z",
   "source": "Google Flights via fast-flights + Swoop",
   "algorithm": "Radar robusto: mediana + MAD + percentis + z-score + booking window + histórico + revalidação",
   "origin_count": 11,
@@ -9,7 +9,7 @@
   "route_count": 517,
   "deal_count": 177,
   "strong_deal_count": 61,
-  "new_alert_count": 1,
+  "new_alert_count": 0,
   "origins": [
     {
       "code": "DOU",
@@ -8880,66 +8880,13 @@
       "record": true
     }
   ],
-  "new_alerts": [
-    {
-      "origin": "GIG",
-      "destination": "VVI",
-      "destination_name": "Santa Cruz de la Sierra",
-      "destination_country": "Bolivia",
-      "departure_date": "2027-02-21",
-      "return_date": "2027-02-28",
-      "airline": "BoA",
-      "price": 1847.0,
-      "duration": "3h 10min",
-      "duration_minutes": 190,
-      "stops": "Direto",
-      "stops_count": 0,
-      "departure": "",
-      "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI3LTAyLTIxKAJqBwgBEgNHSUdyDQgCEgkvbS8wMzF2MzUaJhIKMjAyNy0wMi0yOCgCag0IAhIJL20vMDMxdjM1cgcIARIDR0lHQAFIAVIDQlJMenxDalJJYVRsckxUTk1iVlJyVDFGQlFYRXlXbmRDUnkwdExTMHRMUzB0TFc5cmJHc3hNVUZCUVVGQlIzRnphWEJaVFU1ak9FbEJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVGdhQ3dqeW9nc1FBaG9EUWxKTU9EaHd2cGtD&curr=BRL&hl=en&gl=BR&gsas=1",
-      "provider": "swoop-deals",
-      "provider_typical_price": 3601.0,
-      "provider_discount_pct": 49.0,
-      "discovered": true,
-      "origin_name": "Rio de Janeiro / Galeão",
-      "observed_at": "2026-09-18T00:46:23.715576Z",
-      "scan_id": "20260918T004623Z-43",
-      "days_before_departure": 156,
-      "booking_bucket": "61+",
-      "departure_season": "M02",
-      "trip_days": 7,
-      "deal_score": 73,
-      "status": "🔥 DEAL",
-      "baseline_price": 3601.0,
-      "baseline_kind": "preço típico Google",
-      "discount_pct": 48.7,
-      "savings": 1754.0,
-      "percentile": null,
-      "z_score": null,
-      "history_count": 0,
-      "history_days": 0,
-      "p05": null,
-      "p10": null,
-      "p20": null,
-      "p30": null,
-      "p50": 3601.0,
-      "lowest_observed": null,
-      "is_new_low": false,
-      "near_historical_low": false,
-      "confirmation": "segunda implementação confirmou",
-      "baseline_scope": "sem histórico",
-      "checked_price": 1847.0,
-      "confirmation_detail": "second_collector",
-      "new_alert": true
-    }
-  ],
+  "new_alerts": [],
   "scan": {
-    "scan_number": 43,
-    "scan_id": "20260918T004623Z-43",
+    "scan_number": 44,
+    "scan_id": "20260918T063724Z-44",
     "origin_codes": [
-      "GIG",
-      "TJL",
-      "ARU"
+      "PPB",
+      "MII"
     ],
     "destination_codes": [
       "MAD",
@@ -8950,24 +8897,25 @@
       "AMS"
     ],
     "date_profile": "datas distribuídas até ~9 meses",
-    "queries": 180,
-    "regular_results": 60,
-    "discovery_results": 38,
+    "queries": 120,
+    "regular_results": 0,
+    "discovery_results": 7,
     "fallback_results": 0,
-    "results": 98,
-    "revalidated": 1,
-    "errors": 10
+    "results": 7,
+    "revalidated": 0,
+    "errors": 11
   },
   "errors": [
-    "ARU-BCN 2026-09-25/2026-10-03: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "ARU-BCN 2026-12-17/2026-12-21: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "ARU-LHR 2026-12-17/2026-12-21: fast-flights: Google document has no flight data script",
-    "ARU-FCO 2026-12-17/2026-12-21: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "ARU-FCO 2027-06-15/2027-06-23: fast-flights: Google document has no flight data script",
-    "ARU-AMS 2026-12-17/2026-12-21: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "ARU-AMS 2026-09-25/2026-09-29: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "ARU-AMS 2027-03-17/2027-03-25: fast-flights: Google document has no flight data script",
-    "ARU-AMS 2027-06-15/2027-06-23: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "revalidação GIG-MCZ: Google document has no flight data script"
+    "PPB-MAD 2026-10-18/2026-10-26: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-MAD 2026-12-17/2026-12-25: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-CDG 2026-09-25/2026-09-29: fast-flights: Google returned a provider error",
+    "PPB-BCN 2027-06-15/2027-06-19: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-CDG 2027-06-15/2027-06-19: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-LHR 2027-06-15/2027-06-23: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-LHR 2026-10-18/2026-10-22: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-AMS 2026-10-18/2026-10-26: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-FCO 2026-12-17/2026-12-21: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-AMS 2026-12-17/2026-12-21: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-AMS 2027-03-17/2027-03-25: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
   ]
 }
