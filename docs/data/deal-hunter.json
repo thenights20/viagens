@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-09-18T09:49:26.603242Z",
+  "generated_at": "2026-09-18T14:15:53.779190Z",
   "source": "Deal Hunter: Google Flights Explore/Swoop + rechecagem de sinais externos",
   "scan_interval_minutes": 15,
   "origin_codes": [
@@ -8,7 +8,7 @@
     "CGH",
     "VCP",
     "GIG",
-    "PMG"
+    "JTC"
   ],
   "hub_codes": [
     "GRU",
@@ -27,7 +27,7 @@
   ],
   "current_observations": 26,
   "active_count": 26,
-  "exceptional_count": 2,
+  "exceptional_count": 3,
   "very_cheap_count": 15,
   "external_targets": 3,
   "external_verified": 3,
@@ -158,7 +158,7 @@
       "stops_count": 0,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI3LTAxLTA3KAJqBwgBEgNDR0hyDQgCEgkvbS8wMXNxc3MaJhIKMjAyNy0wMS0xNigCag0IAhIJL20vMDFzcXNzcgcIARIDQ0dIQAFIAVIDQlJMenxDalJJVFdnMFkwdHZabnBXUVc5QlFtNDNjRUZDUnkwdExTMHRMUzB0Y0daaWEzSXhOa0ZCUVVGQlIzRjBRMUp6VEc0dFdWVkJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVEVhQ3dpS3RBSVFBaG9EUWxKTU9EaHdpRHc9&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI3LTAxLTA3KAJqBwgBEgNDR0hyDQgCEgkvbS8wMXNxc3MaJhIKMjAyNy0wMS0xNigCag0IAhIJL20vMDFzcXNzcgcIARIDQ0dIQAFIAVIDQlJMenxDalJJYW1saE1HcEtkWFZKTkZGQlJFSkxZVUZDUnkwdExTMHRMUzB0TFMxMmRHNXNOa0ZCUVVGQlIzRjBValJOUldKdWRUaEJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVEVhQ3dpS3RBSVFBaG9EUWxKTU9EaHc2enM9&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 826.0,
       "provider_discount_pct": 52.0,
@@ -172,7 +172,40 @@
       "itinerary_points": 8,
       "external_signal_points": 0,
       "first_seen": "2026-09-18T09:49:26.603242Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 2,
+      "fresh": false
+    },
+    {
+      "origin": "GRU",
+      "destination": "SDU",
+      "destination_name": "Rio de Janeiro",
+      "destination_country": "Brazil",
+      "departure_date": "2026-10-15",
+      "return_date": "2026-10-21",
+      "airline": "Azul",
+      "price": 400.0,
+      "duration": "1h 05min",
+      "duration_minutes": 65,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "",
+      "arrival": "",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI2LTEwLTE1KAJqBwgBEgNHUlVyDAgCEggvbS8wNmdtcholEgoyMDI2LTEwLTIxKAJqDAgCEggvbS8wNmdtcnIHCAESA0dSVUABSAFSA0JSTHp8Q2pSSVMzWk5lR3BVWmxOdGIzZEJSRWM0ZVhkQ1J5MHRMUzB0TFMwdExYWjBZbWR3TVVGQlFVRkJSM0YwVWpSTlJWUlZaVGhCRWhKRVpXRnNRMjl1YzNSeVlXbHVkSE13TFRnYUN3aXN1QUlRQWhvRFFsSk1PRGh3MVR3PQ&curr=BRL&hl=en&gl=BR&gsas=1",
+      "provider": "swoop-deals",
+      "provider_typical_price": 711.0,
+      "provider_discount_pct": 44.0,
+      "discovered": true,
+      "origin_name": "Guarulhos",
+      "hunter_score": 81,
+      "hunter_status": "🔥🔥 EXCEPCIONAL",
+      "price_region": "domestic",
+      "absolute_price_points": 45,
+      "relative_discount_points": 28,
+      "itinerary_points": 8,
+      "external_signal_points": 0,
+      "first_seen": "2026-09-18T14:15:53.779190Z",
+      "last_seen": "2026-09-18T14:15:53.779190Z",
       "sightings": 1,
       "fresh": true
     },
@@ -191,7 +224,7 @@
       "stops_count": 0,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI2LTA5LTI0KAJqBwgBEgNHUlVyDAgCEggvbS8wZzI4NBolEgoyMDI2LTA5LTMwKAJqDAgCEggvbS8wZzI4NHIHCAESA0dSVUABSAFSA0JSTHqAAUNqUklaaTFMUVd4TWIwOUpSRzlCUWpaSmNYZENSeTB0TFMwdExTMHRMWEJxZW0weE1VRkJRVUZCUjNGMFExSnpUR05DTW05QkVoTkVaV0ZzUTI5dWMzUnlZV2x1ZEhNd0xUSXdHZ3NJdDk4VEVBSWFBMEpTVERnNGNON3NBdz09&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI2LTA5LTI0KAJqBwgBEgNHUlVyDAgCEggvbS8wZzI4NBolEgoyMDI2LTA5LTMwKAJqDAgCEggvbS8wZzI4NHIHCAESA0dSVUABSAFSA0JSTHqAAUNqUklTM1pOZUdwVVpsTnRiM2RCUkVjNGVYZENSeTB0TFMwdExTMHRMWFowWW1kd01VRkJRVUZCUjNGMFVqUk5SVlJWWlRoQkVoTkVaV0ZzUTI5dWMzUnlZV2x1ZEhNd0xURTVHZ3NJdDk4VEVBSWFBMEpTVERnNGNPN3FBdz09&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 5017.0,
       "provider_discount_pct": 36.0,
@@ -205,8 +238,8 @@
       "itinerary_points": 8,
       "external_signal_points": 0,
       "first_seen": "2026-09-16T11:40:01.075753Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 13,
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 14,
       "fresh": false
     },
     {
@@ -224,7 +257,7 @@
       "stops_count": 0,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI2LTEyLTE5KAJqBwgBEgNHUlVyDQgCEgkvbS8wNnI3eXEaJhIKMjAyNi0xMi0yOCgCag0IAhIJL20vMDZyN3lxcgcIARIDR1JVQAFIAVIDQlJMenxDalJJWmkxTFFXeE1iMDlKUkc5QlFqWkpjWGRDUnkwdExTMHRMUzB0TFhCcWVtMHhNVUZCUVVGQlIzRjBRMUp6VEdOQ01tOUJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVGNhQ3dpSytnSVFBaG9EUWxKTU9EaHcyMGs9&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI2LTEyLTE5KAJqBwgBEgNHUlVyDQgCEgkvbS8wNnI3eXEaJhIKMjAyNi0xMi0yOCgCag0IAhIJL20vMDZyN3lxcgcIARIDR1JVQAFIAVIDQlJMenxDalJJUzNaTmVHcFVabE50YjNkQlJFYzRlWGRDUnkwdExTMHRMUzB0TFhaMFltZHdNVUZCUVVGQlIzRjBValJOUlZSVlpUaEJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVGNhQ3dpSytnSVFBaG9EUWxKTU9EaHd0MGs9&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 880.0,
       "provider_discount_pct": 45.0,
@@ -238,9 +271,9 @@
       "itinerary_points": 8,
       "external_signal_points": 0,
       "first_seen": "2026-09-18T09:49:26.603242Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "origin": "GRU",
@@ -257,7 +290,7 @@
       "stops_count": 0,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI2LTEwLTIyKAJqBwgBEgNHUlVyDQgCEgkvbS8wMndrZGIaJhIKMjAyNi0xMC0yOCgCag0IAhIJL20vMDJ3a2RicgcIARIDR1JVQAFIAVIDQlJMenxDalJJWmkxTFFXeE1iMDlKUkc5QlFqWkpjWGRDUnkwdExTMHRMUzB0TFhCcWVtMHhNVUZCUVVGQlIzRjBRMUp6VEdOQ01tOUJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVFVhQ3dqN2hnTVFBaG9EUWxKTU9EaHduRXc9&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI2LTEwLTIyKAJqBwgBEgNHUlVyDQgCEgkvbS8wMndrZGIaJhIKMjAyNi0xMC0yOCgCag0IAhIJL20vMDJ3a2RicgcIARIDR1JVQAFIAVIDQlJMenxDalJJUzNaTmVHcFVabE50YjNkQlJFYzRlWGRDUnkwdExTMHRMUzB0TFhaMFltZHdNVUZCUVVGQlIzRjBValJOUlZSVlpUaEJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVFVhQ3dqN2hnTVFBaG9EUWxKTU9EaHc5MHM9&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 988.0,
       "provider_discount_pct": 49.0,
@@ -271,9 +304,9 @@
       "itinerary_points": 8,
       "external_signal_points": 0,
       "first_seen": "2026-09-18T09:49:26.603242Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "origin": "GIG",
@@ -290,7 +323,7 @@
       "stops_count": 0,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI2LTExLTAxKAJqBwgBEgNHSUdyDAgCEggvbS8wZm5fbRolEgoyMDI2LTExLTA4KAJqDAgCEggvbS8wZm5fbXIHCAESA0dJR0ABSAFSA0JSTHqAAUNqUkliRlpFTjBFd1NWTkpTbFZCUW5VeWVrRkNSeTB0TFMwdExTMHRjR1ppYkhJME1VRkJRVUZCUjNGMFExSnpTME5WT0hGQkVoTkVaV0ZzUTI5dWMzUnlZV2x1ZEhNd0xURXdHZ3NJdElrR0VBSWFBMEpTVERnNGNNaVhBUT09&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI2LTExLTAxKAJqBwgBEgNHSUdyDAgCEggvbS8wZm5fbRolEgoyMDI2LTExLTA4KAJqDAgCEggvbS8wZm5fbXIHCAESA0dJR0ABSAFSA0JSTHp8Q2pSSUxXOHlTelU1ZFhjNGN6UkJSR2hTV25kQ1J5MHRMUzB0TFhaMGQySXlNaTF1TWtGQlFVRkJSM0YwVWpSTlJraDFObWxCRWhKRVpXRnNRMjl1YzNSeVlXbHVkSE13TFRrYUN3aTBpUVlRQWhvRFFsSk1PRGh3L3BZQg&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 1869.0,
       "provider_discount_pct": 47.0,
@@ -304,9 +337,9 @@
       "itinerary_points": 8,
       "external_signal_points": 0,
       "first_seen": "2026-09-18T09:49:26.603242Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "origin": "GIG",
@@ -323,7 +356,7 @@
       "stops_count": 1,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI2LTExLTA1KAJqBwgBEgNHSUdyDAgCEggvbS8wZzI4NBolEgoyMDI2LTExLTExKAJqDAgCEggvbS8wZzI4NHIHCAESA0dJR0ABSAFSA0JSTHqAAUNqUkliRlpFTjBFd1NWTkpTbFZCUW5VeWVrRkNSeTB0TFMwdExTMHRjR1ppYkhJME1VRkJRVUZCUjNGMFExSnpTME5WT0hGQkVoTkVaV0ZzUTI5dWMzUnlZV2x1ZEhNd0xURXlHZ3NJNHM4VUVBSWFBMEpTVERnNGNOR0NCQT09&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI2LTExLTA1KAJqBwgBEgNHSUdyDAgCEggvbS8wZzI4NBolEgoyMDI2LTExLTExKAJqDAgCEggvbS8wZzI4NHIHCAESA0dJR0ABSAFSA0JSTHqAAUNqUklMVzh5U3pVNWRYYzRjelJCUkdoU1duZENSeTB0TFMwdExYWjBkMkl5TWkxdU1rRkJRVUZCUjNGMFVqUk5Sa2gxTm1sQkVoTkVaV0ZzUTI5dWMzUnlZV2x1ZEhNd0xURXlHZ3NJNHM4VUVBSWFBMEpTVERnNGNOYUFCQT09&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 6072.0,
       "provider_discount_pct": 44.0,
@@ -337,8 +370,8 @@
       "itinerary_points": 4,
       "external_signal_points": 0,
       "first_seen": "2026-09-11T14:56:50.810262Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 44,
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 45,
       "fresh": false
     },
     {
@@ -356,7 +389,7 @@
       "stops_count": 1,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI2LTEwLTI1KAJqBwgBEgNHUlVyDAgCEggvbS8wMXlqMholEgoyMDI2LTExLTAzKAJqDAgCEggvbS8wMXlqMnIHCAESA0dSVUABSAFSA0JSTHqAAUNqUklaaTFMUVd4TWIwOUpSRzlCUWpaSmNYZENSeTB0TFMwdExTMHRMWEJxZW0weE1VRkJRVUZCUjNGMFExSnpUR05DTW05QkVoTkVaV0ZzUTI5dWMzUnlZV2x1ZEhNd0xUSXhHZ3NJNFowV0VBSWFBMEpTVERnNGNPYXFCQT09&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI2LTEwLTI1KAJqBwgBEgNHUlVyDAgCEggvbS8wMXlqMholEgoyMDI2LTExLTAzKAJqDAgCEggvbS8wMXlqMnIHCAESA0dSVUABSAFSA0JSTHqAAUNqUklTM1pOZUdwVVpsTnRiM2RCUkVjNGVYZENSeTB0TFMwdExTMHRMWFowWW1kd01VRkJRVUZCUjNGMFVqUk5SVlJWWlRoQkVoTkVaV0ZzUTI5dWMzUnlZV2x1ZEhNd0xUSXdHZ3NJNFowV0VBSWFBMEpTVERnNGNOZW9CQT09&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 5658.0,
       "provider_discount_pct": 36.0,
@@ -370,41 +403,8 @@
       "itinerary_points": 4,
       "external_signal_points": 0,
       "first_seen": "2026-09-18T09:49:26.603242Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 1,
-      "fresh": true
-    },
-    {
-      "origin": "VCP",
-      "destination": "CUR",
-      "destination_name": "Curaçao",
-      "destination_country": "Curaçao",
-      "departure_date": "2026-10-17",
-      "return_date": "2026-10-23",
-      "airline": "*",
-      "price": 3566.0,
-      "duration": "15h 55min",
-      "duration_minutes": 955,
-      "stops": "2 escalas",
-      "stops_count": 2,
-      "departure": "",
-      "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI2LTEwLTE3KAJqBwgBEgNWQ1ByDAgCEggvbS8waGJnaBolEgoyMDI2LTEwLTIzKAJqDAgCEggvbS8waGJnaHIHCAESA1ZDUEABSAFSA0JSTHqAAUNqUklTR013VmtZMmMwRmZkalJCUTBKZlYyZENSeTB0TFMwdExTMHRMWEJtWW1Sek1rRkJRVUZCUjNGMFExSnpTMDQyV25sQkVoTkVaV0ZzUTI5dWMzUnlZV2x1ZEhNd0xURTBHZ3NJemVFVkVBSWFBMEpTVERnNGNJaWZCQT09&curr=BRL&hl=en&gl=BR&gsas=1",
-      "provider": "swoop-deals",
-      "provider_typical_price": 5643.0,
-      "provider_discount_pct": 37.0,
-      "discovered": true,
-      "origin_name": "Campinas / Viracopos",
-      "hunter_score": 73,
-      "hunter_status": "🔥 MUITO BARATA",
-      "price_region": "long_haul",
-      "absolute_price_points": 45,
-      "relative_discount_points": 28,
-      "itinerary_points": 0,
-      "external_signal_points": 0,
-      "first_seen": "2026-09-16T15:35:04.509511Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 12,
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 2,
       "fresh": false
     },
     {
@@ -422,7 +422,7 @@
       "stops_count": 2,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI3LTAyLTI4KAJqBwgBEgNDR0hyDAgCEggvbS8waGJnaBolEgoyMDI3LTAzLTA5KAJqDAgCEggvbS8waGJnaHIHCAESA0NHSEABSAFSA0JSTHp8Q2pSSVRXZzBZMHR2Wm5wV1FXOUJRbTQzY0VGQ1J5MHRMUzB0TFMwdGNHWmlhM0l4TmtGQlFVRkJSM0YwUTFKelRHNHRXVlZCRWhKRVpXRnNRMjl1YzNSeVlXbHVkSE13TFRrYUN3aTQrUlVRQWhvRFFsSk1PRGh3MjZNRQ&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI3LTAyLTI4KAJqBwgBEgNDR0hyDAgCEggvbS8waGJnaBolEgoyMDI3LTAzLTA5KAJqDAgCEggvbS8waGJnaHIHCAESA0NHSEABSAFSA0JSTHqAAUNqUklhbWxoTUdwS2RYVkpORkZCUkVKTFlVRkNSeTB0TFMwdExTMHRMUzEyZEc1c05rRkJRVUZCUjNGMFVqUk5SV0p1ZFRoQkVoTkVaV0ZzUTI5dWMzUnlZV2x1ZEhNd0xURXdHZ3NJdVBrVkVBSWFBMEpTVERnNGNOQ2hCQT09&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 6386.0,
       "provider_discount_pct": 44.0,
@@ -436,9 +436,9 @@
       "itinerary_points": 0,
       "external_signal_points": 0,
       "first_seen": "2026-09-18T09:49:26.603242Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "origin": "GRU",
@@ -455,7 +455,7 @@
       "stops_count": 0,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAhooEgoyMDI2LTEyLTI0KAJqBwgBEgNHUlVyDwgCEgsvZy8xMjIza2o5MBooEgoyMDI2LTEyLTMxKAJqDwgCEgsvZy8xMjIza2o5MHIHCAESA0dSVUABSAFSA0JSTHp8Q2pSSVppMUxRV3hNYjA5SlJHOUJRalpKY1hkQ1J5MHRMUzB0TFMwdExYQnFlbTB4TVVGQlFVRkJSM0YwUTFKelRHTkNNbTlCRWhKRVpXRnNRMjl1YzNSeVlXbHVkSE13TFRJYUN3aU05Z01RQWhvRFFsSk1PRGh3OFdFPQ&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAhooEgoyMDI2LTEyLTI0KAJqBwgBEgNHUlVyDwgCEgsvZy8xMjIza2o5MBooEgoyMDI2LTEyLTMxKAJqDwgCEgsvZy8xMjIza2o5MHIHCAESA0dSVUABSAFSA0JSTHp8Q2pSSVMzWk5lR3BVWmxOdGIzZEJSRWM0ZVhkQ1J5MHRMUzB0TFMwdExYWjBZbWR3TVVGQlFVRkJSM0YwVWpSTlJWUlZaVGhCRWhKRVpXRnNRMjl1YzNSeVlXbHVkSE13TFRNYUN3aU05Z01RQWhvRFFsSk1PRGh3d21FPQ&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 1377.0,
       "provider_discount_pct": 53.0,
@@ -469,9 +469,9 @@
       "itinerary_points": 8,
       "external_signal_points": 0,
       "first_seen": "2026-09-18T09:49:26.603242Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "origin": "CGH",
@@ -488,7 +488,7 @@
       "stops_count": 0,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI3LTAxLTI5KAJqBwgBEgNDR0hyDQgCEgkvbS8wOWtqZmIaJhIKMjAyNy0wMi0wNygCag0IAhIJL20vMDlramZicgcIARIDQ0dIQAFIAVIDQlJMenxDalJJVFdnMFkwdHZabnBXUVc5QlFtNDNjRUZDUnkwdExTMHRMUzB0Y0daaWEzSXhOa0ZCUVVGQlIzRjBRMUp6VEc0dFdWVkJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVFVhQ3dpQmxRUVFBaG9EUWxKTU9EaHc5V2M9&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI3LTAxLTI5KAJqBwgBEgNDR0hyDQgCEgkvbS8wOWtqZmIaJhIKMjAyNy0wMi0wNygCag0IAhIJL20vMDlramZicgcIARIDQ0dIQAFIAVIDQlJMenxDalJJYW1saE1HcEtkWFZKTkZGQlJFSkxZVUZDUnkwdExTMHRMUzB0TFMxMmRHNXNOa0ZCUVVGQlIzRjBValJOUldKdWRUaEJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVFVhQ3dpQmxRUVFBaG9EUWxKTU9EaHd3bWM9&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 1358.0,
       "provider_discount_pct": 50.0,
@@ -502,8 +502,8 @@
       "itinerary_points": 8,
       "external_signal_points": 0,
       "first_seen": "2026-09-15T11:48:21.600466Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 19,
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 20,
       "fresh": false
     },
     {
@@ -521,7 +521,7 @@
       "stops_count": 0,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI3LTAyLTA4KAJqBwgBEgNDR0hyDQgCEgkvbS8wNDljeDEaJhIKMjAyNy0wMi0xNSgCag0IAhIJL20vMDQ5Y3gxcgcIARIDQ0dIQAFIAVIDQlJMenxDalJJVFdnMFkwdHZabnBXUVc5QlFtNDNjRUZDUnkwdExTMHRMUzB0Y0daaWEzSXhOa0ZCUVVGQlIzRjBRMUp6VEc0dFdWVkJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVFlhQ3dpcm1nUVFBaG9EUWxKTU9EaHcrbWc9&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI3LTAyLTA4KAJqBwgBEgNDR0hyDQgCEgkvbS8wNDljeDEaJhIKMjAyNy0wMi0xNSgCag0IAhIJL20vMDQ5Y3gxcgcIARIDQ0dIQAFIAVIDQlJMenxDalJJYW1saE1HcEtkWFZKTkZGQlJFSkxZVUZDUnkwdExTMHRMUzB0TFMxMmRHNXNOa0ZCUVVGQlIzRjBValJOUldKdWRUaEJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVFlhQ3dpcm1nUVFBaG9EUWxKTU9EaHd4Mmc9&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 1373.0,
       "provider_discount_pct": 50.0,
@@ -535,9 +535,9 @@
       "itinerary_points": 8,
       "external_signal_points": 0,
       "first_seen": "2026-09-18T09:49:26.603242Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "origin": "GRU",
@@ -554,7 +554,7 @@
       "stops_count": 0,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI2LTExLTE5KAJqBwgBEgNHUlVyDQgCEgkvbS8wNDMwY2YaJhIKMjAyNi0xMS0yNigCag0IAhIJL20vMDQzMGNmcgcIARIDR1JVQAFIAVIDQlJMenxDalJJWmkxTFFXeE1iMDlKUkc5QlFqWkpjWGRDUnkwdExTMHRMUzB0TFhCcWVtMHhNVUZCUVVGQlIzRjBRMUp6VEdOQ01tOUJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVFFhQ3dpS3dnUVFBaG9EUWxKTU9EaHcyWEE9&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI2LTExLTE5KAJqBwgBEgNHUlVyDQgCEgkvbS8wNDMwY2YaJhIKMjAyNi0xMS0yNigCag0IAhIJL20vMDQzMGNmcgcIARIDR1JVQAFIAVIDQlJMenxDalJJUzNaTmVHcFVabE50YjNkQlJFYzRlWGRDUnkwdExTMHRMUzB0TFhaMFltZHdNVUZCUVVGQlIzRjBValJOUlZSVlpUaEJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVFFhQ3dpS3dnUVFBaG9EUWxKTU9EaHdvM0E9&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 1515.0,
       "provider_discount_pct": 51.0,
@@ -568,9 +568,9 @@
       "itinerary_points": 8,
       "external_signal_points": 0,
       "first_seen": "2026-09-18T09:49:26.603242Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "origin": "CGH",
@@ -587,7 +587,7 @@
       "stops_count": 0,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI2LTExLTI2KAJqBwgBEgNDR0hyDQgCEgkvbS8wNDMwY2YaJhIKMjAyNi0xMi0wMigCag0IAhIJL20vMDQzMGNmcgcIARIDQ0dIQAFIAVIDQlJMenxDalJJVFdnMFkwdHZabnBXUVc5QlFtNDNjRUZDUnkwdExTMHRMUzB0Y0daaWEzSXhOa0ZCUVVGQlIzRjBRMUp6VEc0dFdWVkJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVElhQ3dqWjFnUVFBaG9EUWxKTU9EaHczSFE9&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI2LTExLTI2KAJqBwgBEgNDR0hyDQgCEgkvbS8wNDMwY2YaJhIKMjAyNi0xMi0wMigCag0IAhIJL20vMDQzMGNmcgcIARIDQ0dIQAFIAVIDQlJMenxDalJJYW1saE1HcEtkWFZKTkZGQlJFSkxZVUZDUnkwdExTMHRMUzB0TFMxMmRHNXNOa0ZCUVVGQlIzRjBValJOUldKdWRUaEJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVElhQ3dqWjFnUVFBaG9EUWxKTU9EaHdvM1E9&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 1597.0,
       "provider_discount_pct": 52.0,
@@ -601,9 +601,9 @@
       "itinerary_points": 8,
       "external_signal_points": 0,
       "first_seen": "2026-09-18T09:49:26.603242Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "origin": "CGH",
@@ -620,7 +620,7 @@
       "stops_count": 0,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI2LTEyLTE3KAJqBwgBEgNDR0hyDQgCEgkvbS8wMndrZGIaJhIKMjAyNi0xMi0yMygCag0IAhIJL20vMDJ3a2RicgcIARIDQ0dIQAFIAVIDQlJMenxDalJJVFdnMFkwdHZabnBXUVc5QlFtNDNjRUZDUnkwdExTMHRMUzB0Y0daaWEzSXhOa0ZCUVVGQlIzRjBRMUp6VEc0dFdWVkJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVE1hQ3dqcTZRUVFBaG9EUWxKTU9EaHd1WGc9&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI2LTEyLTE3KAJqBwgBEgNDR0hyDQgCEgkvbS8wMndrZGIaJhIKMjAyNi0xMi0yMygCag0IAhIJL20vMDJ3a2RicgcIARIDQ0dIQAFIAVIDQlJMenxDalJJYW1saE1HcEtkWFZKTkZGQlJFSkxZVUZDUnkwdExTMHRMUzB0TFMxMmRHNXNOa0ZCUVVGQlIzRjBValJOUldKdWRUaEJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVE1hQ3dqcTZRUVFBaG9EUWxKTU9EaHcvM2M9&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 1604.0,
       "provider_discount_pct": 51.0,
@@ -634,9 +634,9 @@
       "itinerary_points": 8,
       "external_signal_points": 0,
       "first_seen": "2026-09-18T09:49:26.603242Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "origin": "GRU",
@@ -646,17 +646,17 @@
       "departure_date": "2027-02-22",
       "return_date": "2027-03-03",
       "airline": "Finnair",
-      "price": 3753.0,
+      "price": 3762.0,
       "duration": "24h 00min",
       "duration_minutes": 1440,
       "stops": "1 escala",
       "stops_count": 1,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI3LTAyLTIyKAJqBwgBEgNHUlVyDAgCEggvbS8wM2tobholEgoyMDI3LTAzLTAzKAJqDAgCEggvbS8wM2tobnIHCAESA0dSVUABSAFSA0JSTHqAAUNqUklaaTFMUVd4TWIwOUpSRzlCUWpaSmNYZENSeTB0TFMwdExTMHRMWEJxZW0weE1VRkJRVUZCUjNGMFExSnpUR05DTW05QkVoTkVaV0ZzUTI5dWMzUnlZV2x1ZEhNd0xUSTBHZ3NJOFBNV0VBSWFBMEpTVERnNGNNdTdCQT09&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI3LTAyLTIyKAJqBwgBEgNHUlVyDAgCEggvbS8wM2tobholEgoyMDI3LTAzLTAzKAJqDAgCEggvbS8wM2tobnIHCAESA0dSVUABSAFSA0JSTHqAAUNqUklTM1pOZUdwVVpsTnRiM2RCUkVjNGVYZENSeTB0TFMwdExTMHRMWFowWW1kd01VRkJRVUZCUjNGMFVqUk5SVlJWWlRoQkVoTkVaV0ZzUTI5dWMzUnlZV2x1ZEhNd0xUSTJHZ3NJZ3ZzV0VBSWFBMEpTVERnNGNPYTZCQT09&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 5566.0,
-      "provider_discount_pct": 33.0,
+      "provider_discount_pct": 32.0,
       "discovered": true,
       "origin_name": "Guarulhos",
       "hunter_score": 69,
@@ -667,9 +667,9 @@
       "itinerary_points": 4,
       "external_signal_points": 0,
       "first_seen": "2026-09-18T09:49:26.603242Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "origin": "GIG",
@@ -686,7 +686,7 @@
       "stops_count": 1,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI3LTAyLTA0KAJqBwgBEgNHSUdyDQgCEgkvbS8wM25mcjAaJhIKMjAyNy0wMi0xMSgCag0IAhIJL20vMDNuZnIwcgcIARIDR0lHQAFIAVIDQlJMenxDalJJYkZaRU4wRXdTVk5KU2xWQlFuVXlla0ZDUnkwdExTMHRMUzB0Y0daaWJISTBNVUZCUVVGQlIzRjBRMUp6UzBOVk9IRkJFaE5FWldGc1EyOXVjM1J5WVdsdWRITXdMVEV6R2dzSTZNTURFQUlhQTBKU1REZzRjSXRZ&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI3LTAyLTA0KAJqBwgBEgNHSUdyDQgCEgkvbS8wM25mcjAaJhIKMjAyNy0wMi0xMSgCag0IAhIJL20vMDNuZnIwcgcIARIDR0lHQAFIAVIDQlJMenxDalJJTFc4eVN6VTVkWGM0Y3pSQlJHaFNXbmRDUnkwdExTMHRMWFowZDJJeU1pMXVNa0ZCUVVGQlIzRjBValJOUmtoMU5tbEJFaE5FWldGc1EyOXVjM1J5WVdsdWRITXdMVEUwR2dzSTZNTURFQUlhQTBKU1REZzRjT0JY&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 969.0,
       "provider_discount_pct": 40.0,
@@ -700,9 +700,9 @@
       "itinerary_points": 4,
       "external_signal_points": 0,
       "first_seen": "2026-09-18T09:49:26.603242Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "origin": "GRU",
@@ -719,7 +719,7 @@
       "stops_count": 1,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI2LTEwLTIyKAJqBwgBEgNHUlVyDQgCEgkvbS8wMXRqdnYaJhIKMjAyNi0xMC0yOCgCag0IAhIJL20vMDF0anZ2cgcIARIDR1JVQAFIAVIDQlJMeoABQ2pSSVppMUxRV3hNYjA5SlJHOUJRalpKY1hkQ1J5MHRMUzB0TFMwdExYQnFlbTB4TVVGQlFVRkJSM0YwUTFKelRHTkNNbTlCRWhORVpXRnNRMjl1YzNSeVlXbHVkSE13TFRFekdnc0k4dHdaRUFJYUEwSlNURGc0Y1B1QkJRPT0&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI2LTEwLTIyKAJqBwgBEgNHUlVyDQgCEgkvbS8wMXRqdnYaJhIKMjAyNi0xMC0yOCgCag0IAhIJL20vMDF0anZ2cgcIARIDR1JVQAFIAVIDQlJMeoABQ2pSSVMzWk5lR3BVWmxOdGIzZEJSRWM0ZVhkQ1J5MHRMUzB0TFMwdExYWjBZbWR3TVVGQlFVRkJSM0YwVWpSTlJWUlZaVGhCRWhORVpXRnNRMjl1YzNSeVlXbHVkSE13TFRFekdnc0k4dHdaRUFJYUEwSlNURGc0Y01QL0JBPT0&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 7100.0,
       "provider_discount_pct": 41.0,
@@ -733,8 +733,8 @@
       "itinerary_points": 4,
       "external_signal_points": 0,
       "first_seen": "2026-09-15T11:48:21.600466Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 19,
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 20,
       "fresh": false
     },
     {
@@ -752,7 +752,7 @@
       "stops_count": 1,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI2LTEyLTI1KAJqBwgBEgNHSUdyDQgCEgkvbS8wOWtqZmIaJhIKMjAyNi0xMi0zMSgCag0IAhIJL20vMDlramZicgcIARIDR0lHQAFIAVIDQlJMenxDalJJYkZaRU4wRXdTVk5KU2xWQlFuVXlla0ZDUnkwdExTMHRMUzB0Y0daaWJISTBNVUZCUVVGQlIzRjBRMUp6UzBOVk9IRkJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVEFhQ3dqQzRRVVFBaG9EUWxKTU9EaHc1SThC&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI2LTEyLTI1KAJqBwgBEgNHSUdyDQgCEgkvbS8wOWtqZmIaJhIKMjAyNi0xMi0zMSgCag0IAhIJL20vMDlramZicgcIARIDR0lHQAFIAVIDQlJMenxDalJJTFc4eVN6VTVkWGM0Y3pSQlJHaFNXbmRDUnkwdExTMHRMWFowZDJJeU1pMXVNa0ZCUVVGQlIzRjBValJOUmtoMU5tbEJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVEFhQ3dqQzRRVVFBaG9EUWxKTU9EaHdubzhC&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 3112.0,
       "provider_discount_pct": 70.0,
@@ -766,8 +766,8 @@
       "itinerary_points": 4,
       "external_signal_points": 0,
       "first_seen": "2026-09-16T22:13:11.143597Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 10,
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 11,
       "fresh": false
     },
     {
@@ -785,7 +785,7 @@
       "stops_count": 0,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI3LTAyLTA3KAJqBwgBEgNWQ1ByDQgCEgkvbS8wMndrZGIaJhIKMjAyNy0wMi0xNigCag0IAhIJL20vMDJ3a2RicgcIARIDVkNQQAFIAVIDQlJMenxDalJJU0dNd1ZrWTJjMEZmZGpSQlEwSmZWMmRDUnkwdExTMHRMUzB0TFhCbVltUnpNa0ZCUVVGQlIzRjBRMUp6UzA0MldubEJFaE5FWldGc1EyOXVjM1J5WVdsdWRITXdMVEU1R2dzSTFNTURFQUlhQTBKU1REZzRjSWRZ&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI3LTAyLTA3KAJqBwgBEgNWQ1ByDQgCEgkvbS8wMndrZGIaJhIKMjAyNy0wMi0xNigCag0IAhIJL20vMDJ3a2RicgcIARIDVkNQQAFIAVIDQlJMenxDalJJYzB4a1JrdFhibmhzUTI5QlJGSk9hRUZDUnkwdExTMHRMWFowZDJReU9DMXVNa0ZCUVVGQlIzRjBValJOUlVobGJrTkJFaE5FWldGc1EyOXVjM1J5WVdsdWRITXdMVEU0R2dzSTFNTURFQUlhQTBKU1REZzRjTnhY&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 857.0,
       "provider_discount_pct": 33.0,
@@ -799,9 +799,9 @@
       "itinerary_points": 8,
       "external_signal_points": 0,
       "first_seen": "2026-09-18T09:49:26.603242Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "origin": "GIG",
@@ -818,7 +818,7 @@
       "stops_count": 2,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI2LTEwLTI1KAJqBwgBEgNHSUdyDAgCEggvbS8wMXlqMholEgoyMDI2LTExLTAzKAJqDAgCEggvbS8wMXlqMnIHCAESA0dJR0ABSAFSA0JSTHqAAUNqUkliRlpFTjBFd1NWTkpTbFZCUW5VeWVrRkNSeTB0TFMwdExTMHRjR1ppYkhJME1VRkJRVUZCUjNGMFExSnpTME5WT0hGQkVoTkVaV0ZzUTI5dWMzUnlZV2x1ZEhNd0xURTNHZ3NJa05RWkVBSWFBMEpTVERnNGNLR0FCUT09&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI2LTEwLTI1KAJqBwgBEgNHSUdyDAgCEggvbS8wMXlqMholEgoyMDI2LTExLTAzKAJqDAgCEggvbS8wMXlqMnIHCAESA0dJR0ABSAFSA0JSTHqAAUNqUklMVzh5U3pVNWRYYzRjelJCUkdoU1duZENSeTB0TFMwdExYWjBkMkl5TWkxdU1rRkJRVUZCUjNGMFVqUk5Sa2gxTm1sQkVoTkVaV0ZzUTI5dWMzUnlZV2x1ZEhNd0xURTRHZ3NJa05RWkVBSWFBMEpTVERnNGNPbjlCQT09&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 6807.0,
       "provider_discount_pct": 38.0,
@@ -832,9 +832,9 @@
       "itinerary_points": 0,
       "external_signal_points": 0,
       "first_seen": "2026-09-18T09:49:26.603242Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "origin": "CGH",
@@ -851,7 +851,7 @@
       "stops_count": 0,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAhooEgoyMDI2LTEyLTE3KAJqBwgBEgNDR0hyDwgCEgsvZy8xMjIza2o5MBooEgoyMDI2LTEyLTI0KAJqDwgCEgsvZy8xMjIza2o5MHIHCAESA0NHSEABSAFSA0JSTHp8Q2pSSVRXZzBZMHR2Wm5wV1FXOUJRbTQzY0VGQ1J5MHRMUzB0TFMwdGNHWmlhM0l4TmtGQlFVRkJSM0YwUTFKelRHNHRXVlZCRWhORVpXRnNRMjl1YzNSeVlXbHVkSE13TFRFNUdnc0l3NUlFRUFJYUEwSlNURGc0Y0xkbg&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAhooEgoyMDI2LTEyLTE3KAJqBwgBEgNDR0hyDwgCEgsvZy8xMjIza2o5MBooEgoyMDI2LTEyLTI0KAJqDwgCEgsvZy8xMjIza2o5MHIHCAESA0NHSEABSAFSA0JSTHp8Q2pSSWFtbGhNR3BLZFhWSk5GRkJSRUpMWVVGQ1J5MHRMUzB0TFMwdExTMTJkRzVzTmtGQlFVRkJSM0YwVWpSTlJXSnVkVGhCRWhORVpXRnNRMjl1YzNSeVlXbHVkSE13TFRFNUdnc0l3NUlFRUFJYUEwSlNURGc0Y0lSbg&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 1055.0,
       "provider_discount_pct": 36.0,
@@ -865,9 +865,9 @@
       "itinerary_points": 8,
       "external_signal_points": 0,
       "first_seen": "2026-09-18T09:49:26.603242Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "origin": "GRU",
@@ -884,7 +884,7 @@
       "stops_count": 0,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI2LTEyLTE3KAJqBwgBEgNHUlVyDQgCEgkvbS8wNzY5OWYaJhIKMjAyNi0xMi0yMygCag0IAhIJL20vMDc2OTlmcgcIARIDR1JVQAFIAVIDQlJMenxDalJJWmkxTFFXeE1iMDlKUkc5QlFqWkpjWGRDUnkwdExTMHRMUzB0TFhCcWVtMHhNVUZCUVVGQlIzRjBRMUp6VEdOQ01tOUJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVGdhQ3dpV25RUVFBaG9EUWxKTU9EaHd3V2s9&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI2LTEyLTE3KAJqBwgBEgNHUlVyDQgCEgkvbS8wNzY5OWYaJhIKMjAyNi0xMi0yMygCag0IAhIJL20vMDc2OTlmcgcIARIDR1JVQAFIAVIDQlJMenxDalJJUzNaTmVHcFVabE50YjNkQlJFYzRlWGRDUnkwdExTMHRMUzB0TFhaMFltZHdNVUZCUVVGQlIzRjBValJOUlZSVlpUaEJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVGthQ3dpV25RUVFBaG9EUWxKTU9EaHdqV2s9&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 1206.0,
       "provider_discount_pct": 43.0,
@@ -898,9 +898,9 @@
       "itinerary_points": 8,
       "external_signal_points": 0,
       "first_seen": "2026-09-18T09:49:26.603242Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "origin": "GIG",
@@ -917,7 +917,7 @@
       "stops_count": 0,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI2LTEyLTI0KAJqBwgBEgNHSUdyDAgCEggvbS8wMWh5XxolEgoyMDI2LTEyLTMxKAJqDAgCEggvbS8wMWh5X3IHCAESA0dJR0ABSAFSA0JSTHp8Q2pSSWJGWkVOMEV3U1ZOSlNsVkJRblV5ZWtGQ1J5MHRMUzB0TFMwdGNHWmliSEkwTVVGQlFVRkJSM0YwUTFKelMwTlZPSEZCRWhORVpXRnNRMjl1YzNSeVlXbHVkSE13TFRFMkdnc0krcDhFRUFJYUEwSlNURGc0Y0lacQ&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI2LTEyLTI0KAJqBwgBEgNHSUdyDAgCEggvbS8wMWh5XxolEgoyMDI2LTEyLTMxKAJqDAgCEggvbS8wMWh5X3IHCAESA0dJR0ABSAFSA0JSTHp8Q2pSSUxXOHlTelU1ZFhjNGN6UkJSR2hTV25kQ1J5MHRMUzB0TFhaMGQySXlNaTF1TWtGQlFVRkJSM0YwVWpSTlJraDFObWxCRWhORVpXRnNRMjl1YzNSeVlXbHVkSE13TFRFM0dnc0krcDhFRUFJYUEwSlNURGc0Y05KcA&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 1120.0,
       "provider_discount_pct": 38.0,
@@ -931,9 +931,9 @@
       "itinerary_points": 8,
       "external_signal_points": 0,
       "first_seen": "2026-09-18T09:49:26.603242Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "origin": "GIG",
@@ -950,7 +950,7 @@
       "stops_count": 1,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI3LTAyLTA4KAJqBwgBEgNHSUdyDQgCEgkvbS8wNDljeDEaJhIKMjAyNy0wMi0xNSgCag0IAhIJL20vMDQ5Y3gxcgcIARIDR0lHQAFIAVIDQlJMenxDalJJYkZaRU4wRXdTVk5KU2xWQlFuVXlla0ZDUnkwdExTMHRMUzB0Y0daaWJISTBNVUZCUVVGQlIzRjBRMUp6UzBOVk9IRkJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVFFhQ3dpTW9nVVFBaG9EUWxKTU9EaHd0WU1C&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAhomEgoyMDI3LTAyLTA4KAJqBwgBEgNHSUdyDQgCEgkvbS8wNDljeDEaJhIKMjAyNy0wMi0xNSgCag0IAhIJL20vMDQ5Y3gxcgcIARIDR0lHQAFIAVIDQlJMenxDalJJTFc4eVN6VTVkWGM0Y3pSQlJHaFNXbmRDUnkwdExTMHRMWFowZDJJeU1pMXVNa0ZCUVVGQlIzRjBValJOUmtoMU5tbEJFaEpFWldGc1EyOXVjM1J5WVdsdWRITXdMVFFhQ3dpTW9nVVFBaG9EUWxKTU9EaHc5WUlC&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 1995.0,
       "provider_discount_pct": 57.0,
@@ -964,9 +964,9 @@
       "itinerary_points": 4,
       "external_signal_points": 0,
       "first_seen": "2026-09-18T09:49:26.603242Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "origin": "GRU",
@@ -976,14 +976,14 @@
       "departure_date": "2027-02-11",
       "return_date": "2027-02-17",
       "airline": "Arajet",
-      "price": 2996.0,
+      "price": 2999.0,
       "duration": "10h 16min",
       "duration_minutes": 616,
       "stops": "1 escala",
       "stops_count": 1,
       "departure": "",
       "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI3LTAyLTExKAJqBwgBEgNHUlVyDAgCEggvbS8wOWI4bRolEgoyMDI3LTAyLTE3KAJqDAgCEggvbS8wOWI4bXIHCAESA0dSVUABSAFSA0JSTHp8Q2pSSVppMUxRV3hNYjA5SlJHOUJRalpKY1hkQ1J5MHRMUzB0TFMwdExYQnFlbTB4TVVGQlFVRkJSM0YwUTFKelRHTkNNbTlCRWhKRVpXRnNRMjl1YzNSeVlXbHVkSE13TFRBYUN3ajhveElRQWhvRFFsSk1PRGh3bU1nRA&curr=BRL&hl=en&gl=BR&gsas=1",
+      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI3LTAyLTExKAJqBwgBEgNHUlVyDAgCEggvbS8wOWI4bRolEgoyMDI3LTAyLTE3KAJqDAgCEggvbS8wOWI4bXIHCAESA0dSVUABSAFSA0JSTHp8Q2pSSVMzWk5lR3BVWmxOdGIzZEJSRWM0ZVhkQ1J5MHRMUzB0TFMwdExYWjBZbWR3TVVGQlFVRkJSM0YwVWpSTlJWUlZaVGhCRWhKRVpXRnNRMjl1YzNSeVlXbHVkSE13TFRFYUN3amhwaElRQWhvRFFsSk1PRGh3LzhZRA&curr=BRL&hl=en&gl=BR&gsas=1",
       "provider": "swoop-deals",
       "provider_typical_price": 6950.0,
       "provider_discount_pct": 57.0,
@@ -997,9 +997,9 @@
       "itinerary_points": 4,
       "external_signal_points": 0,
       "first_seen": "2026-09-18T09:49:26.603242Z",
-      "last_seen": "2026-09-18T09:49:26.603242Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-18T14:15:53.779190Z",
+      "sightings": 2,
+      "fresh": false
     }
   ],
   "active_window_hours": 3,
