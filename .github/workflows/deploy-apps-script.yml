@@ -20,11 +20,13 @@ jobs:
       - uses: actions/checkout@v6
       - name: Validar serviço de pesquisa
         run: |
-          cat apps-script/Code.gs apps-script/Indigo.gs > /tmp/apps-script-bridge.js
+          cat apps-script/*.gs > /tmp/apps-script-bridge.js
           node --check /tmp/apps-script-bridge.js
           python -m py_compile scripts/deploy_apps_script.py
           grep -q "api/indigo/search" apps-script/Code.gs
           grep -q "function startIndigoSearch_" apps-script/Indigo.gs
+          grep -q "api/apple/availability" apps-script/Code.gs
+          grep -q "function appleAvailability_" apps-script/Apple.gs
       - name: Atualizar implantação existente
         env:
           CLASPRC_JSON: ${{ secrets.CLASPRC_JSON }}
