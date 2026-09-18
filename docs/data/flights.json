@@ -1,12 +1,12 @@
 {
   "version": "0.2.0",
-  "generated_at": "2026-09-18T06:37:24.889524Z",
+  "generated_at": "2026-09-18T11:50:45.815097Z",
   "source": "Google Flights via fast-flights + Swoop",
   "algorithm": "Radar robusto: mediana + MAD + percentis + z-score + booking window + histórico + revalidação",
   "origin_count": 11,
   "destination_count": 158,
   "configured_destination_count": 67,
-  "route_count": 517,
+  "route_count": 518,
   "deal_count": 177,
   "strong_deal_count": 61,
   "new_alert_count": 0,
@@ -8882,40 +8882,46 @@
   ],
   "new_alerts": [],
   "scan": {
-    "scan_number": 44,
-    "scan_id": "20260918T063724Z-44",
+    "scan_number": 45,
+    "scan_id": "20260918T115045Z-45",
     "origin_codes": [
-      "PPB",
-      "MII"
+      "DOU",
+      "PMG",
+      "JTC"
     ],
     "destination_codes": [
-      "MAD",
-      "BCN",
-      "CDG",
-      "LHR",
-      "FCO",
-      "AMS"
+      "FRA"
     ],
     "date_profile": "datas distribuídas até ~9 meses",
-    "queries": 120,
-    "regular_results": 0,
-    "discovery_results": 7,
-    "fallback_results": 0,
-    "results": 7,
+    "queries": 30,
+    "regular_results": 6,
+    "discovery_results": 0,
+    "fallback_results": 6,
+    "results": 6,
     "revalidated": 0,
-    "errors": 11
+    "errors": 21
   },
   "errors": [
-    "PPB-MAD 2026-10-18/2026-10-26: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-MAD 2026-12-17/2026-12-25: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-CDG 2026-09-25/2026-09-29: fast-flights: Google returned a provider error",
-    "PPB-BCN 2027-06-15/2027-06-19: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-CDG 2027-06-15/2027-06-19: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-LHR 2027-06-15/2027-06-23: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-LHR 2026-10-18/2026-10-22: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-AMS 2026-10-18/2026-10-26: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-FCO 2026-12-17/2026-12-21: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-AMS 2026-12-17/2026-12-21: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-AMS 2027-03-17/2027-03-25: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
+    "DOU-FRA 2026-09-25/2026-09-29: fast-flights: Google returned a provider error",
+    "DOU-FRA 2026-12-17/2026-12-21: fast-flights: Google returned a provider error",
+    "DOU-FRA 2027-03-17/2027-03-21: fast-flights: Google returned a provider error",
+    "DOU-FRA 2027-03-17/2027-03-21: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "DOU-FRA 2026-10-18/2026-10-22: fast-flights: Google returned a provider error",
+    "DOU-FRA 2027-06-15/2027-06-23: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PMG-FRA 2026-09-25/2026-09-29: fast-flights: Google returned a provider error",
+    "PMG-FRA 2026-09-25/2026-10-03: fast-flights: Google returned a provider error",
+    "PMG-FRA 2026-10-18/2026-10-22: fast-flights: Google returned a provider error",
+    "PMG-FRA 2026-10-18/2026-10-26: fast-flights: Google returned a provider error",
+    "DOU-FRA 2026-09-25/2026-10-03: fast-flights: Google returned a provider error",
+    "JTC-FRA 2026-09-25/2026-09-29: fast-flights: Google returned a provider error",
+    "PMG-FRA 2027-06-15/2027-06-23: fast-flights: Google returned a provider error",
+    "JTC-FRA 2026-09-25/2026-10-03: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "JTC-FRA 2026-10-18/2026-10-22: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "JTC-FRA 2027-03-17/2027-03-21: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "JTC-FRA 2026-12-17/2026-12-25: fast-flights: Google returned a provider error",
+    "JTC-FRA 2027-06-15/2027-06-23: fast-flights: Google returned a provider error",
+    "JTC-FRA 2027-06-15/2027-06-23: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "JTC-FRA 2027-06-15/2027-06-19: fast-flights: Google returned a provider error",
+    "discovery JTC: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
   ]
 }
