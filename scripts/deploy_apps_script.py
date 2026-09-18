@@ -80,10 +80,10 @@ def main():
     token = request('https://oauth2.googleapis.com/token', 'POST', auth, form=True)['access_token']
     def call(url, **kwargs):
         return request(url, token=token, **kwargs)
-    source = '\n\n'.join([
-        Path('apps-script/Code.gs').read_text(encoding='utf-8'),
-        Path('apps-script/Indigo.gs').read_text(encoding='utf-8'),
-    ])
+    server_files = sorted(Path('apps-script').glob('*.gs'))
+    if not server_files:
+        raise RuntimeError('Nenhum arquivo .gs encontrado para publicação.')
+    source = '\n\n'.join(path.read_text(encoding='utf-8') for path in server_files)
     deploy(call, os.environ['SCRIPT_ID'], os.environ['DEPLOYMENT_ID'], source)
 
 
