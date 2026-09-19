@@ -136,12 +136,20 @@
   function airportMatches(term){
     const n=norm(term);if(!n)return[];
     const source=worldAirports.length?worldAirports:fallbackAirports();
+    const priority=a=>{
+      const name=norm(a.name),code=String(a.code||'').toUpperCase();
+      if(/air force|air base|afb|military|naval|army|heliport/.test(name))return 30;
+      if(/international/.test(name))return -10;
+      if(/regional|municipal/.test(name))return 2;
+      if(['TPA','MCO','MIA','JFK','EWR','LGA','GRU','GIG','LAX','SFO','ORD','ATL','DFW'].includes(code))return -12;
+      return 0;
+    };
     return source.map(a=>{
       const c=norm(a.code),city=norm(a.city),name=norm(a.name),state=norm(a.state),country=norm(a.country),hay=`${c} ${city} ${name} ${state} ${country}`;
       let score=99;
       if(c===n)score=0;else if(c.startsWith(n))score=1;else if(city===n)score=2;else if(city.startsWith(n))score=3;else if(name.startsWith(n))score=4;else if(state.startsWith(n)||country===n)score=5;else if(hay.includes(n))score=6;
-      return{a,score};
-    }).filter(x=>x.score<99).sort((x,y)=>x.score-y.score||String(x.a.city||x.a.name).localeCompare(String(y.a.city||y.a.name),'pt-BR')).slice(0,12).map(x=>x.a);
+      return{a,score,priority:priority(a)};
+    }).filter(x=>x.score<99).sort((x,y)=>x.score-y.score||x.priority-y.priority||String(x.a.city||x.a.name).localeCompare(String(y.a.city||y.a.name),'pt-BR')).slice(0,12).map(x=>x.a);
   }
 
   function airportInput(kind){return q(kind==='origin'?'#milesOrigin':'#milesDestination');}
