@@ -3,7 +3,7 @@
   "cache_id": "4c7a475b121d289204ecffbf",
   "signature": "CGH|MIA|2027-07-01|2027-12-31|2|BRL|economy|1",
   "created_at": "2026-09-19T22:09:40.622255Z",
-  "updated_at": "2026-09-19T22:17:29.966639Z",
+  "updated_at": "2026-09-19T22:17:31.550540Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "CGH",
@@ -23886,6 +23886,226 @@
       "errors": [
         "2027-07-09->2027-12-29: ProviderResponseError: Google returned a provider error"
       ]
+    },
+    "2027-07-09|2027-12-30": {
+      "departure_date": "2027-07-09",
+      "return_date": "2027-12-30",
+      "status": "error",
+      "completed_at": "2026-09-19T22:17:31.539871Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-09->2027-12-30: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-09|2027-12-31": {
+      "departure_date": "2027-07-09",
+      "return_date": "2027-12-31",
+      "status": "error",
+      "completed_at": "2026-09-19T22:17:31.541130Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-09->2027-12-31: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-10|2027-07-12": {
+      "departure_date": "2027-07-10",
+      "return_date": "2027-07-12",
+      "status": "priced",
+      "completed_at": "2026-09-19T22:17:31.542374Z",
+      "source": "google",
+      "row": {
+        "origin": "CGH",
+        "destination": "MIA",
+        "departure_date": "2027-07-10",
+        "return_date": "2027-07-12",
+        "airline": "LATAM",
+        "price": 6125.0,
+        "duration": "13h 30min",
+        "duration_minutes": 810,
+        "stops": "2 escalas",
+        "stops_count": 2,
+        "departure": "[2027, 7, 10] [13, 50]",
+        "arrival": "[2027, 7, 11] [7, 40]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-10+returning+2027-07-12&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 2,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-10+returning+2027-07-12&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=CGH&to=MIA&depart=2027-07-10&return=2027-07-12&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-10|2027-07-11": {
+      "departure_date": "2027-07-10",
+      "return_date": "2027-07-11",
+      "status": "priced",
+      "completed_at": "2026-09-19T22:17:31.543957Z",
+      "source": "google",
+      "row": {
+        "origin": "CGH",
+        "destination": "MIA",
+        "departure_date": "2027-07-10",
+        "return_date": "2027-07-11",
+        "airline": "LATAM",
+        "price": 6914.0,
+        "duration": "13h 30min",
+        "duration_minutes": 810,
+        "stops": "2 escalas",
+        "stops_count": 2,
+        "departure": "[2027, 7, 10] [13, 50]",
+        "arrival": "[2027, 7, 11] [7, 40]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-10+returning+2027-07-11&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 1,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-10+returning+2027-07-11&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=CGH&to=MIA&depart=2027-07-10&return=2027-07-11&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-10|2027-07-13": {
+      "departure_date": "2027-07-10",
+      "return_date": "2027-07-13",
+      "status": "priced",
+      "completed_at": "2026-09-19T22:17:31.545204Z",
+      "source": "google",
+      "row": {
+        "origin": "CGH",
+        "destination": "MIA",
+        "departure_date": "2027-07-10",
+        "return_date": "2027-07-13",
+        "airline": "LATAM",
+        "price": 6111.0,
+        "duration": "13h 30min",
+        "duration_minutes": 810,
+        "stops": "2 escalas",
+        "stops_count": 2,
+        "departure": "[2027, 7, 10] [13, 50]",
+        "arrival": "[2027, 7, 11] [7, 40]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-10+returning+2027-07-13&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 3,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-10+returning+2027-07-13&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=CGH&to=MIA&depart=2027-07-10&return=2027-07-13&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-10|2027-07-14": {
+      "departure_date": "2027-07-10",
+      "return_date": "2027-07-14",
+      "status": "priced",
+      "completed_at": "2026-09-19T22:17:31.546443Z",
+      "source": "google",
+      "row": {
+        "origin": "CGH",
+        "destination": "MIA",
+        "departure_date": "2027-07-10",
+        "return_date": "2027-07-14",
+        "airline": "LATAM",
+        "price": 6125.0,
+        "duration": "13h 30min",
+        "duration_minutes": 810,
+        "stops": "2 escalas",
+        "stops_count": 2,
+        "departure": "[2027, 7, 10] [13, 50]",
+        "arrival": "[2027, 7, 11] [7, 40]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-10+returning+2027-07-14&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 4,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-10+returning+2027-07-14&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=CGH&to=MIA&depart=2027-07-10&return=2027-07-14&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-10|2027-07-15": {
+      "departure_date": "2027-07-10",
+      "return_date": "2027-07-15",
+      "status": "priced",
+      "completed_at": "2026-09-19T22:17:31.547735Z",
+      "source": "google",
+      "row": {
+        "origin": "CGH",
+        "destination": "MIA",
+        "departure_date": "2027-07-10",
+        "return_date": "2027-07-15",
+        "airline": "LATAM",
+        "price": 6125.0,
+        "duration": "13h 30min",
+        "duration_minutes": 810,
+        "stops": "2 escalas",
+        "stops_count": 2,
+        "departure": "[2027, 7, 10] [13, 50]",
+        "arrival": "[2027, 7, 11] [7, 40]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-10+returning+2027-07-15&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 5,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-10+returning+2027-07-15&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=CGH&to=MIA&depart=2027-07-10&return=2027-07-15&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-10|2027-07-16": {
+      "departure_date": "2027-07-10",
+      "return_date": "2027-07-16",
+      "status": "priced",
+      "completed_at": "2026-09-19T22:17:31.550506Z",
+      "source": "google",
+      "row": {
+        "origin": "CGH",
+        "destination": "MIA",
+        "departure_date": "2027-07-10",
+        "return_date": "2027-07-16",
+        "airline": "LATAM",
+        "price": 6318.0,
+        "duration": "13h 30min",
+        "duration_minutes": 810,
+        "stops": "2 escalas",
+        "stops_count": 2,
+        "departure": "[2027, 7, 10] [13, 50]",
+        "arrival": "[2027, 7, 11] [7, 40]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-10+returning+2027-07-16&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 6,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-10+returning+2027-07-16&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=CGH&to=MIA&depart=2027-07-10&return=2027-07-16&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
     }
   }
 }
