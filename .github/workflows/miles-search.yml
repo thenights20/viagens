@@ -98,7 +98,7 @@ jobs:
           from pathlib import Path
 
           data = json.loads(Path("docs/data/miles-search.json").read_text(encoding="utf-8"))
-          assert data.get("version") == "0.2.0"
+          assert data.get("version") == "0.2.3"
           assert data.get("status") in {"completed", "error"}
           assert data.get("request_id")
           assert isinstance(data.get("results"), list)
