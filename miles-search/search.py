@@ -13,7 +13,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "docs" / "data" / "miles-search.json"
 API_URL = "https://seats.aero/partnerapi/search"
-VERSION = "0.2.0"
+VERSION = "0.2.3"
 
 PROGRAMS = {
     "Smiles": {
@@ -112,6 +112,62 @@ def source_health(*, rows: list[dict[str, Any]] | None = None, error: str | None
             }
     return out
 
+
+
+def public_search_links(request: dict[str, Any]) -> list[dict[str, str]]:
+    """Build safe public Seats.aero search links when Partner API credentials are unavailable."""
+    start = date.fromisoformat(request["start_date"])
+    end = date.fromisoformat(request["end_date"])
+    links: list[dict[str, str]] = []
+
+    cursor = start
+    while cursor <= end and len(links) < 6:
+        remaining = (end - cursor).days
+        extra_days = max(0, min(7, remaining))
+        params = {
+            "date": cursor.isoformat(),
+            "origins": request["origin"],
+            "destinations": request["destination"],
+        }
+        if extra_days:
+            params["additional_days"] = "true"
+            params["additional_days_num"] = str(extra_days)
+
+        window_end = min(end, cursor.fromordinal(cursor.toordinal() + extra_days))
+        label = (
+            f"{cursor.strftime('%d/%m')}–{window_end.strftime('%d/%m')}"
+            if window_end != cursor
+            else cursor.strftime("%d/%m")
+        )
+        links.append({
+            "label": label,
+            "url": "https://seats.aero/search?" + urllib.parse.urlencode(params),
+        })
+        cursor = cursor.fromordinal(window_end.toordinal() + 1)
+
+    return links
+
+
+def public_fallback_payload(request: dict[str, Any]) -> dict[str, Any]:
+    links = public_search_links(request)
+    return {
+        "version": VERSION,
+        "status": "completed",
+        "generated_at": utc_now(),
+        "request_id": request["request_id"],
+        "request": request,
+        "provider": "Seats.aero public search",
+        "cached_data": True,
+        "fallback_mode": True,
+        "fallback_urls": links,
+        "results": [],
+        "result_count": 0,
+        "sources": source_health(rows=[]),
+        "notice": (
+            "A consulta automática por API não está habilitada neste projeto. "
+            "Use a busca pública do Seats.aero abaixo; a rota e as datas já estão preenchidas."
+        ),
+    }
 
 def parse_request() -> dict[str, Any]:
     origin = str(os.environ.get("MILES_ORIGIN") or "").strip().upper()
@@ -326,11 +382,7 @@ def main() -> None:
 
     api_key = str(os.environ.get("SEATS_AERO_API_KEY") or "").strip()
     if not api_key:
-        write(fail_payload(
-            request,
-            "A busca por milhas foi conectada, mas o segredo SEATS_AERO_API_KEY ainda não está configurado no GitHub Actions.",
-            code="missing_api_key",
-        ))
+        write(public_fallback_payload(request))
         return
 
     try:
