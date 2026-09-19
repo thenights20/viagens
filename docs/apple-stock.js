@@ -2,9 +2,8 @@
   const qs = s => document.querySelector(s);
   if (qs('#appleStockApp') || !qs('.main-tabs')) return;
 
-  const PRODUCT = 'iPhone 18 Pro Max 256GB Burgundy';
-  const PART = 'MJW64LL/A';
-  const APPLE_URL = 'https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-256gb-burgundy-unlocked';
+  const PRODUCT = 'iPhone 18 Pro Max Burgundy · 256GB + 512GB';
+  const APPLE_URL = 'https://www.apple.com/shop/buy-iphone/iphone-18-pro';
   const NORMAL_DELAY = 5000;
   let apiBase = '';
   let active = false;
@@ -55,7 +54,7 @@
   app.hidden = true;
   app.innerHTML = `
     <div class="apple-head">
-      <div><h2>🍎 Monitor de estoque · Apple Tampa</h2><div class="sub">Monitora retirada em loja do <b>${PRODUCT}</b> (SKU ${PART}). Consulta a disponibilidade oficial da Apple a cada 5 segundos enquanto o monitor estiver ativo.</div></div>
+      <div><h2>🍎 Monitor de estoque · Apple Tampa</h2><div class="sub">Monitora retirada em loja do <b>${PRODUCT}</b> nas versões <b>256GB e 512GB</b>. Consulta a disponibilidade oficial da Apple a cada 5 segundos enquanto o monitor estiver ativo.</div></div>
       <a class="apple-link" href="${APPLE_URL}" target="_blank" rel="noopener">Abrir produto na Apple ↗</a>
     </div>
 
@@ -85,7 +84,7 @@
       <div class="empty" id="appleEmpty"><strong>Aguardando primeira consulta.</strong>O monitor mostrará aqui as lojas próximas de Tampa.</div>
     </section>
 
-    <div class="note apple-note"><b>Como o alerta funciona:</b> “Disponível” só aparece quando a própria Apple informa retirada habilitada para o SKU ${PART}. Se a Apple limitar as consultas, o painel mostra “bloqueado/aguardando” e reduz temporariamente a frequência — nunca converte bloqueio em “sem estoque”. O monitor de 5 segundos depende desta página permanecer aberta; navegadores móveis podem suspender timers quando a aba fica em segundo plano ou a tela é bloqueada.</div>
+    <div class="note apple-note"><b>Como o alerta funciona:</b> “Disponível” só aparece quando a própria Apple informa retirada habilitada para a variante monitorada. Se a Apple limitar as consultas, o painel mostra “bloqueado/aguardando” e reduz temporariamente a frequência — nunca converte bloqueio em “sem estoque”. O monitor de 5 segundos depende desta página permanecer aberta; navegadores móveis podem suspender timers quando a aba fica em segundo plano ou a tela é bloqueada.</div>
   `;
   const indigo = qs('#indigoApp');
   const flights = qs('#flightsApp');
@@ -124,7 +123,7 @@
     try{return new Date(v).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});}catch{return'—';}
   }
 
-  function storeKey(x){return String(x.store_number||x.name||'');}
+  function storeKey(x){return [String(x.store_number||x.name||''),String(x.storage||x.part_number||'')].join('|');}
 
   function ensureAudio(){
     if(audioCtx)return;
@@ -151,7 +150,7 @@
   function notifyNew(stores){
     if(!stores.length)return;
     alarm();
-    const names=stores.map(x=>x.name).join(', ');
+    const names=stores.map(x=>`${x.name} · ${x.storage||''}`).join(', ');
     if('Notification' in window && Notification.permission==='granted'){
       try{new Notification('iPhone disponível na Apple!',{body:`${PRODUCT} disponível: ${names}`,tag:'apple-iphone-stock',renotify:true});}catch{}
     }
@@ -185,7 +184,7 @@
     const alert=qs('#appleAvailabilityAlert');
     if(available.length){
       alert.hidden=false;
-      alert.innerHTML=`<b>✅ ESTOQUE ENCONTRADO!</b><span>${available.map(x=>`Apple ${escapeHtml(x.name)} · ${escapeHtml(x.distance_text||'')}`).join('<br>')}</span>`;
+      alert.innerHTML=`<b>✅ ESTOQUE ENCONTRADO!</b><span>${available.map(x=>`Apple ${escapeHtml(x.name)} · ${escapeHtml(x.storage||'')} · ${escapeHtml(x.distance_text||'')}`).join('<br>')}</span>`;
     }else{
       alert.hidden=true;alert.innerHTML='';
     }
@@ -199,7 +198,7 @@
       const label=x.available?'✅ DISPONÍVEL PARA RETIRADA':known?'ESGOTADO / INDISPONÍVEL':'⚠️ ESTADO NÃO CONFIRMADO';
       const div=document.createElement('div');div.className='apple-store '+css;
       div.innerHTML=`
-        <div><h3>Apple ${escapeHtml(x.name||'Store')}</h3><div class="where">${escapeHtml([x.address,[x.city,x.state,x.postal_code].filter(Boolean).join(' ')].filter(Boolean).join(' · '))}</div>${x.distance_text?`<div class="distance">${escapeHtml(x.distance_text)}</div>`:''}</div>
+        <div><h3>Apple ${escapeHtml(x.name||'Store')} · ${escapeHtml(x.storage||'')}</h3><div class="where">${escapeHtml([x.address,[x.city,x.state,x.postal_code].filter(Boolean).join(' ')].filter(Boolean).join(' · '))}</div>${x.distance_text?`<div class="distance">${escapeHtml(x.distance_text)}</div>`:''}</div>
         <div><div class="state">${label}</div><div class="quote">${escapeHtml(x.quote||x.pickup_display||'Sem informação')}</div></div>`;
       box.appendChild(div);
     }
@@ -237,6 +236,8 @@
       }
       blockStreak=0;
       render(data);
+      const missing=Array.isArray(data.missing_variants)?data.missing_variants:[];
+      if(missing.length)setStatus('⚠️ Variante ainda sem SKU configurado no serviço: '+missing.join(', ')+'.','warn');
       const n=Number(data.available_count||0);
       setStatus(n?`✅ ${n} loja(s) com retirada disponível agora. Abra a Apple imediatamente.`:`Monitorando: ${data.stores_count||0} lojas verificadas, nenhuma com retirada disponível neste momento.`,n?'ok':'live');
       schedule(NORMAL_DELAY);
