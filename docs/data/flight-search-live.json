@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-19T18:20:48.773820Z",
-  "updated_at": "2026-09-19T18:20:48.773820Z",
+  "generated_at": "2026-09-19T18:20:52.842571Z",
+  "updated_at": "2026-09-19T18:20:52.842571Z",
   "started_at": "2026-09-19T18:20:48.277401Z",
   "status": "running",
   "stage": "multisource",
@@ -18,8 +18,8 @@
   },
   "stats": {
     "combinations": 378,
-    "processed_combinations": 0,
-    "primary_completed": 0,
+    "processed_combinations": 12,
+    "primary_completed": 12,
     "primary_total": 378,
     "fallback_done": 0,
     "fallback_total": 0,
@@ -38,7 +38,9 @@
   "daily_min": [],
   "results": [],
   "all_results": [],
-  "errors": [],
+  "errors": [
+    "2027-02-01->2027-02-07 2027-02-01->2027-02-07: ProviderResponseError: Google returned a provider error"
+  ],
   "currency": "BRL",
   "source_strategy": "google_flights_with_ita_verification",
   "sources": {
@@ -67,7 +69,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 0,
+    "google": 12,
     "ita": 0
   },
   "resume": {
@@ -75,12 +77,16 @@
     "window_minutes": 60,
     "cache_id": "182f36e7d4e070b25f88b208",
     "reused_combinations": 0,
-    "searched_this_run": 0,
-    "remaining_this_run": 378,
-    "reusable_now": 0,
-    "retryable_for_next_run": 378,
-    "saved_records": 0,
-    "saved_errors": 0,
+    "searched_this_run": 12,
+    "remaining_this_run": 366,
+    "reusable_now": 11,
+    "retryable_for_next_run": 367,
+    "saved_records": 12,
+    "saved_errors": 1,
     "checkpoint_path": "docs/data/flight-search-checkpoints/182f36e7d4e070b25f88b208.json"
+  },
+  "current_pair": {
+    "departure_date": "2027-02-01",
+    "return_date": "2027-02-11"
   }
 }
