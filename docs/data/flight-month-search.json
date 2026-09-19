@@ -1,26 +1,26 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-15T09:53:29.591272Z",
-  "updated_at": "2026-09-15T09:53:29.591272Z",
-  "started_at": "2026-09-15T09:51:20.438349Z",
+  "generated_at": "2026-09-19T04:13:56.253136Z",
+  "updated_at": "2026-09-19T04:13:56.253136Z",
+  "started_at": "2026-09-19T04:12:13.487612Z",
   "status": "completed",
   "stage": "completed",
   "mode": "full_month_matrix",
-  "request_id": "web_fec66d31a11040379c8a97051a426757",
+  "request_id": "web_a7831d1b719f408899f0e3c37eaed679",
   "request": {
     "origin": "PPB",
-    "destination": "MCO",
-    "month": "2027-02",
+    "destination": "GRU",
+    "month": "2027-03",
     "period_mode": "month",
-    "start_date": "2027-02-01",
-    "end_date": "2027-02-28",
+    "start_date": "2027-03-01",
+    "end_date": "2027-03-31",
     "max_stops": 2
   },
   "stats": {
-    "combinations": 378,
-    "processed_combinations": 378,
-    "primary_completed": 378,
-    "primary_total": 378,
+    "combinations": 465,
+    "processed_combinations": 465,
+    "primary_completed": 465,
+    "primary_total": 465,
     "fallback_done": 0,
     "fallback_total": 0,
     "priced_combinations": 0,
@@ -38,14 +38,7 @@
   "daily_min": [],
   "results": [],
   "all_results": [],
-  "errors": [
-    "2027-02-09->2027-02-12 2027-02-09->2027-02-12: ProviderResponseError: Google returned a provider error",
-    "2027-02-17->2027-02-19 2027-02-17->2027-02-19: ProviderResponseError: Google returned a provider error",
-    "2027-02-17->2027-02-25 2027-02-17->2027-02-25: ProviderResponseError: Google returned a provider error",
-    "2027-02-19->2027-02-22 2027-02-19->2027-02-22: ProviderResponseError: Google returned a provider error",
-    "2027-02-24->2027-02-28 2027-02-24->2027-02-28: ProviderResponseError: Google returned a provider error",
-    "2027-02-25->2027-02-28 2027-02-25->2027-02-28: ProviderResponseError: Google returned a provider error"
-  ],
+  "errors": [],
   "currency": "BRL",
   "source_strategy": "google_flights_with_ita_verification",
   "sources": {
@@ -74,20 +67,20 @@
     "google"
   ],
   "source_counts": {
-    "google": 378,
+    "google": 465,
     "ita": 0
   },
   "resume": {
     "enabled": true,
     "window_minutes": 60,
-    "cache_id": "94f33d3c2c8ea25211bd4a4c",
+    "cache_id": "1e92cd2ab9c5fb91f9f89c6d",
     "reused_combinations": 0,
-    "searched_this_run": 378,
+    "searched_this_run": 465,
     "remaining_this_run": 0,
-    "reusable_now": 372,
-    "retryable_for_next_run": 6,
-    "saved_records": 378,
-    "saved_errors": 6,
-    "checkpoint_path": "docs/data/flight-search-checkpoints/94f33d3c2c8ea25211bd4a4c.json"
+    "reusable_now": 465,
+    "retryable_for_next_run": 0,
+    "saved_records": 465,
+    "saved_errors": 0,
+    "checkpoint_path": "docs/data/flight-search-checkpoints/1e92cd2ab9c5fb91f9f89c6d.json"
   }
 }
