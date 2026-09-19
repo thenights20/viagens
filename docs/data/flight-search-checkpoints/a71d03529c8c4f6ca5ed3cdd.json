@@ -3,7 +3,7 @@
   "cache_id": "a71d03529c8c4f6ca5ed3cdd",
   "signature": "PPB|VCP|2027-02-01|2027-02-28|2|BRL|economy|1",
   "created_at": "2026-09-19T04:28:33.810181Z",
-  "updated_at": "2026-09-19T04:28:47.480041Z",
+  "updated_at": "2026-09-19T04:28:49.026700Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "PPB",
@@ -1498,6 +1498,160 @@
         "assigned_source": "google"
       },
       "errors": []
+    },
+    "2027-02-02|2027-02-25": {
+      "departure_date": "2027-02-02",
+      "return_date": "2027-02-25",
+      "status": "priced",
+      "completed_at": "2026-09-19T04:28:49.025147Z",
+      "source": "google",
+      "row": {
+        "origin": "PPB",
+        "destination": "VCP",
+        "departure_date": "2027-02-02",
+        "return_date": "2027-02-25",
+        "airline": "Azul",
+        "price": 891.0,
+        "duration": "1h 25min",
+        "duration_minutes": 85,
+        "stops": "Direto",
+        "stops_count": 0,
+        "departure": "[2027, 2, 2] [5, 40]",
+        "arrival": "[2027, 2, 2] [7, 5]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+VCP+on+2027-02-02+returning+2027-02-25&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 23,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+VCP+on+2027-02-02+returning+2027-02-25&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=PPB&to=VCP&depart=2027-02-02&return=2027-02-25&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-02-02|2027-02-26": {
+      "departure_date": "2027-02-02",
+      "return_date": "2027-02-26",
+      "status": "error",
+      "completed_at": "2026-09-19T04:28:49.025366Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-02-02->2027-02-26: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-02-02|2027-02-28": {
+      "departure_date": "2027-02-02",
+      "return_date": "2027-02-28",
+      "status": "error",
+      "completed_at": "2026-09-19T04:28:49.025608Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-02-02->2027-02-28: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-02-02|2027-02-27": {
+      "departure_date": "2027-02-02",
+      "return_date": "2027-02-27",
+      "status": "error",
+      "completed_at": "2026-09-19T04:28:49.025785Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-02-02->2027-02-27: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-02-03|2027-02-04": {
+      "departure_date": "2027-02-03",
+      "return_date": "2027-02-04",
+      "status": "priced",
+      "completed_at": "2026-09-19T04:28:49.025981Z",
+      "source": "google",
+      "row": {
+        "origin": "PPB",
+        "destination": "VCP",
+        "departure_date": "2027-02-03",
+        "return_date": "2027-02-04",
+        "airline": "Azul",
+        "price": 1316.0,
+        "duration": "1h 25min",
+        "duration_minutes": 85,
+        "stops": "Direto",
+        "stops_count": 0,
+        "departure": "[2027, 2, 3] [5, 40]",
+        "arrival": "[2027, 2, 3] [7, 5]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+VCP+on+2027-02-03+returning+2027-02-04&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 1,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+VCP+on+2027-02-03+returning+2027-02-04&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=PPB&to=VCP&depart=2027-02-03&return=2027-02-04&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-02-03|2027-02-05": {
+      "departure_date": "2027-02-03",
+      "return_date": "2027-02-05",
+      "status": "error",
+      "completed_at": "2026-09-19T04:28:49.026200Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-02-03->2027-02-05: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-02-03|2027-02-06": {
+      "departure_date": "2027-02-03",
+      "return_date": "2027-02-06",
+      "status": "priced",
+      "completed_at": "2026-09-19T04:28:49.026514Z",
+      "source": "google",
+      "row": {
+        "origin": "PPB",
+        "destination": "VCP",
+        "departure_date": "2027-02-03",
+        "return_date": "2027-02-06",
+        "airline": "Azul",
+        "price": 1373.0,
+        "duration": "1h 25min",
+        "duration_minutes": 85,
+        "stops": "Direto",
+        "stops_count": 0,
+        "departure": "[2027, 2, 3] [5, 40]",
+        "arrival": "[2027, 2, 3] [7, 5]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+VCP+on+2027-02-03+returning+2027-02-06&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 3,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+VCP+on+2027-02-03+returning+2027-02-06&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=PPB&to=VCP&depart=2027-02-03&return=2027-02-06&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-02-03|2027-02-07": {
+      "departure_date": "2027-02-03",
+      "return_date": "2027-02-07",
+      "status": "error",
+      "completed_at": "2026-09-19T04:28:49.026694Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-02-03->2027-02-07: ProviderResponseError: Google returned a provider error"
+      ]
     }
   }
 }
