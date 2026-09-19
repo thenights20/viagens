@@ -3,7 +3,7 @@
   "cache_id": "e1a8ccc2e27f30a4ddd13f5c",
   "signature": "GRU|MIA|2027-07-01|2027-12-31|2|BRL|economy|1",
   "created_at": "2026-09-19T20:32:07.053710Z",
-  "updated_at": "2026-09-19T20:47:22.441430Z",
+  "updated_at": "2026-09-19T20:47:23.803686Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "GRU",
@@ -55680,6 +55680,226 @@
       "errors": [
         "2027-07-22->2027-12-28: ProviderResponseError: Google returned a provider error"
       ]
+    },
+    "2027-07-22|2027-12-31": {
+      "departure_date": "2027-07-22",
+      "return_date": "2027-12-31",
+      "status": "error",
+      "completed_at": "2026-09-19T20:47:23.781074Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-22->2027-12-31: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-22|2027-12-30": {
+      "departure_date": "2027-07-22",
+      "return_date": "2027-12-30",
+      "status": "error",
+      "completed_at": "2026-09-19T20:47:23.784689Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-22->2027-12-30: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-23|2027-07-25": {
+      "departure_date": "2027-07-23",
+      "return_date": "2027-07-25",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:47:23.788690Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-07-23",
+        "return_date": "2027-07-25",
+        "airline": "Aerolineas Argentinas",
+        "price": 4634.0,
+        "duration": "12h 15min",
+        "duration_minutes": 735,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 7, 23] [20, 20]",
+        "arrival": "[2027, 7, 24] [16, 15]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-23+returning+2027-07-25&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 2,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-23+returning+2027-07-25&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-23&return=2027-07-25&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-23|2027-07-24": {
+      "departure_date": "2027-07-23",
+      "return_date": "2027-07-24",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:47:23.791524Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-07-23",
+        "return_date": "2027-07-24",
+        "airline": "LATAM",
+        "price": 3943.0,
+        "duration": "8h 30min",
+        "duration_minutes": 510,
+        "stops": "Direto",
+        "stops_count": 0,
+        "departure": "[2027, 7, 23] [23, 30]",
+        "arrival": "[2027, 7, 24] [7]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-23+returning+2027-07-24&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 1,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-23+returning+2027-07-24&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-23&return=2027-07-24&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-23|2027-07-27": {
+      "departure_date": "2027-07-23",
+      "return_date": "2027-07-27",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:47:23.794331Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-07-23",
+        "return_date": "2027-07-27",
+        "airline": "Aerolineas Argentinas",
+        "price": 4634.0,
+        "duration": "12h 15min",
+        "duration_minutes": 735,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 7, 23] [20, 20]",
+        "arrival": "[2027, 7, 24] [16, 15]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-23+returning+2027-07-27&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 4,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-23+returning+2027-07-27&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-23&return=2027-07-27&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-23|2027-07-26": {
+      "departure_date": "2027-07-23",
+      "return_date": "2027-07-26",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:47:23.797121Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-07-23",
+        "return_date": "2027-07-26",
+        "airline": "Aerolineas Argentinas",
+        "price": 4634.0,
+        "duration": "12h 15min",
+        "duration_minutes": 735,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 7, 23] [20, 20]",
+        "arrival": "[2027, 7, 24] [16, 15]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-23+returning+2027-07-26&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 3,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-23+returning+2027-07-26&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-23&return=2027-07-26&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-23|2027-07-29": {
+      "departure_date": "2027-07-23",
+      "return_date": "2027-07-29",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:47:23.800345Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-07-23",
+        "return_date": "2027-07-29",
+        "airline": "Aerolineas Argentinas",
+        "price": 4634.0,
+        "duration": "12h 15min",
+        "duration_minutes": 735,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 7, 23] [20, 20]",
+        "arrival": "[2027, 7, 24] [16, 15]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-23+returning+2027-07-29&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 6,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-23+returning+2027-07-29&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-23&return=2027-07-29&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-23|2027-07-28": {
+      "departure_date": "2027-07-23",
+      "return_date": "2027-07-28",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:47:23.803671Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-07-23",
+        "return_date": "2027-07-28",
+        "airline": "Aerolineas Argentinas",
+        "price": 4634.0,
+        "duration": "12h 15min",
+        "duration_minutes": 735,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 7, 23] [20, 20]",
+        "arrival": "[2027, 7, 24] [16, 15]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-23+returning+2027-07-28&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 5,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-23+returning+2027-07-28&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-23&return=2027-07-28&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
     }
   }
 }
