@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "cache_id": "f2cb51939499101f576c160f",
+  "signature": "CWB|MIA|2027-02-01|2027-02-28|2|BRL|economy|1",
+  "created_at": "2026-09-19T18:30:10.997687Z",
+  "updated_at": "2026-09-19T18:30:12.495447Z",
+  "resume_window_minutes": 60,
+  "request": {
+    "origin": "CWB",
+    "destination": "MIA",
+    "start_date": "2027-02-01",
+    "end_date": "2027-02-28",
+    "max_stops": 2,
+    "currency": "BRL"
+  },
+  "pairs": {
+    "2027-02-01|2027-02-03": {
+      "departure_date": "2027-02-01",
+      "return_date": "2027-02-03",
+      "status": "priced",
+      "completed_at": "2026-09-19T18:30:12.495416Z",
+      "source": "google",
+      "row": {
+        "origin": "CWB",
+        "destination": "MIA",
+        "departure_date": "2027-02-01",
+        "return_date": "2027-02-03",
+        "airline": "Gol, American",
+        "price": 4662.0,
+        "duration": "10h 00min",
+        "duration_minutes": 600,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 2, 1] [19, 10]",
+        "arrival": "[2027, 2, 2] [5]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+CWB+to+MIA+on+2027-02-01+returning+2027-02-03&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 2,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+CWB+to+MIA+on+2027-02-01+returning+2027-02-03&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=CWB&to=MIA&depart=2027-02-01&return=2027-02-03&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    }
+  }
+}
