@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-19T19:56:34.330200Z",
-  "updated_at": "2026-09-19T19:56:34.330200Z",
+  "generated_at": "2026-09-19T19:56:39.832181Z",
+  "updated_at": "2026-09-19T19:56:39.832181Z",
   "started_at": "2026-09-19T18:37:43.568025Z",
   "status": "running",
   "stage": "multisource",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 16290,
-    "processed_combinations": 10325,
-    "primary_completed": 10325,
+    "processed_combinations": 10337,
+    "primary_completed": 10337,
     "primary_total": 16290,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 8976,
+    "priced_combinations": 8978,
     "coverage_pct": 55.1,
     "lowest_price": 2553.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 8976
+    "new": 8978
   },
   "daily_min": [
     {
@@ -81740,6 +81740,70 @@
       "search_links": {
         "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-13+returning+2027-04-12&curr=BRL&hl=pt-BR",
         "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-13&return=2027-04-12&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-03-13",
+      "return_date": "2027-04-13",
+      "airline": "Aerolineas Argentinas",
+      "price": 3850.0,
+      "duration": "12h 15min",
+      "duration_minutes": 735,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 13] [17, 30]",
+      "arrival": "[2027, 3, 14] [16, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-13+returning+2027-04-13&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 31,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-13+returning+2027-04-13&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-13&return=2027-04-13&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-03-13",
+      "return_date": "2027-04-14",
+      "airline": "Aerolineas Argentinas",
+      "price": 3850.0,
+      "duration": "12h 15min",
+      "duration_minutes": 735,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 13] [17, 30]",
+      "arrival": "[2027, 3, 14] [16, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-13+returning+2027-04-14&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 32,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-13+returning+2027-04-14&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-13&return=2027-04-14&currency=BRL"
       },
       "assigned_source": "google",
       "previous_price": null,
@@ -293073,7 +293137,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 10325,
+    "google": 10337,
     "ita": 0
   },
   "resume": {
@@ -293081,16 +293145,16 @@
     "window_minutes": 60,
     "cache_id": "543497ba449d44bccb0fa804",
     "reused_combinations": 0,
-    "searched_this_run": 10325,
-    "remaining_this_run": 5965,
+    "searched_this_run": 10337,
+    "remaining_this_run": 5953,
     "reusable_now": 6573,
     "retryable_for_next_run": 9717,
-    "saved_records": 10325,
+    "saved_records": 10337,
     "saved_errors": 191,
     "checkpoint_path": "docs/data/flight-search-checkpoints/543497ba449d44bccb0fa804.json"
   },
   "current_pair": {
     "departure_date": "2027-03-13",
-    "return_date": "2027-04-12"
+    "return_date": "2027-04-23"
   }
 }
