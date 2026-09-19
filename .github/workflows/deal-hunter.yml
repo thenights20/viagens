@@ -17,7 +17,9 @@ on:
       - "flight-monitor/requirements.txt"
       - ".github/workflows/deal-hunter.yml"
   schedule:
-    - cron: "*/15 * * * *"
+    # 3 varreduras diárias, fora do início da hora para reduzir atrasos de fila.
+    - cron: "17 8,14,20 * * *"
+      timezone: "America/Campo_Grande"
 
 concurrency:
   group: deal-hunter-${{ github.ref }}
