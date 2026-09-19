@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-19T04:24:27.517222Z",
-  "updated_at": "2026-09-19T04:24:27.517222Z",
+  "generated_at": "2026-09-19T04:24:30.962515Z",
+  "updated_at": "2026-09-19T04:24:30.962515Z",
   "started_at": "2026-09-19T04:23:20.204720Z",
   "status": "running",
   "stage": "multisource",
@@ -18,13 +18,13 @@
   },
   "stats": {
     "combinations": 378,
-    "processed_combinations": 204,
-    "primary_completed": 204,
+    "processed_combinations": 216,
+    "primary_completed": 216,
     "primary_total": 378,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 183,
-    "coverage_pct": 48.4,
+    "priced_combinations": 195,
+    "coverage_pct": 51.6,
     "lowest_price": 795.0,
     "result_count": 100
   },
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 183
+    "new": 195
   },
   "daily_min": [
     {
@@ -67,7 +67,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 41
+      "rank": 44
     },
     {
       "origin": "PPB",
@@ -100,7 +100,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 50
+      "rank": 53
     },
     {
       "origin": "PPB",
@@ -133,7 +133,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 60
+      "rank": 63
     },
     {
       "origin": "PPB",
@@ -166,7 +166,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 71
+      "rank": 74
     },
     {
       "origin": "PPB",
@@ -199,7 +199,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 83
+      "rank": 86
     },
     {
       "origin": "PPB",
@@ -232,7 +232,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 96
+      "rank": 99
     },
     {
       "origin": "PPB",
@@ -332,6 +332,38 @@
       "history_samples": 0,
       "previous_seen_at": null,
       "rank": 30
+    },
+    {
+      "origin": "PPB",
+      "destination": "CGH",
+      "departure_date": "2027-02-10",
+      "return_date": "2027-02-11",
+      "airline": "Gol",
+      "price": 807.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2027, 2, 10] [16, 10]",
+      "arrival": "[2027, 2, 10] [17, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-10+returning+2027-02-11&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 1,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-10+returning+2027-02-11&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-10&return=2027-02-11&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
     }
   ],
   "results": [
@@ -1626,6 +1658,39 @@
       "origin": "PPB",
       "destination": "CGH",
       "departure_date": "2027-02-09",
+      "return_date": "2027-02-25",
+      "airline": "Gol",
+      "price": 795.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2027, 2, 9] [16, 10]",
+      "arrival": "[2027, 2, 9] [17, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-09+returning+2027-02-25&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 16,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-09+returning+2027-02-25&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-09&return=2027-02-25&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 40
+    },
+    {
+      "origin": "PPB",
+      "destination": "CGH",
+      "departure_date": "2027-02-09",
       "return_date": "2027-02-26",
       "airline": "Gol",
       "price": 795.0,
@@ -1653,7 +1718,73 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 40
+      "rank": 41
+    },
+    {
+      "origin": "PPB",
+      "destination": "CGH",
+      "departure_date": "2027-02-09",
+      "return_date": "2027-02-27",
+      "airline": "Gol",
+      "price": 795.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2027, 2, 9] [16, 10]",
+      "arrival": "[2027, 2, 9] [17, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-09+returning+2027-02-27&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 18,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-09+returning+2027-02-27&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-09&return=2027-02-27&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 42
+    },
+    {
+      "origin": "PPB",
+      "destination": "CGH",
+      "departure_date": "2027-02-09",
+      "return_date": "2027-02-28",
+      "airline": "Gol",
+      "price": 795.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2027, 2, 9] [16, 10]",
+      "arrival": "[2027, 2, 9] [17, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-09+returning+2027-02-28&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 19,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-09+returning+2027-02-28&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-09&return=2027-02-28&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 43
     },
     {
       "origin": "PPB",
@@ -1686,7 +1817,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 41
+      "rank": 44
     },
     {
       "origin": "PPB",
@@ -1719,7 +1850,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 42
+      "rank": 45
     },
     {
       "origin": "PPB",
@@ -1752,7 +1883,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 43
+      "rank": 46
     },
     {
       "origin": "PPB",
@@ -1785,7 +1916,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 44
+      "rank": 47
     },
     {
       "origin": "PPB",
@@ -1818,7 +1949,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 45
+      "rank": 48
     },
     {
       "origin": "PPB",
@@ -1851,7 +1982,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 46
+      "rank": 49
     },
     {
       "origin": "PPB",
@@ -1884,7 +2015,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 47
+      "rank": 50
     },
     {
       "origin": "PPB",
@@ -1917,7 +2048,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 48
+      "rank": 51
     },
     {
       "origin": "PPB",
@@ -1950,7 +2081,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 49
+      "rank": 52
     },
     {
       "origin": "PPB",
@@ -1983,7 +2114,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 50
+      "rank": 53
     },
     {
       "origin": "PPB",
@@ -2016,7 +2147,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 51
+      "rank": 54
     },
     {
       "origin": "PPB",
@@ -2049,7 +2180,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 52
+      "rank": 55
     },
     {
       "origin": "PPB",
@@ -2082,7 +2213,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 53
+      "rank": 56
     },
     {
       "origin": "PPB",
@@ -2115,7 +2246,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 54
+      "rank": 57
     },
     {
       "origin": "PPB",
@@ -2148,7 +2279,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 55
+      "rank": 58
     },
     {
       "origin": "PPB",
@@ -2181,7 +2312,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 56
+      "rank": 59
     },
     {
       "origin": "PPB",
@@ -2214,7 +2345,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 57
+      "rank": 60
     },
     {
       "origin": "PPB",
@@ -2247,7 +2378,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 58
+      "rank": 61
     },
     {
       "origin": "PPB",
@@ -2280,7 +2411,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 59
+      "rank": 62
     },
     {
       "origin": "PPB",
@@ -2313,7 +2444,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 60
+      "rank": 63
     },
     {
       "origin": "PPB",
@@ -2346,7 +2477,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 61
+      "rank": 64
     },
     {
       "origin": "PPB",
@@ -2379,7 +2510,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 62
+      "rank": 65
     },
     {
       "origin": "PPB",
@@ -2412,7 +2543,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 63
+      "rank": 66
     },
     {
       "origin": "PPB",
@@ -2445,7 +2576,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 64
+      "rank": 67
     },
     {
       "origin": "PPB",
@@ -2478,7 +2609,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 65
+      "rank": 68
     },
     {
       "origin": "PPB",
@@ -2511,7 +2642,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 66
+      "rank": 69
     },
     {
       "origin": "PPB",
@@ -2544,7 +2675,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 67
+      "rank": 70
     },
     {
       "origin": "PPB",
@@ -2577,7 +2708,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 68
+      "rank": 71
     },
     {
       "origin": "PPB",
@@ -2610,7 +2741,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 69
+      "rank": 72
     },
     {
       "origin": "PPB",
@@ -2643,7 +2774,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 70
+      "rank": 73
     },
     {
       "origin": "PPB",
@@ -2676,7 +2807,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 71
+      "rank": 74
     },
     {
       "origin": "PPB",
@@ -2709,7 +2840,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 72
+      "rank": 75
     },
     {
       "origin": "PPB",
@@ -2742,7 +2873,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 73
+      "rank": 76
     },
     {
       "origin": "PPB",
@@ -2775,7 +2906,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 74
+      "rank": 77
     },
     {
       "origin": "PPB",
@@ -2808,7 +2939,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 75
+      "rank": 78
     },
     {
       "origin": "PPB",
@@ -2841,7 +2972,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 76
+      "rank": 79
     },
     {
       "origin": "PPB",
@@ -2874,7 +3005,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 77
+      "rank": 80
     },
     {
       "origin": "PPB",
@@ -2907,7 +3038,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 78
+      "rank": 81
     },
     {
       "origin": "PPB",
@@ -2940,7 +3071,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 79
+      "rank": 82
     },
     {
       "origin": "PPB",
@@ -2973,7 +3104,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 80
+      "rank": 83
     },
     {
       "origin": "PPB",
@@ -3006,7 +3137,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 81
+      "rank": 84
     },
     {
       "origin": "PPB",
@@ -3039,7 +3170,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 82
+      "rank": 85
     },
     {
       "origin": "PPB",
@@ -3072,7 +3203,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 83
+      "rank": 86
     },
     {
       "origin": "PPB",
@@ -3105,7 +3236,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 84
+      "rank": 87
     },
     {
       "origin": "PPB",
@@ -3138,7 +3269,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 85
+      "rank": 88
     },
     {
       "origin": "PPB",
@@ -3171,7 +3302,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 86
+      "rank": 89
     },
     {
       "origin": "PPB",
@@ -3204,7 +3335,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 87
+      "rank": 90
     },
     {
       "origin": "PPB",
@@ -3237,7 +3368,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 88
+      "rank": 91
     },
     {
       "origin": "PPB",
@@ -3270,7 +3401,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 89
+      "rank": 92
     },
     {
       "origin": "PPB",
@@ -3303,7 +3434,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 90
+      "rank": 93
     },
     {
       "origin": "PPB",
@@ -3336,7 +3467,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 91
+      "rank": 94
     },
     {
       "origin": "PPB",
@@ -3369,7 +3500,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 92
+      "rank": 95
     },
     {
       "origin": "PPB",
@@ -3402,7 +3533,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 93
+      "rank": 96
     },
     {
       "origin": "PPB",
@@ -3435,7 +3566,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 94
+      "rank": 97
     },
     {
       "origin": "PPB",
@@ -3468,7 +3599,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 95
+      "rank": 98
     },
     {
       "origin": "PPB",
@@ -3501,7 +3632,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 96
+      "rank": 99
     },
     {
       "origin": "PPB",
@@ -3525,105 +3656,6 @@
       "search_links": {
         "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-06+returning+2027-02-11&curr=BRL&hl=pt-BR",
         "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-06&return=2027-02-11&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 97
-    },
-    {
-      "origin": "PPB",
-      "destination": "CGH",
-      "departure_date": "2027-02-06",
-      "return_date": "2027-02-13",
-      "airline": "Gol",
-      "price": 807.0,
-      "duration": "1h 10min",
-      "duration_minutes": 70,
-      "stops": "Direto",
-      "stops_count": 0,
-      "departure": "[2027, 2, 6] [16, 10]",
-      "arrival": "[2027, 2, 6] [17, 20]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-06+returning+2027-02-13&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 7,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-06+returning+2027-02-13&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-06&return=2027-02-13&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 98
-    },
-    {
-      "origin": "PPB",
-      "destination": "CGH",
-      "departure_date": "2027-02-06",
-      "return_date": "2027-02-16",
-      "airline": "Gol",
-      "price": 807.0,
-      "duration": "1h 10min",
-      "duration_minutes": 70,
-      "stops": "Direto",
-      "stops_count": 0,
-      "departure": "[2027, 2, 6] [16, 10]",
-      "arrival": "[2027, 2, 6] [17, 20]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-06+returning+2027-02-16&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 10,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-06+returning+2027-02-16&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-06&return=2027-02-16&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 99
-    },
-    {
-      "origin": "PPB",
-      "destination": "CGH",
-      "departure_date": "2027-02-06",
-      "return_date": "2027-02-17",
-      "airline": "Gol",
-      "price": 807.0,
-      "duration": "1h 10min",
-      "duration_minutes": 70,
-      "stops": "Direto",
-      "stops_count": 0,
-      "departure": "[2027, 2, 6] [16, 10]",
-      "arrival": "[2027, 2, 6] [17, 20]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-06+returning+2027-02-17&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 11,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-06+returning+2027-02-17&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-06&return=2027-02-17&currency=BRL"
       },
       "assigned_source": "google",
       "previous_price": null,
@@ -4928,6 +4960,39 @@
       "origin": "PPB",
       "destination": "CGH",
       "departure_date": "2027-02-09",
+      "return_date": "2027-02-25",
+      "airline": "Gol",
+      "price": 795.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2027, 2, 9] [16, 10]",
+      "arrival": "[2027, 2, 9] [17, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-09+returning+2027-02-25&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 16,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-09+returning+2027-02-25&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-09&return=2027-02-25&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 40
+    },
+    {
+      "origin": "PPB",
+      "destination": "CGH",
+      "departure_date": "2027-02-09",
       "return_date": "2027-02-26",
       "airline": "Gol",
       "price": 795.0,
@@ -4955,7 +5020,73 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 40
+      "rank": 41
+    },
+    {
+      "origin": "PPB",
+      "destination": "CGH",
+      "departure_date": "2027-02-09",
+      "return_date": "2027-02-27",
+      "airline": "Gol",
+      "price": 795.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2027, 2, 9] [16, 10]",
+      "arrival": "[2027, 2, 9] [17, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-09+returning+2027-02-27&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 18,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-09+returning+2027-02-27&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-09&return=2027-02-27&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 42
+    },
+    {
+      "origin": "PPB",
+      "destination": "CGH",
+      "departure_date": "2027-02-09",
+      "return_date": "2027-02-28",
+      "airline": "Gol",
+      "price": 795.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2027, 2, 9] [16, 10]",
+      "arrival": "[2027, 2, 9] [17, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-09+returning+2027-02-28&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 19,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-09+returning+2027-02-28&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-09&return=2027-02-28&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 43
     },
     {
       "origin": "PPB",
@@ -4988,7 +5119,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 41
+      "rank": 44
     },
     {
       "origin": "PPB",
@@ -5021,7 +5152,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 42
+      "rank": 45
     },
     {
       "origin": "PPB",
@@ -5054,7 +5185,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 43
+      "rank": 46
     },
     {
       "origin": "PPB",
@@ -5087,7 +5218,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 44
+      "rank": 47
     },
     {
       "origin": "PPB",
@@ -5120,7 +5251,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 45
+      "rank": 48
     },
     {
       "origin": "PPB",
@@ -5153,7 +5284,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 46
+      "rank": 49
     },
     {
       "origin": "PPB",
@@ -5186,7 +5317,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 47
+      "rank": 50
     },
     {
       "origin": "PPB",
@@ -5219,7 +5350,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 48
+      "rank": 51
     },
     {
       "origin": "PPB",
@@ -5252,7 +5383,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 49
+      "rank": 52
     },
     {
       "origin": "PPB",
@@ -5285,7 +5416,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 50
+      "rank": 53
     },
     {
       "origin": "PPB",
@@ -5318,7 +5449,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 51
+      "rank": 54
     },
     {
       "origin": "PPB",
@@ -5351,7 +5482,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 52
+      "rank": 55
     },
     {
       "origin": "PPB",
@@ -5384,7 +5515,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 53
+      "rank": 56
     },
     {
       "origin": "PPB",
@@ -5417,7 +5548,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 54
+      "rank": 57
     },
     {
       "origin": "PPB",
@@ -5450,7 +5581,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 55
+      "rank": 58
     },
     {
       "origin": "PPB",
@@ -5483,7 +5614,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 56
+      "rank": 59
     },
     {
       "origin": "PPB",
@@ -5516,7 +5647,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 57
+      "rank": 60
     },
     {
       "origin": "PPB",
@@ -5549,7 +5680,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 58
+      "rank": 61
     },
     {
       "origin": "PPB",
@@ -5582,7 +5713,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 59
+      "rank": 62
     },
     {
       "origin": "PPB",
@@ -5615,7 +5746,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 60
+      "rank": 63
     },
     {
       "origin": "PPB",
@@ -5648,7 +5779,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 61
+      "rank": 64
     },
     {
       "origin": "PPB",
@@ -5681,7 +5812,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 62
+      "rank": 65
     },
     {
       "origin": "PPB",
@@ -5714,7 +5845,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 63
+      "rank": 66
     },
     {
       "origin": "PPB",
@@ -5747,7 +5878,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 64
+      "rank": 67
     },
     {
       "origin": "PPB",
@@ -5780,7 +5911,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 65
+      "rank": 68
     },
     {
       "origin": "PPB",
@@ -5813,7 +5944,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 66
+      "rank": 69
     },
     {
       "origin": "PPB",
@@ -5846,7 +5977,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 67
+      "rank": 70
     },
     {
       "origin": "PPB",
@@ -5879,7 +6010,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 68
+      "rank": 71
     },
     {
       "origin": "PPB",
@@ -5912,7 +6043,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 69
+      "rank": 72
     },
     {
       "origin": "PPB",
@@ -5945,7 +6076,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 70
+      "rank": 73
     },
     {
       "origin": "PPB",
@@ -5978,7 +6109,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 71
+      "rank": 74
     },
     {
       "origin": "PPB",
@@ -6011,7 +6142,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 72
+      "rank": 75
     },
     {
       "origin": "PPB",
@@ -6044,7 +6175,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 73
+      "rank": 76
     },
     {
       "origin": "PPB",
@@ -6077,7 +6208,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 74
+      "rank": 77
     },
     {
       "origin": "PPB",
@@ -6110,7 +6241,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 75
+      "rank": 78
     },
     {
       "origin": "PPB",
@@ -6143,7 +6274,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 76
+      "rank": 79
     },
     {
       "origin": "PPB",
@@ -6176,7 +6307,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 77
+      "rank": 80
     },
     {
       "origin": "PPB",
@@ -6209,7 +6340,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 78
+      "rank": 81
     },
     {
       "origin": "PPB",
@@ -6242,7 +6373,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 79
+      "rank": 82
     },
     {
       "origin": "PPB",
@@ -6275,7 +6406,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 80
+      "rank": 83
     },
     {
       "origin": "PPB",
@@ -6308,7 +6439,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 81
+      "rank": 84
     },
     {
       "origin": "PPB",
@@ -6341,7 +6472,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 82
+      "rank": 85
     },
     {
       "origin": "PPB",
@@ -6374,7 +6505,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 83
+      "rank": 86
     },
     {
       "origin": "PPB",
@@ -6407,7 +6538,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 84
+      "rank": 87
     },
     {
       "origin": "PPB",
@@ -6440,7 +6571,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 85
+      "rank": 88
     },
     {
       "origin": "PPB",
@@ -6473,7 +6604,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 86
+      "rank": 89
     },
     {
       "origin": "PPB",
@@ -6506,7 +6637,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 87
+      "rank": 90
     },
     {
       "origin": "PPB",
@@ -6539,7 +6670,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 88
+      "rank": 91
     },
     {
       "origin": "PPB",
@@ -6572,7 +6703,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 89
+      "rank": 92
     },
     {
       "origin": "PPB",
@@ -6605,7 +6736,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 90
+      "rank": 93
     },
     {
       "origin": "PPB",
@@ -6638,7 +6769,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 91
+      "rank": 94
     },
     {
       "origin": "PPB",
@@ -6671,7 +6802,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 92
+      "rank": 95
     },
     {
       "origin": "PPB",
@@ -6704,7 +6835,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 93
+      "rank": 96
     },
     {
       "origin": "PPB",
@@ -6737,7 +6868,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 94
+      "rank": 97
     },
     {
       "origin": "PPB",
@@ -6770,7 +6901,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 95
+      "rank": 98
     },
     {
       "origin": "PPB",
@@ -6803,7 +6934,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 96
+      "rank": 99
     },
     {
       "origin": "PPB",
@@ -6836,7 +6967,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 97
+      "rank": 100
     },
     {
       "origin": "PPB",
@@ -6868,8 +6999,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 98
+      "previous_seen_at": null
     },
     {
       "origin": "PPB",
@@ -6901,8 +7031,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 99
+      "previous_seen_at": null
     },
     {
       "origin": "PPB",
@@ -6934,8 +7063,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 100
+      "previous_seen_at": null
     },
     {
       "origin": "PPB",
@@ -7215,6 +7343,198 @@
       "search_links": {
         "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-06+returning+2027-02-27&curr=BRL&hl=pt-BR",
         "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-06&return=2027-02-27&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "PPB",
+      "destination": "CGH",
+      "departure_date": "2027-02-10",
+      "return_date": "2027-02-11",
+      "airline": "Gol",
+      "price": 807.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2027, 2, 10] [16, 10]",
+      "arrival": "[2027, 2, 10] [17, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-10+returning+2027-02-11&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 1,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-10+returning+2027-02-11&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-10&return=2027-02-11&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "PPB",
+      "destination": "CGH",
+      "departure_date": "2027-02-10",
+      "return_date": "2027-02-13",
+      "airline": "Gol",
+      "price": 807.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2027, 2, 10] [16, 10]",
+      "arrival": "[2027, 2, 10] [17, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-10+returning+2027-02-13&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 3,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-10+returning+2027-02-13&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-10&return=2027-02-13&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "PPB",
+      "destination": "CGH",
+      "departure_date": "2027-02-10",
+      "return_date": "2027-02-16",
+      "airline": "Gol",
+      "price": 807.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2027, 2, 10] [16, 10]",
+      "arrival": "[2027, 2, 10] [17, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-10+returning+2027-02-16&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 6,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-10+returning+2027-02-16&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-10&return=2027-02-16&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "PPB",
+      "destination": "CGH",
+      "departure_date": "2027-02-10",
+      "return_date": "2027-02-17",
+      "airline": "Gol",
+      "price": 807.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2027, 2, 10] [16, 10]",
+      "arrival": "[2027, 2, 10] [17, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-10+returning+2027-02-17&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 7,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-10+returning+2027-02-17&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-10&return=2027-02-17&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "PPB",
+      "destination": "CGH",
+      "departure_date": "2027-02-10",
+      "return_date": "2027-02-18",
+      "airline": "Gol",
+      "price": 807.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2027, 2, 10] [16, 10]",
+      "arrival": "[2027, 2, 10] [17, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-10+returning+2027-02-18&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 8,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-10+returning+2027-02-18&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-10&return=2027-02-18&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "PPB",
+      "destination": "CGH",
+      "departure_date": "2027-02-10",
+      "return_date": "2027-02-20",
+      "airline": "Gol",
+      "price": 807.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2027, 2, 10] [16, 10]",
+      "arrival": "[2027, 2, 10] [17, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-10+returning+2027-02-20&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 10,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-10+returning+2027-02-20&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-10&return=2027-02-20&currency=BRL"
       },
       "assigned_source": "google",
       "previous_price": null,
@@ -7951,6 +8271,38 @@
       "search_links": {
         "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-06+returning+2027-02-12&curr=BRL&hl=pt-BR",
         "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-06&return=2027-02-12&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "PPB",
+      "destination": "CGH",
+      "departure_date": "2027-02-10",
+      "return_date": "2027-02-12",
+      "airline": "Gol",
+      "price": 903.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2027, 2, 10] [16, 10]",
+      "arrival": "[2027, 2, 10] [17, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-10+returning+2027-02-12&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 2,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-10+returning+2027-02-12&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-10&return=2027-02-12&currency=BRL"
       },
       "assigned_source": "google",
       "previous_price": null,
@@ -9116,6 +9468,38 @@
     {
       "origin": "PPB",
       "destination": "CGH",
+      "departure_date": "2027-02-10",
+      "return_date": "2027-02-15",
+      "airline": "Gol",
+      "price": 923.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2027, 2, 10] [16, 10]",
+      "arrival": "[2027, 2, 10] [17, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-10+returning+2027-02-15&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 5,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-10+returning+2027-02-15&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-10&return=2027-02-15&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "PPB",
+      "destination": "CGH",
       "departure_date": "2027-02-07",
       "return_date": "2027-02-14",
       "airline": "Gol",
@@ -9592,6 +9976,38 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null
+    },
+    {
+      "origin": "PPB",
+      "destination": "CGH",
+      "departure_date": "2027-02-10",
+      "return_date": "2027-02-14",
+      "airline": "Gol",
+      "price": 984.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2027, 2, 10] [16, 10]",
+      "arrival": "[2027, 2, 10] [17, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-10+returning+2027-02-14&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 4,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+CGH+on+2027-02-10+returning+2027-02-14&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=CGH&depart=2027-02-10&return=2027-02-14&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
     }
   ],
   "errors": [],
@@ -9623,7 +10039,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 204,
+    "google": 216,
     "ita": 0
   },
   "resume": {
@@ -9631,16 +10047,16 @@
     "window_minutes": 60,
     "cache_id": "3779d36a6cb92570c8f041d6",
     "reused_combinations": 0,
-    "searched_this_run": 204,
-    "remaining_this_run": 174,
-    "reusable_now": 204,
-    "retryable_for_next_run": 174,
-    "saved_records": 204,
+    "searched_this_run": 216,
+    "remaining_this_run": 162,
+    "reusable_now": 216,
+    "retryable_for_next_run": 162,
+    "saved_records": 216,
     "saved_errors": 0,
     "checkpoint_path": "docs/data/flight-search-checkpoints/3779d36a6cb92570c8f041d6.json"
   },
   "current_pair": {
-    "departure_date": "2027-02-09",
-    "return_date": "2027-02-26"
+    "departure_date": "2027-02-10",
+    "return_date": "2027-02-20"
   }
 }
