@@ -3,7 +3,7 @@
   "cache_id": "e1a8ccc2e27f30a4ddd13f5c",
   "signature": "GRU|MIA|2027-07-01|2027-12-31|2|BRL|economy|1",
   "created_at": "2026-09-19T20:32:07.053710Z",
-  "updated_at": "2026-09-19T20:39:35.704313Z",
+  "updated_at": "2026-09-19T20:39:38.177892Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "GRU",
@@ -28934,6 +28934,160 @@
       "errors": [
         "2027-07-11->2027-12-25: ProviderResponseError: Google returned a provider error"
       ]
+    },
+    "2027-07-11|2027-12-27": {
+      "departure_date": "2027-07-11",
+      "return_date": "2027-12-27",
+      "status": "error",
+      "completed_at": "2026-09-19T20:39:36.974408Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-11->2027-12-27: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-11|2027-12-29": {
+      "departure_date": "2027-07-11",
+      "return_date": "2027-12-29",
+      "status": "error",
+      "completed_at": "2026-09-19T20:39:36.976458Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-11->2027-12-29: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-11|2027-12-28": {
+      "departure_date": "2027-07-11",
+      "return_date": "2027-12-28",
+      "status": "error",
+      "completed_at": "2026-09-19T20:39:36.978546Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-11->2027-12-28: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-11|2027-12-30": {
+      "departure_date": "2027-07-11",
+      "return_date": "2027-12-30",
+      "status": "error",
+      "completed_at": "2026-09-19T20:39:38.171245Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-11->2027-12-30: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-11|2027-12-31": {
+      "departure_date": "2027-07-11",
+      "return_date": "2027-12-31",
+      "status": "error",
+      "completed_at": "2026-09-19T20:39:38.173392Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-11->2027-12-31: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-12|2027-07-13": {
+      "departure_date": "2027-07-12",
+      "return_date": "2027-07-13",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:39:38.174893Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-07-12",
+        "return_date": "2027-07-13",
+        "airline": "Aerolineas Argentinas",
+        "price": 4236.0,
+        "duration": "12h 15min",
+        "duration_minutes": 735,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 7, 12] [10, 20]",
+        "arrival": "[2027, 7, 13] [7]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-12+returning+2027-07-13&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 1,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-12+returning+2027-07-13&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-12&return=2027-07-13&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-12|2027-07-15": {
+      "departure_date": "2027-07-12",
+      "return_date": "2027-07-15",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:39:38.176368Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-07-12",
+        "return_date": "2027-07-15",
+        "airline": "Aerolineas Argentinas",
+        "price": 4236.0,
+        "duration": "12h 15min",
+        "duration_minutes": 735,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 7, 12] [10, 20]",
+        "arrival": "[2027, 7, 13] [7]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-12+returning+2027-07-15&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 3,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-12+returning+2027-07-15&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-12&return=2027-07-15&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-12|2027-07-14": {
+      "departure_date": "2027-07-12",
+      "return_date": "2027-07-14",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:39:38.177881Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-07-12",
+        "return_date": "2027-07-14",
+        "airline": "Aerolineas Argentinas",
+        "price": 4236.0,
+        "duration": "12h 15min",
+        "duration_minutes": 735,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 7, 12] [10, 20]",
+        "arrival": "[2027, 7, 13] [7]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-12+returning+2027-07-14&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 2,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-12+returning+2027-07-14&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-12&return=2027-07-14&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
     }
   }
 }
