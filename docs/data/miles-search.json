@@ -1,36 +1,55 @@
 {
   "version": "0.2.3",
-  "status": "idle",
-  "generated_at": null,
-  "request_id": "",
-  "request": {},
-  "provider": "Seats.aero public search fallback",
+  "status": "completed",
+  "generated_at": "2026-09-19T01:41:21.753184Z",
+  "request_id": "miles_207dbe68cf134fa2a20e2863f92df64a",
+  "request": {
+    "origin": "MCO",
+    "destination": "JFK",
+    "period_mode": "range",
+    "month": "2026-10",
+    "start_date": "2026-10-02",
+    "end_date": "2026-10-05",
+    "program": "",
+    "cabin": "economy",
+    "request_id": "miles_207dbe68cf134fa2a20e2863f92df64a"
+  },
+  "provider": "Seats.aero public search",
+  "cached_data": true,
+  "fallback_mode": true,
+  "fallback_urls": [
+    {
+      "label": "02/10–05/10",
+      "url": "https://seats.aero/search?date=2026-10-02&origins=MCO&destinations=JFK&additional_days=true&additional_days_num=3"
+    }
+  ],
   "results": [],
   "result_count": 0,
   "sources": {
     "Smiles": {
-      "ok": false,
+      "ok": true,
       "items": 0,
-      "automated": false,
-      "message": "Aguardando nova consulta."
+      "automated": true,
+      "message": "Consulta concluída; nenhuma disponibilidade encontrada para os filtros informados."
     },
     "Azul Fidelidade": {
-      "ok": false,
+      "ok": true,
       "items": 0,
-      "automated": false,
-      "message": "Aguardando nova consulta."
+      "automated": true,
+      "message": "Consulta concluída; nenhuma disponibilidade encontrada para os filtros informados."
     },
     "AAdvantage": {
-      "ok": false,
+      "ok": true,
       "items": 0,
-      "automated": false,
-      "message": "Aguardando nova consulta."
+      "automated": true,
+      "message": "Consulta concluída; nenhuma disponibilidade encontrada para os filtros informados."
     },
     "LATAM Pass": {
       "ok": false,
       "items": 0,
       "automated": false,
-      "message": "Aguardando nova consulta."
+      "message": "LATAM Pass não está disponível na fonte automatizada atual; use o acesso oficial para conferir o resgate."
     }
-  }
+  },
+  "notice": "A consulta automática por API não está habilitada neste projeto. Use a busca pública do Seats.aero abaixo; a rota e as datas já estão preenchidas."
 }
