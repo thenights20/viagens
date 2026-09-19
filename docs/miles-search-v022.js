@@ -366,7 +366,7 @@
 
   async function loadData(){
     try{data=await requestJson(RESULT_RAW);}
-    catch{data={version:'0.2.2,generated_at:null,results:[],sources:{}};}
+    catch{data={version:'0.2.2',generated_at:null,results:[],sources:{}};}
     q('#milesUpdated').textContent=data.generated_at?'Atualizado '+new Date(data.generated_at).toLocaleString('pt-BR'):'Aguardando primeira coleta';
     renderSources();
   }
