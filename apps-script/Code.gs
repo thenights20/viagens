@@ -254,6 +254,7 @@ function doPost(e) {
     const path = String((e && e.parameter && e.parameter.route) || (e && e.pathInfo) || '').replace(/^\/+|\/+$/g, '');
     const body = JSON.parse((e && e.postData && e.postData.contents) || '{}');
     if (path === 'api/search') return json_(startSearch_(body));
+    if (path === 'api/miles/search') return json_(startMilesSearch_(body));
     if (path === 'api/indigo/search') return json_(startIndigoSearch_(body));
     if (path === 'api/progress') return json_(progressUpdate_(body));
     if (path === 'api/cancel') return json_(cancelSearch_(body));
@@ -266,11 +267,13 @@ function doPost(e) {
 function doGet(e) {
   try {
     const path = String((e && e.parameter && e.parameter.route) || (e && e.pathInfo) || '').replace(/^\/+|\/+$/g, '');
-    if (!path || path === 'health') return json_({ ok: true, service: 'flight-search-bridge', version: '0.6.0', indigo: true, apple: true });
+    if (!path || path === 'health') return json_({ ok: true, service: 'flight-search-bridge', version: '0.7.0', indigo: true, apple: true, miles: true });
     let match = path.match(/^api\/progress\/([A-Za-z0-9_-]{8,80})$/);
     if (match) return jsonp_(getProgress_(match[1]), e && e.parameter && e.parameter.callback);
     match = path.match(/^api\/search\/([A-Za-z0-9_-]{8,80})$/);
     if (match) return json_(pollSearch_(match[1]));
+    match = path.match(/^api\/miles\/search\/([A-Za-z0-9_-]{8,80})$/);
+    if (match) return jsonp_(pollMilesSearch_(match[1]), e && e.parameter && e.parameter.callback);
     match = path.match(/^api\/indigo\/search\/([A-Za-z0-9_-]{8,80})$/);
     if (match) return jsonp_(pollIndigoSearch_(match[1]), e && e.parameter && e.parameter.callback);
     if (path === 'api/apple/availability') return jsonp_(appleAvailability_(e && e.parameter ? e.parameter : {}), e && e.parameter && e.parameter.callback);
