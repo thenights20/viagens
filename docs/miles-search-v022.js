@@ -472,6 +472,6 @@
   }catch(err){
     console.error('miles-search-init',err);
     const status=q('#milesStatus');
-    if(status){status.className='miles-status bad';status.textContent='A aba abriu, mas houve uma falha ao inicializar os aeroportos. Recarregue a página.';}
+    if(status){status.className='miles-status bad';status.textContent='Falha ao inicializar aeroportos: '+String(err?.message||err);}
   }
 })();
