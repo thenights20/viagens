@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-19T20:55:53.655785Z",
-  "updated_at": "2026-09-19T20:55:53.655785Z",
+  "generated_at": "2026-09-19T20:55:56.652153Z",
+  "updated_at": "2026-09-19T20:55:56.652153Z",
   "started_at": "2026-09-19T20:32:06.606275Z",
   "status": "running",
   "stage": "multisource",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 16836,
-    "processed_combinations": 5652,
-    "primary_completed": 5652,
+    "processed_combinations": 5664,
+    "primary_completed": 5664,
     "primary_total": 16836,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 842,
+    "priced_combinations": 844,
     "coverage_pct": 5.0,
     "lowest_price": 3515.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 842
+    "new": 844
   },
   "daily_min": [
     {
@@ -1147,6 +1147,38 @@
       "history_samples": 0,
       "previous_seen_at": null,
       "rank": 79
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-05",
+      "airline": "Avianca",
+      "price": 4067.0,
+      "duration": "9h 55min",
+      "duration_minutes": 595,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 8, 4] [2, 20]",
+      "arrival": "[2027, 8, 4] [12, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-04+returning+2027-08-05&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 1,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-04+returning+2027-08-05&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-08-04&return=2027-08-05&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
     }
   ],
   "results": [
@@ -10398,6 +10430,70 @@
       "search_links": {
         "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-03+returning+2027-08-10&curr=BRL&hl=pt-BR",
         "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-08-03&return=2027-08-10&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-05",
+      "airline": "Avianca",
+      "price": 4067.0,
+      "duration": "9h 55min",
+      "duration_minutes": 595,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 8, 4] [2, 20]",
+      "arrival": "[2027, 8, 4] [12, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-04+returning+2027-08-05&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 1,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-04+returning+2027-08-05&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-08-04&return=2027-08-05&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-06",
+      "airline": "Avianca",
+      "price": 4067.0,
+      "duration": "9h 55min",
+      "duration_minutes": 595,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 8, 4] [2, 20]",
+      "arrival": "[2027, 8, 4] [12, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-04+returning+2027-08-06&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 2,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-04+returning+2027-08-06&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-08-04&return=2027-08-06&currency=BRL"
       },
       "assigned_source": "google",
       "previous_price": null,
@@ -31587,7 +31683,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 5652,
+    "google": 5664,
     "ita": 0
   },
   "resume": {
@@ -31595,16 +31691,16 @@
     "window_minutes": 60,
     "cache_id": "e1a8ccc2e27f30a4ddd13f5c",
     "reused_combinations": 0,
-    "searched_this_run": 5652,
-    "remaining_this_run": 11184,
-    "reusable_now": 932,
-    "retryable_for_next_run": 15904,
-    "saved_records": 5652,
-    "saved_errors": 4720,
+    "searched_this_run": 5664,
+    "remaining_this_run": 11172,
+    "reusable_now": 934,
+    "retryable_for_next_run": 15902,
+    "saved_records": 5664,
+    "saved_errors": 4730,
     "checkpoint_path": "docs/data/flight-search-checkpoints/e1a8ccc2e27f30a4ddd13f5c.json"
   },
   "current_pair": {
-    "departure_date": "2027-08-03",
-    "return_date": "2027-12-20"
+    "departure_date": "2027-08-04",
+    "return_date": "2027-08-09"
   }
 }
