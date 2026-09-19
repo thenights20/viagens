@@ -3,7 +3,7 @@
   "cache_id": "4c7a475b121d289204ecffbf",
   "signature": "CGH|MIA|2027-07-01|2027-12-31|2|BRL|economy|1",
   "created_at": "2026-09-19T22:09:40.622255Z",
-  "updated_at": "2026-09-19T22:20:28.217896Z",
+  "updated_at": "2026-09-19T22:20:29.603189Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "CGH",
@@ -32734,6 +32734,114 @@
         "assigned_source": "google"
       },
       "errors": []
+    },
+    "2027-07-13|2027-08-14": {
+      "departure_date": "2027-07-13",
+      "return_date": "2027-08-14",
+      "status": "priced",
+      "completed_at": "2026-09-19T22:20:29.589385Z",
+      "source": "google",
+      "row": {
+        "origin": "CGH",
+        "destination": "MIA",
+        "departure_date": "2027-07-13",
+        "return_date": "2027-08-14",
+        "airline": "Gol, American",
+        "price": 5323.0,
+        "duration": "9h 45min",
+        "duration_minutes": 585,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 7, 13] [18, 55]",
+        "arrival": "[2027, 7, 14] [5, 45]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-13+returning+2027-08-14&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 32,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-13+returning+2027-08-14&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=CGH&to=MIA&depart=2027-07-13&return=2027-08-14&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-13|2027-08-16": {
+      "departure_date": "2027-07-13",
+      "return_date": "2027-08-16",
+      "status": "error",
+      "completed_at": "2026-09-19T22:20:29.591659Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-13->2027-08-16: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-13|2027-08-17": {
+      "departure_date": "2027-07-13",
+      "return_date": "2027-08-17",
+      "status": "error",
+      "completed_at": "2026-09-19T22:20:29.593812Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-13->2027-08-17: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-13|2027-08-15": {
+      "departure_date": "2027-07-13",
+      "return_date": "2027-08-15",
+      "status": "no_price",
+      "completed_at": "2026-09-19T22:20:29.595757Z",
+      "source": "google",
+      "row": null,
+      "errors": []
+    },
+    "2027-07-13|2027-08-18": {
+      "departure_date": "2027-07-13",
+      "return_date": "2027-08-18",
+      "status": "error",
+      "completed_at": "2026-09-19T22:20:29.597677Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-13->2027-08-18: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-13|2027-08-21": {
+      "departure_date": "2027-07-13",
+      "return_date": "2027-08-21",
+      "status": "error",
+      "completed_at": "2026-09-19T22:20:29.599499Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-13->2027-08-21: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-13|2027-08-19": {
+      "departure_date": "2027-07-13",
+      "return_date": "2027-08-19",
+      "status": "error",
+      "completed_at": "2026-09-19T22:20:29.601297Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-13->2027-08-19: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-13|2027-08-22": {
+      "departure_date": "2027-07-13",
+      "return_date": "2027-08-22",
+      "status": "error",
+      "completed_at": "2026-09-19T22:20:29.603178Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-13->2027-08-22: ProviderResponseError: Google returned a provider error"
+      ]
     }
   }
 }
