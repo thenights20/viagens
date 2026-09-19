@@ -3,7 +3,7 @@
   "cache_id": "e1a8ccc2e27f30a4ddd13f5c",
   "signature": "GRU|MIA|2027-07-01|2027-12-31|2|BRL|economy|1",
   "created_at": "2026-09-19T20:32:07.053710Z",
-  "updated_at": "2026-09-19T20:41:48.745418Z",
+  "updated_at": "2026-09-19T20:41:50.807688Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "GRU",
@@ -37178,6 +37178,204 @@
       "errors": [
         "2027-07-15->2027-08-02: ProviderResponseError: Google returned a provider error"
       ]
+    },
+    "2027-07-15|2027-08-03": {
+      "departure_date": "2027-07-15",
+      "return_date": "2027-08-03",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:41:49.815071Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-07-15",
+        "return_date": "2027-08-03",
+        "airline": "American",
+        "price": 5274.0,
+        "duration": "8h 35min",
+        "duration_minutes": 515,
+        "stops": "Direto",
+        "stops_count": 0,
+        "departure": "[2027, 7, 15] [21, 25]",
+        "arrival": "[2027, 7, 16] [5]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-15+returning+2027-08-03&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 19,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-15+returning+2027-08-03&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-15&return=2027-08-03&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-15|2027-08-05": {
+      "departure_date": "2027-07-15",
+      "return_date": "2027-08-05",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:41:49.816973Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-07-15",
+        "return_date": "2027-08-05",
+        "airline": "BoA",
+        "price": 5129.0,
+        "duration": "9h 40min",
+        "duration_minutes": 580,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 7, 15] [18, 35]",
+        "arrival": "[2027, 7, 16] [15, 25]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-15+returning+2027-08-05&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 21,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-15+returning+2027-08-05&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-15&return=2027-08-05&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-15|2027-08-04": {
+      "departure_date": "2027-07-15",
+      "return_date": "2027-08-04",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:41:49.820066Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-07-15",
+        "return_date": "2027-08-04",
+        "airline": "American",
+        "price": 5274.0,
+        "duration": "8h 35min",
+        "duration_minutes": 515,
+        "stops": "Direto",
+        "stops_count": 0,
+        "departure": "[2027, 7, 15] [21, 25]",
+        "arrival": "[2027, 7, 16] [5]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-15+returning+2027-08-04&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 20,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-15+returning+2027-08-04&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-15&return=2027-08-04&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-15|2027-08-06": {
+      "departure_date": "2027-07-15",
+      "return_date": "2027-08-06",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:41:49.821995Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-07-15",
+        "return_date": "2027-08-06",
+        "airline": "American",
+        "price": 4883.0,
+        "duration": "8h 35min",
+        "duration_minutes": 515,
+        "stops": "Direto",
+        "stops_count": 0,
+        "departure": "[2027, 7, 15] [21, 25]",
+        "arrival": "[2027, 7, 16] [5]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-15+returning+2027-08-06&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 22,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-15+returning+2027-08-06&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-15&return=2027-08-06&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-15|2027-08-07": {
+      "departure_date": "2027-07-15",
+      "return_date": "2027-08-07",
+      "status": "error",
+      "completed_at": "2026-09-19T20:41:49.825442Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-15->2027-08-07: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-15|2027-08-08": {
+      "departure_date": "2027-07-15",
+      "return_date": "2027-08-08",
+      "status": "error",
+      "completed_at": "2026-09-19T20:41:49.827506Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-15->2027-08-08: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-15|2027-08-11": {
+      "departure_date": "2027-07-15",
+      "return_date": "2027-08-11",
+      "status": "error",
+      "completed_at": "2026-09-19T20:41:49.829364Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-15->2027-08-11: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-15|2027-08-09": {
+      "departure_date": "2027-07-15",
+      "return_date": "2027-08-09",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:41:50.807663Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-07-15",
+        "return_date": "2027-08-09",
+        "airline": "American",
+        "price": 4883.0,
+        "duration": "8h 35min",
+        "duration_minutes": 515,
+        "stops": "Direto",
+        "stops_count": 0,
+        "departure": "[2027, 7, 15] [21, 25]",
+        "arrival": "[2027, 7, 16] [5]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-15+returning+2027-08-09&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 25,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-15+returning+2027-08-09&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-15&return=2027-08-09&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
     }
   }
 }
