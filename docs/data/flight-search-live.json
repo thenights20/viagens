@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-19T18:38:58.932539Z",
-  "updated_at": "2026-09-19T18:38:58.932539Z",
+  "generated_at": "2026-09-19T18:39:01.010502Z",
+  "updated_at": "2026-09-19T18:39:01.010502Z",
   "started_at": "2026-09-19T18:37:43.568025Z",
   "status": "running",
   "stage": "multisource",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 16290,
-    "processed_combinations": 348,
-    "primary_completed": 348,
+    "processed_combinations": 360,
+    "primary_completed": 360,
     "primary_total": 16290,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 208,
+    "priced_combinations": 209,
     "coverage_pct": 1.3,
     "lowest_price": 4095.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 208
+    "new": 209
   },
   "daily_min": [
     {
@@ -91,6 +91,38 @@
       "search_links": {
         "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-01-02+returning+2027-02-01&curr=BRL&hl=pt-BR",
         "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-01-02&return=2027-02-01&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-01-03",
+      "return_date": "2027-01-04",
+      "airline": "Arajet",
+      "price": 6795.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 3] [4, 13]",
+      "arrival": "[2027, 1, 3] [13, 32]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-01-03+returning+2027-01-04&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 1,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-01-03+returning+2027-01-04&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-01-03&return=2027-01-04&currency=BRL"
       },
       "assigned_source": "google",
       "previous_price": null,
@@ -8500,6 +8532,38 @@
     {
       "origin": "GRU",
       "destination": "MIA",
+      "departure_date": "2027-01-03",
+      "return_date": "2027-01-04",
+      "airline": "Arajet",
+      "price": 6795.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 1, 3] [4, 13]",
+      "arrival": "[2027, 1, 3] [13, 32]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-01-03+returning+2027-01-04&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 1,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-01-03+returning+2027-01-04&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-01-03&return=2027-01-04&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
       "departure_date": "2027-01-02",
       "return_date": "2027-02-01",
       "airline": "BoA",
@@ -10191,7 +10255,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 348,
+    "google": 360,
     "ita": 0
   },
   "resume": {
@@ -10199,16 +10263,16 @@
     "window_minutes": 60,
     "cache_id": "543497ba449d44bccb0fa804",
     "reused_combinations": 0,
-    "searched_this_run": 348,
-    "remaining_this_run": 15942,
-    "reusable_now": 348,
-    "retryable_for_next_run": 15942,
-    "saved_records": 348,
+    "searched_this_run": 360,
+    "remaining_this_run": 15930,
+    "reusable_now": 360,
+    "retryable_for_next_run": 15930,
+    "saved_records": 360,
     "saved_errors": 0,
     "checkpoint_path": "docs/data/flight-search-checkpoints/543497ba449d44bccb0fa804.json"
   },
   "current_pair": {
-    "departure_date": "2027-01-02",
-    "return_date": "2027-06-18"
+    "departure_date": "2027-01-03",
+    "return_date": "2027-01-04"
   }
 }
