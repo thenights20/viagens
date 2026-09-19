@@ -10,7 +10,7 @@
   const app = q('#flightsApp');
   if (!tabs || !app || q('#milesSearchPanel')) return;
 
-  let data = {version:'0.2.3,generated_at:null,results:[],sources:{}};
+  let data = {version:'0.2.3',generated_at:null,results:[],sources:{}};
   let activeQuery = null;
   let apiBase = '';
   let searching = false;
@@ -375,7 +375,7 @@
 
   async function loadData(){
     try{data=await requestJson(RESULT_RAW);}
-    catch{data={version:'0.2.3,generated_at:null,results:[],sources:{}};}
+    catch{data={version:'0.2.3',generated_at:null,results:[],sources:{}};}
     q('#milesUpdated').textContent=data.generated_at?'Atualizado '+new Date(data.generated_at).toLocaleString('pt-BR'):'Aguardando primeira coleta';
     renderSources();
   }
