@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-19T22:12:16.480077Z",
-  "updated_at": "2026-09-19T22:12:16.480077Z",
+  "generated_at": "2026-09-19T22:12:20.127869Z",
+  "updated_at": "2026-09-19T22:12:20.127869Z",
   "started_at": "2026-09-19T22:09:40.093953Z",
   "status": "running",
   "stage": "multisource",
@@ -18,13 +18,13 @@
   },
   "stats": {
     "combinations": 16836,
-    "processed_combinations": 576,
-    "primary_completed": 576,
+    "processed_combinations": 588,
+    "primary_completed": 588,
     "primary_total": 16836,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 126,
-    "coverage_pct": 0.7,
+    "priced_combinations": 128,
+    "coverage_pct": 0.8,
     "lowest_price": 5420.0,
     "result_count": 100
   },
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 126
+    "new": 128
   },
   "daily_min": [
     {
@@ -7096,6 +7096,70 @@
       "origin": "CGH",
       "destination": "MIA",
       "departure_date": "2027-07-04",
+      "return_date": "2027-08-04",
+      "airline": "LATAM",
+      "price": 5619.0,
+      "duration": "13h 20min",
+      "duration_minutes": 800,
+      "stops": "2 escalas",
+      "stops_count": 2,
+      "departure": "[2027, 7, 4] [15]",
+      "arrival": "[2027, 7, 5] [7, 40]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-04+returning+2027-08-04&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 31,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-04+returning+2027-08-04&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=CGH&to=MIA&depart=2027-07-04&return=2027-08-04&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "CGH",
+      "destination": "MIA",
+      "departure_date": "2027-07-04",
+      "return_date": "2027-08-05",
+      "airline": "LATAM",
+      "price": 5619.0,
+      "duration": "13h 20min",
+      "duration_minutes": 800,
+      "stops": "2 escalas",
+      "stops_count": 2,
+      "departure": "[2027, 7, 4] [15]",
+      "arrival": "[2027, 7, 5] [7, 40]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-04+returning+2027-08-05&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 32,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-04+returning+2027-08-05&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=CGH&to=MIA&depart=2027-07-04&return=2027-08-05&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "CGH",
+      "destination": "MIA",
+      "departure_date": "2027-07-04",
       "return_date": "2027-07-16",
       "airline": "LATAM",
       "price": 5799.0,
@@ -7695,7 +7759,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 576,
+    "google": 588,
     "ita": 0
   },
   "resume": {
@@ -7703,16 +7767,16 @@
     "window_minutes": 60,
     "cache_id": "4c7a475b121d289204ecffbf",
     "reused_combinations": 0,
-    "searched_this_run": 576,
-    "remaining_this_run": 16260,
-    "reusable_now": 162,
-    "retryable_for_next_run": 16674,
-    "saved_records": 576,
-    "saved_errors": 414,
+    "searched_this_run": 588,
+    "remaining_this_run": 16248,
+    "reusable_now": 173,
+    "retryable_for_next_run": 16663,
+    "saved_records": 588,
+    "saved_errors": 415,
     "checkpoint_path": "docs/data/flight-search-checkpoints/4c7a475b121d289204ecffbf.json"
   },
   "current_pair": {
     "departure_date": "2027-07-04",
-    "return_date": "2027-08-03"
+    "return_date": "2027-08-16"
   }
 }
