@@ -173,7 +173,7 @@
   const loadMiles = () => {
     if (document.querySelector('script[data-miles-search]') || document.querySelector('#milesSearchPanel')) return;
     const s = document.createElement('script');
-    s.src = './miles-search.js?v=20260912-miles-1';
+    s.src = './miles-search.js?v=20260918-miles-live-1';
     s.defer = true;
     s.dataset.milesSearch = '1';
     document.head.appendChild(s);
