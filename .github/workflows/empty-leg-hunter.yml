@@ -1,0 +1,54 @@
+name: Empty Leg Hunter
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 7 * * *"
+      timezone: "America/Campo_Grande"
+    - cron: "17 14 * * *"
+      timezone: "America/Campo_Grande"
+    - cron: "17 21 * * *"
+      timezone: "America/Campo_Grande"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: empty-leg-hunter
+  cancel-in-progress: true
+
+jobs:
+  hunt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Pesquisar empty legs
+        env:
+          AVIAPAGES_API_KEY: ${{ secrets.AVIAPAGES_API_KEY }}
+          EMPTY_LEG_SOURCE_1_URL: ${{ secrets.EMPTY_LEG_SOURCE_1_URL }}
+          EMPTY_LEG_SOURCE_1_NAME: ${{ secrets.EMPTY_LEG_SOURCE_1_NAME }}
+          EMPTY_LEG_SOURCE_1_AUTH: ${{ secrets.EMPTY_LEG_SOURCE_1_AUTH }}
+          EMPTY_LEG_SOURCE_2_URL: ${{ secrets.EMPTY_LEG_SOURCE_2_URL }}
+          EMPTY_LEG_SOURCE_2_NAME: ${{ secrets.EMPTY_LEG_SOURCE_2_NAME }}
+          EMPTY_LEG_SOURCE_2_AUTH: ${{ secrets.EMPTY_LEG_SOURCE_2_AUTH }}
+          EMPTY_LEG_SOURCE_3_URL: ${{ secrets.EMPTY_LEG_SOURCE_3_URL }}
+          EMPTY_LEG_SOURCE_3_NAME: ${{ secrets.EMPTY_LEG_SOURCE_3_NAME }}
+          EMPTY_LEG_SOURCE_3_AUTH: ${{ secrets.EMPTY_LEG_SOURCE_3_AUTH }}
+        run: python scripts/empty_leg_hunter.py
+      - name: Validar
+        run: python -c "import json; d=json.load(open('docs/data/empty-legs.json',encoding='utf-8')); assert isinstance(d['offers'],list); print(d['offer_count'],'ofertas')"
+      - name: Salvar resultados
+        run: |
+          git config user.name "empty-leg-hunter-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/empty-legs.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "data: atualizar Empty Leg Hunter [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main
