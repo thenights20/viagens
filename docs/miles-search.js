@@ -10,8 +10,12 @@
   const app = q('#flightsApp');
   if (!tabs || !app || q('#milesSearchPanel')) return;
 
-  let data = {version:'0.1.0',generated_at:null,results:[],sources:{}};
+  let data = {version:'0.2.0',generated_at:null,results:[],sources:{}};
   let activeQuery = null;
+  let apiBase = '';
+  let searching = false;
+  const RESULT_RAW = './data/miles-search.json';
+  const sleep = ms => new Promise(resolve=>setTimeout(resolve,ms));
 
   const PROGRAMS = {
     Smiles: {
@@ -62,7 +66,7 @@
   panel.hidden = true;
   panel.innerHTML = `
     <div class="miles-titlebar">
-      <div><strong>⭐ Buscar passagens por milhas · v0.1.0</strong><small>Mesmo modelo de período da busca paga: mês inteiro ou intervalo de datas. A tabela exibe somente milhas.</small></div>
+      <div><strong>⭐ Buscar passagens por milhas · v0.2.0</strong><small>Mesmo modelo de período da busca paga: mês inteiro ou intervalo de datas. A tabela exibe somente milhas.</small></div>
       <div class="pill"><span class="dot"></span><span id="milesUpdated">Aguardando consulta</span></div>
     </div>
     <section class="panel">
@@ -213,28 +217,146 @@
     renderProviderActions(query||currentQuery());
   }
 
+  async function requestJson(url){
+    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
+    try{
+      const r=await fetch(`${url}${url.includes('?')?'&':'?'}t=${Date.now()}`,{cache:'no-store',signal:controller.signal});
+      if(!r.ok)throw new Error('HTTP '+r.status);
+      return await r.json();
+    }finally{clearTimeout(timer);}
+  }
+
+  async function loadConfig(){
+    try{
+      const c=await requestJson('./data/flight-search-config.json');
+      apiBase=String(c.api_base||'').replace(/\/$/,'');
+    }catch{}
+  }
+
+  function makeRequestId(){
+    const raw=globalThis.crypto&&typeof globalThis.crypto.randomUUID==='function'
+      ?globalThis.crypto.randomUUID().replace(/-/g,'')
+      :(Date.now().toString(36)+Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2));
+    return 'miles_'+raw.slice(0,56);
+  }
+
+  function resultMatches(result,query,requestId){
+    if(!result||result.request_id!==requestId||!result.request)return false;
+    const r=result.request;
+    if(r.origin!==query.origin||r.destination!==query.destination)return false;
+    if(String(r.program||'')!==String(query.program||'')||String(r.cabin||'')!==String(query.cabin||''))return false;
+    if((r.period_mode||'month')!==query.period_mode)return false;
+    if(query.period_mode==='range')return r.start_date===query.start_date&&r.end_date===query.end_date;
+    return r.month===query.month;
+  }
+
+  function bridgeState(requestId){
+    return new Promise(resolve=>{
+      if(!apiBase){resolve(null);return;}
+      const callback='milesState_'+String(requestId).replace(/[^A-Za-z0-9_$]/g,'_');
+      const script=document.createElement('script');
+      let finished=false;
+      const finish=value=>{if(finished)return;finished=true;clearTimeout(timer);try{script.remove()}catch{};try{delete window[callback]}catch{};resolve(value);};
+      const timer=setTimeout(()=>finish(null),8000);
+      window[callback]=value=>finish(value);
+      script.onerror=()=>finish(null);
+      script.src=`${apiBase}?route=${encodeURIComponent('api/miles/search/'+requestId)}&callback=${encodeURIComponent(callback)}&t=${Date.now()}`;
+      document.head.appendChild(script);
+    });
+  }
+
+  function postBridge(query,requestId){
+    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);
+    const url=`${apiBase}?route=${encodeURIComponent('api/miles/search')}&t=${Date.now()}`;
+    const body={...query,request_id:requestId};
+    fetch(url,{
+      method:'POST',
+      mode:'no-cors',
+      cache:'no-store',
+      signal:controller.signal,
+      headers:{'Content-Type':'text/plain;charset=UTF-8'},
+      body:JSON.stringify(body)
+    }).catch(()=>{}).finally(()=>clearTimeout(timer));
+  }
+
   async function loadData(){
-    try{const r=await fetch('./data/miles-search.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);data=await r.json();}
-    catch{data={version:'0.1.0',generated_at:null,results:[],sources:{}};}
+    try{data=await requestJson(RESULT_RAW);}
+    catch{data={version:'0.2.0',generated_at:null,results:[],sources:{}};}
     q('#milesUpdated').textContent=data.generated_at?'Atualizado '+new Date(data.generated_at).toLocaleString('pt-BR'):'Aguardando primeira coleta';
     renderSources();
   }
 
+  async function waitForResult(query,requestId,status){
+    const started=Date.now();
+    let lastBridgeCheck=0;
+    for(let i=0;i<120;i++){
+      await sleep(2000);
+      const final=await requestJson(RESULT_RAW).catch(()=>null);
+      if(final&&resultMatches(final,query,requestId)&&final.status!=='running')return final;
+
+      if(Date.now()-lastBridgeCheck>8000){
+        lastBridgeCheck=Date.now();
+        const state=await bridgeState(requestId);
+        if(state?.status==='error')throw new Error(state.error||'A busca por milhas terminou com erro.');
+        if(state?.status==='queued')status.textContent='⏳ Busca recebida. Aguardando execução no GitHub Actions…';
+        else if(state?.status==='in_progress'||state?.status==='running')status.textContent='🔎 Consultando disponibilidade real de resgate em milhas…';
+        else status.textContent='🔎 Busca enviada. Aguardando o resultado da consulta em milhas…';
+      }
+      if(Date.now()-started>240000)throw new Error('A busca por milhas excedeu 4 minutos.');
+    }
+    throw new Error('A busca por milhas não retornou resultado.');
+  }
+
   async function search(){
-    const query=currentQuery(),status=q('#milesStatus'),error=validate(query);
+    if(searching)return;
+    const query=currentQuery(),status=q('#milesStatus'),button=q('#milesSearchButton'),error=validate(query);
     if(error){status.className='miles-status bad';status.textContent=error;return;}
-    status.className='miles-status warn';status.textContent='Consultando os resultados de milhas já coletados para esta rota e período…';
-    await loadData();activeQuery=query;render(query);
-    const rows=matchingRows(query);
-    if(rows.length){status.className='miles-status ok';status.textContent=`${rows.length} opção(ões) encontrada(s). A tabela está ordenada do menor para o maior valor em milhas.`;}
-    else{status.className='miles-status warn';status.textContent='Ainda não há valor de resgate coletado para esta consulta. Use os acessos oficiais abaixo; nenhum preço em reais será estimado ou exibido.';}
+    if(!apiBase)await loadConfig();
+    if(!apiBase){status.className='miles-status bad';status.textContent='O serviço de pesquisa ainda não está conectado. Atualize a página e tente novamente.';return;}
+
+    const requestId=makeRequestId();
+    searching=true;
+    button.disabled=true;
+    button.textContent='⏳ Pesquisando…';
+    activeQuery=query;
+    status.className='miles-status warn';
+    status.textContent='🔎 Enviando consulta de disponibilidade em milhas…';
+    try{
+      postBridge(query,requestId);
+      const result=await waitForResult(query,requestId,status);
+      data=result;
+      q('#milesUpdated').textContent=data.generated_at?'Atualizado '+new Date(data.generated_at).toLocaleString('pt-BR'):'Consulta concluída';
+      renderSources();
+      render(query);
+      const rows=matchingRows(query);
+      if(result.status==='error')throw new Error(result.error||'A consulta de milhas terminou com erro.');
+      if(rows.length){
+        status.className='miles-status ok';
+        status.textContent=`✅ ${rows.length} opção(ões) encontrada(s), ordenadas do menor para o maior valor em milhas.`;
+      }else if(result.notice){
+        status.className='miles-status warn';
+        status.textContent=result.notice;
+      }else{
+        status.className='miles-status warn';
+        status.textContent='Consulta concluída, mas não houve disponibilidade em milhas para esta rota, período e cabine.';
+      }
+    }catch(err){
+      await loadData().catch(()=>{});
+      render(query);
+      status.className='miles-status bad';
+      status.textContent='Não foi possível concluir a busca por milhas: '+String(err?.message||err);
+    }finally{
+      searching=false;
+      button.disabled=false;
+      button.textContent='⭐ Pesquisar milhas';
+    }
   }
 
   function hideBuiltIn(){['hunterPanel','radarPanel','externalPanel','airlinesPanel','flightMonthPanel'].forEach(id=>{const el=q('#'+id);if(el)el.hidden=true;});}
   function setFocus(on){document.body.classList.toggle('flight-search-focus',!!on);}
   function activate(){document.querySelectorAll('#flightTabs .tab').forEach(x=>x.classList.remove('active'));btn.classList.add('active');hideBuiltIn();panel.hidden=false;setFocus(true);render(activeQuery);}
 
-  cloneCatalogs();defaults();periodChanged();renderProviderActions(null);renderSources();loadData();
+  cloneCatalogs();defaults();periodChanged();renderProviderActions(null);renderSources();loadConfig();loadData();
   q('#milesPeriodMode').addEventListener('change',periodChanged);
   q('#milesRangeStart').addEventListener('change',()=>{const start=q('#milesRangeStart'),end=q('#milesRangeEnd');end.min=start.value||start.min;if(end.value<start.value)end.value=start.value;});
   q('#milesSearchButton').addEventListener('click',e=>{e.preventDefault();search().catch(err=>{const status=q('#milesStatus');status.className='miles-status bad';status.textContent='Não foi possível carregar a consulta: '+String(err?.message||err);});});
