@@ -1,10 +1,10 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-19T18:22:24.626297Z",
-  "updated_at": "2026-09-19T18:22:24.626297Z",
+  "generated_at": "2026-09-19T18:22:28.350657Z",
+  "updated_at": "2026-09-19T18:22:28.350657Z",
   "started_at": "2026-09-19T18:20:48.277401Z",
-  "status": "running",
-  "stage": "multisource",
+  "status": "completed",
+  "stage": "completed",
   "mode": "full_month_matrix",
   "request_id": "web_703f6c9303c14efa9324891cbb5f1f3c",
   "request": {
@@ -18,8 +18,8 @@
   },
   "stats": {
     "combinations": 378,
-    "processed_combinations": 372,
-    "primary_completed": 372,
+    "processed_combinations": 378,
+    "primary_completed": 378,
     "primary_total": 378,
     "fallback_done": 0,
     "fallback_total": 0,
@@ -84,7 +84,9 @@
     "2027-02-18->2027-02-27 2027-02-18->2027-02-27: ProviderResponseError: Google returned a provider error",
     "2027-02-19->2027-02-26 2027-02-19->2027-02-26: ProviderResponseError: Google returned a provider error",
     "2027-02-23->2027-02-26 2027-02-23->2027-02-26: ProviderResponseError: Google returned a provider error",
-    "2027-02-24->2027-02-27 2027-02-24->2027-02-27: ProviderResponseError: Google returned a provider error"
+    "2027-02-24->2027-02-27 2027-02-24->2027-02-27: ProviderResponseError: Google returned a provider error",
+    "2027-02-25->2027-02-27 2027-02-25->2027-02-27: ProviderResponseError: Google returned a provider error",
+    "2027-02-27->2027-02-28 2027-02-27->2027-02-28: ProviderResponseError: Google returned a provider error"
   ],
   "currency": "BRL",
   "source_strategy": "google_flights_with_ita_verification",
@@ -114,7 +116,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 372,
+    "google": 378,
     "ita": 0
   },
   "resume": {
@@ -122,16 +124,12 @@
     "window_minutes": 60,
     "cache_id": "182f36e7d4e070b25f88b208",
     "reused_combinations": 0,
-    "searched_this_run": 372,
-    "remaining_this_run": 6,
-    "reusable_now": 326,
-    "retryable_for_next_run": 52,
-    "saved_records": 372,
-    "saved_errors": 46,
+    "searched_this_run": 378,
+    "remaining_this_run": 0,
+    "reusable_now": 330,
+    "retryable_for_next_run": 48,
+    "saved_records": 378,
+    "saved_errors": 48,
     "checkpoint_path": "docs/data/flight-search-checkpoints/182f36e7d4e070b25f88b208.json"
-  },
-  "current_pair": {
-    "departure_date": "2027-02-25",
-    "return_date": "2027-02-26"
   }
 }
