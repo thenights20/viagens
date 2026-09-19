@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-19T20:32:45.923745Z",
-  "updated_at": "2026-09-19T20:32:45.923745Z",
+  "generated_at": "2026-09-19T20:32:47.778223Z",
+  "updated_at": "2026-09-19T20:32:47.778223Z",
   "started_at": "2026-09-19T20:32:06.606275Z",
   "status": "running",
   "stage": "multisource",
@@ -18,22 +18,22 @@
   },
   "stats": {
     "combinations": 16836,
-    "processed_combinations": 204,
-    "primary_completed": 204,
+    "processed_combinations": 216,
+    "primary_completed": 216,
     "primary_total": 16836,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 53,
-    "coverage_pct": 0.3,
+    "priced_combinations": 64,
+    "coverage_pct": 0.4,
     "lowest_price": 3515.0,
-    "result_count": 53
+    "result_count": 64
   },
   "history_summary": {
     "compared": 0,
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 53
+    "new": 64
   },
   "daily_min": [
     {
@@ -1328,6 +1328,72 @@
     {
       "origin": "GRU",
       "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-07-24",
+      "airline": "BoA",
+      "price": 4687.0,
+      "duration": "9h 40min",
+      "duration_minutes": 580,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [18, 35]",
+      "arrival": "[2027, 7, 3] [6, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-24&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 22,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-24&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-07-24&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 38
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-07-30",
+      "airline": "BoA",
+      "price": 4687.0,
+      "duration": "9h 40min",
+      "duration_minutes": 580,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [18, 35]",
+      "arrival": "[2027, 7, 3] [6, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-30&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 28,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-30&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-07-30&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 39
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
       "departure_date": "2027-07-01",
       "return_date": "2027-07-03",
       "airline": "BoA",
@@ -1356,7 +1422,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 38
+      "rank": 40
     },
     {
       "origin": "GRU",
@@ -1389,7 +1455,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 39
+      "rank": 41
     },
     {
       "origin": "GRU",
@@ -1422,7 +1488,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 40
+      "rank": 42
     },
     {
       "origin": "GRU",
@@ -1455,7 +1521,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 41
+      "rank": 43
     },
     {
       "origin": "GRU",
@@ -1488,7 +1554,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 42
+      "rank": 44
     },
     {
       "origin": "GRU",
@@ -1521,7 +1587,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 43
+      "rank": 45
     },
     {
       "origin": "GRU",
@@ -1554,7 +1620,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 44
+      "rank": 46
     },
     {
       "origin": "GRU",
@@ -1587,7 +1653,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 45
+      "rank": 47
     },
     {
       "origin": "GRU",
@@ -1620,7 +1686,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 46
+      "rank": 48
     },
     {
       "origin": "GRU",
@@ -1653,7 +1719,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 47
+      "rank": 49
     },
     {
       "origin": "GRU",
@@ -1686,7 +1752,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 48
+      "rank": 50
     },
     {
       "origin": "GRU",
@@ -1719,7 +1785,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 49
+      "rank": 51
     },
     {
       "origin": "GRU",
@@ -1752,7 +1818,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 50
+      "rank": 52
     },
     {
       "origin": "GRU",
@@ -1785,7 +1851,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 51
+      "rank": 53
     },
     {
       "origin": "GRU",
@@ -1818,7 +1884,106 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 52
+      "rank": 54
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-07-29",
+      "airline": "BoA",
+      "price": 4877.0,
+      "duration": "9h 40min",
+      "duration_minutes": 580,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [18, 35]",
+      "arrival": "[2027, 7, 3] [6, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-29&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 27,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-29&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-07-29&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 55
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-07-26",
+      "airline": "BoA",
+      "price": 4893.0,
+      "duration": "9h 40min",
+      "duration_minutes": 580,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [18, 35]",
+      "arrival": "[2027, 7, 3] [6, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-26&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 24,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-26&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-07-26&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 56
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-07-27",
+      "airline": "BoA",
+      "price": 4893.0,
+      "duration": "9h 40min",
+      "duration_minutes": 580,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [18, 35]",
+      "arrival": "[2027, 7, 3] [6, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-27&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 25,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-27&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-07-27&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 57
     },
     {
       "origin": "GRU",
@@ -1851,7 +2016,205 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 53
+      "rank": 58
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-07-25",
+      "airline": "Aerolineas Argentinas",
+      "price": 4996.0,
+      "duration": "12h 15min",
+      "duration_minutes": 735,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [20, 20]",
+      "arrival": "[2027, 7, 3] [16, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-25&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 23,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-25&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-07-25&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 59
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-07-28",
+      "airline": "Aerolineas Argentinas",
+      "price": 4996.0,
+      "duration": "12h 15min",
+      "duration_minutes": 735,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [20, 20]",
+      "arrival": "[2027, 7, 3] [16, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-28&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 26,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-28&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-07-28&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 60
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-07-31",
+      "airline": "Aerolineas Argentinas",
+      "price": 4996.0,
+      "duration": "12h 15min",
+      "duration_minutes": 735,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [20, 20]",
+      "arrival": "[2027, 7, 3] [16, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-31&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 29,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-31&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-07-31&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 61
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-08-01",
+      "airline": "Aerolineas Argentinas",
+      "price": 4996.0,
+      "duration": "12h 15min",
+      "duration_minutes": 735,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [20, 20]",
+      "arrival": "[2027, 7, 3] [16, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-08-01&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 30,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-08-01&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-08-01&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 62
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-08-02",
+      "airline": "Aerolineas Argentinas",
+      "price": 4996.0,
+      "duration": "12h 15min",
+      "duration_minutes": 735,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [20, 20]",
+      "arrival": "[2027, 7, 3] [16, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-08-02&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 31,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-08-02&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-08-02&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 63
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-08-03",
+      "airline": "Aerolineas Argentinas",
+      "price": 4996.0,
+      "duration": "12h 15min",
+      "duration_minutes": 735,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [20, 20]",
+      "arrival": "[2027, 7, 3] [16, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-08-03&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 32,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-08-03&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-08-03&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 64
     }
   ],
   "all_results": [
@@ -3079,6 +3442,72 @@
     {
       "origin": "GRU",
       "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-07-24",
+      "airline": "BoA",
+      "price": 4687.0,
+      "duration": "9h 40min",
+      "duration_minutes": 580,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [18, 35]",
+      "arrival": "[2027, 7, 3] [6, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-24&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 22,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-24&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-07-24&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 38
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-07-30",
+      "airline": "BoA",
+      "price": 4687.0,
+      "duration": "9h 40min",
+      "duration_minutes": 580,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [18, 35]",
+      "arrival": "[2027, 7, 3] [6, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-30&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 28,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-30&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-07-30&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 39
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
       "departure_date": "2027-07-01",
       "return_date": "2027-07-03",
       "airline": "BoA",
@@ -3107,7 +3536,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 38
+      "rank": 40
     },
     {
       "origin": "GRU",
@@ -3140,7 +3569,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 39
+      "rank": 41
     },
     {
       "origin": "GRU",
@@ -3173,7 +3602,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 40
+      "rank": 42
     },
     {
       "origin": "GRU",
@@ -3206,7 +3635,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 41
+      "rank": 43
     },
     {
       "origin": "GRU",
@@ -3239,7 +3668,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 42
+      "rank": 44
     },
     {
       "origin": "GRU",
@@ -3272,7 +3701,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 43
+      "rank": 45
     },
     {
       "origin": "GRU",
@@ -3305,7 +3734,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 44
+      "rank": 46
     },
     {
       "origin": "GRU",
@@ -3338,7 +3767,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 45
+      "rank": 47
     },
     {
       "origin": "GRU",
@@ -3371,7 +3800,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 46
+      "rank": 48
     },
     {
       "origin": "GRU",
@@ -3404,7 +3833,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 47
+      "rank": 49
     },
     {
       "origin": "GRU",
@@ -3437,7 +3866,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 48
+      "rank": 50
     },
     {
       "origin": "GRU",
@@ -3470,7 +3899,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 49
+      "rank": 51
     },
     {
       "origin": "GRU",
@@ -3503,7 +3932,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 50
+      "rank": 52
     },
     {
       "origin": "GRU",
@@ -3536,7 +3965,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 51
+      "rank": 53
     },
     {
       "origin": "GRU",
@@ -3569,7 +3998,106 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 52
+      "rank": 54
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-07-29",
+      "airline": "BoA",
+      "price": 4877.0,
+      "duration": "9h 40min",
+      "duration_minutes": 580,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [18, 35]",
+      "arrival": "[2027, 7, 3] [6, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-29&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 27,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-29&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-07-29&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 55
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-07-26",
+      "airline": "BoA",
+      "price": 4893.0,
+      "duration": "9h 40min",
+      "duration_minutes": 580,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [18, 35]",
+      "arrival": "[2027, 7, 3] [6, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-26&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 24,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-26&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-07-26&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 56
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-07-27",
+      "airline": "BoA",
+      "price": 4893.0,
+      "duration": "9h 40min",
+      "duration_minutes": 580,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [18, 35]",
+      "arrival": "[2027, 7, 3] [6, 25]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-27&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 25,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-27&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-07-27&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 57
     },
     {
       "origin": "GRU",
@@ -3602,7 +4130,205 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 53
+      "rank": 58
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-07-25",
+      "airline": "Aerolineas Argentinas",
+      "price": 4996.0,
+      "duration": "12h 15min",
+      "duration_minutes": 735,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [20, 20]",
+      "arrival": "[2027, 7, 3] [16, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-25&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 23,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-25&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-07-25&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 59
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-07-28",
+      "airline": "Aerolineas Argentinas",
+      "price": 4996.0,
+      "duration": "12h 15min",
+      "duration_minutes": 735,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [20, 20]",
+      "arrival": "[2027, 7, 3] [16, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-28&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 26,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-28&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-07-28&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 60
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-07-31",
+      "airline": "Aerolineas Argentinas",
+      "price": 4996.0,
+      "duration": "12h 15min",
+      "duration_minutes": 735,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [20, 20]",
+      "arrival": "[2027, 7, 3] [16, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-31&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 29,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-07-31&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-07-31&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 61
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-08-01",
+      "airline": "Aerolineas Argentinas",
+      "price": 4996.0,
+      "duration": "12h 15min",
+      "duration_minutes": 735,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [20, 20]",
+      "arrival": "[2027, 7, 3] [16, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-08-01&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 30,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-08-01&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-08-01&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 62
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-08-02",
+      "airline": "Aerolineas Argentinas",
+      "price": 4996.0,
+      "duration": "12h 15min",
+      "duration_minutes": 735,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [20, 20]",
+      "arrival": "[2027, 7, 3] [16, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-08-02&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 31,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-08-02&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-08-02&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 63
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-07-02",
+      "return_date": "2027-08-03",
+      "airline": "Aerolineas Argentinas",
+      "price": 4996.0,
+      "duration": "12h 15min",
+      "duration_minutes": 735,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 2] [20, 20]",
+      "arrival": "[2027, 7, 3] [16, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-08-03&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 32,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-02+returning+2027-08-03&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-02&return=2027-08-03&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 64
     }
   ],
   "errors": [
@@ -3695,7 +4421,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 204,
+    "google": 216,
     "ita": 0
   },
   "resume": {
@@ -3703,16 +4429,16 @@
     "window_minutes": 60,
     "cache_id": "e1a8ccc2e27f30a4ddd13f5c",
     "reused_combinations": 0,
-    "searched_this_run": 204,
-    "remaining_this_run": 16632,
-    "reusable_now": 66,
-    "retryable_for_next_run": 16770,
-    "saved_records": 204,
+    "searched_this_run": 216,
+    "remaining_this_run": 16620,
+    "reusable_now": 78,
+    "retryable_for_next_run": 16758,
+    "saved_records": 216,
     "saved_errors": 138,
     "checkpoint_path": "docs/data/flight-search-checkpoints/e1a8ccc2e27f30a4ddd13f5c.json"
   },
   "current_pair": {
     "departure_date": "2027-07-02",
-    "return_date": "2027-07-21"
+    "return_date": "2027-08-04"
   }
 }
