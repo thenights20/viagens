@@ -1,27 +1,37 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "status": "idle",
   "generated_at": null,
+  "request_id": null,
+  "request": null,
+  "provider": "Seats.aero cached award availability",
+  "cached_data": true,
   "results": [],
+  "result_count": 0,
   "sources": {
     "Smiles": {
       "ok": false,
       "items": 0,
-      "message": "Aguardando coleta automática de resgates Smiles."
+      "automated": true,
+      "message": "Aguardando a primeira consulta."
     },
     "LATAM Pass": {
       "ok": false,
       "items": 0,
-      "message": "Aguardando coleta automática de resgates LATAM Pass."
+      "automated": false,
+      "message": "Consulta automatizada indisponível na fonte atual; use o acesso oficial."
     },
     "Azul Fidelidade": {
       "ok": false,
       "items": 0,
-      "message": "Aguardando coleta automática de resgates Azul Fidelidade."
+      "automated": true,
+      "message": "Aguardando a primeira consulta."
     },
     "AAdvantage": {
       "ok": false,
       "items": 0,
-      "message": "Aguardando coleta automática de resgates AAdvantage."
+      "automated": true,
+      "message": "Aguardando a primeira consulta."
     }
   }
 }
