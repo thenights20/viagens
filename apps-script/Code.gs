@@ -267,7 +267,7 @@ function doPost(e) {
 function doGet(e) {
   try {
     const path = String((e && e.parameter && e.parameter.route) || (e && e.pathInfo) || '').replace(/^\/+|\/+$/g, '');
-    if (!path || path === 'health') return json_({ ok: true, service: 'flight-search-bridge', version: '0.7.0', indigo: true, apple: true, miles: true });
+    if (!path || path === 'health') return json_({ ok: true, service: 'flight-search-bridge', version: '0.4.0', indigo: true, apple: true, miles: true });
     let match = path.match(/^api\/progress\/([A-Za-z0-9_-]{8,80})$/);
     if (match) return jsonp_(getProgress_(match[1]), e && e.parameter && e.parameter.callback);
     match = path.match(/^api\/search\/([A-Za-z0-9_-]{8,80})$/);
