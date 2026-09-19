@@ -1,28 +1,24 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-09-18T22:02:31.695548Z",
+  "generated_at": "2026-09-19T00:17:57.514110Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 2,
-  "strong_count": 1,
-  "critical_count": 1,
-  "confirmed_count": 1,
+  "active_count": 1,
+  "strong_count": 0,
+  "critical_count": 0,
+  "confirmed_count": 0,
   "sensor_bug_count": 0,
-  "scanner_count": 7,
-  "queries_this_run": [
-    "nintendo switch 2",
-    "notebook gamer",
-    "playstation 5"
-  ],
+  "scanner_count": 0,
+  "queries_this_run": [],
   "source_health": {
-    "Magalu": {
+    "Mercado Livre": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     },
-    "Mercado Livre": {
+    "Magalu": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
@@ -38,53 +34,14 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 7,
-      "candidates_seen": 7,
-      "message": "scanner rápido",
+      "items": 0,
+      "candidates_seen": 0,
+      "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     }
   },
-  "validation_errors": [
-    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Preto): preço não apareceu novamente na página",
-    "Amazon Brasil · Caixa De Som Pc Computador Notebook Gamer Potente Subwoofer USB P2 Led RGB Soundbar Caixinha: preço não apareceu novamente na página",
-    "Amazon Brasil · Mouse Gamer Redragon Predator RGB M612-RGB, Preto: preço não apareceu novamente na página",
-    "Amazon Brasil · C3Tech Base para notebook Gamer NBC-100BK 17,3\" Refrigerada, 4 Ventiladores, Led Azul, controle de velocidade, regulagem de altura em 5 posições, Display digital em LCD: preço não apareceu novamente na página",
-    "Amazon Brasil · C3Tech Base para notebook Gamer NBC-100BK 17,3\" Refrigerada, 4 Ventiladores, Led Azul, controle de velocidade, regulagem de altura em 5 posições, Display digital em LCD: preço não apareceu novamente na página",
-    "Amazon Brasil · Mario Kart World - Nintendo Switch 2: preço não apareceu novamente na página",
-    "Amazon Brasil · Nintendo, Cartão Samsung microSD Express, 256 GB, Cartão de Memória, Nintendo Switch 2: preço não apareceu novamente na página"
-  ],
+  "validation_errors": [],
   "bugs": [
-    {
-      "source": "Amazon Brasil",
-      "store_name": "Amazon Brasil",
-      "title": "Mini 3 / Mini 3 Pro Propeller Holder,Prop Strap Guard Protector Stabilizer for DJI Mini 3 Series RC Drone Accessories(Orange)",
-      "price": 43.99,
-      "original_price": 54.99,
-      "url": "https://www.amazon.com.br/HeiyRC-Prop-Strap-Guard-Accessories/dp/B0BW49FSC1/ref=sr_1_47",
-      "search_query": "dji mini",
-      "available": true,
-      "trusted": false,
-      "revalidated": true,
-      "collector": "fast-market-scan",
-      "bug_score": 100,
-      "bug_status": "🚨 BUG PROVÁVEL",
-      "category_rule": "DJI",
-      "category": "Drones e câmeras",
-      "baseline_price": 1600.0,
-      "baseline_kind": "piso conservador da categoria",
-      "drop_pct": 97.3,
-      "savings": 1556.01,
-      "reasons": [
-        "97% abaixo de piso conservador da categoria",
-        "preço impossível para a faixa de DJI",
-        "preço reaberto e confirmado"
-      ],
-      "verification_note": "preço confirmado; vendedor precisa conferência manual",
-      "first_seen": "2026-09-18T19:48:48.807331Z",
-      "last_seen": "2026-09-18T19:48:48.807331Z",
-      "sightings": 1,
-      "fresh": true
-    },
     {
       "source": "Loja TCL",
       "store_name": "Loja TCL",
@@ -98,7 +55,7 @@
       "trusted": true,
       "revalidated": true,
       "collector": "radar-historico",
-      "collected_at": "2026-09-18T19:46:28.470729+00:00",
+      "collected_at": "2026-09-18T22:42:00.193165+00:00",
       "bug_score": 62,
       "bug_status": "🟢 SUSPEITO",
       "category_rule": null,
@@ -112,8 +69,8 @@
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-09-17T19:23:58.505134Z",
-      "last_seen": "2026-09-18T22:02:31.695548Z",
-      "sightings": 9,
+      "last_seen": "2026-09-19T00:17:57.514110Z",
+      "sightings": 10,
       "fresh": false
     }
   ]
