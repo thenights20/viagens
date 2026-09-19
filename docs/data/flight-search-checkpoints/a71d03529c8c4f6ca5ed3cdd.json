@@ -3,7 +3,7 @@
   "cache_id": "a71d03529c8c4f6ca5ed3cdd",
   "signature": "PPB|VCP|2027-02-01|2027-02-28|2|BRL|economy|1",
   "created_at": "2026-09-19T04:28:33.810181Z",
-  "updated_at": "2026-09-19T04:28:35.499605Z",
+  "updated_at": "2026-09-19T04:28:36.659619Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "PPB",
@@ -42,6 +42,226 @@
         "search_links": {
           "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+VCP+on+2027-02-01+returning+2027-02-02&curr=BRL&hl=pt-BR",
           "ita": "https://matrix.itasoftware.com/search#from=PPB&to=VCP&depart=2027-02-01&return=2027-02-02&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-02-01|2027-02-05": {
+      "departure_date": "2027-02-01",
+      "return_date": "2027-02-05",
+      "status": "priced",
+      "completed_at": "2026-09-19T04:28:36.659167Z",
+      "source": "google",
+      "row": {
+        "origin": "PPB",
+        "destination": "VCP",
+        "departure_date": "2027-02-01",
+        "return_date": "2027-02-05",
+        "airline": "Azul",
+        "price": 1180.0,
+        "duration": "1h 25min",
+        "duration_minutes": 85,
+        "stops": "Direto",
+        "stops_count": 0,
+        "departure": "[2027, 2, 1] [5, 40]",
+        "arrival": "[2027, 2, 1] [7, 5]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+VCP+on+2027-02-01+returning+2027-02-05&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 4,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+VCP+on+2027-02-01+returning+2027-02-05&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=PPB&to=VCP&depart=2027-02-01&return=2027-02-05&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-02-01|2027-02-04": {
+      "departure_date": "2027-02-01",
+      "return_date": "2027-02-04",
+      "status": "error",
+      "completed_at": "2026-09-19T04:28:36.659245Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-02-01->2027-02-04: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-02-01|2027-02-03": {
+      "departure_date": "2027-02-01",
+      "return_date": "2027-02-03",
+      "status": "priced",
+      "completed_at": "2026-09-19T04:28:36.659330Z",
+      "source": "google",
+      "row": {
+        "origin": "PPB",
+        "destination": "VCP",
+        "departure_date": "2027-02-01",
+        "return_date": "2027-02-03",
+        "airline": "Azul",
+        "price": 1180.0,
+        "duration": "1h 25min",
+        "duration_minutes": 85,
+        "stops": "Direto",
+        "stops_count": 0,
+        "departure": "[2027, 2, 1] [5, 40]",
+        "arrival": "[2027, 2, 1] [7, 5]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+VCP+on+2027-02-01+returning+2027-02-03&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 2,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+VCP+on+2027-02-01+returning+2027-02-03&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=PPB&to=VCP&depart=2027-02-01&return=2027-02-03&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-02-01|2027-02-08": {
+      "departure_date": "2027-02-01",
+      "return_date": "2027-02-08",
+      "status": "error",
+      "completed_at": "2026-09-19T04:28:36.659390Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-02-01->2027-02-08: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-02-01|2027-02-06": {
+      "departure_date": "2027-02-01",
+      "return_date": "2027-02-06",
+      "status": "priced",
+      "completed_at": "2026-09-19T04:28:36.659454Z",
+      "source": "google",
+      "row": {
+        "origin": "PPB",
+        "destination": "VCP",
+        "departure_date": "2027-02-01",
+        "return_date": "2027-02-06",
+        "airline": "Azul",
+        "price": 1237.0,
+        "duration": "1h 25min",
+        "duration_minutes": 85,
+        "stops": "Direto",
+        "stops_count": 0,
+        "departure": "[2027, 2, 1] [5, 40]",
+        "arrival": "[2027, 2, 1] [7, 5]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+VCP+on+2027-02-01+returning+2027-02-06&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 5,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+VCP+on+2027-02-01+returning+2027-02-06&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=PPB&to=VCP&depart=2027-02-01&return=2027-02-06&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-02-01|2027-02-07": {
+      "departure_date": "2027-02-01",
+      "return_date": "2027-02-07",
+      "status": "priced",
+      "completed_at": "2026-09-19T04:28:36.659503Z",
+      "source": "google",
+      "row": {
+        "origin": "PPB",
+        "destination": "VCP",
+        "departure_date": "2027-02-01",
+        "return_date": "2027-02-07",
+        "airline": "Azul",
+        "price": 978.0,
+        "duration": "1h 25min",
+        "duration_minutes": 85,
+        "stops": "Direto",
+        "stops_count": 0,
+        "departure": "[2027, 2, 1] [5, 40]",
+        "arrival": "[2027, 2, 1] [7, 5]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+VCP+on+2027-02-01+returning+2027-02-07&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 6,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+VCP+on+2027-02-01+returning+2027-02-07&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=PPB&to=VCP&depart=2027-02-01&return=2027-02-07&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-02-01|2027-02-09": {
+      "departure_date": "2027-02-01",
+      "return_date": "2027-02-09",
+      "status": "priced",
+      "completed_at": "2026-09-19T04:28:36.659559Z",
+      "source": "google",
+      "row": {
+        "origin": "PPB",
+        "destination": "VCP",
+        "departure_date": "2027-02-01",
+        "return_date": "2027-02-09",
+        "airline": "Azul",
+        "price": 978.0,
+        "duration": "1h 25min",
+        "duration_minutes": 85,
+        "stops": "Direto",
+        "stops_count": 0,
+        "departure": "[2027, 2, 1] [5, 40]",
+        "arrival": "[2027, 2, 1] [7, 5]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+VCP+on+2027-02-01+returning+2027-02-09&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 8,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+VCP+on+2027-02-01+returning+2027-02-09&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=PPB&to=VCP&depart=2027-02-01&return=2027-02-09&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-02-01|2027-02-10": {
+      "departure_date": "2027-02-01",
+      "return_date": "2027-02-10",
+      "status": "priced",
+      "completed_at": "2026-09-19T04:28:36.659612Z",
+      "source": "google",
+      "row": {
+        "origin": "PPB",
+        "destination": "VCP",
+        "departure_date": "2027-02-01",
+        "return_date": "2027-02-10",
+        "airline": "Azul",
+        "price": 978.0,
+        "duration": "1h 25min",
+        "duration_minutes": 85,
+        "stops": "Direto",
+        "stops_count": 0,
+        "departure": "[2027, 2, 1] [5, 40]",
+        "arrival": "[2027, 2, 1] [7, 5]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+VCP+on+2027-02-01+returning+2027-02-10&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 9,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+VCP+on+2027-02-01+returning+2027-02-10&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=PPB&to=VCP&depart=2027-02-01&return=2027-02-10&currency=BRL"
         },
         "assigned_source": "google"
       },
