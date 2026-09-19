@@ -3,7 +3,7 @@
   "cache_id": "e1a8ccc2e27f30a4ddd13f5c",
   "signature": "GRU|MIA|2027-07-01|2027-12-31|2|BRL|economy|1",
   "created_at": "2026-09-19T20:32:07.053710Z",
-  "updated_at": "2026-09-19T20:36:42.562657Z",
+  "updated_at": "2026-09-19T20:36:44.712776Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "GRU",
@@ -18586,6 +18586,204 @@
       "errors": [
         "2027-07-07->2027-12-28: ProviderResponseError: Google returned a provider error"
       ]
+    },
+    "2027-07-07|2027-12-30": {
+      "departure_date": "2027-07-07",
+      "return_date": "2027-12-30",
+      "status": "error",
+      "completed_at": "2026-09-19T20:36:43.652063Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-07->2027-12-30: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-07|2027-12-29": {
+      "departure_date": "2027-07-07",
+      "return_date": "2027-12-29",
+      "status": "error",
+      "completed_at": "2026-09-19T20:36:43.653152Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-07->2027-12-29: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-07|2027-12-31": {
+      "departure_date": "2027-07-07",
+      "return_date": "2027-12-31",
+      "status": "error",
+      "completed_at": "2026-09-19T20:36:43.654165Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-07->2027-12-31: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-08|2027-07-09": {
+      "departure_date": "2027-07-08",
+      "return_date": "2027-07-09",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:36:44.708249Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-07-08",
+        "return_date": "2027-07-09",
+        "airline": "LATAM",
+        "price": 3943.0,
+        "duration": "8h 30min",
+        "duration_minutes": 510,
+        "stops": "Direto",
+        "stops_count": 0,
+        "departure": "[2027, 7, 8] [23, 30]",
+        "arrival": "[2027, 7, 9] [7]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-08+returning+2027-07-09&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 1,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-08+returning+2027-07-09&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-08&return=2027-07-09&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-08|2027-07-10": {
+      "departure_date": "2027-07-08",
+      "return_date": "2027-07-10",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:36:44.709712Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-07-08",
+        "return_date": "2027-07-10",
+        "airline": "Arajet",
+        "price": 4672.0,
+        "duration": "9h 45min",
+        "duration_minutes": 585,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 7, 8] [1]",
+        "arrival": "[2027, 7, 8] [12, 25]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-08+returning+2027-07-10&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 2,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-08+returning+2027-07-10&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-08&return=2027-07-10&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-08|2027-07-11": {
+      "departure_date": "2027-07-08",
+      "return_date": "2027-07-11",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:36:44.710692Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-07-08",
+        "return_date": "2027-07-11",
+        "airline": "Arajet",
+        "price": 4268.0,
+        "duration": "9h 45min",
+        "duration_minutes": 585,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 7, 8] [1]",
+        "arrival": "[2027, 7, 8] [12, 25]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-08+returning+2027-07-11&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 3,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-08+returning+2027-07-11&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-08&return=2027-07-11&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-08|2027-07-12": {
+      "departure_date": "2027-07-08",
+      "return_date": "2027-07-12",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:36:44.711732Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-07-08",
+        "return_date": "2027-07-12",
+        "airline": "Arajet",
+        "price": 4242.0,
+        "duration": "9h 45min",
+        "duration_minutes": 585,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 7, 8] [1]",
+        "arrival": "[2027, 7, 8] [12, 25]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-08+returning+2027-07-12&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 4,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-08+returning+2027-07-12&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-08&return=2027-07-12&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-08|2027-07-13": {
+      "departure_date": "2027-07-08",
+      "return_date": "2027-07-13",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:36:44.712764Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-07-08",
+        "return_date": "2027-07-13",
+        "airline": "Arajet",
+        "price": 4268.0,
+        "duration": "9h 45min",
+        "duration_minutes": 585,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 7, 8] [1]",
+        "arrival": "[2027, 7, 8] [12, 25]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-08+returning+2027-07-13&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 5,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-07-08+returning+2027-07-13&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-07-08&return=2027-07-13&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
     }
   }
 }
