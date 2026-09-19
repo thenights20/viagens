@@ -1,7 +1,10 @@
 // Monitor de disponibilidade Apple Store para retirada em loja.
-const APPLE_PART_NUMBER = 'MJW64LL/A';
-const APPLE_PRODUCT_NAME = 'iPhone 18 Pro Max 256GB Burgundy';
-const APPLE_BUY_URL = 'https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-256gb-burgundy-unlocked';
+const APPLE_PRODUCTS = [
+  { storage: '256GB', part_number: 'MJW64LL/A' },
+  { storage: '512GB', part_number: '' }
+];
+const APPLE_PRODUCT_NAME = 'iPhone 18 Pro Max Burgundy';
+const APPLE_BUY_URL = 'https://www.apple.com/shop/buy-iphone/iphone-18-pro';
 const APPLE_PICKUP_ENDPOINT = 'https://www.apple.com/shop/retail/pickup-message';
 
 function appleSafeLocation_(value) {
@@ -12,13 +15,13 @@ function appleSafeLocation_(value) {
 
 function appleAvailability_(params) {
   const location = appleSafeLocation_(params && params.location);
-  const query = [
-    'pl=true',
-    'mts.0=regular',
-    'parts.0=' + encodeURIComponent(APPLE_PART_NUMBER),
-    'location=' + encodeURIComponent(location)
-  ].join('&');
-  const url = APPLE_PICKUP_ENDPOINT + '?' + query;
+  const configured = APPLE_PRODUCTS.filter(function(p) { return p.part_number; });
+  const query = ['pl=true', 'mts.0=regular'];
+  configured.forEach(function(p, i) {
+    query.push('parts.' + i + '=' + encodeURIComponent(p.part_number));
+  });
+  query.push('location=' + encodeURIComponent(location));
+  const url = APPLE_PICKUP_ENDPOINT + '?' + query.join('&');
 
   let response;
   try {
@@ -40,7 +43,7 @@ function appleAvailability_(params) {
       ok: false,
       status: 'error',
       product: APPLE_PRODUCT_NAME,
-      part_number: APPLE_PART_NUMBER,
+      part_numbers: configured.map(function(p) { return p.part_number; }),
       location: location,
       checked_at: new Date().toISOString(),
       error: 'Falha ao consultar a Apple: ' + String(err && err.message ? err.message : err)
@@ -56,7 +59,7 @@ function appleAvailability_(params) {
       blocked: code === 429 || code === 541,
       http_status: code,
       product: APPLE_PRODUCT_NAME,
-      part_number: APPLE_PART_NUMBER,
+      part_numbers: configured.map(function(p) { return p.part_number; }),
       location: location,
       checked_at: new Date().toISOString(),
       error: (code === 429 || code === 541)
@@ -74,7 +77,7 @@ function appleAvailability_(params) {
       status: 'error',
       http_status: code,
       product: APPLE_PRODUCT_NAME,
-      part_number: APPLE_PART_NUMBER,
+      part_numbers: configured.map(function(p) { return p.part_number; }),
       location: location,
       checked_at: new Date().toISOString(),
       error: 'A Apple retornou uma resposta que não pôde ser interpretada.'
@@ -83,45 +86,47 @@ function appleAvailability_(params) {
 
   const body = data && data.body ? data.body : {};
   const stores = Array.isArray(body.stores) ? body.stores : [];
-  const parsed = stores.map(function(store) {
-    const availability = store && store.partsAvailability
-      ? store.partsAvailability[APPLE_PART_NUMBER]
-      : null;
-    const regular = availability && availability.messageTypes
-      ? availability.messageTypes.regular
-      : null;
-    const pickupDisplay = String(availability && availability.pickupDisplay || '').toLowerCase();
-    const selectionEnabled = !!(regular && regular.storeSelectionEnabled);
-    const quote = String(availability && availability.pickupSearchQuote || regular && regular.storePickupQuote || '');
-    const quoteNorm = quote.toLowerCase();
-    // A Apple pode publicar "Available Tomorrow" mantendo pickupDisplay como
-    // unavailable. Isso ainda é estoque reservável para retirada e deve aparecer
-    // no monitor, sem confundir com "Currently unavailable".
-    const scheduledPickup = /available\s+(today|tomorrow)|ready\s+(today|tomorrow)|pickup.*(today|tomorrow)/i.test(quote);
-    const explicitlyUnavailable = /currently\s+unavailable|not\s+available|unavailable/i.test(quoteNorm);
-    const available = !!availability && !explicitlyUnavailable && (
-      pickupDisplay === 'available' ||
-      scheduledPickup ||
-      (selectionEnabled && pickupDisplay !== 'unavailable')
-    );
+  const parsed = [];
+  stores.forEach(function(store) {
     const address = store && store.address ? store.address : {};
-    return {
-      store_number: String(store && store.storeNumber || ''),
-      name: String(store && store.storeName || 'Apple Store'),
-      city: String(store && store.city || ''),
-      state: String(store && store.state || ''),
-      postal_code: String(address.postalCode || ''),
-      address: String(address.address2 || ''),
-      distance: Number(store && store.storedistance || 0),
-      distance_text: String(store && store.storeDistanceWithUnit || ''),
-      available: available,
-      pickup_display: pickupDisplay || 'unknown',
-      quote: quote,
-      selection_enabled: selectionEnabled,
-      eligible: !!(availability && availability.storePickEligible),
-      product_title: String(regular && regular.storePickupProductTitle || APPLE_PRODUCT_NAME),
-      reservation_url: String(store && (store.reservationUrl || store.makeReservationUrl) || '')
-    };
+    configured.forEach(function(product) {
+      const availability = store && store.partsAvailability
+        ? store.partsAvailability[product.part_number]
+        : null;
+      const regular = availability && availability.messageTypes
+        ? availability.messageTypes.regular
+        : null;
+      const pickupDisplay = String(availability && availability.pickupDisplay || '').toLowerCase();
+      const selectionEnabled = !!(regular && regular.storeSelectionEnabled);
+      const quote = String(availability && availability.pickupSearchQuote || regular && regular.storePickupQuote || '');
+      const quoteNorm = quote.toLowerCase();
+      const scheduledPickup = /available\s+(today|tomorrow)|ready\s+(today|tomorrow)|pickup.*(today|tomorrow)/i.test(quote);
+      const explicitlyUnavailable = /currently\s+unavailable|not\s+available|unavailable/i.test(quoteNorm);
+      const available = !!availability && !explicitlyUnavailable && (
+        pickupDisplay === 'available' ||
+        scheduledPickup ||
+        (selectionEnabled && pickupDisplay !== 'unavailable')
+      );
+      parsed.push({
+        store_number: String(store && store.storeNumber || ''),
+        name: String(store && store.storeName || 'Apple Store'),
+        city: String(store && store.city || ''),
+        state: String(store && store.state || ''),
+        postal_code: String(address.postalCode || ''),
+        address: String(address.address2 || ''),
+        distance: Number(store && store.storedistance || 0),
+        distance_text: String(store && store.storeDistanceWithUnit || ''),
+        storage: product.storage,
+        part_number: product.part_number,
+        available: available,
+        pickup_display: pickupDisplay || 'unknown',
+        quote: quote,
+        selection_enabled: selectionEnabled,
+        eligible: !!(availability && availability.storePickEligible),
+        product_title: String(regular && regular.storePickupProductTitle || (APPLE_PRODUCT_NAME + ' ' + product.storage)),
+        reservation_url: String(store && (store.reservationUrl || store.makeReservationUrl) || '')
+      });
+    });
   });
 
   const availableStores = parsed.filter(function(store) { return store.available; });
@@ -130,10 +135,12 @@ function appleAvailability_(params) {
     status: 'ok',
     source: 'Apple Store Pickup Availability',
     product: APPLE_PRODUCT_NAME,
-    part_number: APPLE_PART_NUMBER,
+    part_numbers: configured.map(function(p) { return p.part_number; }),
     location: location,
     checked_at: new Date().toISOString(),
-    stores_count: parsed.length,
+    stores_count: stores.length,
+    checked_variants: configured.map(function(p) { return p.storage; }),
+    missing_variants: APPLE_PRODUCTS.filter(function(p) { return !p.part_number; }).map(function(p) { return p.storage; }),
     available_count: availableStores.length,
     any_available: availableStores.length > 0,
     stores: parsed,
