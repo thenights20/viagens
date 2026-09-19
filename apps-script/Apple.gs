@@ -1,8 +1,45 @@
 // Monitor de disponibilidade Apple Store para retirada em loja.
 const APPLE_PRODUCTS = [
-  { storage: '256GB', part_number: 'MJW64LL/A' },
-  { storage: '512GB', part_number: '' }
+  { storage: '256GB', part_number: 'MJW64LL/A', url: 'https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-256gb-burgundy-unlocked' },
+  { storage: '512GB', part_number: '', url: 'https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-512gb-burgundy-unlocked' }
 ];
+
+function appleResolvePartNumber_(product) {
+  if (product.part_number) return product.part_number;
+  const cache = CacheService.getScriptCache();
+  const key = 'APPLE_PART_' + product.storage;
+  const cached = cache.get(key);
+  if (cached) return cached;
+  try {
+    const response = UrlFetchApp.fetch(product.url, {
+      muteHttpExceptions: true,
+      followRedirects: true,
+      headers: { 'User-Agent': 'Mozilla/5.0', 'Accept-Language': 'en-US,en;q=0.9' }
+    });
+    const html = response.getContentText();
+    const patterns = [
+      /"partNumber"\s*:\s*"([A-Z0-9]+LL\\\/A)"/i,
+      /"partNumber"\s*:\s*"([A-Z0-9]+LL\/A)"/i,
+      /"part_number"\s*:\s*"([A-Z0-9]+LL\\\/A)"/i,
+      /\b([A-Z0-9]{5,12}LL\/A)\b/i
+    ];
+    for (let i = 0; i < patterns.length; i++) {
+      const m = html.match(patterns[i]);
+      if (m && m[1]) {
+        const part = String(m[1]).replace('\\/', '/');
+        cache.put(key, part, 21600);
+        return part;
+      }
+    }
+  } catch (err) {}
+  return '';
+}
+
+function appleConfiguredProducts_() {
+  return APPLE_PRODUCTS.map(function(p) {
+    return { storage: p.storage, part_number: appleResolvePartNumber_(p), url: p.url };
+  }).filter(function(p) { return p.part_number; });
+}
 const APPLE_PRODUCT_NAME = 'iPhone 18 Pro Max Burgundy';
 const APPLE_BUY_URL = 'https://www.apple.com/shop/buy-iphone/iphone-18-pro';
 const APPLE_PICKUP_ENDPOINT = 'https://www.apple.com/shop/retail/pickup-message';
@@ -15,7 +52,7 @@ function appleSafeLocation_(value) {
 
 function appleAvailability_(params) {
   const location = appleSafeLocation_(params && params.location);
-  const configured = APPLE_PRODUCTS.filter(function(p) { return p.part_number; });
+  const configured = appleConfiguredProducts_();
   const query = ['pl=true', 'mts.0=regular'];
   configured.forEach(function(p, i) {
     query.push('parts.' + i + '=' + encodeURIComponent(p.part_number));
@@ -140,7 +177,7 @@ function appleAvailability_(params) {
     checked_at: new Date().toISOString(),
     stores_count: stores.length,
     checked_variants: configured.map(function(p) { return p.storage; }),
-    missing_variants: APPLE_PRODUCTS.filter(function(p) { return !p.part_number; }).map(function(p) { return p.storage; }),
+    missing_variants: APPLE_PRODUCTS.filter(function(p) { return !configured.some(function(c) { return c.storage === p.storage; }); }).map(function(p) { return p.storage; }),
     available_count: availableStores.length,
     any_available: availableStores.length > 0,
     stores: parsed,
