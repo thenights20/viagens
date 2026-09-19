@@ -3,7 +3,7 @@
   "cache_id": "543497ba449d44bccb0fa804",
   "signature": "GRU|MIA|2027-01-01|2027-06-30|2|BRL|economy|1",
   "created_at": "2026-09-19T18:37:43.998059Z",
-  "updated_at": "2026-09-19T19:48:04.801728Z",
+  "updated_at": "2026-09-19T19:48:07.817319Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "GRU",
@@ -286136,6 +286136,152 @@
       "errors": [
         "2027-03-06->2027-06-28: ProviderResponseError: Google returned a provider error"
       ]
+    },
+    "2027-03-06|2027-06-26": {
+      "departure_date": "2027-03-06",
+      "return_date": "2027-06-26",
+      "status": "no_price",
+      "completed_at": "2026-09-19T19:48:07.426972Z",
+      "source": "google",
+      "row": null,
+      "errors": []
+    },
+    "2027-03-06|2027-06-29": {
+      "departure_date": "2027-03-06",
+      "return_date": "2027-06-29",
+      "status": "no_price",
+      "completed_at": "2026-09-19T19:48:07.468112Z",
+      "source": "google",
+      "row": null,
+      "errors": []
+    },
+    "2027-03-06|2027-06-22": {
+      "departure_date": "2027-03-06",
+      "return_date": "2027-06-22",
+      "status": "no_price",
+      "completed_at": "2026-09-19T19:48:07.508032Z",
+      "source": "google",
+      "row": null,
+      "errors": []
+    },
+    "2027-03-06|2027-06-27": {
+      "departure_date": "2027-03-06",
+      "return_date": "2027-06-27",
+      "status": "error",
+      "completed_at": "2026-09-19T19:48:07.562842Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-03-06->2027-06-27: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-03-07|2027-03-08": {
+      "departure_date": "2027-03-07",
+      "return_date": "2027-03-08",
+      "status": "priced",
+      "completed_at": "2026-09-19T19:48:07.606917Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-03-07",
+        "return_date": "2027-03-08",
+        "airline": "Arajet",
+        "price": 3607.0,
+        "duration": "9h 47min",
+        "duration_minutes": 587,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 3, 7] [4, 13]",
+        "arrival": "[2027, 3, 7] [13, 32]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-07+returning+2027-03-08&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 1,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-07+returning+2027-03-08&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-07&return=2027-03-08&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-03-06|2027-06-30": {
+      "departure_date": "2027-03-06",
+      "return_date": "2027-06-30",
+      "status": "no_price",
+      "completed_at": "2026-09-19T19:48:07.647061Z",
+      "source": "google",
+      "row": null,
+      "errors": []
+    },
+    "2027-03-07|2027-03-12": {
+      "departure_date": "2027-03-07",
+      "return_date": "2027-03-12",
+      "status": "priced",
+      "completed_at": "2026-09-19T19:48:07.771801Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-03-07",
+        "return_date": "2027-03-12",
+        "airline": "Avianca",
+        "price": 4067.0,
+        "duration": "10h 00min",
+        "duration_minutes": 600,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 3, 7] [2, 25]",
+        "arrival": "[2027, 3, 7] [11, 40]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-07+returning+2027-03-12&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 5,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-07+returning+2027-03-12&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-07&return=2027-03-12&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-03-07|2027-03-09": {
+      "departure_date": "2027-03-07",
+      "return_date": "2027-03-09",
+      "status": "priced",
+      "completed_at": "2026-09-19T19:48:07.817300Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-03-07",
+        "return_date": "2027-03-09",
+        "airline": "Avianca",
+        "price": 4067.0,
+        "duration": "10h 00min",
+        "duration_minutes": 600,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 3, 7] [2, 25]",
+        "arrival": "[2027, 3, 7] [11, 40]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-07+returning+2027-03-09&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 2,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-07+returning+2027-03-09&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-07&return=2027-03-09&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
     }
   }
 }
