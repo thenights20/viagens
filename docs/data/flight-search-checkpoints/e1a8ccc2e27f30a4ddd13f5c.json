@@ -3,7 +3,7 @@
   "cache_id": "e1a8ccc2e27f30a4ddd13f5c",
   "signature": "GRU|MIA|2027-07-01|2027-12-31|2|BRL|economy|1",
   "created_at": "2026-09-19T20:32:07.053710Z",
-  "updated_at": "2026-09-19T20:58:43.734130Z",
+  "updated_at": "2026-09-19T20:58:46.256773Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "GRU",
@@ -87909,6 +87909,204 @@
       "row": null,
       "errors": [
         "2027-08-07->2027-12-30: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-07|2027-12-29": {
+      "departure_date": "2027-08-07",
+      "return_date": "2027-12-29",
+      "status": "error",
+      "completed_at": "2026-09-19T20:58:45.105603Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-07->2027-12-29: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-07|2027-12-31": {
+      "departure_date": "2027-08-07",
+      "return_date": "2027-12-31",
+      "status": "error",
+      "completed_at": "2026-09-19T20:58:45.109521Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-07->2027-12-31: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-08|2027-08-09": {
+      "departure_date": "2027-08-08",
+      "return_date": "2027-08-09",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:58:45.113294Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-08-08",
+        "return_date": "2027-08-09",
+        "airline": "Avianca",
+        "price": 4067.0,
+        "duration": "9h 55min",
+        "duration_minutes": 595,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 8, 8] [2, 20]",
+        "arrival": "[2027, 8, 8] [12, 25]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-08+returning+2027-08-09&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 1,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-08+returning+2027-08-09&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-08-08&return=2027-08-09&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-08-08|2027-08-10": {
+      "departure_date": "2027-08-08",
+      "return_date": "2027-08-10",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:58:46.239973Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-08-08",
+        "return_date": "2027-08-10",
+        "airline": "Avianca",
+        "price": 4067.0,
+        "duration": "9h 55min",
+        "duration_minutes": 595,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 8, 8] [2, 20]",
+        "arrival": "[2027, 8, 8] [12, 25]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-08+returning+2027-08-10&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 2,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-08+returning+2027-08-10&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-08-08&return=2027-08-10&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-08-08|2027-08-11": {
+      "departure_date": "2027-08-08",
+      "return_date": "2027-08-11",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:58:46.245285Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-08-08",
+        "return_date": "2027-08-11",
+        "airline": "Aerolineas Argentinas",
+        "price": 3684.0,
+        "duration": "12h 15min",
+        "duration_minutes": 735,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 8, 8] [10, 20]",
+        "arrival": "[2027, 8, 9] [7]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-08+returning+2027-08-11&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 3,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-08+returning+2027-08-11&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-08-08&return=2027-08-11&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-08-08|2027-08-12": {
+      "departure_date": "2027-08-08",
+      "return_date": "2027-08-12",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:58:46.249165Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-08-08",
+        "return_date": "2027-08-12",
+        "airline": "Aerolineas Argentinas",
+        "price": 3684.0,
+        "duration": "12h 15min",
+        "duration_minutes": 735,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 8, 8] [10, 20]",
+        "arrival": "[2027, 8, 9] [7]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-08+returning+2027-08-12&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 4,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-08+returning+2027-08-12&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-08-08&return=2027-08-12&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-08-08|2027-08-14": {
+      "departure_date": "2027-08-08",
+      "return_date": "2027-08-14",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:58:46.252970Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-08-08",
+        "return_date": "2027-08-14",
+        "airline": "Aerolineas Argentinas",
+        "price": 3684.0,
+        "duration": "12h 15min",
+        "duration_minutes": 735,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 8, 8] [10, 20]",
+        "arrival": "[2027, 8, 9] [7]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-08+returning+2027-08-14&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 6,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-08+returning+2027-08-14&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-08-08&return=2027-08-14&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-08-08|2027-08-16": {
+      "departure_date": "2027-08-08",
+      "return_date": "2027-08-16",
+      "status": "error",
+      "completed_at": "2026-09-19T20:58:46.256763Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-08->2027-08-16: ProviderResponseError: Google returned a provider error"
       ]
     }
   }
