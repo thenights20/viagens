@@ -3,7 +3,7 @@
   "cache_id": "4c7a475b121d289204ecffbf",
   "signature": "CGH|MIA|2027-07-01|2027-12-31|2|BRL|economy|1",
   "created_at": "2026-09-19T22:09:40.622255Z",
-  "updated_at": "2026-09-19T22:11:17.008327Z",
+  "updated_at": "2026-09-19T22:11:18.472024Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "CGH",
@@ -5342,6 +5342,182 @@
       "errors": [
         "2027-07-02->2027-12-27: ProviderResponseError: Google returned a provider error"
       ]
+    },
+    "2027-07-02|2027-12-28": {
+      "departure_date": "2027-07-02",
+      "return_date": "2027-12-28",
+      "status": "error",
+      "completed_at": "2026-09-19T22:11:18.469662Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-02->2027-12-28: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-02|2027-12-29": {
+      "departure_date": "2027-07-02",
+      "return_date": "2027-12-29",
+      "status": "error",
+      "completed_at": "2026-09-19T22:11:18.470038Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-02->2027-12-29: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-02|2027-12-30": {
+      "departure_date": "2027-07-02",
+      "return_date": "2027-12-30",
+      "status": "error",
+      "completed_at": "2026-09-19T22:11:18.470400Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-02->2027-12-30: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-02|2027-12-31": {
+      "departure_date": "2027-07-02",
+      "return_date": "2027-12-31",
+      "status": "error",
+      "completed_at": "2026-09-19T22:11:18.470737Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-07-02->2027-12-31: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-07-03|2027-07-04": {
+      "departure_date": "2027-07-03",
+      "return_date": "2027-07-04",
+      "status": "priced",
+      "completed_at": "2026-09-19T22:11:18.471044Z",
+      "source": "google",
+      "row": {
+        "origin": "CGH",
+        "destination": "MIA",
+        "departure_date": "2027-07-03",
+        "return_date": "2027-07-04",
+        "airline": "Gol, American",
+        "price": 5533.0,
+        "duration": "9h 40min",
+        "duration_minutes": 580,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 7, 3] [17, 20]",
+        "arrival": "[2027, 7, 4] [5, 45]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-03+returning+2027-07-04&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 1,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-03+returning+2027-07-04&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=CGH&to=MIA&depart=2027-07-03&return=2027-07-04&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-03|2027-07-05": {
+      "departure_date": "2027-07-03",
+      "return_date": "2027-07-05",
+      "status": "priced",
+      "completed_at": "2026-09-19T22:11:18.471364Z",
+      "source": "google",
+      "row": {
+        "origin": "CGH",
+        "destination": "MIA",
+        "departure_date": "2027-07-03",
+        "return_date": "2027-07-05",
+        "airline": "Gol, American",
+        "price": 5547.0,
+        "duration": "9h 40min",
+        "duration_minutes": 580,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 7, 3] [17, 20]",
+        "arrival": "[2027, 7, 4] [5, 45]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-03+returning+2027-07-05&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 2,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-03+returning+2027-07-05&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=CGH&to=MIA&depart=2027-07-03&return=2027-07-05&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-03|2027-07-06": {
+      "departure_date": "2027-07-03",
+      "return_date": "2027-07-06",
+      "status": "priced",
+      "completed_at": "2026-09-19T22:11:18.471699Z",
+      "source": "google",
+      "row": {
+        "origin": "CGH",
+        "destination": "MIA",
+        "departure_date": "2027-07-03",
+        "return_date": "2027-07-06",
+        "airline": "Gol, American",
+        "price": 5533.0,
+        "duration": "9h 40min",
+        "duration_minutes": 580,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 7, 3] [17, 20]",
+        "arrival": "[2027, 7, 4] [5, 45]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-03+returning+2027-07-06&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 3,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-03+returning+2027-07-06&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=CGH&to=MIA&depart=2027-07-03&return=2027-07-06&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-07-03|2027-07-07": {
+      "departure_date": "2027-07-03",
+      "return_date": "2027-07-07",
+      "status": "priced",
+      "completed_at": "2026-09-19T22:11:18.472015Z",
+      "source": "google",
+      "row": {
+        "origin": "CGH",
+        "destination": "MIA",
+        "departure_date": "2027-07-03",
+        "return_date": "2027-07-07",
+        "airline": "Gol, American",
+        "price": 5547.0,
+        "duration": "9h 40min",
+        "duration_minutes": 580,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 7, 3] [17, 20]",
+        "arrival": "[2027, 7, 4] [5, 45]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-03+returning+2027-07-07&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 4,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-03+returning+2027-07-07&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=CGH&to=MIA&depart=2027-07-03&return=2027-07-07&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
     }
   }
 }
