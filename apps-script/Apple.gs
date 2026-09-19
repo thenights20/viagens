@@ -92,8 +92,16 @@ function appleAvailability_(params) {
       : null;
     const pickupDisplay = String(availability && availability.pickupDisplay || '').toLowerCase();
     const selectionEnabled = !!(regular && regular.storeSelectionEnabled);
-    const available = !!availability && (
+    const quote = String(availability && availability.pickupSearchQuote || regular && regular.storePickupQuote || '');
+    const quoteNorm = quote.toLowerCase();
+    // A Apple pode publicar "Available Tomorrow" mantendo pickupDisplay como
+    // unavailable. Isso ainda é estoque reservável para retirada e deve aparecer
+    // no monitor, sem confundir com "Currently unavailable".
+    const scheduledPickup = /available\s+(today|tomorrow)|ready\s+(today|tomorrow)|pickup.*(today|tomorrow)/i.test(quote);
+    const explicitlyUnavailable = /currently\s+unavailable|not\s+available|unavailable/i.test(quoteNorm);
+    const available = !!availability && !explicitlyUnavailable && (
       pickupDisplay === 'available' ||
+      scheduledPickup ||
       (selectionEnabled && pickupDisplay !== 'unavailable')
     );
     const address = store && store.address ? store.address : {};
@@ -108,7 +116,7 @@ function appleAvailability_(params) {
       distance_text: String(store && store.storeDistanceWithUnit || ''),
       available: available,
       pickup_display: pickupDisplay || 'unknown',
-      quote: String(availability && availability.pickupSearchQuote || regular && regular.storePickupQuote || ''),
+      quote: quote,
       selection_enabled: selectionEnabled,
       eligible: !!(availability && availability.storePickEligible),
       product_title: String(regular && regular.storePickupProductTitle || APPLE_PRODUCT_NAME),
