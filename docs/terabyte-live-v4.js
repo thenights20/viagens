@@ -173,7 +173,7 @@
   const loadMiles = () => {
     if (document.querySelector('script[data-miles-search]') || document.querySelector('#milesSearchPanel')) return;
     const s = document.createElement('script');
-    s.src = './miles-search-v022.js?v=20260918-tab-fix-v022';
+    s.src = './miles-search-v022.js?v=20260918-tab-fix-v022b';
     s.defer = true;
     s.dataset.milesSearch = '1';
     document.head.appendChild(s);
