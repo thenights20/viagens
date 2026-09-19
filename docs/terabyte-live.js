@@ -207,7 +207,7 @@
 (() => {
   if (document.querySelector('script[data-apple-stock]') || document.querySelector('#appleStockApp')) return;
   const s = document.createElement('script');
-  s.src = './apple-stock.js?v=20260918-apple-tampa-1';
+  s.src = './apple-stock.js?v=20260918-apple-tampa-2';
   s.defer = true;
   s.dataset.appleStock = '1';
   document.head.appendChild(s);
