@@ -3,7 +3,7 @@
   "cache_id": "e1a8ccc2e27f30a4ddd13f5c",
   "signature": "GRU|MIA|2027-07-01|2027-12-31|2|BRL|economy|1",
   "created_at": "2026-09-19T20:32:07.053710Z",
-  "updated_at": "2026-09-19T20:55:55.317616Z",
+  "updated_at": "2026-09-19T20:55:57.813950Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "GRU",
@@ -80584,6 +80584,160 @@
       "errors": [
         "2027-08-03->2027-12-25: ProviderResponseError: Google returned a provider error"
       ]
+    },
+    "2027-08-03|2027-12-28": {
+      "departure_date": "2027-08-03",
+      "return_date": "2027-12-28",
+      "status": "error",
+      "completed_at": "2026-09-19T20:55:56.627862Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-03->2027-12-28: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-03|2027-12-30": {
+      "departure_date": "2027-08-03",
+      "return_date": "2027-12-30",
+      "status": "error",
+      "completed_at": "2026-09-19T20:55:56.632177Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-03->2027-12-30: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-03|2027-12-29": {
+      "departure_date": "2027-08-03",
+      "return_date": "2027-12-29",
+      "status": "error",
+      "completed_at": "2026-09-19T20:55:56.636258Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-03->2027-12-29: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-03|2027-12-31": {
+      "departure_date": "2027-08-03",
+      "return_date": "2027-12-31",
+      "status": "error",
+      "completed_at": "2026-09-19T20:55:56.640265Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-03->2027-12-31: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-04|2027-08-05": {
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-05",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:55:56.644246Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-08-04",
+        "return_date": "2027-08-05",
+        "airline": "Avianca",
+        "price": 4067.0,
+        "duration": "9h 55min",
+        "duration_minutes": 595,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 8, 4] [2, 20]",
+        "arrival": "[2027, 8, 4] [12, 25]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-04+returning+2027-08-05&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 1,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-04+returning+2027-08-05&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-08-04&return=2027-08-05&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-08-04|2027-08-06": {
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-06",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:55:56.648263Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-08-04",
+        "return_date": "2027-08-06",
+        "airline": "Avianca",
+        "price": 4067.0,
+        "duration": "9h 55min",
+        "duration_minutes": 595,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 8, 4] [2, 20]",
+        "arrival": "[2027, 8, 4] [12, 25]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-04+returning+2027-08-06&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 2,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-04+returning+2027-08-06&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-08-04&return=2027-08-06&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2027-08-04|2027-08-09": {
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-09",
+      "status": "error",
+      "completed_at": "2026-09-19T20:55:56.652131Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2027-08-04->2027-08-09: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2027-08-04|2027-08-08": {
+      "departure_date": "2027-08-04",
+      "return_date": "2027-08-08",
+      "status": "priced",
+      "completed_at": "2026-09-19T20:55:57.813924Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-08-04",
+        "return_date": "2027-08-08",
+        "airline": "Avianca",
+        "price": 4067.0,
+        "duration": "9h 55min",
+        "duration_minutes": 595,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 8, 4] [2, 20]",
+        "arrival": "[2027, 8, 4] [12, 25]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-04+returning+2027-08-08&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 4,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-08-04+returning+2027-08-08&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-08-04&return=2027-08-08&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
     }
   }
 }
