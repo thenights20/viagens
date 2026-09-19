@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "cache_id": "543497ba449d44bccb0fa804",
+  "signature": "GRU|MIA|2027-01-01|2027-06-30|2|BRL|economy|1",
+  "created_at": "2026-09-19T18:37:43.998059Z",
+  "updated_at": "2026-09-19T18:37:45.781440Z",
+  "resume_window_minutes": 60,
+  "request": {
+    "origin": "GRU",
+    "destination": "MIA",
+    "start_date": "2027-01-01",
+    "end_date": "2027-06-30",
+    "max_stops": 2,
+    "currency": "BRL"
+  },
+  "pairs": {
+    "2027-01-01|2027-01-04": {
+      "departure_date": "2027-01-01",
+      "return_date": "2027-01-04",
+      "status": "priced",
+      "completed_at": "2026-09-19T18:37:45.781412Z",
+      "source": "google",
+      "row": {
+        "origin": "GRU",
+        "destination": "MIA",
+        "departure_date": "2027-01-01",
+        "return_date": "2027-01-04",
+        "airline": "Arajet",
+        "price": 5520.0,
+        "duration": "9h 47min",
+        "duration_minutes": 587,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 1, 1] [23, 30]",
+        "arrival": "[2027, 1, 2] [11, 15]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-01-01+returning+2027-01-04&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 3,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-01-01+returning+2027-01-04&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-01-01&return=2027-01-04&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    }
+  }
+}
