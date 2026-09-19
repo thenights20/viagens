@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-19T19:44:32.849170Z",
-  "updated_at": "2026-09-19T19:44:32.849170Z",
+  "generated_at": "2026-09-19T19:44:38.080796Z",
+  "updated_at": "2026-09-19T19:44:38.080796Z",
   "started_at": "2026-09-19T18:37:43.568025Z",
   "status": "running",
   "stage": "multisource",
@@ -18,13 +18,13 @@
   },
   "stats": {
     "combinations": 16290,
-    "processed_combinations": 9273,
-    "primary_completed": 9273,
+    "processed_combinations": 9285,
+    "primary_completed": 9285,
     "primary_total": 16290,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 8050,
-    "coverage_pct": 49.4,
+    "priced_combinations": 8062,
+    "coverage_pct": 49.5,
     "lowest_price": 2553.0,
     "result_count": 100
   },
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 8050
+    "new": 8062
   },
   "daily_min": [
     {
@@ -931,7 +931,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 82
+      "rank": 86
     },
     {
       "origin": "GRU",
@@ -1349,7 +1349,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 32
+      "rank": 35
     },
     {
       "origin": "GRU",
@@ -1382,7 +1382,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 47
+      "rank": 50
     },
     {
       "origin": "GRU",
@@ -2029,24 +2029,24 @@
       "origin": "GRU",
       "destination": "MIA",
       "departure_date": "2027-03-04",
-      "return_date": "2027-03-08",
+      "return_date": "2027-03-10",
       "airline": "Arajet",
-      "price": 2954.0,
+      "price": 2553.0,
       "duration": "9h 47min",
       "duration_minutes": 587,
       "stops": "1 escala",
       "stops_count": 1,
       "departure": "[2027, 3, 4] [11, 25]",
       "arrival": "[2027, 3, 4] [20, 32]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-08&curr=BRL&hl=pt-BR",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-10&curr=BRL&hl=pt-BR",
       "provider": "Google Flights",
       "source_kind": "google",
-      "trip_days": 4,
+      "trip_days": 6,
       "currency": "BRL",
       "price_source_confidence": "structured",
       "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-08&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-04&return=2027-03-08&currency=BRL"
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-10&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-04&return=2027-03-10&currency=BRL"
       },
       "assigned_source": "google",
       "previous_price": null,
@@ -2055,7 +2055,8 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null
+      "previous_seen_at": null,
+      "rank": 32
     }
   ],
   "results": [
@@ -3085,6 +3086,105 @@
     {
       "origin": "GRU",
       "destination": "MIA",
+      "departure_date": "2027-03-04",
+      "return_date": "2027-03-10",
+      "airline": "Arajet",
+      "price": 2553.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 4] [11, 25]",
+      "arrival": "[2027, 3, 4] [20, 32]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-10&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 6,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-10&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-04&return=2027-03-10&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 32
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-03-04",
+      "return_date": "2027-03-15",
+      "airline": "Arajet",
+      "price": 2553.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 4] [11, 25]",
+      "arrival": "[2027, 3, 4] [20, 32]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-15&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 11,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-15&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-04&return=2027-03-15&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 33
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-03-04",
+      "return_date": "2027-03-17",
+      "airline": "Arajet",
+      "price": 2553.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 4] [11, 25]",
+      "arrival": "[2027, 3, 4] [20, 32]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-17&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 13,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-17&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-04&return=2027-03-17&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 34
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
       "departure_date": "2027-02-10",
       "return_date": "2027-02-17",
       "airline": "Arajet",
@@ -3113,7 +3213,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 32
+      "rank": 35
     },
     {
       "origin": "GRU",
@@ -3146,7 +3246,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 33
+      "rank": 36
     },
     {
       "origin": "GRU",
@@ -3179,7 +3279,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 34
+      "rank": 37
     },
     {
       "origin": "GRU",
@@ -3212,7 +3312,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 35
+      "rank": 38
     },
     {
       "origin": "GRU",
@@ -3245,7 +3345,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 36
+      "rank": 39
     },
     {
       "origin": "GRU",
@@ -3278,7 +3378,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 37
+      "rank": 40
     },
     {
       "origin": "GRU",
@@ -3311,7 +3411,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 38
+      "rank": 41
     },
     {
       "origin": "GRU",
@@ -3344,7 +3444,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 39
+      "rank": 42
     },
     {
       "origin": "GRU",
@@ -3377,7 +3477,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 40
+      "rank": 43
     },
     {
       "origin": "GRU",
@@ -3410,7 +3510,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 41
+      "rank": 44
     },
     {
       "origin": "GRU",
@@ -3443,7 +3543,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 42
+      "rank": 45
     },
     {
       "origin": "GRU",
@@ -3476,7 +3576,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 43
+      "rank": 46
     },
     {
       "origin": "GRU",
@@ -3509,7 +3609,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 44
+      "rank": 47
     },
     {
       "origin": "GRU",
@@ -3542,7 +3642,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 45
+      "rank": 48
     },
     {
       "origin": "GRU",
@@ -3575,7 +3675,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 46
+      "rank": 49
     },
     {
       "origin": "GRU",
@@ -3608,7 +3708,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 47
+      "rank": 50
     },
     {
       "origin": "GRU",
@@ -3641,7 +3741,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 48
+      "rank": 51
     },
     {
       "origin": "GRU",
@@ -3674,7 +3774,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 49
+      "rank": 52
     },
     {
       "origin": "GRU",
@@ -3707,7 +3807,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 50
+      "rank": 53
     },
     {
       "origin": "GRU",
@@ -3740,7 +3840,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 51
+      "rank": 54
     },
     {
       "origin": "GRU",
@@ -3773,7 +3873,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 52
+      "rank": 55
     },
     {
       "origin": "GRU",
@@ -3806,7 +3906,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 53
+      "rank": 56
     },
     {
       "origin": "GRU",
@@ -3839,7 +3939,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 54
+      "rank": 57
     },
     {
       "origin": "GRU",
@@ -3872,7 +3972,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 55
+      "rank": 58
     },
     {
       "origin": "GRU",
@@ -3905,7 +4005,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 56
+      "rank": 59
     },
     {
       "origin": "GRU",
@@ -3938,7 +4038,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 57
+      "rank": 60
     },
     {
       "origin": "GRU",
@@ -3971,7 +4071,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 58
+      "rank": 61
     },
     {
       "origin": "GRU",
@@ -4004,7 +4104,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 59
+      "rank": 62
     },
     {
       "origin": "GRU",
@@ -4037,7 +4137,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 60
+      "rank": 63
     },
     {
       "origin": "GRU",
@@ -4070,7 +4170,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 61
+      "rank": 64
     },
     {
       "origin": "GRU",
@@ -4103,7 +4203,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 62
+      "rank": 65
     },
     {
       "origin": "GRU",
@@ -4136,7 +4236,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 63
+      "rank": 66
     },
     {
       "origin": "GRU",
@@ -4169,7 +4269,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 64
+      "rank": 67
     },
     {
       "origin": "GRU",
@@ -4202,7 +4302,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 65
+      "rank": 68
     },
     {
       "origin": "GRU",
@@ -4235,7 +4335,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 66
+      "rank": 69
     },
     {
       "origin": "GRU",
@@ -4268,7 +4368,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 67
+      "rank": 70
     },
     {
       "origin": "GRU",
@@ -4301,7 +4401,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 68
+      "rank": 71
     },
     {
       "origin": "GRU",
@@ -4334,7 +4434,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 69
+      "rank": 72
     },
     {
       "origin": "GRU",
@@ -4367,7 +4467,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 70
+      "rank": 73
     },
     {
       "origin": "GRU",
@@ -4400,7 +4500,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 71
+      "rank": 74
     },
     {
       "origin": "GRU",
@@ -4433,7 +4533,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 72
+      "rank": 75
     },
     {
       "origin": "GRU",
@@ -4466,7 +4566,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 73
+      "rank": 76
     },
     {
       "origin": "GRU",
@@ -4499,7 +4599,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 74
+      "rank": 77
     },
     {
       "origin": "GRU",
@@ -4532,7 +4632,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 75
+      "rank": 78
     },
     {
       "origin": "GRU",
@@ -4565,7 +4665,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 76
+      "rank": 79
     },
     {
       "origin": "GRU",
@@ -4598,7 +4698,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 77
+      "rank": 80
     },
     {
       "origin": "GRU",
@@ -4631,7 +4731,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 78
+      "rank": 81
     },
     {
       "origin": "GRU",
@@ -4664,7 +4764,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 79
+      "rank": 82
     },
     {
       "origin": "GRU",
@@ -4697,7 +4797,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 80
+      "rank": 83
     },
     {
       "origin": "GRU",
@@ -4730,7 +4830,40 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 81
+      "rank": 84
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-03-04",
+      "return_date": "2027-03-20",
+      "airline": "Arajet",
+      "price": 2844.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 4] [11, 25]",
+      "arrival": "[2027, 3, 4] [20, 32]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-20&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 16,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-20&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-04&return=2027-03-20&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 85
     },
     {
       "origin": "GRU",
@@ -4763,7 +4896,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 82
+      "rank": 86
     },
     {
       "origin": "GRU",
@@ -4796,7 +4929,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 83
+      "rank": 87
     },
     {
       "origin": "GRU",
@@ -4829,7 +4962,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 84
+      "rank": 88
     },
     {
       "origin": "GRU",
@@ -4862,7 +4995,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 85
+      "rank": 89
     },
     {
       "origin": "GRU",
@@ -4895,7 +5028,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 86
+      "rank": 90
     },
     {
       "origin": "GRU",
@@ -4928,7 +5061,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 87
+      "rank": 91
     },
     {
       "origin": "GRU",
@@ -4961,7 +5094,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 88
+      "rank": 92
     },
     {
       "origin": "GRU",
@@ -4994,7 +5127,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 89
+      "rank": 93
     },
     {
       "origin": "GRU",
@@ -5027,7 +5160,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 90
+      "rank": 94
     },
     {
       "origin": "GRU",
@@ -5060,7 +5193,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 91
+      "rank": 95
     },
     {
       "origin": "GRU",
@@ -5093,7 +5226,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 92
+      "rank": 96
     },
     {
       "origin": "GRU",
@@ -5126,7 +5259,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 93
+      "rank": 97
     },
     {
       "origin": "GRU",
@@ -5159,7 +5292,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 94
+      "rank": 98
     },
     {
       "origin": "GRU",
@@ -5192,7 +5325,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 95
+      "rank": 99
     },
     {
       "origin": "GRU",
@@ -5216,138 +5349,6 @@
       "search_links": {
         "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-01-28+returning+2027-05-26&curr=BRL&hl=pt-BR",
         "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-01-28&return=2027-05-26&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 96
-    },
-    {
-      "origin": "GRU",
-      "destination": "MIA",
-      "departure_date": "2027-01-28",
-      "return_date": "2027-06-02",
-      "airline": "Arajet",
-      "price": 2944.0,
-      "duration": "9h 47min",
-      "duration_minutes": 587,
-      "stops": "1 escala",
-      "stops_count": 1,
-      "departure": "[2027, 1, 28] [1]",
-      "arrival": "[2027, 1, 28] [11, 25]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-01-28+returning+2027-06-02&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 125,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-01-28+returning+2027-06-02&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-01-28&return=2027-06-02&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 97
-    },
-    {
-      "origin": "GRU",
-      "destination": "MIA",
-      "departure_date": "2027-02-03",
-      "return_date": "2027-02-06",
-      "airline": "Arajet",
-      "price": 2954.0,
-      "duration": "9h 47min",
-      "duration_minutes": 587,
-      "stops": "1 escala",
-      "stops_count": 1,
-      "departure": "[2027, 2, 3] [5, 20]",
-      "arrival": "[2027, 2, 3] [15, 8]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-02-03+returning+2027-02-06&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 3,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-02-03+returning+2027-02-06&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-02-03&return=2027-02-06&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 98
-    },
-    {
-      "origin": "GRU",
-      "destination": "MIA",
-      "departure_date": "2027-02-03",
-      "return_date": "2027-02-08",
-      "airline": "Arajet",
-      "price": 2954.0,
-      "duration": "9h 47min",
-      "duration_minutes": 587,
-      "stops": "1 escala",
-      "stops_count": 1,
-      "departure": "[2027, 2, 3] [5, 20]",
-      "arrival": "[2027, 2, 3] [15, 8]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-02-03+returning+2027-02-08&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 5,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-02-03+returning+2027-02-08&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-02-03&return=2027-02-08&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 99
-    },
-    {
-      "origin": "GRU",
-      "destination": "MIA",
-      "departure_date": "2027-02-03",
-      "return_date": "2027-03-08",
-      "airline": "Arajet",
-      "price": 2954.0,
-      "duration": "9h 47min",
-      "duration_minutes": 587,
-      "stops": "1 escala",
-      "stops_count": 1,
-      "departure": "[2027, 2, 3] [5, 20]",
-      "arrival": "[2027, 2, 3] [15, 8]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-02-03+returning+2027-03-08&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 33,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-02-03+returning+2027-03-08&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-02-03&return=2027-03-08&currency=BRL"
       },
       "assigned_source": "google",
       "previous_price": null,
@@ -6387,6 +6388,105 @@
     {
       "origin": "GRU",
       "destination": "MIA",
+      "departure_date": "2027-03-04",
+      "return_date": "2027-03-10",
+      "airline": "Arajet",
+      "price": 2553.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 4] [11, 25]",
+      "arrival": "[2027, 3, 4] [20, 32]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-10&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 6,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-10&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-04&return=2027-03-10&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 32
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-03-04",
+      "return_date": "2027-03-15",
+      "airline": "Arajet",
+      "price": 2553.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 4] [11, 25]",
+      "arrival": "[2027, 3, 4] [20, 32]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-15&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 11,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-15&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-04&return=2027-03-15&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 33
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-03-04",
+      "return_date": "2027-03-17",
+      "airline": "Arajet",
+      "price": 2553.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 4] [11, 25]",
+      "arrival": "[2027, 3, 4] [20, 32]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-17&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 13,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-17&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-04&return=2027-03-17&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 34
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
       "departure_date": "2027-02-10",
       "return_date": "2027-02-17",
       "airline": "Arajet",
@@ -6415,7 +6515,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 32
+      "rank": 35
     },
     {
       "origin": "GRU",
@@ -6448,7 +6548,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 33
+      "rank": 36
     },
     {
       "origin": "GRU",
@@ -6481,7 +6581,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 34
+      "rank": 37
     },
     {
       "origin": "GRU",
@@ -6514,7 +6614,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 35
+      "rank": 38
     },
     {
       "origin": "GRU",
@@ -6547,7 +6647,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 36
+      "rank": 39
     },
     {
       "origin": "GRU",
@@ -6580,7 +6680,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 37
+      "rank": 40
     },
     {
       "origin": "GRU",
@@ -6613,7 +6713,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 38
+      "rank": 41
     },
     {
       "origin": "GRU",
@@ -6646,7 +6746,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 39
+      "rank": 42
     },
     {
       "origin": "GRU",
@@ -6679,7 +6779,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 40
+      "rank": 43
     },
     {
       "origin": "GRU",
@@ -6712,7 +6812,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 41
+      "rank": 44
     },
     {
       "origin": "GRU",
@@ -6745,7 +6845,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 42
+      "rank": 45
     },
     {
       "origin": "GRU",
@@ -6778,7 +6878,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 43
+      "rank": 46
     },
     {
       "origin": "GRU",
@@ -6811,7 +6911,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 44
+      "rank": 47
     },
     {
       "origin": "GRU",
@@ -6844,7 +6944,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 45
+      "rank": 48
     },
     {
       "origin": "GRU",
@@ -6877,7 +6977,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 46
+      "rank": 49
     },
     {
       "origin": "GRU",
@@ -6910,7 +7010,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 47
+      "rank": 50
     },
     {
       "origin": "GRU",
@@ -6943,7 +7043,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 48
+      "rank": 51
     },
     {
       "origin": "GRU",
@@ -6976,7 +7076,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 49
+      "rank": 52
     },
     {
       "origin": "GRU",
@@ -7009,7 +7109,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 50
+      "rank": 53
     },
     {
       "origin": "GRU",
@@ -7042,7 +7142,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 51
+      "rank": 54
     },
     {
       "origin": "GRU",
@@ -7075,7 +7175,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 52
+      "rank": 55
     },
     {
       "origin": "GRU",
@@ -7108,7 +7208,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 53
+      "rank": 56
     },
     {
       "origin": "GRU",
@@ -7141,7 +7241,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 54
+      "rank": 57
     },
     {
       "origin": "GRU",
@@ -7174,7 +7274,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 55
+      "rank": 58
     },
     {
       "origin": "GRU",
@@ -7207,7 +7307,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 56
+      "rank": 59
     },
     {
       "origin": "GRU",
@@ -7240,7 +7340,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 57
+      "rank": 60
     },
     {
       "origin": "GRU",
@@ -7273,7 +7373,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 58
+      "rank": 61
     },
     {
       "origin": "GRU",
@@ -7306,7 +7406,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 59
+      "rank": 62
     },
     {
       "origin": "GRU",
@@ -7339,7 +7439,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 60
+      "rank": 63
     },
     {
       "origin": "GRU",
@@ -7372,7 +7472,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 61
+      "rank": 64
     },
     {
       "origin": "GRU",
@@ -7405,7 +7505,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 62
+      "rank": 65
     },
     {
       "origin": "GRU",
@@ -7438,7 +7538,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 63
+      "rank": 66
     },
     {
       "origin": "GRU",
@@ -7471,7 +7571,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 64
+      "rank": 67
     },
     {
       "origin": "GRU",
@@ -7504,7 +7604,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 65
+      "rank": 68
     },
     {
       "origin": "GRU",
@@ -7537,7 +7637,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 66
+      "rank": 69
     },
     {
       "origin": "GRU",
@@ -7570,7 +7670,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 67
+      "rank": 70
     },
     {
       "origin": "GRU",
@@ -7603,7 +7703,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 68
+      "rank": 71
     },
     {
       "origin": "GRU",
@@ -7636,7 +7736,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 69
+      "rank": 72
     },
     {
       "origin": "GRU",
@@ -7669,7 +7769,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 70
+      "rank": 73
     },
     {
       "origin": "GRU",
@@ -7702,7 +7802,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 71
+      "rank": 74
     },
     {
       "origin": "GRU",
@@ -7735,7 +7835,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 72
+      "rank": 75
     },
     {
       "origin": "GRU",
@@ -7768,7 +7868,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 73
+      "rank": 76
     },
     {
       "origin": "GRU",
@@ -7801,7 +7901,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 74
+      "rank": 77
     },
     {
       "origin": "GRU",
@@ -7834,7 +7934,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 75
+      "rank": 78
     },
     {
       "origin": "GRU",
@@ -7867,7 +7967,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 76
+      "rank": 79
     },
     {
       "origin": "GRU",
@@ -7900,7 +8000,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 77
+      "rank": 80
     },
     {
       "origin": "GRU",
@@ -7933,7 +8033,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 78
+      "rank": 81
     },
     {
       "origin": "GRU",
@@ -7966,7 +8066,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 79
+      "rank": 82
     },
     {
       "origin": "GRU",
@@ -7999,7 +8099,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 80
+      "rank": 83
     },
     {
       "origin": "GRU",
@@ -8032,7 +8132,40 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 81
+      "rank": 84
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-03-04",
+      "return_date": "2027-03-20",
+      "airline": "Arajet",
+      "price": 2844.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 4] [11, 25]",
+      "arrival": "[2027, 3, 4] [20, 32]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-20&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 16,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-20&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-04&return=2027-03-20&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 85
     },
     {
       "origin": "GRU",
@@ -8065,7 +8198,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 82
+      "rank": 86
     },
     {
       "origin": "GRU",
@@ -8098,7 +8231,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 83
+      "rank": 87
     },
     {
       "origin": "GRU",
@@ -8131,7 +8264,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 84
+      "rank": 88
     },
     {
       "origin": "GRU",
@@ -8164,7 +8297,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 85
+      "rank": 89
     },
     {
       "origin": "GRU",
@@ -8197,7 +8330,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 86
+      "rank": 90
     },
     {
       "origin": "GRU",
@@ -8230,7 +8363,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 87
+      "rank": 91
     },
     {
       "origin": "GRU",
@@ -8263,7 +8396,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 88
+      "rank": 92
     },
     {
       "origin": "GRU",
@@ -8296,7 +8429,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 89
+      "rank": 93
     },
     {
       "origin": "GRU",
@@ -8329,7 +8462,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 90
+      "rank": 94
     },
     {
       "origin": "GRU",
@@ -8362,7 +8495,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 91
+      "rank": 95
     },
     {
       "origin": "GRU",
@@ -8395,7 +8528,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 92
+      "rank": 96
     },
     {
       "origin": "GRU",
@@ -8428,7 +8561,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 93
+      "rank": 97
     },
     {
       "origin": "GRU",
@@ -8461,7 +8594,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 94
+      "rank": 98
     },
     {
       "origin": "GRU",
@@ -8494,7 +8627,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 95
+      "rank": 99
     },
     {
       "origin": "GRU",
@@ -8527,7 +8660,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 96
+      "rank": 100
     },
     {
       "origin": "GRU",
@@ -8559,8 +8692,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 97
+      "previous_seen_at": null
     },
     {
       "origin": "GRU",
@@ -8592,8 +8724,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 98
+      "previous_seen_at": null
     },
     {
       "origin": "GRU",
@@ -8625,8 +8756,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 99
+      "previous_seen_at": null
     },
     {
       "origin": "GRU",
@@ -8658,8 +8788,7 @@
       "trend": "new",
       "historical_min": null,
       "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 100
+      "previous_seen_at": null
     },
     {
       "origin": "GRU",
@@ -8907,6 +9036,38 @@
       "search_links": {
         "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-08&curr=BRL&hl=pt-BR",
         "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-04&return=2027-03-08&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-03-04",
+      "return_date": "2027-03-14",
+      "airline": "Arajet",
+      "price": 2954.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 4] [11, 25]",
+      "arrival": "[2027, 3, 4] [20, 32]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-14&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 10,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-14&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-04&return=2027-03-14&currency=BRL"
       },
       "assigned_source": "google",
       "previous_price": null,
@@ -11915,6 +12076,134 @@
       "search_links": {
         "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-07&curr=BRL&hl=pt-BR",
         "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-04&return=2027-03-07&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-03-04",
+      "return_date": "2027-03-11",
+      "airline": "Arajet",
+      "price": 3010.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 4] [11, 25]",
+      "arrival": "[2027, 3, 4] [20, 32]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-11&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 7,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-11&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-04&return=2027-03-11&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-03-04",
+      "return_date": "2027-03-13",
+      "airline": "Arajet",
+      "price": 3010.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 4] [11, 25]",
+      "arrival": "[2027, 3, 4] [20, 32]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-13&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 9,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-13&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-04&return=2027-03-13&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-03-04",
+      "return_date": "2027-03-16",
+      "airline": "Arajet",
+      "price": 3010.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 4] [11, 25]",
+      "arrival": "[2027, 3, 4] [20, 32]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-16&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 12,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-16&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-04&return=2027-03-16&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-03-04",
+      "return_date": "2027-03-18",
+      "airline": "Arajet",
+      "price": 3010.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 4] [11, 25]",
+      "arrival": "[2027, 3, 4] [20, 32]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-18&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 14,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-18&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-04&return=2027-03-18&currency=BRL"
       },
       "assigned_source": "google",
       "previous_price": null,
@@ -31608,6 +31897,38 @@
     {
       "origin": "GRU",
       "destination": "MIA",
+      "departure_date": "2027-03-04",
+      "return_date": "2027-03-09",
+      "airline": "Arajet",
+      "price": 3441.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 4] [11, 25]",
+      "arrival": "[2027, 3, 4] [20, 32]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-09&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 5,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-09&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-04&return=2027-03-09&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
       "departure_date": "2027-02-03",
       "return_date": "2027-06-29",
       "airline": "Arajet",
@@ -38379,6 +38700,38 @@
       "search_links": {
         "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-02-12+returning+2027-03-12&curr=BRL&hl=pt-BR",
         "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-02-12&return=2027-03-12&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-03-04",
+      "return_date": "2027-03-12",
+      "airline": "Arajet",
+      "price": 3554.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 4] [11, 25]",
+      "arrival": "[2027, 3, 4] [20, 32]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-12&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 8,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-12&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-04&return=2027-03-12&currency=BRL"
       },
       "assigned_source": "google",
       "previous_price": null,
@@ -59499,6 +59852,38 @@
       "search_links": {
         "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-03+returning+2027-05-07&curr=BRL&hl=pt-BR",
         "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-03&return=2027-05-07&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "departure_date": "2027-03-04",
+      "return_date": "2027-03-19",
+      "airline": "Arajet",
+      "price": 3762.0,
+      "duration": "9h 47min",
+      "duration_minutes": 587,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 3, 4] [11, 25]",
+      "arrival": "[2027, 3, 4] [20, 32]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-19&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 15,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+MIA+on+2027-03-04+returning+2027-03-19&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=MIA&depart=2027-03-04&return=2027-03-19&currency=BRL"
       },
       "assigned_source": "google",
       "previous_price": null,
@@ -263152,7 +263537,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 9273,
+    "google": 9285,
     "ita": 0
   },
   "resume": {
@@ -263160,16 +263545,16 @@
     "window_minutes": 60,
     "cache_id": "543497ba449d44bccb0fa804",
     "reused_combinations": 0,
-    "searched_this_run": 9273,
-    "remaining_this_run": 7017,
-    "reusable_now": 7560,
-    "retryable_for_next_run": 8730,
-    "saved_records": 9273,
+    "searched_this_run": 9285,
+    "remaining_this_run": 7005,
+    "reusable_now": 7555,
+    "retryable_for_next_run": 8735,
+    "saved_records": 9285,
     "saved_errors": 131,
     "checkpoint_path": "docs/data/flight-search-checkpoints/543497ba449d44bccb0fa804.json"
   },
   "current_pair": {
     "departure_date": "2027-03-04",
-    "return_date": "2027-03-08"
+    "return_date": "2027-03-20"
   }
 }
