@@ -14,7 +14,7 @@
   const AIRPORTS_WORLD = './data/airports-world.json';
 
   const ORIGINS = [
-    ['DOU','Dourados'],['PMG','Ponta Porã'],['JTC','Bauru'],['GRU','Guarulhos'],['CGH','São Paulo / Congonhas'],['VCP','Campinas / Viracopos'],['GIG','Rio de Janeiro / Galeão'],['TJL','Três Lagoas'],['ARU','Araçatuba'],['PPB','Presidente Prudente / Pres. Venceslau'],['MII','Marília']
+    ['SAO','São Paulo — todos (GRU + CGH + VCP)'],['RIO','Rio de Janeiro — todos (GIG + SDU)'],['DOU','Dourados'],['PMG','Ponta Porã'],['JTC','Bauru'],['GRU','Guarulhos'],['CGH','São Paulo / Congonhas'],['VCP','Campinas / Viracopos'],['GIG','Rio de Janeiro / Galeão'],['TJL','Três Lagoas'],['ARU','Araçatuba'],['PPB','Presidente Prudente / Pres. Venceslau'],['MII','Marília']
   ];
   const DESTINATIONS = [
     ['CGR','Campo Grande'],['CGB','Cuiabá'],['BSB','Brasília'],['GYN','Goiânia'],['CWB','Curitiba'],['LDB','Londrina'],['MGF','Maringá'],['IGU','Foz do Iguaçu'],['FLN','Florianópolis'],['NVT','Navegantes'],['POA','Porto Alegre'],['VCP','Campinas'],['CGH','São Paulo / Congonhas'],['GRU','São Paulo / Guarulhos'],['SJP','São José do Rio Preto'],['RAO','Ribeirão Preto'],['UDI','Uberlândia'],['CNF','Belo Horizonte'],['GIG','Rio de Janeiro / Galeão'],['SDU','Rio de Janeiro / Santos Dumont'],['VIX','Vitória'],['SSA','Salvador'],['REC','Recife'],['FOR','Fortaleza'],['NAT','Natal'],['MCZ','Maceió'],['AJU','Aracaju'],['JPA','João Pessoa'],['THE','Teresina'],['SLZ','São Luís'],['BEL','Belém'],['MAO','Manaus'],['PVH','Porto Velho'],['BVB','Boa Vista'],['MCP','Macapá'],['PMW','Palmas'],['JDO','Juazeiro do Norte'],['IOS','Ilhéus'],['BPS','Porto Seguro'],['PNZ','Petrolina'],['RBR','Rio Branco'],['STM','Santarém'],['IMP','Imperatriz'],['MOC','Montes Claros'],['JOI','Joinville'],['XAP','Chapecó'],['PFB','Passo Fundo'],['ROO','Rondonópolis'],['FEN','Fernando de Noronha'],['CAC','Cascavel'],
@@ -23,6 +23,15 @@
   const RESERVED = new Set([...ORIGINS.map(x=>x[0]),...DESTINATIONS.map(x=>x[0]),'QZZ','QZX']);
   const RANGE_CODES = (()=>{const out=[];for(const a of 'QRSTUVWXYZ')for(const b of 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')for(const c of 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'){const code=a+b+c;if(!RESERVED.has(code))out.push(code)}return out})();
   const PAIRS_PER_ORIGIN = 465;
+  const AIRPORT_GROUPS = {
+    SAO:['GRU','CGH','VCP'],
+    RIO:['GIG','SDU'],
+    NYC:['JFK','EWR','LGA'],
+    WAS:['IAD','DCA','BWI'],
+    LON:['LHR','LGW','STN','LTN','LCY'],
+    PAR:['CDG','ORY'],
+    TYO:['HND','NRT']
+  };
 
   let data = {request:{},stats:{},results:[],daily_min:[],history_summary:{}};
   let savedPairs = {};
@@ -69,10 +78,10 @@
 
   const panel=document.createElement('div');panel.id='flightMonthPanel';panel.hidden=true;
   panel.innerHTML=`
-    <div class="month-titlebar"><div><strong>🔎 Buscar passagens · v0.6.2</strong><small>Os achados são salvos durante a pesquisa. Se a execução parar, o que já foi encontrado continua disponível.</small></div><div class="pill"><span class="dot"></span><span id="monthSearchUpdated">Aguardando busca</span></div></div>
+    <div class="month-titlebar"><div><strong>🔎 Buscar passagens · v0.6.3</strong><small>Os achados são salvos durante a pesquisa. Se a execução parar, o que já foi encontrado continua disponível.</small></div><div class="pill"><span class="dot"></span><span id="monthSearchUpdated">Aguardando busca</span></div></div>
     <section class="panel">
       <div class="month-search-grid">
-        <div><label>Origem</label><select id="monthOrigin"></select></div>
+        <div><label>Origem</label><select id="monthOrigin"></select><small id="originGroupHint" style="display:block;margin-top:4px;color:var(--muted);font-size:9px"></small></div>
         <div class="dest-field"><label>Destino</label><input id="monthDestination" placeholder="Digite cidade, aeroporto ou IATA..." autocomplete="off" spellcheck="false"><div id="monthAirportSuggest" class="airport-suggest" hidden></div></div>
         <div><label>Período</label><select id="monthPeriodMode"><option value="month">Mês inteiro</option><option value="range">Intervalo de datas</option></select></div>
         <div class="period-cell"><div id="monthPeriodMonth"><label>Mês a pesquisar</label><input id="monthValue" type="month"></div><div id="monthPeriodRange" hidden><label>Datas</label><div class="month-period-range"><input id="rangeStart" type="date" title="Data inicial"><input id="rangeEnd" type="date" title="Data final"></div></div></div>
@@ -104,7 +113,7 @@
     <div class="note"><b>Salvamento progressivo:</b> durante a busca o sistema publica os achados parciais em uma área separada do site. Uma nova pesquisa das mesmas datas compara automaticamente o valor atual com o último valor salvo.</div>`;
   app.insertBefore(panel,q('#hunterPanel')||null);
 
-  q('#monthOrigin').innerHTML=ORIGINS.map(([c,n])=>`<option value="${c}">${c} · ${esc(n)}</option>`).join('');
+  q('#monthOrigin').innerHTML=ORIGINS.map(([c,n])=>`<option value="${c}">${c} · ${esc(n)}</option>`).join('');const updateOriginHint=()=>{const code=q('#monthOrigin').value,h=q('#originGroupHint'),g=AIRPORT_GROUPS[code];if(h)h.textContent=g?'Inclui '+g.join(', '):''};q('#monthOrigin').addEventListener('change',updateOriginHint);updateOriginHint();
   setupAirportAutocomplete();
 
   const now=new Date(),pad=n=>String(n).padStart(2,'0'),monthKey=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}`,dateKey=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
@@ -158,12 +167,13 @@
   function periodModeChanged(){const range=q('#monthPeriodMode').value==='range';q('#monthPeriodMonth').hidden=range;q('#monthPeriodRange').hidden=!range;}
   function formRequest(){
     const origin=q('#monthOrigin').value.trim().toUpperCase(),destination=resolveDestination(q('#monthDestination').value),mode=q('#monthPeriodMode').value,max_stops=Number(q('#monthStops').value);
+    const origins=AIRPORT_GROUPS[origin]||[origin];
     if(mode==='range'){
       const start=q('#rangeStart').value,end=q('#rangeEnd').value,month=start.slice(0,7);
-      return{origin,destination,period_mode:'range',start_date:start,end_date:end,month,max_stops,dispatch_origin:origin};
+      return{origin,destination,origins,period_mode:'range',start_date:start,end_date:end,month,max_stops,dispatch_origin:origin};
     }
     const month=q('#monthValue').value;
-    return{origin,destination,period_mode:'month',start_date:`${month}-01`,end_date:'',month,max_stops,dispatch_origin:origin};
+    return{origin,destination,origins,period_mode:'month',start_date:`${month}-01`,end_date:'',month,max_stops,dispatch_origin:origin};
   }
   function comboTotal(request){
     let start,end;
@@ -299,7 +309,15 @@
   }
 
   function validateRequest(request){if(!/^[A-Z]{3}$/.test(request.destination))return'Escolha uma cidade/aeroporto válido, por exemplo Miami ou MIA.';if(request.period_mode==='month'&&!/^\d{4}-\d{2}$/.test(request.month))return'Escolha o mês da viagem.';if(request.period_mode==='range'){if(!request.start_date||!request.end_date)return'Informe a data inicial e a data final.';if(request.end_date<=request.start_date)return'A data final precisa ser depois da data inicial.';}if(request.origin===request.destination)return'Origem e destino não podem ser iguais.';return'';}
-  async function searchInsidePage(){if(searching)return;const request=formRequest(),status=q('#monthSearchStatus'),button=q('#monthSearchButton'),error=validateRequest(request);if(error){status.className='month-search-status bad';status.textContent=error;return}if(!apiBase)await loadConfig();if(!apiBase){status.className='month-search-status bad';status.textContent='O serviço de pesquisa ainda não está conectado. Atualize a página e tente novamente.';return}const total=comboTotal(request);if(total<1){status.className='month-search-status bad';status.textContent='Esse período não possui combinações futuras de ida e volta.';return}
+  async function searchInsidePage(){if(searching)return;const request=formRequest(),status=q('#monthSearchStatus'),button=q('#monthSearchButton'),error=validateRequest(request);
+    if((request.origins||[]).length>1){
+      if(error){status.className='month-search-status bad';status.textContent=error;return}
+      const group=request.origins.filter(code=>code!==request.destination);
+      if(!group.length){status.className='month-search-status bad';status.textContent='O destino já está dentro do grupo de aeroportos escolhido.';return}
+      status.className='month-search-status wait';status.textContent='🔎 Pesquisa agrupada: '+group.join(' + ')+'. As buscas serão executadas uma após a outra.';
+      for(const code of group){q('#monthOrigin').value=code;await searchInsidePage();while(searching)await sleep(500);}
+      q('#monthOrigin').value=request.origin;const hint=q('#originGroupHint');if(hint)hint.textContent='Inclui '+request.origins.join(', ');q('#resultScope').value='all';render();return;
+    }if(error){status.className='month-search-status bad';status.textContent=error;return}if(!apiBase)await loadConfig();if(!apiBase){status.className='month-search-status bad';status.textContent='O serviço de pesquisa ainda não está conectado. Atualize a página e tente novamente.';return}const total=comboTotal(request);if(total<1){status.className='month-search-status bad';status.textContent='Esse período não possui combinações futuras de ida e volta.';return}
     request.request_id='web_'+(globalThis.crypto&&typeof globalThis.crypto.randomUUID==='function'?globalThis.crypto.randomUUID().replace(/-/g,''):(Date.now().toString(36)+Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2))).slice(0,64);searching=true;stopRequested=false;activeRun=null;activeRequest=request;button.disabled=true;button.textContent='⏳ Pesquisando…';clearForSearch(request,total);showProgress(total);status.className='month-search-status wait';status.textContent='🔎 Pesquisa enviada. Confirmando recebimento pelo serviço…';await trackSearch(request,Date.now(),total,true);}
   async function trackSearch(request,started,total,dispatch=false){const button=q('#monthSearchButton'),status=q('#monthSearchStatus');const clock=setInterval(()=>{q('#monthProgressElapsed').textContent=`${Math.round((Date.now()-started)/1000)}s`},1000);try{if(dispatch)dispatchWithoutCors(request);data=await pollSearch(request,started,total);render();updateProgress({pct:data.status==='partial'?liveProgress(data,0).pct:100,stage:data.status==='partial'?'Parcial preservado':'Pesquisa concluída',done:Number(data.stats?.processed_combinations??data.stats?.combinations??total),total:Number(data.stats?.combinations||total),priced:Number(data.stats?.priced_combinations||0),remaining:0,elapsed:(Date.now()-started)/1000,detail:'✓ resultado salvo'});q('#monthStopButton').disabled=true;status.className=data.status==='partial'?'month-search-status bad':'month-search-status ok';status.textContent=data.status==='partial'?'⚠ A pesquisa parou antes do fim, mas tudo o que havia sido encontrado ficou salvo.':`✅ Busca concluída. ${data.stats?.priced_combinations||0} combinações com preço foram salvas.`;}catch(e){if(String(e.message||e)==='__STOPPED__'){status.className='month-search-status bad';status.textContent='⛔ Acompanhamento interrompido. O cancelamento no servidor foi solicitado; os achados salvos permanecem abaixo.';}else{status.className='month-search-status bad';status.textContent=`Não foi possível concluir a busca: ${e.message||e}. Se já havia resultados, eles permanecem salvos.`;}}finally{clearInterval(clock);if(stopRequested||data.status!=='completed'){q('#monthProgressStage').textContent=stopRequested?'Acompanhamento interrompido':'Pesquisa não concluída';}searching=false;button.disabled=false;button.textContent='🔎 Pesquisar agora';const stop=q('#monthStopButton');stop.disabled=true;stop.textContent='■ Parar pesquisa';}}
 
