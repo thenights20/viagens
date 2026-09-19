@@ -1,48 +1,36 @@
 {
-  "version": "0.2.0",
-  "status": "error",
-  "generated_at": "2026-09-19T01:30:12.098181Z",
-  "request_id": "miles_7957715355d14a24a547aba703ee840e",
-  "request": {
-    "origin": "MCF",
-    "destination": "JFK",
-    "period_mode": "range",
-    "month": "2026-10",
-    "start_date": "2026-10-02",
-    "end_date": "2026-10-05",
-    "program": "",
-    "cabin": "economy",
-    "request_id": "miles_7957715355d14a24a547aba703ee840e"
-  },
-  "provider": "Seats.aero cached award availability",
+  "version": "0.2.3",
+  "status": "idle",
+  "generated_at": null,
+  "request_id": "",
+  "request": {},
+  "provider": "Seats.aero public search fallback",
   "results": [],
   "result_count": 0,
-  "error": "A busca por milhas foi conectada, mas o segredo SEATS_AERO_API_KEY ainda não está configurado no GitHub Actions.",
-  "error_code": "missing_api_key",
   "sources": {
     "Smiles": {
       "ok": false,
       "items": 0,
-      "automated": true,
-      "message": "A busca por milhas foi conectada, mas o segredo SEATS_AERO_API_KEY ainda não está configurado no GitHub Actions."
+      "automated": false,
+      "message": "Aguardando nova consulta."
     },
     "Azul Fidelidade": {
       "ok": false,
       "items": 0,
-      "automated": true,
-      "message": "A busca por milhas foi conectada, mas o segredo SEATS_AERO_API_KEY ainda não está configurado no GitHub Actions."
+      "automated": false,
+      "message": "Aguardando nova consulta."
     },
     "AAdvantage": {
       "ok": false,
       "items": 0,
-      "automated": true,
-      "message": "A busca por milhas foi conectada, mas o segredo SEATS_AERO_API_KEY ainda não está configurado no GitHub Actions."
+      "automated": false,
+      "message": "Aguardando nova consulta."
     },
     "LATAM Pass": {
       "ok": false,
       "items": 0,
       "automated": false,
-      "message": "LATAM Pass não está disponível na fonte automatizada atual; use o acesso oficial para conferir o resgate."
+      "message": "Aguardando nova consulta."
     }
   }
 }
