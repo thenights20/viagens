@@ -15,7 +15,11 @@
   let apiBase = '';
   let searching = false;
   const RESULT_RAW = './data/miles-search.json';
+  const AIRPORTS_WORLD = './data/airports-world.json';
   const sleep = ms => new Promise(resolve=>setTimeout(resolve,ms));
+  let worldAirports = [];
+  let worldAirportByCode = new Map();
+  const airportSuggestIndex = {origin:-1,destination:-1};
 
   const PROGRAMS = {
     Smiles: {
@@ -43,12 +47,12 @@
   const style = document.createElement('style');
   style.textContent = `
     .miles-titlebar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:1px 0 6px;flex-wrap:wrap}.miles-titlebar strong{font-size:16px}.miles-titlebar small{display:block;color:var(--muted);font-size:11px;margin-top:2px}.miles-titlebar .pill{padding:6px 9px;font-size:11px}
-    .miles-search-grid{display:grid;grid-template-columns:1.05fr 1.25fr .85fr 1.25fr .95fr .9fr auto;gap:7px;align-items:end;padding:9px}.miles-search-grid label{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.07em;font-weight:800;margin:0 0 4px}.miles-search-grid input,.miles-search-grid select{padding:8px 9px;border-radius:9px;min-height:37px}.miles-period-range{display:grid;grid-template-columns:1fr 1fr;gap:6px}.miles-search-btn{border:0;background:var(--accent);color:#07111f;font-weight:900;border-radius:9px;padding:9px 13px;cursor:pointer;min-height:37px;white-space:nowrap}.miles-search-btn:hover{filter:brightness(1.07)}
+    .miles-search-grid{display:grid;grid-template-columns:1.05fr 1.25fr .85fr 1.25fr .95fr .9fr auto;gap:7px;align-items:end;padding:9px}.miles-search-grid label{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.07em;font-weight:800;margin:0 0 4px}.miles-search-grid input,.miles-search-grid select{padding:8px 9px;border-radius:9px;min-height:37px}.miles-airport-field{position:relative}.miles-airport-suggest{position:absolute;z-index:90;left:0;right:0;top:calc(100% + 4px);max-height:330px;overflow:auto;background:var(--panel2);border:1px solid var(--line);border-radius:11px;box-shadow:0 18px 45px rgba(0,0,0,.42);padding:4px}.miles-airport-suggest[hidden]{display:none}.miles-airport-option{display:block;width:100%;border:0;background:transparent;color:var(--text);text-align:left;padding:8px 9px;border-radius:8px;cursor:pointer}.miles-airport-option:hover,.miles-airport-option.active{background:rgba(119,167,255,.13)}.miles-airport-option b{display:block;font-size:12px}.miles-airport-option small{display:block;color:var(--muted);font-size:10px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.miles-airport-loading{padding:9px;color:var(--muted);font-size:11px}.miles-period-range{display:grid;grid-template-columns:1fr 1fr;gap:6px}.miles-search-btn{border:0;background:var(--accent);color:#07111f;font-weight:900;border-radius:9px;padding:9px 13px;cursor:pointer;min-height:37px;white-space:nowrap}.miles-search-btn:hover{filter:brightness(1.07)}
     .miles-status{padding:8px 10px;border-top:1px solid var(--line);color:var(--muted);font-size:11px;line-height:1.45}.miles-status.ok{color:var(--ok)}.miles-status.warn{color:var(--warn)}.miles-status.bad{color:var(--hot)}
     .miles-value{font-size:18px;font-weight:900;white-space:nowrap;color:var(--ok)}.miles-program{font-weight:900}.miles-provider-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.miles-provider-actions a{display:inline-flex;align-items:center;text-decoration:none;border:1px solid var(--line);background:var(--panel);color:var(--text);padding:8px 10px;border-radius:9px;font-size:11px;font-weight:800}.miles-provider-actions a:hover{border-color:var(--accent)}
     .miles-source-health{margin-top:10px}.miles-note strong{color:var(--text)}
     @media(max-width:1180px){.miles-search-grid{grid-template-columns:repeat(3,1fr)}}
-    @media(max-width:760px){.miles-search-grid{grid-template-columns:1fr 1fr}.miles-search-grid .miles-dest-field,.miles-search-grid .miles-period-cell,.miles-search-grid .miles-search-action{grid-column:1/-1}.miles-search-btn{width:100%}}
+    @media(max-width:760px){.miles-search-grid{grid-template-columns:1fr 1fr}.miles-search-grid .miles-airport-field,.miles-search-grid .miles-period-cell,.miles-search-grid .miles-search-action{grid-column:1/-1}.miles-search-btn{width:100%}}
   `;
   document.head.appendChild(style);
 
@@ -71,8 +75,8 @@
     </div>
     <section class="panel">
       <div class="miles-search-grid">
-        <div><label>Origem</label><select id="milesOrigin"></select></div>
-        <div class="miles-dest-field"><label>Destino</label><input id="milesDestination" list="milesDestinations" placeholder="Ex.: Miami ou MIA"><datalist id="milesDestinations"></datalist></div>
+        <div class="miles-airport-field"><label>Origem</label><input id="milesOrigin" placeholder="Ex.: Orlando, MCO ou aeroporto" autocomplete="off" spellcheck="false"><div id="milesOriginSuggest" class="miles-airport-suggest" hidden></div></div>
+        <div class="miles-airport-field"><label>Destino</label><input id="milesDestination" placeholder="Ex.: Miami, MIA ou aeroporto" autocomplete="off" spellcheck="false"><div id="milesDestinationSuggest" class="miles-airport-suggest" hidden></div></div>
         <div><label>Período</label><select id="milesPeriodMode"><option value="month">Mês inteiro</option><option value="range">Intervalo de datas</option></select></div>
         <div class="miles-period-cell"><div id="milesPeriodMonth"><label>Mês a pesquisar</label><input id="milesMonthValue" type="month"></div><div id="milesPeriodRange" hidden><label>Datas</label><div class="miles-period-range"><input id="milesRangeStart" type="date" title="Data inicial"><input id="milesRangeEnd" type="date" title="Data final"></div></div></div>
         <div><label>Programa</label><select id="milesProgram"><option value="">Todos os programas</option><option value="Smiles">Smiles</option><option value="LATAM Pass">LATAM Pass</option><option value="Azul Fidelidade">Azul Fidelidade</option><option value="AAdvantage">American Airlines · AAdvantage</option></select></div>
@@ -101,46 +105,127 @@
   `;
   app.appendChild(panel);
 
-  function cloneCatalogs(){
-    const paidOrigin=q('#monthOrigin'), paidDest=q('#monthDestinations'), origin=q('#milesOrigin'), dest=q('#milesDestinations');
-    if (paidOrigin && paidOrigin.options.length) origin.innerHTML=paidOrigin.innerHTML;
-    else origin.innerHTML='<option value="GRU">GRU · Guarulhos</option><option value="CGH">CGH · São Paulo / Congonhas</option><option value="VCP">VCP · Campinas / Viracopos</option><option value="GIG">GIG · Rio de Janeiro / Galeão</option><option value="DOU">DOU · Dourados</option>';
-    if (paidDest && paidDest.children.length) dest.innerHTML=paidDest.innerHTML;
+  function fallbackAirports(){
+    const out=[],seen=new Set();
+    const add=(code,name,city='')=>{code=String(code||'').trim().toUpperCase();if(!/^[A-Z]{3}$/.test(code)||seen.has(code))return;seen.add(code);out.push({code,name:String(name||'').trim(),city:String(city||name||'').trim(),state:'',country:''});};
+    const paidOrigin=q('#monthOrigin');
+    if(paidOrigin)for(const opt of paidOrigin.options)add(optionCode(opt),opt.textContent||opt.label||'',opt.textContent||opt.label||'');
+    const paidDest=q('#monthDestinations');
+    if(paidDest)for(const opt of paidDest.options)add(optionCode(opt),opt.value||opt.label||opt.textContent||'',opt.value||opt.label||opt.textContent||'');
+    [['GRU','Guarulhos'],['CGH','São Paulo / Congonhas'],['VCP','Campinas / Viracopos'],['GIG','Rio de Janeiro / Galeão'],['MCO','Orlando'],['MIA','Miami'],['JFK','Nova York / JFK'],['EWR','Nova York / Newark']].forEach(x=>add(x[0],x[1],x[1]));
+    return out;
   }
 
-  function defaults(){
-    const now=new Date(),pad=n=>String(n).padStart(2,'0'),monthKey=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}`,dateKey=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
-    const monthInput=q('#milesMonthValue');
-    monthInput.min=monthKey(new Date(now.getFullYear(),now.getMonth(),1));
-    monthInput.max=monthKey(new Date(now.getFullYear(),now.getMonth()+18,1));
-    monthInput.value=monthKey(new Date(now.getFullYear(),now.getMonth()+1,1));
-    const defaultRangeStart=new Date(now.getFullYear(),now.getMonth()+1,10),defaultRangeEnd=new Date(now.getFullYear(),now.getMonth()+1,15);
-    const start=q('#milesRangeStart'),end=q('#milesRangeEnd');
-    start.min=dateKey(new Date(now.getFullYear(),now.getMonth(),now.getDate()+1));
-    start.max=dateKey(new Date(now.getFullYear(),now.getMonth()+19,0));
-    start.value=dateKey(defaultRangeStart);
-    end.min=start.min;end.max=start.max;end.value=dateKey(defaultRangeEnd);
+  function setWorldAirports(list){
+    const seen=new Set(),clean=[];
+    for(const raw of (Array.isArray(list)?list:[])){
+      const code=String(raw.code||raw.iata||'').trim().toUpperCase();
+      if(!/^[A-Z]{3}$/.test(code)||seen.has(code))continue;
+      seen.add(code);
+      clean.push({code,name:String(raw.name||'').trim(),city:String(raw.city||'').trim(),state:String(raw.state||'').trim(),country:String(raw.country||'').trim().toUpperCase()});
+    }
+    worldAirports=clean.length?clean:fallbackAirports();
+    worldAirportByCode=new Map(worldAirports.map(a=>[a.code,a]));
+  }
+
+  function airportDisplay(a){
+    const place=a.city||a.name||a.code,name=a.name&&norm(a.name)!==norm(place)?` — ${a.name}`:'',where=[a.state,a.country].filter(Boolean).join(', ');
+    return `${place}${name}${where?` · ${where}`:''} (${a.code})`;
+  }
+
+  function airportMatches(term){
+    const n=norm(term);if(!n)return[];
+    const source=worldAirports.length?worldAirports:fallbackAirports();
+    return source.map(a=>{
+      const c=norm(a.code),city=norm(a.city),name=norm(a.name),state=norm(a.state),country=norm(a.country),hay=`${c} ${city} ${name} ${state} ${country}`;
+      let score=99;
+      if(c===n)score=0;else if(c.startsWith(n))score=1;else if(city===n)score=2;else if(city.startsWith(n))score=3;else if(name.startsWith(n))score=4;else if(state.startsWith(n)||country===n)score=5;else if(hay.includes(n))score=6;
+      return{a,score};
+    }).filter(x=>x.score<99).sort((x,y)=>x.score-y.score||String(x.a.city||x.a.name).localeCompare(String(y.a.city||y.a.name),'pt-BR')).slice(0,12).map(x=>x.a);
+  }
+
+  function airportInput(kind){return q(kind==='origin'?'#milesOrigin':'#milesDestination');}
+  function airportBox(kind){return q(kind==='origin'?'#milesOriginSuggest':'#milesDestinationSuggest');}
+
+  function hideAirportSuggestions(kind){
+    const box=airportBox(kind);
+    if(box){box.hidden=true;box.innerHTML='';}
+    airportSuggestIndex[kind]=-1;
+  }
+
+  function chooseAirport(kind,a){
+    const input=airportInput(kind);if(!input)return;
+    input.value=airportDisplay(a);
+    input.dataset.iata=a.code;
+    hideAirportSuggestions(kind);
+  }
+
+  function renderAirportSuggestions(kind,term){
+    const box=airportBox(kind);if(!box)return;
+    const matches=airportMatches(term);airportSuggestIndex[kind]=-1;
+    if(!String(term||'').trim()){hideAirportSuggestions(kind);return;}
+    if(!matches.length){box.innerHTML='<div class="miles-airport-loading">Nenhum aeroporto encontrado. Digite o código IATA de 3 letras ou tente o nome da cidade.</div>';box.hidden=false;return;}
+    box.innerHTML=matches.map((a,i)=>`<button type="button" class="miles-airport-option" data-airport-index="${i}" data-airport-code="${esc(a.code)}"><b>${esc(a.code)} · ${esc(a.city||a.name||a.code)}</b><small>${esc([a.name,a.state,a.country].filter(Boolean).join(' · '))}</small></button>`).join('');
+    box.hidden=false;
+    box.querySelectorAll('.miles-airport-option').forEach((el,i)=>el.addEventListener('pointerdown',ev=>{ev.preventDefault();chooseAirport(kind,matches[i]);}));
+  }
+
+  async function loadWorldAirports(){
+    setWorldAirports(fallbackAirports());
+    for(const kind of ['origin','destination']){const input=airportInput(kind);if(input)input.title='Carregando base mundial de aeroportos…';}
+    try{
+      const r=await fetch(AIRPORTS_WORLD,{cache:'force-cache'});if(!r.ok)throw new Error('HTTP '+r.status);
+      const list=await r.json();if(!Array.isArray(list)||list.length<5000)throw new Error('base incompleta');
+      setWorldAirports(list);
+      for(const kind of ['origin','destination']){const input=airportInput(kind);if(input)input.title=`Base mundial carregada: ${worldAirports.length.toLocaleString('pt-BR')} aeroportos com IATA`;}
+    }catch(err){
+      for(const kind of ['origin','destination']){const input=airportInput(kind);if(input)input.title='Base mundial indisponível; usando a lista principal de aeroportos.';}
+      console.warn('miles-airport-database',err);
+    }
+  }
+
+  function setupAirportAutocomplete(kind){
+    const input=airportInput(kind),box=airportBox(kind);if(!input||!box)return;
+    input.addEventListener('input',()=>{input.dataset.iata='';renderAirportSuggestions(kind,input.value);});
+    input.addEventListener('focus',()=>{if(input.value.trim())renderAirportSuggestions(kind,input.value);});
+    input.addEventListener('blur',()=>setTimeout(()=>hideAirportSuggestions(kind),140));
+    input.addEventListener('keydown',ev=>{
+      const opts=[...box.querySelectorAll('.miles-airport-option')];
+      if(ev.key==='Escape'){hideAirportSuggestions(kind);return;}
+      if(!opts.length)return;
+      if(ev.key==='ArrowDown'||ev.key==='ArrowUp'){
+        ev.preventDefault();
+        airportSuggestIndex[kind]=ev.key==='ArrowDown'?Math.min(opts.length-1,airportSuggestIndex[kind]+1):Math.max(0,airportSuggestIndex[kind]<0?opts.length-1:airportSuggestIndex[kind]-1);
+        opts.forEach((o,i)=>o.classList.toggle('active',i===airportSuggestIndex[kind]));
+        opts[airportSuggestIndex[kind]]?.scrollIntoView({block:'nearest'});
+        return;
+      }
+      if(ev.key==='Enter'&&airportSuggestIndex[kind]>=0){
+        ev.preventDefault();
+        const code=opts[airportSuggestIndex[kind]]?.dataset.airportCode,a=worldAirportByCode.get(code);
+        if(a)chooseAirport(kind,a);
+      }
+    });
   }
 
   function optionCode(o){
     const value=String(o?.value||'').trim(),label=String(o?.label||o?.textContent||'').trim();
     if(/^[A-Z]{3}$/i.test(value))return value.toUpperCase();
     if(/^[A-Z]{3}$/i.test(label))return label.toUpperCase();
-    const m=(value+' '+label).match(/\b([A-Z]{3})\b/i);
+    const m=(value+' '+label).match(/\\b([A-Z]{3})\\b/i);
     return m?m[1].toUpperCase():'';
   }
 
-  function resolveDestination(raw){
+  function resolveAirport(kind,raw){
+    const input=airportInput(kind),selected=String(input?.dataset?.iata||'').toUpperCase();
+    if(/^[A-Z]{3}$/.test(selected))return selected;
     const value=String(raw||'').trim();
-    const code=value.match(/\(([A-Z]{3})\)\s*$/i);
-    if(code)return code[1].toUpperCase();
     if(/^[a-z]{3}$/i.test(value))return value.toUpperCase();
-    const opts=[...q('#milesDestinations').options],n=norm(value);
-    const exact=opts.find(o=>norm(o.value)===n||norm(o.label||o.textContent)===n);
-    if(exact)return optionCode(exact);
-    const partial=opts.filter(o=>norm(o.value).includes(n)||norm(o.label||o.textContent).includes(n));
-    const codes=[...new Set(partial.map(optionCode).filter(Boolean))];
-    return codes.length===1?codes[0]:'';
+    const suffix=value.match(/\\(([A-Z]{3})\\)\\s*$/i);
+    if(suffix)return suffix[1].toUpperCase();
+    const n=norm(value);
+    const exact=(worldAirports.length?worldAirports:fallbackAirports()).filter(a=>norm(a.city)===n||norm(a.name)===n||norm(airportDisplay(a))===n);
+    return exact.length===1?exact[0].code:'';
   }
 
   function periodChanged(){const range=q('#milesPeriodMode').value==='range';q('#milesPeriodMonth').hidden=range;q('#milesPeriodRange').hidden=!range;}
@@ -148,8 +233,8 @@
   function currentQuery(){
     const period_mode=q('#milesPeriodMode').value;
     return {
-      origin:q('#milesOrigin').value.trim().toUpperCase(),
-      destination:resolveDestination(q('#milesDestination').value),
+      origin:resolveAirport('origin',q('#milesOrigin').value),
+      destination:resolveAirport('destination',q('#milesDestination').value),
       period_mode,
       month:q('#milesMonthValue').value,
       start_date:period_mode==='range'?q('#milesRangeStart').value:'',
@@ -160,8 +245,8 @@
   }
 
   function validate(x){
-    if(!/^[A-Z]{3}$/.test(x.origin))return 'Escolha uma origem válida.';
-    if(!/^[A-Z]{3}$/.test(x.destination))return 'Escolha uma cidade/aeroporto válido, por exemplo Miami ou MIA.';
+    if(!/^[A-Z]{3}$/.test(x.origin))return 'Escolha um aeroporto de origem válido. Você pode digitar o código IATA ou o nome da cidade e selecionar o aeroporto sugerido.';
+    if(!/^[A-Z]{3}$/.test(x.destination))return 'Escolha um aeroporto de destino válido. Você pode digitar o código IATA ou o nome da cidade e selecionar o aeroporto sugerido.';
     if(x.origin===x.destination)return 'Origem e destino não podem ser iguais.';
     if(x.period_mode==='month'&&!/^20\d\d-(0[1-9]|1[0-2])$/.test(x.month))return 'Escolha o mês da viagem.';
     if(x.period_mode==='range'&&(!x.start_date||!x.end_date||x.end_date<x.start_date))return 'Informe um intervalo de datas válido.';
@@ -356,7 +441,7 @@
   function setFocus(on){document.body.classList.toggle('flight-search-focus',!!on);}
   function activate(){document.querySelectorAll('#flightTabs .tab').forEach(x=>x.classList.remove('active'));btn.classList.add('active');hideBuiltIn();panel.hidden=false;setFocus(true);render(activeQuery);}
 
-  cloneCatalogs();defaults();periodChanged();renderProviderActions(null);renderSources();loadConfig();loadData();
+  setWorldAirports(fallbackAirports());setupAirportAutocomplete('origin');setupAirportAutocomplete('destination');const paidOrigin=q('#monthOrigin');if(paidOrigin&&paidOrigin.value){const code=String(paidOrigin.value).trim().toUpperCase();const a=fallbackAirports().find(x=>x.code===code);if(a)chooseAirport('origin',a);else q('#milesOrigin').value=code;}loadWorldAirports();defaults();periodChanged();renderProviderActions(null);renderSources();loadConfig();loadData();
   q('#milesPeriodMode').addEventListener('change',periodChanged);
   q('#milesRangeStart').addEventListener('change',()=>{const start=q('#milesRangeStart'),end=q('#milesRangeEnd');end.min=start.value||start.min;if(end.value<start.value)end.value=start.value;});
   q('#milesSearchButton').addEventListener('click',e=>{e.preventDefault();search().catch(err=>{const status=q('#milesStatus');status.className='miles-status bad';status.textContent='Não foi possível carregar a consulta: '+String(err?.message||err);});});
