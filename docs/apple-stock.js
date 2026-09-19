@@ -222,7 +222,7 @@
     const location=qs('#appleLocation').value.trim()||'33647';
     setStatus('🔎 Consultando estoque oficial da Apple…','live');
     try{
-      const data=await jsonpAvailability(location,15000);
+      const data=await jsonpAvailability(location,45000);
       if(!active)return;
       if(!data||data.ok!==true){
         if(data&&data.blocked){
