@@ -1,13 +1,13 @@
 // Monitor de disponibilidade Apple Store para retirada em loja.
 const APPLE_PRODUCTS = [
   { storage: '256GB', part_number: 'MJW64LL/A', url: 'https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-256gb-burgundy-unlocked' },
-  { storage: '512GB', part_number: '', url: 'https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-512gb-burgundy-unlocked' }
+  { storage: '512GB', part_number: '', url: 'https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-512gb-burgundy' }
 ];
 
 function appleResolvePartNumber_(product) {
   if (product.part_number) return product.part_number;
   const cache = CacheService.getScriptCache();
-  const key = 'APPLE_PART_' + product.storage;
+  const key = 'APPLE_PART_STRICT_' + product.storage;
   const cached = cache.get(key);
   if (cached) return cached;
   try {
@@ -17,19 +17,25 @@ function appleResolvePartNumber_(product) {
       headers: { 'User-Agent': 'Mozilla/5.0', 'Accept-Language': 'en-US,en;q=0.9' }
     });
     const html = response.getContentText();
-    const patterns = [
-      /"partNumber"\s*:\s*"([A-Z0-9]+LL\\\/A)"/i,
-      /"partNumber"\s*:\s*"([A-Z0-9]+LL\/A)"/i,
-      /"part_number"\s*:\s*"([A-Z0-9]+LL\\\/A)"/i,
-      /\b([A-Z0-9]{5,12}LL\/A)\b/i
-    ];
-    for (let i = 0; i < patterns.length; i++) {
-      const m = html.match(patterns[i]);
-      if (m && m[1]) {
-        const part = String(m[1]).replace('\\/', '/');
-        cache.put(key, part, 21600);
-        return part;
+    const wantedStorage = String(product.storage || '').toLowerCase();
+    const wantedColor = 'burgundy';
+    const candidates = [];
+    const partRe = /[A-Z0-9]{5,12}LL\\?\/A/gi;
+    let m;
+    while ((m = partRe.exec(html)) !== null) {
+      const part = String(m[0]).replace('\\/', '/');
+      const from = Math.max(0, m.index - 1200);
+      const to = Math.min(html.length, m.index + 1200);
+      const ctx = html.slice(from, to).toLowerCase();
+      if (ctx.indexOf(wantedStorage) >= 0 && ctx.indexOf(wantedColor) >= 0 &&
+          (ctx.indexOf('pro max') >= 0 || ctx.indexOf('6.9-inch') >= 0)) {
+        candidates.push(part);
       }
+    }
+    const unique = candidates.filter(function(v, i, a) { return a.indexOf(v) === i; });
+    if (unique.length === 1) {
+      cache.put(key, unique[0], 1800);
+      return unique[0];
     }
   } catch (err) {}
   return '';
@@ -139,7 +145,9 @@ function appleAvailability_(params) {
       const quoteNorm = quote.toLowerCase();
       const scheduledPickup = /available\s+(today|tomorrow)|ready\s+(today|tomorrow)|pickup.*(today|tomorrow)/i.test(quote);
       const explicitlyUnavailable = /currently\s+unavailable|not\s+available|unavailable/i.test(quoteNorm);
-      const available = !!availability && !explicitlyUnavailable && (
+      const identityText = [regular && regular.storePickupProductTitle, availability && availability.partNumber, product.storage, APPLE_PRODUCT_NAME].join(' ').toLowerCase();
+      const exactVariant = identityText.indexOf('512gb') < 0 || (identityText.indexOf('burgundy') >= 0 && (identityText.indexOf('pro max') >= 0 || identityText.indexOf('iphone 18') >= 0));
+      const available = exactVariant && !!availability && !explicitlyUnavailable && (
         pickupDisplay === 'available' ||
         scheduledPickup ||
         (selectionEnabled && pickupDisplay !== 'unavailable')
