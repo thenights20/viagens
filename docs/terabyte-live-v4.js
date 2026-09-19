@@ -170,31 +170,6 @@
 })();
 
 (() => {
-  const loadMiles = () => {
-    if (document.querySelector('script[data-miles-search]') || document.querySelector('#milesSearchPanel')) return;
-    const s = document.createElement('script');
-    s.src = './miles-search-v023.js?v=20260918-public-fallback-v023';
-    s.defer = true;
-    s.dataset.milesSearch = '1';
-    document.head.appendChild(s);
-  };
-
-  const existing = document.querySelector('script[data-flight-explorer]');
-  if (existing) {
-    if (document.querySelector('#flightMonthPanel')) loadMiles();
-    else existing.addEventListener('load', loadMiles, {once:true});
-    return;
-  }
-
-  const s = document.createElement('script');
-  s.src = './flight-explorer.js?v=20260914-resume-1';
-  s.defer = true;
-  s.dataset.flightExplorer = '1';
-  s.addEventListener('load', loadMiles, {once:true});
-  document.head.appendChild(s);
-})();
-
-(() => {
   if (document.querySelector('script[data-indigo-parking]') || document.querySelector('#indigoApp')) return;
   const s = document.createElement('script');
   s.src = './indigo-parking.js?v=20260918-availability-hunter-1';
