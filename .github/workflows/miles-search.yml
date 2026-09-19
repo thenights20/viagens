@@ -1,0 +1,156 @@
+name: Busca de milhas sob demanda
+run-name: "Milhas ${{ inputs.request_id }} · ${{ inputs.origin }} → ${{ inputs.destination }} · ${{ inputs.program || 'todos' }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      origin:
+        description: "Origem (IATA)"
+        required: true
+        default: "GRU"
+        type: string
+      destination:
+        description: "Destino (IATA)"
+        required: true
+        default: "MIA"
+        type: string
+      month:
+        description: "Mês base (YYYY-MM)"
+        required: true
+        default: "2026-10"
+        type: string
+      period_mode:
+        description: "Tipo de período"
+        required: false
+        default: "month"
+        type: choice
+        options: ["month", "range"]
+      start_date:
+        description: "Data inicial para intervalo"
+        required: false
+        default: ""
+        type: string
+      end_date:
+        description: "Data final para intervalo"
+        required: false
+        default: ""
+        type: string
+      program:
+        description: "Programa de milhas"
+        required: false
+        default: ""
+        type: string
+      cabin:
+        description: "Cabine"
+        required: false
+        default: "economy"
+        type: string
+      request_id:
+        description: "ID da solicitação"
+        required: false
+        default: "manual"
+        type: string
+
+concurrency:
+  group: miles-search-live
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Validar coletor
+        run: python -m py_compile miles-search/search.py
+
+      - name: Pesquisar disponibilidade em milhas
+        env:
+          MILES_ORIGIN: ${{ inputs.origin }}
+          MILES_DESTINATION: ${{ inputs.destination }}
+          MILES_MONTH: ${{ inputs.month }}
+          MILES_PERIOD_MODE: ${{ inputs.period_mode }}
+          MILES_START_DATE: ${{ inputs.start_date }}
+          MILES_END_DATE: ${{ inputs.end_date }}
+          MILES_PROGRAM: ${{ inputs.program }}
+          MILES_CABIN: ${{ inputs.cabin }}
+          MILES_REQUEST_ID: ${{ inputs.request_id }}
+          SEATS_AERO_API_KEY: ${{ secrets.SEATS_AERO_API_KEY }}
+        run: python miles-search/search.py
+
+      - name: Validar resultado
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(Path("docs/data/miles-search.json").read_text(encoding="utf-8"))
+          assert data.get("version") == "0.2.0"
+          assert data.get("status") in {"completed", "error"}
+          assert data.get("request_id")
+          assert isinstance(data.get("results"), list)
+          assert isinstance(data.get("sources"), dict)
+          request = data.get("request") or {}
+          assert request.get("origin") == "${{ inputs.origin }}"
+          assert request.get("destination") == "${{ inputs.destination }}"
+          for row in data.get("results") or []:
+              assert int(row["miles"]) > 0
+              assert row["origin"] == request["origin"]
+              assert row["destination"] == request["destination"]
+              assert row["program"] in {"Smiles", "Azul Fidelidade", "AAdvantage"}
+          print("Busca de milhas válida:", data["status"], data.get("result_count", 0))
+          PY
+
+      - name: Persistir resultado
+        run: |
+          git config user.name "miles-search-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/miles-search.json
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração para salvar."
+          else
+            git commit -m "data: salvar busca por milhas [skip ci]"
+            for tentativa in 1 2 3; do
+              git pull --rebase origin main && git push origin HEAD:main && break
+              echo "Conflito temporário ao salvar; tentativa $tentativa/3"
+              git rebase --abort >/dev/null 2>&1 || true
+              sleep 3
+            done
+          fi
+
+      - name: Resumo
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          data = json.loads(Path("docs/data/miles-search.json").read_text(encoding="utf-8"))
+          request = data.get("request") or {}
+          lines = [
+              "## Busca por milhas",
+              f"- ID: {data.get('request_id')}",
+              f"- Rota: {request.get('origin')} → {request.get('destination')}",
+              f"- Programa: {request.get('program') or 'Smiles + Azul Fidelidade + AAdvantage'}",
+              f"- Cabine: {request.get('cabin') or 'todas'}",
+              f"- Status: {data.get('status')}",
+              f"- Resultados: {data.get('result_count', 0)}",
+              "- Fonte automática: Seats.aero (dados de disponibilidade em cache).",
+              "- LATAM Pass permanece como consulta manual enquanto não houver fonte automatizada compatível."
+          ]
+          if data.get("error"):
+              lines.append(f"- Erro: {data['error']}")
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as fh:
+              fh.write("\n".join(lines) + "\n")
+          PY
