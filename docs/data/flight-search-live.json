@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-19T22:22:02.946489Z",
-  "updated_at": "2026-09-19T22:22:02.946489Z",
+  "generated_at": "2026-09-19T22:22:05.755226Z",
+  "updated_at": "2026-09-19T22:22:05.755226Z",
   "started_at": "2026-09-19T22:09:40.093953Z",
   "status": "running",
   "stage": "multisource",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 16836,
-    "processed_combinations": 2460,
-    "primary_completed": 2460,
+    "processed_combinations": 2472,
+    "primary_completed": 2472,
     "primary_total": 16836,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 448,
+    "priced_combinations": 449,
     "coverage_pct": 2.7,
     "lowest_price": 5323.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 448
+    "new": 449
   },
   "daily_min": [
     {
@@ -491,6 +491,38 @@
       "history_samples": 0,
       "previous_seen_at": null,
       "rank": 2
+    },
+    {
+      "origin": "CGH",
+      "destination": "MIA",
+      "departure_date": "2027-07-15",
+      "return_date": "2027-07-16",
+      "airline": "Gol, American",
+      "price": 5533.0,
+      "duration": "9h 45min",
+      "duration_minutes": 585,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 15] [18, 55]",
+      "arrival": "[2027, 7, 16] [5, 45]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-15+returning+2027-07-16&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 1,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-15+returning+2027-07-16&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=CGH&to=MIA&depart=2027-07-15&return=2027-07-16&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
     }
   ],
   "results": [
@@ -11931,6 +11963,38 @@
     {
       "origin": "CGH",
       "destination": "MIA",
+      "departure_date": "2027-07-15",
+      "return_date": "2027-07-16",
+      "airline": "Gol, American",
+      "price": 5533.0,
+      "duration": "9h 45min",
+      "duration_minutes": 585,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2027, 7, 15] [18, 55]",
+      "arrival": "[2027, 7, 16] [5, 45]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-15+returning+2027-07-16&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 1,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+MIA+on+2027-07-15+returning+2027-07-16&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=CGH&to=MIA&depart=2027-07-15&return=2027-07-16&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "CGH",
+      "destination": "MIA",
       "departure_date": "2027-07-01",
       "return_date": "2027-07-05",
       "airline": "Gol, American",
@@ -18323,7 +18387,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 2460,
+    "google": 2472,
     "ita": 0
   },
   "resume": {
@@ -18331,16 +18395,16 @@
     "window_minutes": 60,
     "cache_id": "4c7a475b121d289204ecffbf",
     "reused_combinations": 0,
-    "searched_this_run": 2460,
-    "remaining_this_run": 14376,
-    "reusable_now": 539,
-    "retryable_for_next_run": 16297,
-    "saved_records": 2460,
-    "saved_errors": 1921,
+    "searched_this_run": 2472,
+    "remaining_this_run": 14364,
+    "reusable_now": 540,
+    "retryable_for_next_run": 16296,
+    "saved_records": 2472,
+    "saved_errors": 1932,
     "checkpoint_path": "docs/data/flight-search-checkpoints/4c7a475b121d289204ecffbf.json"
   },
   "current_pair": {
     "departure_date": "2027-07-14",
-    "return_date": "2027-12-20"
+    "return_date": "2027-12-31"
   }
 }
