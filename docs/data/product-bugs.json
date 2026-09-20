@@ -1,26 +1,26 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-09-20T19:27:04.183467Z",
+  "generated_at": "2026-09-20T21:44:21.124212Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 26,
-  "strong_count": 1,
-  "critical_count": 1,
-  "confirmed_count": 1,
+  "active_count": 27,
+  "strong_count": 2,
+  "critical_count": 2,
+  "confirmed_count": 2,
   "sensor_bug_count": 0,
-  "scanner_count": 35,
+  "scanner_count": 2,
   "queries_this_run": [
-    "galaxy s ultra"
+    "playstation 5"
   ],
   "source_health": {
-    "Mercado Livre": {
+    "Magalu": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     },
-    "Magalu": {
+    "Mercado Livre": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
@@ -36,24 +36,47 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 35,
-      "candidates_seen": 40,
+      "items": 2,
+      "candidates_seen": 2,
       "message": "scanner rápido",
       "errors": []
     }
   },
   "validation_errors": [
-    "Amazon Brasil · Caneta Stylus S Pen Compatível Galaxy S24 Ultra S23 S22: preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta de reposição S25 Ultra S para Samsung Galaxy S25 Ultra 5G todas as versões, caneta Stylus Galaxy S25 Ultra + pontas de substituição (cinza claro): preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta de reposição S25 Ultra S para Samsung Galaxy S25 Ultra 5G todas as versões, caneta Stylus Galaxy S25 Ultra + pontas de substituição (cinza claro): preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta de reposição S25 Ultra S para Samsung Galaxy S25 Ultra 5G todas as versões, caneta Stylus Galaxy S25 Ultra + pontas de substituição (cinza claro): preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta de substituição para Galaxy S25 Ultra S para Galaxy S25 Ultra Stylus, caneta de reposição S25 Ultra para Galaxy S25 Ultra 5G 17.5 cm todas as versões S Pen, EJ-PS938BBEGUJ: preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta de reposição S25 Ultra S para Samsung Galaxy S25 Ultra 5G todas as versões, caneta Stylus Galaxy S25 Ultra + pontas de substituição (cinza claro): preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta de substituição para Galaxy S25 Ultra S para Galaxy S25 Ultra Stylus, caneta de reposição S25 Ultra para Galaxy S25 Ultra 5G 17.5 cm todas as versões S Pen, EJ-PS938BBEGUJ: preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta de substituição para Galaxy S25 Ultra S para Galaxy S25 Ultra Stylus, caneta de reposição S25 Ultra para Galaxy S25 Ultra 5G 17.5 cm todas as versões S Pen, EJ-PS938BBEGUJ: preço não apareceu novamente na página",
-    "Amazon Brasil · Galaxy S25 Ultra S Pen Replacement Compatible for Galaxy S25 Ultra 5G All Versions SPen,EJ-PS938BBEGUJ with Eject Pin(Light Silver): preço não apareceu novamente na página"
+    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Branco): preço não apareceu novamente na página"
   ],
   "bugs": [
+    {
+      "source": "Amazon Brasil",
+      "store_name": "Amazon Brasil",
+      "title": "Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Preto)",
+      "price": 28.9,
+      "original_price": null,
+      "url": "https://www.amazon.com.br/Stand-Vertical-Compativel-Playstation-Preto/dp/B0D23TYYQP/ref=sr_1_43",
+      "search_query": "playstation 5",
+      "available": true,
+      "trusted": false,
+      "revalidated": true,
+      "collector": "fast-market-scan",
+      "bug_score": 100,
+      "bug_status": "🚨 BUG PROVÁVEL",
+      "category_rule": "PlayStation 5",
+      "category": "Consoles",
+      "baseline_price": 2400.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 98.8,
+      "savings": 2371.1,
+      "reasons": [
+        "99% abaixo de piso conservador da categoria",
+        "preço impossível para a faixa de PlayStation 5",
+        "preço reaberto e confirmado"
+      ],
+      "verification_note": "preço confirmado; vendedor precisa conferência manual",
+      "first_seen": "2026-09-20T21:44:21.124212Z",
+      "last_seen": "2026-09-20T21:44:21.124212Z",
+      "sightings": 1,
+      "fresh": true
+    },
     {
       "source": "Amazon Brasil",
       "store_name": "Amazon Brasil",
