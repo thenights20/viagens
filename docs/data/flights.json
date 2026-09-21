@@ -1,6 +1,6 @@
 {
   "version": "0.2.0",
-  "generated_at": "2026-09-21T05:26:43.121581Z",
+  "generated_at": "2026-09-21T11:05:55.053069Z",
   "source": "Google Flights via fast-flights + Swoop",
   "algorithm": "Radar robusto: mediana + MAD + percentis + z-score + booking window + histórico + revalidação",
   "origin_count": 11,
@@ -9,7 +9,7 @@
   "route_count": 545,
   "deal_count": 220,
   "strong_deal_count": 101,
-  "new_alert_count": 1,
+  "new_alert_count": 0,
   "origins": [
     {
       "code": "DOU",
@@ -11010,62 +11010,13 @@
       "record": true
     }
   ],
-  "new_alerts": [
-    {
-      "origin": "GIG",
-      "destination": "FOR",
-      "departure_date": "2027-03-20",
-      "return_date": "2027-03-24",
-      "airline": "LATAM",
-      "price": 1175.0,
-      "duration": "3h 10min",
-      "duration_minutes": 190,
-      "stops": "Direto",
-      "stops_count": 0,
-      "departure": "[2027, 3, 20] [5, 10]",
-      "arrival": "[2027, 3, 20] [8, 20]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+FOR+on+2027-03-20+returning+2027-03-24",
-      "provider": "fast-flights",
-      "origin_name": "Rio de Janeiro / Galeão",
-      "destination_name": "Fortaleza",
-      "observed_at": "2026-09-21T05:26:43.121581Z",
-      "scan_id": "20260921T052643Z-63",
-      "days_before_departure": 180,
-      "booking_bucket": "61+",
-      "departure_season": "M03",
-      "trip_days": 4,
-      "deal_score": 73,
-      "status": "🔥 DEAL",
-      "baseline_price": 1308.0,
-      "baseline_kind": "histórico próprio",
-      "discount_pct": 10.2,
-      "savings": 133.0,
-      "percentile": 0.0,
-      "z_score": -3.39,
-      "history_count": 6,
-      "history_days": 1,
-      "p05": 1308.0,
-      "p10": 1308.0,
-      "p20": 1308.0,
-      "p30": 1308.0,
-      "p50": 1308.0,
-      "lowest_observed": 1308.0,
-      "is_new_low": true,
-      "near_historical_low": true,
-      "confirmation": "segunda implementação confirmou",
-      "baseline_scope": "rota + antecedência 61+",
-      "checked_price": 1175.0,
-      "confirmation_detail": "second_collector",
-      "new_alert": true
-    }
-  ],
+  "new_alerts": [],
   "scan": {
-    "scan_number": 63,
-    "scan_id": "20260921T052643Z-63",
+    "scan_number": 64,
+    "scan_id": "20260921T110555Z-64",
     "origin_codes": [
-      "GIG",
-      "TJL",
-      "ARU"
+      "PPB",
+      "MII"
     ],
     "destination_codes": [
       "GIG",
@@ -11076,23 +11027,21 @@
       "FOR"
     ],
     "date_profile": "datas distribuídas até ~9 meses",
-    "queries": 170,
-    "regular_results": 78,
-    "discovery_results": 41,
-    "fallback_results": 16,
-    "results": 119,
-    "revalidated": 4,
-    "errors": 9
+    "queries": 120,
+    "regular_results": 42,
+    "discovery_results": 11,
+    "fallback_results": 12,
+    "results": 53,
+    "revalidated": 0,
+    "errors": 7
   },
   "errors": [
-    "ARU-VIX 2027-06-18/2027-06-26: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "ARU-REC 2026-09-28/2026-10-06: fast-flights: Google document has no flight data script",
-    "ARU-SSA 2027-03-20/2027-03-24: fast-flights: Google document has no flight data script",
-    "ARU-SSA 2027-03-20/2027-03-24: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "ARU-SSA 2027-06-18/2027-06-22: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "ARU-REC 2027-06-18/2027-06-26: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "ARU-FOR 2026-09-28/2026-10-06: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "ARU-FOR 2027-06-18/2027-06-26: fast-flights: Google document has no flight data script",
-    "ARU-FOR 2027-06-18/2027-06-22: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
+    "PPB-VIX 2027-03-20/2027-03-28: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-REC 2027-03-20/2027-03-28: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-REC 2027-06-18/2027-06-26: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "MII-SSA 2027-06-18/2027-06-22: fast-flights: Google returned a provider error",
+    "MII-REC 2027-03-20/2027-03-28: fast-flights: Google returned a provider error",
+    "MII-FOR 2026-09-28/2026-10-06: fast-flights: Google returned a provider error",
+    "MII-FOR 2027-06-18/2027-06-26: fast-flights: Google returned a provider error"
   ]
 }
