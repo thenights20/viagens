@@ -1,6 +1,6 @@
 {
   "version": "0.2.0",
-  "generated_at": "2026-09-21T11:05:55.053069Z",
+  "generated_at": "2026-09-21T17:12:28.785788Z",
   "source": "Google Flights via fast-flights + Swoop",
   "algorithm": "Radar robusto: mediana + MAD + percentis + z-score + booking window + histórico + revalidação",
   "origin_count": 11,
@@ -11012,36 +11012,32 @@
   ],
   "new_alerts": [],
   "scan": {
-    "scan_number": 64,
-    "scan_id": "20260921T110555Z-64",
+    "scan_number": 65,
+    "scan_id": "20260921T171228Z-65",
     "origin_codes": [
-      "PPB",
-      "MII"
+      "DOU",
+      "PMG",
+      "JTC"
     ],
     "destination_codes": [
-      "GIG",
-      "SDU",
-      "VIX",
-      "SSA",
-      "REC",
-      "FOR"
+      "NAT",
+      "MCZ",
+      "AJU",
+      "JPA",
+      "THE",
+      "SLZ"
     ],
     "date_profile": "datas distribuídas até ~9 meses",
-    "queries": 120,
-    "regular_results": 42,
-    "discovery_results": 11,
-    "fallback_results": 12,
-    "results": 53,
+    "queries": 180,
+    "regular_results": 58,
+    "discovery_results": 0,
+    "fallback_results": 58,
+    "results": 58,
     "revalidated": 0,
-    "errors": 7
+    "errors": 2
   },
   "errors": [
-    "PPB-VIX 2027-03-20/2027-03-28: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-REC 2027-03-20/2027-03-28: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-REC 2027-06-18/2027-06-26: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "MII-SSA 2027-06-18/2027-06-22: fast-flights: Google returned a provider error",
-    "MII-REC 2027-03-20/2027-03-28: fast-flights: Google returned a provider error",
-    "MII-FOR 2026-09-28/2026-10-06: fast-flights: Google returned a provider error",
-    "MII-FOR 2027-06-18/2027-06-26: fast-flights: Google returned a provider error"
+    "DOU-MCZ 2026-10-21/2026-10-25: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "DOU-SLZ 2026-09-28/2026-10-02: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
   ]
 }
