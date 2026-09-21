@@ -1,10 +1,10 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-09-21T10:42:36.816757Z",
+  "generated_at": "2026-09-21T17:03:21.962400Z",
   "source": "Páginas públicas oficiais GOL + Azul + LATAM",
-  "offer_count": 5,
-  "domestic_count": 2,
-  "international_count": 3,
+  "offer_count": 6,
+  "domestic_count": 4,
+  "international_count": 2,
   "source_count": 3,
   "responding_source_count": 2,
   "sources": {
@@ -18,7 +18,7 @@
     },
     "Azul": {
       "ok": true,
-      "items": 5,
+      "items": 6,
       "parsed": 10,
       "status": 200,
       "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos",
@@ -35,6 +35,22 @@
   "offers": [
     {
       "source": "Azul",
+      "origin": "CGH",
+      "origin_candidates": [
+        "CGH"
+      ],
+      "origin_name": "São Paulo",
+      "destination": "SDU",
+      "destination_name": "Rio de Janeiro",
+      "departure_date": "2027-02-25",
+      "return_date": null,
+      "trip_mode": "one_way",
+      "price": 274.05,
+      "scope": "domestic",
+      "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
+    },
+    {
+      "source": "Azul",
       "origin": "VCP",
       "origin_candidates": [
         "VCP"
@@ -42,10 +58,10 @@
       "origin_name": "Campinas",
       "destination": "NVT",
       "destination_name": "Navegantes",
-      "departure_date": "2026-11-25",
+      "departure_date": "2026-11-30",
       "return_date": null,
       "trip_mode": "one_way",
-      "price": 362.99,
+      "price": 380.34,
       "scope": "domestic",
       "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
     },
@@ -58,10 +74,26 @@
       "origin_name": "São Paulo",
       "destination": "REC",
       "destination_name": "Recife",
-      "departure_date": "2026-10-04",
+      "departure_date": "2027-01-31",
       "return_date": null,
       "trip_mode": "one_way",
-      "price": 395.38,
+      "price": 500.65,
+      "scope": "domestic",
+      "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
+    },
+    {
+      "source": "Azul",
+      "origin": "VCP",
+      "origin_candidates": [
+        "VCP"
+      ],
+      "origin_name": "Campinas",
+      "destination": "REC",
+      "destination_name": "Recife",
+      "departure_date": "2027-01-31",
+      "return_date": null,
+      "trip_mode": "one_way",
+      "price": 528.33,
       "scope": "domestic",
       "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
     },
@@ -88,28 +120,12 @@
         "VCP"
       ],
       "origin_name": "Campinas",
-      "destination": "FLL",
-      "destination_name": "Fort Lauderdale",
-      "departure_date": "2027-02-17",
-      "return_date": "2027-02-26",
-      "trip_mode": "round_trip",
-      "price": 4379.37,
-      "scope": "international",
-      "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
-    },
-    {
-      "source": "Azul",
-      "origin": "VCP",
-      "origin_candidates": [
-        "VCP"
-      ],
-      "origin_name": "Campinas",
       "destination": "MCO",
       "destination_name": "Orlando",
-      "departure_date": "2027-03-02",
-      "return_date": "2027-03-11",
+      "departure_date": "2027-02-17",
+      "return_date": "2027-03-05",
       "trip_mode": "round_trip",
-      "price": 4452.52,
+      "price": 4456.86,
       "scope": "international",
       "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
     }
