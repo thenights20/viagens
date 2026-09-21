@@ -1,9 +1,9 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-09-21T01:41:02.275218Z",
+  "generated_at": "2026-09-21T07:09:53.431678Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 11,
+  "active_count": 16,
   "strong_count": 2,
   "critical_count": 2,
   "confirmed_count": 2,
@@ -14,14 +14,14 @@
     "painel tv"
   ],
   "source_health": {
-    "Mercado Livre": {
+    "Magalu": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     },
-    "Magalu": {
+    "Mercado Livre": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
@@ -38,57 +38,25 @@
     "Amazon Brasil": {
       "ok": true,
       "items": 35,
-      "candidates_seen": 40,
+      "candidates_seen": 43,
       "message": "scanner rápido",
       "errors": []
     }
   },
   "validation_errors": [
+    "Amazon Brasil · Painel Egeo Frisado Para Quarto Ou Sala Ideal Para TV De Até 50 Polegadas (HANOVER 2): preço não apareceu novamente na página",
     "Amazon Brasil · Painel de TV Noruega Moderno Até 50 Polegadas com Prateleira Decorativa Cor: Off/Freijo: preço não apareceu novamente na página",
     "Amazon Brasil · Painel Egeo Frisado Para Quarto Ou Sala Ideal Para TV De Até 50 Polegadas (HANOVER 2): preço não apareceu novamente na página",
-    "Amazon Brasil · Painel Egeo Frisado Para Quarto Ou Sala Ideal Para TV De Até 50 Polegadas (HANOVER 2): preço não apareceu novamente na página",
-    "Amazon Brasil · Painel TV até 55 Polegadas Matt com porta Off white/Nature - JM Casa dos Moveis: preço não apareceu novamente na página",
-    "Amazon Brasil · Rack com Painel Tv 65\" Retrô Flórida Up Multimóveis Mp1042 Branco/natural: preço não apareceu novamente na página"
+    "Amazon Brasil · Painel TV até 55 Polegadas Matt com porta Off white/Nature - JM Casa dos Moveis: preço não apareceu novamente na página"
   ],
   "bugs": [
-    {
-      "source": "Amazon Brasil",
-      "store_name": "Amazon Brasil",
-      "title": "Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Preto)",
-      "price": 28.9,
-      "original_price": null,
-      "url": "https://www.amazon.com.br/Stand-Vertical-Compativel-Playstation-Preto/dp/B0D23TYYQP/ref=sr_1_43",
-      "search_query": "playstation 5",
-      "available": true,
-      "trusted": false,
-      "revalidated": true,
-      "collector": "fast-market-scan",
-      "bug_score": 100,
-      "bug_status": "🚨 BUG PROVÁVEL",
-      "category_rule": "PlayStation 5",
-      "category": "Consoles",
-      "baseline_price": 2400.0,
-      "baseline_kind": "piso conservador da categoria",
-      "drop_pct": 98.8,
-      "savings": 2371.1,
-      "reasons": [
-        "99% abaixo de piso conservador da categoria",
-        "preço impossível para a faixa de PlayStation 5",
-        "preço reaberto e confirmado"
-      ],
-      "verification_note": "preço confirmado; vendedor precisa conferência manual",
-      "first_seen": "2026-09-20T21:44:21.124212Z",
-      "last_seen": "2026-09-20T21:44:21.124212Z",
-      "sightings": 1,
-      "fresh": true
-    },
     {
       "source": "Amazon Brasil",
       "store_name": "Amazon Brasil",
       "title": "Painel Egeo Frisado Para Quarto Ou Sala Ideal Para TV De Até 50 Polegadas (HANOVER 2)",
       "price": 199.9,
       "original_price": null,
-      "url": "https://www.amazon.com.br/Painel-Frisado-Quarto-Polegadas-HANOVER/dp/B0H9M1F29Y/ref=cs_sr_dp_2",
+      "url": "https://www.amazon.com.br/Painel-Frisado-Quarto-Polegadas-HANOVER/dp/B0H7SZWRXC/ref=cs_sr_dp_1",
       "search_query": "painel tv",
       "available": true,
       "trusted": false,
@@ -108,8 +76,39 @@
         "preço reaberto e confirmado"
       ],
       "verification_note": "preço confirmado; vendedor precisa conferência manual",
-      "first_seen": "2026-09-21T01:41:02.275218Z",
-      "last_seen": "2026-09-21T01:41:02.275218Z",
+      "first_seen": "2026-09-21T07:09:53.431678Z",
+      "last_seen": "2026-09-21T07:09:53.431678Z",
+      "sightings": 1,
+      "fresh": true
+    },
+    {
+      "source": "Amazon Brasil",
+      "store_name": "Amazon Brasil",
+      "title": "Rack com Painel Tv 65\" Retrô Flórida Up Multimóveis Mp1042 Branco/natural",
+      "price": 377.99,
+      "original_price": 449.99,
+      "url": "https://www.amazon.com.br/Painel-Fl%C3%B3rida-Multim%C3%B3veis-Mp1042-natural/dp/B0BL8BMN8B/ref=sr_1_34",
+      "search_query": "painel tv",
+      "available": true,
+      "trusted": false,
+      "revalidated": true,
+      "collector": "fast-market-scan",
+      "bug_score": 97,
+      "bug_status": "🚨 BUG PROVÁVEL",
+      "category_rule": "TV 65 polegadas",
+      "category": "TVs",
+      "baseline_price": 1800.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 79.0,
+      "savings": 1422.01,
+      "reasons": [
+        "79% abaixo de piso conservador da categoria",
+        "preço impossível para a faixa de TV 65 polegadas",
+        "preço reaberto e confirmado"
+      ],
+      "verification_note": "preço confirmado; vendedor precisa conferência manual",
+      "first_seen": "2026-09-21T07:09:53.431678Z",
+      "last_seen": "2026-09-21T07:09:53.431678Z",
       "sightings": 1,
       "fresh": true
     },
@@ -138,9 +137,9 @@
         "muito abaixo do piso conservador de TV 50 polegadas"
       ],
       "first_seen": "2026-09-21T01:41:02.275218Z",
-      "last_seen": "2026-09-21T01:41:02.275218Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-21T07:09:53.431678Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "source": "Amazon Brasil",
@@ -167,9 +166,9 @@
         "muito abaixo do piso conservador de TV 50 polegadas"
       ],
       "first_seen": "2026-09-21T01:41:02.275218Z",
-      "last_seen": "2026-09-21T01:41:02.275218Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-21T07:09:53.431678Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "source": "Amazon Brasil",
@@ -177,7 +176,7 @@
       "title": "Estante para TV e Home Theater até 55 Polegadas 166cmx155cm Nichos 2 Portas Cinamomo Off White Havana Cinamomo/Off White",
       "price": 354.99,
       "original_price": 423.51,
-      "url": "https://www.amazon.com.br/Estante-Theater-Polegadas-166cmx155cm-Cinamomo/dp/B0GXWW3S36/ref=sr_1_38",
+      "url": "https://www.amazon.com.br/Estante-Theater-Polegadas-166cmx155cm-Cinamomo/dp/B0GXWW3S36/ref=sr_1_37",
       "search_query": "estante tv",
       "available": true,
       "trusted": false,
@@ -195,8 +194,8 @@
         "75% abaixo de piso conservador da categoria",
         "muito abaixo do piso conservador de TV 55 polegadas"
       ],
-      "first_seen": "2026-09-21T01:41:02.275218Z",
-      "last_seen": "2026-09-21T01:41:02.275218Z",
+      "first_seen": "2026-09-21T07:09:53.431678Z",
+      "last_seen": "2026-09-21T07:09:53.431678Z",
       "sightings": 1,
       "fresh": true
     },
@@ -206,7 +205,7 @@
       "title": "Estante para TV e Home Theater até 55 Polegadas 166cmx155cm Nichos 2 Portas Havana Cinamomo/Grafite",
       "price": 356.98,
       "original_price": 423.51,
-      "url": "https://www.amazon.com.br/Estante-Theater-Polegadas-166cmx155cm-Cinamomo/dp/B0GXX1C2J1/ref=sr_1_28",
+      "url": "https://www.amazon.com.br/Estante-Theater-Polegadas-166cmx155cm-Cinamomo/dp/B0GXX1C2J1/ref=sr_1_27",
       "search_query": "estante tv",
       "available": true,
       "trusted": false,
@@ -224,37 +223,8 @@
         "75% abaixo de piso conservador da categoria",
         "muito abaixo do piso conservador de TV 55 polegadas"
       ],
-      "first_seen": "2026-09-21T01:41:02.275218Z",
-      "last_seen": "2026-09-21T01:41:02.275218Z",
-      "sightings": 1,
-      "fresh": true
-    },
-    {
-      "source": "Amazon Brasil",
-      "store_name": "Amazon Brasil",
-      "title": "Estante para Tv até 55\" Multimóveis Denver Fg2473 Preta/lacca Fumê",
-      "price": 403.74,
-      "original_price": 499.99,
-      "url": "https://www.amazon.com.br/Estante-Multim%C3%B3veis-Denver-Fg2473-Preta/dp/B0B1BT9FDM/ref=sr_1_41",
-      "search_query": "estante tv",
-      "available": true,
-      "trusted": false,
-      "revalidated": false,
-      "collector": "fast-market-scan",
-      "bug_score": 66,
-      "bug_status": "🟢 SUSPEITO",
-      "category_rule": "TV 55 polegadas",
-      "category": "TVs",
-      "baseline_price": 1400.0,
-      "baseline_kind": "piso conservador da categoria",
-      "drop_pct": 71.2,
-      "savings": 996.26,
-      "reasons": [
-        "71% abaixo de piso conservador da categoria",
-        "muito abaixo do piso conservador de TV 55 polegadas"
-      ],
-      "first_seen": "2026-09-21T01:41:02.275218Z",
-      "last_seen": "2026-09-21T01:41:02.275218Z",
+      "first_seen": "2026-09-21T07:09:53.431678Z",
+      "last_seen": "2026-09-21T07:09:53.431678Z",
       "sightings": 1,
       "fresh": true
     },
@@ -283,9 +253,9 @@
         "muito abaixo do piso conservador de TV 55 polegadas"
       ],
       "first_seen": "2026-09-21T01:41:02.275218Z",
-      "last_seen": "2026-09-21T01:41:02.275218Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-21T07:09:53.431678Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "source": "Amazon Brasil",
@@ -312,9 +282,9 @@
         "muito abaixo do piso conservador de TV 55 polegadas"
       ],
       "first_seen": "2026-09-21T01:41:02.275218Z",
-      "last_seen": "2026-09-21T01:41:02.275218Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-21T07:09:53.431678Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "source": "Amazon Brasil",
@@ -341,7 +311,181 @@
         "muito abaixo do piso conservador de TV 55 polegadas"
       ],
       "first_seen": "2026-09-21T01:41:02.275218Z",
-      "last_seen": "2026-09-21T01:41:02.275218Z",
+      "last_seen": "2026-09-21T07:09:53.431678Z",
+      "sightings": 2,
+      "fresh": false
+    },
+    {
+      "source": "Amazon Brasil",
+      "store_name": "Amazon Brasil",
+      "title": "Estante para Tv até 55\" Multimóveis Denver Fg2473 Preta/lacca Fumê",
+      "price": 403.74,
+      "original_price": 499.99,
+      "url": "https://www.amazon.com.br/Estante-Multim%C3%B3veis-Denver-Fg2473-Preta/dp/B0B1BT9FDM/ref=sr_1_33",
+      "search_query": "estante tv",
+      "available": true,
+      "trusted": false,
+      "revalidated": false,
+      "collector": "fast-market-scan",
+      "bug_score": 66,
+      "bug_status": "🟢 SUSPEITO",
+      "category_rule": "TV 55 polegadas",
+      "category": "TVs",
+      "baseline_price": 1400.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 71.2,
+      "savings": 996.26,
+      "reasons": [
+        "71% abaixo de piso conservador da categoria",
+        "muito abaixo do piso conservador de TV 55 polegadas"
+      ],
+      "first_seen": "2026-09-21T07:09:53.431678Z",
+      "last_seen": "2026-09-21T07:09:53.431678Z",
+      "sightings": 1,
+      "fresh": true
+    },
+    {
+      "source": "Amazon Brasil",
+      "store_name": "Amazon Brasil",
+      "title": "Estante Tv 55\" e 2 portas Denver Multimóveis V2473 Branca/lacca Fumê",
+      "price": 403.74,
+      "original_price": 499.99,
+      "url": "https://www.amazon.com.br/Estante-portas-Denver-Multim%C3%B3veis-Branca/dp/B0C6FR2YNB/ref=sr_1_46",
+      "search_query": "estante tv",
+      "available": true,
+      "trusted": false,
+      "revalidated": false,
+      "collector": "fast-market-scan",
+      "bug_score": 66,
+      "bug_status": "🟢 SUSPEITO",
+      "category_rule": "TV 55 polegadas",
+      "category": "TVs",
+      "baseline_price": 1400.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 71.2,
+      "savings": 996.26,
+      "reasons": [
+        "71% abaixo de piso conservador da categoria",
+        "muito abaixo do piso conservador de TV 55 polegadas"
+      ],
+      "first_seen": "2026-09-21T07:09:53.431678Z",
+      "last_seen": "2026-09-21T07:09:53.431678Z",
+      "sightings": 1,
+      "fresh": true
+    },
+    {
+      "source": "Amazon Brasil",
+      "store_name": "Amazon Brasil",
+      "title": "Estante Tv 55\" e 2 portas Denver Multimóveis V2473 Branca/lacca Fumê",
+      "price": 403.74,
+      "original_price": 499.99,
+      "url": "https://www.amazon.com.br/Estante-portas-Denver-Multim%C3%B3veis-Branca/dp/B0C6FR2YNB/ref=cs_sr_dp_1",
+      "search_query": "estante tv",
+      "available": true,
+      "trusted": false,
+      "revalidated": false,
+      "collector": "fast-market-scan",
+      "bug_score": 66,
+      "bug_status": "🟢 SUSPEITO",
+      "category_rule": "TV 55 polegadas",
+      "category": "TVs",
+      "baseline_price": 1400.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 71.2,
+      "savings": 996.26,
+      "reasons": [
+        "71% abaixo de piso conservador da categoria",
+        "muito abaixo do piso conservador de TV 55 polegadas"
+      ],
+      "first_seen": "2026-09-21T07:09:53.431678Z",
+      "last_seen": "2026-09-21T07:09:53.431678Z",
+      "sightings": 1,
+      "fresh": true
+    },
+    {
+      "source": "Amazon Brasil",
+      "store_name": "Amazon Brasil",
+      "title": "Estante Tv 55\" e 2 portas Denver Multimóveis V2473 Branca/lacca Fumê",
+      "price": 403.74,
+      "original_price": 499.99,
+      "url": "https://www.amazon.com.br/Estante-portas-Denver-Multim%C3%B3veis-Branca/dp/B0C6FSBFYS/ref=cs_sr_dp_2",
+      "search_query": "estante tv",
+      "available": true,
+      "trusted": false,
+      "revalidated": false,
+      "collector": "fast-market-scan",
+      "bug_score": 66,
+      "bug_status": "🟢 SUSPEITO",
+      "category_rule": "TV 55 polegadas",
+      "category": "TVs",
+      "baseline_price": 1400.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 71.2,
+      "savings": 996.26,
+      "reasons": [
+        "71% abaixo de piso conservador da categoria",
+        "muito abaixo do piso conservador de TV 55 polegadas"
+      ],
+      "first_seen": "2026-09-21T07:09:53.431678Z",
+      "last_seen": "2026-09-21T07:09:53.431678Z",
+      "sightings": 1,
+      "fresh": true
+    },
+    {
+      "source": "Amazon Brasil",
+      "store_name": "Amazon Brasil",
+      "title": "Estante Tv 55\" e 2 portas Denver Multimóveis V2473 Branca/lacca Fumê",
+      "price": 403.74,
+      "original_price": 499.99,
+      "url": "https://www.amazon.com.br/Estante-portas-Denver-Multim%C3%B3veis-Branca/dp/B0C6FTB2XX/ref=cs_sr_dp_3",
+      "search_query": "estante tv",
+      "available": true,
+      "trusted": false,
+      "revalidated": false,
+      "collector": "fast-market-scan",
+      "bug_score": 66,
+      "bug_status": "🟢 SUSPEITO",
+      "category_rule": "TV 55 polegadas",
+      "category": "TVs",
+      "baseline_price": 1400.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 71.2,
+      "savings": 996.26,
+      "reasons": [
+        "71% abaixo de piso conservador da categoria",
+        "muito abaixo do piso conservador de TV 55 polegadas"
+      ],
+      "first_seen": "2026-09-21T07:09:53.431678Z",
+      "last_seen": "2026-09-21T07:09:53.431678Z",
+      "sightings": 1,
+      "fresh": true
+    },
+    {
+      "source": "Amazon Brasil",
+      "store_name": "Amazon Brasil",
+      "title": "Estante Tv 55\" e 2 portas Denver Multimóveis V2473 Branca/lacca Fumê",
+      "price": 403.74,
+      "original_price": 499.99,
+      "url": "https://www.amazon.com.br/Estante-portas-Denver-Multim%C3%B3veis-Branca/dp/B0C6FRQYRD/ref=cs_sr_dp_4",
+      "search_query": "estante tv",
+      "available": true,
+      "trusted": false,
+      "revalidated": false,
+      "collector": "fast-market-scan",
+      "bug_score": 66,
+      "bug_status": "🟢 SUSPEITO",
+      "category_rule": "TV 55 polegadas",
+      "category": "TVs",
+      "baseline_price": 1400.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 71.2,
+      "savings": 996.26,
+      "reasons": [
+        "71% abaixo de piso conservador da categoria",
+        "muito abaixo do piso conservador de TV 55 polegadas"
+      ],
+      "first_seen": "2026-09-21T07:09:53.431678Z",
+      "last_seen": "2026-09-21T07:09:53.431678Z",
       "sightings": 1,
       "fresh": true
     },
@@ -351,7 +495,7 @@
       "title": "Painel Âmbar Para TVs Até 65 Polegadas - Bechara Off-White/Cinamomo/Ripado",
       "price": 484.99,
       "original_price": 517.62,
-      "url": "https://www.amazon.com.br/Painel-paraTv-Polegadas-Offwhite-Cinamomo/dp/B084ZTZYPS/ref=sr_1_44",
+      "url": "https://www.amazon.com.br/Painel-paraTv-Polegadas-Offwhite-Cinamomo/dp/B084ZTZYPS/ref=sr_1_41",
       "search_query": "painel tv",
       "available": true,
       "trusted": false,
@@ -369,8 +513,8 @@
         "73% abaixo de piso conservador da categoria",
         "muito abaixo do piso conservador de TV 65 polegadas"
       ],
-      "first_seen": "2026-09-21T01:41:02.275218Z",
-      "last_seen": "2026-09-21T01:41:02.275218Z",
+      "first_seen": "2026-09-21T07:09:53.431678Z",
+      "last_seen": "2026-09-21T07:09:53.431678Z",
       "sightings": 1,
       "fresh": true
     }
