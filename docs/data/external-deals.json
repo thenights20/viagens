@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-09-22T04:57:36.464021Z",
+  "generated_at": "2026-09-22T16:58:39.995790Z",
   "source": "Sinais públicos de sites especializados em promoções",
   "signal_count": 9,
   "responding_source_count": 3,
@@ -8,14 +8,14 @@
   "sources": {
     "Secret Flying": {
       "ok": true,
-      "items": 4,
+      "items": 5,
       "status": 200,
       "url": "https://www.secretflying.com/south-america-flight-deals/",
       "message": "ok"
     },
     "Melhores Destinos": {
       "ok": true,
-      "items": 5,
+      "items": 4,
       "status": 200,
       "url": "https://www.melhoresdestinos.com.br/",
       "message": "ok"
@@ -53,6 +53,23 @@
         "24th Feb – 10th Mar",
         "24th Feb – 11th Mar"
       ],
+      "error_fare": false
+    },
+    {
+      "source": "Secret Flying",
+      "title": "Rio de Janeiro, Brazil to Manchester, UK for only $312 USD one-way",
+      "url": "https://www.secretflying.com/posts/rio-de-janeiro-brazil-to-manchester-uk-for-only-312-usd-one-way/",
+      "price": 312.0,
+      "currency": "USD",
+      "trip_mode": "one_way",
+      "origin_name": "Rio de Janeiro",
+      "destination_name": "Manchester, UK",
+      "origin": "GIG",
+      "destination": null,
+      "external_signal": true,
+      "availability": "October to December 2026",
+      "airline": "TAP Air Portugal",
+      "example_dates": [],
       "error_fare": false
     },
     {
@@ -110,25 +127,25 @@
     },
     {
       "source": "Melhores Destinos",
-      "title": "há 3 dias Cidade Maravilhosa ou Sampa? Só hoje e amanhã têm passagens para o Rio ou São Paulo a partir de R$ 336",
-      "url": "https://www.melhoresdestinos.com.br/promocao/sampa-ou-cidade-maravilhosa-passagens-19set26",
-      "price": 336.0,
+      "title": "há 8 horas Chile! Passagens para Santiago a partir de R$ 947 com opções de datas nas férias de fim de ano",
+      "url": "https://www.melhoresdestinos.com.br/promocao/chile-passagens-para-santiago-22set26",
+      "price": 947.0,
       "currency": "BRL",
       "trip_mode": "unknown",
-      "origin_name": "há 3 dias Cidade Maravilhosa ou Sampa? Só hoje e amanhã têm passagens",
-      "destination_name": "o Rio ou São Paulo",
+      "origin_name": "há 8 horas Chile! Passagens",
+      "destination_name": "Santiago",
       "origin": null,
-      "destination": "GRU",
+      "destination": "SCL",
       "external_signal": true
     },
     {
       "source": "Melhores Destinos",
-      "title": "há 5 horas América do Sul 2×1! Passagens para Buenos Aires mais Santiago ou Montevidéu a partir de R$ 1.752",
+      "title": "há 21 horas América do Sul 2×1! Passagens para Buenos Aires mais Santiago ou Montevidéu a partir de R$ 1.752",
       "url": "https://www.melhoresdestinos.com.br/promocao/passagens-aereas-2-em-1-america-do-sul-21-09-26",
       "price": 1752.0,
       "currency": "BRL",
       "trip_mode": "unknown",
-      "origin_name": "há 5 horas América do Sul 2×1! Passagens",
+      "origin_name": "há 21 horas América do Sul 2×1! Passagens",
       "destination_name": "Buenos Aires mais Santiago ou Montevidéu",
       "origin": null,
       "destination": "EZE",
@@ -136,41 +153,28 @@
     },
     {
       "source": "Melhores Destinos",
-      "title": "há 9 horas Viaje para Nova York! Passagens aéreas a partir de R$ 2.522 ida e volta",
+      "title": "Férias nos EUA! Passagens para Miami, Orlando e mais cidades a partir de R$ 2.090 no fim de ano, janeiro e Carnaval",
+      "url": "https://www.melhoresdestinos.com.br/promocao/ferias-nos-eua-passagens-22set26",
+      "price": 2090.0,
+      "currency": "BRL",
+      "trip_mode": "unknown",
+      "origin_name": "Férias nos EUA! Passagens",
+      "destination_name": "Miami, Orlando e mais cidades",
+      "origin": null,
+      "destination": "MIA",
+      "external_signal": true
+    },
+    {
+      "source": "Melhores Destinos",
+      "title": "há 1 dia Viaje para Nova York! Passagens aéreas a partir de R$ 2.522 ida e volta",
       "url": "https://www.melhoresdestinos.com.br/promocao/viaje-para-nova-york-passagens-2522",
       "price": 2522.0,
       "currency": "BRL",
       "trip_mode": "round_trip",
-      "origin_name": "há 9 horas Viaje",
+      "origin_name": "há 1 dia Viaje",
       "destination_name": "Nova York! Passagens aéreas",
       "origin": null,
       "destination": "JFK",
-      "external_signal": true
-    },
-    {
-      "source": "Melhores Destinos",
-      "title": "Bom preço! Voos diretos da Azul e Latam para Madri a partir de R$ 3.359 ida e volta",
-      "url": "https://www.melhoresdestinos.com.br/promocao/muito-bom-voos-diretos-da-azul-e-da-latam-para-madri-17set26",
-      "price": 3359.0,
-      "currency": "BRL",
-      "trip_mode": "round_trip",
-      "origin_name": "Bom preço! Voos diretos da Azul e Latam",
-      "destination_name": "Madri",
-      "origin": null,
-      "destination": "MAD",
-      "external_signal": true
-    },
-    {
-      "source": "Melhores Destinos",
-      "title": "há 17 horas França! Passagens aéreas para Paris a partir de R$ 4.005 ida e volta",
-      "url": "https://www.melhoresdestinos.com.br/promocao/franca-passagens-aereas-para-paris-21set26",
-      "price": 4005.0,
-      "currency": "BRL",
-      "trip_mode": "round_trip",
-      "origin_name": "há 17 horas França! Passagens aéreas",
-      "destination_name": "Paris",
-      "origin": null,
-      "destination": "CDG",
       "external_signal": true
     }
   ]
