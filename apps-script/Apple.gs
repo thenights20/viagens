@@ -1,8 +1,8 @@
 // Monitor de disponibilidade Apple Store para retirada em loja.
 const APPLE_PRODUCTS = [
-  { storage: '256GB', part_number: 'MJW64LL/A', url: 'https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-256gb-burgundy-unlocked' },
-  { storage: '512GB', part_number: '', url: 'https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-512gb-burgundy' }
+  { storage: '256GB', part_number: 'MJW64LL/A', url: 'https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-256gb-burgundy-unlocked' }
 ];
+const APPLE_TARGET_CITIES = ['fort lauderdale', 'ft lauderdale', 'orlando', 'tampa'];
 
 function appleResolvePartNumber_(product) {
   if (product.part_number) return product.part_number;
@@ -132,6 +132,8 @@ function appleAvailability_(params) {
   const parsed = [];
   stores.forEach(function(store) {
     const address = store && store.address ? store.address : {};
+    const cityNorm = String(store && store.city || '').trim().toLowerCase().replace(/\./g, '');
+    if (APPLE_TARGET_CITIES.indexOf(cityNorm) < 0) return;
     configured.forEach(function(product) {
       const availability = store && store.partsAvailability
         ? store.partsAvailability[product.part_number]
@@ -183,7 +185,7 @@ function appleAvailability_(params) {
     part_numbers: configured.map(function(p) { return p.part_number; }),
     location: location,
     checked_at: new Date().toISOString(),
-    stores_count: stores.length,
+    stores_count: parsed.length,
     checked_variants: configured.map(function(p) { return p.storage; }),
     missing_variants: APPLE_PRODUCTS.filter(function(p) { return !configured.some(function(c) { return c.storage === p.storage; }); }).map(function(p) { return p.storage; }),
     available_count: availableStores.length,
