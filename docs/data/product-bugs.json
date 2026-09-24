@@ -1,18 +1,15 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-09-23T21:42:29.338798Z",
+  "generated_at": "2026-09-23T23:59:02.858844Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 1,
+  "active_count": 0,
   "strong_count": 0,
   "critical_count": 0,
   "confirmed_count": 0,
   "sensor_bug_count": 0,
-  "scanner_count": 3,
-  "queries_this_run": [
-    "nintendo switch 2",
-    "playstation 5"
-  ],
+  "scanner_count": 0,
+  "queries_this_run": [],
   "source_health": {
     "Magalu": {
       "ok": true,
@@ -37,47 +34,12 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 3,
-      "candidates_seen": 3,
-      "message": "scanner rápido",
+      "items": 0,
+      "candidates_seen": 0,
+      "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     }
   },
-  "validation_errors": [
-    "Amazon Brasil · Mario Kart World - Nintendo Switch 2: preço não apareceu novamente na página",
-    "Amazon Brasil · Nintendo, Cartão Samsung microSD Express, 256 GB, Cartão de Memória, Nintendo Switch 2: preço não apareceu novamente na página"
-  ],
-  "bugs": [
-    {
-      "source": "Loja TCL",
-      "store_name": "Loja TCL",
-      "title": "Mais Vendido",
-      "price": 1011.08,
-      "original_price": 1169.0,
-      "reference_price": 3495.08,
-      "url": "https://www.lojatcl.com.br/smart-tv-semp-32-polegadas-led-hd-s42-wifi-bluetooth-google-tv-2-hdmi-hdr10-dolby-audio-32s42-32398/p",
-      "category": null,
-      "available": true,
-      "trusted": true,
-      "revalidated": true,
-      "collector": "radar-historico",
-      "collected_at": "2026-09-23T17:13:54.737910+00:00",
-      "bug_score": 62,
-      "bug_status": "🟢 SUSPEITO",
-      "category_rule": null,
-      "baseline_price": 3495.08,
-      "baseline_kind": "histórico/mercado",
-      "drop_pct": 71.1,
-      "savings": 2484.0,
-      "reasons": [
-        "71% abaixo de histórico/mercado",
-        "preço reaberto e confirmado",
-        "vendedor/loja com sinal de confiança"
-      ],
-      "first_seen": "2026-09-23T09:45:53.985596Z",
-      "last_seen": "2026-09-23T18:31:43.443189Z",
-      "sightings": 3,
-      "fresh": false
-    }
-  ]
+  "validation_errors": [],
+  "bugs": []
 }
