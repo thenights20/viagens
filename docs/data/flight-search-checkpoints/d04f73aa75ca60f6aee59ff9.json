@@ -3,7 +3,7 @@
   "cache_id": "d04f73aa75ca60f6aee59ff9",
   "signature": "MCO|GRU|2026-10-01|2026-10-05|2|BRL|economy|1",
   "created_at": "2026-09-24T14:00:38.033209Z",
-  "updated_at": "2026-09-24T14:00:42.786368Z",
+  "updated_at": "2026-09-24T14:00:44.697477Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "MCO",
@@ -306,6 +306,39 @@
         "search_links": {
           "google": "https://www.google.com/travel/flights?q=Flights+from+MCO+to+GRU+on+2026-10-03+returning+2026-10-05&curr=BRL&hl=pt-BR",
           "ita": "https://matrix.itasoftware.com/search#from=MCO&to=GRU&depart=2026-10-03&return=2026-10-05&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2026-10-04|2026-10-05": {
+      "departure_date": "2026-10-04",
+      "return_date": "2026-10-05",
+      "status": "priced",
+      "completed_at": "2026-09-24T14:00:44.696914Z",
+      "source": "google",
+      "row": {
+        "origin": "MCO",
+        "destination": "GRU",
+        "departure_date": "2026-10-04",
+        "return_date": "2026-10-05",
+        "airline": "COPA",
+        "price": 4338.0,
+        "duration": "10h 27min",
+        "duration_minutes": 627,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2026, 10, 4] [8, 1]",
+        "arrival": "[2026, 10, 5] [None, 10]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+MCO+to+GRU+on+2026-10-04+returning+2026-10-05&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 1,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+MCO+to+GRU+on+2026-10-04+returning+2026-10-05&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=MCO&to=GRU&depart=2026-10-04&return=2026-10-05&currency=BRL"
         },
         "assigned_source": "google"
       },
