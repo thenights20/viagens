@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-09-25T06:50:52.711463Z",
+  "generated_at": "2026-09-25T12:25:55.026817Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
   "active_count": 0,
@@ -8,8 +8,10 @@
   "critical_count": 0,
   "confirmed_count": 0,
   "sensor_bug_count": 0,
-  "scanner_count": 0,
-  "queries_this_run": [],
+  "scanner_count": 3,
+  "queries_this_run": [
+    "lava e seca"
+  ],
   "source_health": {
     "Magalu": {
       "ok": true,
@@ -34,12 +36,16 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 0,
-      "candidates_seen": 0,
-      "message": "nenhum candidato extremo nesta rodada",
+      "items": 3,
+      "candidates_seen": 3,
+      "message": "scanner rápido",
       "errors": []
     }
   },
-  "validation_errors": [],
+  "validation_errors": [
+    "Amazon Brasil · Panos lava e seca 5 peças - Simplo: preço não apareceu novamente na página",
+    "Amazon Brasil · Mop Lava e Seca com Balde Separador, Prensa para Secagem, Base Flexível 360°, Pano de Microfibra Reutilizável para Limpeza de Pisos, Vidros e Superfícies: preço não apareceu novamente na página",
+    "Amazon Brasil · Panos lava e seca 5 peças - Simplo: preço não apareceu novamente na página"
+  ],
   "bugs": []
 }
