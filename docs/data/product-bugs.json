@@ -1,26 +1,24 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-09-25T20:37:11.050683Z",
+  "generated_at": "2026-09-25T23:33:28.340703Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 3,
+  "active_count": 4,
   "strong_count": 0,
   "critical_count": 0,
   "confirmed_count": 0,
   "sensor_bug_count": 0,
-  "scanner_count": 2,
-  "queries_this_run": [
-    "playstation 5"
-  ],
+  "scanner_count": 0,
+  "queries_this_run": [],
   "source_health": {
-    "Mercado Livre": {
+    "Magalu": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     },
-    "Magalu": {
+    "Mercado Livre": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
@@ -36,47 +34,75 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 2,
-      "candidates_seen": 2,
-      "message": "scanner rápido",
+      "items": 0,
+      "candidates_seen": 0,
+      "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     }
   },
-  "validation_errors": [
-    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Branco): preço não apareceu novamente na página",
-    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Preto): preço não apareceu novamente na página"
-  ],
+  "validation_errors": [],
   "bugs": [
+    {
+      "source": "Loja TCL",
+      "store_name": "Loja TCL",
+      "title": "Mais Vendido",
+      "price": 919.08,
+      "original_price": 1149.0,
+      "reference_price": 3173.08,
+      "url": "https://www.lojatcl.com.br/caixa-de-som-soundbar-tcl-2-1ch-s55h-canais-preto-220w-32580/p",
+      "category": null,
+      "available": true,
+      "trusted": true,
+      "revalidated": true,
+      "collector": "radar-historico",
+      "collected_at": "2026-09-25T22:32:01.550653+00:00",
+      "bug_score": 62,
+      "bug_status": "🟢 SUSPEITO",
+      "category_rule": null,
+      "baseline_price": 3173.08,
+      "baseline_kind": "histórico/mercado",
+      "drop_pct": 71.0,
+      "savings": 2254.0,
+      "reasons": [
+        "71% abaixo de histórico/mercado",
+        "preço reaberto e confirmado",
+        "vendedor/loja com sinal de confiança"
+      ],
+      "first_seen": "2026-09-25T23:33:28.340703Z",
+      "last_seen": "2026-09-25T23:33:28.340703Z",
+      "sightings": 1,
+      "fresh": true
+    },
     {
       "source": "KaBuM!",
       "store_name": "KaBuM!",
       "title": "CUPOM MUNDOGAMER",
       "price": 1070.47,
       "original_price": null,
-      "reference_price": 4792.54,
+      "reference_price": 4741.82,
       "url": "https://www.kabum.com.br/produto/283715/processador-intel-core-i3-12100-3-3ghz-4-3ghz-max-turbo-cache-12mb-4-nucleos-8-threads-lga-1700-com-video-integrado-bx8071512100",
       "category": null,
       "available": true,
       "trusted": true,
       "revalidated": true,
       "collector": "radar-historico",
-      "collected_at": "2026-09-25T18:46:56.841534+00:00",
+      "collected_at": "2026-09-25T22:31:39.055313+00:00",
       "bug_score": 62,
       "bug_status": "🟢 SUSPEITO",
       "category_rule": null,
-      "baseline_price": 4792.54,
+      "baseline_price": 4741.82,
       "baseline_kind": "histórico/mercado",
-      "drop_pct": 77.7,
-      "savings": 3722.07,
+      "drop_pct": 77.4,
+      "savings": 3671.35,
       "reasons": [
-        "78% abaixo de histórico/mercado",
+        "77% abaixo de histórico/mercado",
         "preço reaberto e confirmado",
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-09-25T20:37:11.050683Z",
-      "last_seen": "2026-09-25T20:37:11.050683Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-25T23:33:28.340703Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "source": "KaBuM!",
@@ -84,30 +110,30 @@
       "title": "CUPOM MUNDOGAMER",
       "price": 1176.46,
       "original_price": null,
-      "reference_price": 4792.54,
+      "reference_price": 4741.82,
       "url": "https://www.kabum.com.br/produto/283719/processador-intel-core-i3-12100f-3-3ghz-4-3ghz-max-turbo-cache-12mb-4-nucleos-8-threads-lga-1700-sem-video-integrado-bx8071512100f",
       "category": null,
       "available": true,
       "trusted": true,
       "revalidated": true,
       "collector": "radar-historico",
-      "collected_at": "2026-09-25T18:46:55.863825+00:00",
+      "collected_at": "2026-09-25T22:31:39.574641+00:00",
       "bug_score": 62,
       "bug_status": "🟢 SUSPEITO",
       "category_rule": null,
-      "baseline_price": 4792.54,
+      "baseline_price": 4741.82,
       "baseline_kind": "histórico/mercado",
-      "drop_pct": 75.5,
-      "savings": 3616.08,
+      "drop_pct": 75.2,
+      "savings": 3565.36,
       "reasons": [
         "75% abaixo de histórico/mercado",
         "preço reaberto e confirmado",
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-09-25T20:37:11.050683Z",
-      "last_seen": "2026-09-25T20:37:11.050683Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-25T23:33:28.340703Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "source": "KaBuM!",
@@ -115,30 +141,30 @@
       "title": "CUPOM MUNDOGAMER",
       "price": 1411.75,
       "original_price": null,
-      "reference_price": 4792.54,
+      "reference_price": 4741.82,
       "url": "https://www.kabum.com.br/produto/904655/processador-intel-core-i3-14100-3-5ghz-4-70-ghz-max-turbo-cache-12mb-4-nucleos-8-threads-lga-1700-com-video-integrado-bx8071514100-",
       "category": null,
       "available": true,
       "trusted": true,
       "revalidated": true,
       "collector": "radar-historico",
-      "collected_at": "2026-09-25T18:46:57.690711+00:00",
+      "collected_at": "2026-09-25T22:31:39.719195+00:00",
       "bug_score": 62,
       "bug_status": "🟢 SUSPEITO",
       "category_rule": null,
-      "baseline_price": 4792.54,
+      "baseline_price": 4741.82,
       "baseline_kind": "histórico/mercado",
-      "drop_pct": 70.5,
-      "savings": 3380.79,
+      "drop_pct": 70.2,
+      "savings": 3330.07,
       "reasons": [
-        "71% abaixo de histórico/mercado",
+        "70% abaixo de histórico/mercado",
         "preço reaberto e confirmado",
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-09-25T20:37:11.050683Z",
-      "last_seen": "2026-09-25T20:37:11.050683Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-09-25T23:33:28.340703Z",
+      "sightings": 2,
+      "fresh": false
     }
   ]
 }
