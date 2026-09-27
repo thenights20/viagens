@@ -4,12 +4,25 @@
 
   const PRODUCT = 'iPhone 18 Pro Max Burgundy · 256GB';
   const LOCATIONS = [
+    { label: 'Altamonte Springs', value: 'Altamonte Springs, FL' },
+    { label: 'Aventura', value: 'Aventura, FL' },
+    { label: 'Boca Raton', value: 'Boca Raton, FL' },
+    { label: 'Brandon', value: 'Brandon, FL' },
+    { label: 'Estero', value: 'Estero, FL' },
     { label: 'Fort Lauderdale', value: 'Fort Lauderdale, FL' },
+    { label: 'Miami', value: 'Miami, FL' },
+    { label: 'Miami Beach', value: 'Miami Beach, FL' },
+    { label: 'Naples', value: 'Naples, FL' },
     { label: 'Orlando', value: 'Orlando, FL' },
-    { label: 'Tampa', value: 'Tampa, FL' }
+    { label: 'Palm Beach Gardens', value: 'Palm Beach Gardens, FL' },
+    { label: 'Sarasota', value: 'Sarasota, FL' },
+    { label: 'Tampa', value: 'Tampa, FL' },
+    { label: 'Wellington', value: 'Wellington, FL' }
   ];
+  const TARGET_STORE_COUNT = 18;
   const APPLE_URL = 'https://www.apple.com/shop/buy-iphone/iphone-18-pro';
   const NORMAL_DELAY = 5000;
+  const CYCLE_SECONDS = Math.round((LOCATIONS.length * NORMAL_DELAY) / 1000);
   let apiBase = '';
   let active = false;
   let timer = null;
@@ -61,18 +74,18 @@
   app.hidden = true;
   app.innerHTML = `
     <div class="apple-head">
-      <div><h2>🍎 Monitor de estoque · Fort Lauderdale · Orlando · Tampa</h2><div class="sub">Monitora retirada em loja do <b>${PRODUCT}</b>, somente <b>256GB Burgundy</b>, nas cidades de <b>Fort Lauderdale, Orlando e Tampa</b>. O monitor alterna uma cidade a cada 5 segundos; cada cidade é reconsultada aproximadamente a cada 15 segundos.</div></div>
+      <div><h2>🍎 Monitor de estoque · ${TARGET_STORE_COUNT} Apple Stores na Flórida</h2><div class="sub">Monitora retirada em loja do <b>${PRODUCT}</b>, somente <b>256GB Burgundy</b>, em todas as lojas do print, <b>exceto a nº 7 (St. Johns Town Center / Jacksonville)</b>. O monitor alterna ${LOCATIONS.length} áreas a cada 5 segundos; cada área volta a ser consultada em cerca de ${CYCLE_SECONDS} segundos.</div></div>
       <a class="apple-link" href="${APPLE_URL}" target="_blank" rel="noopener">Abrir produto na Apple ↗</a>
     </div>
 
     <section class="panel apple-form">
       <div class="apple-field"><label>Produto monitorado</label><div class="apple-fixed">${PRODUCT}</div></div>
-      <div class="apple-field"><label>Cidades monitoradas</label><div class="apple-fixed">Fort Lauderdale · Orlando · Tampa</div></div>
+      <div class="apple-field"><label>Lojas monitoradas</label><div class="apple-fixed">${TARGET_STORE_COUNT} lojas · Flórida</div></div>
       <div class="apple-field"><label>Frequência</label><div class="apple-fixed" id="appleFrequency">5 segundos</div></div>
       <div class="apple-actions">
         <button id="appleStart" class="apple-start">▶ Monitorar agora</button>
         <button id="appleStop" class="apple-stop" disabled>■ Parar</button>
-        <span class="sub" id="appleHint">Somente lojas localizadas nessas três cidades entram no resultado.</span>
+        <span class="sub" id="appleHint">Incluídas as lojas nº 1–6 e 8–19 do print; Jacksonville (nº 7) fica fora da busca.</span>
       </div>
     </section>
 
@@ -88,7 +101,7 @@
 
     <section class="panel">
       <div class="apple-stores" id="appleStores"></div>
-      <div class="empty" id="appleEmpty"><strong>Aguardando primeira consulta.</strong>O monitor mostrará aqui somente lojas de Fort Lauderdale, Orlando e Tampa.</div>
+      <div class="empty" id="appleEmpty"><strong>Aguardando primeira consulta.</strong>O monitor mostrará as lojas-alvo da Flórida conforme elas forem consultadas.</div>
     </section>
 
     <div class="note apple-note"><b>Como o alerta funciona:</b> “Disponível” só aparece quando a própria Apple informa retirada habilitada para a variante monitorada. Se a Apple limitar as consultas, o painel mostra “bloqueado/aguardando” e reduz temporariamente a frequência — nunca converte bloqueio em “sem estoque”. O monitor de 5 segundos depende desta página permanecer aberta; navegadores móveis podem suspender timers quando a aba fica em segundo plano ou a tela é bloqueada.</div>
@@ -260,7 +273,7 @@
       if(missing.length)setStatus('⚠️ Variante 256GB ainda sem SKU configurado no serviço.','warn');
       const n=available.length;
       const loaded=citySnapshots.size;
-      setStatus(n?`✅ ${n} loja(s) com retirada disponível agora em Fort Lauderdale, Orlando ou Tampa.`:`Monitorando ${loaded}/3 cidades: ${stores.length} loja(s) verificadas, nenhuma com retirada disponível neste momento.`,n?'ok':'live');
+      setStatus(n?`✅ ${n} loja(s) com retirada disponível agora entre as ${TARGET_STORE_COUNT} lojas-alvo da Flórida.`:`Monitorando ${loaded}/${LOCATIONS.length} áreas (${TARGET_STORE_COUNT} lojas-alvo): ${stores.length} loja(s) verificadas, nenhuma com retirada disponível neste momento.`,n?'ok':'live');
       schedule(NORMAL_DELAY);
     }catch(err){
       if(!active)return;
@@ -276,7 +289,7 @@
     await askNotifications();
     active=true;blockStreak=0;previousAvailable=new Set();locationIndex=0;citySnapshots.clear();
     qs('#appleStart').disabled=true;qs('#appleStop').disabled=false;
-    setStatus('▶ Monitor iniciado. Alternando Fort Lauderdale, Orlando e Tampa a cada 5 segundos.','live');
+    setStatus(`▶ Monitor iniciado. Alternando ${LOCATIONS.length} áreas da Flórida a cada 5 segundos (${TARGET_STORE_COUNT} lojas-alvo; Jacksonville excluída).`,'live');
     checkNow();
   }
 
