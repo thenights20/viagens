@@ -20,7 +20,8 @@
     { label: 'Wellington', value: 'Wellington, FL' }
   ];
   const TARGET_STORE_COUNT = 18;
-  const APPLE_URL = 'https://www.apple.com/shop/buy-iphone/iphone-18-pro';
+  const APPLE_URL = 'https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-256gb-burgundy-unlocked';
+  const EDGE_APPLE_URL = 'microsoft-edge:' + APPLE_URL;
   const NORMAL_DELAY = 5000;
   const CYCLE_SECONDS = Math.round((LOCATIONS.length * NORMAL_DELAY) / 1000);
   let apiBase = '';
@@ -44,11 +45,14 @@
     .apple-start,.apple-stop{border:0;cursor:pointer;font-weight:900;padding:11px 16px;border-radius:10px;min-width:170px}
     .apple-start{background:var(--accent);color:#07111f}.apple-stop{background:var(--panel2);color:var(--hot);border:1px solid var(--hot)}
     .apple-start:disabled,.apple-stop:disabled{opacity:.45;cursor:not-allowed}
-    .apple-link{display:inline-flex;align-items:center;text-decoration:none;border:1px solid var(--line);background:var(--panel2);color:var(--text);font-weight:800;padding:10px 13px;border-radius:10px}
+    .apple-link,.apple-buy{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border:1px solid var(--line);background:var(--panel2);color:var(--text);font-weight:800;padding:10px 13px;border-radius:10px}
+    .apple-buy{background:var(--ok);color:#07111f;border-color:transparent;margin-top:9px;width:100%}
+    .apple-buy:hover,.apple-link:hover{filter:brightness(1.08)}
     .apple-status{padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:var(--panel2);margin:0 0 14px;color:var(--muted);line-height:1.45}
     .apple-status.live{color:var(--accent)}.apple-status.ok{color:var(--ok);border-color:var(--ok);font-weight:800}.apple-status.warn{color:var(--warn);border-color:var(--warn)}.apple-status.bad{color:var(--hot);border-color:var(--hot)}
     .apple-alert{padding:18px;margin:0 0 15px;border:2px solid var(--ok);border-radius:15px;background:color-mix(in srgb,var(--ok) 10%,var(--panel));animation:applePulse 1s ease-in-out infinite alternate}
     .apple-alert b{display:block;color:var(--ok);font-size:23px;margin-bottom:5px}.apple-alert span{font-size:15px}
+    .apple-alert-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.apple-alert-actions .apple-buy{width:auto;margin-top:0}
     @keyframes applePulse{from{box-shadow:0 0 0 rgba(91,214,160,0)}to{box-shadow:0 0 28px rgba(91,214,160,.24)}}
     .apple-summary{grid-template-columns:repeat(4,1fr)}
     .apple-stores{display:grid;grid-template-columns:repeat(3,minmax(230px,1fr));gap:10px;padding:13px}
@@ -104,6 +108,7 @@
       <div class="empty" id="appleEmpty"><strong>Aguardando primeira consulta.</strong>O monitor mostrará as lojas-alvo da Flórida conforme elas forem consultadas.</div>
     </section>
 
+    <div class="note apple-note"><b>Compra rápida no Edge:</b> quando houver estoque, use “Comprar agora no Edge”. Se este painel já estiver aberto no Edge, a Apple abrirá em nova aba usando a mesma sessão em que você deixou sua conta logada. Se estiver em outro navegador no Windows, o botão tenta chamar o Edge pelo protocolo oficial do Windows. A Apple ainda pode exigir confirmação da loja/retirada antes de liberar o pagamento.</div>
     <div class="note apple-note"><b>Como o alerta funciona:</b> “Disponível” só aparece quando a própria Apple informa retirada habilitada para a variante monitorada. Se a Apple limitar as consultas, o painel mostra “bloqueado/aguardando” e reduz temporariamente a frequência — nunca converte bloqueio em “sem estoque”. O monitor de 5 segundos depende desta página permanecer aberta; navegadores móveis podem suspender timers quando a aba fica em segundo plano ou a tela é bloqueada.</div>
   `;
   const indigo = qs('#indigoApp');
@@ -187,6 +192,18 @@
 
   function escapeHtml(v=''){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 
+  function buyHref(){
+    return /Edg\//.test(navigator.userAgent) ? APPLE_URL : EDGE_APPLE_URL;
+  }
+
+  function buyTarget(){
+    return /Edg\//.test(navigator.userAgent) ? '_blank' : '_self';
+  }
+
+  function buyButton(label='🛒 Comprar agora no Edge'){
+    return `<a class="apple-buy" href="${buyHref()}" target="${buyTarget()}" rel="noopener">${label}</a>`;
+  }
+
   function render(data){
     checks+=1;
     qs('#appleChecks').textContent=String(checks);
@@ -204,7 +221,7 @@
     const alert=qs('#appleAvailabilityAlert');
     if(available.length){
       alert.hidden=false;
-      alert.innerHTML=`<b>✅ ESTOQUE ENCONTRADO!</b><span>${available.map(x=>`Apple ${escapeHtml(x.name)} · ${escapeHtml(x.storage||'')} · ${escapeHtml(x.distance_text||'')}`).join('<br>')}</span>`;
+      alert.innerHTML=`<b>✅ ESTOQUE ENCONTRADO!</b><span>${available.map(x=>`Apple ${escapeHtml(x.name)} · ${escapeHtml(x.storage||'')} · ${escapeHtml(x.distance_text||'')}`).join('<br>')}</span><div class="apple-alert-actions">${buyButton('🛒 COMPRAR AGORA NO EDGE')}</div>`;
     }else{
       alert.hidden=true;alert.innerHTML='';
     }
@@ -219,7 +236,7 @@
       const div=document.createElement('div');div.className='apple-store '+css;
       div.innerHTML=`
         <div><h3>Apple ${escapeHtml(x.name||'Store')} · ${escapeHtml(x.storage||'')}</h3><div class="where">${escapeHtml([x.address,[x.city,x.state,x.postal_code].filter(Boolean).join(' ')].filter(Boolean).join(' · '))}</div>${x.distance_text?`<div class="distance">${escapeHtml(x.distance_text)}</div>`:''}</div>
-        <div><div class="state">${label}</div><div class="quote">${escapeHtml(x.quote||x.pickup_display||'Sem informação')}</div></div>`;
+        <div><div class="state">${label}</div><div class="quote">${escapeHtml(x.quote||x.pickup_display||'Sem informação')}</div>${x.available?buyButton():''}</div>`;
       box.appendChild(div);
     }
   }
@@ -319,4 +336,5 @@
   });
 
   loadConfig();
+  if(new URLSearchParams(location.search).get('view')==='apple'||location.hash==='#apple') activate();
 })();
