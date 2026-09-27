@@ -2,7 +2,23 @@
 const APPLE_PRODUCTS = [
   { storage: '256GB', part_number: 'MJW64LL/A', url: 'https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-256gb-burgundy-unlocked' }
 ];
-const APPLE_TARGET_CITIES = ['fort lauderdale', 'ft lauderdale', 'orlando', 'tampa'];
+const APPLE_TARGET_CITIES = [
+  'altamonte springs',
+  'aventura',
+  'boca raton',
+  'brandon',
+  'estero',
+  'fort lauderdale',
+  'ft lauderdale',
+  'miami',
+  'miami beach',
+  'naples',
+  'orlando',
+  'palm beach gardens',
+  'sarasota',
+  'tampa',
+  'wellington'
+];
 
 function appleResolvePartNumber_(product) {
   if (product.part_number) return product.part_number;
