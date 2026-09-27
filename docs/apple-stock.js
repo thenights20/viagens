@@ -140,6 +140,7 @@
     .apple-start{background:var(--accent);color:#07111f}.apple-stop{background:var(--panel2);color:var(--hot);border:1px solid var(--hot)}
     .apple-start:disabled,.apple-stop:disabled{opacity:.45;cursor:not-allowed}
     .apple-link{display:inline-flex;align-items:center;text-decoration:none;border:1px solid var(--line);background:var(--panel2);color:var(--text);font-weight:800;padding:8px 10px;border-radius:9px;font-size:12px}
+    .apple-buy{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border:1px solid var(--ok);background:var(--ok);color:#07111f;font-weight:900;padding:7px 10px;border-radius:8px;font-size:11px;margin-top:6px}
     .apple-status{padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:var(--panel2);margin:0 0 8px;color:var(--muted);line-height:1.35;font-size:12px}
     .apple-status.live{color:var(--accent)}.apple-status.ok{color:var(--ok);border-color:var(--ok);font-weight:800}.apple-status.warn{color:var(--warn);border-color:var(--warn)}.apple-status.bad{color:var(--hot);border-color:var(--hot)}
     .apple-alert{padding:12px;margin:0 0 8px;border:2px solid var(--ok);border-radius:11px;background:color-mix(in srgb,var(--ok) 10%,var(--panel));animation:applePulse 1s ease-in-out infinite alternate}
@@ -172,7 +173,7 @@
   app.innerHTML = `
     <div class="apple-head">
       <div><h2>🍎 Monitor de estoque · ${TARGET_STORE_COUNT} Apple Stores na Flórida</h2><div class="sub">Monitora retirada em loja do <b>${PRODUCT}</b>, somente <b>256GB Burgundy</b>, em todas as lojas do print, <b>exceto a nº 7 (St. Johns Town Center / Jacksonville)</b>. O modo rápido aprende quais pontos cobrem as mesmas ${TARGET_STORE_COUNT} lojas e reduz consultas redundantes.</div></div>
-      <a class="apple-link" href="${APPLE_URL}" target="_blank" rel="noopener">Abrir produto na Apple ↗</a>
+      <a class="apple-link" href="${APPLE_URL}" target="_blank" rel="noopener">Abrir página de compra ↗</a>
     </div>
 
     <section class="panel apple-history">
@@ -416,7 +417,7 @@
     const alert=qs('#appleAvailabilityAlert');
     if(available.length){
       alert.hidden=false;
-      alert.innerHTML=`<b>✅ ESTOQUE ENCONTRADO!</b><span>${available.map(x=>`Apple ${escapeHtml(x.name)} · ${escapeHtml(x.storage||'')} · ${escapeHtml(x.distance_text||'')}`).join('<br>')}</span>`;
+      alert.innerHTML=`<b>✅ ESTOQUE ENCONTRADO!</b><span>${available.map(x=>`Apple ${escapeHtml(x.name)} · ${escapeHtml(x.storage||'')} · ${escapeHtml(x.distance_text||'')}`).join('<br>')}</span><br><a class="apple-buy" href="${APPLE_URL}" target="_blank" rel="noopener">Abrir página de compra ↗</a>`;
     }else{
       alert.hidden=true;alert.innerHTML='';
     }
