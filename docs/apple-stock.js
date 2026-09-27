@@ -19,10 +19,19 @@
     { label: 'Tampa', value: 'Tampa, FL' },
     { label: 'Wellington', value: 'Wellington, FL' }
   ];
+  const DISCOVERY_LABELS = [
+    'Orlando', 'Tampa', 'Miami', 'Fort Lauderdale', 'Naples', 'Palm Beach Gardens',
+    'Sarasota', 'Altamonte Springs', 'Brandon', 'Estero', 'Aventura', 'Boca Raton',
+    'Miami Beach', 'Wellington'
+  ];
+  const DISCOVERY_LOCATIONS = DISCOVERY_LABELS.map(label => LOCATIONS.find(x => x.label === label)).filter(Boolean);
   const TARGET_STORE_COUNT = 18;
   const APPLE_URL = 'https://www.apple.com/shop/buy-iphone/iphone-18-pro';
-  const NORMAL_DELAY = 5000;
-  const CYCLE_SECONDS = Math.round((LOCATIONS.length * NORMAL_DELAY) / 1000);
+  const FAST_TARGET_CYCLE_MS = 30000;
+  const MIN_QUERY_DELAY = 6000;
+  const DISCOVERY_DELAY = 7000;
+  const PLAN_CACHE_KEY = 'appleStockFastPlanV1';
+
   let apiBase = '';
   let active = false;
   let timer = null;
@@ -31,7 +40,79 @@
   let checks = 0;
   let audioCtx = null;
   let locationIndex = 0;
+  let discoveryIndex = 0;
+  let steadyChecks = 0;
+  let discoveryMode = true;
+  let activeLocations = [];
   const citySnapshots = new Map();
+
+  function restoreFastPlan(){
+    try{
+      const labels=JSON.parse(localStorage.getItem(PLAN_CACHE_KEY)||'[]');
+      if(!Array.isArray(labels)||!labels.length)return[];
+      const plan=labels.map(label=>LOCATIONS.find(x=>x.label===label)).filter(Boolean);
+      return plan.length===labels.length?plan:[];
+    }catch{return[];}
+  }
+
+  function saveFastPlan(plan){
+    try{localStorage.setItem(PLAN_CACHE_KEY,JSON.stringify(plan.map(x=>x.label)));}catch{}
+  }
+
+  function clearFastPlan(){
+    try{localStorage.removeItem(PLAN_CACHE_KEY);}catch{}
+  }
+
+  activeLocations=restoreFastPlan();
+  discoveryMode=activeLocations.length===0;
+
+  function queryDelay(){
+    if(discoveryMode)return DISCOVERY_DELAY;
+    const n=Math.max(1,activeLocations.length);
+    return Math.max(MIN_QUERY_DELAY,Math.ceil(FAST_TARGET_CYCLE_MS/n));
+  }
+
+  function cycleSeconds(){
+    const n=discoveryMode?Math.min(6,DISCOVERY_LOCATIONS.length):Math.max(1,activeLocations.length);
+    return Math.round((n*queryDelay())/1000);
+  }
+
+  function optimizeCoverage(){
+    const entries=[];
+    for(const [label,snap] of citySnapshots.entries()){
+      const location=LOCATIONS.find(x=>x.label===label);
+      if(!location||!snap||!Array.isArray(snap.stores))continue;
+      const keys=new Set(snap.stores.map(storeKey));
+      if(keys.size)entries.push({location,keys});
+    }
+    const universe=new Set();
+    entries.forEach(e=>e.keys.forEach(k=>universe.add(k)));
+    const uncovered=new Set(universe);
+    const remaining=[...entries];
+    const chosen=[];
+    while(uncovered.size&&remaining.length){
+      let bestIndex=-1,bestGain=0;
+      for(let i=0;i<remaining.length;i++){
+        let gain=0;
+        remaining[i].keys.forEach(k=>{if(uncovered.has(k))gain++;});
+        if(gain>bestGain){bestGain=gain;bestIndex=i;}
+      }
+      if(bestIndex<0||bestGain===0)break;
+      const best=remaining.splice(bestIndex,1)[0];
+      chosen.push(best.location);
+      best.keys.forEach(k=>uncovered.delete(k));
+    }
+    return chosen.length?chosen:[...LOCATIONS];
+  }
+
+  function beginDiscovery(){
+    discoveryMode=true;
+    discoveryIndex=0;
+    locationIndex=0;
+    steadyChecks=0;
+    citySnapshots.clear();
+    clearFastPlan();
+  }
 
   const style = document.createElement('style');
   style.textContent = `
@@ -74,18 +155,18 @@
   app.hidden = true;
   app.innerHTML = `
     <div class="apple-head">
-      <div><h2>🍎 Monitor de estoque · ${TARGET_STORE_COUNT} Apple Stores na Flórida</h2><div class="sub">Monitora retirada em loja do <b>${PRODUCT}</b>, somente <b>256GB Burgundy</b>, em todas as lojas do print, <b>exceto a nº 7 (St. Johns Town Center / Jacksonville)</b>. O monitor alterna ${LOCATIONS.length} áreas a cada 5 segundos; cada área volta a ser consultada em cerca de ${CYCLE_SECONDS} segundos.</div></div>
+      <div><h2>🍎 Monitor de estoque · ${TARGET_STORE_COUNT} Apple Stores na Flórida</h2><div class="sub">Monitora retirada em loja do <b>${PRODUCT}</b>, somente <b>256GB Burgundy</b>, em todas as lojas do print, <b>exceto a nº 7 (St. Johns Town Center / Jacksonville)</b>. O modo rápido aprende quais pontos cobrem as mesmas ${TARGET_STORE_COUNT} lojas e reduz consultas redundantes.</div></div>
       <a class="apple-link" href="${APPLE_URL}" target="_blank" rel="noopener">Abrir produto na Apple ↗</a>
     </div>
 
     <section class="panel apple-form">
       <div class="apple-field"><label>Produto monitorado</label><div class="apple-fixed">${PRODUCT}</div></div>
       <div class="apple-field"><label>Lojas monitoradas</label><div class="apple-fixed">${TARGET_STORE_COUNT} lojas · Flórida</div></div>
-      <div class="apple-field"><label>Frequência</label><div class="apple-fixed" id="appleFrequency">5 segundos</div></div>
+      <div class="apple-field"><label>Intervalo atual</label><div class="apple-fixed" id="appleFrequency">${queryDelay()/1000} segundos</div></div>
       <div class="apple-actions">
         <button id="appleStart" class="apple-start">▶ Monitorar agora</button>
         <button id="appleStop" class="apple-stop" disabled>■ Parar</button>
-        <span class="sub" id="appleHint">Incluídas as lojas nº 1–6 e 8–19 do print; Jacksonville (nº 7) fica fora da busca.</span>
+        <span class="sub" id="appleHint">Modo rápido: mantém as 18 lojas, mas consulta apenas os pontos necessários para cobri-las.</span>
       </div>
     </section>
 
@@ -104,7 +185,8 @@
       <div class="empty" id="appleEmpty"><strong>Aguardando primeira consulta.</strong>O monitor mostrará as lojas-alvo da Flórida conforme elas forem consultadas.</div>
     </section>
 
-    <div class="note apple-note"><b>Como o alerta funciona:</b> “Disponível” só aparece quando a própria Apple informa retirada habilitada para a variante monitorada. Se a Apple limitar as consultas, o painel mostra “bloqueado/aguardando” e reduz temporariamente a frequência — nunca converte bloqueio em “sem estoque”. O monitor de 5 segundos depende desta página permanecer aberta; navegadores móveis podem suspender timers quando a aba fica em segundo plano ou a tela é bloqueada.</div>
+    <div class="note apple-note"><b>Como o modo rápido funciona:</b> na primeira execução ele começa por pontos estratégicos e só acrescenta outras regiões se ainda faltar alguma das ${TARGET_STORE_COUNT} lojas. Ao encontrar cobertura completa, calcula um conjunto mínimo de pontos e salva esse plano neste navegador. O objetivo é revisar as mesmas lojas em cerca de 30–40 segundos, com menos requisições por minuto do que o ciclo anterior.</div>
+    <div class="note apple-note"><b>Como o alerta funciona:</b> “Disponível” só aparece quando a própria Apple informa retirada habilitada para a variante monitorada. Se a Apple limitar as consultas, o painel mostra “bloqueado/aguardando” e reduz temporariamente a frequência — nunca converte bloqueio em “sem estoque”. O monitor depende desta página permanecer aberta; navegadores móveis podem suspender timers quando a aba fica em segundo plano ou a tela é bloqueada.</div>
   `;
   const indigo = qs('#indigoApp');
   const flights = qs('#flightsApp');
@@ -187,6 +269,20 @@
 
   function escapeHtml(v=''){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 
+  function mergeSnapshots(){
+    const merged=new Map();
+    for(const snap of citySnapshots.values()){
+      for(const store of snap.stores){
+        const key=storeKey(store);
+        const prev=merged.get(key);
+        const prevTime=prev?Date.parse(prev.observed_at||0)||0:0;
+        const nextTime=Date.parse(store.observed_at||0)||0;
+        if(!prev||nextTime>=prevTime)merged.set(key,store);
+      }
+    }
+    return [...merged.values()];
+  }
+
   function render(data){
     checks+=1;
     qs('#appleChecks').textContent=String(checks);
@@ -231,16 +327,27 @@
   function schedule(delay){
     clearTimeout(timer);
     if(!active)return;
-    qs('#appleFrequency').textContent=(delay/1000)+' segundos';
+    qs('#appleFrequency').textContent=(delay/1000).toFixed(delay%1000?1:0)+' segundos';
     timer=setTimeout(checkNow,delay);
   }
 
   async function checkNow(){
     if(!active)return;
     if(document.hidden){setStatus('⏸ Monitor ativo, mas a aba está em segundo plano. Retomarei ao voltar para esta página.','warn');return;}
-    const target=LOCATIONS[locationIndex%LOCATIONS.length];
-    locationIndex=(locationIndex+1)%LOCATIONS.length;
-    setStatus(`🔎 Consultando estoque oficial da Apple em ${target.label}…`,'live');
+
+    if(!discoveryMode&&!activeLocations.length){
+      beginDiscovery();
+    }
+
+    const target=discoveryMode
+      ? DISCOVERY_LOCATIONS[Math.min(discoveryIndex,DISCOVERY_LOCATIONS.length-1)]
+      : activeLocations[locationIndex%activeLocations.length];
+    if(!target){setStatus('Não encontrei um ponto válido para consultar.','bad');return;}
+
+    setStatus(discoveryMode
+      ? `🧭 Calibrando cobertura rápida · consultando ${target.label}…`
+      : `🔎 Modo rápido · consultando ${target.label}…`,'live');
+
     try{
       const data=await jsonpAvailability(target.value,45000);
       if(!active)return;
@@ -248,36 +355,74 @@
         if(data&&data.blocked){
           blockStreak+=1;
           const delay=blockStreak>=3?60000:blockStreak===2?30000:15000;
-          setStatus(`⚠️ A Apple limitou temporariamente as consultas (HTTP ${data.http_status||'—'}). Nova tentativa em ${delay/1000}s.`,'warn');
+          setStatus(`⚠️ A Apple limitou temporariamente as consultas (HTTP ${data.http_status||'—'}). Nova tentativa no mesmo ponto em ${delay/1000}s.`,'warn');
           schedule(delay);return;
         }
         blockStreak=0;
-        setStatus('⚠️ '+String(data&&data.error||'Resposta da Apple não confirmada.')+' Nova tentativa em 10s.','warn');
+        setStatus('⚠️ '+String(data&&data.error||'Resposta da Apple não confirmada.')+' Nova tentativa no mesmo ponto em 10s.','warn');
         schedule(10000);return;
       }
+
       blockStreak=0;
-      const cityStores=(Array.isArray(data.stores)?data.stores:[]).map(x=>({...x,search_area:target.label}));
+      const cityStores=(Array.isArray(data.stores)?data.stores:[]).map(x=>({...x,search_area:target.label,observed_at:data.checked_at}));
       citySnapshots.set(target.label,{stores:cityStores,checked_at:data.checked_at});
-      const merged=new Map();
-      for(const snap of citySnapshots.values()){
-        for(const store of snap.stores){
-          const key=storeKey(store);
-          const prev=merged.get(key);
-          if(!prev||store.available===true||prev.available!==true)merged.set(key,store);
-        }
-      }
-      const stores=[...merged.values()];
+
+      if(discoveryMode)discoveryIndex+=1;
+      else{locationIndex=(locationIndex+1)%activeLocations.length;steadyChecks+=1;}
+
+      const stores=mergeSnapshots();
       const available=stores.filter(x=>x.available===true);
       render({...data,stores,stores_count:stores.length,available_count:available.length,any_available:available.length>0});
+
       const missing=Array.isArray(data.missing_variants)?data.missing_variants:[];
-      if(missing.length)setStatus('⚠️ Variante 256GB ainda sem SKU configurado no serviço.','warn');
+      if(missing.length){
+        setStatus('⚠️ Variante 256GB ainda sem SKU configurado no serviço.','warn');
+        schedule(queryDelay());return;
+      }
+
       const n=available.length;
-      const loaded=citySnapshots.size;
-      setStatus(n?`✅ ${n} loja(s) com retirada disponível agora entre as ${TARGET_STORE_COUNT} lojas-alvo da Flórida.`:`Monitorando ${loaded}/${LOCATIONS.length} áreas (${TARGET_STORE_COUNT} lojas-alvo): ${stores.length} loja(s) verificadas, nenhuma com retirada disponível neste momento.`,n?'ok':'live');
-      schedule(NORMAL_DELAY);
+
+      if(discoveryMode&&(stores.length>=TARGET_STORE_COUNT||discoveryIndex>=DISCOVERY_LOCATIONS.length)){
+        activeLocations=optimizeCoverage();
+        discoveryMode=false;
+        locationIndex=0;
+        steadyChecks=0;
+        if(stores.length>=TARGET_STORE_COUNT)saveFastPlan(activeLocations);
+        const delay=queryDelay();
+        const cycle=Math.round(activeLocations.length*delay/1000);
+        const coverageText=stores.length>=TARGET_STORE_COUNT
+          ? `${TARGET_STORE_COUNT}/${TARGET_STORE_COUNT} lojas cobertas`
+          : `${stores.length}/${TARGET_STORE_COUNT} lojas retornadas pela Apple`;
+        setStatus(n
+          ? `✅ Estoque encontrado. Modo rápido calibrado: ${coverageText}; ${activeLocations.length} ponto(s), ciclo de ~${cycle}s.`
+          : `⚡ Modo rápido calibrado: ${coverageText}; ${activeLocations.length} ponto(s), ciclo de ~${cycle}s.`,n?'ok':'live');
+        schedule(delay);return;
+      }
+
+      if(!discoveryMode&&steadyChecks>=activeLocations.length){
+        steadyChecks=0;
+        if(stores.length<TARGET_STORE_COUNT){
+          beginDiscovery();
+          setStatus(`🧭 O plano rápido retornou ${stores.length}/${TARGET_STORE_COUNT} lojas. Recalibrando automaticamente para não deixar nenhuma de fora.`,'warn');
+          schedule(DISCOVERY_DELAY);return;
+        }
+      }
+
+      if(discoveryMode){
+        setStatus(n
+          ? `✅ ${n} loja(s) com retirada disponível. Calibração já encontrou ${stores.length}/${TARGET_STORE_COUNT} lojas.`
+          : `🧭 Calibrando modo rápido: ${stores.length}/${TARGET_STORE_COUNT} lojas cobertas até agora.`,n?'ok':'live');
+      }else{
+        const delay=queryDelay();
+        const cycle=Math.round(activeLocations.length*delay/1000);
+        setStatus(n
+          ? `✅ ${n} loja(s) com retirada disponível agora entre as ${TARGET_STORE_COUNT} lojas-alvo. Modo rápido: ciclo ~${cycle}s.`
+          : `⚡ Modo rápido: ${stores.length}/${TARGET_STORE_COUNT} lojas verificadas por ${activeLocations.length} ponto(s); ciclo ~${cycle}s. Nenhuma disponível agora.`,n?'ok':'live');
+      }
+      schedule(queryDelay());
     }catch(err){
       if(!active)return;
-      setStatus('⚠️ '+String(err&&err.message||err)+' Tentarei novamente em 10s.','warn');
+      setStatus('⚠️ '+String(err&&err.message||err)+' Tentarei novamente no mesmo ponto em 10s.','warn');
       schedule(10000);
     }
   }
@@ -287,16 +432,25 @@
     if(!apiBase)await loadConfig();
     if(!apiBase){setStatus('Serviço de pesquisa não conectado. Atualize a página e tente novamente.','bad');return;}
     await askNotifications();
-    active=true;blockStreak=0;previousAvailable=new Set();locationIndex=0;citySnapshots.clear();
+    active=true;blockStreak=0;previousAvailable=new Set();locationIndex=0;discoveryIndex=0;steadyChecks=0;citySnapshots.clear();
+    activeLocations=restoreFastPlan();
+    discoveryMode=activeLocations.length===0;
     qs('#appleStart').disabled=true;qs('#appleStop').disabled=false;
-    setStatus(`▶ Monitor iniciado. Alternando ${LOCATIONS.length} áreas da Flórida a cada 5 segundos (${TARGET_STORE_COUNT} lojas-alvo; Jacksonville excluída).`,'live');
+    if(discoveryMode){
+      setStatus(`▶ Monitor iniciado em calibração rápida. Primeiro testa pontos estratégicos e só adiciona outros se necessário para cobrir as ${TARGET_STORE_COUNT} lojas.`,'live');
+    }else{
+      const delay=queryDelay();
+      const cycle=Math.round(activeLocations.length*delay/1000);
+      setStatus(`▶ Monitor iniciado com plano rápido salvo: ${activeLocations.length} ponto(s), ciclo estimado de ~${cycle}s para as ${TARGET_STORE_COUNT} lojas.`,'live');
+    }
+    qs('#appleFrequency').textContent=(queryDelay()/1000).toFixed(queryDelay()%1000?1:0)+' segundos';
     checkNow();
   }
 
   function stop(){
     active=false;clearTimeout(timer);timer=null;
     qs('#appleStart').disabled=false;qs('#appleStop').disabled=true;
-    qs('#appleFrequency').textContent='5 segundos';
+    qs('#appleFrequency').textContent=(queryDelay()/1000).toFixed(queryDelay()%1000?1:0)+' segundos';
     setStatus('Monitor parado.','');
   }
 
