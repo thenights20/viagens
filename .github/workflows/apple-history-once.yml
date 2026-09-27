@@ -15,8 +15,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Apply patch
         run: |
-          git apply --check tools/apple-history.patch
-          git apply tools/apple-history.patch
+          printf '\n' >> tools/apple-history.patch
+          patch -p1 < tools/apple-history.patch
           node --check docs/apple-stock.js
       - name: Commit change
         run: |
