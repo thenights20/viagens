@@ -1,9 +1,9 @@
-const { app, BrowserWindow, shell, session, dialog } = require('electron');
+const { app, BrowserWindow, shell, session } = require('electron');
 const path = require('path');
 const fs = require('fs');
 const { execFileSync } = require('child_process');
 
-// Nome e appId devem permanecer estáveis para que todas as versões usem o mesmo perfil.
+// Nome e appId permanecem estáveis para que todas as versões usem o mesmo perfil.
 app.setName('Viagens');
 app.commandLine.appendSwitch('disable-background-timer-throttling');
 app.commandLine.appendSwitch('disable-renderer-backgrounding');
@@ -46,9 +46,13 @@ function createWindow(){
   win.webContents.setWindowOpenHandler(({url})=>{if(/^https?:/i.test(url))shell.openExternal(url);return{action:'deny'}});
 }
 
-app.whenReady().then(()=>{
+app.whenReady().then(async()=>{
   claimCurrentVersion();
-  session.fromPartition('persist:viagens').setPermissionRequestHandler((wc,permission,callback)=>callback(permission==='notifications'));
+  const persistentSession=session.fromPartition('persist:viagens');
+  // Limpa somente o cache HTTP para forçar a interface online mais recente.
+  // localStorage/cookies permanecem intactos, preservando histórico e preferências.
+  try{await persistentSession.clearCache();}catch{}
+  persistentSession.setPermissionRequestHandler((wc,permission,callback)=>callback(permission==='notifications'));
   createWindow();
   app.on('activate',()=>{if(BrowserWindow.getAllWindows().length===0)createWindow()});
 });
