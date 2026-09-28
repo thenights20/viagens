@@ -34,6 +34,7 @@
   const FIND_HISTORY_KEY = 'appleStockFindHistoryV1';
   const MAX_FIND_HISTORY = 80;
   const REGIONAL_QUERY_DELAY = 15000;
+  const REGIONAL_DELAY_KEY = 'appleStockRegionalDelayMsV1';
   const REGIONAL_POINTS = {
     miami: { label: 'Miami', location: 'Miami, FL' },
     tampa: { label: 'Tampa', location: 'Tampa, FL' },
@@ -59,6 +60,7 @@
   const regionalKey = String(pageParams.get('appleRegion') || '').toLowerCase();
   const regionalPoint = REGIONAL_POINTS[regionalKey] || null;
   const regionalMode = !!regionalPoint;
+  let regionalQueryDelay = Math.max(1000, Number(localStorage.getItem(REGIONAL_DELAY_KEY)||REGIONAL_QUERY_DELAY));
   const regionalStartDelay = Math.max(0, Number(pageParams.get('startDelay') || 0));
 
   function restoreFastPlan(){
@@ -82,7 +84,7 @@
   discoveryMode=activeLocations.length===0;
 
   function queryDelay(){
-    if(regionalMode)return REGIONAL_QUERY_DELAY;
+    if(regionalMode)return regionalQueryDelay;
     if(discoveryMode)return DISCOVERY_DELAY;
     const n=Math.max(1,activeLocations.length);
     return Math.max(MIN_QUERY_DELAY,Math.ceil(FAST_TARGET_CYCLE_MS/n));
@@ -182,6 +184,11 @@
     .apple-regional-window .apple-summary .card:nth-child(3),.apple-regional-window .apple-summary .card:nth-child(4){display:none}
     .apple-regional-window .apple-stores{grid-template-columns:1fr;padding:6px;gap:6px}
     .apple-regional-window .apple-store{min-height:92px;padding:9px}
+
+    .apple-regional-window body>.wrap>header{display:none!important}
+    .apple-regional-window .apple-head{display:none!important}
+    .apple-regional-window #appleStockApp{padding-top:0!important;margin-top:0!important}
+    .apple-regional-window .apple-form{margin-top:0!important}
     @media(max-width:1200px){.apple-stores{grid-template-columns:repeat(3,1fr)}}
     @media(max-width:1000px){.apple-form{grid-template-columns:1fr 1fr}.apple-stores{grid-template-columns:repeat(2,1fr)}.apple-summary{grid-template-columns:repeat(2,1fr)}.apple-history-metrics{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:700px){.apple-form{grid-template-columns:1fr}.apple-actions{grid-column:1}.apple-stores{grid-template-columns:1fr}.apple-actions>*{flex:1;justify-content:center}.apple-history-metrics{grid-template-columns:1fr 1fr}}
