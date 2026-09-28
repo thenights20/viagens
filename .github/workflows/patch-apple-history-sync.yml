@@ -1,0 +1,73 @@
+name: Patch Apple history sync
+
+on:
+  push:
+    paths:
+      - '.github/workflows/patch-apple-history-sync.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Merge regional findings before saving history
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('docs/apple-stock.js')
+          s = p.read_text(encoding='utf-8')
+          start = s.index('  function recordFindings(stores,checkedAt){')
+          end = s.index('  function storeKey(x){', start)
+          new = '''  function historyItemKey(item){
+    const regions=(Array.isArray(item&&item.regions)?[...item.regions].sort():[]).join('|');
+    const stores=(Array.isArray(item&&item.stores)?[...item.stores].sort():[]).join('|');
+    return regions+'::'+stores;
+  }
+
+  function mergeFindHistory(...lists){
+    const merged=[];
+    const seen=new Set();
+    lists.flat().filter(x=>x&&x.ts&&!Number.isNaN(Date.parse(x.ts)))
+      .sort((a,b)=>Date.parse(b.ts)-Date.parse(a.ts))
+      .forEach(item=>{
+        const key=historyItemKey(item);
+        const ts=Date.parse(item.ts);
+        const duplicate=merged.some(existing=>historyItemKey(existing)===key&&Math.abs(Date.parse(existing.ts)-ts)<5*60*1000);
+        const exact=key+'::'+new Date(ts).toISOString();
+        if(!duplicate&&!seen.has(exact)){
+          seen.add(exact);
+          merged.push(item);
+        }
+      });
+    return merged.slice(0,MAX_FIND_HISTORY);
+  }
+
+  function recordFindings(stores,checkedAt){
+    if(!stores.length)return;
+    const ts=checkedAt&&Date.parse(checkedAt)?new Date(checkedAt).toISOString():new Date().toISOString();
+    const names=[...new Set(stores.map(x=>String(x.name||'Apple Store')).filter(Boolean))].sort();
+    const regions=[...new Set(stores.map(x=>String(x.search_area||(regionalPoint&&regionalPoint.label)||'').trim()).filter(Boolean))].sort();
+    const item={ts,count:stores.length,stores:names,regions};
+
+    // Sempre relê o histórico compartilhado antes de gravar. Assim Miami, Tampa,
+    // Orlando e Cape Canaveral acrescentam seus achados ao mesmo histórico geral
+    // em vez de uma janela sobrescrever a cópia mantida por outra janela.
+    const shared=loadFindHistory();
+    findHistory=mergeFindHistory(shared,findHistory,[item]);
+    saveFindHistory();
+    renderFindHistory();
+  }
+
+'''
+          p.write_text(s[:start] + new + s[end:], encoding='utf-8')
+      - name: Commit patch
+        run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/apple-stock.js
+          git commit -m 'fix: consolidate Apple stock history across regional windows'
+          git push
