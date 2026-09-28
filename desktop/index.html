@@ -1,39 +1,26 @@
 <!doctype html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Viagens Desktop</title>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Apple Stock Monitor</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#07111f;color:#eef6ff;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
-#bar{height:48px;display:flex;align-items:center;gap:6px;padding:6px 10px;background:#0b1728;border-bottom:1px solid #20324b}.brand{font-weight:900;margin-right:8px}.tab,.regionTab{border:1px solid #263b58;background:#111f33;color:#b9c9dc;border-radius:8px;padding:8px 12px;cursor:pointer;font-weight:750}.tab.active,.regionTab.active{background:#4ea8ff;color:#06101c;border-color:#4ea8ff}.spacer{flex:1}.status{font-size:11px;color:#7fe0ad;font-weight:700}.btn{border:1px solid #263b58;background:#111f33;color:#eef6ff;border-radius:8px;padding:7px 10px;cursor:pointer}
-#stage{position:relative;height:calc(100% - 48px)}iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#07111f;visibility:hidden;pointer-events:none}iframe.active{visibility:visible;pointer-events:auto}
-#appleView{position:absolute;inset:0;background:#07111f;visibility:hidden;pointer-events:none}#appleView.active{visibility:visible;pointer-events:auto}.regionBar{height:48px;display:flex;align-items:center;gap:8px;padding:6px 12px;background:#0b1728;border-bottom:1px solid #20324b}.regionBar .hint{margin-left:auto;font-size:11px;color:#7fe0ad;font-weight:700}.regionFrames{position:relative;height:calc(100% - 48px)}.regionFrame{position:absolute;inset:0;width:100%;height:100%;border:0;visibility:hidden;pointer-events:none}.regionFrame.active{visibility:visible;pointer-events:auto}
-</style>
-</head>
-<body>
-<div id="bar"><div class="brand">✈ VIAGENS</div><button class="tab active" data-view="site">Painel completo</button><button class="tab" data-view="apple">🍎 Apple</button><div class="spacer"></div><span class="status">● monitores permanecem carregados</span><button class="btn" id="reload">↻ Atualizar</button></div>
-<div id="stage">
-  <iframe id="site" class="active" src="https://thenights20.github.io/viagens/" allow="notifications"></iframe>
-  <div id="appleView">
-    <div class="regionBar">
-      <button class="regionTab active" data-region="miami">Miami</button>
-      <button class="regionTab" data-region="tampa">Tampa</button>
-      <button class="regionTab" data-region="orlando">Orlando</button>
-      <button class="regionTab" data-region="cape">Cape Canaveral</button>
-      <span class="hint">4 monitores ativos simultaneamente</span>
-    </div>
-    <div class="regionFrames">
-      <iframe class="regionFrame active" data-region="miami" src="https://thenights20.github.io/viagens/?appleRegion=miami&autostart=1&startDelay=0" allow="notifications"></iframe>
-      <iframe class="regionFrame" data-region="tampa" src="https://thenights20.github.io/viagens/?appleRegion=tampa&autostart=1&startDelay=3500" allow="notifications"></iframe>
-      <iframe class="regionFrame" data-region="orlando" src="https://thenights20.github.io/viagens/?appleRegion=orlando&autostart=1&startDelay=7000" allow="notifications"></iframe>
-      <iframe class="regionFrame" data-region="cape" src="https://thenights20.github.io/viagens/?appleRegion=cape&autostart=1&startDelay=10500" allow="notifications"></iframe>
-    </div>
-  </div>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#07111f;color:#eef6ff;font-family:system-ui,-apple-system,Segoe UI,sans-serif}body{display:flex;flex-direction:column}.top{height:64px;display:flex;align-items:center;gap:14px;padding:10px 16px;background:#0b1728;border-bottom:1px solid #20324b}.brand{font-size:19px;font-weight:900}.sub{font-size:12px;color:#9db0c9}.spacer{flex:1}.interval{display:flex;align-items:center;gap:7px;font-size:12px;color:#9db0c9}.interval input{width:70px;background:#101c2e;color:#fff;border:1px solid #2a405e;border-radius:7px;padding:8px;font-weight:800}.start,.stop{border:0;border-radius:8px;padding:10px 15px;font-weight:900;cursor:pointer}.start{background:#65a5ff;color:#07111f}.stop{background:#40202b;color:#ff9aaa}.grid{height:calc(100% - 204px);display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:8px}.card{min-width:0;background:#0d1726;border:1px solid #263b58;border-radius:10px;display:flex;flex-direction:column;overflow:hidden}.head{padding:10px 12px;border-bottom:1px solid #263b58;font-weight:900;display:flex;justify-content:space-between;align-items:center}.state{font-size:11px;color:#9db0c9}.card iframe{border:0;width:100%;height:100%;background:#07111f}.history{height:140px;margin:0 8px 8px;background:#0d1726;border:1px solid #263b58;border-radius:10px;overflow:hidden}.historyHead{height:38px;display:flex;align-items:center;padding:0 12px;border-bottom:1px solid #263b58;font-weight:900}.historyList{height:101px;overflow:auto;display:flex;gap:7px;align-content:flex-start;flex-wrap:wrap;padding:8px}.hit{background:#101c2e;border:1px solid #2a405e;border-radius:7px;padding:6px 9px;font-size:12px}.empty{color:#8295ad;font-size:12px;padding:4px}
+</style></head><body>
+<div class="top"><div><div class="brand">🍎 Monitor Apple · iPhone 18 Pro Max Burgundy 256GB</div><div class="sub">Miami · Tampa · Orlando · Cape Canaveral</div></div><div class="spacer"></div><label class="interval">Intervalo <input id="secs" type="number" min="1" max="300" value="15"> segundos</label><button class="start" id="start">▶ Iniciar 4 locais</button><button class="stop" id="stop">■ Parar</button></div>
+<div class="grid" id="grid">
+<div class="card"><div class="head">Miami <span class="state">monitor dedicado</span></div><iframe data-region="miami" src="https://thenights20.github.io/viagens/?appleRegion=miami&embedded=1"></iframe></div>
+<div class="card"><div class="head">Tampa <span class="state">monitor dedicado</span></div><iframe data-region="tampa" src="https://thenights20.github.io/viagens/?appleRegion=tampa&embedded=1"></iframe></div>
+<div class="card"><div class="head">Orlando <span class="state">monitor dedicado</span></div><iframe data-region="orlando" src="https://thenights20.github.io/viagens/?appleRegion=orlando&embedded=1"></iframe></div>
+<div class="card"><div class="head">Cape Canaveral <span class="state">monitor dedicado</span></div><iframe data-region="cape" src="https://thenights20.github.io/viagens/?appleRegion=cape&embedded=1"></iframe></div>
 </div>
+<div class="history"><div class="historyHead">🕘 Histórico de disponibilidade · horário + local</div><div class="historyList" id="history"></div></div>
 <script>
-const site=document.getElementById('site'), apple=document.getElementById('appleView');
-document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));const isApple=b.dataset.view==='apple';site.classList.toggle('active',!isApple);apple.classList.toggle('active',isApple)});
-document.querySelectorAll('.regionTab').forEach(b=>b.onclick=()=>{const r=b.dataset.region;document.querySelectorAll('.regionTab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.regionFrame').forEach(f=>f.classList.toggle('active',f.dataset.region===r));});
-document.getElementById('reload').onclick=()=>{if(site.classList.contains('active'))site.src=site.src;else{const f=document.querySelector('.regionFrame.active');if(f)f.src=f.src}};
-</script>
-</body></html>
+const frames=[...document.querySelectorAll('iframe')], secs=document.getElementById('secs'), hist=document.getElementById('history');
+const HKEY='appleStockFindHistoryV1', DKEY='appleStockRegionalDelayMsV1';
+function loadSecs(){secs.value=String(Math.max(1,Math.round((Number(localStorage.getItem(DKEY))||15000)/1000)))}
+function renderHistory(){let a=[];try{a=JSON.parse(localStorage.getItem(HKEY)||'[]')}catch{};hist.innerHTML='';if(!a.length){hist.innerHTML='<div class="empty">Nenhuma disponibilidade registrada ainda.</div>';return}a.slice(0,80).forEach(x=>{const d=document.createElement('div');d.className='hit';const dt=x.time||x.date||x.at||x.timestamp||'';const place=x.store||x.location||x.name||x.region||'Apple Store';d.textContent=`${dt} · ${place}`;hist.appendChild(d)})}
+function url(region,run,delay){return `https://thenights20.github.io/viagens/?appleRegion=${region}&embedded=1&autostart=${run?1:0}&startDelay=${delay}`}
+function startAll(){const delays=[0,1200,2400,3600];frames.forEach((f,i)=>f.src=url(f.dataset.region,true,delays[i]))}
+function stopAll(){frames.forEach(f=>f.src=url(f.dataset.region,false,0))}
+secs.addEventListener('input',()=>{const n=Math.max(1,Math.min(300,Number(secs.value)||15));localStorage.setItem(DKEY,String(Math.round(n*1000)));});
+document.getElementById('start').onclick=startAll;document.getElementById('stop').onclick=stopAll;
+window.addEventListener('storage',e=>{if(e.key===HKEY)renderHistory();if(e.key===DKEY)loadSecs()});
+setInterval(renderHistory,2000);loadSecs();renderHistory();
+</script></body></html>
