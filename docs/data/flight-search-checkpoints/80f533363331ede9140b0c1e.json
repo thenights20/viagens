@@ -3,7 +3,7 @@
   "cache_id": "80f533363331ede9140b0c1e",
   "signature": "ARU|BSB|2026-11-01|2027-01-31|2|BRL|economy|1",
   "created_at": "2026-09-28T03:29:59.929148Z",
-  "updated_at": "2026-09-28T03:30:19.957632Z",
+  "updated_at": "2026-09-28T03:30:22.042106Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "ARU",
@@ -957,6 +957,198 @@
       "completed_at": "2026-09-28T03:30:19.957620Z",
       "source": "google",
       "row": null,
+      "errors": []
+    },
+    "2026-11-01|2027-01-30": {
+      "departure_date": "2026-11-01",
+      "return_date": "2027-01-30",
+      "status": "no_price",
+      "completed_at": "2026-09-28T03:30:21.127580Z",
+      "source": "google",
+      "row": null,
+      "errors": []
+    },
+    "2026-11-01|2027-01-31": {
+      "departure_date": "2026-11-01",
+      "return_date": "2027-01-31",
+      "status": "no_price",
+      "completed_at": "2026-09-28T03:30:21.127761Z",
+      "source": "google",
+      "row": null,
+      "errors": []
+    },
+    "2026-11-02|2026-11-04": {
+      "departure_date": "2026-11-02",
+      "return_date": "2026-11-04",
+      "status": "priced",
+      "completed_at": "2026-09-28T03:30:21.127924Z",
+      "source": "google",
+      "row": {
+        "origin": "ARU",
+        "destination": "BSB",
+        "departure_date": "2026-11-02",
+        "return_date": "2026-11-04",
+        "airline": "Gol",
+        "price": 2077.0,
+        "duration": "3h 00min",
+        "duration_minutes": 180,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2026, 11, 2] [14, 50]",
+        "arrival": "[2026, 11, 2] [19]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+ARU+to+BSB+on+2026-11-02+returning+2026-11-04&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 2,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+ARU+to+BSB+on+2026-11-02+returning+2026-11-04&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=ARU&to=BSB&depart=2026-11-02&return=2026-11-04&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2026-11-02|2026-11-03": {
+      "departure_date": "2026-11-02",
+      "return_date": "2026-11-03",
+      "status": "no_price",
+      "completed_at": "2026-09-28T03:30:21.128084Z",
+      "source": "google",
+      "row": null,
+      "errors": []
+    },
+    "2026-11-02|2026-11-06": {
+      "departure_date": "2026-11-02",
+      "return_date": "2026-11-06",
+      "status": "priced",
+      "completed_at": "2026-09-28T03:30:21.128297Z",
+      "source": "google",
+      "row": {
+        "origin": "ARU",
+        "destination": "BSB",
+        "departure_date": "2026-11-02",
+        "return_date": "2026-11-06",
+        "airline": "Gol",
+        "price": 2077.0,
+        "duration": "3h 00min",
+        "duration_minutes": 180,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2026, 11, 2] [14, 50]",
+        "arrival": "[2026, 11, 2] [19]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+ARU+to+BSB+on+2026-11-02+returning+2026-11-06&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 4,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+ARU+to+BSB+on+2026-11-02+returning+2026-11-06&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=ARU&to=BSB&depart=2026-11-02&return=2026-11-06&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2026-11-02|2026-11-05": {
+      "departure_date": "2026-11-02",
+      "return_date": "2026-11-05",
+      "status": "priced",
+      "completed_at": "2026-09-28T03:30:21.128466Z",
+      "source": "google",
+      "row": {
+        "origin": "ARU",
+        "destination": "BSB",
+        "departure_date": "2026-11-02",
+        "return_date": "2026-11-05",
+        "airline": "Gol",
+        "price": 2077.0,
+        "duration": "3h 00min",
+        "duration_minutes": 180,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2026, 11, 2] [14, 50]",
+        "arrival": "[2026, 11, 2] [19]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+ARU+to+BSB+on+2026-11-02+returning+2026-11-05&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 3,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+ARU+to+BSB+on+2026-11-02+returning+2026-11-05&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=ARU&to=BSB&depart=2026-11-02&return=2026-11-05&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2026-11-02|2026-11-07": {
+      "departure_date": "2026-11-02",
+      "return_date": "2026-11-07",
+      "status": "priced",
+      "completed_at": "2026-09-28T03:30:21.128630Z",
+      "source": "google",
+      "row": {
+        "origin": "ARU",
+        "destination": "BSB",
+        "departure_date": "2026-11-02",
+        "return_date": "2026-11-07",
+        "airline": "Gol",
+        "price": 2077.0,
+        "duration": "3h 00min",
+        "duration_minutes": 180,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2026, 11, 2] [14, 50]",
+        "arrival": "[2026, 11, 2] [19]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+ARU+to+BSB+on+2026-11-02+returning+2026-11-07&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 5,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+ARU+to+BSB+on+2026-11-02+returning+2026-11-07&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=ARU&to=BSB&depart=2026-11-02&return=2026-11-07&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2026-11-02|2026-11-08": {
+      "departure_date": "2026-11-02",
+      "return_date": "2026-11-08",
+      "status": "priced",
+      "completed_at": "2026-09-28T03:30:22.042080Z",
+      "source": "google",
+      "row": {
+        "origin": "ARU",
+        "destination": "BSB",
+        "departure_date": "2026-11-02",
+        "return_date": "2026-11-08",
+        "airline": "Gol",
+        "price": 2077.0,
+        "duration": "3h 00min",
+        "duration_minutes": 180,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2026, 11, 2] [14, 50]",
+        "arrival": "[2026, 11, 2] [19]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+ARU+to+BSB+on+2026-11-02+returning+2026-11-08&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 6,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+ARU+to+BSB+on+2026-11-02+returning+2026-11-08&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=ARU&to=BSB&depart=2026-11-02&return=2026-11-08&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
       "errors": []
     }
   }
