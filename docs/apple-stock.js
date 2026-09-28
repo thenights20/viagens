@@ -185,8 +185,9 @@
     .apple-regional-window .apple-stores{grid-template-columns:1fr;padding:6px;gap:6px}
     .apple-regional-window .apple-store{min-height:92px;padding:9px}
 
-    .apple-regional-window body>.wrap>header{display:none!important}
+    body.apple-regional-window>.wrap>header{display:none!important}
     .apple-regional-window .apple-head{display:none!important}
+    body.apple-regional-window>.wrap{padding-top:4px!important}
     .apple-regional-window #appleStockApp{padding-top:0!important;margin-top:0!important}
     .apple-regional-window .apple-form{margin-top:0!important}
     @media(max-width:1200px){.apple-stores{grid-template-columns:repeat(3,1fr)}}
