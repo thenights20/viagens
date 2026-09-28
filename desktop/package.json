@@ -1,0 +1,23 @@
+{
+  "name": "viagens-desktop",
+  "version": "1.0.0",
+  "description": "Viagens Desktop - painel completo com monitores Apple integrados",
+  "main": "main.js",
+  "author": "thenights20",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "^38.2.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.thenights20.viagens",
+    "productName": "Viagens",
+    "asar": true,
+    "files": ["main.js", "index.html"],
+    "win": {"target": ["portable"], "artifactName": "Viagens-Windows-${version}.exe"}
+  }
+}
