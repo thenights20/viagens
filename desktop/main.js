@@ -1,12 +1,24 @@
 const { app, BrowserWindow, shell, session } = require('electron');
 const path = require('path');
+const fs = require('fs');
 
+// Nome fixo = pasta de dados fixa entre versões do executável.
+app.setName('Viagens');
 app.commandLine.appendSwitch('disable-background-timer-throttling');
 app.commandLine.appendSwitch('disable-renderer-backgrounding');
 app.commandLine.appendSwitch('disable-backgrounding-occluded-windows');
 
+let win;
+
+function ensurePersistentDataDir() {
+  const dir = app.getPath('userData');
+  try { fs.mkdirSync(dir, { recursive: true }); } catch {}
+  return dir;
+}
+
 function createWindow() {
-  const win = new BrowserWindow({
+  ensurePersistentDataDir();
+  win = new BrowserWindow({
     title: 'Viagens',
     show: false,
     autoHideMenuBar: true,
@@ -15,7 +27,9 @@ function createWindow() {
       contextIsolation: true,
       nodeIntegration: false,
       sandbox: true,
-      webviewTag: false
+      webviewTag: false,
+      // Mantém localStorage/cookies/cache no perfil persistente do app.
+      partition: 'persist:viagens'
     }
   });
 
@@ -36,7 +50,7 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
-  session.defaultSession.setPermissionRequestHandler((webContents, permission, callback) => {
+  session.fromPartition('persist:viagens').setPermissionRequestHandler((webContents, permission, callback) => {
     callback(permission === 'notifications');
   });
   createWindow();
