@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-28T03:42:46.687785Z",
-  "updated_at": "2026-09-28T03:42:46.687785Z",
+  "generated_at": "2026-09-28T03:42:49.624912Z",
+  "updated_at": "2026-09-28T03:42:49.624912Z",
   "started_at": "2026-09-28T03:29:59.347665Z",
   "status": "running",
   "stage": "multisource",
@@ -18,12 +18,12 @@
   },
   "stats": {
     "combinations": 4186,
-    "processed_combinations": 2916,
-    "primary_completed": 2916,
+    "processed_combinations": 2928,
+    "primary_completed": 2928,
     "primary_total": 4186,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 250,
+    "priced_combinations": 252,
     "coverage_pct": 6.0,
     "lowest_price": 1050.0,
     "result_count": 100
@@ -33,7 +33,7 @@
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 250
+    "new": 252
   },
   "daily_min": [
     {
@@ -8526,6 +8526,70 @@
     {
       "origin": "ARU",
       "destination": "BSB",
+      "departure_date": "2026-12-12",
+      "return_date": "2026-12-17",
+      "airline": "Gol",
+      "price": 1295.0,
+      "duration": "2h 50min",
+      "duration_minutes": 170,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2026, 12, 12] [15, 55]",
+      "arrival": "[2026, 12, 12] [20, 5]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+ARU+to+BSB+on+2026-12-12+returning+2026-12-17&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 5,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+ARU+to+BSB+on+2026-12-12+returning+2026-12-17&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=ARU&to=BSB&depart=2026-12-12&return=2026-12-17&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "ARU",
+      "destination": "BSB",
+      "departure_date": "2026-12-12",
+      "return_date": "2026-12-19",
+      "airline": "Gol",
+      "price": 1295.0,
+      "duration": "2h 50min",
+      "duration_minutes": 170,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2026, 12, 12] [15, 55]",
+      "arrival": "[2026, 12, 12] [20, 5]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+ARU+to+BSB+on+2026-12-12+returning+2026-12-19&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 7,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+ARU+to+BSB+on+2026-12-12+returning+2026-12-19&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=ARU&to=BSB&depart=2026-12-12&return=2026-12-19&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null
+    },
+    {
+      "origin": "ARU",
+      "destination": "BSB",
       "departure_date": "2026-11-21",
       "return_date": "2026-11-28",
       "airline": "Gol",
@@ -12845,7 +12909,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 2916,
+    "google": 2928,
     "ita": 0
   },
   "resume": {
@@ -12853,16 +12917,16 @@
     "window_minutes": 60,
     "cache_id": "80f533363331ede9140b0c1e",
     "reused_combinations": 0,
-    "searched_this_run": 2916,
-    "remaining_this_run": 1270,
-    "reusable_now": 2913,
-    "retryable_for_next_run": 1273,
-    "saved_records": 2916,
+    "searched_this_run": 2928,
+    "remaining_this_run": 1258,
+    "reusable_now": 2925,
+    "retryable_for_next_run": 1261,
+    "saved_records": 2928,
     "saved_errors": 3,
     "checkpoint_path": "docs/data/flight-search-checkpoints/80f533363331ede9140b0c1e.json"
   },
   "current_pair": {
     "departure_date": "2026-12-12",
-    "return_date": "2026-12-18"
+    "return_date": "2026-12-30"
   }
 }
