@@ -351,25 +351,41 @@
     }).join('');
   }
 
-  function recordFindings(stores,checkedAt){
-    if(!stores.length)return;
-    const ts=checkedAt&&Date.parse(checkedAt)?new Date(checkedAt).toISOString():new Date().toISOString();
-    const names=[...new Set(stores.map(x=>String(x.name||'Apple Store')).filter(Boolean))].sort();
-    const regions=[...new Set(stores.map(x=>String(x.search_area||(regionalPoint&&regionalPoint.label)||'').trim()).filter(Boolean))].sort();
-    const key=regions.join('|')+'::'+names.join('|');
-    const latest=findHistory[0];
-    if(latest){
-      const latestRegions=(Array.isArray(latest.regions)?[...latest.regions].sort():[]).join('|');
-      const latestStores=(Array.isArray(latest.stores)?[...latest.stores].sort():[]).join('|');
-      const latestKey=latestRegions+'::'+latestStores;
-      const diff=Math.abs(Date.parse(ts)-Date.parse(latest.ts||0));
-      if(key===latestKey&&diff<5*60*1000)return;
-    }
-    findHistory.unshift({ts,count:stores.length,stores:names,regions});
-    findHistory=findHistory.slice(0,MAX_FIND_HISTORY);
-    saveFindHistory();
-    renderFindHistory();
-  }
+  function historyItemKey(item){
+  const regions=(Array.isArray(item&&item.regions)?[...item.regions].sort():[]).join('|');
+  const stores=(Array.isArray(item&&item.stores)?[...item.stores].sort():[]).join('|');
+  return regions+'::'+stores;
+}
+
+function mergeFindHistory(...lists){
+  const merged=[];
+  const seen=new Set();
+  lists.flat().filter(x=>x&&x.ts&&!Number.isNaN(Date.parse(x.ts)))
+    .sort((a,b)=>Date.parse(b.ts)-Date.parse(a.ts))
+    .forEach(item=>{
+      const key=historyItemKey(item);
+      const ts=Date.parse(item.ts);
+      const duplicate=merged.some(existing=>historyItemKey(existing)===key&&Math.abs(Date.parse(existing.ts)-ts)<5*60*1000);
+      const exact=key+'::'+new Date(ts).toISOString();
+      if(!duplicate&&!seen.has(exact)){
+        seen.add(exact);
+        merged.push(item);
+      }
+    });
+  return merged.slice(0,MAX_FIND_HISTORY);
+}
+
+function recordFindings(stores,checkedAt){
+  if(!stores.length)return;
+  const ts=checkedAt&&Date.parse(checkedAt)?new Date(checkedAt).toISOString():new Date().toISOString();
+  const names=[...new Set(stores.map(x=>String(x.name||'Apple Store')).filter(Boolean))].sort();
+  const regions=[...new Set(stores.map(x=>String(x.search_area||(regionalPoint&&regionalPoint.label)||'').trim()).filter(Boolean))].sort();
+  const item={ts,count:stores.length,stores:names,regions};
+  const shared=loadFindHistory();
+  findHistory=mergeFindHistory(shared,findHistory,[item]);
+  saveFindHistory();
+  renderFindHistory();
+}
 
   function storeKey(x){return [String(x.store_number||x.name||''),String(x.storage||x.part_number||'')].join('|');}
 
