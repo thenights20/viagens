@@ -1,6 +1,6 @@
 {
   "version": "0.2.0",
-  "generated_at": "2026-09-28T05:50:08.569023Z",
+  "generated_at": "2026-09-28T14:27:14.137307Z",
   "source": "Google Flights via fast-flights + Swoop",
   "algorithm": "Radar robusto: mediana + MAD + percentis + z-score + booking window + histórico + revalidação",
   "origin_count": 11,
@@ -9,7 +9,7 @@
   "route_count": 577,
   "deal_count": 220,
   "strong_deal_count": 167,
-  "new_alert_count": 1,
+  "new_alert_count": 0,
   "origins": [
     {
       "code": "DOU",
@@ -11034,91 +11034,33 @@
       "record": true
     }
   ],
-  "new_alerts": [
-    {
-      "origin": "PPB",
-      "destination": "REC",
-      "destination_name": "Recife",
-      "destination_country": "Brazil",
-      "departure_date": "2026-10-24",
-      "return_date": "2026-10-31",
-      "airline": "Gol",
-      "price": 1366.0,
-      "duration": "6h 50min",
-      "duration_minutes": 410,
-      "stops": "1 escala",
-      "stops_count": 1,
-      "departure": "",
-      "arrival": "",
-      "url": "https://www.google.com/travel/flights?tfs=CCoQAholEgoyMDI2LTEwLTI0KAJqBwgBEgNQUEJyDAgCEggvbS8waGR6dBolEgoyMDI2LTEwLTMxKAJqDAgCEggvbS8waGR6dHIHCAESA1BQQkABSAFSA0JSTHp8Q2pSSWFuQm5ZMVJQTmtzelNFVkJUa0YxVDNkQ1J5MHRMUzB0TFMxdmEzRnFNeTF1TWtGQlFVRkJSM0UyUVVnd1JXeFFVbVZCRWhKRVpXRnNRMjl1YzNSeVlXbHVkSE13TFRVYUN3ampxZ2dRQWhvRFFsSk1PRGh3M2MwQg&curr=BRL&hl=en&gl=BR&gsas=1",
-      "provider": "swoop-deals",
-      "provider_typical_price": 2584.0,
-      "provider_discount_pct": 47.0,
-      "discovered": true,
-      "origin_name": "Presidente Venceslau (via Presidente Prudente)",
-      "observed_at": "2026-09-28T05:50:08.569023Z",
-      "scan_id": "20260928T055008Z-100",
-      "days_before_departure": 26,
-      "booking_bucket": "22-60",
-      "departure_season": "M10",
-      "trip_days": 7,
-      "deal_score": 86,
-      "status": "🔥🔥 SUPER DEAL",
-      "baseline_price": 1832.0,
-      "baseline_kind": "histórico próprio",
-      "discount_pct": 25.4,
-      "savings": 466.0,
-      "percentile": 0.0,
-      "z_score": -6.29,
-      "history_count": 16,
-      "history_days": 16,
-      "p05": 1770.5,
-      "p10": 1780.5,
-      "p20": 1782.0,
-      "p30": 1782.0,
-      "p50": 1832.0,
-      "lowest_observed": 1745.0,
-      "is_new_low": true,
-      "near_historical_low": true,
-      "confirmation": "segunda implementação confirmou",
-      "baseline_scope": "histórico geral da rota",
-      "checked_price": 1366.0,
-      "confirmation_detail": "second_collector",
-      "new_alert": true
-    }
-  ],
+  "new_alerts": [],
   "scan": {
-    "scan_number": 100,
-    "scan_id": "20260928T055008Z-100",
+    "scan_number": 101,
+    "scan_id": "20260928T142714Z-101",
     "origin_codes": [
-      "PPB",
-      "MII"
+      "DOU",
+      "PMG",
+      "JTC"
     ],
     "destination_codes": [
-      "CGR",
-      "CGB",
-      "BSB",
-      "GYN",
-      "CWB",
-      "LDB"
+      "MGF",
+      "IGU",
+      "FLN",
+      "NVT",
+      "POA",
+      "VCP"
     ],
     "date_profile": "datas distribuídas até ~9 meses",
-    "queries": 120,
-    "regular_results": 29,
-    "discovery_results": 13,
-    "fallback_results": 13,
-    "results": 42,
-    "revalidated": 1,
-    "errors": 8
+    "queries": 180,
+    "regular_results": 49,
+    "discovery_results": 0,
+    "fallback_results": 49,
+    "results": 49,
+    "revalidated": 0,
+    "errors": 1
   },
   "errors": [
-    "PPB-CGR 2026-12-27/2027-01-04: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-CGB 2027-06-25/2027-07-03: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-BSB 2027-03-27/2027-04-04: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-BSB 2027-06-25/2027-07-03: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-BSB 2027-06-25/2027-06-29: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-GYN 2027-03-27/2027-04-04: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-GYN 2026-10-05/2026-10-13: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "PPB-CWB 2027-03-27/2027-03-31: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
+    "DOU-FLN 2026-12-27/2027-01-04: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
   ]
 }
