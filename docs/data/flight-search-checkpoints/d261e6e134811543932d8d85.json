@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "cache_id": "d261e6e134811543932d8d85",
+  "signature": "PPB|BSB|2027-01-01|2027-01-31|2|BRL|economy|1",
+  "created_at": "2026-09-28T03:22:50.239921Z",
+  "updated_at": "2026-09-28T03:22:52.233840Z",
+  "resume_window_minutes": 60,
+  "request": {
+    "origin": "PPB",
+    "destination": "BSB",
+    "start_date": "2027-01-01",
+    "end_date": "2027-01-31",
+    "max_stops": 2,
+    "currency": "BRL"
+  },
+  "pairs": {
+    "2027-01-01|2027-01-05": {
+      "departure_date": "2027-01-01",
+      "return_date": "2027-01-05",
+      "status": "priced",
+      "completed_at": "2026-09-28T03:22:52.233810Z",
+      "source": "google",
+      "row": {
+        "origin": "PPB",
+        "destination": "BSB",
+        "departure_date": "2027-01-01",
+        "return_date": "2027-01-05",
+        "airline": "Gol",
+        "price": 1686.0,
+        "duration": "3h 05min",
+        "duration_minutes": 185,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2027, 1, 1] [16, 10]",
+        "arrival": "[2027, 1, 1] [22, 15]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+BSB+on+2027-01-01+returning+2027-01-05&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 4,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+BSB+on+2027-01-01+returning+2027-01-05&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=PPB&to=BSB&depart=2027-01-01&return=2027-01-05&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    }
+  }
+}
