@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-28T02:52:52.499957Z",
-  "updated_at": "2026-09-28T02:52:52.499957Z",
+  "generated_at": "2026-09-28T02:52:57.827896Z",
+  "updated_at": "2026-09-28T02:52:57.827896Z",
   "started_at": "2026-09-28T02:52:05.513757Z",
   "status": "running",
   "stage": "multisource",
@@ -18,22 +18,22 @@
   },
   "stats": {
     "combinations": 435,
-    "processed_combinations": 144,
-    "primary_completed": 144,
+    "processed_combinations": 156,
+    "primary_completed": 156,
     "primary_total": 435,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 53,
-    "coverage_pct": 12.2,
+    "priced_combinations": 54,
+    "coverage_pct": 12.4,
     "lowest_price": 1372.0,
-    "result_count": 53
+    "result_count": 54
   },
   "history_summary": {
     "compared": 0,
     "cheaper": 0,
     "higher": 0,
     "same": 0,
-    "new": 53
+    "new": 54
   },
   "daily_min": [
     {
@@ -1955,6 +1955,39 @@
     {
       "origin": "PPB",
       "destination": "BSB",
+      "departure_date": "2026-11-06",
+      "return_date": "2026-11-15",
+      "airline": "Gol",
+      "price": 1372.0,
+      "duration": "3h 05min",
+      "duration_minutes": 185,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2026, 11, 6] [8, 5]",
+      "arrival": "[2026, 11, 6] [13, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+BSB+on+2026-11-06+returning+2026-11-15&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 9,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+BSB+on+2026-11-06+returning+2026-11-15&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=BSB&depart=2026-11-06&return=2026-11-15&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 53
+    },
+    {
+      "origin": "PPB",
+      "destination": "BSB",
       "departure_date": "2026-11-01",
       "return_date": "2026-11-02",
       "airline": "Gol",
@@ -1983,7 +2016,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 53
+      "rank": 54
     }
   ],
   "all_results": [
@@ -3706,6 +3739,39 @@
     {
       "origin": "PPB",
       "destination": "BSB",
+      "departure_date": "2026-11-06",
+      "return_date": "2026-11-15",
+      "airline": "Gol",
+      "price": 1372.0,
+      "duration": "3h 05min",
+      "duration_minutes": 185,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2026, 11, 6] [8, 5]",
+      "arrival": "[2026, 11, 6] [13, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+BSB+on+2026-11-06+returning+2026-11-15&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 9,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+BSB+on+2026-11-06+returning+2026-11-15&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=PPB&to=BSB&depart=2026-11-06&return=2026-11-15&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 53
+    },
+    {
+      "origin": "PPB",
+      "destination": "BSB",
       "departure_date": "2026-11-01",
       "return_date": "2026-11-02",
       "airline": "Gol",
@@ -3734,7 +3800,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 53
+      "rank": 54
     }
   ],
   "errors": [
@@ -3768,7 +3834,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 144,
+    "google": 156,
     "ita": 0
   },
   "resume": {
@@ -3776,16 +3842,16 @@
     "window_minutes": 60,
     "cache_id": "370acd74ecaf3fdaefb07b05",
     "reused_combinations": 0,
-    "searched_this_run": 144,
-    "remaining_this_run": 291,
-    "reusable_now": 143,
-    "retryable_for_next_run": 292,
-    "saved_records": 144,
+    "searched_this_run": 156,
+    "remaining_this_run": 279,
+    "reusable_now": 155,
+    "retryable_for_next_run": 280,
+    "saved_records": 156,
     "saved_errors": 1,
     "checkpoint_path": "docs/data/flight-search-checkpoints/370acd74ecaf3fdaefb07b05.json"
   },
   "current_pair": {
     "departure_date": "2026-11-06",
-    "return_date": "2026-11-16"
+    "return_date": "2026-11-27"
   }
 }
