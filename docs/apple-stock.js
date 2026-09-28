@@ -190,6 +190,11 @@
     body.apple-regional-window>.wrap{padding-top:4px!important}
     .apple-regional-window #appleStockApp{padding-top:0!important;margin-top:0!important}
     .apple-regional-window .apple-form{margin-top:0!important}
+
+    .apple-regional-window body>.wrap>header{display:none!important}
+    .apple-regional-window .apple-head{display:none!important}
+    .apple-regional-window #appleStockApp{padding-top:0!important;margin-top:0!important}
+    .apple-regional-window .apple-form{margin-top:0!important}
     @media(max-width:1200px){.apple-stores{grid-template-columns:repeat(3,1fr)}}
     @media(max-width:1000px){.apple-form{grid-template-columns:1fr 1fr}.apple-stores{grid-template-columns:repeat(2,1fr)}.apple-summary{grid-template-columns:repeat(2,1fr)}.apple-history-metrics{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:700px){.apple-form{grid-template-columns:1fr}.apple-actions{grid-column:1}.apple-stores{grid-template-columns:1fr}.apple-actions>*{flex:1;justify-content:center}.apple-history-metrics{grid-template-columns:1fr 1fr}}
