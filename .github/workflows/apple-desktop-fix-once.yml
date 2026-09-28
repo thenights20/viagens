@@ -1,0 +1,51 @@
+name: Apple Desktop Fix Once
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/apple-desktop-fix-once.yml'
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply fixes
+        shell: python
+        run: |
+          from pathlib import Path
+          p=Path('docs/apple-stock.js')
+          s=p.read_text(encoding='utf-8')
+
+          # Intervalo regional persistente e alterável em tempo real.
+          if "REGIONAL_DELAY_KEY" not in s:
+              s=s.replace("  const REGIONAL_QUERY_DELAY = 15000;", "  const REGIONAL_QUERY_DELAY = 15000;\n  const REGIONAL_DELAY_KEY = 'appleStockRegionalDelayMsV1';")
+              s=s.replace("  const regionalMode = !!regionalPoint;", "  const regionalMode = !!regionalPoint;\n  let regionalQueryDelay = Math.max(1000, Number(localStorage.getItem(REGIONAL_DELAY_KEY)||REGIONAL_QUERY_DELAY));")
+              s=s.replace("    if(regionalMode)return REGIONAL_QUERY_DELAY;", "    if(regionalMode)return regionalQueryDelay;")
+
+          # Em modo regional/embutido, remove cabeçalhos redundantes e ganha espaço útil.
+          extra_css = """
+    .apple-regional-window body>.wrap>header{display:none!important}
+    .apple-regional-window .apple-head{display:none!important}
+    .apple-regional-window #appleStockApp{padding-top:0!important;margin-top:0!important}
+    .apple-regional-window .apple-form{margin-top:0!important}
+"""
+          marker="    @media(max-width:1200px){.apple-stores{grid-template-columns:repeat(3,1fr)}}"
+          if extra_css.strip() not in s and marker in s:
+              s=s.replace(marker, extra_css+"\n"+marker, 1)
+
+          # Som mais audível: aumenta ganho e duração sem depender do volume do navegador.
+          s=s.replace("gain.gain.setValueAtTime(0.12, now);", "gain.gain.setValueAtTime(0.28, now);")
+          s=s.replace("gain.gain.exponentialRampToValueAtTime(0.001, now+0.9);", "gain.gain.exponentialRampToValueAtTime(0.001, now+1.25);")
+          s=s.replace("osc.stop(now+0.95);", "osc.stop(now+1.30);")
+
+          p.write_text(s,encoding='utf-8')
+      - name: Commit direct source fix
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/apple-stock.js
+          git commit -m 'fix: compact Apple desktop monitors and persistent live interval' || exit 0
+          git push
