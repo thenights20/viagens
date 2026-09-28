@@ -2,7 +2,6 @@ const { app, BrowserWindow, shell, session } = require('electron');
 const path = require('path');
 const fs = require('fs');
 
-// Nome fixo = pasta de dados fixa entre versões do executável.
 app.setName('Viagens');
 app.commandLine.appendSwitch('disable-background-timer-throttling');
 app.commandLine.appendSwitch('disable-renderer-backgrounding');
@@ -21,31 +20,27 @@ function createWindow() {
   win = new BrowserWindow({
     title: 'Viagens',
     show: false,
-    autoHideMenuBar: true,
+    autoHideMenuBar: false,
+    frame: true,
     backgroundColor: '#07111f',
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,
       sandbox: true,
       webviewTag: false,
-      // Mantém localStorage/cookies/cache no perfil persistente do app.
       partition: 'persist:viagens'
     }
   });
 
+  // Janela normal do Windows, apenas maximizada: mantém barra de título,
+  // minimizar, maximizar/restaurar, fechar e menu/ferramentas.
   win.maximize();
-  win.setFullScreen(true);
   win.loadFile(path.join(__dirname, 'index.html'));
   win.once('ready-to-show', () => win.show());
 
   win.webContents.setWindowOpenHandler(({ url }) => {
     if (/^https?:/i.test(url)) shell.openExternal(url);
     return { action: 'deny' };
-  });
-
-  win.webContents.on('before-input-event', (event, input) => {
-    if (input.key === 'F11') { win.setFullScreen(!win.isFullScreen()); event.preventDefault(); }
-    if (input.key === 'Escape' && win.isFullScreen()) { win.setFullScreen(false); event.preventDefault(); }
   });
 }
 
