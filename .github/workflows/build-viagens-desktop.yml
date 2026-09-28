@@ -1,0 +1,37 @@
+name: Gerar Viagens Desktop Windows
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'desktop/**'
+      - '.github/workflows/build-viagens-desktop.yml'
+
+jobs:
+  build:
+    runs-on: windows-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: desktop/package-lock.json
+      - name: Instalar dependências
+        working-directory: desktop
+        run: npm install
+      - name: Gerar executável portátil
+        working-directory: desktop
+        run: npm run dist
+      - name: Publicar executável
+        uses: actions/upload-artifact@v4
+        with:
+          name: Viagens-Desktop-Windows
+          path: desktop/dist/*.exe
+          if-no-files-found: error
+          retention-days: 30
