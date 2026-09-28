@@ -5,27 +5,35 @@
 <title>Viagens Desktop</title>
 <style>
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#07111f;color:#eef6ff;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
-#bar{height:48px;display:flex;align-items:center;gap:6px;padding:6px 10px;background:#0b1728;border-bottom:1px solid #20324b}
-.brand{font-weight:900;margin-right:8px}.tab{border:1px solid #263b58;background:#111f33;color:#b9c9dc;border-radius:8px;padding:8px 12px;cursor:pointer;font-weight:750}.tab.active{background:#4ea8ff;color:#06101c;border-color:#4ea8ff}.spacer{flex:1}.status{font-size:11px;color:#7fe0ad;font-weight:700}.btn{border:1px solid #263b58;background:#111f33;color:#eef6ff;border-radius:8px;padding:7px 10px;cursor:pointer}
+#bar{height:48px;display:flex;align-items:center;gap:6px;padding:6px 10px;background:#0b1728;border-bottom:1px solid #20324b}.brand{font-weight:900;margin-right:8px}.tab,.regionTab{border:1px solid #263b58;background:#111f33;color:#b9c9dc;border-radius:8px;padding:8px 12px;cursor:pointer;font-weight:750}.tab.active,.regionTab.active{background:#4ea8ff;color:#06101c;border-color:#4ea8ff}.spacer{flex:1}.status{font-size:11px;color:#7fe0ad;font-weight:700}.btn{border:1px solid #263b58;background:#111f33;color:#eef6ff;border-radius:8px;padding:7px 10px;cursor:pointer}
 #stage{position:relative;height:calc(100% - 48px)}iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#07111f;visibility:hidden;pointer-events:none}iframe.active{visibility:visible;pointer-events:auto}
-#appleGrid{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:4px;padding:4px;background:#07111f;visibility:hidden;pointer-events:none}#appleGrid.active{visibility:visible;pointer-events:auto}#appleGrid iframe{position:relative;visibility:visible;pointer-events:auto;border:1px solid #20324b;border-radius:7px}
+#appleView{position:absolute;inset:0;background:#07111f;visibility:hidden;pointer-events:none}#appleView.active{visibility:visible;pointer-events:auto}.regionBar{height:48px;display:flex;align-items:center;gap:8px;padding:6px 12px;background:#0b1728;border-bottom:1px solid #20324b}.regionBar .hint{margin-left:auto;font-size:11px;color:#7fe0ad;font-weight:700}.regionFrames{position:relative;height:calc(100% - 48px)}.regionFrame{position:absolute;inset:0;width:100%;height:100%;border:0;visibility:hidden;pointer-events:none}.regionFrame.active{visibility:visible;pointer-events:auto}
 </style>
 </head>
 <body>
-<div id="bar"><div class="brand">✈ VIAGENS</div><button class="tab active" data-view="site">Painel completo</button><button class="tab" data-view="apple">🍎 Apple · 4 regiões</button><div class="spacer"></div><span class="status">● monitores permanecem carregados</span><button class="btn" id="reload">↻ Atualizar</button><button class="btn" id="full">Tela cheia</button></div>
+<div id="bar"><div class="brand">✈ VIAGENS</div><button class="tab active" data-view="site">Painel completo</button><button class="tab" data-view="apple">🍎 Apple</button><div class="spacer"></div><span class="status">● monitores permanecem carregados</span><button class="btn" id="reload">↻ Atualizar</button></div>
 <div id="stage">
   <iframe id="site" class="active" src="https://thenights20.github.io/viagens/" allow="notifications"></iframe>
-  <div id="appleGrid">
-    <iframe src="https://thenights20.github.io/viagens/?appleRegion=miami&autostart=1&startDelay=0" allow="notifications"></iframe>
-    <iframe src="https://thenights20.github.io/viagens/?appleRegion=tampa&autostart=1&startDelay=3500" allow="notifications"></iframe>
-    <iframe src="https://thenights20.github.io/viagens/?appleRegion=orlando&autostart=1&startDelay=7000" allow="notifications"></iframe>
-    <iframe src="https://thenights20.github.io/viagens/?appleRegion=cape&autostart=1&startDelay=10500" allow="notifications"></iframe>
+  <div id="appleView">
+    <div class="regionBar">
+      <button class="regionTab active" data-region="miami">Miami</button>
+      <button class="regionTab" data-region="tampa">Tampa</button>
+      <button class="regionTab" data-region="orlando">Orlando</button>
+      <button class="regionTab" data-region="cape">Cape Canaveral</button>
+      <span class="hint">4 monitores ativos simultaneamente</span>
+    </div>
+    <div class="regionFrames">
+      <iframe class="regionFrame active" data-region="miami" src="https://thenights20.github.io/viagens/?appleRegion=miami&autostart=1&startDelay=0" allow="notifications"></iframe>
+      <iframe class="regionFrame" data-region="tampa" src="https://thenights20.github.io/viagens/?appleRegion=tampa&autostart=1&startDelay=3500" allow="notifications"></iframe>
+      <iframe class="regionFrame" data-region="orlando" src="https://thenights20.github.io/viagens/?appleRegion=orlando&autostart=1&startDelay=7000" allow="notifications"></iframe>
+      <iframe class="regionFrame" data-region="cape" src="https://thenights20.github.io/viagens/?appleRegion=cape&autostart=1&startDelay=10500" allow="notifications"></iframe>
+    </div>
   </div>
 </div>
 <script>
-const site=document.getElementById('site'), grid=document.getElementById('appleGrid');
-document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));const apple=b.dataset.view==='apple';site.classList.toggle('active',!apple);grid.classList.toggle('active',apple)});
-document.getElementById('reload').onclick=()=>{if(site.classList.contains('active'))site.src=site.src;else grid.querySelectorAll('iframe').forEach(f=>f.src=f.src)};
-document.getElementById('full').onclick=()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});else document.exitFullscreen().catch(()=>{})};
+const site=document.getElementById('site'), apple=document.getElementById('appleView');
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));const isApple=b.dataset.view==='apple';site.classList.toggle('active',!isApple);apple.classList.toggle('active',isApple)});
+document.querySelectorAll('.regionTab').forEach(b=>b.onclick=()=>{const r=b.dataset.region;document.querySelectorAll('.regionTab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.regionFrame').forEach(f=>f.classList.toggle('active',f.dataset.region===r));});
+document.getElementById('reload').onclick=()=>{if(site.classList.contains('active'))site.src=site.src;else{const f=document.querySelector('.regionFrame.active');if(f)f.src=f.src}};
 </script>
 </body></html>
