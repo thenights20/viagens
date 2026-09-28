@@ -3,7 +3,7 @@
   "cache_id": "748479377364f27e1cacf6c4",
   "signature": "PPB|BSB|2026-12-01|2026-12-31|2|BRL|economy|1",
   "created_at": "2026-09-28T03:14:18.025553Z",
-  "updated_at": "2026-09-28T03:15:28.604816Z",
+  "updated_at": "2026-09-28T03:15:31.391581Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "PPB",
@@ -4413,6 +4413,126 @@
       "completed_at": "2026-09-28T03:15:28.604806Z",
       "source": "google",
       "row": null,
+      "errors": []
+    },
+    "2026-12-10|2026-12-27": {
+      "departure_date": "2026-12-10",
+      "return_date": "2026-12-27",
+      "status": "no_price",
+      "completed_at": "2026-09-28T03:15:29.918295Z",
+      "source": "google",
+      "row": null,
+      "errors": []
+    },
+    "2026-12-10|2026-12-26": {
+      "departure_date": "2026-12-10",
+      "return_date": "2026-12-26",
+      "status": "no_price",
+      "completed_at": "2026-09-28T03:15:29.918845Z",
+      "source": "google",
+      "row": null,
+      "errors": []
+    },
+    "2026-12-10|2026-12-28": {
+      "departure_date": "2026-12-10",
+      "return_date": "2026-12-28",
+      "status": "no_price",
+      "completed_at": "2026-09-28T03:15:29.919348Z",
+      "source": "google",
+      "row": null,
+      "errors": []
+    },
+    "2026-12-10|2026-12-29": {
+      "departure_date": "2026-12-10",
+      "return_date": "2026-12-29",
+      "status": "no_price",
+      "completed_at": "2026-09-28T03:15:31.389115Z",
+      "source": "google",
+      "row": null,
+      "errors": []
+    },
+    "2026-12-10|2026-12-30": {
+      "departure_date": "2026-12-10",
+      "return_date": "2026-12-30",
+      "status": "no_price",
+      "completed_at": "2026-09-28T03:15:31.389930Z",
+      "source": "google",
+      "row": null,
+      "errors": []
+    },
+    "2026-12-10|2026-12-31": {
+      "departure_date": "2026-12-10",
+      "return_date": "2026-12-31",
+      "status": "no_price",
+      "completed_at": "2026-09-28T03:15:31.390502Z",
+      "source": "google",
+      "row": null,
+      "errors": []
+    },
+    "2026-12-11|2026-12-12": {
+      "departure_date": "2026-12-11",
+      "return_date": "2026-12-12",
+      "status": "priced",
+      "completed_at": "2026-09-28T03:15:31.391048Z",
+      "source": "google",
+      "row": {
+        "origin": "PPB",
+        "destination": "BSB",
+        "departure_date": "2026-12-11",
+        "return_date": "2026-12-12",
+        "airline": "Gol",
+        "price": 1372.0,
+        "duration": "3h 05min",
+        "duration_minutes": 185,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2026, 12, 11] [8, 5]",
+        "arrival": "[2026, 12, 11] [13, 50]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+BSB+on+2026-12-11+returning+2026-12-12&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 1,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+BSB+on+2026-12-11+returning+2026-12-12&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=PPB&to=BSB&depart=2026-12-11&return=2026-12-12&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2026-12-11|2026-12-14": {
+      "departure_date": "2026-12-11",
+      "return_date": "2026-12-14",
+      "status": "priced",
+      "completed_at": "2026-09-28T03:15:31.391556Z",
+      "source": "google",
+      "row": {
+        "origin": "PPB",
+        "destination": "BSB",
+        "departure_date": "2026-12-11",
+        "return_date": "2026-12-14",
+        "airline": "Gol",
+        "price": 1372.0,
+        "duration": "3h 05min",
+        "duration_minutes": 185,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2026, 12, 11] [8, 5]",
+        "arrival": "[2026, 12, 11] [13, 50]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+BSB+on+2026-12-11+returning+2026-12-14&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 3,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+BSB+on+2026-12-11+returning+2026-12-14&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=PPB&to=BSB&depart=2026-12-11&return=2026-12-14&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
       "errors": []
     }
   }
