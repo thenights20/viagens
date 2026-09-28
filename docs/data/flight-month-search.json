@@ -1,12 +1,12 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-28T04:27:44.008617Z",
-  "updated_at": "2026-09-28T04:27:44.008617Z",
-  "started_at": "2026-09-28T04:12:03.818585Z",
+  "generated_at": "2026-09-28T04:50:06.048092Z",
+  "updated_at": "2026-09-28T04:50:06.048092Z",
+  "started_at": "2026-09-28T04:50:00.943155Z",
   "status": "completed",
   "stage": "completed",
   "mode": "date_range_matrix",
-  "request_id": "web_dcecce3635694eaeb4fea0e43f27246c",
+  "request_id": "web_2ab92b0bcb9c42e4afb97a073ace21fd",
   "request": {
     "origin": "ARU",
     "destination": "BSB",
@@ -38,13 +38,7 @@
   "daily_min": [],
   "results": [],
   "all_results": [],
-  "errors": [
-    "2027-03-16->2027-03-31 2027-03-16->2027-03-31: ProviderResponseError: Google returned a provider error",
-    "2027-03-17->2027-03-31 2027-03-17->2027-03-31: ProviderResponseError: Google returned a provider error",
-    "2027-03-21->2027-03-22 2027-03-21->2027-03-22: ProviderResponseError: Google returned a provider error",
-    "2027-03-21->2027-04-02 2027-03-21->2027-04-02: ProviderResponseError: Google returned a provider error",
-    "2027-03-25->2027-03-28 2027-03-25->2027-03-28: ProviderResponseError: Google returned a provider error"
-  ],
+  "errors": [],
   "currency": "BRL",
   "source_strategy": "google_flights_with_ita_verification",
   "sources": {
@@ -73,20 +67,20 @@
     "google"
   ],
   "source_counts": {
-    "google": 3916,
+    "google": 5,
     "ita": 0
   },
   "resume": {
     "enabled": true,
     "window_minutes": 60,
     "cache_id": "ae30e8e992054edb7eb60177",
-    "reused_combinations": 0,
-    "searched_this_run": 3916,
+    "reused_combinations": 3911,
+    "searched_this_run": 5,
     "remaining_this_run": 0,
-    "reusable_now": 3911,
-    "retryable_for_next_run": 5,
+    "reusable_now": 3916,
+    "retryable_for_next_run": 0,
     "saved_records": 3916,
-    "saved_errors": 5,
+    "saved_errors": 0,
     "checkpoint_path": "docs/data/flight-search-checkpoints/ae30e8e992054edb7eb60177.json"
   }
 }
