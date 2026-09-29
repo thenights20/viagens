@@ -1,17 +1,15 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-09-28T23:59:30.852673Z",
+  "generated_at": "2026-09-29T03:59:09.870803Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 26,
+  "active_count": 27,
   "strong_count": 0,
   "critical_count": 0,
   "confirmed_count": 0,
   "sensor_bug_count": 0,
-  "scanner_count": 35,
-  "queries_this_run": [
-    "galaxy s ultra"
-  ],
+  "scanner_count": 0,
+  "queries_this_run": [],
   "source_health": {
     "Magalu": {
       "ok": true,
@@ -36,24 +34,13 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 35,
-      "candidates_seen": 57,
-      "message": "scanner rápido",
+      "items": 0,
+      "candidates_seen": 0,
+      "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     }
   },
-  "validation_errors": [
-    "Amazon Brasil · Caneta de reposição S25 Ultra S para Samsung Galaxy S25 Ultra 5G, todas as versões, com 5 pontas/pontas (cinza claro): preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta Stylus S Pen Compatível Galaxy S24 Ultra S23 S22: preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta de reposição S25 Ultra S para Samsung Galaxy S25 Ultra 5G, todas as versões, com 5 pontas/pontas (cinza claro): preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta de reposição S25 Ultra S para Samsung Galaxy S25 Ultra 5G, todas as versões, com 5 pontas/pontas (cinza claro): preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta de reposição S23 Ultra S para Samsung Galaxy S23 Ultra Stylus, preta: preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta de reposição para Galaxy S24 Ultra S para Samsung Galaxy S24 Ultra: preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta Galaxy S24 Ultra Stylus (sem Bluetooth) de substituição para Galaxy S24 Ultra 5G Stylus caneta de toque + pontas (preto): preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta Galaxy S24 Ultra Stylus (sem Bluetooth) de substituição para Galaxy S24 Ultra 5G Stylus caneta de toque + pontas (preto): preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta Galaxy S24 Ultra Stylus (sem Bluetooth) de substituição para Galaxy S24 Ultra 5G Stylus caneta de toque + pontas (preto): preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta de reposição S25 Ultra S para Samsung Galaxy S25 Ultra 5G, todas as versões, com 5 pontas/pontas (cinza claro): preço não apareceu novamente na página"
-  ],
+  "validation_errors": [],
   "bugs": [
     {
       "source": "Amazon Brasil",
@@ -802,6 +789,36 @@
       "verification_note": "aguardando rechecagem",
       "first_seen": "2026-09-28T23:59:30.852673Z",
       "last_seen": "2026-09-28T23:59:30.852673Z",
+      "sightings": 1,
+      "fresh": true
+    },
+    {
+      "source": "Mercado Livre",
+      "store_name": "Samsung",
+      "title": "Celulares e TelefonesCelulares e Smartphones",
+      "price": 79.0,
+      "original_price": 2500.0,
+      "reference_price": 2500.0,
+      "url": "https://lista.mercadolivre.com.br/galaxy-s#results",
+      "category": null,
+      "available": true,
+      "trusted": true,
+      "revalidated": false,
+      "collector": "radar-historico",
+      "collected_at": "2026-09-29T02:04:01.949977+00:00",
+      "bug_score": 68,
+      "bug_status": "🟢 SUSPEITO",
+      "category_rule": null,
+      "baseline_price": 2500.0,
+      "baseline_kind": "histórico/mercado",
+      "drop_pct": 96.8,
+      "savings": 2421.0,
+      "reasons": [
+        "97% abaixo de histórico/mercado",
+        "vendedor/loja com sinal de confiança"
+      ],
+      "first_seen": "2026-09-29T03:59:09.870803Z",
+      "last_seen": "2026-09-29T03:59:09.870803Z",
       "sightings": 1,
       "fresh": true
     },
