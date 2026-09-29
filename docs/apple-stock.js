@@ -388,6 +388,38 @@ function mergeFindHistory(...lists){
   return merged.slice(0,MAX_FIND_HISTORY);
 }
 
+function emitDesktopMessage(payload){
+  if(pageParams.get('embedded')!=='1'||window.parent===window)return;
+  try{window.parent.postMessage(payload,'*');}catch{}
+}
+
+function emitDesktopFinding(stores,ts){
+  emitDesktopMessage({
+    type:'apple-stock-found',
+    version:1,
+    ts,
+    region:(regionalPoint&&regionalPoint.label)||stores[0]?.search_area||'',
+    stores:stores.map(x=>({
+      name:String(x.name||'Apple Store'),
+      store_number:String(x.store_number||''),
+      address:String(x.address||''),
+      city:String(x.city||''),
+      state:String(x.state||''),
+      postal_code:String(x.postal_code||''),
+      search_area:String(x.search_area||((regionalPoint&&regionalPoint.label)||''))
+    }))
+  });
+}
+
+function emitDesktopHistorySnapshot(){
+  emitDesktopMessage({
+    type:'apple-history-snapshot',
+    version:1,
+    region:(regionalPoint&&regionalPoint.label)||'',
+    history:Array.isArray(findHistory)?findHistory.slice(0,MAX_FIND_HISTORY):[]
+  });
+}
+
 function recordFindings(stores,checkedAt){
   if(!stores.length)return;
   const ts=checkedAt&&Date.parse(checkedAt)?new Date(checkedAt).toISOString():new Date().toISOString();
@@ -398,6 +430,7 @@ function recordFindings(stores,checkedAt){
   findHistory=mergeFindHistory(shared,findHistory,[item]);
   saveFindHistory();
   renderFindHistory();
+  emitDesktopFinding(stores,ts);
 }
 
   function storeKey(x){return [String(x.store_number||x.name||''),String(x.storage||x.part_number||'')].join('|');}
@@ -722,6 +755,7 @@ function recordFindings(stores,checkedAt){
   });
 
   renderFindHistory();
+  emitDesktopHistorySnapshot();
   loadConfig();
   if(regionalMode){
     document.body.classList.add('apple-regional-window');

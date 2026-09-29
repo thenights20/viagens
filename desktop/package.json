@@ -1,7 +1,7 @@
 {
   "name": "viagens-desktop",
-  "version": "1.1.1",
-  "description": "Apple Stock Monitor - quatro regiões, histórico persistente e alerta sonoro",
+  "version": "1.1.2",
+  "description": "Apple Stock Monitor - quatro regiões, histórico centralizado persistente e alerta sonoro",
   "main": "main.js",
   "author": "thenights20",
   "license": "UNLICENSED",
@@ -17,9 +17,14 @@
     "appId": "com.thenights20.viagens",
     "productName": "Apple Stock Monitor",
     "asar": true,
-    "files": ["main.js", "index.html"],
+    "files": [
+      "main.js",
+      "index.html"
+    ],
     "win": {
-      "target": ["portable"],
+      "target": [
+        "portable"
+      ],
       "artifactName": "Apple-Stock-Monitor-${version}.exe"
     }
   }
