@@ -1,6 +1,6 @@
 {
   "version": "0.2.0",
-  "generated_at": "2026-09-29T01:16:20.694926Z",
+  "generated_at": "2026-09-29T07:30:31.272770Z",
   "source": "Google Flights via fast-flights + Swoop",
   "algorithm": "Radar robusto: mediana + MAD + percentis + z-score + booking window + histórico + revalidação",
   "origin_count": 11,
@@ -9,7 +9,7 @@
   "route_count": 580,
   "deal_count": 220,
   "strong_deal_count": 170,
-  "new_alert_count": 1,
+  "new_alert_count": 0,
   "origins": [
     {
       "code": "DOU",
@@ -11033,62 +11033,13 @@
       "record": true
     }
   ],
-  "new_alerts": [
-    {
-      "origin": "GIG",
-      "destination": "IGU",
-      "departure_date": "2026-12-28",
-      "return_date": "2027-01-01",
-      "airline": "LATAM",
-      "price": 1108.0,
-      "duration": "2h 05min",
-      "duration_minutes": 125,
-      "stops": "Direto",
-      "stops_count": 0,
-      "departure": "[2026, 12, 28] [6, 55]",
-      "arrival": "[2026, 12, 28] [9]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+IGU+on+2026-12-28+returning+2027-01-01",
-      "provider": "fast-flights",
-      "origin_name": "Rio de Janeiro / Galeão",
-      "destination_name": "Foz do Iguaçu",
-      "observed_at": "2026-09-29T01:16:20.694926Z",
-      "scan_id": "20260929T011620Z-103",
-      "days_before_departure": 90,
-      "booking_bucket": "61+",
-      "departure_season": "M12",
-      "trip_days": 4,
-      "deal_score": 83,
-      "status": "🔥🔥 SUPER DEAL",
-      "baseline_price": 1404.5,
-      "baseline_kind": "histórico próprio",
-      "discount_pct": 21.1,
-      "savings": 296.5,
-      "percentile": 0.0,
-      "z_score": -3.01,
-      "history_count": 12,
-      "history_days": 2,
-      "p05": 1136.0,
-      "p10": 1136.0,
-      "p20": 1180.2,
-      "p30": 1357.6,
-      "p50": 1404.5,
-      "lowest_observed": 1136.0,
-      "is_new_low": true,
-      "near_historical_low": true,
-      "confirmation": "segunda implementação confirmou",
-      "baseline_scope": "rota + antecedência 61+",
-      "checked_price": 1108.0,
-      "confirmation_detail": "second_collector",
-      "new_alert": true
-    }
-  ],
+  "new_alerts": [],
   "scan": {
-    "scan_number": 103,
-    "scan_id": "20260929T011620Z-103",
+    "scan_number": 104,
+    "scan_id": "20260929T073031Z-104",
     "origin_codes": [
-      "GIG",
-      "TJL",
-      "ARU"
+      "PPB",
+      "MII"
     ],
     "destination_codes": [
       "MGF",
@@ -11099,30 +11050,15 @@
       "VCP"
     ],
     "date_profile": "datas distribuídas até ~9 meses",
-    "queries": 180,
-    "regular_results": 90,
-    "discovery_results": 42,
-    "fallback_results": 17,
-    "results": 132,
-    "revalidated": 2,
-    "errors": 16
+    "queries": 120,
+    "regular_results": 33,
+    "discovery_results": 9,
+    "fallback_results": 10,
+    "results": 42,
+    "revalidated": 1,
+    "errors": 1
   },
   "errors": [
-    "TJL-IGU 2026-12-28/2027-01-05: fast-flights: Google returned a provider error",
-    "ARU-MGF 2026-12-28/2027-01-05: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "ARU-MGF 2026-10-29/2026-11-02: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "ARU-IGU 2026-10-06/2026-10-14: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "ARU-IGU 2026-12-28/2027-01-05: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "ARU-IGU 2027-03-28/2027-04-05: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "ARU-NVT 2026-10-06/2026-10-10: fast-flights: Google document has no flight data script",
-    "ARU-FLN 2027-03-28/2027-04-05: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "ARU-NVT 2026-10-29/2026-11-02: fast-flights: Google document has no flight data script",
-    "ARU-NVT 2027-06-26/2027-06-30: fast-flights: Google document has no flight data script",
-    "ARU-NVT 2027-06-26/2027-07-04: fast-flights: Google document has no flight data script",
-    "ARU-NVT 2027-03-28/2027-04-01: fast-flights: Google document has no flight data script",
-    "ARU-POA 2026-10-06/2026-10-14: swoop: SwoopRateLimitError: Google Flights rate limit hit (HTTP 429). Wait a few minutes before retrying.",
-    "ARU-POA 2027-06-26/2027-07-04: fast-flights: Google document has no flight data script",
-    "ARU-VCP 2027-03-28/2027-04-05: fast-flights: Google document has no flight data script",
-    "revalidação GIG-MAO: Google document has no flight data script"
+    "PPB-FLN 2027-03-28/2027-04-05: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
   ]
 }
