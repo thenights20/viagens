@@ -1,0 +1,49 @@
+name: Fix Apple 256GB + 512GB runtime once
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-apple-512-runtime-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fix Apple monitor initialization
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('docs/apple-stock.js')
+          s = p.read_text(encoding='utf-8')
+          declaration = "  const pageParams = new URLSearchParams(location.search);\n"
+          anchor = "  if (qs('#appleStockApp') || !qs('.main-tabs')) return;\n\n"
+          if anchor not in s:
+              raise SystemExit('apple-stock.js initialization anchor not found')
+          # Avoid the temporal-dead-zone bug: pageParams must exist before storages are read.
+          s = s.replace(declaration, '')
+          s = s.replace(anchor, anchor + declaration, 1)
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Validate JavaScript and 512GB configuration
+        run: |
+          node --check docs/apple-stock.js
+          grep -q "SUPPORTED_STORAGES = \['256GB','512GB'\]" docs/apple-stock.js
+          grep -q "storages=.*ACTIVE_STORAGES" docs/apple-stock.js
+          grep -q "storage: '512GB'" apps-script/Apple.gs
+          grep -q "256GB + 512GB" desktop/index.html
+      - name: Commit fix
+        run: |
+          git config user.name "personal-monitor-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/apple-stock.js
+          if git diff --cached --quiet; then
+            echo "No changes needed"
+            exit 0
+          fi
+          git commit -m "fix: initialize Apple 256GB and 512GB monitor"
+          git push
