@@ -1,0 +1,115 @@
+name: Fix GitHub Pages Apple interval control once
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-pages-apple-interval-control-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add visible live interval control to GitHub Pages
+        shell: python
+        run: |
+          from pathlib import Path
+
+          p = Path('docs/apple-stock.js')
+          s = p.read_text(encoding='utf-8')
+
+          # 1) Visual input styling.
+          anchor = "    .apple-fixed{display:flex;align-items:center;min-height:36px;padding:0 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel2);font-weight:800;font-size:13px}\n"
+          addition = anchor + "    .apple-interval-wrap{display:flex;align-items:center;gap:7px}.apple-interval-input{width:82px;min-height:36px;padding:0 9px;border:1px solid var(--line);border-radius:8px;background:var(--panel2);color:var(--text);font-weight:900;font-size:14px}.apple-interval-unit{color:var(--muted);font-size:11px;white-space:nowrap}\n"
+          if '.apple-interval-input{' not in s:
+              if anchor not in s:
+                  raise SystemExit('CSS anchor not found')
+              s = s.replace(anchor, addition, 1)
+
+          # 2) Replace read-only frequency field with a visible editable 1..15 seconds input.
+          old = "      <div class=\"apple-field\"><label>Intervalo atual</label><div class=\"apple-fixed\" id=\"appleFrequency\">${queryDelay()/1000} segundos</div></div>"
+          new = "      <div class=\"apple-field\"><label>Intervalo da pesquisa (1–15 s)</label><div class=\"apple-interval-wrap\"><input class=\"apple-interval-input\" id=\"appleInterval\" type=\"number\" min=\"1\" max=\"15\" step=\"1\" inputmode=\"numeric\" value=\"${Math.max(1,Math.min(15,Math.round(regionalQueryDelay/1000)))}\"><span class=\"apple-interval-unit\" id=\"appleFrequency\">${Math.max(1,Math.min(15,Math.round(regionalQueryDelay/1000)))} segundos</span></div></div>"
+          if old in s:
+              s = s.replace(old, new, 1)
+          elif 'id="appleInterval"' not in s:
+              raise SystemExit('Interval HTML anchor not found')
+
+          # 3) Make all dedicated-window status/scheduling use the live variable, not the fixed 15s constant.
+          s = s.replace("${REGIONAL_QUERY_DELAY/1000}s, com desaceleração automática", "${regionalQueryDelay/1000}s, com desaceleração automática")
+          s = s.replace("Próxima consulta em ${REGIONAL_QUERY_DELAY/1000}s.", "Próxima consulta em ${regionalQueryDelay/1000}s.")
+          s = s.replace("schedule(REGIONAL_QUERY_DELAY);", "schedule(regionalQueryDelay);")
+          s = s.replace("qs('#appleFrequency').textContent=(REGIONAL_QUERY_DELAY/1000)+' segundos';", "qs('#appleFrequency').textContent=(regionalQueryDelay/1000)+' segundos';")
+
+          # 4) Helpers: clamp, save, reschedule live, and pass interval to newly opened regional windows.
+          marker = "  function openRegionalWindows(){\n"
+          helper = r'''  function currentIntervalSeconds(){
+    const el=qs('#appleInterval');
+    if(el&&String(el.value).trim()==='')return Math.max(1,Math.min(15,Math.round(regionalQueryDelay/1000)||15));
+    const raw=Number(el&&el.value);
+    const base=Number.isFinite(raw)&&raw>0?raw:(regionalQueryDelay/1000||15);
+    return Math.max(1,Math.min(15,Math.round(base)));
+  }
+
+  function applyIntervalFromControl(reschedule=true){
+    const el=qs('#appleInterval');
+    if(el&&String(el.value).trim()==='')return;
+    const seconds=currentIntervalSeconds();
+    if(el)el.value=String(seconds);
+    regionalQueryDelay=seconds*1000;
+    try{localStorage.setItem(REGIONAL_DELAY_KEY,String(regionalQueryDelay));}catch{}
+    const freq=qs('#appleFrequency');
+    if(freq)freq.textContent=seconds+' segundos';
+    if(active&&regionalMode&&reschedule)schedule(regionalQueryDelay);
+  }
+
+'''
+          if 'function currentIntervalSeconds(){' not in s:
+              if marker not in s:
+                  raise SystemExit('openRegionalWindows marker not found')
+              s = s.replace(marker, helper + marker, 1)
+
+          old = "      u.searchParams.set('storages',ACTIVE_STORAGES.join(','));\n"
+          new = old + "      u.searchParams.set('interval',String(currentIntervalSeconds()));\n"
+          if "u.searchParams.set('interval',String(currentIntervalSeconds()));" not in s:
+              if old not in s:
+                  raise SystemExit('regional URL anchor not found')
+              s = s.replace(old, new, 1)
+
+          # 5) Add live input listeners and cross-window synchronization.
+          old_listeners = "  qs('#appleStart').addEventListener('click',start);\n  qs('#appleStop').addEventListener('click',stop);\n  window.addEventListener('storage',event=>{\n    if(event.key===FIND_HISTORY_KEY){findHistory=loadFindHistory();renderFindHistory();}\n  });"
+          new_listeners = "  qs('#appleStart').addEventListener('click',start);\n  qs('#appleStop').addEventListener('click',stop);\n  const appleIntervalInput=qs('#appleInterval');\n  if(appleIntervalInput){\n    appleIntervalInput.addEventListener('input',()=>applyIntervalFromControl(true));\n    appleIntervalInput.addEventListener('change',()=>applyIntervalFromControl(true));\n  }\n  window.addEventListener('storage',event=>{\n    if(event.key===FIND_HISTORY_KEY){findHistory=loadFindHistory();renderFindHistory();}\n    if(event.key===REGIONAL_DELAY_KEY&&regionalMode){\n      const ms=Math.max(1000,Math.min(15000,Number(event.newValue)||REGIONAL_QUERY_DELAY));\n      regionalQueryDelay=ms;\n      const seconds=Math.max(1,Math.min(15,Math.round(ms/1000)));\n      if(qs('#appleInterval'))qs('#appleInterval').value=String(seconds);\n      if(qs('#appleFrequency'))qs('#appleFrequency').textContent=seconds+' segundos';\n      if(active)schedule(regionalQueryDelay);\n    }\n  });"
+          if old_listeners in s:
+              s = s.replace(old_listeners, new_listeners, 1)
+          elif 'const appleIntervalInput=' not in s:
+              raise SystemExit('listener anchor not found')
+
+          # Ensure the current control value is normalized on page load without forcing a search.
+          init_anchor = "  renderFindHistory();\n  emitDesktopHistorySnapshot();\n"
+          init_new = "  renderFindHistory();\n  applyIntervalFromControl(false);\n  emitDesktopHistorySnapshot();\n"
+          if 'applyIntervalFromControl(false);' not in s:
+              if init_anchor not in s:
+                  raise SystemExit('init anchor not found')
+              s = s.replace(init_anchor, init_new, 1)
+
+          p.write_text(s, encoding='utf-8')
+
+      - name: Validate JavaScript and interval behavior
+        run: |
+          node --check docs/apple-stock.js
+          grep -q 'id="appleInterval"' docs/apple-stock.js
+          grep -q 'min="1" max="15"' docs/apple-stock.js
+          grep -q "u.searchParams.set('interval',String(currentIntervalSeconds()))" docs/apple-stock.js
+          grep -q 'event.key===REGIONAL_DELAY_KEY' docs/apple-stock.js
+          grep -q 'schedule(regionalQueryDelay)' docs/apple-stock.js
+
+      - name: Commit fix
+        run: |
+          git config user.name "personal-monitor-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/apple-stock.js
+          git commit -m "fix: show live 1-15s interval control on Apple Pages monitor"
+          git push
