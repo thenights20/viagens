@@ -1,0 +1,42 @@
+name: Apply desktop Apple history repair
+
+on:
+  push:
+    paths:
+      - 'tools/fix-desktop-apple-history.py'
+      - '.github/workflows/apply-desktop-apple-history-fix.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Apply history repair
+        run: python tools/fix-desktop-apple-history.py
+
+      - name: Validate JavaScript
+        run: |
+          node --check docs/apple-stock.js
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          h = Path('desktop/index.html').read_text(encoding='utf-8')
+          m = re.search(r'<script>(.*?)</script>', h, re.S)
+          if not m:
+              raise SystemExit('desktop script not found')
+          Path('/tmp/desktop-index.js').write_text(m.group(1), encoding='utf-8')
+          PY
+          node --check /tmp/desktop-index.js
+
+      - name: Commit repaired files
+        run: |
+          git config user.name "personal-monitor-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/apple-stock.js desktop/index.html desktop/package.json
+          git commit -m "fix: centralize Apple desktop history" || exit 0
+          git push
