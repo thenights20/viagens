@@ -1,6 +1,7 @@
 // Monitor de disponibilidade Apple Store para retirada em loja.
 const APPLE_PRODUCTS = [
-  { storage: '256GB', part_number: 'MJW64LL/A', url: 'https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-256gb-burgundy-unlocked' }
+  { storage: '256GB', part_number: 'MJW64LL/A', url: 'https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-256gb-burgundy-unlocked' },
+  { storage: '512GB', part_number: 'MJWA4LL/A', url: 'https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-512gb-burgundy-unlocked' }
 ];
 const APPLE_TARGET_CITIES = [
   'altamonte springs',
@@ -72,9 +73,19 @@ function appleSafeLocation_(value) {
   return location;
 }
 
+function appleRequestedStorages_(params) {
+  const raw = String(params && (params.storages || params.storage) || '').trim();
+  const all = APPLE_PRODUCTS.map(function(p) { return p.storage; });
+  if (!raw) return all;
+  const wanted = raw.split(',').map(function(v) { return String(v || '').trim().toUpperCase(); });
+  const valid = all.filter(function(storage) { return wanted.indexOf(storage.toUpperCase()) >= 0; });
+  return valid.length ? valid : all;
+}
+
 function appleAvailability_(params) {
   const location = appleSafeLocation_(params && params.location);
-  const configured = appleConfiguredProducts_();
+  const requestedStorages = appleRequestedStorages_(params);
+  const configured = appleConfiguredProducts_().filter(function(p) { return requestedStorages.indexOf(p.storage) >= 0; });
   const query = ['pl=true', 'mts.0=regular'];
   configured.forEach(function(p, i) {
     query.push('parts.' + i + '=' + encodeURIComponent(p.part_number));
@@ -163,8 +174,13 @@ function appleAvailability_(params) {
       const quoteNorm = quote.toLowerCase();
       const scheduledPickup = /available\s+(today|tomorrow)|ready\s+(today|tomorrow)|pickup.*(today|tomorrow)/i.test(quote);
       const explicitlyUnavailable = /currently\s+unavailable|not\s+available|unavailable/i.test(quoteNorm);
-      const identityText = [regular && regular.storePickupProductTitle, availability && availability.partNumber, product.storage, APPLE_PRODUCT_NAME].join(' ').toLowerCase();
-      const exactVariant = identityText.indexOf('512gb') < 0 || (identityText.indexOf('burgundy') >= 0 && (identityText.indexOf('pro max') >= 0 || identityText.indexOf('iphone 18') >= 0));
+      const titleText = String(regular && regular.storePickupProductTitle || '').toLowerCase();
+      const wantedStorage = String(product.storage || '').toLowerCase();
+      const exactVariant = !titleText || (
+        titleText.indexOf(wantedStorage) >= 0 &&
+        titleText.indexOf('burgundy') >= 0 &&
+        (titleText.indexOf('pro max') >= 0 || titleText.indexOf('iphone 18') >= 0)
+      );
       const available = exactVariant && !!availability && !explicitlyUnavailable && (
         pickupDisplay === 'available' ||
         scheduledPickup ||
@@ -193,6 +209,8 @@ function appleAvailability_(params) {
   });
 
   const availableStores = parsed.filter(function(store) { return store.available; });
+  const physicalStoreKeys = {};
+  parsed.forEach(function(store) { physicalStoreKeys[String(store.store_number || store.name || '')] = true; });
   return {
     ok: true,
     status: 'ok',
@@ -201,9 +219,10 @@ function appleAvailability_(params) {
     part_numbers: configured.map(function(p) { return p.part_number; }),
     location: location,
     checked_at: new Date().toISOString(),
-    stores_count: parsed.length,
+    stores_count: Object.keys(physicalStoreKeys).length,
+    variant_rows_count: parsed.length,
     checked_variants: configured.map(function(p) { return p.storage; }),
-    missing_variants: APPLE_PRODUCTS.filter(function(p) { return !configured.some(function(c) { return c.storage === p.storage; }); }).map(function(p) { return p.storage; }),
+    missing_variants: APPLE_PRODUCTS.filter(function(p) { return requestedStorages.indexOf(p.storage) >= 0 && !configured.some(function(c) { return c.storage === p.storage; }); }).map(function(p) { return p.storage; }),
     available_count: availableStores.length,
     any_available: availableStores.length > 0,
     stores: parsed,

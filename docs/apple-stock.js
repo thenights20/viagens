@@ -2,7 +2,10 @@
   const qs = s => document.querySelector(s);
   if (qs('#appleStockApp') || !qs('.main-tabs')) return;
 
-  const PRODUCT = 'iPhone 18 Pro Max Burgundy · 256GB';
+  const SUPPORTED_STORAGES = ['256GB','512GB'];
+  const requestedStorages = String(pageParams.get('storages') || '').split(',').map(x=>x.trim().toUpperCase()).filter(Boolean);
+  const ACTIVE_STORAGES = SUPPORTED_STORAGES.filter(x=>!requestedStorages.length || requestedStorages.includes(x.toUpperCase()));
+  const PRODUCT = `iPhone 18 Pro Max Burgundy · ${ACTIVE_STORAGES.join(' + ')}`;
   const LOCATIONS = [
     { label: 'Altamonte Springs', value: 'Altamonte Springs, FL' },
     { label: 'Aventura', value: 'Aventura, FL' },
@@ -100,7 +103,7 @@
     for(const [label,snap] of citySnapshots.entries()){
       const location=LOCATIONS.find(x=>x.label===label);
       if(!location||!snap||!Array.isArray(snap.stores))continue;
-      const keys=new Set(snap.stores.map(storeKey));
+      const keys=new Set(snap.stores.map(storeIdentityKey));
       if(keys.size)entries.push({location,keys});
     }
     const universe=new Set();
@@ -212,7 +215,7 @@
   app.hidden = true;
   app.innerHTML = `
     <div class="apple-head">
-      <div><h2>${regionalMode?`🍎 ${regionalPoint.label} · monitor dedicado`:`🍎 Monitor de estoque · ${TARGET_STORE_COUNT} Apple Stores na Flórida`}</h2><div class="sub">${regionalMode?`Consulta exclusivamente o ponto <b>${regionalPoint.label}</b> para detectar o <b>${PRODUCT}</b> o mais rápido possível.`:`Monitora retirada em loja do <b>${PRODUCT}</b>, somente <b>256GB Burgundy</b>, em todas as lojas do print, <b>exceto a nº 7 (St. Johns Town Center / Jacksonville)</b>.`}</div></div>
+      <div><h2>${regionalMode?`🍎 ${regionalPoint.label} · monitor dedicado`:`🍎 Monitor de estoque · ${TARGET_STORE_COUNT} Apple Stores na Flórida`}</h2><div class="sub">${regionalMode?`Consulta exclusivamente o ponto <b>${regionalPoint.label}</b> para detectar o <b>${PRODUCT}</b> o mais rápido possível.`:`Monitora retirada em loja do <b>${PRODUCT}</b>, com <b>256GB e 512GB Burgundy</b> pesquisados na mesma consulta, em todas as lojas do print, <b>exceto a nº 7 (St. Johns Town Center / Jacksonville)</b>.`}</div></div>
       <a class="apple-link" href="${APPLE_URL}" target="_blank" rel="noopener">Abrir página de compra ↗</a>
     </div>
 
@@ -286,7 +289,7 @@
       }
       window[cb]=value=>finish(null,value);
       script.onerror=()=>finish(new Error('Não foi possível consultar o serviço.'));
-      script.src=`${apiBase}?route=${encodeURIComponent('api/apple/availability')}&location=${encodeURIComponent(location)}&callback=${encodeURIComponent(cb)}&t=${Date.now()}`;
+      script.src=`${apiBase}?route=${encodeURIComponent('api/apple/availability')}&location=${encodeURIComponent(location)}&storages=${encodeURIComponent(ACTIVE_STORAGES.join(','))}&callback=${encodeURIComponent(cb)}&t=${Date.now()}`;
       document.head.appendChild(script);
     });
   }
@@ -406,6 +409,7 @@ function emitDesktopFinding(stores,ts){
       city:String(x.city||''),
       state:String(x.state||''),
       postal_code:String(x.postal_code||''),
+      storage:String(x.storage||''),
       search_area:String(x.search_area||((regionalPoint&&regionalPoint.label)||''))
     }))
   });
@@ -423,7 +427,7 @@ function emitDesktopHistorySnapshot(){
 function recordFindings(stores,checkedAt){
   if(!stores.length)return;
   const ts=checkedAt&&Date.parse(checkedAt)?new Date(checkedAt).toISOString():new Date().toISOString();
-  const names=[...new Set(stores.map(x=>String(x.name||'Apple Store')).filter(Boolean))].sort();
+  const names=[...new Set(stores.map(x=>[String(x.name||'Apple Store'),String(x.storage||'')].filter(Boolean).join(' · ')).filter(Boolean))].sort();
   const regions=[...new Set(stores.map(x=>String(x.search_area||(regionalPoint&&regionalPoint.label)||'').trim()).filter(Boolean))].sort();
   const item={ts,count:stores.length,stores:names,regions};
   const shared=loadFindHistory();
@@ -433,7 +437,9 @@ function recordFindings(stores,checkedAt){
   emitDesktopFinding(stores,ts);
 }
 
-  function storeKey(x){return [String(x.store_number||x.name||''),String(x.storage||x.part_number||'')].join('|');}
+  function storeIdentityKey(x){return String(x.store_number||x.name||'');}
+  function storeKey(x){return [storeIdentityKey(x),String(x.storage||x.part_number||'')].join('|');}
+  function uniqueStoreCount(stores){return new Set((stores||[]).map(storeIdentityKey).filter(Boolean)).size;}
 
   function ensureAudio(){
     if(audioCtx)return;
@@ -497,8 +503,8 @@ function recordFindings(stores,checkedAt){
     qs('#appleUpdated').textContent=fmtTime(data.checked_at);
     const stores=Array.isArray(data.stores)?data.stores:[];
     const available=stores.filter(x=>x.available===true);
-    qs('#appleStoreCount').textContent=String(stores.length);
-    qs('#appleAvailableCount').textContent=String(available.length);
+    qs('#appleStoreCount').textContent=String(uniqueStoreCount(stores));
+    qs('#appleAvailableCount').textContent=String(uniqueStoreCount(available));
 
     const current=new Set(available.map(storeKey));
     const newly=available.filter(x=>!previousAvailable.has(storeKey(x)));
@@ -518,15 +524,31 @@ function recordFindings(stores,checkedAt){
 
     const box=qs('#appleStores');box.innerHTML='';
     qs('#appleEmpty').hidden=stores.length>0;
-    const ordered=[...stores].sort((a,b)=>(Number(b.available)-Number(a.available))||(Number(a.distance||9999)-Number(b.distance||9999)));
-    for(const x of ordered){
-      const known=x.pickup_display==='available'||x.pickup_display==='unavailable';
-      const css=x.available?'available':known?'unavailable':'unknown';
-      const label=x.available?'✅ DISPONÍVEL PARA RETIRADA':known?'ESGOTADO / INDISPONÍVEL':'⚠️ ESTADO NÃO CONFIRMADO';
+    const groups=new Map();
+    for(const x of stores){
+      const key=storeIdentityKey(x);
+      if(!groups.has(key))groups.set(key,{base:x,variants:[]});
+      groups.get(key).variants.push(x);
+    }
+    const ordered=[...groups.values()].sort((a,b)=>
+      (Number(b.variants.some(x=>x.available))-Number(a.variants.some(x=>x.available)))||
+      (Number(a.base.distance||9999)-Number(b.base.distance||9999))
+    );
+    for(const group of ordered){
+      const x=group.base;
+      const variants=[...group.variants].sort((a,b)=>String(a.storage||'').localeCompare(String(b.storage||''),undefined,{numeric:true}));
+      const anyAvailable=variants.some(v=>v.available===true);
+      const allKnown=variants.every(v=>v.pickup_display==='available'||v.pickup_display==='unavailable');
+      const css=anyAvailable?'available':allKnown?'unavailable':'unknown';
+      const lines=variants.map(v=>{
+        const known=v.pickup_display==='available'||v.pickup_display==='unavailable';
+        const label=v.available?'✅ DISPONÍVEL':known?'ESGOTADO':'⚠️ NÃO CONFIRMADO';
+        return `<div class="state">${escapeHtml(v.storage||'')} · ${label}</div><div class="quote">${escapeHtml(v.quote||v.pickup_display||'Sem informação')}</div>`;
+      }).join('');
       const div=document.createElement('div');div.className='apple-store '+css;
       div.innerHTML=`
-        <div><h3>Apple ${escapeHtml(x.name||'Store')} · ${escapeHtml(x.storage||'')}</h3><div class="where">${escapeHtml([x.address,[x.city,x.state,x.postal_code].filter(Boolean).join(' ')].filter(Boolean).join(' · '))}</div>${x.distance_text?`<div class="distance">${escapeHtml(x.distance_text)}</div>`:''}</div>
-        <div><div class="state">${label}</div><div class="quote">${escapeHtml(x.quote||x.pickup_display||'Sem informação')}</div></div>`;
+        <div><h3>Apple ${escapeHtml(x.name||'Store')}</h3><div class="where">${escapeHtml([x.address,[x.city,x.state,x.postal_code].filter(Boolean).join(' ')].filter(Boolean).join(' · '))}</div>${x.distance_text?`<div class="distance">${escapeHtml(x.distance_text)}</div>`:''}</div>
+        <div>${lines}</div>`;
       box.appendChild(div);
     }
   }
@@ -566,9 +588,11 @@ function recordFindings(stores,checkedAt){
         }
         blockStreak=0;
         const stores=(Array.isArray(data.stores)?data.stores:[]).map(x=>({...x,search_area:target.label,observed_at:data.checked_at}));
-        render({...data,stores,stores_count:stores.length,available_count:stores.filter(x=>x.available===true).length});
-        const n=stores.filter(x=>x.available===true).length;
-        setStatus(n?`✅ ${target.label}: ${n} loja(s) disponível(is) agora.`:`⚡ ${target.label}: ${stores.length} loja(s) retornadas; nenhuma disponível agora. Próxima consulta em ${REGIONAL_QUERY_DELAY/1000}s.`,n?'ok':'live');
+        const storeCount=uniqueStoreCount(stores);
+        const availableRows=stores.filter(x=>x.available===true);
+        const n=uniqueStoreCount(availableRows);
+        render({...data,stores,stores_count:storeCount,available_count:n});
+        setStatus(n?`✅ ${target.label}: ${n} loja(s) com 256GB e/ou 512GB disponível(is) agora.`:`⚡ ${target.label}: ${storeCount} loja(s) retornadas; 256GB/512GB indisponíveis agora. Próxima consulta em ${REGIONAL_QUERY_DELAY/1000}s.`,n?'ok':'live');
         schedule(REGIONAL_QUERY_DELAY);
       }catch(err){
         if(!active)return;
@@ -614,28 +638,28 @@ function recordFindings(stores,checkedAt){
       else{locationIndex=(locationIndex+1)%activeLocations.length;steadyChecks+=1;}
 
       const stores=mergeSnapshots();
+      const storeCount=uniqueStoreCount(stores);
       const available=stores.filter(x=>x.available===true);
-      render({...data,stores,stores_count:stores.length,available_count:available.length,any_available:available.length>0});
+      const n=uniqueStoreCount(available);
+      render({...data,stores,stores_count:storeCount,available_count:n,any_available:available.length>0});
 
       const missing=Array.isArray(data.missing_variants)?data.missing_variants:[];
       if(missing.length){
-        setStatus('⚠️ Variante 256GB ainda sem SKU configurado no serviço.','warn');
+        setStatus(`⚠️ Variante(s) ${missing.join(' + ')} ainda sem SKU configurado no serviço.`,'warn');
         schedule(queryDelay());return;
       }
 
-      const n=available.length;
-
-      if(discoveryMode&&(stores.length>=TARGET_STORE_COUNT||discoveryIndex>=DISCOVERY_LOCATIONS.length)){
+      if(discoveryMode&&(storeCount>=TARGET_STORE_COUNT||discoveryIndex>=DISCOVERY_LOCATIONS.length)){
         activeLocations=optimizeCoverage();
         discoveryMode=false;
         locationIndex=0;
         steadyChecks=0;
-        if(stores.length>=TARGET_STORE_COUNT)saveFastPlan(activeLocations);
+        if(storeCount>=TARGET_STORE_COUNT)saveFastPlan(activeLocations);
         const delay=queryDelay();
         const cycle=Math.round(activeLocations.length*delay/1000);
-        const coverageText=stores.length>=TARGET_STORE_COUNT
+        const coverageText=storeCount>=TARGET_STORE_COUNT
           ? `${TARGET_STORE_COUNT}/${TARGET_STORE_COUNT} lojas cobertas`
-          : `${stores.length}/${TARGET_STORE_COUNT} lojas retornadas pela Apple`;
+          : `${storeCount}/${TARGET_STORE_COUNT} lojas retornadas pela Apple`;
         setStatus(n
           ? `✅ Estoque encontrado. Modo rápido calibrado: ${coverageText}; ${activeLocations.length} ponto(s), ciclo de ~${cycle}s.`
           : `⚡ Modo rápido calibrado: ${coverageText}; ${activeLocations.length} ponto(s), ciclo de ~${cycle}s.`,n?'ok':'live');
@@ -644,23 +668,23 @@ function recordFindings(stores,checkedAt){
 
       if(!discoveryMode&&steadyChecks>=activeLocations.length){
         steadyChecks=0;
-        if(stores.length<TARGET_STORE_COUNT){
+        if(storeCount<TARGET_STORE_COUNT){
           beginDiscovery();
-          setStatus(`🧭 O plano rápido retornou ${stores.length}/${TARGET_STORE_COUNT} lojas. Recalibrando automaticamente para não deixar nenhuma de fora.`,'warn');
+          setStatus(`🧭 O plano rápido retornou ${storeCount}/${TARGET_STORE_COUNT} lojas. Recalibrando automaticamente para não deixar nenhuma de fora.`,'warn');
           schedule(DISCOVERY_DELAY);return;
         }
       }
 
       if(discoveryMode){
         setStatus(n
-          ? `✅ ${n} loja(s) com retirada disponível. Calibração já encontrou ${stores.length}/${TARGET_STORE_COUNT} lojas.`
-          : `🧭 Calibrando modo rápido: ${stores.length}/${TARGET_STORE_COUNT} lojas cobertas até agora.`,n?'ok':'live');
+          ? `✅ ${n} loja(s) com retirada disponível. Calibração já encontrou ${storeCount}/${TARGET_STORE_COUNT} lojas.`
+          : `🧭 Calibrando modo rápido: ${storeCount}/${TARGET_STORE_COUNT} lojas cobertas até agora.`,n?'ok':'live');
       }else{
         const delay=queryDelay();
         const cycle=Math.round(activeLocations.length*delay/1000);
         setStatus(n
           ? `✅ ${n} loja(s) com retirada disponível agora entre as ${TARGET_STORE_COUNT} lojas-alvo. Modo rápido: ciclo ~${cycle}s.`
-          : `⚡ Modo rápido: ${stores.length}/${TARGET_STORE_COUNT} lojas verificadas por ${activeLocations.length} ponto(s); ciclo ~${cycle}s. Nenhuma disponível agora.`,n?'ok':'live');
+          : `⚡ Modo rápido: ${storeCount}/${TARGET_STORE_COUNT} lojas verificadas por ${activeLocations.length} ponto(s); ciclo ~${cycle}s. Nenhuma disponível agora.`,n?'ok':'live');
       }
       schedule(queryDelay());
     }catch(err){
@@ -683,6 +707,7 @@ function recordFindings(stores,checkedAt){
       u.searchParams.set('appleRegion',key);
       u.searchParams.set('autostart','1');
       u.searchParams.set('startDelay',String(index*3500));
+      u.searchParams.set('storages',ACTIVE_STORAGES.join(','));
       const left=baseLeft+(index*width);
       const features=`popup=yes,width=${width},height=${availH},left=${left},top=${top},resizable=yes,scrollbars=yes`;
       const w=window.open(u.toString(),`apple_${key}`,features);
