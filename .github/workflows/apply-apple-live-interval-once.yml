@@ -1,0 +1,79 @@
+name: Apply Apple live interval 1-15s once
+
+on:
+  push:
+    paths:
+      - '.github/workflows/apply-apple-live-interval-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch Apple interval controls
+        shell: python
+        run: |
+          from pathlib import Path
+
+          # Regional/web monitor: accept ?interval=1..15 from desktop while running.
+          p = Path('docs/apple-stock.js')
+          s = p.read_text(encoding='utf-8')
+          old = "  let regionalQueryDelay = Math.max(1000, Number(localStorage.getItem(REGIONAL_DELAY_KEY)||REGIONAL_QUERY_DELAY));"
+          new = "  const requestedIntervalSeconds = Math.max(0, Math.min(15, Number(pageParams.get('interval') || 0) || 0));\n  let regionalQueryDelay = requestedIntervalSeconds\n    ? Math.max(1000, requestedIntervalSeconds * 1000)\n    : Math.max(1000, Math.min(15000, Number(localStorage.getItem(REGIONAL_DELAY_KEY)||REGIONAL_QUERY_DELAY)));"
+          if old not in s:
+              raise SystemExit('regionalQueryDelay anchor not found')
+          s = s.replace(old, new, 1)
+          p.write_text(s, encoding='utf-8')
+
+          # Desktop monitor: 1..15 seconds and apply changes live by reloading active regional frames.
+          p = Path('desktop/index.html')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace('type="number" min="1" max="300" value="15"', 'type="number" min="1" max="15" value="15"', 1)
+
+          old = "function loadPrefs(){secs.value=String(Math.max(1,Math.round((Number(localStorage.getItem(DKEY))||15000)/1000)));volume.value=localStorage.getItem(VKEY)||'100';volText.textContent=volume.value+'%';storageSelect.value=localStorage.getItem(SKEY)||'256GB,512GB';updateBrand()}"
+          new = "function loadPrefs(){secs.value=String(Math.max(1,Math.min(15,Math.round((Number(localStorage.getItem(DKEY))||15000)/1000))));volume.value=localStorage.getItem(VKEY)||'100';volText.textContent=volume.value+'%';storageSelect.value=localStorage.getItem(SKEY)||'256GB,512GB';updateBrand()}"
+          if old not in s:
+              raise SystemExit('loadPrefs anchor not found')
+          s = s.replace(old, new, 1)
+
+          old = "function url(region,run,delay){return `https://thenights20.github.io/viagens/?appleRegion=${region}&embedded=1&autostart=${run?1:0}&startDelay=${delay}&storages=${encodeURIComponent(storageSelect.value)}`}"
+          new = "function currentInterval(){return Math.max(1,Math.min(15,Number(secs.value)||15))}\nfunction url(region,run,delay){return `https://thenights20.github.io/viagens/?appleRegion=${region}&embedded=1&autostart=${run?1:0}&startDelay=${delay}&interval=${currentInterval()}&storages=${encodeURIComponent(storageSelect.value)}`}"
+          if old not in s:
+              raise SystemExit('url anchor not found')
+          s = s.replace(old, new, 1)
+
+          old = "secs.oninput=()=>{const n=Math.max(1,Math.min(300,Number(secs.value)||15));localStorage.setItem(DKEY,String(Math.round(n*1000)))};volume.oninput="
+          new = "let intervalRefreshTimer=null;secs.oninput=()=>{const n=currentInterval();localStorage.setItem(DKEY,String(Math.round(n*1000)));clearTimeout(intervalRefreshTimer);if(running)intervalRefreshTimer=setTimeout(()=>{secs.value=String(n);startAll()},350)};volume.oninput="
+          if old not in s:
+              raise SystemExit('secs.oninput anchor not found')
+          s = s.replace(old, new, 1)
+
+          p.write_text(s, encoding='utf-8')
+
+      - name: Validate changes
+        run: |
+          node --check docs/apple-stock.js
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          h=Path('desktop/index.html').read_text(encoding='utf-8')
+          assert 'max="15" value="15"' in h
+          assert '&interval=${currentInterval()}' in h
+          assert 'Math.min(15' in h
+          m=re.search(r'<script>(.*?)</script>',h,re.S)
+          assert m
+          Path('/tmp/desktop.js').write_text(m.group(1),encoding='utf-8')
+          PY
+          node --check /tmp/desktop.js
+          grep -q "pageParams.get('interval')" docs/apple-stock.js
+
+      - name: Commit update
+        run: |
+          git config user.name "personal-monitor-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/apple-stock.js desktop/index.html
+          git commit -m "feat: live Apple search interval from 1 to 15 seconds"
+          git push
