@@ -2,6 +2,7 @@
   const qs = s => document.querySelector(s);
   if (qs('#appleStockApp') || !qs('.main-tabs')) return;
 
+  const pageParams = new URLSearchParams(location.search);
   const SUPPORTED_STORAGES = ['256GB','512GB'];
   const requestedStorages = String(pageParams.get('storages') || '').split(',').map(x=>x.trim().toUpperCase()).filter(Boolean);
   const ACTIVE_STORAGES = SUPPORTED_STORAGES.filter(x=>!requestedStorages.length || requestedStorages.includes(x.toUpperCase()));
@@ -59,7 +60,6 @@
   let activeLocations = [];
   let findHistory = loadFindHistory();
   const citySnapshots = new Map();
-  const pageParams = new URLSearchParams(location.search);
   const regionalKey = String(pageParams.get('appleRegion') || '').toLowerCase();
   const regionalPoint = REGIONAL_POINTS[regionalKey] || null;
   const regionalMode = !!regionalPoint;
