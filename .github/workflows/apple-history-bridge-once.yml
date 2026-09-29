@@ -1,0 +1,111 @@
+name: Fix Apple desktop history bridge once
+
+on:
+  push:
+    paths:
+      - '.github/workflows/apple-history-bridge-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch desktop history bridge
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json, re
+
+          # 1) Remote regional monitor -> parent Electron window via postMessage.
+          p = Path('docs/apple-stock.js')
+          s = p.read_text(encoding='utf-8')
+          if 'function emitDesktopFinding(stores,ts)' not in s:
+              anchor = '  function recordFindings(stores,checkedAt){'
+              if anchor not in s:
+                  raise SystemExit('recordFindings anchor not found')
+              helper = r'''  function emitDesktopFinding(stores,ts){
+    if(pageParams.get('embedded')!=='1'||window.parent===window)return;
+    try{
+      window.parent.postMessage({
+        type:'apple-stock-found',
+        version:1,
+        ts,
+        region:regionalPoint?.label||stores[0]?.search_area||'',
+        stores:stores.map(x=>({
+          name:String(x.name||'Apple Store'),
+          store_number:String(x.store_number||''),
+          address:String(x.address||''),
+          city:String(x.city||''),
+          state:String(x.state||''),
+          postal_code:String(x.postal_code||''),
+          search_area:String(x.search_area||regionalPoint?.label||'')
+        }))
+      },'*');
+    }catch{}
+  }
+
+'''
+              s = s.replace(anchor, helper + anchor, 1)
+          call_anchor = '    saveFindHistory();\n    renderFindHistory();\n'
+          if 'emitDesktopFinding(stores,ts);' not in s:
+              if call_anchor not in s:
+                  raise SystemExit('history save anchor not found')
+              s = s.replace(call_anchor, call_anchor + '    emitDesktopFinding(stores,ts);\n', 1)
+          p.write_text(s, encoding='utf-8')
+
+          # 2) Desktop shell owns one persistent, centralized history.
+          p = Path('desktop/index.html')
+          html = p.read_text(encoding='utf-8')
+          new_script = r'''<script>
+const frames=[...document.querySelectorAll('iframe')],secs=document.getElementById('secs'),hist=document.getElementById('history'),volume=document.getElementById('volume'),volText=document.getElementById('volText');
+const HKEY='appleStockFindHistoryV1',DKEY='appleStockRegionalDelayMsV1',VKEY='appleStockAlertVolumeV1';let lastHist='';
+const REGION_LABELS={miami:'Miami',tampa:'Tampa',orlando:'Orlando',cape:'Cape Canaveral'};
+function loadPrefs(){secs.value=String(Math.max(1,Math.round((Number(localStorage.getItem(DKEY))||15000)/1000)));volume.value=localStorage.getItem(VKEY)||'100';volText.textContent=volume.value+'%'}
+function loadHistory(){try{const a=JSON.parse(localStorage.getItem(HKEY)||'[]');return Array.isArray(a)?a:[]}catch{return[]}}
+function alarm(){const C=window.AudioContext||window.webkitAudioContext,ctx=new C(),gain=ctx.createGain();gain.gain.value=Number(volume.value)/100;gain.connect(ctx.destination);const now=ctx.currentTime;[0,.32,.64,1.05,1.37,1.69].forEach((t,i)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type=i<3?'square':'sawtooth';o.frequency.value=i<3?880:1175;g.gain.setValueAtTime(.0001,now+t);g.gain.exponentialRampToValueAtTime(.9,now+t+.02);g.gain.exponentialRampToValueAtTime(.0001,now+t+.25);o.connect(g);g.connect(gain);o.start(now+t);o.stop(now+t+.28)});setTimeout(()=>ctx.close(),2400)}
+function fmtDateTime(v){const n=Date.parse(v||'');if(!Number.isFinite(n))return String(v||'');return new Date(n).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'})}
+function rowKey(x){return String(x.store_number||x.store||x.name||x.location||'').trim().toLowerCase()}
+function expandHistory(a){const rows=[];a.forEach(x=>{if(Array.isArray(x?.stores)){x.stores.forEach(name=>rows.push({ts:x.ts||x.time||x.date||'',region:x.region||'',store:String(name||'Apple Store')}))}else rows.push(x||{})});return rows}
+function renderHistory(){const a=loadHistory(),rows=expandHistory(a);const sig=JSON.stringify(rows.slice(0,3));if(lastHist&&sig!==lastHist&&rows.length)alarm();lastHist=sig;hist.innerHTML='';if(!rows.length){hist.innerHTML='<div class="empty">Nenhuma disponibilidade registrada ainda.</div>';return}rows.slice(0,120).forEach(x=>{const d=document.createElement('div');d.className='hit';const dt=fmtDateTime(x.ts||x.time||x.date||x.at||x.timestamp||'');const region=x.region||x.search_area||'';let store=x.store||x.location||x.name||'Apple Store';if(store&&!/^Apple\b/i.test(store))store='Apple '+store;const city=x.city||'';d.textContent=[dt,region,store,city].filter(Boolean).join(' · ');d.title=[x.address,[city,x.state,x.postal_code].filter(Boolean).join(' ')].filter(Boolean).join(' · ');hist.appendChild(d)})}
+function acceptFinding(data){if(!data||data.type!=='apple-stock-found'||!Array.isArray(data.stores)||!data.stores.length)return;const ts=Date.parse(data.ts||'')?new Date(data.ts).toISOString():new Date().toISOString();const region=String(data.region||'');let a=loadHistory(),added=0;for(const s of data.stores){const item={ts,region:region||String(s.search_area||''),store:String(s.name||'Apple Store'),store_number:String(s.store_number||''),address:String(s.address||''),city:String(s.city||''),state:String(s.state||''),postal_code:String(s.postal_code||'')};const key=rowKey(item);const t=Date.parse(ts);const dup=a.some(x=>rowKey(x)===key&&Number.isFinite(t)&&Number.isFinite(Date.parse(x.ts||x.time||''))&&Math.abs(t-Date.parse(x.ts||x.time||''))<120000);if(dup)continue;a.unshift(item);added++}if(!added)return;a.sort((x,y)=>(Date.parse(y.ts||y.time||0)||0)-(Date.parse(x.ts||x.time||0)||0));a=a.slice(0,200);localStorage.setItem(HKEY,JSON.stringify(a));lastHist=JSON.stringify(expandHistory(a).slice(0,3));renderHistory()}
+function url(region,run,delay){return `https://thenights20.github.io/viagens/?appleRegion=${region}&embedded=1&autostart=${run?1:0}&startDelay=${delay}`}
+function startAll(){[0,1200,2400,3600].forEach((d,i)=>frames[i].src=url(frames[i].dataset.region,true,d))}function stopAll(){frames.forEach(f=>f.src=url(f.dataset.region,false,0))}
+window.addEventListener('message',e=>{if(e.origin!=='https://thenights20.github.io')return;if(!frames.some(f=>f.contentWindow===e.source))return;acceptFinding(e.data)});
+secs.oninput=()=>{const n=Math.max(1,Math.min(300,Number(secs.value)||15));localStorage.setItem(DKEY,String(Math.round(n*1000)))};volume.oninput=()=>{localStorage.setItem(VKEY,volume.value);volText.textContent=volume.value+'%'};document.getElementById('testSound').onclick=alarm;document.getElementById('start').onclick=startAll;document.getElementById('stop').onclick=stopAll;setInterval(renderHistory,1500);loadPrefs();renderHistory();
+</script>'''
+          html2, n = re.subn(r'<script>.*?</script>', new_script, html, count=1, flags=re.S)
+          if n != 1:
+              raise SystemExit('desktop script block not found')
+          html2 = html2.replace('🕘 Histórico de disponibilidade · horário + local','🕘 Histórico de disponibilidade · data + horário + região + loja')
+          p.write_text(html2, encoding='utf-8')
+
+          # 3) New portable version.
+          p = Path('desktop/package.json')
+          pkg = json.loads(p.read_text(encoding='utf-8'))
+          pkg['version'] = '1.1.2'
+          pkg['description'] = 'Apple Stock Monitor - quatro regiões, histórico centralizado persistente e alerta sonoro'
+          p.write_text(json.dumps(pkg, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+          PY
+
+          node --check docs/apple-stock.js
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          h=Path('desktop/index.html').read_text(encoding='utf-8')
+          m=re.search(r'<script>(.*?)</script>',h,re.S)
+          assert m
+          Path('/tmp/desktop-script.js').write_text(m.group(1),encoding='utf-8')
+          PY
+          node --check /tmp/desktop-script.js
+
+      - name: Commit fix
+        run: |
+          git config user.name "personal-monitor-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/apple-stock.js desktop/index.html desktop/package.json
+          git commit -m "fix: centralize Apple desktop history across regional monitors"
+          git push
