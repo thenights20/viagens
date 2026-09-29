@@ -63,7 +63,10 @@
   const regionalKey = String(pageParams.get('appleRegion') || '').toLowerCase();
   const regionalPoint = REGIONAL_POINTS[regionalKey] || null;
   const regionalMode = !!regionalPoint;
-  let regionalQueryDelay = Math.max(1000, Number(localStorage.getItem(REGIONAL_DELAY_KEY)||REGIONAL_QUERY_DELAY));
+  const requestedIntervalSeconds = Math.max(0, Math.min(15, Number(pageParams.get('interval') || 0) || 0));
+  let regionalQueryDelay = requestedIntervalSeconds
+    ? Math.max(1000, requestedIntervalSeconds * 1000)
+    : Math.max(1000, Math.min(15000, Number(localStorage.getItem(REGIONAL_DELAY_KEY)||REGIONAL_QUERY_DELAY)));
   const regionalStartDelay = Math.max(0, Number(pageParams.get('startDelay') || 0));
 
   function restoreFastPlan(){
