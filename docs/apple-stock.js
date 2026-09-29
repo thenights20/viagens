@@ -156,6 +156,7 @@
     .apple-form{padding:10px;display:grid;grid-template-columns:2.2fr .9fr .8fr;gap:8px;align-items:end;margin-bottom:9px}
     .apple-field label{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.08em;margin:0 0 4px}
     .apple-fixed{display:flex;align-items:center;min-height:36px;padding:0 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel2);font-weight:800;font-size:13px}
+    .apple-interval-wrap{display:flex;align-items:center;gap:7px}.apple-interval-input{width:82px;min-height:36px;padding:0 9px;border:1px solid var(--line);border-radius:8px;background:var(--panel2);color:var(--text);font-weight:900;font-size:14px}.apple-interval-unit{color:var(--muted);font-size:11px;white-space:nowrap}
     .apple-actions{display:flex;gap:7px;align-items:center;grid-column:1/-1;flex-wrap:wrap}
     .apple-start,.apple-stop{border:0;cursor:pointer;font-weight:900;padding:8px 13px;border-radius:9px;min-width:145px;min-height:36px}
     .apple-start{background:var(--accent);color:#07111f}.apple-stop{background:var(--panel2);color:var(--hot);border:1px solid var(--hot)}
@@ -239,11 +240,11 @@
     <section class="panel apple-form">
       <div class="apple-field"><label>Produto monitorado</label><div class="apple-fixed">${PRODUCT}</div></div>
       <div class="apple-field"><label>${regionalMode?'Ponto dedicado':'Lojas monitoradas'}</label><div class="apple-fixed">${regionalMode?regionalPoint.label:`${TARGET_STORE_COUNT} lojas · Flórida`}</div></div>
-      <div class="apple-field"><label>Intervalo atual</label><div class="apple-fixed" id="appleFrequency">${queryDelay()/1000} segundos</div></div>
+      <div class="apple-field"><label>Intervalo da pesquisa (1–15 s)</label><div class="apple-interval-wrap"><input class="apple-interval-input" id="appleInterval" type="number" min="1" max="15" step="1" inputmode="numeric" value="${Math.max(1,Math.min(15,Math.round(regionalQueryDelay/1000)))}"><span class="apple-interval-unit" id="appleFrequency">${Math.max(1,Math.min(15,Math.round(regionalQueryDelay/1000)))} segundos</span></div></div>
       <div class="apple-actions">
         <button id="appleStart" class="apple-start">${regionalMode?`▶ Iniciar ${regionalPoint.label}`:'▶ Iniciar pesquisa · 4 janelas'}</button>
         <button id="appleStop" class="apple-stop" disabled>■ Parar</button>
-        <span class="sub" id="appleHint">${regionalMode?`Janela dedicada a ${regionalPoint.label}: nova consulta a cada ${REGIONAL_QUERY_DELAY/1000}s, com desaceleração automática se a Apple limitar.`:'Abre Miami, Tampa, Orlando e Cape Canaveral em quatro janelas compactas lado a lado.'}</span>
+        <span class="sub" id="appleHint">${regionalMode?`Janela dedicada a ${regionalPoint.label}: nova consulta a cada ${regionalQueryDelay/1000}s, com desaceleração automática se a Apple limitar.`:'Abre Miami, Tampa, Orlando e Cape Canaveral em quatro janelas compactas lado a lado.'}</span>
       </div>
     </section>
 
@@ -595,8 +596,8 @@ function recordFindings(stores,checkedAt){
         const availableRows=stores.filter(x=>x.available===true);
         const n=uniqueStoreCount(availableRows);
         render({...data,stores,stores_count:storeCount,available_count:n});
-        setStatus(n?`✅ ${target.label}: ${n} loja(s) com 256GB e/ou 512GB disponível(is) agora.`:`⚡ ${target.label}: ${storeCount} loja(s) retornadas; 256GB/512GB indisponíveis agora. Próxima consulta em ${REGIONAL_QUERY_DELAY/1000}s.`,n?'ok':'live');
-        schedule(REGIONAL_QUERY_DELAY);
+        setStatus(n?`✅ ${target.label}: ${n} loja(s) com 256GB e/ou 512GB disponível(is) agora.`:`⚡ ${target.label}: ${storeCount} loja(s) retornadas; 256GB/512GB indisponíveis agora. Próxima consulta em ${regionalQueryDelay/1000}s.`,n?'ok':'live');
+        schedule(regionalQueryDelay);
       }catch(err){
         if(!active)return;
         setStatus(`⚠️ ${target.label}: ${String(err&&err.message||err)}. Tentarei novamente em 10s.`,'warn');
@@ -697,6 +698,26 @@ function recordFindings(stores,checkedAt){
     }
   }
 
+  function currentIntervalSeconds(){
+    const el=qs('#appleInterval');
+    if(el&&String(el.value).trim()==='')return Math.max(1,Math.min(15,Math.round(regionalQueryDelay/1000)||15));
+    const raw=Number(el&&el.value);
+    const base=Number.isFinite(raw)&&raw>0?raw:(regionalQueryDelay/1000||15);
+    return Math.max(1,Math.min(15,Math.round(base)));
+  }
+
+  function applyIntervalFromControl(reschedule=true){
+    const el=qs('#appleInterval');
+    if(el&&String(el.value).trim()==='')return;
+    const seconds=currentIntervalSeconds();
+    if(el)el.value=String(seconds);
+    regionalQueryDelay=seconds*1000;
+    try{localStorage.setItem(REGIONAL_DELAY_KEY,String(regionalQueryDelay));}catch{}
+    const freq=qs('#appleFrequency');
+    if(freq)freq.textContent=seconds+' segundos';
+    if(active&&regionalMode&&reschedule)schedule(regionalQueryDelay);
+  }
+
   function openRegionalWindows(){
     const entries=Object.entries(REGIONAL_POINTS);
     const availW=Math.max(1200,screen.availWidth||window.innerWidth||1600);
@@ -711,6 +732,7 @@ function recordFindings(stores,checkedAt){
       u.searchParams.set('autostart','1');
       u.searchParams.set('startDelay',String(index*3500));
       u.searchParams.set('storages',ACTIVE_STORAGES.join(','));
+      u.searchParams.set('interval',String(currentIntervalSeconds()));
       const left=baseLeft+(index*width);
       const features=`popup=yes,width=${width},height=${availH},left=${left},top=${top},resizable=yes,scrollbars=yes`;
       const w=window.open(u.toString(),`apple_${key}`,features);
@@ -733,7 +755,7 @@ function recordFindings(stores,checkedAt){
     active=true;blockStreak=0;previousAvailable=new Set();locationIndex=0;discoveryIndex=0;steadyChecks=0;citySnapshots.clear();
     if(regionalMode){
       qs('#appleStart').disabled=true;qs('#appleStop').disabled=false;
-      qs('#appleFrequency').textContent=(REGIONAL_QUERY_DELAY/1000)+' segundos';
+      qs('#appleFrequency').textContent=(regionalQueryDelay/1000)+' segundos';
       setStatus(`▶ ${regionalPoint.label}: monitor dedicado iniciado. Primeira consulta agora.`,'live');
       checkNow();
       return;
@@ -772,8 +794,21 @@ function recordFindings(stores,checkedAt){
   document.querySelectorAll('.main-tab').forEach(b=>{if(b!==tab)b.addEventListener('click',()=>{app.hidden=true;});});
   qs('#appleStart').addEventListener('click',start);
   qs('#appleStop').addEventListener('click',stop);
+  const appleIntervalInput=qs('#appleInterval');
+  if(appleIntervalInput){
+    appleIntervalInput.addEventListener('input',()=>applyIntervalFromControl(true));
+    appleIntervalInput.addEventListener('change',()=>applyIntervalFromControl(true));
+  }
   window.addEventListener('storage',event=>{
     if(event.key===FIND_HISTORY_KEY){findHistory=loadFindHistory();renderFindHistory();}
+    if(event.key===REGIONAL_DELAY_KEY&&regionalMode){
+      const ms=Math.max(1000,Math.min(15000,Number(event.newValue)||REGIONAL_QUERY_DELAY));
+      regionalQueryDelay=ms;
+      const seconds=Math.max(1,Math.min(15,Math.round(ms/1000)));
+      if(qs('#appleInterval'))qs('#appleInterval').value=String(seconds);
+      if(qs('#appleFrequency'))qs('#appleFrequency').textContent=seconds+' segundos';
+      if(active)schedule(regionalQueryDelay);
+    }
   });
 
   document.addEventListener('visibilitychange',()=>{
@@ -783,6 +818,7 @@ function recordFindings(stores,checkedAt){
   });
 
   renderFindHistory();
+  applyIntervalFromControl(false);
   emitDesktopHistorySnapshot();
   loadConfig();
   if(regionalMode){
