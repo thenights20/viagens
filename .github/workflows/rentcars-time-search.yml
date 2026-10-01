@@ -1,0 +1,154 @@
+name: Rentcars time price search
+run-name: "Rentcars ${{ inputs.request_id || 'manual' }} · ${{ inputs.pickup_date }} ${{ inputs.pickup_from_time }}..${{ inputs.pickup_to_time }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      pickup_location:
+        description: "Local de retirada"
+        required: true
+        type: string
+      dropoff_location:
+        description: "Local de devolução"
+        required: true
+        type: string
+      pickup_date:
+        description: "Data da retirada (YYYY-MM-DD)"
+        required: true
+        type: string
+      dropoff_date:
+        description: "Data da devolução (YYYY-MM-DD)"
+        required: true
+        type: string
+      pickup_from_time:
+        description: "Retirada a partir de"
+        required: true
+        default: "08:00"
+        type: string
+      pickup_to_time:
+        description: "Retirada até"
+        required: true
+        default: "12:00"
+        type: string
+      dropoff_from_time:
+        description: "Devolução a partir de"
+        required: true
+        default: "10:00"
+        type: string
+      dropoff_to_time:
+        description: "Devolução até"
+        required: true
+        default: "10:00"
+        type: string
+      mode:
+        description: "Otimização"
+        required: true
+        default: "pickup"
+        type: choice
+        options: ["pickup", "both"]
+      currency:
+        description: "Moeda"
+        required: true
+        default: "BRL"
+        type: choice
+        options: ["BRL", "USD"]
+      driver_age:
+        description: "Idade do motorista"
+        required: true
+        default: "30"
+        type: string
+      request_id:
+        description: "ID da solicitação"
+        required: false
+        default: "manual"
+        type: string
+      search_key:
+        description: "Chave da pesquisa"
+        required: false
+        default: ""
+        type: string
+  push:
+    branches: [main]
+    paths:
+      - 'rentcars-time-search/**'
+      - 'docs/rentcars-time-hunter.js'
+      - '.github/workflows/rentcars-time-search.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rentcars-time-search
+  cancel-in-progress: true
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+
+      - name: Dependências
+        run: npm install --no-save playwright-core@1.55.0
+
+      - name: Validar arquivos
+        run: |
+          node --check rentcars-time-search/search.mjs
+          node --check docs/rentcars-time-hunter.js
+
+      - name: Comparar horários na Rentcars
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+          RENTCARS_PICKUP_LOCATION: ${{ inputs.pickup_location }}
+          RENTCARS_DROPOFF_LOCATION: ${{ inputs.dropoff_location }}
+          RENTCARS_PICKUP_DATE: ${{ inputs.pickup_date }}
+          RENTCARS_DROPOFF_DATE: ${{ inputs.dropoff_date }}
+          RENTCARS_PICKUP_FROM_TIME: ${{ inputs.pickup_from_time || '08:00' }}
+          RENTCARS_PICKUP_TO_TIME: ${{ inputs.pickup_to_time || '12:00' }}
+          RENTCARS_DROPOFF_FROM_TIME: ${{ inputs.dropoff_from_time || '10:00' }}
+          RENTCARS_DROPOFF_TO_TIME: ${{ inputs.dropoff_to_time || '10:00' }}
+          RENTCARS_MODE: ${{ inputs.mode || 'pickup' }}
+          RENTCARS_CURRENCY: ${{ inputs.currency || 'BRL' }}
+          RENTCARS_DRIVER_AGE: ${{ inputs.driver_age || '30' }}
+          RENTCARS_REQUEST_ID: ${{ inputs.request_id || 'manual' }}
+          RENTCARS_SEARCH_KEY: ${{ inputs.search_key }}
+        run: node rentcars-time-search/search.mjs
+
+      - name: Validar resultado
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const d=JSON.parse(fs.readFileSync('docs/data/rentcars-search.json','utf8'));
+          if(!['completed','blocked'].includes(d.status)) throw new Error(d.error||'Pesquisa Rentcars não concluída');
+          if(d.source!=='Rentcars') throw new Error('Fonte inesperada');
+          if(!Array.isArray(d.results)) throw new Error('Resultados inválidos');
+          if(d.results.some(x=>x.price_total!=null && !(Number(x.price_total)>0))) throw new Error('Preço inválido');
+          if(d.best_combination && d.best_combination.status!=='ok') throw new Error('Melhor combinação inválida');
+          console.log(`Rentcars: status=${d.status}, testadas=${d.stats.tested}, com preço=${d.stats.priced}, bloqueadas=${d.stats.blocked}`);
+          NODE
+
+      - name: Publicar resultado no painel
+        run: |
+          git config user.name "rentcars-time-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/rentcars-search.json docs/data/rentcars/
+          if git diff --cached --quiet; then
+            echo "Sem alterações."
+          else
+            git commit -m "data: atualizar comparação de horários Rentcars [skip ci]"
+            for tentativa in 1 2 3; do
+              git pull --rebase origin main && git push origin HEAD:main && break
+              echo "Tentativa $tentativa/3 para publicar resultado"
+              git rebase --abort >/dev/null 2>&1 || true
+              sleep 3
+            done
+          fi
