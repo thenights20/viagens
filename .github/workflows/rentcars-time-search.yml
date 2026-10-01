@@ -67,12 +67,6 @@ on:
         required: false
         default: ""
         type: string
-  push:
-    branches: [main]
-    paths:
-      - 'rentcars-time-search/**'
-      - 'docs/rentcars-time-hunter.js'
-      - '.github/workflows/rentcars-time-search.yml'
 
 permissions:
   contents: write
