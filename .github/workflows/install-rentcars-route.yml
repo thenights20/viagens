@@ -1,0 +1,61 @@
+name: Ativar rota Rentcars no bridge
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps-script/Rentcars.gs'
+      - 'docs/rentcars-time-hunter.js'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: install-rentcars-route
+  cancel-in-progress: false
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: main
+      - name: Inserir rotas sem alterar o restante do bridge
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('apps-script/Code.gs')
+          s=p.read_text(encoding='utf-8')
+          post_anchor="    if (path === 'api/indigo/search') return json_(startIndigoSearch_(body));"
+          post_line="    if (path === 'api/rentcars/search') return json_(startRentcarsSearch_(body));"
+          if post_line not in s:
+              if post_anchor not in s: raise SystemExit('Âncora POST Indigo não encontrada')
+              s=s.replace(post_anchor, post_anchor+'\n'+post_line, 1)
+          get_anchor="    if (match) return jsonp_(pollIndigoSearch_(match[1]), e && e.parameter && e.parameter.callback);"
+          get_block="    match = path.match(/^api\\/rentcars\\/search\\/([A-Za-z0-9_-]{8,80})$/);\n    if (match) return jsonp_(pollRentcarsSearch_(match[1]), e && e.parameter && e.parameter.callback);"
+          if get_block not in s:
+              if get_anchor not in s: raise SystemExit('Âncora GET Indigo não encontrada')
+              s=s.replace(get_anchor, get_anchor+'\n'+get_block, 1)
+          old="version: '0.4.0', indigo: true, apple: true, miles: true"
+          new="version: '0.5.0', indigo: true, rentcars: true, apple: true, miles: true"
+          if old in s: s=s.replace(old,new,1)
+          p.write_text(s,encoding='utf-8')
+          PY
+          cat apps-script/*.gs > /tmp/apps-script-bridge.js
+          node --check /tmp/apps-script-bridge.js
+          grep -q "api/rentcars/search" apps-script/Code.gs
+          grep -q "function startRentcarsSearch_" apps-script/Rentcars.gs
+      - name: Publicar ativação no main
+        run: |
+          git config user.name "rentcars-installer-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apps-script/Code.gs
+          if git diff --cached --quiet; then
+            echo "Rota Rentcars já estava ativa."
+          else
+            git commit -m "chore: ativar rotas Rentcars no serviço de pesquisa"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
