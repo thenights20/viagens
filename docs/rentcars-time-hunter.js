@@ -15,6 +15,11 @@
     .rc-head h2{margin:0 0 5px;font-size:24px}.rc-head .sub{max-width:900px}
     .rc-form{padding:15px;display:grid;grid-template-columns:repeat(4,minmax(150px,1fr));gap:11px;margin-bottom:15px}
     .rc-field label{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin:0 0 5px}
+    .rc-location{grid-column:span 2}
+    .rc-location-row{display:flex;gap:8px;align-items:center}
+    .rc-location-row input{flex:1;min-width:0}
+    .rc-swap{border:1px solid var(--line);background:var(--panel2);color:var(--text);font-weight:850;border-radius:10px;padding:10px 12px;cursor:pointer;white-space:nowrap}
+    .rc-location-help{display:block;margin-top:5px;color:var(--muted);font-size:11px;line-height:1.35}
     .rc-actions{display:flex;gap:9px;align-items:center;grid-column:1/-1;flex-wrap:wrap}
     .rc-search{border:0;cursor:pointer;background:var(--accent);color:#07111f;font-weight:900;padding:11px 16px;border-radius:10px;min-width:220px}
     .rc-search:disabled{opacity:.55;cursor:wait}.rc-link{display:inline-flex;align-items:center;text-decoration:none;border:1px solid var(--line);background:var(--panel2);color:var(--text);font-weight:800;padding:10px 13px;border-radius:10px}
@@ -24,8 +29,8 @@
     .rc-best .title{font-size:11px;font-weight:900;color:var(--ok);text-transform:uppercase;letter-spacing:.06em}.rc-best .route{font-size:20px;font-weight:950;margin-top:4px}.rc-best .price{font-size:25px;font-weight:950;color:var(--ok)}
     .rc-summary{grid-template-columns:repeat(4,1fr)}.rc-money{font-size:18px;font-weight:900;white-space:nowrap}.rc-cheapest td{background:color-mix(in srgb,var(--ok) 6%,transparent)}
     .rc-source{color:var(--accent);font-weight:850}.rc-note{margin-top:13px}.rc-inline{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.rc-inline input[type=checkbox]{width:auto}
-    @media(max-width:1100px){.rc-form{grid-template-columns:repeat(2,1fr)}.rc-summary{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:700px){.rc-form{grid-template-columns:1fr}.rc-form .wide{grid-column:auto}.rc-actions>*{width:100%;justify-content:center}.rc-summary{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:1100px){.rc-form{grid-template-columns:repeat(2,1fr)}.rc-location{grid-column:span 1}.rc-summary{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:700px){.rc-form{grid-template-columns:1fr}.rc-form .wide,.rc-location{grid-column:auto}.rc-location-row{align-items:stretch}.rc-location-row input{width:100%}.rc-actions>*{width:100%;justify-content:center}.rc-summary{grid-template-columns:repeat(2,1fr)}}
   `;
   document.head.appendChild(style);
 
@@ -47,12 +52,25 @@
   app.id='rentcarsApp'; app.hidden=true;
   app.innerHTML=`
     <div class="rc-head">
-      <div><h2>🚗 Rentcars · Caçador do horário mais barato</h2><div class="sub">Compara o <b>preço total</b> da mesma locação em vários horários de retirada e/ou devolução, sempre usando somente a Rentcars como fonte.</div></div>
+      <div><h2>🚗 Rentcars · Caçador do horário mais barato</h2><div class="sub">Escolha livremente <b>onde retirar</b> e <b>onde devolver</b> o carro. Depois o sistema compara o preço total em vários horários, usando somente a Rentcars.</div></div>
       <a class="rc-link" href="${RENTCARS_URL}" target="_blank" rel="noopener">Abrir Rentcars ↗</a>
     </div>
     <section class="panel rc-form">
-      <div class="rc-field wide"><label>Local de retirada</label><input id="rcPickup" value="Port Canaveral, Cape Canaveral, FL" placeholder="Cidade, aeroporto ou endereço"></div>
-      <div class="rc-field wide"><label>Local de devolução</label><input id="rcDropoff" value="Orlando International Airport (MCO)" placeholder="Cidade, aeroporto ou endereço"></div>
+      <datalist id="rcLocations">
+        <option value="Miami International Airport (MIA)"></option>
+        <option value="Fort Lauderdale-Hollywood International Airport (FLL)"></option>
+        <option value="Orlando International Airport (MCO)"></option>
+        <option value="Tampa International Airport (TPA)"></option>
+        <option value="PortMiami, Miami, FL"></option>
+        <option value="Port Canaveral, Cape Canaveral, FL"></option>
+        <option value="Port Everglades, Fort Lauderdale, FL"></option>
+        <option value="Miami, FL"></option>
+        <option value="Orlando, FL"></option>
+        <option value="Tampa, FL"></option>
+        <option value="Cape Canaveral, FL"></option>
+      </datalist>
+      <div class="rc-field rc-location"><label>📍 Local de retirada</label><div class="rc-location-row"><input id="rcPickup" list="rcLocations" autocomplete="off" placeholder="Escolha ou digite cidade, aeroporto, porto ou endereço"><button class="rc-swap" id="rcSwap" type="button" title="Trocar retirada e devolução">⇄ Trocar</button></div><small class="rc-location-help">Você pode escolher uma sugestão ou digitar qualquer local.</small></div>
+      <div class="rc-field rc-location"><label>🏁 Local de devolução</label><input id="rcDropoff" list="rcLocations" autocomplete="off" placeholder="Escolha ou digite cidade, aeroporto, porto ou endereço"><small class="rc-location-help">Pode ser diferente do local de retirada.</small></div>
       <div class="rc-field"><label>Data da retirada</label><input id="rcPickupDate" type="date"></div>
       <div class="rc-field"><label>Data da devolução</label><input id="rcDropoffDate" type="date"></div>
       <div class="rc-field"><label>Moeda</label><select id="rcCurrency"><option value="BRL">BRL · Real</option><option value="USD">USD · Dólar</option></select></div>
@@ -65,7 +83,7 @@
       <div class="rc-field"><label>Devolução · até</label><input id="rcDropoffTo" type="time" step="1800" value="10:00"></div>
       <div class="rc-actions"><button class="rc-search" id="rcSearch">🔎 Encontrar horário mais barato</button><span id="rcEstimate" class="sub">—</span></div>
     </section>
-    <div class="rc-status" id="rcStatus">Preencha os locais, datas e a faixa de horários.</div>
+    <div class="rc-status" id="rcStatus">Escolha o local de retirada e de devolução, as datas e a faixa de horários.</div>
     <section class="rc-best" id="rcBest" hidden><div><div class="title">⭐ Melhor combinação encontrada na Rentcars</div><div class="route" id="rcBestRoute">—</div><div class="sub" id="rcBestSupplier">—</div></div><div><div class="price" id="rcBestPrice">—</div><div class="sub" id="rcBestSave"></div></div></section>
     <section class="cards rc-summary">
       <div class="card"><span>Combinações</span><b id="rcCount">—</b></div>
@@ -73,7 +91,7 @@
       <div class="card"><span>Menor total</span><b id="rcMin">—</b></div>
       <div class="card"><span>Maior total</span><b id="rcMax">—</b></div>
     </section>
-    <section class="panel"><div class="table-wrap"><table><thead><tr><th>Retirada</th><th>Devolução</th><th>Preço total</th><th>Locadora</th><th>Carro / categoria</th><th>Status</th><th></th></tr></thead><tbody id="rcRows"></tbody></table></div><div class="empty" id="rcEmpty"><strong>Ainda não há comparação.</strong>Faça uma pesquisa para ordenar os horários do mais barato para o mais caro.</div></section>
+    <section class="panel"><div class="table-wrap"><table><thead><tr><th>Retirada</th><th>Devolução</th><th>Preço total</th><th>Locadora</th><th>Carro / categoria</th><th>Status</th><th></th></tr></thead><tbody id="rcRows"></tbody></table></div><div class="empty" id="rcEmpty"><strong>Ainda não há comparação.</strong> Faça uma pesquisa para ordenar os horários do mais barato para o mais caro.</div></section>
     <div class="note rc-note"><b>Fonte:</b> somente Rentcars. O painel não mistura tarifas de Kayak, DiscoverCars, Rentalcars.com ou outras plataformas. Como a Rentcars usa proteção anti-automação, uma consulta pode ser marcada como “bloqueada” quando o site exigir verificação humana; nesse caso nenhum preço é inventado.</div>
   `;
   const flights=$('#flightsApp'); if(flights) flights.after(app); else $('.wrap')?.appendChild(app);
@@ -88,7 +106,7 @@
   }
   function estimate(){const r=readForm(),p=slots(r.pickup_from_time,r.pickup_to_time),d=slots(r.dropoff_from_time,r.dropoff_to_time);const n=p.length*d.length;$('#rcEstimate').textContent=n?`${n} combinação${n===1?'':'ões'} de horário`: 'Faixa de horário inválida';return n;}
   function validate(r){
-    if(!r.pickup_location||!r.dropoff_location)return 'Informe retirada e devolução.';
+    if(!r.pickup_location||!r.dropoff_location)return 'Escolha o local de retirada e o local de devolução.';
     if(!r.pickup_date||!r.dropoff_date||r.dropoff_date<r.pickup_date)return 'Confira as datas de retirada e devolução.';
     if(![r.pickup_from_time,r.pickup_to_time,r.dropoff_from_time,r.dropoff_to_time].every(validHalfHour))return 'Use horários terminados em :00 ou :30.';
     if(mins(r.pickup_to_time)<mins(r.pickup_from_time)||mins(r.dropoff_to_time)<mins(r.dropoff_from_time))return 'O horário final não pode ser anterior ao inicial.';
@@ -121,6 +139,7 @@
   function activate(){if(typeof window.setMain==='function')window.setMain('rentcars');else{$('#productsApp')&&($('#productsApp').hidden=true);$('#flightsApp')&&($('#flightsApp').hidden=true);document.querySelectorAll('.main-tab').forEach(x=>x.classList.toggle('active',x===tab));}app.hidden=false;}
   tab.addEventListener('click',activate);document.querySelectorAll('.main-tab').forEach(b=>{if(b!==tab)b.addEventListener('click',()=>{app.hidden=true;});});
   $('#rcSearch').addEventListener('click',runSearch);['rcPickup','rcDropoff','rcPickupDate','rcDropoffDate','rcPickupFrom','rcPickupTo','rcDropoffFrom','rcDropoffTo','rcMode'].forEach(id=>{$('#'+id)?.addEventListener('input',estimate);$('#'+id)?.addEventListener('change',estimate);});
+  $('#rcSwap').addEventListener('click',()=>{const a=$('#rcPickup').value,b=$('#rcDropoff').value;$('#rcPickup').value=b;$('#rcDropoff').value=a;estimate();$('#rcPickup').focus();});
   $('#rcMode').addEventListener('change',()=>{const pickupOnly=$('#rcMode').value==='pickup';$('#rcDropoffTo').disabled=pickupOnly;if(pickupOnly)$('#rcDropoffTo').value=$('#rcDropoffFrom').value;estimate();});
   $('#rcDropoffFrom').addEventListener('input',()=>{if($('#rcMode').value==='pickup')$('#rcDropoffTo').value=$('#rcDropoffFrom').value;});
   $('#rcDropoffTo').disabled=true;estimate();loadConfig();
