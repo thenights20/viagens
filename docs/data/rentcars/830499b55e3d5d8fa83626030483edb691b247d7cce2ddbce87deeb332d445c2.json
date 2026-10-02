@@ -1,0 +1,64 @@
+{
+  "version": "1.0.0",
+  "source": "Rentcars",
+  "request_id": "rentcars_8d5deaad2e404db9",
+  "search_key": "830499b55e3d5d8fa83626030483edb691b247d7cce2ddbce87deeb332d445c2",
+  "request": {
+    "pickup_location": "Miami International Airport (MIA)",
+    "dropoff_location": "Miami International Airport (MIA)",
+    "pickup_date": "2026-10-03",
+    "dropoff_date": "2026-10-04",
+    "pickup_from_time": "08:00",
+    "pickup_to_time": "12:00",
+    "dropoff_from_time": "15:00",
+    "dropoff_to_time": "15:00",
+    "mode": "pickup",
+    "currency": "BRL",
+    "driver_age": 30,
+    "step_minutes": 30
+  },
+  "currency": "BRL",
+  "status": "blocked",
+  "generated_at": "2026-10-02T00:10:33.472Z",
+  "progress": {
+    "completed": 3,
+    "total": 9
+  },
+  "results": [
+    {
+      "pickup_date": "2026-10-03",
+      "dropoff_date": "2026-10-04",
+      "pickup_time": "08:00",
+      "dropoff_time": "15:00",
+      "status": "error",
+      "error": "Campo de retirada não encontrado.",
+      "url": "https://www.rentcars.com/pt-br/"
+    },
+    {
+      "pickup_date": "2026-10-03",
+      "dropoff_date": "2026-10-04",
+      "pickup_time": "08:30",
+      "dropoff_time": "15:00",
+      "status": "error",
+      "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByText(/horário.*retirada|pick.?up time/i).first()\n    - locator resolved to <div class=\"AccordionSeo_content__cbsL5\">Para pesquisar pelos melhores preços, basta inser…</div>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is not vi",
+      "url": "https://www.rentcars.com/pt-br/"
+    },
+    {
+      "pickup_date": "2026-10-03",
+      "dropoff_date": "2026-10-04",
+      "pickup_time": "09:00",
+      "dropoff_time": "15:00",
+      "status": "blocked",
+      "error": "A Rentcars solicitou verificação de segurança/Cloudflare.",
+      "url": "https://www.rentcars.com/pt-br/"
+    }
+  ],
+  "stats": {
+    "tested": 3,
+    "priced": 0,
+    "blocked": 1,
+    "errors": 2
+  },
+  "best_combination": null,
+  "error": "A proteção de segurança da Rentcars impediu a automação. Nenhum preço foi estimado ou inventado."
+}
