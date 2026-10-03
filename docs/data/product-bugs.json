@@ -1,9 +1,9 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-10-03T12:42:11.200130Z",
+  "generated_at": "2026-10-03T16:44:23.290728Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 0,
+  "active_count": 1,
   "strong_count": 0,
   "critical_count": 0,
   "confirmed_count": 0,
@@ -41,5 +41,37 @@
     }
   },
   "validation_errors": [],
-  "bugs": []
+  "bugs": [
+    {
+      "source": "Loja TCL",
+      "store_name": "Loja TCL",
+      "title": "Mais Vendido",
+      "price": 1333.08,
+      "original_price": 1449.0,
+      "reference_price": 4507.08,
+      "url": "https://www.lojatcl.com.br/smart-tv-semp-32-polegadas-led-hd-s42-wifi-bluetooth-google-tv-2-hdmi-hdr10-dolby-audio-32s42-32398/p",
+      "category": null,
+      "available": true,
+      "trusted": true,
+      "revalidated": true,
+      "collector": "radar-historico",
+      "collected_at": "2026-10-03T13:33:39.899935+00:00",
+      "bug_score": 62,
+      "bug_status": "🟢 SUSPEITO",
+      "category_rule": null,
+      "baseline_price": 4507.08,
+      "baseline_kind": "histórico/mercado",
+      "drop_pct": 70.4,
+      "savings": 3174.0,
+      "reasons": [
+        "70% abaixo de histórico/mercado",
+        "preço reaberto e confirmado",
+        "vendedor/loja com sinal de confiança"
+      ],
+      "first_seen": "2026-10-03T16:44:23.290728Z",
+      "last_seen": "2026-10-03T16:44:23.290728Z",
+      "sightings": 1,
+      "fresh": true
+    }
+  ]
 }
