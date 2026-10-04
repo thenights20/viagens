@@ -1,15 +1,18 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-10-04T01:45:46.672422Z",
+  "generated_at": "2026-10-04T07:25:58.351920Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 1,
-  "strong_count": 0,
-  "critical_count": 0,
-  "confirmed_count": 0,
+  "active_count": 2,
+  "strong_count": 1,
+  "critical_count": 1,
+  "confirmed_count": 1,
   "sensor_bug_count": 0,
-  "scanner_count": 0,
-  "queries_this_run": [],
+  "scanner_count": 3,
+  "queries_this_run": [
+    "microondas",
+    "playstation 5"
+  ],
   "source_health": {
     "Magalu": {
       "ok": true,
@@ -34,14 +37,48 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 0,
-      "candidates_seen": 0,
-      "message": "nenhum candidato extremo nesta rodada",
+      "items": 3,
+      "candidates_seen": 3,
+      "message": "scanner rápido",
       "errors": []
     }
   },
-  "validation_errors": [],
+  "validation_errors": [
+    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Preto): preço não apareceu novamente na página",
+    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Branco): preço não apareceu novamente na página"
+  ],
   "bugs": [
+    {
+      "source": "Amazon Brasil",
+      "store_name": "Amazon Brasil",
+      "title": "Sanremo - Tampa Plástica para Micro-ondas, Linha Casar",
+      "price": 12.64,
+      "original_price": 16.3,
+      "url": "https://www.amazon.com.br/Sanremo-810-Tampa-Micro-Ondas-Transparente/dp/B076QMDJYV/ref=sr_1_8",
+      "search_query": "microondas",
+      "available": true,
+      "trusted": false,
+      "revalidated": true,
+      "collector": "fast-market-scan",
+      "bug_score": 100,
+      "bug_status": "🚨 BUG PROVÁVEL",
+      "category_rule": "Micro-ondas",
+      "category": "Eletrodomésticos",
+      "baseline_price": 320.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 96.0,
+      "savings": 307.36,
+      "reasons": [
+        "96% abaixo de piso conservador da categoria",
+        "preço impossível para a faixa de Micro-ondas",
+        "preço reaberto e confirmado"
+      ],
+      "verification_note": "preço confirmado; vendedor precisa conferência manual",
+      "first_seen": "2026-10-04T07:25:58.351920Z",
+      "last_seen": "2026-10-04T07:25:58.351920Z",
+      "sightings": 1,
+      "fresh": true
+    },
     {
       "source": "Loja TCL",
       "store_name": "Loja TCL",
@@ -55,7 +92,7 @@
       "trusted": true,
       "revalidated": true,
       "collector": "radar-historico",
-      "collected_at": "2026-10-03T21:27:35.858883+00:00",
+      "collected_at": "2026-10-04T07:07:37.160835+00:00",
       "bug_score": 62,
       "bug_status": "🟢 SUSPEITO",
       "category_rule": null,
@@ -69,8 +106,8 @@
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-10-03T16:44:23.290728Z",
-      "last_seen": "2026-10-03T22:17:18.731955Z",
-      "sightings": 3,
+      "last_seen": "2026-10-04T07:25:58.351920Z",
+      "sightings": 4,
       "fresh": false
     }
   ]
