@@ -1,9 +1,9 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-10-06T03:12:04.690163Z",
+  "generated_at": "2026-10-06T10:13:08.018671Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 10,
+  "active_count": 12,
   "strong_count": 0,
   "critical_count": 0,
   "confirmed_count": 0,
@@ -14,14 +14,14 @@
     "painel tv"
   ],
   "source_health": {
-    "Mercado Livre": {
+    "Magalu": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     },
-    "Magalu": {
+    "Mercado Livre": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
@@ -38,7 +38,7 @@
     "Amazon Brasil": {
       "ok": true,
       "items": 35,
-      "candidates_seen": 42,
+      "candidates_seen": 44,
       "message": "scanner rápido",
       "errors": []
     }
@@ -48,40 +48,71 @@
     "Amazon Brasil · Painel de TV Noruega Moderno Até 50 Polegadas com Prateleira Decorativa Cor: Off/Freijo: preço não apareceu novamente na página",
     "Amazon Brasil · Painel Egeo Frisado Para Quarto Ou Sala Ideal Para TV De Até 50 Polegadas (HANOVER 2): preço não apareceu novamente na página",
     "Amazon Brasil · Painel Egeo Frisado Para Quarto Ou Sala Ideal Para TV De Até 50 Polegadas (HANOVER 2): preço não apareceu novamente na página",
-    "Amazon Brasil · Painel TV até 55 Polegadas Matt com porta Off white/Nature - JM Casa dos Moveis: preço não apareceu novamente na página",
     "Amazon Brasil · Painel Egeo Frisado Para Quarto Ou Sala Ideal Para TV De Até 50 Polegadas (HANOVER 2): preço não apareceu novamente na página",
+    "Amazon Brasil · Painel Frisado para TV até 50 Polegadas com Prateleira 120x90 cm para Sala Quarto - Loja Inova BR (Hanover Fend): preço não apareceu novamente na página",
+    "Amazon Brasil · Painel TV até 55 Polegadas Matt com porta Off white/Nature - JM Casa dos Moveis: preço não apareceu novamente na página",
     "Amazon Brasil · Rack com Painel Tv 65\" Retrô Flórida Up Multimóveis Mp1042 Branco/natural: preço não apareceu novamente na página",
     "Amazon Brasil · Painel Âmbar Para TVs Até 65 Polegadas - Bechara Off-White/Cinamomo/Ripado: preço não apareceu novamente na página",
-    "Amazon Brasil · Estante para TV e Home Theater até 55 Polegadas 166cmx155cm Nichos 2 Portas Cinamomo Off White Havana Cinamomo/Off White: preço não apareceu novamente na página",
-    "Amazon Brasil · Estante para TV e Home Theater até 55 Polegadas 166cmx155cm Nichos 2 Portas Havana Cinamomo/Grafite: preço não apareceu novamente na página"
+    "Amazon Brasil · Estante para TV e Home Theater até 55 Polegadas 166cmx155cm Nichos 2 Portas Cinamomo Off White Havana Cinamomo/Off White: preço não apareceu novamente na página"
   ],
   "bugs": [
     {
       "source": "Amazon Brasil",
       "store_name": "Amazon Brasil",
-      "title": "Painel TV Ripado MDF Placa Auto Colante (Cinza, TV 40-43 Pol)",
-      "price": 65.03,
-      "original_price": 68.46,
-      "url": "https://www.amazon.com.br/Painel-Ripado-Placa-Colante-Cinza/dp/B0GV1YMSJJ/ref=sr_1_22",
+      "title": "Estante para TV e Home Theater até 55 Polegadas 166cmx155cm Nichos 2 Portas Havana Cinamomo/Grafite",
+      "price": 341.98,
+      "original_price": 359.98,
+      "url": "https://www.amazon.com.br/Estante-Theater-Polegadas-166cmx155cm-Cinamomo/dp/B0GXX1C2J1/ref=sr_1_36",
+      "search_query": "estante tv",
+      "available": true,
+      "trusted": false,
+      "revalidated": false,
+      "collector": "fast-market-scan",
+      "bug_score": 69,
+      "bug_status": "🟡 CANDIDATO NÃO CONFIRMADO",
+      "category_rule": "TV 55 polegadas",
+      "category": "TVs",
+      "baseline_price": 1400.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 75.6,
+      "savings": 1058.02,
+      "reasons": [
+        "76% abaixo de piso conservador da categoria",
+        "preço impossível para a faixa de TV 55 polegadas"
+      ],
+      "verification_note": "aguardando rechecagem",
+      "first_seen": "2026-10-06T10:13:08.018671Z",
+      "last_seen": "2026-10-06T10:13:08.018671Z",
+      "sightings": 1,
+      "fresh": true
+    },
+    {
+      "source": "Amazon Brasil",
+      "store_name": "Amazon Brasil",
+      "title": "Painel Caemmun Black Para Tv até 55 polegadas (Marrom/Off White)",
+      "price": 349.9,
+      "original_price": null,
+      "url": "https://www.amazon.com.br/Caemmun-Painel-Gold-F-00630-349/dp/B082MQK3M9/ref=sr_1_48",
       "search_query": "painel tv",
       "available": true,
       "trusted": false,
       "revalidated": false,
       "collector": "fast-market-scan",
-      "bug_score": 66,
-      "bug_status": "🟢 SUSPEITO",
-      "category_rule": "Estante/Painel de TV",
-      "category": "Casa",
-      "baseline_price": 220.0,
+      "bug_score": 69,
+      "bug_status": "🟡 CANDIDATO NÃO CONFIRMADO",
+      "category_rule": "TV 55 polegadas",
+      "category": "TVs",
+      "baseline_price": 1400.0,
       "baseline_kind": "piso conservador da categoria",
-      "drop_pct": 70.4,
-      "savings": 154.97,
+      "drop_pct": 75.0,
+      "savings": 1050.1,
       "reasons": [
-        "70% abaixo de piso conservador da categoria",
-        "muito abaixo do piso conservador de Estante/Painel de TV"
+        "75% abaixo de piso conservador da categoria",
+        "preço impossível para a faixa de TV 55 polegadas"
       ],
-      "first_seen": "2026-10-06T03:12:04.690163Z",
-      "last_seen": "2026-10-06T03:12:04.690163Z",
+      "verification_note": "aguardando rechecagem",
+      "first_seen": "2026-10-06T10:13:08.018671Z",
+      "last_seen": "2026-10-06T10:13:08.018671Z",
       "sightings": 1,
       "fresh": true
     },
@@ -110,9 +141,9 @@
         "muito abaixo do piso conservador de Estante/Painel de TV"
       ],
       "first_seen": "2026-10-06T03:12:04.690163Z",
-      "last_seen": "2026-10-06T03:12:04.690163Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-10-06T10:13:08.018671Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "source": "Amazon Brasil",
@@ -139,9 +170,9 @@
         "muito abaixo do piso conservador de Estante/Painel de TV"
       ],
       "first_seen": "2026-10-06T03:12:04.690163Z",
-      "last_seen": "2026-10-06T03:12:04.690163Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-10-06T10:13:08.018671Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "source": "Amazon Brasil",
@@ -168,9 +199,9 @@
         "muito abaixo do piso conservador de Estante/Painel de TV"
       ],
       "first_seen": "2026-10-06T03:12:04.690163Z",
-      "last_seen": "2026-10-06T03:12:04.690163Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-10-06T10:13:08.018671Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "source": "Amazon Brasil",
@@ -197,9 +228,9 @@
         "muito abaixo do piso conservador de Estante/Painel de TV"
       ],
       "first_seen": "2026-10-06T03:12:04.690163Z",
-      "last_seen": "2026-10-06T03:12:04.690163Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-10-06T10:13:08.018671Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "source": "Amazon Brasil",
@@ -226,9 +257,9 @@
         "muito abaixo do piso conservador de Estante/Painel de TV"
       ],
       "first_seen": "2026-10-06T03:12:04.690163Z",
-      "last_seen": "2026-10-06T03:12:04.690163Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-10-06T10:13:08.018671Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "source": "Amazon Brasil",
@@ -236,7 +267,7 @@
       "title": "Painel TV Ripado MDF Placa Auto Colante (Cinza, TV 40-43 Pol)",
       "price": 65.03,
       "original_price": 68.46,
-      "url": "https://www.amazon.com.br/Painel-Ripado-Placa-Colante-Cinza/dp/B0GV1YMSJJ/ref=sr_1_22_so_SHELF",
+      "url": "https://www.amazon.com.br/Painel-Ripado-Placa-Colante-Cinza/dp/B0GV1YMSJJ/ref=sr_1_25",
       "search_query": "painel tv",
       "available": true,
       "trusted": false,
@@ -254,8 +285,37 @@
         "70% abaixo de piso conservador da categoria",
         "muito abaixo do piso conservador de Estante/Painel de TV"
       ],
-      "first_seen": "2026-10-06T03:12:04.690163Z",
-      "last_seen": "2026-10-06T03:12:04.690163Z",
+      "first_seen": "2026-10-06T10:13:08.018671Z",
+      "last_seen": "2026-10-06T10:13:08.018671Z",
+      "sightings": 1,
+      "fresh": true
+    },
+    {
+      "source": "Amazon Brasil",
+      "store_name": "Amazon Brasil",
+      "title": "Painel TV Ripado MDF Placa Auto Colante (Cinza, TV 40-43 Pol)",
+      "price": 65.03,
+      "original_price": 68.46,
+      "url": "https://www.amazon.com.br/Painel-Ripado-Placa-Colante-Cinza/dp/B0GV1YMSJJ/ref=sr_1_25_so_SHELF",
+      "search_query": "painel tv",
+      "available": true,
+      "trusted": false,
+      "revalidated": false,
+      "collector": "fast-market-scan",
+      "bug_score": 66,
+      "bug_status": "🟢 SUSPEITO",
+      "category_rule": "Estante/Painel de TV",
+      "category": "Casa",
+      "baseline_price": 220.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 70.4,
+      "savings": 154.97,
+      "reasons": [
+        "70% abaixo de piso conservador da categoria",
+        "muito abaixo do piso conservador de Estante/Painel de TV"
+      ],
+      "first_seen": "2026-10-06T10:13:08.018671Z",
+      "last_seen": "2026-10-06T10:13:08.018671Z",
       "sightings": 1,
       "fresh": true
     },
@@ -284,9 +344,9 @@
         "muito abaixo do piso conservador de TV 50 polegadas"
       ],
       "first_seen": "2026-10-06T03:12:04.690163Z",
-      "last_seen": "2026-10-06T03:12:04.690163Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-10-06T10:13:08.018671Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "source": "Amazon Brasil",
@@ -313,9 +373,9 @@
         "muito abaixo do piso conservador de TV 50 polegadas"
       ],
       "first_seen": "2026-10-06T03:12:04.690163Z",
-      "last_seen": "2026-10-06T03:12:04.690163Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-10-06T10:13:08.018671Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "source": "Loja TCL",
@@ -344,8 +404,8 @@
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-10-05T23:23:21.926280Z",
-      "last_seen": "2026-10-06T03:12:04.690163Z",
-      "sightings": 2,
+      "last_seen": "2026-10-06T10:13:08.018671Z",
+      "sightings": 3,
       "fresh": false
     }
   ]
