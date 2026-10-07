@@ -1,15 +1,17 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-10-07T13:55:56.370168Z",
+  "generated_at": "2026-10-07T19:39:16.678116Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 0,
+  "active_count": 2,
   "strong_count": 0,
   "critical_count": 0,
   "confirmed_count": 0,
   "sensor_bug_count": 0,
-  "scanner_count": 0,
-  "queries_this_run": [],
+  "scanner_count": 2,
+  "queries_this_run": [
+    "iphone 17"
+  ],
   "source_health": {
     "Magalu": {
       "ok": true,
@@ -34,12 +36,78 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 0,
-      "candidates_seen": 0,
-      "message": "nenhum candidato extremo nesta rodada",
+      "items": 2,
+      "candidates_seen": 2,
+      "message": "scanner rápido",
       "errors": []
     }
   },
-  "validation_errors": [],
-  "bugs": []
+  "validation_errors": [
+    "Amazon Brasil · JETech Protetor de Lente da Câmera para iPhone 17, 3 Unidades: preço não apareceu novamente na página",
+    "Amazon Brasil · JETech Protetor de Lente da Câmera para iPhone 17, 3 Unidades: preço não apareceu novamente na página"
+  ],
+  "bugs": [
+    {
+      "source": "Loja TCL",
+      "store_name": "Loja TCL",
+      "title": "Mais Vendido",
+      "price": 992.68,
+      "original_price": 1169.0,
+      "reference_price": 5611.08,
+      "url": "https://www.lojatcl.com.br/smart-tv-semp-32-polegadas-led-hd-s42-wifi-bluetooth-google-tv-2-hdmi-hdr10-dolby-audio-32s42-32398/p",
+      "category": null,
+      "available": true,
+      "trusted": true,
+      "revalidated": true,
+      "collector": "radar-historico",
+      "collected_at": "2026-10-07T16:40:36.833290+00:00",
+      "bug_score": 68,
+      "bug_status": "🟢 SUSPEITO",
+      "category_rule": null,
+      "baseline_price": 5611.08,
+      "baseline_kind": "histórico/mercado",
+      "drop_pct": 82.3,
+      "savings": 4618.4,
+      "reasons": [
+        "82% abaixo de histórico/mercado",
+        "preço reaberto e confirmado",
+        "vendedor/loja com sinal de confiança"
+      ],
+      "first_seen": "2026-10-07T19:39:16.678116Z",
+      "last_seen": "2026-10-07T19:39:16.678116Z",
+      "sightings": 1,
+      "fresh": true
+    },
+    {
+      "source": "Loja TCL",
+      "store_name": "Loja TCL",
+      "title": "Mais Vendido",
+      "price": 1093.88,
+      "original_price": 1249.0,
+      "reference_price": 5611.08,
+      "url": "https://www.lojatcl.com.br/smart-tv-tcl-32-polegadas-hd-qled-s5k-wifi-bluetooth-google-tv-2-hdmi-hdr10-dolby-audio-32s5k-32534/p",
+      "category": null,
+      "available": true,
+      "trusted": true,
+      "revalidated": true,
+      "collector": "radar-historico",
+      "collected_at": "2026-10-07T16:40:36.804550+00:00",
+      "bug_score": 68,
+      "bug_status": "🟢 SUSPEITO",
+      "category_rule": null,
+      "baseline_price": 5611.08,
+      "baseline_kind": "histórico/mercado",
+      "drop_pct": 80.5,
+      "savings": 4517.2,
+      "reasons": [
+        "81% abaixo de histórico/mercado",
+        "preço reaberto e confirmado",
+        "vendedor/loja com sinal de confiança"
+      ],
+      "first_seen": "2026-10-07T19:39:16.678116Z",
+      "last_seen": "2026-10-07T19:39:16.678116Z",
+      "sightings": 1,
+      "fresh": true
+    }
+  ]
 }
