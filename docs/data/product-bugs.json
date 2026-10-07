@@ -1,9 +1,9 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-10-06T21:23:12.236865Z",
+  "generated_at": "2026-10-07T00:53:26.156040Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 0,
+  "active_count": 2,
   "strong_count": 0,
   "critical_count": 0,
   "confirmed_count": 0,
@@ -11,14 +11,14 @@
   "scanner_count": 0,
   "queries_this_run": [],
   "source_health": {
-    "Mercado Livre": {
+    "Magalu": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     },
-    "Magalu": {
+    "Mercado Livre": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
@@ -41,5 +41,68 @@
     }
   },
   "validation_errors": [],
-  "bugs": []
+  "bugs": [
+    {
+      "source": "Loja TCL",
+      "store_name": "Loja TCL",
+      "title": "Mais Vendido",
+      "price": 1333.08,
+      "original_price": 1449.0,
+      "reference_price": 5243.08,
+      "url": "https://www.lojatcl.com.br/smart-tv-semp-32-polegadas-led-hd-s42-wifi-bluetooth-google-tv-2-hdmi-hdr10-dolby-audio-32s42-32398/p",
+      "category": null,
+      "available": true,
+      "trusted": true,
+      "revalidated": true,
+      "collector": "radar-historico",
+      "collected_at": "2026-10-06T21:49:22.677799+00:00",
+      "bug_score": 62,
+      "bug_status": "🟢 SUSPEITO",
+      "category_rule": null,
+      "baseline_price": 5243.08,
+      "baseline_kind": "histórico/mercado",
+      "drop_pct": 74.6,
+      "savings": 3910.0,
+      "reasons": [
+        "75% abaixo de histórico/mercado",
+        "preço reaberto e confirmado",
+        "vendedor/loja com sinal de confiança"
+      ],
+      "first_seen": "2026-10-07T00:53:26.156040Z",
+      "last_seen": "2026-10-07T00:53:26.156040Z",
+      "sightings": 1,
+      "fresh": true
+    },
+    {
+      "source": "Loja TCL",
+      "store_name": "Loja TCL",
+      "title": "Mais Vendido",
+      "price": 1553.88,
+      "original_price": 1689.0,
+      "reference_price": 5243.08,
+      "url": "https://www.lojatcl.com.br/smart-tv-tcl-32-polegadas-hd-qled-s5k-wifi-bluetooth-google-tv-2-hdmi-hdr10-dolby-audio-32s5k-32534/p",
+      "category": null,
+      "available": true,
+      "trusted": true,
+      "revalidated": true,
+      "collector": "radar-historico",
+      "collected_at": "2026-10-06T21:49:22.638327+00:00",
+      "bug_score": 62,
+      "bug_status": "🟢 SUSPEITO",
+      "category_rule": null,
+      "baseline_price": 5243.08,
+      "baseline_kind": "histórico/mercado",
+      "drop_pct": 70.4,
+      "savings": 3689.2,
+      "reasons": [
+        "70% abaixo de histórico/mercado",
+        "preço reaberto e confirmado",
+        "vendedor/loja com sinal de confiança"
+      ],
+      "first_seen": "2026-10-07T00:53:26.156040Z",
+      "last_seen": "2026-10-07T00:53:26.156040Z",
+      "sightings": 1,
+      "fresh": true
+    }
+  ]
 }
