@@ -1,14 +1,14 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-10-07T05:59:46.246262Z",
+  "generated_at": "2026-10-07T18:58:55.053203Z",
   "source": "Sinais públicos de sites especializados em promoções",
-  "signal_count": 19,
+  "signal_count": 15,
   "responding_source_count": 3,
   "source_count": 3,
   "sources": {
     "Secret Flying": {
       "ok": true,
-      "items": 4,
+      "items": 3,
       "status": 200,
       "url": "https://www.secretflying.com/south-america-flight-deals/",
       "message": "ok"
@@ -22,30 +22,13 @@
     },
     "Passagens Imperdíveis": {
       "ok": true,
-      "items": 8,
+      "items": 5,
       "status": 200,
       "url": "https://passagensimperdiveis.com.br/",
       "message": "ok"
     }
   },
   "signals": [
-    {
-      "source": "Secret Flying",
-      "title": "Rio de Janeiro, Brazil to Manchester, UK for only $312 USD one-way",
-      "url": "https://www.secretflying.com/posts/rio-de-janeiro-brazil-to-manchester-uk-for-only-312-usd-one-way/",
-      "price": 312.0,
-      "currency": "USD",
-      "trip_mode": "one_way",
-      "origin_name": "Rio de Janeiro",
-      "destination_name": "Manchester, UK",
-      "origin": "GIG",
-      "destination": null,
-      "external_signal": true,
-      "availability": "October to December 2026",
-      "airline": "TAP Air Portugal",
-      "example_dates": [],
-      "error_fare": false
-    },
     {
       "source": "Secret Flying",
       "title": "Rio de Janeiro, Brazil to New York, USA for only $485 USD roundtrip",
@@ -132,19 +115,6 @@
     },
     {
       "source": "Passagens Imperdíveis",
-      "title": "Ida e Volta Passagens Nacionais Datas inclusive nas férias, feriados, Fim de Ano, Verão e mais! a partir de R$ 296 ida e volta, taxas incluídas",
-      "url": "https://passagensimperdiveis.com.br/passagens-nacionais-em-promocao-2026-90/",
-      "price": 296.0,
-      "currency": "BRL",
-      "trip_mode": "round_trip",
-      "origin_name": null,
-      "destination_name": null,
-      "origin": null,
-      "destination": null,
-      "external_signal": true
-    },
-    {
-      "source": "Passagens Imperdíveis",
       "title": "a partir de R$ 309 VIAJE PELO BRASIL! Passagens Nacionais",
       "url": "https://passagensimperdiveis.com.br/passagens-aereas-nacionais/",
       "price": 309.0,
@@ -170,42 +140,16 @@
       "external_signal": true
     },
     {
-      "source": "Passagens Imperdíveis",
-      "title": "Ida e Volta Aproveite! Paraguai: Assunção Programe-se para as compras! Opções de Voo Direto! a partir de R$ 868 ida e volta, taxas incluídas",
-      "url": "https://passagensimperdiveis.com.br/promocao-de-passagens-para-paraguai-assuncao-2026-17/",
-      "price": 868.0,
+      "source": "Melhores Destinos",
+      "title": "há 2 horas Paraguai barato! Passagens aéreas para Assunção a partir de R$ 872 ida e volta saindo do Rio",
+      "url": "https://www.melhoresdestinos.com.br/promocao/paraguai-barato-voos-paraguai-872",
+      "price": 872.0,
       "currency": "BRL",
       "trip_mode": "round_trip",
-      "origin_name": "Ida e Volta Aproveite! Paraguai: Assunção Programe-se",
-      "destination_name": "as compras! Opções de Voo Direto!",
+      "origin_name": "há 2 horas Paraguai barato! Passagens aéreas",
+      "destination_name": "Assunção",
       "origin": null,
       "destination": null,
-      "external_signal": true
-    },
-    {
-      "source": "Melhores Destinos",
-      "title": "há 14 horas Chile bem barato! Passagens para Santiago, Atacama ou Patagônia a partir de R$ 895 ida e volta",
-      "url": "https://www.melhoresdestinos.com.br/promocao/chile-passagens-de-ida-e-volta-para-santiago-atacama-patagonia-06out26",
-      "price": 895.0,
-      "currency": "BRL",
-      "trip_mode": "round_trip",
-      "origin_name": "há 14 horas Chile bem barato! Passagens",
-      "destination_name": "Santiago, Atacama ou Patagônia",
-      "origin": null,
-      "destination": "SCL",
-      "external_signal": true
-    },
-    {
-      "source": "Passagens Imperdíveis",
-      "title": "Ida e Volta Aproveite! Chile Passagens para Santiago ou Deserto do Atacama! Opções de VOO DIRETO! a partir de R$ 945 ida e volta, taxas incluídas",
-      "url": "https://passagensimperdiveis.com.br/promocao-de-passagens-para-calama-copiapo-ou-santiago-2026-36/",
-      "price": 945.0,
-      "currency": "BRL",
-      "trip_mode": "round_trip",
-      "origin_name": "Ida e Volta Aproveite! Chile Passagens",
-      "destination_name": "Santiago ou Deserto do Atacama! Opções de VOO DIRETO!",
-      "origin": null,
-      "destination": "SCL",
       "external_signal": true
     },
     {
@@ -223,28 +167,41 @@
     },
     {
       "source": "Melhores Destinos",
-      "title": "há 1 dia Caribe 🏖️ Voos para Aruba, Curaçao e outros destinos a partir de R$ 1.618 ida e volta",
-      "url": "https://www.melhoresdestinos.com.br/promocao/passagens-aereas-caribe-05-10-26",
-      "price": 1618.0,
+      "title": "há 6 horas Peru barato! Passagens para Lima ou Cusco a partir de R$ 1.179 saindo de São Paulo e mais cidades",
+      "url": "https://www.melhoresdestinos.com.br/promocao/peru-passagens-para-lima-cusco-07out26",
+      "price": 1179.0,
       "currency": "BRL",
-      "trip_mode": "round_trip",
-      "origin_name": "há 1 dia Caribe 🏖️ Voos",
-      "destination_name": "Aruba, Curaçao e outros destinos",
+      "trip_mode": "unknown",
+      "origin_name": "há 6 horas Peru barato! Passagens",
+      "destination_name": "Lima ou Cusco",
       "origin": null,
-      "destination": null,
+      "destination": "LIM",
       "external_signal": true
     },
     {
       "source": "Melhores Destinos",
-      "title": "há 1 dia 🇺🇸 Costa leste dos EUA! Passagens para Boston ou Nova York a partir de R$ 2.388 ida e volta",
-      "url": "https://www.melhoresdestinos.com.br/promocao/passagens-aereas-eua-nova-york-boston-05-10-26",
-      "price": 2388.0,
+      "title": "há 3 horas Bom preço! Passagens 2 em 1 para Santiago mais Patagônia ou Atacama a partir de apenas R$ 1.250",
+      "url": "https://www.melhoresdestinos.com.br/promocao/chile-2-em-1-passagens-para-santiago-07out26",
+      "price": 1250.0,
       "currency": "BRL",
-      "trip_mode": "round_trip",
-      "origin_name": "há 1 dia 🇺🇸 Costa leste dos EUA! Passagens",
-      "destination_name": "Boston ou Nova York",
+      "trip_mode": "unknown",
+      "origin_name": "há 3 horas Bom preço! Passagens 2 em 1",
+      "destination_name": "Santiago mais Patagônia ou Atacama",
       "origin": null,
-      "destination": "JFK",
+      "destination": "SCL",
+      "external_signal": true
+    },
+    {
+      "source": "Melhores Destinos",
+      "title": "Mercados de Natal bom demais! Passagens para Viena, Paris, Madri e mais cidades a partir de apenas R$ 2.631",
+      "url": "https://www.melhoresdestinos.com.br/promocao/mercado-de-natal-na-europa-voos-07out26",
+      "price": 2631.0,
+      "currency": "BRL",
+      "trip_mode": "unknown",
+      "origin_name": "Mercados de Natal bom demais! Passagens",
+      "destination_name": "Viena, Paris, Madri e mais cidades",
+      "origin": null,
+      "destination": "MAD",
       "external_signal": true
     },
     {
@@ -258,6 +215,19 @@
       "destination_name": "Madri",
       "origin": null,
       "destination": "MAD",
+      "external_signal": true
+    },
+    {
+      "source": "Melhores Destinos",
+      "title": "há 4 horas Promo para Miami! Voos da Latam a partir de R$ 2.769 ida e volta – com datas na Black Friday e fim de ano",
+      "url": "https://www.melhoresdestinos.com.br/promocao/promo-miami-latam-2769-nov",
+      "price": 2769.0,
+      "currency": "BRL",
+      "trip_mode": "round_trip",
+      "origin_name": "há 4 horas Promo",
+      "destination_name": "Miami! Voos da Latam",
+      "origin": null,
+      "destination": "MIA",
       "external_signal": true
     },
     {
@@ -275,41 +245,15 @@
     },
     {
       "source": "Melhores Destinos",
-      "title": "Bom demais! Voos para a Finlândia desde R$ 3.428 ida e volta com bagagem e datas na temporada de aurora boreal",
-      "url": "https://www.melhoresdestinos.com.br/promocao/bom-demais-passagens-helsinque-3-428",
-      "price": 3428.0,
-      "currency": "BRL",
-      "trip_mode": "round_trip",
-      "origin_name": null,
-      "destination_name": null,
-      "origin": null,
-      "destination": null,
-      "external_signal": true
-    },
-    {
-      "source": "Melhores Destinos",
-      "title": "há 2 horas EUA 2×1 🇺🇸 Voos para Miami mais Nova York, Orlando e outras cidades a partir de R$ 3.469, com bagagem despachada!",
-      "url": "https://www.melhoresdestinos.com.br/promocao/passagens-aereas-2-em-1-estados-unidos-06-10-26",
-      "price": 3469.0,
+      "title": "há 26 minutos 🇪🇺 Europa 2×1! Passagens aéreas para 2 destinos na Europa a partir de R$ 4.005 saindo de São Paulo e mais cidades!",
+      "url": "https://www.melhoresdestinos.com.br/promocao/passagens-aereas-2-em-1-europa-07-10-26",
+      "price": 4005.0,
       "currency": "BRL",
       "trip_mode": "unknown",
-      "origin_name": "há 2 horas EUA 2×1 🇺🇸 Voos",
-      "destination_name": "Miami mais Nova York, Orlando e outras cidades",
+      "origin_name": "há 26 minutos 🇪🇺 Europa 2×1! Passagens aéreas",
+      "destination_name": "2 destinos na Europa",
       "origin": null,
-      "destination": "JFK",
-      "external_signal": true
-    },
-    {
-      "source": "Melhores Destinos",
-      "title": "há 3 horas Coreia do Sul! Passagens aéreas para Seul a partir de R$ 5.267 ida e volta",
-      "url": "https://www.melhoresdestinos.com.br/promocao/coreia-do-sul-voos-seul-5257",
-      "price": 5267.0,
-      "currency": "BRL",
-      "trip_mode": "round_trip",
-      "origin_name": "há 3 horas Coreia do Sul! Passagens aéreas",
-      "destination_name": "Seul",
-      "origin": null,
-      "destination": "ICN",
+      "destination": null,
       "external_signal": true
     }
   ]
