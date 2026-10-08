@@ -1,6 +1,6 @@
 {
   "version": "0.2.0",
-  "generated_at": "2026-10-08T09:27:59.482909Z",
+  "generated_at": "2026-10-08T16:56:36.503512Z",
   "source": "Google Flights via fast-flights + Swoop",
   "algorithm": "Radar robusto: mediana + MAD + percentis + z-score + booking window + histórico + revalidação",
   "origin_count": 11,
@@ -9,7 +9,7 @@
   "route_count": 622,
   "deal_count": 220,
   "strong_deal_count": 182,
-  "new_alert_count": 1,
+  "new_alert_count": 0,
   "origins": [
     {
       "code": "DOU",
@@ -10896,81 +10896,34 @@
       "record": true
     }
   ],
-  "new_alerts": [
-    {
-      "origin": "GIG",
-      "destination": "FRA",
-      "departure_date": "2026-11-07",
-      "return_date": "2026-11-11",
-      "airline": "Air France",
-      "price": 4896.0,
-      "duration": "12h 25min",
-      "duration_minutes": 745,
-      "stops": "1 escala",
-      "stops_count": 1,
-      "departure": "[2026, 11, 7] [23, 40]",
-      "arrival": "[2026, 11, 8] [22, 5]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GIG+to+FRA+on+2026-11-07+returning+2026-11-11",
-      "provider": "fast-flights",
-      "origin_name": "Rio de Janeiro / Galeão",
-      "destination_name": "Frankfurt",
-      "observed_at": "2026-10-08T09:27:59.482909Z",
-      "scan_id": "20261008T092759Z-143",
-      "days_before_departure": 30,
-      "booking_bucket": "22-60",
-      "departure_season": "M11",
-      "trip_days": 4,
-      "deal_score": 71,
-      "status": "🔥 DEAL",
-      "baseline_price": 6334.5,
-      "baseline_kind": "histórico próprio",
-      "discount_pct": 22.7,
-      "savings": 1438.5,
-      "percentile": 10.0,
-      "z_score": -1.08,
-      "history_count": 20,
-      "history_days": 2,
-      "p05": 4711.7,
-      "p10": 4894.8,
-      "p20": 5029.4,
-      "p30": 5498.1,
-      "p50": 6334.5,
-      "lowest_observed": 4687.0,
-      "is_new_low": false,
-      "near_historical_low": true,
-      "confirmation": "segunda implementação confirmou",
-      "baseline_scope": "histórico geral da rota",
-      "checked_price": 4896.0,
-      "confirmation_detail": "second_collector",
-      "new_alert": true
-    }
-  ],
+  "new_alerts": [],
   "scan": {
-    "scan_number": 143,
-    "scan_id": "20261008T092759Z-143",
+    "scan_number": 144,
+    "scan_id": "20261008T165636Z-144",
     "origin_codes": [
-      "GIG",
-      "TJL",
-      "ARU"
+      "PPB",
+      "MII"
     ],
     "destination_codes": [
       "FRA"
     ],
     "date_profile": "datas distribuídas até ~9 meses",
-    "queries": 30,
-    "regular_results": 10,
-    "discovery_results": 40,
+    "queries": 20,
+    "regular_results": 0,
+    "discovery_results": 14,
     "fallback_results": 0,
-    "results": 50,
-    "revalidated": 2,
-    "errors": 6
+    "results": 14,
+    "revalidated": 1,
+    "errors": 8
   },
   "errors": [
-    "TJL-FRA 2027-01-06/2027-01-14: fast-flights: Google returned a provider error",
-    "ARU-FRA 2026-10-15/2026-10-19: fast-flights: Google returned a provider error",
-    "ARU-FRA 2027-04-06/2027-04-10: fast-flights: Google returned a provider error",
-    "ARU-FRA 2027-01-06/2027-01-14: fast-flights: Google returned a provider error",
-    "ARU-FRA 2027-07-05/2027-07-09: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
-    "ARU-FRA 2027-07-05/2027-07-13: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
+    "PPB-FRA 2026-11-07/2026-11-15: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-FRA 2026-10-15/2026-10-23: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-FRA 2026-11-07/2026-11-11: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-FRA 2027-01-06/2027-01-14: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-FRA 2027-04-06/2027-04-14: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-FRA 2027-04-06/2027-04-10: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-FRA 2027-07-05/2027-07-09: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "PPB-FRA 2027-07-05/2027-07-13: swoop: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
   ]
 }
