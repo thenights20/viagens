@@ -1,34 +1,55 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-10-08T06:05:06.849550Z",
+  "generated_at": "2026-10-08T18:52:44.290422Z",
   "source": "Sinais públicos de sites especializados em promoções",
-  "signal_count": 16,
+  "signal_count": 17,
   "responding_source_count": 3,
   "source_count": 3,
   "sources": {
     "Secret Flying": {
       "ok": true,
-      "items": 3,
+      "items": 4,
       "status": 200,
       "url": "https://www.secretflying.com/south-america-flight-deals/",
       "message": "ok"
     },
     "Melhores Destinos": {
       "ok": true,
-      "items": 8,
+      "items": 7,
       "status": 200,
       "url": "https://www.melhoresdestinos.com.br/",
       "message": "ok"
     },
     "Passagens Imperdíveis": {
       "ok": true,
-      "items": 5,
+      "items": 6,
       "status": 200,
       "url": "https://passagensimperdiveis.com.br/",
       "message": "ok"
     }
   },
   "signals": [
+    {
+      "source": "Secret Flying",
+      "title": "Rio de Janeiro, Brazil to Montevideo, Uruguay for only $163 USD roundtrip",
+      "url": "https://www.secretflying.com/posts/rio-de-janeiro-brazil-to-montevideo-uruguay-for-only-146-usd-roundtrip/",
+      "price": 163.0,
+      "currency": "USD",
+      "trip_mode": "round_trip",
+      "origin_name": "Rio de Janeiro",
+      "destination_name": "Montevideo, Uruguay",
+      "origin": "GIG",
+      "destination": "MVD",
+      "external_signal": true,
+      "availability": "November to December 2026",
+      "airline": "Sky Airline",
+      "example_dates": [
+        "30th Nov – 7th Dec",
+        "30th Nov – 9th Dec",
+        "30th Nov – 13th Dec"
+      ],
+      "error_fare": false
+    },
     {
       "source": "Secret Flying",
       "title": "Rio de Janeiro, Brazil to New York, USA for only $485 USD roundtrip",
@@ -140,19 +161,6 @@
       "external_signal": true
     },
     {
-      "source": "Melhores Destinos",
-      "title": "há 4 horas Madrugada de ofertas 🌙 Passagens nacionais a partir de R$ 293 ida e volta!",
-      "url": "https://www.melhoresdestinos.com.br/promocao/passagens-aereas-nacionais-07-10-26",
-      "price": 293.0,
-      "currency": "BRL",
-      "trip_mode": "round_trip",
-      "origin_name": null,
-      "destination_name": null,
-      "origin": null,
-      "destination": null,
-      "external_signal": true
-    },
-    {
       "source": "Passagens Imperdíveis",
       "title": "a partir de R$ 333 INTERNACIONAIS SEM ESCALAS Voo Direto",
       "url": "https://passagensimperdiveis.com.br/promocao-de-passagens-com-voos-direto-internacionais/",
@@ -166,39 +174,26 @@
       "external_signal": true
     },
     {
-      "source": "Melhores Destinos",
-      "title": "há 9 horas Paraguai barato! Passagens aéreas para Assunção a partir de R$ 872 ida e volta saindo do Rio",
-      "url": "https://www.melhoresdestinos.com.br/promocao/paraguai-barato-voos-paraguai-872",
-      "price": 872.0,
+      "source": "Passagens Imperdíveis",
+      "title": "Ida e Volta Aproveite o Chile ou Argentina Passagens para Buenos Aires ouSantiago! Opções de VOO DIRETO! a partir de R$ 977 ida e volta, taxas incluídas",
+      "url": "https://passagensimperdiveis.com.br/promocao-de-passagens-para-argentina-buenos-aires-chile-santiago-2026-27/",
+      "price": 977.0,
       "currency": "BRL",
       "trip_mode": "round_trip",
-      "origin_name": "há 9 horas Paraguai barato! Passagens aéreas",
-      "destination_name": "Assunção",
+      "origin_name": "Ida e Volta Aproveite o Chile ou Argentina Passagens",
+      "destination_name": "Buenos Aires ouSantiago! Opções de VOO DIRETO!",
       "origin": null,
-      "destination": null,
+      "destination": "EZE",
       "external_signal": true
     },
     {
       "source": "Melhores Destinos",
-      "title": "há 14 horas Peru barato! Passagens para Lima ou Cusco a partir de R$ 1.179 saindo de São Paulo e mais cidades",
-      "url": "https://www.melhoresdestinos.com.br/promocao/peru-passagens-para-lima-cusco-07out26",
-      "price": 1179.0,
-      "currency": "BRL",
-      "trip_mode": "unknown",
-      "origin_name": "há 14 horas Peru barato! Passagens",
-      "destination_name": "Lima ou Cusco",
-      "origin": null,
-      "destination": "LIM",
-      "external_signal": true
-    },
-    {
-      "source": "Melhores Destinos",
-      "title": "há 11 horas Bom preço! Passagens 2 em 1 para Santiago mais Patagônia ou Atacama a partir de apenas R$ 1.250",
+      "title": "há 1 dia Bom preço! Passagens 2 em 1 para Santiago mais Patagônia ou Atacama a partir de apenas R$ 1.250",
       "url": "https://www.melhoresdestinos.com.br/promocao/chile-2-em-1-passagens-para-santiago-07out26",
       "price": 1250.0,
       "currency": "BRL",
       "trip_mode": "unknown",
-      "origin_name": "há 11 horas Bom preço! Passagens 2 em 1",
+      "origin_name": "há 1 dia Bom preço! Passagens 2 em 1",
       "destination_name": "Santiago mais Patagônia ou Atacama",
       "origin": null,
       "destination": "SCL",
@@ -219,6 +214,19 @@
     },
     {
       "source": "Melhores Destinos",
+      "title": "há 9 horas Férias na Disney! Passagens para Orlando a partir de R$ 2.176 ou final do ano por R$ 2.345",
+      "url": "https://www.melhoresdestinos.com.br/promocao/ferias-na-disney-passagens-para-orlando-08out26",
+      "price": 2176.0,
+      "currency": "BRL",
+      "trip_mode": "unknown",
+      "origin_name": "há 9 horas Férias na Disney! Passagens",
+      "destination_name": "Orlando",
+      "origin": null,
+      "destination": "MCO",
+      "external_signal": true
+    },
+    {
+      "source": "Melhores Destinos",
       "title": "Mercados de Natal bom demais! Passagens para Viena, Paris, Madri e mais cidades a partir de apenas R$ 2.631",
       "url": "https://www.melhoresdestinos.com.br/promocao/mercado-de-natal-na-europa-voos-07out26",
       "price": 2631.0,
@@ -226,19 +234,6 @@
       "trip_mode": "unknown",
       "origin_name": "Mercados de Natal bom demais! Passagens",
       "destination_name": "Viena, Paris, Madri e mais cidades",
-      "origin": null,
-      "destination": "MAD",
-      "external_signal": true
-    },
-    {
-      "source": "Melhores Destinos",
-      "title": "Excelente! Passagens aéreas da Azul para Madri a partir de R$ 2.643 ida e volta",
-      "url": "https://www.melhoresdestinos.com.br/promocao/sensacional-voos-azul-madri-2643",
-      "price": 2643.0,
-      "currency": "BRL",
-      "trip_mode": "round_trip",
-      "origin_name": "Excelente! Passagens aéreas da Azul",
-      "destination_name": "Madri",
       "origin": null,
       "destination": "MAD",
       "external_signal": true
@@ -258,13 +253,39 @@
     },
     {
       "source": "Melhores Destinos",
-      "title": "há 8 horas 🇪🇺 Europa 2×1! Passagens aéreas para 2 destinos na Europa a partir de R$ 4.005 saindo de São Paulo e mais cidades!",
+      "title": "há 5 horas Portugal! Seleção das passagens mais baratas para Lisboa ou Porto a partir de R$ 3.263",
+      "url": "https://www.melhoresdestinos.com.br/promocao/portugal-selecao-das-passagens-mais-baratas-para-lisboa-08out26",
+      "price": 3263.0,
+      "currency": "BRL",
+      "trip_mode": "unknown",
+      "origin_name": "há 5 horas Portugal! Seleção das passagens mais baratas",
+      "destination_name": "Lisboa ou Porto",
+      "origin": null,
+      "destination": "LIS",
+      "external_signal": true
+    },
+    {
+      "source": "Melhores Destinos",
+      "title": "há 1 dia 🇪🇺 Europa 2×1! Passagens aéreas para 2 destinos na Europa a partir de R$ 4.005 saindo de São Paulo e mais cidades!",
       "url": "https://www.melhoresdestinos.com.br/promocao/passagens-aereas-2-em-1-europa-07-10-26",
       "price": 4005.0,
       "currency": "BRL",
       "trip_mode": "unknown",
-      "origin_name": "há 8 horas 🇪🇺 Europa 2×1! Passagens aéreas",
+      "origin_name": "há 1 dia 🇪🇺 Europa 2×1! Passagens aéreas",
       "destination_name": "2 destinos na Europa",
+      "origin": null,
+      "destination": null,
+      "external_signal": true
+    },
+    {
+      "source": "Melhores Destinos",
+      "title": "há 5 horas Europa + Tailândia! Passagens 2 em 1 para Bangkok com parada na Europa a partir de R$ 6.910 ida e volta",
+      "url": "https://www.melhoresdestinos.com.br/promocao/europa-tailandia-passagens-2x1-6910",
+      "price": 6910.0,
+      "currency": "BRL",
+      "trip_mode": "round_trip",
+      "origin_name": "há 5 horas Europa + Tailândia! Passagens 2 em 1",
+      "destination_name": "Bangkok com parada na Europa",
       "origin": null,
       "destination": null,
       "external_signal": true
