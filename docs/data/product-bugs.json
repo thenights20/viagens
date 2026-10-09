@@ -1,15 +1,18 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-10-09T09:22:55.227972Z",
+  "generated_at": "2026-10-09T16:25:01.404347Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 0,
+  "active_count": 1,
   "strong_count": 0,
   "critical_count": 0,
   "confirmed_count": 0,
   "sensor_bug_count": 0,
-  "scanner_count": 0,
-  "queries_this_run": [],
+  "scanner_count": 28,
+  "queries_this_run": [
+    "dji mini",
+    "estante tv"
+  ],
   "source_health": {
     "Magalu": {
       "ok": true,
@@ -34,12 +37,46 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 0,
-      "candidates_seen": 0,
-      "message": "nenhum candidato extremo nesta rodada",
+      "items": 28,
+      "candidates_seen": 28,
+      "message": "scanner rápido",
       "errors": []
     }
   },
-  "validation_errors": [],
-  "bugs": []
+  "validation_errors": [
+    "Amazon Brasil · Estante para TV e Home Theater até 55 Polegadas 166cmx155cm Nichos 2 Portas Cinamomo Off White Havana Cinamomo/Off White: preço não apareceu novamente na página",
+    "Amazon Brasil · Hub de Carregamento DJI Mini 2 - DJI1034: preço não apareceu novamente na página",
+    "Amazon Brasil · Estante para TV e Home Theater até 55 Polegadas 166cmx155cm Nichos 2 Portas Havana Cinamomo/Grafite: preço não apareceu novamente na página"
+  ],
+  "bugs": [
+    {
+      "source": "Amazon Brasil",
+      "store_name": "Amazon Brasil",
+      "title": "Multimóveis Estante Home Theater para TV de até 55 Pol. Denver Argila Acetinado com Branco Texturizado",
+      "price": 407.99,
+      "original_price": 479.99,
+      "url": "https://www.amazon.com.br/Estante-Theater-Multim%C3%B3veis-Acetinado-Texturizado/dp/B0842FLD8Y/ref=sr_1_19",
+      "search_query": "estante tv",
+      "available": true,
+      "trusted": false,
+      "revalidated": false,
+      "collector": "fast-market-scan",
+      "bug_score": 66,
+      "bug_status": "🟢 SUSPEITO",
+      "category_rule": "TV 55 polegadas",
+      "category": "TVs",
+      "baseline_price": 1400.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 70.9,
+      "savings": 992.01,
+      "reasons": [
+        "71% abaixo de piso conservador da categoria",
+        "muito abaixo do piso conservador de TV 55 polegadas"
+      ],
+      "first_seen": "2026-10-09T16:25:01.404347Z",
+      "last_seen": "2026-10-09T16:25:01.404347Z",
+      "sightings": 1,
+      "fresh": true
+    }
+  ]
 }
