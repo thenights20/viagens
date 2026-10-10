@@ -1,9 +1,9 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-10-10T13:39:46.621624Z",
+  "generated_at": "2026-10-10T18:34:29.460010Z",
   "source": "Páginas públicas oficiais GOL + Azul + LATAM",
-  "offer_count": 5,
-  "domestic_count": 2,
+  "offer_count": 7,
+  "domestic_count": 4,
   "international_count": 3,
   "source_count": 3,
   "responding_source_count": 2,
@@ -18,7 +18,7 @@
     },
     "Azul": {
       "ok": true,
-      "items": 5,
+      "items": 7,
       "parsed": 10,
       "status": 200,
       "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos",
@@ -40,12 +40,44 @@
         "GRU"
       ],
       "origin_name": "São Paulo",
-      "destination": "REC",
-      "destination_name": "Recife",
-      "departure_date": "2026-11-19",
+      "destination": "POA",
+      "destination_name": "Porto Alegre",
+      "departure_date": "2026-12-13",
       "return_date": null,
       "trip_mode": "one_way",
-      "price": 538.65,
+      "price": 341.65,
+      "scope": "domestic",
+      "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
+    },
+    {
+      "source": "Azul",
+      "origin": "GRU",
+      "origin_candidates": [
+        "GRU"
+      ],
+      "origin_name": "São Paulo",
+      "destination": "REC",
+      "destination_name": "Recife",
+      "departure_date": "2026-12-04",
+      "return_date": null,
+      "trip_mode": "one_way",
+      "price": 442.65,
+      "scope": "domestic",
+      "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
+    },
+    {
+      "source": "Azul",
+      "origin": "VCP",
+      "origin_candidates": [
+        "VCP"
+      ],
+      "origin_name": "Campinas",
+      "destination": "SSA",
+      "destination_name": "Salvador",
+      "departure_date": "2027-01-27",
+      "return_date": null,
+      "trip_mode": "one_way",
+      "price": 471.34,
       "scope": "domestic",
       "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
     },
@@ -58,10 +90,10 @@
       "origin_name": "Campinas",
       "destination": "REC",
       "destination_name": "Recife",
-      "departure_date": "2027-01-26",
+      "departure_date": "2026-12-07",
       "return_date": null,
       "trip_mode": "one_way",
-      "price": 630.63,
+      "price": 626.23,
       "scope": "domestic",
       "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
     },
@@ -74,26 +106,10 @@
       "origin_name": "Campinas",
       "destination": "LIS",
       "destination_name": "Lisboa",
-      "departure_date": "2026-11-10",
-      "return_date": "2026-11-17",
+      "departure_date": "2026-11-26",
+      "return_date": "2027-02-26",
       "trip_mode": "round_trip",
-      "price": 3830.99,
-      "scope": "international",
-      "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
-    },
-    {
-      "source": "Azul",
-      "origin": "VCP",
-      "origin_candidates": [
-        "VCP"
-      ],
-      "origin_name": "Campinas",
-      "destination": "MCO",
-      "destination_name": "Orlando",
-      "departure_date": "2027-03-04",
-      "return_date": "2027-03-10",
-      "trip_mode": "round_trip",
-      "price": 4443.95,
+      "price": 3814.98,
       "scope": "international",
       "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
     },
@@ -106,10 +122,26 @@
       "origin_name": "Campinas",
       "destination": "MAD",
       "destination_name": "Madri",
-      "departure_date": "2026-11-05",
-      "return_date": "2026-11-07",
+      "departure_date": "2027-01-26",
+      "return_date": "2027-03-16",
       "trip_mode": "round_trip",
-      "price": 4495.57,
+      "price": 4177.08,
+      "scope": "international",
+      "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
+    },
+    {
+      "source": "Azul",
+      "origin": "VCP",
+      "origin_candidates": [
+        "VCP"
+      ],
+      "origin_name": "Campinas",
+      "destination": "MCO",
+      "destination_name": "Orlando",
+      "departure_date": "2027-02-16",
+      "return_date": "2027-03-16",
+      "trip_mode": "round_trip",
+      "price": 4443.95,
       "scope": "international",
       "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
     }
