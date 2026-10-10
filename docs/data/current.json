@@ -1,14 +1,14 @@
 {
   "version": "0.5.1",
-  "generated_at": "2026-10-10T08:39:58.283449+00:00",
+  "generated_at": "2026-10-10T15:32:08.710261+00:00",
   "timezone_hint": "America/Campo_Grande",
   "preview": false,
   "online": true,
   "rotation": true,
-  "active_count": 5,
-  "observed_count": 339,
-  "product_count": 336,
-  "tracked_count": 100,
+  "active_count": 6,
+  "observed_count": 329,
+  "product_count": 327,
+  "tracked_count": 99,
   "configured_source_count": 15,
   "responding_source_count": 9,
   "source_health": {
@@ -22,40 +22,35 @@
       "message": "API 403: autenticação Mercado Livre não configurada",
       "items": 0
     },
-    "Fast Shop": {
-      "ok": true,
-      "message": "vendedor oficial confirmado no produto",
-      "items": 7
+    "Amazon Brasil": {
+      "ok": false,
+      "message": "nenhum item do vendedor oficial",
+      "items": 0
     },
     "Magalu": {
       "ok": false,
       "message": "nenhum item do vendedor oficial",
       "items": 0
     },
-    "Amazon Brasil": {
-      "ok": false,
-      "message": "nenhum item do vendedor oficial",
-      "items": 0
-    },
-    "Casas Bahia": {
-      "ok": false,
-      "message": "nenhum candidato oficial",
-      "items": 0
+    "Gazin": {
+      "ok": true,
+      "message": "varejista direto",
+      "items": 42
     },
     "Fujioka": {
       "ok": true,
       "message": "varejista direto",
       "items": 19
     },
+    "Fast Shop": {
+      "ok": true,
+      "message": "vendedor oficial confirmado no produto",
+      "items": 7
+    },
     "Miranda": {
       "ok": true,
       "message": "varejista direto",
       "items": 19
-    },
-    "Gazin": {
-      "ok": true,
-      "message": "varejista direto",
-      "items": 42
     },
     "Nagem": {
       "ok": true,
@@ -67,25 +62,30 @@
       "message": "nenhum item carregado",
       "items": 0
     },
+    "Casas Bahia": {
+      "ok": false,
+      "message": "nenhum candidato oficial",
+      "items": 0
+    },
     "Dufrio": {
       "ok": true,
       "message": "varejista direto",
       "items": 50
     },
-    "TerabyteShop": {
+    "Loja TCL": {
       "ok": true,
       "message": "varejista direto",
-      "items": 47
+      "items": 18
     },
     "KaBuM!": {
       "ok": true,
       "message": "varejista direto",
       "items": 80
     },
-    "Loja TCL": {
+    "TerabyteShop": {
       "ok": true,
       "message": "varejista direto",
-      "items": 27
+      "items": 46
     }
   },
   "thresholds": {
@@ -483,42 +483,25 @@
   ],
   "products": [
     {
-      "title": "Mais Vendido",
-      "source": "Loja TCL",
-      "store_name": "Loja TCL",
-      "price": 992.68,
-      "original_price": 1169.0,
-      "reference_price": 3771.08,
+      "title": "Processador AMD Ryzen 7 8700F, 4.1GHz (5.0GHz Turbo), 8-Cores 16-Threads, AM5, Com Cooler AMD Wraith Stealth, 100-100001590BOX",
+      "source": "TerabyteShop",
+      "store_name": "TerabyteShop",
+      "price": 1099.99,
+      "original_price": 1592.9,
+      "reference_price": 2326.13,
       "reference_kind": "histórico observado",
       "reference_samples": 150,
-      "difference_pct": 73.7,
-      "savings": 2778.4,
-      "url": "https://www.lojatcl.com.br/smart-tv-semp-32-polegadas-led-hd-s42-wifi-bluetooth-google-tv-2-hdmi-hdr10-dolby-audio-32s42-32398/p",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
+      "difference_pct": 52.7,
+      "savings": 1226.14,
+      "url": "https://www.terabyteshop.com.br/produto/28769/processador-amd-ryzen-7-8700f-41ghz-50ghz-turbo-8-cores-16-threads-am5-com-cooler-amd-wraith-stealth-100-100001590box",
+      "category": "Processadores",
+      "tracked": true,
+      "watch_terms": [
+        "Ryzen 7 8700F"
+      ],
       "highlighted": true,
       "strict_highlight": true,
-      "collected_at": "2026-10-10T08:39:20.207692+00:00"
-    },
-    {
-      "title": "Mais Vendido",
-      "source": "Loja TCL",
-      "store_name": "Loja TCL",
-      "price": 1093.88,
-      "original_price": 1249.0,
-      "reference_price": 3771.08,
-      "reference_kind": "histórico observado",
-      "reference_samples": 150,
-      "difference_pct": 71.0,
-      "savings": 2677.2,
-      "url": "https://www.lojatcl.com.br/smart-tv-tcl-32-polegadas-hd-qled-s5k-wifi-bluetooth-google-tv-2-hdmi-hdr10-dolby-audio-32s5k-32534/p",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": true,
-      "strict_highlight": true,
-      "collected_at": "2026-10-10T08:39:20.186841+00:00"
+      "collected_at": "2026-10-10T15:31:11.288039+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 5 245K, Otimizado para IA, 3.6 Ghz (5.2Ghz Turbo), Série 2, 14-Cores 14-Threads, LGA 1851, BX80768245K",
@@ -537,7 +520,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": true,
-      "collected_at": "2026-10-10T08:39:01.560824+00:00"
+      "collected_at": "2026-10-10T15:31:11.799469+00:00"
     },
     {
       "title": "Processador AMD Ryzen 7 5700X 3.4GHz (4.6GHz Turbo), 8-Cores 16-Threads, AM4, Sem Cooler, 100-100000926WOF",
@@ -556,26 +539,64 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": true,
-      "collected_at": "2026-10-10T08:39:00.941254+00:00"
+      "collected_at": "2026-10-10T15:31:10.632618+00:00"
     },
     {
-      "title": "Mais Vendido",
-      "source": "Loja TCL",
-      "store_name": "Loja TCL",
-      "price": 1747.08,
-      "original_price": 2199.0,
-      "reference_price": 3771.08,
+      "title": "Processador AMD Ryzen 7 8700G, 4.2GHz (5.1GHz Turbo), 8-Cores 16-Threads, AM5, 100-100001236SBX",
+      "source": "TerabyteShop",
+      "store_name": "TerabyteShop",
+      "price": 1359.99,
+      "original_price": 2699.99,
+      "reference_price": 2826.37,
       "reference_kind": "histórico observado",
       "reference_samples": 150,
-      "difference_pct": 53.7,
-      "savings": 2024.0,
-      "url": "https://www.lojatcl.com.br/smart-tv-tcl-43-polegadas-full-hd-qled-s5k-wifi-bluetooth-google-tv-2-hdmi-hdr10-dolby-audio-43s5k-32536/p",
-      "category": "Outros",
+      "difference_pct": 51.9,
+      "savings": 1466.38,
+      "url": "https://www.terabyteshop.com.br/produto/39451/processador-amd-ryzen-7-8700g-42ghz-51ghz-turbo-8-cores-16-threads-am5-100-100001236sbx",
+      "category": "Processadores",
       "tracked": false,
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": true,
-      "collected_at": "2026-10-10T08:39:20.247045+00:00"
+      "collected_at": "2026-10-10T15:31:10.942484+00:00"
+    },
+    {
+      "title": "Processador AMD Ryzen 7 7700X 4.5GHz (5.4GHz Turbo), 8-Cores 16-Threads, AM5, Sem Cooler, 100-100000591WOF",
+      "source": "TerabyteShop",
+      "store_name": "TerabyteShop",
+      "price": 1729.99,
+      "original_price": 2491.9,
+      "reference_price": 3424.86,
+      "reference_kind": "histórico observado",
+      "reference_samples": 150,
+      "difference_pct": 49.5,
+      "savings": 1694.87,
+      "url": "https://www.terabyteshop.com.br/produto/22264/processador-amd-ryzen-7-7700x-45ghz-54ghz-turbo-8-cores-16-threads-am5-100-100000591wof",
+      "category": "Processadores",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": true,
+      "collected_at": "2026-10-10T15:31:12.355333+00:00"
+    },
+    {
+      "title": "Processador Intel Core i7 12700 2,1GHz (4.9GHz Turbo), 12ª Geração, 12-Cores 20-Threads, LGA 1700, Com Cooler, BX8071512700",
+      "source": "TerabyteShop",
+      "store_name": "TerabyteShop",
+      "price": 1799.99,
+      "original_price": 3043.9,
+      "reference_price": 3529.4,
+      "reference_kind": "histórico observado",
+      "reference_samples": 49,
+      "difference_pct": 49.0,
+      "savings": 1729.41,
+      "url": "https://www.terabyteshop.com.br/produto/20212/processador-intel-core-i7-12700-21ghz-49ghz-turbo-12-geracao-12-cores-20-threads-lga-1700-bx8071512700",
+      "category": "Processadores",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": true,
+      "collected_at": "2026-10-10T15:31:12.516955+00:00"
     },
     {
       "title": "Caixa de Som JBL PartyBox Club 120 160W...",
@@ -596,7 +617,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:37.535290+00:00"
+      "collected_at": "2026-10-10T15:30:14.835313+00:00"
     },
     {
       "title": "Controle Joypad Xbox Series X/S Wireles...",
@@ -618,7 +639,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:39.994055+00:00"
+      "collected_at": "2026-10-10T15:30:20.770838+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 18000 BTUs Midea IA Ecomaster Frio 42EZVCA18M5 - 220V",
@@ -640,7 +661,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.600578+00:00"
+      "collected_at": "2026-10-10T15:30:41.366488+00:00"
     },
     {
       "title": "Geladeira Electrolux Frost Free Inverter 481L AutoSense e Água e Gelo na Porta Side by Side Inox Look (ES4WS)",
@@ -661,7 +682,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:36:36.059344+00:00"
+      "collected_at": "2026-10-10T15:28:17.565584+00:00"
     },
     {
       "title": "Smart TV LG Nano UHD 50\" 4K Wi-Fi WebOS IA Integrada 50NU850BPSA",
@@ -682,7 +703,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:21.841790+00:00"
+      "collected_at": "2026-10-10T15:28:53.530371+00:00"
     },
     {
       "title": "Smart TV LG 55\" 80TSA 4K QNED ThinQ AI...",
@@ -703,7 +724,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:37.909737+00:00"
+      "collected_at": "2026-10-10T15:30:15.878265+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 12000 BTUs Hisense Connect Wi-Fi Frio AS-12TW2RLD - 220V",
@@ -725,7 +746,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.050617+00:00"
+      "collected_at": "2026-10-10T15:30:59.974780+00:00"
     },
     {
       "title": "Smart TV Samsung 65\" Neo QLED 4K 65QN85...",
@@ -747,7 +768,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:37.971463+00:00"
+      "collected_at": "2026-10-10T15:30:16.027094+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 9000 BTUs Midea IA Ecomaster Frio 42EZVCA09M5 - 220V",
@@ -769,7 +790,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.907699+00:00"
+      "collected_at": "2026-10-10T15:30:59.774335+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 12000 BTUs Midea IA Ecomaster Quente/Frio 42EZVQA12M5 - 220V",
@@ -791,7 +812,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.025556+00:00"
+      "collected_at": "2026-10-10T15:30:59.939467+00:00"
     },
     {
       "title": "Ar Condicionado Split 18000 BTUs Midea Inverter Lite Frio 42EBVCA18M5 - 220V",
@@ -813,7 +834,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.559625+00:00"
+      "collected_at": "2026-10-10T15:30:41.245668+00:00"
     },
     {
       "title": "Ar Condicionado Split 12000 BTUs Midea Inverter Lite Frio 42EBVCA12M5 - 220V",
@@ -835,7 +856,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.530211+00:00"
+      "collected_at": "2026-10-10T15:30:41.159780+00:00"
     },
     {
       "title": "Processador Intel Core i9 12900KF 3.2GHz (5.2GHz Turbo), 12ª Geração, 16-Cores 24-Threads, LGA 1700, Sem Cooler, BX8071512900KF",
@@ -854,7 +875,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.297481+00:00"
+      "collected_at": "2026-10-10T15:31:11.393006+00:00"
     },
     {
       "title": "Smartwatch Samsung Galaxy Watch Ultra L...",
@@ -873,7 +894,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:39.565222+00:00"
+      "collected_at": "2026-10-10T15:30:18.989260+00:00"
     },
     {
       "title": "Processador AMD Ryzen 5 9600X, 3.9GHz (5.4GHz Turbo), 6-Cores 12-Threads, AM5, Sem Cooler, 100-100001405WOF",
@@ -892,7 +913,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.067271+00:00"
+      "collected_at": "2026-10-10T15:31:10.907624+00:00"
     },
     {
       "title": "Processador AMD Ryzen 5 8600G, 4.3GHz (5.0GHz Turbo), 6-Cores 12-Threads, AM5, Com Cooler AMD Wraith Stealth, 100-100001237BOX",
@@ -911,26 +932,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.027863+00:00"
-    },
-    {
-      "title": "Processador AMD Ryzen 7 8700G, 4.2GHz (5.1GHz Turbo), 8-Cores 16-Threads, AM5, 100-100001236SBX",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 1359.99,
-      "original_price": 2699.99,
-      "reference_price": 2826.37,
-      "reference_kind": "histórico observado",
-      "reference_samples": 150,
-      "difference_pct": 51.9,
-      "savings": 1466.38,
-      "url": "https://www.terabyteshop.com.br/produto/39451/processador-amd-ryzen-7-8700g-42ghz-51ghz-turbo-8-cores-16-threads-am5-100-100001236sbx",
-      "category": "Processadores",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": true,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.080299+00:00"
+      "collected_at": "2026-10-10T15:31:10.791670+00:00"
     },
     {
       "title": "Processador AMD Ryzen 9 9950X, 4.3GHz (5.7GHz Turbo), 16-Cores 32-Threads, AM5, Sem Cooler, 100-100001277WOF",
@@ -949,7 +951,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.214189+00:00"
+      "collected_at": "2026-10-10T15:31:11.322752+00:00"
     },
     {
       "title": "Caixa de Som LG XBOOM GO XG9S Até 24H d...",
@@ -968,45 +970,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:37.692465+00:00"
-    },
-    {
-      "title": "Processador AMD Ryzen 7 7700X 4.5GHz (5.4GHz Turbo), 8-Cores 16-Threads, AM5, Sem Cooler, 100-100000591WOF",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 1729.99,
-      "original_price": 2491.9,
-      "reference_price": 3424.86,
-      "reference_kind": "histórico observado",
-      "reference_samples": 150,
-      "difference_pct": 49.5,
-      "savings": 1694.87,
-      "url": "https://www.terabyteshop.com.br/produto/22264/processador-amd-ryzen-7-7700x-45ghz-54ghz-turbo-8-cores-16-threads-am5-100-100000591wof",
-      "category": "Processadores",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": true,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.971896+00:00"
-    },
-    {
-      "title": "Processador Intel Core i7 12700 2,1GHz (4.9GHz Turbo), 12ª Geração, 12-Cores 20-Threads, LGA 1700, Com Cooler, BX8071512700",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 1799.99,
-      "original_price": 3043.9,
-      "reference_price": 3529.4,
-      "reference_kind": "histórico observado",
-      "reference_samples": 47,
-      "difference_pct": 49.0,
-      "savings": 1729.41,
-      "url": "https://www.terabyteshop.com.br/produto/20212/processador-intel-core-i7-12700-21ghz-49ghz-turbo-12-geracao-12-cores-20-threads-lga-1700-bx8071512700",
-      "category": "Processadores",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": true,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:02.079612+00:00"
+      "collected_at": "2026-10-10T15:30:15.184630+00:00"
     },
     {
       "title": "Processador AMD Ryzen 7 5800XT 3.8GHz (4.8GHz Turbo), 8-Cores 16-Threads, AM4, Sem Cooler, 100-100001582WOF",
@@ -1025,26 +989,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.464128+00:00"
-    },
-    {
-      "title": "Mais Vendido",
-      "source": "Loja TCL",
-      "store_name": "Loja TCL",
-      "price": 2023.08,
-      "original_price": 2349.0,
-      "reference_price": 3771.08,
-      "reference_kind": "histórico observado",
-      "reference_samples": 150,
-      "difference_pct": 46.4,
-      "savings": 1748.0,
-      "url": "https://www.lojatcl.com.br/caixa-de-som-soundbar-tcl-5-1-canais-q65h-preto-bivolt-32565/p",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": true,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:20.221945+00:00"
+      "collected_at": "2026-10-10T15:31:11.612251+00:00"
     },
     {
       "title": "Geladeira Esmaltec 245L Cycle Defrost Inverter ROC31 Pro",
@@ -1063,7 +1008,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:42.155626+00:00"
+      "collected_at": "2026-10-10T15:29:22.229770+00:00"
     },
     {
       "title": "Processador AMD Ryzen 9 9900X3D, 4.4GHz (5.5GHz Turbo), 12-Cores 24-Threads, AM5, Sem Cooler, 100-100001368WOF",
@@ -1082,7 +1027,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.189882+00:00"
+      "collected_at": "2026-10-10T15:31:11.254718+00:00"
     },
     {
       "title": "Geladeira Electrolux 240L Cycle Defrost 1 Porta RE31",
@@ -1101,7 +1046,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:21.043434+00:00"
+      "collected_at": "2026-10-10T15:28:50.991896+00:00"
     },
     {
       "title": "Processador Intel Core i5 12400, 2.5GHz (4.4GHz Turbo), 12ª Geração, 6-Cores 12-Threads, LGA 1700, Com Cooler, BX8071512400",
@@ -1120,7 +1065,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:02.111585+00:00"
+      "collected_at": "2026-10-10T15:31:12.561076+00:00"
     },
     {
       "title": "Processador Intel Core i7 12700K 3.6GHz (5.0GHz Turbo), 12ª Geração, 12-Cores 20-Threads, LGA 1700, Sem Cooler, BX8071512700K",
@@ -1139,7 +1084,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:02.177709+00:00"
+      "collected_at": "2026-10-10T15:31:12.693135+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 5 250K Plus, Otimizado para IA, (5.3GHz Turbo), 18-Cores 18-Threads, LGA 1851, BX80768250K",
@@ -1158,7 +1103,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.378331+00:00"
+      "collected_at": "2026-10-10T15:31:11.523119+00:00"
     },
     {
       "title": "Freezer Electrolux 315L 1 Porta Horizontal Cycle Defrost Inverter HI330",
@@ -1177,7 +1122,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:42.200388+00:00"
+      "collected_at": "2026-10-10T15:29:22.390437+00:00"
     },
     {
       "title": "Processador Intel Core i9 12900K 3.2GHz (5.2GHz Turbo), 12ª Geração, 16-Cores 24-Threads, LGA 1700, Sem Cooler, BX8071512900K",
@@ -1187,7 +1132,7 @@
       "original_price": 3119.9,
       "reference_price": 3882.35,
       "reference_kind": "histórico observado",
-      "reference_samples": 90,
+      "reference_samples": 91,
       "difference_pct": 43.6,
       "savings": 1692.36,
       "url": "https://www.terabyteshop.com.br/produto/19613/processador-intel-core-i9-12900k-32ghz-52ghz-turbo-12-geracao-16-cores-24-threads-lga-1700-bx8071512900k",
@@ -1196,7 +1141,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:02.247051+00:00"
+      "collected_at": "2026-10-10T15:31:12.736893+00:00"
     },
     {
       "title": "Smartphone Motorola Moto G17 Android Te...",
@@ -1215,7 +1160,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.911997+00:00"
+      "collected_at": "2026-10-10T15:30:18.162480+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 5 225, Otimizado para IA, 3.3 Ghz (4.9Ghz Turbo), Série 2, 10-Cores 10-Threads, LGA 1851, BX80768225",
@@ -1234,7 +1179,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.516866+00:00"
+      "collected_at": "2026-10-10T15:31:11.726909+00:00"
     },
     {
       "title": "Mesa com Regulagem de Altura Elétrica E...",
@@ -1253,7 +1198,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:37.829525+00:00"
+      "collected_at": "2026-10-10T15:30:15.702580+00:00"
     },
     {
       "title": "Mesa com Regulagem de Altura Elétrica E...",
@@ -1272,7 +1217,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:40.662354+00:00"
+      "collected_at": "2026-10-10T15:30:21.399214+00:00"
     },
     {
       "title": "Fogão Mueller MFV5BB 5 Bocas Automático Mesa de Vidro Temperado com Ultra Chama",
@@ -1291,7 +1236,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:42.134853+00:00"
+      "collected_at": "2026-10-10T15:29:22.138753+00:00"
     },
     {
       "title": "Processador Intel Core i7 12700KF 3.6GHz (5.0GHz Turbo), 12ª Geração, 12-Cores 20-Threads, LGA 1700, Sem Cooler BX8071512700KF",
@@ -1310,7 +1255,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:02.154572+00:00"
+      "collected_at": "2026-10-10T15:31:12.643398+00:00"
     },
     {
       "title": "Processador Intel Core i7 14700F, 3.4 GHz (5.4GHz Turbo), 14ª Geração, 20-Cores 28-Threads, LGA 1700, BX8071514700F",
@@ -1320,7 +1265,7 @@
       "original_price": 3156.9,
       "reference_price": 3529.4,
       "reference_kind": "histórico observado",
-      "reference_samples": 132,
+      "reference_samples": 134,
       "difference_pct": 41.9,
       "savings": 1479.41,
       "url": "https://www.terabyteshop.com.br/produto/27113/processador-intel-core-i7-14700f-34-ghz-54ghz-turbo-14-geracao-20-cores-28-threads-lga-1700-bx8071514700f",
@@ -1329,7 +1274,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.826032+00:00"
+      "collected_at": "2026-10-10T15:31:12.104835+00:00"
     },
     {
       "title": "Geladeira Electrolux 490L Frost Free AutoSense Inverter IB7",
@@ -1348,7 +1293,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:42.304374+00:00"
+      "collected_at": "2026-10-10T15:29:22.697305+00:00"
     },
     {
       "title": "Geladeira Electrolux 260L Cycle Defrost Duplex DC35A",
@@ -1367,7 +1312,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:21.125883+00:00"
+      "collected_at": "2026-10-10T15:28:51.312285+00:00"
     },
     {
       "title": "Fogão Mueller 5 Bocas MFI5BB Automático Mesa de Inox Forno 81,6L",
@@ -1386,7 +1331,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:42.015438+00:00"
+      "collected_at": "2026-10-10T15:29:21.821723+00:00"
     },
     {
       "title": "Processador Intel Core i5 12600KF 3.7GHz (4.9GHz Turbo), 12ª Geração, 10-Cores 16-Threads, LGA 1700, Sem Cooler, BX8071512600KF",
@@ -1405,7 +1350,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:02.132551+00:00"
+      "collected_at": "2026-10-10T15:31:12.603962+00:00"
     },
     {
       "title": "Ar Condicionado Split Hi Wall TCL 9.000 BTUs Filtro HD e Modo Eco Frio",
@@ -1424,7 +1369,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:21.338929+00:00"
+      "collected_at": "2026-10-10T15:28:51.910469+00:00"
     },
     {
       "title": "Processador Intel Core i9 14900F, 3.6 GHz (5.8GHz Turbo), 14ª Geração, 24-Cores 32-Threads, LGA 1700, BX8071514900F",
@@ -1434,7 +1379,7 @@
       "original_price": 4003.9,
       "reference_price": 4705.87,
       "reference_kind": "histórico observado",
-      "reference_samples": 136,
+      "reference_samples": 137,
       "difference_pct": 40.5,
       "savings": 1905.88,
       "url": "https://www.terabyteshop.com.br/produto/27114/processador-intel-core-i9-14900f-36-ghz-58ghz-turbo-14-geracao-24-cores-32-threads-lga-1700-bx8071514900f",
@@ -1443,7 +1388,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.801468+00:00"
+      "collected_at": "2026-10-10T15:31:12.066578+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 5 250KF Plus, Otimizado para IA, (5.3GHz Turbo), 18-Cores 18-Threads, LGA 1851, BX80768250KF",
@@ -1462,7 +1407,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.361821+00:00"
+      "collected_at": "2026-10-10T15:31:11.485885+00:00"
     },
     {
       "title": "Refrigerador Electrolux Inverter Duplex...",
@@ -1481,7 +1426,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.155646+00:00"
+      "collected_at": "2026-10-10T15:30:16.220840+00:00"
     },
     {
       "title": "Máquina de Lavar Electrolux Essential Care 17kg Jet&Clean Cesto Inox LED17",
@@ -1500,7 +1445,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:41.900902+00:00"
+      "collected_at": "2026-10-10T15:29:21.686552+00:00"
     },
     {
       "title": "Processador Intel Core i7 14700, 3.4 GHz (5.4GHz Turbo), 14ª Geração, 20-Cores 28-Threads, LGA 1700, BX8071514700",
@@ -1519,7 +1464,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.843895+00:00"
+      "collected_at": "2026-10-10T15:31:12.148366+00:00"
     },
     {
       "title": "Máquina de Lavar Brastemp 15kg Automática Cesto Inox Multi Dispenser BWF15AB",
@@ -1538,7 +1483,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:41.984483+00:00"
+      "collected_at": "2026-10-10T15:29:21.774563+00:00"
     },
     {
       "title": "Lava Louças Brastemp 15 Serviços Função Smart Sensor BLF61AR",
@@ -1557,7 +1502,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:40.592354+00:00"
+      "collected_at": "2026-10-10T15:29:20.194863+00:00"
     },
     {
       "title": "Processador Intel Core i5 14400F, 3.5 GHz (4.7GHz Turbo), 14ª Geração, 10-Cores 16-Threads, LGA 1700, BX8071514400F",
@@ -1567,7 +1512,7 @@
       "original_price": 1511.9,
       "reference_price": 1647.04,
       "reference_kind": "histórico observado",
-      "reference_samples": 99,
+      "reference_samples": 101,
       "difference_pct": 39.3,
       "savings": 647.05,
       "url": "https://www.terabyteshop.com.br/produto/27612/processador-intel-core-i5-14400f-35-ghz-47ghz-turbo-14-geracao-10-cores-16-threads-lga-1700-bx8071514400f",
@@ -1576,26 +1521,26 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.042669+00:00"
+      "collected_at": "2026-10-10T15:31:10.828452+00:00"
     },
     {
       "title": "Mais Vendido",
       "source": "Loja TCL",
       "store_name": "Loja TCL",
-      "price": 2299.08,
-      "original_price": 2999.0,
-      "reference_price": 3771.08,
-      "reference_kind": "histórico observado",
-      "reference_samples": 150,
-      "difference_pct": 39.0,
-      "savings": 1472.0,
-      "url": "https://www.lojatcl.com.br/smart-tv-tcl-50-polegadas-qled-4k-p7l-wifi-bluetooth-google-tv-hdr10--120-hz-vrr-aipq-50p7l-33306/p",
+      "price": 3173.08,
+      "original_price": 3599.0,
+      "reference_price": 5197.08,
+      "reference_kind": "referência atual",
+      "reference_samples": 8,
+      "difference_pct": 38.9,
+      "savings": 2024.0,
+      "url": "https://www.lojatcl.com.br/smart-tv-semp-65-polegadas-led-hva-4k-s62-wifi-bluetooth-google-tv-3-hdmi-hdr10-dolby-audio-65s62-32063/p",
       "category": "Outros",
       "tracked": false,
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:20.234581+00:00"
+      "collected_at": "2026-10-10T15:31:24.249183+00:00"
     },
     {
       "title": "Máquina de Lavar Mueller 13kg Automática 11 Programas MLA13",
@@ -1614,7 +1559,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:42.339071+00:00"
+      "collected_at": "2026-10-10T15:29:22.762032+00:00"
     },
     {
       "title": "Geladeira Brastemp 512L Frost Free Duplex BRM62",
@@ -1633,7 +1578,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:40.850690+00:00"
+      "collected_at": "2026-10-10T15:29:20.883571+00:00"
     },
     {
       "title": "Processador Intel Core i9 14900KF, 3.6 GHz (6.0GHz Turbo), 14ª Geração, 24-Cores 32-Threads, LGA 1700, BX8071514900KF",
@@ -1643,7 +1588,7 @@
       "original_price": 4515.9,
       "reference_price": 4823.51,
       "reference_kind": "histórico observado",
-      "reference_samples": 149,
+      "reference_samples": 150,
       "difference_pct": 37.8,
       "savings": 1823.52,
       "url": "https://www.terabyteshop.com.br/produto/26262/processador-intel-core-i9-14900kf-36-ghz-60ghz-turbo-14-geracao-24-cores-32-threads-lga-1700-bx8071514900kf",
@@ -1652,7 +1597,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.906919+00:00"
+      "collected_at": "2026-10-10T15:31:12.231610+00:00"
     },
     {
       "title": "Smartphone Motorola Moto G17 Android Te...",
@@ -1671,7 +1616,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:37.463661+00:00"
+      "collected_at": "2026-10-10T15:30:14.711560+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 5 245KF, Otimizado para IA, 3.6 Ghz (5.2Ghz Turbo), Série 2, 14-Cores 14-Threads, LGA 1851, BX80768245KF",
@@ -1690,7 +1635,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.541532+00:00"
+      "collected_at": "2026-10-10T15:31:11.763777+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 7 265F Otimizado para IA, 2.4Ghz (5.3Ghz Turbo), Série 2, 20-Cores 20-Threads, LGA 1851, BX80768265F",
@@ -1709,7 +1654,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.479860+00:00"
+      "collected_at": "2026-10-10T15:31:11.651792+00:00"
     },
     {
       "title": "Geladeira Brastemp 512L Frost Free Duplex BRM62",
@@ -1728,7 +1673,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:41.041020+00:00"
+      "collected_at": "2026-10-10T15:29:21.383359+00:00"
     },
     {
       "title": "Processador Intel Core i9 14900K, 3.6 GHz (6.0GHz Turbo), 14ª Geração, 24-Cores 32-Threads, LGA 1700, BX8071514900K",
@@ -1747,7 +1692,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.925520+00:00"
+      "collected_at": "2026-10-10T15:31:12.265877+00:00"
     },
     {
       "title": "Fogão Mueller MFI4BB 4 Bocas Automático Mesa de Inox Forno 48,1L",
@@ -1766,7 +1711,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:42.091525+00:00"
+      "collected_at": "2026-10-10T15:29:21.969681+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 7 265KF Otimizado para IA, 3.9 Ghz (5.5Ghz Turbo), Série 2, 20-Cores 20-Threads, LGA 1851, BX80768265KF",
@@ -1776,7 +1721,7 @@
       "original_price": 2497.9,
       "reference_price": 2647.05,
       "reference_kind": "histórico observado",
-      "reference_samples": 48,
+      "reference_samples": 50,
       "difference_pct": 35.8,
       "savings": 947.06,
       "url": "https://www.terabyteshop.com.br/produto/32048/processador-intel-core-ultra-7-265kf-39-ghz-55ghz-turbo-serie-2-20-cores-20-threads-lga-1851-bx80768265kf",
@@ -1785,7 +1730,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.588933+00:00"
+      "collected_at": "2026-10-10T15:31:11.836220+00:00"
     },
     {
       "title": "Processador Intel Core i7 12700F 2,1GHz (4.9GHz Turbo), 12ª Geração, 12-Cores 20-Threads, LGA 1700, Com Cooler, BX8071512700F",
@@ -1804,7 +1749,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.229439+00:00"
+      "collected_at": "2026-10-10T15:31:11.359089+00:00"
     },
     {
       "title": "Máquina de Lavar Consul 14kg Automática 12 Programas CWN14AB",
@@ -1823,7 +1768,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:41.299915+00:00"
+      "collected_at": "2026-10-10T15:29:21.284346+00:00"
     },
     {
       "title": "Geladeira Brastemp 500L Frost Free Duplex BRE66AK",
@@ -1842,7 +1787,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:41.245837+00:00"
+      "collected_at": "2026-10-10T15:29:20.934826+00:00"
     },
     {
       "title": "62064-Branco",
@@ -1861,7 +1806,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:17.469116+00:00"
+      "collected_at": "2026-10-10T15:29:34.217995+00:00"
     },
     {
       "title": "Ar-condicionado",
@@ -1880,7 +1825,26 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:17.579170+00:00"
+      "collected_at": "2026-10-10T15:29:34.404379+00:00"
+    },
+    {
+      "title": "Refrigerador Side by Side Electrolux 2 Portas Frost Free 624 Litros AutoSense Inox Look - ES60S",
+      "source": "Fast Shop",
+      "store_name": "Fast Shop",
+      "price": 7459.0,
+      "original_price": 11389.0,
+      "reference_price": 11389.0,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 34.5,
+      "savings": 3930.0,
+      "url": "https://site.fastshop.com.br/refrigerador-side-by-side-electrolux-2-portas-frost-free-624-litros-autosense-inox-look---es60s-exes60s_prd-197769/p",
+      "category": "Eletrodomésticos",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-10-10T15:28:17.702123+00:00"
     },
     {
       "title": "Processador AMD Ryzen 7 7700 3.8GHz (5.3GHz Turbo), 8-Cores 16-Threads, AM5, Com Cooler AMD Wraith Stealth, 100-100000592SBX",
@@ -1899,7 +1863,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.420383+00:00"
+      "collected_at": "2026-10-10T15:31:11.571772+00:00"
     },
     {
       "title": "Notebook Asus TUF Gaming A16, AMD Ryzen 7, 16GB/512GB SSD, Tela de 16\", RTX 4050, Mecha Gray - FA607NUQ-RL019W",
@@ -1918,7 +1882,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:36:16.136496+00:00"
+      "collected_at": "2026-10-10T15:27:48.668233+00:00"
     },
     {
       "title": "Máquina de Lavar Brastemp Smart Sensor 14Kg Automática BWF14A",
@@ -1937,7 +1901,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:40.737087+00:00"
+      "collected_at": "2026-10-10T15:29:20.505730+00:00"
     },
     {
       "title": "Processador AMD Ryzen 7 5700, 3.7GHz (4.6GHz Turbo), 8-Cores 16-Threads, AM4, Com Cooler AMD Wraith Stealth, 100-100000743SBX",
@@ -1956,7 +1920,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.015415+00:00"
+      "collected_at": "2026-10-10T15:31:10.751186+00:00"
     },
     {
       "title": "Fogão Atlas 4 Bocas Mônaco Plus Automático Mesa de Inox Forno 50L",
@@ -1975,7 +1939,45 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:20.927435+00:00"
+      "collected_at": "2026-10-10T15:28:50.255673+00:00"
+    },
+    {
+      "title": "Mais Vendido",
+      "source": "Loja TCL",
+      "store_name": "Loja TCL",
+      "price": 3495.08,
+      "original_price": 4699.0,
+      "reference_price": 5197.08,
+      "reference_kind": "referência atual",
+      "reference_samples": 8,
+      "difference_pct": 32.7,
+      "savings": 1702.0,
+      "url": "https://www.lojatcl.com.br/smart-tv-tcl-65-polegadas-qled-4k-p7l-wifi-bluetooth-google-tv-hdr10--120-hz-vrr-aipq-65p7l-33308/p",
+      "category": "Outros",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-10-10T15:31:24.200667+00:00"
+    },
+    {
+      "title": "Processador AMD Ryzen 7 5700G, 3.8GHz (4.6GHz Max Turbo), Cache 20MB, Octa Core, AM4, Ví­deo Integrado - 100-100000263BOX",
+      "source": "KaBuM!",
+      "store_name": "KaBuM!",
+      "price": 1281.35,
+      "original_price": null,
+      "reference_price": 1899.99,
+      "reference_kind": "referência atual",
+      "reference_samples": 3,
+      "difference_pct": 32.6,
+      "savings": 618.64,
+      "url": "https://www.kabum.com.br/produto/203463/processador-amd-ryzen-7-5700g-3-8ghz-4-6ghz-max-turbo-cache-20mb-octa-core-am4-vi-deo-integrado-100-100000263box",
+      "category": "Processadores",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-10-10T15:31:03.524716+00:00"
     },
     {
       "title": "Processador AMD Ryzen 7 5800X3D Anniversary Edition, 3.4GHz (4.5GHz Turbo), 8-Cores 16-Threads, AM4, Sem Cooler, Sem vídeo",
@@ -1994,7 +1996,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.957259+00:00"
+      "collected_at": "2026-10-10T15:31:10.662834+00:00"
     },
     {
       "title": "Geladeira Brastemp 385L Frost Free Duplex BRM46",
@@ -2013,7 +2015,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:40.812286+00:00"
+      "collected_at": "2026-10-10T15:29:20.730278+00:00"
     },
     {
       "title": "Processador AMD Ryzen 9 7900 3.7GHz (5.4GHz Turbo), 12-Cores 24-Threads, AM5, 100-100000590WOF",
@@ -2032,7 +2034,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.324516+00:00"
+      "collected_at": "2026-10-10T15:31:11.433366+00:00"
     },
     {
       "title": "Módulo de Memória Adata para Notebook DDR4 3200MHZ 16GB",
@@ -2051,26 +2053,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:49.856054+00:00"
-    },
-    {
-      "title": "Processador Intel Core Ultra 7 270K Plus, Otimizado para IA, (5.5Ghz Turbo), 24-Cores 24-Threads, LGA 1851, BX80768270K",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 2239.99,
-      "original_price": 3280.9,
-      "reference_price": 3280.9,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 31.7,
-      "savings": 1040.91,
-      "url": "https://www.terabyteshop.com.br/produto/40719/processador-intel-core-ultra-7-270k-plus-otimizado-para-ia-55ghz-turbo-24-cores-24-threads-lga-1851-bx80768270k",
-      "category": "Processadores",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": true,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.393515+00:00"
+      "collected_at": "2026-10-10T15:30:34.170770+00:00"
     },
     {
       "title": "Placa de Video Asus GeForce 6GB GDDR6 9...",
@@ -2089,7 +2072,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:39.865053+00:00"
+      "collected_at": "2026-10-10T15:30:20.058783+00:00"
     },
     {
       "title": "Processador Intel Core i3 12100, 3.3GHz (4.3GHz Turbo), 12ª Geração, 4-Cores 8-Threads, LGA 1700, Com Cooler, BX8071512100",
@@ -2108,7 +2091,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:02.048470+00:00"
+      "collected_at": "2026-10-10T15:31:12.476100+00:00"
     },
     {
       "title": "Guarda-Roupa Casal 2 Portas Correr 6 Gavetas Espelho Movimente Lux Caemmun",
@@ -2127,7 +2110,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:20.943438+00:00"
+      "collected_at": "2026-10-10T15:28:50.389240+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 9 285, Otimizado para IA, 2.5GHz (5.6GHz Turbo), Série 2, 24-Cores 24-Threads, LGA 1851, BX80768285",
@@ -2146,7 +2129,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.498711+00:00"
+      "collected_at": "2026-10-10T15:31:11.691448+00:00"
     },
     {
       "title": "Forno Elétrico de Embutir 80L Electrolux Efficient com PerfectCook 360 OE8EH",
@@ -2165,7 +2148,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:42.255680+00:00"
+      "collected_at": "2026-10-10T15:29:22.530959+00:00"
     },
     {
       "title": "Smart TV TCL 43",
@@ -2184,26 +2167,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:37.867452+00:00"
-    },
-    {
-      "title": "Geladeira Brastemp 385L Frost Free Duplex BRM46",
-      "source": "Gazin",
-      "store_name": "Gazin",
-      "price": 3119.9,
-      "original_price": 4458.9,
-      "reference_price": 4458.9,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 30.0,
-      "savings": 1339.0,
-      "url": "https://www.gazin.com.br/produto/geladeira-brastemp-385l-frost-free-duplex-brm46/10201/inox/220-volts",
-      "category": "Eletrodomésticos",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": true,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:40.935553+00:00"
+      "collected_at": "2026-10-10T15:30:15.787366+00:00"
     },
     {
       "title": "Controle Joypad Xbox Series Wireless",
@@ -2225,7 +2189,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:39.889558+00:00"
+      "collected_at": "2026-10-10T15:30:20.136690+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 12000 BTUs Midea AI Airvolution Frio 42EFVCA12M5 - 220V",
@@ -2247,7 +2211,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.480145+00:00"
+      "collected_at": "2026-10-10T15:30:41.009465+00:00"
     },
     {
       "title": "Caixa de Som JBL Boombox 4 Até 210W Blu...",
@@ -2269,7 +2233,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.426432+00:00"
+      "collected_at": "2026-10-10T15:30:16.884767+00:00"
     },
     {
       "title": "Smart TV LG OLED evo AI 4K C6 77\" polegadas 2026",
@@ -2292,7 +2256,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:36:25.208895+00:00"
+      "collected_at": "2026-10-10T15:28:04.784104+00:00"
     },
     {
       "title": "Processador AMD Ryzen 7 9700X, 3.8GHz (5.5GHz Turbo), 8-Cores 16-Threads, AM5, Sem Cooler, 100-100001404WOF",
@@ -2313,7 +2277,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.055789+00:00"
+      "collected_at": "2026-10-10T15:31:10.872885+00:00"
     },
     {
       "title": "Ar Condicionado Split 12000 BTUs LG Dual Inverter Voice + IA Frio S3NQ12JA31L.EB2GAM1 - 220V",
@@ -2335,7 +2299,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.360113+00:00"
+      "collected_at": "2026-10-10T15:30:40.768678+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 9000 BTUs TCL T-Pro 2.0 Frio TAC-09CTG2-INV - 220V",
@@ -2357,7 +2321,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.964949+00:00"
+      "collected_at": "2026-10-10T15:30:59.845994+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 9000 BTUs Agratto Zen Top Frio ZICST9F-02 - 220V",
@@ -2379,7 +2343,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.437517+00:00"
+      "collected_at": "2026-10-10T15:30:40.939889+00:00"
     },
     {
       "title": "Caixa de Som JBL Boombox 4 Até 210W Blu...",
@@ -2401,7 +2365,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.496708+00:00"
+      "collected_at": "2026-10-10T15:30:17.026788+00:00"
     },
     {
       "title": "Smart TV Samsung 98\" Q80C 4K QLED Modo...",
@@ -2422,7 +2386,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:37.953001+00:00"
+      "collected_at": "2026-10-10T15:30:15.988608+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 9000 BTUs Midea AI Airvolution Frio 42EFVCA09M5 - 220V",
@@ -2444,7 +2408,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.502386+00:00"
+      "collected_at": "2026-10-10T15:30:41.056882+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 12000 BTUs Hisense Hi-Efficiency Frio AS-12TW2RLUHB00E - 220V",
@@ -2466,7 +2430,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.456258+00:00"
+      "collected_at": "2026-10-10T15:30:40.974717+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 12000 BTUs Agratto Zen Top Frio ZICST12F-02 - 220V",
@@ -2488,7 +2452,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.379339+00:00"
+      "collected_at": "2026-10-10T15:30:40.818542+00:00"
     },
     {
       "title": "Smart TV TCL 65\" QLED UHD 4K 65T6C Goog...",
@@ -2509,7 +2473,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:37.940728+00:00"
+      "collected_at": "2026-10-10T15:30:15.958909+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 22000 BTUs Springer Midea AirVolution Connect Frio 42AFVCI22S5 - 220V",
@@ -2531,7 +2495,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.622488+00:00"
+      "collected_at": "2026-10-10T15:30:41.419792+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 9000 BTUs Hisense Hi-Efficiency Frio AS-09TW2RLCHB00 - 220V",
@@ -2553,7 +2517,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.418450+00:00"
+      "collected_at": "2026-10-10T15:30:40.897128+00:00"
     },
     {
       "title": "Ar Condicionado Split 18000 BTUs LG Dual Inverter Voice Artcool Quente/Frio S3-W18KLR7A - 220V",
@@ -2575,7 +2539,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.124512+00:00"
+      "collected_at": "2026-10-10T15:31:00.049008+00:00"
     },
     {
       "title": "Ar Condicionado 12000 Btus Split HW Inv...",
@@ -2596,7 +2560,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.121490+00:00"
+      "collected_at": "2026-10-10T15:30:16.181742+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 18000 BTUs Agratto Liv Top Frio LCST18F-02I - 220V",
@@ -2618,7 +2582,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.273942+00:00"
+      "collected_at": "2026-10-10T15:31:00.209945+00:00"
     },
     {
       "title": "Ar Condicionado Split 9000 BTUs LG Dual Inverter Voice +IA Quente/Frio S3NW09AA31E.EB2GAM1 - 220V",
@@ -2640,7 +2604,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.801924+00:00"
+      "collected_at": "2026-10-10T15:30:41.697539+00:00"
     },
     {
       "title": "Ar Condicionado Split 9000 BTUs LG AI Dual Inverter Voice Frio S3-Q09AA31A - 220V",
@@ -2662,7 +2626,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.295505+00:00"
+      "collected_at": "2026-10-10T15:31:00.239225+00:00"
     },
     {
       "title": "Ar Condicionado Split 12000 BTUs LG AI Dual Inverter Compact Frio S3-Q12JAQAL- 220V",
@@ -2684,7 +2648,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.001418+00:00"
+      "collected_at": "2026-10-10T15:30:59.908388+00:00"
     },
     {
       "title": "Smart TV TCL 65 Polegadas SQD-Mini LED 4K Q7D Pro WiFi Bluetooth Google TV HDR10+ 144 Hz 65Q7DPRO",
@@ -2705,7 +2669,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:19.953663+00:00"
+      "collected_at": "2026-10-10T15:31:24.526077+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 9000 BTUs Hisense Eco Plus Frio AS-09TW2RLRCK00E - 220V",
@@ -2727,7 +2691,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.210643+00:00"
+      "collected_at": "2026-10-10T15:31:00.137283+00:00"
     },
     {
       "title": "Notebook 15.1\" Gamer LEGION 5i Ultra 7 255HX, NVIDIA RTX 5060 8GB GDDR7, Memória 16GB, SSD 1TB, Tela WQXGA, Windows 11, 83N20000BO, LENOVO",
@@ -2749,7 +2713,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.681288+00:00"
+      "collected_at": "2026-10-10T15:30:25.639447+00:00"
     },
     {
       "title": "Ar Condicionado Split 9000 BTUs Dual Inverter LG AI Air Quente/Frio S3NW090AKH0.EB2GAM1 - 220",
@@ -2771,7 +2735,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.847396+00:00"
+      "collected_at": "2026-10-10T15:30:41.762903+00:00"
     },
     {
       "title": "Ar Condicionado Split 18000 BTUs LG AI Dual Inverter Compact Frio S3-Q18KLQAL - 220V",
@@ -2793,7 +2757,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.317848+00:00"
+      "collected_at": "2026-10-10T15:31:00.268340+00:00"
     },
     {
       "title": "Ar Condicionado Split 12000 BTUs LG Dual Inverter Compact + IA Frio S3NQ12JAQAC.EB2GAM1 - 220V",
@@ -2815,7 +2779,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.822704+00:00"
+      "collected_at": "2026-10-10T15:30:41.730400+00:00"
     },
     {
       "title": "Smart TV Samsung 55\" Mini LED 4K M75H 2...",
@@ -2836,7 +2800,28 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:37.926953+00:00"
+      "collected_at": "2026-10-10T15:30:15.922835+00:00"
+    },
+    {
+      "title": "Processador Intel Core i7-14700K, 3.4GHz (5.6 GHz Max Turbo), Cache 33MB, 20 Núcleos, 28 Threads, LGA 1700, Com Vídeo Integrado - BX8071514700K",
+      "source": "KaBuM!",
+      "store_name": "KaBuM!",
+      "price": 2999.99,
+      "original_price": null,
+      "reference_price": 3529.4,
+      "reference_kind": "histórico observado",
+      "reference_samples": 96,
+      "difference_pct": 15.0,
+      "savings": 529.41,
+      "url": "https://www.kabum.com.br/produto/497575/processador-intel-core-i7-14700k-3-4ghz-5-6-ghz-max-turbo-cache-33mb-20-nucleos-28-threads-lga-1700-com-video-integrado-bx8071514700k",
+      "category": "Processadores",
+      "tracked": true,
+      "watch_terms": [
+        "iPhone 17 Pro Max"
+      ],
+      "highlighted": false,
+      "strict_highlight": false,
+      "collected_at": "2026-10-10T15:31:03.984207+00:00"
     },
     {
       "title": "Placa de Vídeo Gigabyte RTX 5070 GAMING OC 12G NVIDIA GeForce, 12GB GDDR7, 192bits, RGB, DLSS, Ray Tracing - 9VN5070GO-00-G10",
@@ -2846,7 +2831,7 @@
       "original_price": null,
       "reference_price": 14117.65,
       "reference_kind": "histórico observado",
-      "reference_samples": 12,
+      "reference_samples": 13,
       "difference_pct": 15.0,
       "savings": 2117.65,
       "url": "https://www.kabum.com.br/produto/714571/placa-de-video-gigabyte-rtx-5070-gaming-oc-12g-nvidia-geforce-12gb-gddr7-192bits-rgb-dlss-ray-tracing-9vn5070go-00-g10",
@@ -2857,7 +2842,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:08.678823+00:00"
+      "collected_at": "2026-10-10T15:31:19.000628+00:00"
     },
     {
       "title": "Ar Condicionado Split 9000 BTUs LG Dual Inverter Compact + IA Frio S3NQ09AAQAC.EB2GAM1 - 220V",
@@ -2879,7 +2864,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.774717+00:00"
+      "collected_at": "2026-10-10T15:30:41.663226+00:00"
     },
     {
       "title": "Ar Condicionado Split 9000 BTUs LG +IA Dual Inverter Voice Frio S3NQ09AA31C.EB2GAM1 - 220V",
@@ -2901,7 +2886,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.982629+00:00"
+      "collected_at": "2026-10-10T15:30:59.873817+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 24000 BTUs Hisense Connect Wi-Fi Quente/Frio AS-24UW2RBB - 220V",
@@ -2923,7 +2908,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.150634+00:00"
+      "collected_at": "2026-10-10T15:31:00.077052+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 18000 BTUs Elgin Eco Dream Wi-Fi Quente/Frio HIQC18C2WACA - 220V",
@@ -2945,7 +2930,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.091020+00:00"
+      "collected_at": "2026-10-10T15:31:00.017916+00:00"
     },
     {
       "title": "Smart TV Samsung 50\" Mini LED 4K M75H 2...",
@@ -2966,7 +2951,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:37.515886+00:00"
+      "collected_at": "2026-10-10T15:30:14.796296+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 24000 BTUs Philco Quente/Frio PAC24000IQFM15 - 220V",
@@ -2988,7 +2973,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.180975+00:00"
+      "collected_at": "2026-10-10T15:31:00.107950+00:00"
     },
     {
       "title": "Ar Condicionado Split Teto Inverter 36000 BTUs Midea Frio 42ZQVF36M5C - 220V",
@@ -3010,7 +2995,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.641854+00:00"
+      "collected_at": "2026-10-10T15:30:41.461037+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 12000 BTUs Midea AI Airvolution Quente/Frio 42EFVQA12M5 - 220V",
@@ -3032,7 +3017,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.579517+00:00"
+      "collected_at": "2026-10-10T15:30:41.297753+00:00"
     },
     {
       "title": "Lava e Seca TCL 11Kg / 7Kg Prata Inverter com lavagem a seco 110V C311WDS1",
@@ -3053,7 +3038,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:20.122321+00:00"
+      "collected_at": "2026-10-10T15:31:25.028937+00:00"
     },
     {
       "title": "Lava e Seca TCL 11Kg / 7Kg Branca Inverter com lavagem a seco 110V C311WDW1",
@@ -3074,7 +3059,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:20.111505+00:00"
+      "collected_at": "2026-10-10T15:31:25.008788+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 9000 BTUs Hisense Hi-Efficiency Quente/Frio AS-09UW2RLCHB00E - 220V",
@@ -3096,7 +3081,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.398776+00:00"
+      "collected_at": "2026-10-10T15:30:40.859228+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 12000 BTUs Midea IA Ecomaster Frio 42EZVCA12M5 - 220V",
@@ -3118,7 +3103,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.235656+00:00"
+      "collected_at": "2026-10-10T15:31:00.166279+00:00"
     },
     {
       "title": "Ar Condicionado Portátil 12000 BTUs Hulter Wifi Frio HT9ACP-12KF220C - 220V",
@@ -3139,7 +3124,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.666648+00:00"
+      "collected_at": "2026-10-10T15:30:41.505985+00:00"
     },
     {
       "title": "Ar Condicionado Portátil 12000 BTUs Hulter Wifi Frio HT9ACP-12KF110C -127V",
@@ -3160,7 +3145,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.689132+00:00"
+      "collected_at": "2026-10-10T15:30:41.540211+00:00"
     },
     {
       "title": "Ar Condicionado Portátil 12000 BTUs Hulter Wifi Quente/Frio HT9ACP-12KQF220C - 220V",
@@ -3181,7 +3166,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.718286+00:00"
+      "collected_at": "2026-10-10T15:30:41.577533+00:00"
     },
     {
       "title": "Ar Condicionado Portátil 12000 BTUs Hulter Wifi Quente/Frio HT9ACP-12KQF110C - 127V",
@@ -3202,7 +3187,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.742714+00:00"
+      "collected_at": "2026-10-10T15:30:41.623531+00:00"
     },
     {
       "title": "Placa De Vídeo Asus Dual Nvidia Geforce RTX 5060 Ti Oc, 8GB, Gddr7, Dlss, Ray Tracing, Dual-RTX5060ti-o8g",
@@ -3224,7 +3209,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:09.012819+00:00"
+      "collected_at": "2026-10-10T15:31:19.603055+00:00"
     },
     {
       "title": "Geladeira TCL 516 Litros Inox Twin Eco Inverter Frost Free Side by Side Dispenser 110V C516SBIMN1",
@@ -3245,7 +3230,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:20.142664+00:00"
+      "collected_at": "2026-10-10T15:31:25.071022+00:00"
     },
     {
       "title": "Notebook 15\" Gamer Acer Nitro V15 Core i7-13620H, NVIDIA RTX 4060 8GB, Memória 16GB, SSD 512GB NVMe, Tela Full HD 165Hz, Linux, ANV15-52-790M",
@@ -3267,7 +3252,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.574375+00:00"
+      "collected_at": "2026-10-10T15:30:25.390600+00:00"
     },
     {
       "title": "Smart TV Semp 65 Polegadas LED 4K S62R Roku TV Wi-Fi HDR10 Dolby Audio Brilho até 280 Nits 65S62R",
@@ -3289,7 +3274,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:19.964204+00:00"
+      "collected_at": "2026-10-10T15:31:24.564533+00:00"
     },
     {
       "title": "Smart TV TCL 85 Polegadas QLED 4K P8L WiFi Bluetooth Google TV HDR10+ 144 Hz VRR 85P8L",
@@ -3310,7 +3295,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:20.019597+00:00"
+      "collected_at": "2026-10-10T15:31:24.741552+00:00"
     },
     {
       "title": "Smart TV TCL 85 Polegadas SQD-Mini LED 4K X11L WiFi Bluetooth Google TV HDR10+ Ultra Slim 85X11L",
@@ -3331,29 +3316,28 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:20.030486+00:00"
+      "collected_at": "2026-10-10T15:31:24.774377+00:00"
     },
     {
-      "title": "Ar-Condicionado Split Hi-Wall Inverter 9.000 BTUs G-Side Gree Quente e Frio",
+      "title": "Smartphone Samsung Galaxy A57 6.7\" Octa-core 128GB 8GB Câmera Tripla",
       "source": "Gazin",
       "store_name": "Gazin",
-      "price": 2561.22,
-      "original_price": 2754.0,
-      "reference_price": 2754.0,
+      "price": 2602.14,
+      "original_price": 2798.0,
+      "reference_price": 2798.0,
       "reference_kind": "preço anterior anunciado",
       "reference_samples": 1,
       "difference_pct": 7.0,
-      "savings": 192.78,
-      "url": "https://www.gazin.com.br/produto/ar-condicionado-split-hi-wall-inverter-9000-btus-g-side-gree-quente-e-frio/10717/sem-cor/220-volts",
-      "category": "Climatização",
+      "savings": 195.86,
+      "url": "https://www.gazin.com.br/produto/smartphone-samsung-galaxy-a57-67-octa-core-128gb-8gb-camera-tripla/11249/azul/quadriband",
+      "category": "Smartphones",
       "tracked": true,
       "watch_terms": [
-        "Ar-condicionado Inverter 12000 BTU",
-        "Ar-condicionado Inverter 18000 BTU"
+        "Galaxy A57 5G 128GB"
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:21.920645+00:00"
+      "collected_at": "2026-10-10T15:28:52.610090+00:00"
     },
     {
       "title": "Smart TV LG Nano UHD 55\" 4K Wi-Fi WebOS Google Cast 55NU850BPSA",
@@ -3374,7 +3358,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:21.530768+00:00"
+      "collected_at": "2026-10-10T15:28:52.707730+00:00"
     },
     {
       "title": "Smart TV LG Nano UHD 65\" 4K Wi-Fi WebOS AI Sound Pro 65NU850BPSA",
@@ -3396,7 +3380,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:21.724839+00:00"
+      "collected_at": "2026-10-10T15:28:53.449621+00:00"
     },
     {
       "title": "Smartphone Samsung Galaxy S26 Ultra 5G 6.9″ Snapdragon 256GB 12GB",
@@ -3417,7 +3401,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:21.586869+00:00"
+      "collected_at": "2026-10-10T15:28:52.833506+00:00"
     },
     {
       "title": "Processador Intel Core i3-12100, 3.3GHz (4.3GHz Max Turbo), Cache 12MB, 4 Núcleos, 8 Threads, LGA 1700, Com Vídeo Integrado - BX8071512100",
@@ -3427,7 +3411,7 @@
       "original_price": null,
       "reference_price": 1070.47,
       "reference_kind": "histórico observado",
-      "reference_samples": 29,
+      "reference_samples": 30,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/283715/processador-intel-core-i3-12100-3-3ghz-4-3ghz-max-turbo-cache-12mb-4-nucleos-8-threads-lga-1700-com-video-integrado-bx8071512100",
@@ -3438,7 +3422,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.932251+00:00"
+      "collected_at": "2026-10-10T15:31:03.228097+00:00"
     },
     {
       "title": "Processador Intel Core i3-12100F, 3.3GHz (4.3GHz Max Turbo), Cache 12MB, 4 Núcleos, 8 Threads, LGA 1700, Sem Vídeo Integrado - BX8071512100F",
@@ -3448,7 +3432,7 @@
       "original_price": null,
       "reference_price": 1176.46,
       "reference_kind": "histórico observado",
-      "reference_samples": 87,
+      "reference_samples": 88,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/283719/processador-intel-core-i3-12100f-3-3ghz-4-3ghz-max-turbo-cache-12mb-4-nucleos-8-threads-lga-1700-sem-video-integrado-bx8071512100f",
@@ -3459,7 +3443,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.300405+00:00"
+      "collected_at": "2026-10-10T15:31:04.010229+00:00"
     },
     {
       "title": "Processador AMD Ryzen 5 5500, 3.6GHz (4.2GHz Max Turbo), Cache 19MB, 6 Núcleos, 12 Threads, AM4, Sem Vídeo Integrado - 100-100000457BOX",
@@ -3480,7 +3464,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.792809+00:00"
+      "collected_at": "2026-10-10T15:31:03.034577+00:00"
     },
     {
       "title": "Processador Intel Core i3-14100, 3.5GHz (4.70 GHz Max Turbo), Cache 12MB, 4 Núcleos, 8 Threads, LGA 1700, Com Vídeo Integrado - BX8071514100",
@@ -3488,7 +3472,7 @@
       "store_name": "KaBuM!",
       "price": 1411.75,
       "original_price": null,
-      "reference_price": 1215.11,
+      "reference_price": 1342.08,
       "reference_kind": "histórico observado",
       "reference_samples": 150,
       "difference_pct": 0.0,
@@ -3501,7 +3485,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.230915+00:00"
+      "collected_at": "2026-10-10T15:31:03.898509+00:00"
     },
     {
       "title": "Processador Intel Core i5-12400, 2.5GHz (4.4GHz Max Turbo), Cache 18MB, 6 Núcleos, 12 Threads, LGA 1700, Com Vídeo Integrado - BX8071512400",
@@ -3511,7 +3495,7 @@
       "original_price": null,
       "reference_price": 1529.4,
       "reference_kind": "histórico observado",
-      "reference_samples": 117,
+      "reference_samples": 118,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/283713/processador-intel-core-i5-12400-2-5ghz-4-4ghz-max-turbo-cache-18mb-6-nucleos-12-threads-lga-1700-com-video-integrado-bx8071512400",
@@ -3522,7 +3506,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.682373+00:00"
+      "collected_at": "2026-10-10T15:31:03.200468+00:00"
     },
     {
       "title": "Processador Intel Core i5-12600KF, 3.7GHz (4.9Ghz Max Turbo), Cache 20MB, 10 Núcleos, 16 Threads, LGA 1700, Sem Vídeo Integrado - BX8071512600KF",
@@ -3532,7 +3516,7 @@
       "original_price": null,
       "reference_price": 1259.99,
       "reference_kind": "histórico observado",
-      "reference_samples": 75,
+      "reference_samples": 77,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/241047/processador-intel-core-i5-12600kf-3-7ghz-4-9ghz-max-turbo-cache-20mb-10-nucleos-16-threads-lga-1700-sem-video-integrado-bx8071512600kf",
@@ -3543,7 +3527,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.750106+00:00"
+      "collected_at": "2026-10-10T15:31:02.827326+00:00"
     },
     {
       "title": "Processador Intel Core i5-14400F, 2.5GHz (4.70 GHz Max Turbo), Cache 20MB, 10 Núcleos, 16 Threads, LGA 1700, Sem Vídeo Integrado - BX8071514400F",
@@ -3553,7 +3537,7 @@
       "original_price": null,
       "reference_price": 1647.04,
       "reference_kind": "histórico observado",
-      "reference_samples": 99,
+      "reference_samples": 101,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/904658/processador-intel-core-i5-14400f-2-5ghz-4-70-ghz-max-turbo-cache-20mb-10-nucleos-16-threads-lga-1700-sem-video-integrado-bx8071514400f",
@@ -3564,7 +3548,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.913035+00:00"
+      "collected_at": "2026-10-10T15:31:02.949478+00:00"
     },
     {
       "title": "Processador Intel Core i5-12400F, 2.5GHz (4.4GHz Max Turbo), Cache 18MB, 6 Núcleos, 12 Threads, LGA 1700, Sem Vídeo Integrado - BX8071512400F",
@@ -3574,7 +3558,7 @@
       "original_price": null,
       "reference_price": 1294.1,
       "reference_kind": "histórico observado",
-      "reference_samples": 90,
+      "reference_samples": 91,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/283718/processador-intel-core-i5-12400f-2-5ghz-4-4ghz-max-turbo-cache-18mb-6-nucleos-12-threads-lga-1700-sem-video-integrado-bx8071512400f",
@@ -3585,7 +3569,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.112087+00:00"
+      "collected_at": "2026-10-10T15:31:03.713881+00:00"
     },
     {
       "title": "Processador Intel Core i5-14600KF, 3.5GHz (5.3 GHz Max Turbo), Cache 24MB, 14 Núcleos, 20 Threads, LGA 1700, Sem Vídeo Integrado - BX8071514600KF",
@@ -3595,7 +3579,7 @@
       "original_price": null,
       "reference_price": 1899.99,
       "reference_kind": "histórico observado",
-      "reference_samples": 39,
+      "reference_samples": 41,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/497579/processador-intel-core-i5-14600kf-3-5ghz-5-3-ghz-max-turbo-cache-24mb-14-nucleos-20-threads-lga-1700-sem-video-integrado-bx8071514600kf",
@@ -3606,28 +3590,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.251384+00:00"
-    },
-    {
-      "title": "Processador Intel Core i7-12700KF, 3.6GHz (5.0GHz Max Turbo), Cache 25MB, 12 Núcleos, 20 Threads, LGA 1700, Sem Vídeo Integrado - BX8071512700KF",
-      "source": "KaBuM!",
-      "store_name": "KaBuM!",
-      "price": 2588.22,
-      "original_price": null,
-      "reference_price": 2588.22,
-      "reference_kind": "histórico observado",
-      "reference_samples": 79,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.kabum.com.br/produto/241049/processador-intel-core-i7-12700kf-3-6ghz-5-0ghz-max-turbo-cache-25mb-12-nucleos-20-threads-lga-1700-sem-video-integrado-bx8071512700kf",
-      "category": "Processadores",
-      "tracked": true,
-      "watch_terms": [
-        "iPhone 17 Pro Max"
-      ],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.612730+00:00"
+      "collected_at": "2026-10-10T15:31:03.930969+00:00"
     },
     {
       "title": "Processador Intel Core i7-12700F, 2.1GHz (4.9GHz Max Turbo), Cache 25MB, 12 Núcleos, 20 Threads, LGA 1700, Sem Vídeo Integrado - BX8071512700F",
@@ -3637,7 +3600,7 @@
       "original_price": null,
       "reference_price": 1899.99,
       "reference_kind": "histórico observado",
-      "reference_samples": 94,
+      "reference_samples": 96,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/283717/processador-intel-core-i7-12700f-2-1ghz-4-9ghz-max-turbo-cache-25mb-12-nucleos-20-threads-lga-1700-sem-video-integrado-bx8071512700f",
@@ -3648,7 +3611,49 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.725361+00:00"
+      "collected_at": "2026-10-10T15:31:02.703425+00:00"
+    },
+    {
+      "title": "Processador Intel Core i7-12700KF, 3.6GHz (5.0GHz Max Turbo), Cache 25MB, 12 Núcleos, 20 Threads, LGA 1700, Sem Vídeo Integrado - BX8071512700KF",
+      "source": "KaBuM!",
+      "store_name": "KaBuM!",
+      "price": 2588.22,
+      "original_price": null,
+      "reference_price": 2588.22,
+      "reference_kind": "histórico observado",
+      "reference_samples": 81,
+      "difference_pct": 0.0,
+      "savings": 0.0,
+      "url": "https://www.kabum.com.br/produto/241049/processador-intel-core-i7-12700kf-3-6ghz-5-0ghz-max-turbo-cache-25mb-12-nucleos-20-threads-lga-1700-sem-video-integrado-bx8071512700kf",
+      "category": "Processadores",
+      "tracked": true,
+      "watch_terms": [
+        "iPhone 17 Pro Max"
+      ],
+      "highlighted": false,
+      "strict_highlight": false,
+      "collected_at": "2026-10-10T15:31:04.845437+00:00"
+    },
+    {
+      "title": "Processador Intel Core i7-12700K, 3.6GHz (5.0GHz Max Turbo), Cache 25MB, 12 Núcleos, 20 Threads, LGA 1700, Com Vídeo Integrado - BX8071512700K",
+      "source": "KaBuM!",
+      "store_name": "KaBuM!",
+      "price": 2823.52,
+      "original_price": null,
+      "reference_price": 1949.99,
+      "reference_kind": "histórico observado",
+      "reference_samples": 43,
+      "difference_pct": 0.0,
+      "savings": 0.0,
+      "url": "https://www.kabum.com.br/produto/241048/processador-intel-core-i7-12700k-3-6ghz-5-0ghz-max-turbo-cache-25mb-12-nucleos-20-threads-lga-1700-com-video-integrado-bx8071512700k",
+      "category": "Processadores",
+      "tracked": true,
+      "watch_terms": [
+        "iPhone 17 Pro Max"
+      ],
+      "highlighted": false,
+      "strict_highlight": false,
+      "collected_at": "2026-10-10T15:31:02.979959+00:00"
     },
     {
       "title": "Processador Intel Core i5-14600K, 3.5GHz (5.3 GHz Max Turbo), Cache 24MB, 14 Núcleos, 20 Threads, LGA 1700, Com Vídeo Integrado - BX8071514600K",
@@ -3658,7 +3663,7 @@
       "original_price": null,
       "reference_price": 2235.28,
       "reference_kind": "histórico observado",
-      "reference_samples": 103,
+      "reference_samples": 104,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/497578/processador-intel-core-i5-14600k-3-5ghz-5-3-ghz-max-turbo-cache-24mb-14-nucleos-20-threads-lga-1700-com-video-integrado-bx8071514600k",
@@ -3669,7 +3674,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.634241+00:00"
+      "collected_at": "2026-10-10T15:31:03.312594+00:00"
     },
     {
       "title": "Processador AMD Ryzen 7 9800X3D, 4.7GHz (5.2GHz Max Turbo), Cache 8MB, 8 Núcleos, 16 Threads, AM5, Sem Vídeo Integrado - 100-100001084WOF",
@@ -3690,7 +3695,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.833007+00:00"
+      "collected_at": "2026-10-10T15:31:03.087969+00:00"
     },
     {
       "title": "Processador Intel Core i9-12900KF, 3.2GHz (5.2GHz Max Turbo), Cache 30MB, 16 Núcleos, 24 Threads, LGA 1700, Sem Vídeo Integrado - BX8071512900KF",
@@ -3711,28 +3716,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.676045+00:00"
-    },
-    {
-      "title": "Processador Intel Core i7-14700K, 3.4GHz (5.6 GHz Max Turbo), Cache 33MB, 20 Núcleos, 28 Threads, LGA 1700, Com Vídeo Integrado - BX8071514700K",
-      "source": "KaBuM!",
-      "store_name": "KaBuM!",
-      "price": 3529.4,
-      "original_price": null,
-      "reference_price": 3529.4,
-      "reference_kind": "histórico observado",
-      "reference_samples": 95,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.kabum.com.br/produto/497575/processador-intel-core-i7-14700k-3-4ghz-5-6-ghz-max-turbo-cache-33mb-20-nucleos-28-threads-lga-1700-com-video-integrado-bx8071514700k",
-      "category": "Processadores",
-      "tracked": true,
-      "watch_terms": [
-        "iPhone 17 Pro Max"
-      ],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.596549+00:00"
+      "collected_at": "2026-10-10T15:31:04.687432+00:00"
     },
     {
       "title": "Processador Intel Core i7-14700F, 2.1GHz (5.40 GHz Max Turbo), Cache 33MB, 20 Núcleos, 28 Threads, LGA 1700, Sem Vídeo Integrado - BX8071514700F",
@@ -3742,7 +3726,7 @@
       "original_price": null,
       "reference_price": 3529.4,
       "reference_kind": "histórico observado",
-      "reference_samples": 132,
+      "reference_samples": 134,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/904660/processador-intel-core-i7-14700f-2-1ghz-5-40-ghz-max-turbo-cache-33mb-20-nucleos-28-threads-lga-1700-sem-video-integrado-bx8071514700f",
@@ -3753,7 +3737,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.153422+00:00"
+      "collected_at": "2026-10-10T15:31:03.794293+00:00"
     },
     {
       "title": "Processador Intel Core i7-12700, 2.1GHz (4.9GHz Max Turbo), Cache 25MB, 12 Núcleos, 20 Threads, LGA 1700, Com Vídeo Integrado - BX8071512700",
@@ -3763,7 +3747,7 @@
       "original_price": null,
       "reference_price": 3529.4,
       "reference_kind": "histórico observado",
-      "reference_samples": 47,
+      "reference_samples": 49,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/283710/processador-intel-core-i7-12700-2-1ghz-4-9ghz-max-turbo-cache-25mb-12-nucleos-20-threads-lga-1700-com-video-integrado-bx8071512700",
@@ -3774,7 +3758,28 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.374702+00:00"
+      "collected_at": "2026-10-10T15:31:04.116483+00:00"
+    },
+    {
+      "title": "Placa de Vídeo ASUS DUAL RTX 5060 O8G NVIDIA GeForce, 8GB GDDR7, 2565MHz, 128 bits, OpenGL 4.6, DLSS 4, Ray Tracing - DUAL-RTX5060-O8G",
+      "source": "KaBuM!",
+      "store_name": "KaBuM!",
+      "price": 3624.0,
+      "original_price": null,
+      "reference_price": 3624.0,
+      "reference_kind": "histórico observado",
+      "reference_samples": 6,
+      "difference_pct": 0.0,
+      "savings": 0.0,
+      "url": "https://www.kabum.com.br/produto/781225/placa-de-video-asus-dual-rtx-5060-o8g-nvidia-geforce-8gb-gddr7-2565mhz-128-bits-opengl-4-6-dlss-4-ray-tracing-dual-rtx5060-o8g",
+      "category": "Placas de vídeo",
+      "tracked": true,
+      "watch_terms": [
+        "GeForce RTX 5060 Ti 8GB"
+      ],
+      "highlighted": false,
+      "strict_highlight": false,
+      "collected_at": "2026-10-10T15:31:19.171442+00:00"
     },
     {
       "title": "Processador Intel Core i7-14700KF, 3.4GHz (5.6 GHz Max Turbo), Cache 33MB, 20 Núcleos, 28 Threads, LGA 1700, Sem Vídeo Integrado - BX8071514700KF",
@@ -3784,7 +3789,7 @@
       "original_price": null,
       "reference_price": 3647.04,
       "reference_kind": "histórico observado",
-      "reference_samples": 116,
+      "reference_samples": 118,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/497577/processador-intel-core-i7-14700kf-3-4ghz-5-6-ghz-max-turbo-cache-33mb-20-nucleos-28-threads-lga-1700-sem-video-integrado-bx8071514700kf",
@@ -3795,28 +3800,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.284672+00:00"
-    },
-    {
-      "title": "Placa de Vídeo Gigabyte RTX 5060 WINDFORCE MAX OC V2 8GB NVIDIA GeForce, 8GB GDDR7, 128bit, DLSS, Ray Tracing - GV-N5060WF2MAX OCV2-8GD",
-      "source": "KaBuM!",
-      "store_name": "KaBuM!",
-      "price": 3999.99,
-      "original_price": null,
-      "reference_price": null,
-      "reference_kind": null,
-      "reference_samples": 0,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.kabum.com.br/produto/1053808/placa-de-video-gigabyte-rtx-5060-windforce-max-oc-v2-8gb-nvidia-geforce-8gb-gddr7-128bit-dlss-ray-tracing-gv-n5060wf2max-ocv2-8gd",
-      "category": "Placas de vídeo",
-      "tracked": true,
-      "watch_terms": [
-        "GeForce RTX 5060 Ti 8GB"
-      ],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:08.759374+00:00"
+      "collected_at": "2026-10-10T15:31:02.797667+00:00"
     },
     {
       "title": "Placa de Vídeo MSI RTX 5060 Shadow 2X OC NVIDIA GeForce, 8GB, GDDR7, 128-bit - 912-V537-038",
@@ -3837,7 +3821,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:08.858606+00:00"
+      "collected_at": "2026-10-10T15:31:19.326424+00:00"
     },
     {
       "title": "Placa de Vídeo Gigabyte RTX 5060 AERO OC 8G NVIDIA GeForce, 8GB GDDR7, 128bits, DLSS, Triple Fan, Ray Tracing - GV-N5060AERO OC-8GD",
@@ -3847,7 +3831,7 @@
       "original_price": null,
       "reference_price": 4235.28,
       "reference_kind": "histórico observado",
-      "reference_samples": 12,
+      "reference_samples": 13,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/777072/placa-de-video-gigabyte-rtx-5060-aero-oc-8g-nvidia-geforce-8gb-gddr7-128bits-dlss-triple-fan-ray-tracing-gv-n5060aero-oc-8gd",
@@ -3858,7 +3842,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:09.035871+00:00"
+      "collected_at": "2026-10-10T15:31:19.642629+00:00"
     },
     {
       "title": "Processador Intel Core i9-14900K, 3.2GHz (6GHz Max Turbo), Cache 36MB, 24 Núcleos, 32 Threads, LGA 1700, Com Vídeo Integrado - BX8071514900K",
@@ -3868,7 +3852,7 @@
       "original_price": null,
       "reference_price": 2899.99,
       "reference_kind": "histórico observado",
-      "reference_samples": 83,
+      "reference_samples": 85,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/497573/processador-intel-core-i9-14900k-3-2ghz-6ghz-max-turbo-cache-36mb-24-nucleos-32-threads-lga-1700-com-video-integrado-bx8071514900k",
@@ -3879,7 +3863,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.514158+00:00"
+      "collected_at": "2026-10-10T15:31:04.432554+00:00"
     },
     {
       "title": "Placa de Vídeo ASUS RTX 5060 TI DUAL O8G NVIDIA GeForce, 8GB, GDDR7, DLSS, Ray Tracing - 90YV0MP2-M0NA00",
@@ -3889,7 +3873,7 @@
       "original_price": null,
       "reference_price": 4705.87,
       "reference_kind": "histórico observado",
-      "reference_samples": 127,
+      "reference_samples": 128,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/761532/placa-de-video-asus-rtx-5060-ti-dual-o8g-nvidia-geforce-8gb-gddr7-dlss-ray-tracing-90yv0mp2-m0na00",
@@ -3901,7 +3885,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:08.694703+00:00"
+      "collected_at": "2026-10-10T15:31:18.967495+00:00"
     },
     {
       "title": "Processador Intel Core i9-14900KF, 3.2GHz (6GHz Max Turbo), Cache 36MB, 24 Núcleos, 32 Threads, LGA 1700, Sem Vídeo Integrado - BX8071514900KF",
@@ -3911,7 +3895,7 @@
       "original_price": null,
       "reference_price": 4823.51,
       "reference_kind": "histórico observado",
-      "reference_samples": 149,
+      "reference_samples": 150,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/497574/processador-intel-core-i9-14900kf-3-2ghz-6ghz-max-turbo-cache-36mb-24-nucleos-32-threads-lga-1700-sem-video-integrado-bx8071514900kf",
@@ -3922,7 +3906,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.478917+00:00"
+      "collected_at": "2026-10-10T15:31:04.349821+00:00"
     },
     {
       "title": "Placa de Vídeo ASUS DUAL RTX 5060 TI O16G NVIDIA GeForce, 16GB GDDR7, 2602MHz, 128 bits, OpenGL4.6, DLSS 4, Ray Tracing - 90YV0MH0-M0NA00",
@@ -3932,7 +3916,7 @@
       "original_price": null,
       "reference_price": 6588.22,
       "reference_kind": "histórico observado",
-      "reference_samples": 98,
+      "reference_samples": 99,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/730378/placa-de-video-asus-dual-rtx-5060-ti-o16g-nvidia-geforce-16gb-gddr7-2602mhz-128-bits-opengl4-6-dlss-4-ray-tracing-90yv0mh0-m0na00",
@@ -3944,49 +3928,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:08.960011+00:00"
-    },
-    {
-      "title": "Placa de Video Palit RTX 5070 INFINITY 3 NVIDIA GeForce, 12GB, GDDR7, 192bit 3-DP e HDMI - NE75070019K9-GB2050S",
-      "source": "KaBuM!",
-      "store_name": "KaBuM!",
-      "price": 7058.81,
-      "original_price": null,
-      "reference_price": null,
-      "reference_kind": null,
-      "reference_samples": 0,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.kabum.com.br/produto/989623/placa-de-video-palit-rtx-5070-infinity-3-nvidia-geforce-12gb-gddr7-192bit-3-dp-e-hdmi-ne75070019k9-gb2050s",
-      "category": "Placas de vídeo",
-      "tracked": true,
-      "watch_terms": [
-        "GeForce RTX 5070 12GB"
-      ],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:08.726137+00:00"
-    },
-    {
-      "title": "Placa de Vídeo Gigabyte RTX 5070 WINDFORCE OC SFF 12G NVIDIA GeForce, 12GB GDDR7, 192bits, DLSS, Ray Tracing - 9VN5070WO-00-G10",
-      "source": "KaBuM!",
-      "store_name": "KaBuM!",
-      "price": 7058.81,
-      "original_price": null,
-      "reference_price": 7058.81,
-      "reference_kind": "histórico observado",
-      "reference_samples": 8,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.kabum.com.br/produto/714574/placa-de-video-gigabyte-rtx-5070-windforce-oc-sff-12g-nvidia-geforce-12gb-gddr7-192bits-dlss-ray-tracing-9vn5070wo-00-g10",
-      "category": "Placas de vídeo",
-      "tracked": true,
-      "watch_terms": [
-        "GeForce RTX 5070 12GB"
-      ],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:08.741376+00:00"
+      "collected_at": "2026-10-10T15:31:19.508548+00:00"
     },
     {
       "title": "Placa de Vídeo XFX Swift RX 9070 XT TRIPLE FAN GAMING EDITION WITH AMD Radeon, 16GB, GDDR6, HDMI 3xDP, RDNA 4 - RX-97TSWF3B9",
@@ -3996,7 +3938,7 @@
       "original_price": null,
       "reference_price": 8235.28,
       "reference_kind": "histórico observado",
-      "reference_samples": 116,
+      "reference_samples": 117,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/725947/placa-de-video-xfx-swift-rx-9070-xt-triple-fan-gaming-edition-with-amd-radeon-16gb-gddr6-hdmi-3xdp-rdna-4-rx-97tswf3b9",
@@ -4007,7 +3949,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:08.910728+00:00"
+      "collected_at": "2026-10-10T15:31:19.415996+00:00"
     },
     {
       "title": "Placa de Vídeo XFX Swift RX 9070 XT WHITE TRIPLE FAN GAMING EDITION WITH AMD Radeon, 16GB, GDDR6, HDMI 3xDP, RDNA 4 - RX-97TSWF3W9",
@@ -4017,7 +3959,7 @@
       "original_price": null,
       "reference_price": 8235.28,
       "reference_kind": "histórico observado",
-      "reference_samples": 92,
+      "reference_samples": 93,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/725948/placa-de-video-xfx-swift-rx-9070-xt-white-triple-fan-gaming-edition-with-amd-radeon-16gb-gddr6-hdmi-3xdp-rdna-4-rx-97tswf3w9",
@@ -4028,7 +3970,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:08.943857+00:00"
+      "collected_at": "2026-10-10T15:31:19.476499+00:00"
     },
     {
       "title": "Placa de Vídeo Gigabyte RTX 5070 EAGLE OC SFF 12G NVIDIA GeForce, 12GB GDDR7, 192bits, RGB, DLSS, Ray Tracing - GV-N5070EAGLE OC-12GD",
@@ -4038,7 +3980,7 @@
       "original_price": null,
       "reference_price": 7777.77,
       "reference_kind": "histórico observado",
-      "reference_samples": 40,
+      "reference_samples": 41,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/714573/placa-de-video-gigabyte-rtx-5070-eagle-oc-sff-12g-nvidia-geforce-12gb-gddr7-192bits-rgb-dlss-ray-tracing-9vn5070eo-00-g10",
@@ -4049,28 +3991,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:08.791212+00:00"
-    },
-    {
-      "title": "Placa de Vídeo MSI RTX 5070 12G SHADOW 3X OC NVIDIA GeForce, 12GB GDDR7, 2557 MHz, 192-bit, FP4 and DLSS 4, Ray Tracing - G5070-12S3C",
-      "source": "KaBuM!",
-      "store_name": "KaBuM!",
-      "price": 9411.75,
-      "original_price": null,
-      "reference_price": null,
-      "reference_kind": null,
-      "reference_samples": 0,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.kabum.com.br/produto/777166/placa-de-video-msi-rtx-5070-12g-shadow-3x-oc-nvidia-geforce-12gb-gddr7-2557-mhz-192-bit-fp4-and-dlss-4-ray-tracing-g5070-12s3c",
-      "category": "Placas de vídeo",
-      "tracked": true,
-      "watch_terms": [
-        "GeForce RTX 5070 12GB"
-      ],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:08.775305+00:00"
+      "collected_at": "2026-10-10T15:31:19.357254+00:00"
     },
     {
       "title": "Placa de Video Palit GeForce RTX 5070 Ti 16GB GamingPro-S GDDR7 256bits - NE7507T019T2-GB2031U",
@@ -4080,7 +4001,7 @@
       "original_price": null,
       "reference_price": 11764.69,
       "reference_kind": "histórico observado",
-      "reference_samples": 9,
+      "reference_samples": 10,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/988703/placa-de-video-palit-geforce-rtx-5070-ti-16gb-gamingpro-s-gddr7-256bits-ne7507t019t2-gb2031u",
@@ -4092,7 +4013,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:09.073403+00:00"
+      "collected_at": "2026-10-10T15:31:19.039490+00:00"
     },
     {
       "title": "Ilha para Congelados Fricon 1,94 Metros Dupla Ação Preta 568 Litros ICED568-2V030 - 220V",
@@ -4111,7 +4032,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:49.193330+00:00"
+      "collected_at": "2026-10-10T15:30:42.337250+00:00"
     },
     {
       "title": "60771-100059",
@@ -4130,7 +4051,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:24.401335+00:00"
+      "collected_at": "2026-10-10T15:29:44.198214+00:00"
     },
     {
       "title": "Geladeira Consul 333L Frost Free Duplex CRM40MK",
@@ -4149,7 +4070,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:40.782489+00:00"
+      "collected_at": "2026-10-10T15:29:20.622922+00:00"
     },
     {
       "title": "Refrigerador Electrolux Inverse IB7S 49...",
@@ -4168,7 +4089,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.330104+00:00"
+      "collected_at": "2026-10-10T15:30:16.730131+00:00"
     },
     {
       "title": "Refrigerador Side By Side LG de 03 Portas Frost Free com 628 Litros InstaView Inox Look - GC-X267GL5",
@@ -4187,7 +4108,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:36:36.185029+00:00"
+      "collected_at": "2026-10-10T15:28:17.778798+00:00"
     },
     {
       "title": "62343-353899",
@@ -4206,7 +4127,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:24.303565+00:00"
+      "collected_at": "2026-10-10T15:29:44.103840+00:00"
     },
     {
       "title": "Smartphone TCL 60 NXTPAPER Android Tela...",
@@ -4225,26 +4146,26 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.878190+00:00"
+      "collected_at": "2026-10-10T15:30:18.096528+00:00"
     },
     {
-      "title": "Notebook Asus Zenbook A14 Snapdragon X 32GB, 1TB SSD, Tela de 14\" Oled, W11, Zabriskie Beige - UX3407QA-QD391W",
-      "source": "Fast Shop",
-      "store_name": "Fast Shop",
-      "price": 9999.0,
-      "original_price": 13829.0,
-      "reference_price": 13829.0,
+      "title": "Geladeira Brastemp 385L Frost Free Duplex BRM46",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 3119.9,
+      "original_price": 4312.9,
+      "reference_price": 4312.9,
       "reference_kind": "preço anterior anunciado",
       "reference_samples": 1,
       "difference_pct": 27.7,
-      "savings": 3830.0,
-      "url": "https://site.fastshop.com.br/notebook-asus-zenbook-a14-snapdragon-x-32gb--1tb-ssd--tela-de-14--oled--w11--zabriskie-beige---ux3407qa-qd391w-ux3407q391bge_prd-170705/p",
-      "category": "Notebooks",
+      "savings": 1193.0,
+      "url": "https://www.gazin.com.br/produto/geladeira-brastemp-385l-frost-free-duplex-brm46/10201/inox/110-volts",
+      "category": "Eletrodomésticos",
       "tracked": false,
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:36:16.147428+00:00"
+      "collected_at": "2026-10-10T15:29:21.040483+00:00"
     },
     {
       "title": "Smart TV 4K TCL Advanced QD-Mini LED 98” Polegadas com Google TV, 144Hz VRR, Controle Preciso de Iluminação e Tela HVA",
@@ -4263,7 +4184,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:36:25.158897+00:00"
+      "collected_at": "2026-10-10T15:28:04.654474+00:00"
     },
     {
       "title": "Processador Intel Core i5 14600KF, 3.5 GHz (5.3GHz Turbo), 14ª Geração, 14-Cores 20-Threads, LGA 1700, BX8071514600KF",
@@ -4282,7 +4203,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.879101+00:00"
+      "collected_at": "2026-10-10T15:31:12.192181+00:00"
     },
     {
       "title": "Fogão Braslar New Sirius 4 Bocas Manual Mesa em Inox Forno Easy Clean",
@@ -4301,7 +4222,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:20.832368+00:00"
+      "collected_at": "2026-10-10T15:28:49.944541+00:00"
     },
     {
       "title": "Fogão Mueller MFI4BA Acendimento Manual 4 Bocas Mesa Inox Forno 48,1L",
@@ -4320,7 +4241,26 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:42.409997+00:00"
+      "collected_at": "2026-10-10T15:29:23.123085+00:00"
+    },
+    {
+      "title": "Mais Vendido",
+      "source": "Loja TCL",
+      "store_name": "Loja TCL",
+      "price": 3771.08,
+      "original_price": 4299.0,
+      "reference_price": 5197.08,
+      "reference_kind": "referência atual",
+      "reference_samples": 8,
+      "difference_pct": 27.4,
+      "savings": 1426.0,
+      "url": "https://www.lojatcl.com.br/smart-tv-tcl-65-polegadas-qled-4k-t6c-wifi-bluetooth-google-tv-tela-hva-e-hdr10--65t6c-33369/p",
+      "category": "Outros",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": false,
+      "strict_highlight": false,
+      "collected_at": "2026-10-10T15:31:24.297038+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 9 285K, Otimizado para IA, 3.7 Ghz (5.7Ghz Turbo), Série 2, 24-Cores 24-Threads, LGA 1851, BX80768285K",
@@ -4339,7 +4279,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.615032+00:00"
+      "collected_at": "2026-10-10T15:31:11.871818+00:00"
     },
     {
       "title": "Volante Logitech G29 Driving Force para...",
@@ -4358,26 +4298,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:40.059022+00:00"
-    },
-    {
-      "title": "Processador AMD Ryzen 7 5700G, 3.8GHz (4.6GHz Turbo), 8-Cores 16-Threads, Cooler Wraith Stealth, AM4, Com vídeo integrado, 100-100000263BOX",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 1119.99,
-      "original_price": 1521.9,
-      "reference_price": 1521.9,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 26.4,
-      "savings": 401.91,
-      "url": "https://www.terabyteshop.com.br/produto/18973/processador-amd-ryzen-7-5700g-38ghz-46ghz-turbo-8-cores-16-threads-cooler-wraith-stealth-am4-com-video-integrado-100-100000263box",
-      "category": "Processadores",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.972688+00:00"
+      "collected_at": "2026-10-10T15:30:20.840508+00:00"
     },
     {
       "title": "61521-110109",
@@ -4396,7 +4317,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:24.365793+00:00"
+      "collected_at": "2026-10-10T15:29:44.167301+00:00"
     },
     {
       "title": "Processador Amd Ryzen 7 5800x3d Anniversary Edition, 3.4ghz (4.5ghz Turbo), 8-cores 16-threads, Am4, Sem Cooler, Sem Vídeo",
@@ -4415,7 +4336,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.318346+00:00"
+      "collected_at": "2026-10-10T15:31:04.035044+00:00"
     },
     {
       "title": "62359-353903",
@@ -4434,26 +4355,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:24.469349+00:00"
-    },
-    {
-      "title": "Mais Vendido",
-      "source": "Loja TCL",
-      "store_name": "Loja TCL",
-      "price": 3495.08,
-      "original_price": 4699.0,
-      "reference_price": 4699.0,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 25.6,
-      "savings": 1203.92,
-      "url": "https://www.lojatcl.com.br/smart-tv-tcl-65-polegadas-qled-4k-p7l-wifi-bluetooth-google-tv-hdr10--120-hz-vrr-aipq-65p7l-33308/p",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:19.911588+00:00"
+      "collected_at": "2026-10-10T15:29:44.318452+00:00"
     },
     {
       "title": "Máquina de Lavar Brastemp 18 Kg Automática Digital BWF18",
@@ -4472,7 +4374,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:40.656791+00:00"
+      "collected_at": "2026-10-10T15:29:20.355426+00:00"
     },
     {
       "title": "Guarda-Roupa Casal 3 Portas Correr 4 Gavetas Búzios Panan Roupeiro",
@@ -4491,7 +4393,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:21.163162+00:00"
+      "collected_at": "2026-10-10T15:28:51.463788+00:00"
     },
     {
       "title": "Guarda-Roupa Casal 2 Portas Correr 3 Gavetas Ilhéus Panan Roupeiro",
@@ -4510,7 +4412,26 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:21.092549+00:00"
+      "collected_at": "2026-10-10T15:28:51.170585+00:00"
+    },
+    {
+      "title": "Máquina de Lavar Brastemp 16kg Automática Ciclo Tira Manchas BWF16AB",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 2229.9,
+      "original_price": 2973.9,
+      "reference_price": 2973.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 25.0,
+      "savings": 744.0,
+      "url": "https://www.gazin.com.br/produto/maquina-de-lavar-brastemp-16kg-automatica-ciclo-tira-manchas-bwf16ab/10652/branco/110-volts",
+      "category": "Outros",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": false,
+      "strict_highlight": false,
+      "collected_at": "2026-10-10T15:29:20.782409+00:00"
     },
     {
       "title": "Processador AMD Ryzen 9 7900 3.7GHz (5.4GHz Turbo), 12-Cores 24-Threads, AM5, Com Cooler Wraith Prism, 100-100000590BOX",
@@ -4529,7 +4450,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.945366+00:00"
+      "collected_at": "2026-10-10T15:31:12.300018+00:00"
     },
     {
       "title": "Smart TV TCL 55\" UHD 4K QD-Mini LED 55C...",
@@ -4548,7 +4469,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:37.892896+00:00"
+      "collected_at": "2026-10-10T15:30:15.839729+00:00"
     },
     {
       "title": "Smart TV Samsung 43\" Q5F Full HD QLED X...",
@@ -4567,7 +4488,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:37.407415+00:00"
+      "collected_at": "2026-10-10T15:30:14.224438+00:00"
     },
     {
       "title": "62025-177003",
@@ -4586,7 +4507,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:24.448572+00:00"
+      "collected_at": "2026-10-10T15:29:44.276744+00:00"
     },
     {
       "title": "Notebook 15\" Multi Ultra UB365 Intel Pentium Gold 6500Y, Memória 4GB, Armazenamento 128 GB Flash (eMMC), Tela Full HD, Windows 11",
@@ -4605,7 +4526,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.526031+00:00"
+      "collected_at": "2026-10-10T15:30:25.249371+00:00"
     },
     {
       "title": "Ar Condicionado Aiwa Split Hi Wall 1200...",
@@ -4624,7 +4545,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:37.385453+00:00"
+      "collected_at": "2026-10-10T15:30:14.179389+00:00"
     },
     {
       "title": "61206-Branco",
@@ -4643,7 +4564,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:17.514314+00:00"
+      "collected_at": "2026-10-10T15:29:34.305823+00:00"
     },
     {
       "title": "62240-353778",
@@ -4662,7 +4583,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:17.367057+00:00"
+      "collected_at": "2026-10-10T15:29:34.056537+00:00"
     },
     {
       "title": "Processador Intel Core i9 14900, 3.6 GHz (5.8GHz Turbo), 14ª Geração, 24-Cores 32-Threads, LGA 1700, BX8071514900",
@@ -4681,26 +4602,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.701535+00:00"
-    },
-    {
-      "title": "Mais Vendido",
-      "source": "Loja TCL",
-      "store_name": "Loja TCL",
-      "price": 2943.08,
-      "original_price": 3399.0,
-      "reference_price": 3771.08,
-      "reference_kind": "histórico observado",
-      "reference_samples": 150,
-      "difference_pct": 22.0,
-      "savings": 828.0,
-      "url": "https://www.lojatcl.com.br/lava-e-seca-tcl-11kg-7kg-prata-inverter-com-lavagem-a-seco-220v-c311wds-31766/p",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:20.166074+00:00"
+      "collected_at": "2026-10-10T15:31:11.973039+00:00"
     },
     {
       "title": "Notebook Acer Aspire Go 15 AG15-71P-54J6 Intel Core i5-13420H 8GB SSD 256GB 16.6'' Linux 64 bits",
@@ -4719,26 +4621,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:49.831692+00:00"
-    },
-    {
-      "title": "Mais Vendido",
-      "source": "Loja TCL",
-      "store_name": "Loja TCL",
-      "price": 3357.08,
-      "original_price": 4299.0,
-      "reference_price": 4299.0,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 21.9,
-      "savings": 941.92,
-      "url": "https://www.lojatcl.com.br/smart-tv-tcl-55-polegadas-qled-mini-led-4k-a400m-wifi-bluetooth-google-tv-hdr10--144-hz-vrr-55a400m-33281/p",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:20.176373+00:00"
+      "collected_at": "2026-10-10T15:30:34.139647+00:00"
     },
     {
       "title": "Ar Condicionado Aiwa Split Hi Wall 9000...",
@@ -4757,7 +4640,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:37.445209+00:00"
+      "collected_at": "2026-10-10T15:30:14.291856+00:00"
     },
     {
       "title": "Refrigerador Multi Door Electrolux de 04 Portas Frost Free com 541 Litros FlexiSpace Inox Espelhado - IQ8WS",
@@ -4776,7 +4659,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:36:36.084521+00:00"
+      "collected_at": "2026-10-10T15:28:17.606214+00:00"
     },
     {
       "title": "62064-Branco",
@@ -4795,7 +4678,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:17.491841+00:00"
+      "collected_at": "2026-10-10T15:29:34.266267+00:00"
     },
     {
       "title": "Máquina de Lavar Consul 13kg Automática CWH13AB",
@@ -4814,7 +4697,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:41.440952+00:00"
+      "collected_at": "2026-10-10T15:29:21.151231+00:00"
     },
     {
       "title": "62028-177004",
@@ -4833,7 +4716,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:17.347638+00:00"
+      "collected_at": "2026-10-10T15:29:34.022171+00:00"
     },
     {
       "title": "Smartphone Motorola Signature 5G Androi...",
@@ -4852,7 +4735,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:39.035558+00:00"
+      "collected_at": "2026-10-10T15:30:18.264549+00:00"
     },
     {
       "title": "Notebook Lenovo Ultrafino Ideapad Slim 3-15IRH10 Intel Core i5-13420H 8GB SSD 512GB 15.3'' Windows 11",
@@ -4871,7 +4754,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:49.819876+00:00"
+      "collected_at": "2026-10-10T15:30:34.122896+00:00"
     },
     {
       "title": "60871-100443",
@@ -4890,7 +4773,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:24.243326+00:00"
+      "collected_at": "2026-10-10T15:29:44.073010+00:00"
     },
     {
       "title": "Geladeira Brastemp 500L Smart Frost Free Inverse BRE66AB",
@@ -4909,7 +4792,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:41.152847+00:00"
+      "collected_at": "2026-10-10T15:29:20.831126+00:00"
     },
     {
       "title": "Smartphone OPPO A60 ColorOS 14 Tela 6.6...",
@@ -4928,7 +4811,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.945503+00:00"
+      "collected_at": "2026-10-10T15:30:18.212215+00:00"
     },
     {
       "title": "Freezer Horizontal 1 Tampa Consul Dupla Ação 307 Litros CHA31MB Branco 110V",
@@ -4947,7 +4830,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.984699+00:00"
+      "collected_at": "2026-10-10T15:30:41.896354+00:00"
     },
     {
       "title": "Tablet TCL Tab 10L Gen 3 64GB Wi-Fi 10....",
@@ -4966,7 +4849,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:39.759169+00:00"
+      "collected_at": "2026-10-10T15:30:19.711926+00:00"
     },
     {
       "title": "Freezer Vertical Consul 159 Litros CVU18MB Branco - 110V",
@@ -4985,7 +4868,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.953830+00:00"
+      "collected_at": "2026-10-10T15:30:41.862108+00:00"
     },
     {
       "title": "Freezer Expositor Horizontal Metalfrio 399 Litros NF40SB Branco - 220V",
@@ -5004,7 +4887,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:49.098596+00:00"
+      "collected_at": "2026-10-10T15:30:42.126709+00:00"
     },
     {
       "title": "Frigobar Consul 76 Litros CRC08MB Branco - 127V",
@@ -5023,7 +4906,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.875583+00:00"
+      "collected_at": "2026-10-10T15:30:41.793339+00:00"
     },
     {
       "title": "Notebook 15\" Multi Ultra UB366 Intel Pentium Gold 6500Y, Memória 8GB, Armazenamento 128 GB Flash (eMMC), Tela Full HD, Windows 11",
@@ -5042,7 +4925,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.593289+00:00"
+      "collected_at": "2026-10-10T15:30:25.421088+00:00"
     },
     {
       "title": "Smart TV TCL 50\" QLED 4K 50P7L Google T...",
@@ -5061,7 +4944,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:37.613717+00:00"
+      "collected_at": "2026-10-10T15:30:14.962233+00:00"
     },
     {
       "title": "Expositor Refrigerado de Bebidas Metalfrio 343 Litros VB28RH All Black- 220V",
@@ -5080,7 +4963,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:49.171393+00:00"
+      "collected_at": "2026-10-10T15:30:42.296338+00:00"
     },
     {
       "title": "Cervejeira Metalfrio Beer Maxx 264 Litros VN25TP - 220V",
@@ -5099,7 +4982,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:49.134709+00:00"
+      "collected_at": "2026-10-10T15:30:42.212409+00:00"
     },
     {
       "title": "Expositor Refrigerado de Bebidas Metalfrio 326 Litros VB28RB Branco - 220V",
@@ -5118,7 +5001,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:49.080274+00:00"
+      "collected_at": "2026-10-10T15:30:42.066722+00:00"
     },
     {
       "title": "Geladeira Consul 263 Litros CRA30MB Branco - 220V",
@@ -5137,7 +5020,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:48.922201+00:00"
+      "collected_at": "2026-10-10T15:30:41.827628+00:00"
     },
     {
       "title": "Freezer Expositor Horizontal Metalfrio 292 Litros NF30SB Branco - 220V",
@@ -5156,7 +5039,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:49.116763+00:00"
+      "collected_at": "2026-10-10T15:30:42.167065+00:00"
     },
     {
       "title": "Freezer Expositor Horizontal Metalfrio 292 Litros NF30SB Branco - 110V",
@@ -5175,7 +5058,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:49.153594+00:00"
+      "collected_at": "2026-10-10T15:30:42.253066+00:00"
     },
     {
       "title": "Smartphone OPPO A5 4G Android Tela 6.67...",
@@ -5194,7 +5077,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.896960+00:00"
+      "collected_at": "2026-10-10T15:30:18.133595+00:00"
     },
     {
       "title": "Smartphone Samsung Galaxy A57 5G Androi...",
@@ -5213,7 +5096,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:39.086595+00:00"
+      "collected_at": "2026-10-10T15:30:18.371096+00:00"
     },
     {
       "title": "Notebook IdeaPad Slim 3 Intel Core i5-13420H, Memória 8GB, 512GB SSD, Intel UHD Graphics, Tela 15.3\" (1920x1200), Windows 11, 83NS0002BR, LENOVO",
@@ -5232,7 +5115,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:32.453739+00:00"
+      "collected_at": "2026-10-10T15:30:18.089784+00:00"
     },
     {
       "title": "Geladeira Duplex Electrolux 260 Litros DC35A Cycle Defrost Branco - 220V",
@@ -5251,7 +5134,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:49.010967+00:00"
+      "collected_at": "2026-10-10T15:30:41.933012+00:00"
     },
     {
       "title": "Geladeira TCL 589 Litros Inox Twin Eco Inverter Frost Free Multidoor Espaço Flex 110V C589CDN1",
@@ -5270,7 +5153,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:20.132393+00:00"
+      "collected_at": "2026-10-10T15:31:25.048426+00:00"
     },
     {
       "title": "Notebook Lenovo IdeaPad Slim 3 15IRU10...",
@@ -5289,7 +5172,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:39.709606+00:00"
+      "collected_at": "2026-10-10T15:30:19.257714+00:00"
     },
     {
       "title": "Notebook Lenovo IdeaPad Slim 3 15IRU10 Intel Core 3 100U 8GB SSD 256GB 15,3'' Windows 11 Home",
@@ -5308,7 +5191,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:49.804355+00:00"
+      "collected_at": "2026-10-10T15:30:34.104328+00:00"
     },
     {
       "title": "Mais Vendido",
@@ -5327,7 +5210,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:19.943159+00:00"
+      "collected_at": "2026-10-10T15:31:24.493635+00:00"
     },
     {
       "title": "Fogão Atlas Milão Glass 4 Bocas Automático Mesa de Vidro Forno 48L",
@@ -5337,7 +5220,7 @@
       "original_price": 1149.22,
       "reference_price": 1273.43,
       "reference_kind": "histórico observado",
-      "reference_samples": 26,
+      "reference_samples": 28,
       "difference_pct": 16.1,
       "savings": 204.66,
       "url": "https://www.gazin.com.br/produto/fogao-atlas-milao-glass-4-bocas-automatico-mesa-de-vidro-forno-48l/11253/preto/bivolt",
@@ -5346,7 +5229,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:21.368989+00:00"
+      "collected_at": "2026-10-10T15:28:52.426535+00:00"
     },
     {
       "title": "Processador AMD Ryzen 5 7600, 3.8GHz (5.1GHz Turbo), 6-Cores 12-Threads, AM5, Com Cooler AMD Wraith Stealth, 100-100001015BOX",
@@ -5356,7 +5239,7 @@
       "original_price": 1370.9,
       "reference_price": 1549.99,
       "reference_kind": "histórico observado",
-      "reference_samples": 146,
+      "reference_samples": 148,
       "difference_pct": 16.1,
       "savings": 250.0,
       "url": "https://www.terabyteshop.com.br/produto/23415/processador-amd-ryzen-5-7600-38ghz-51ghz-turbo-6-cores-12-threads-am5-com-cooler-amd-wraith-stealth-100-100001015box",
@@ -5365,26 +5248,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:01.105143+00:00"
-    },
-    {
-      "title": "Mais Vendido",
-      "source": "Loja TCL",
-      "store_name": "Loja TCL",
-      "price": 3173.08,
-      "original_price": 3599.0,
-      "reference_price": 3771.08,
-      "reference_kind": "histórico observado",
-      "reference_samples": 150,
-      "difference_pct": 15.9,
-      "savings": 598.0,
-      "url": "https://www.lojatcl.com.br/smart-tv-semp-65-polegadas-led-hva-4k-s62-wifi-bluetooth-google-tv-3-hdmi-hdr10-dolby-audio-65s62-32063/p",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:19.921826+00:00"
+      "collected_at": "2026-10-10T15:31:11.004612+00:00"
     },
     {
       "title": "Notebook Lenovo Ultrafino IdeaPad 1 AMD Ryzen R5-7520U, Mémoria 8GB, 512GB SSD, Windows 11, Tela HD 15.6\", Cloud Grey, 82X5000NBR",
@@ -5403,7 +5267,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.459049+00:00"
+      "collected_at": "2026-10-10T15:30:25.033835+00:00"
     },
     {
       "title": "Lavadora de Roupas Electrolux LEE15 14,...",
@@ -5422,7 +5286,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.059280+00:00"
+      "collected_at": "2026-10-10T15:30:16.125781+00:00"
     },
     {
       "title": "61207-Branco",
@@ -5441,7 +5305,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:17.563521+00:00"
+      "collected_at": "2026-10-10T15:29:34.385947+00:00"
     },
     {
       "title": "Notebook  Asus Vivobook Go 15 AMD Athlon Silver 10 2.4GHz 4GB SSD 128GB 15,6'' Windows 11 Home",
@@ -5460,7 +5324,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:49.792069+00:00"
+      "collected_at": "2026-10-10T15:30:34.087473+00:00"
     },
     {
       "title": "62443-354068",
@@ -5479,7 +5343,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:24.426881+00:00"
+      "collected_at": "2026-10-10T15:29:44.236343+00:00"
     },
     {
       "title": "Processador Intel Core i7 14700KF, 3.4 GHz (5.6GHz Turbo), 14ª Geração, 20-Cores 28-Threads, LGA 1700, BX8071514700KF",
@@ -5489,7 +5353,7 @@
       "original_price": null,
       "reference_price": 3647.04,
       "reference_kind": "histórico observado",
-      "reference_samples": 116,
+      "reference_samples": 118,
       "difference_pct": 15.0,
       "savings": 547.05,
       "url": "https://www.terabyteshop.com.br/produto/26269/processador-intel-core-i7-14700kf-34-ghz-56ghz-turbo-14-geracao-20-cores-28-threads-lga-1700-bx8071514700kf",
@@ -5498,7 +5362,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:02.285885+00:00"
+      "collected_at": "2026-10-10T15:31:12.810834+00:00"
     },
     {
       "title": "Ar Condicionado Split 22000 BTUs TCL Elite Quente/Frio TAC-22CHSA2 - 220V",
@@ -5517,7 +5381,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:09.592451+00:00"
+      "collected_at": "2026-10-10T15:31:12.118042+00:00"
     },
     {
       "title": "Fogão Electrolux FE4GB 4 Bocas Efficien...",
@@ -5536,7 +5400,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:37.635060+00:00"
+      "collected_at": "2026-10-10T15:30:15.004496+00:00"
     },
     {
       "title": "Notebook IdeaPad Slim 3i Intel Core 3 100U, Memória 8GB, 256GB SSD, Tela 15.3\" (1920x1200), Windows 11, 83NU0000BR, LENOVO",
@@ -5555,7 +5419,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.510625+00:00"
+      "collected_at": "2026-10-10T15:30:25.204738+00:00"
     },
     {
       "title": "Notebook 15.6\" Asus Vivobook 15 Intel Core i5-1334U, Memória 8GB, 256 GB SSD NVMe, Windows 11, Tela Full HD, X1504VA-NJ1737W",
@@ -5574,7 +5438,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.441633+00:00"
+      "collected_at": "2026-10-10T15:30:25.002567+00:00"
     },
     {
       "title": "Smartphone Samsung Galaxy A17 5G Androi...",
@@ -5593,7 +5457,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.927687+00:00"
+      "collected_at": "2026-10-10T15:30:18.186280+00:00"
     },
     {
       "title": "Tablet Samsung Galaxy Tab A11 X133 64GB...",
@@ -5612,7 +5476,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:39.741104+00:00"
+      "collected_at": "2026-10-10T15:30:19.505680+00:00"
     },
     {
       "title": "Geladeira TCL 416 Litros Inox Inverter Frost Free Tecnologia AAT Ar Multidirecional 110V P416BF1",
@@ -5631,26 +5495,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:20.153199+00:00"
-    },
-    {
-      "title": "Mais Vendido",
-      "source": "Loja TCL",
-      "store_name": "Loja TCL",
-      "price": 3771.08,
-      "original_price": 4299.0,
-      "reference_price": 4299.0,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 12.3,
-      "savings": 527.92,
-      "url": "https://www.lojatcl.com.br/smart-tv-tcl-65-polegadas-qled-4k-t6c-wifi-bluetooth-google-tv-tela-hva-e-hdr10--65t6c-33369/p",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:19.932528+00:00"
+      "collected_at": "2026-10-10T15:31:25.091701+00:00"
     },
     {
       "title": "60874-100451",
@@ -5669,7 +5514,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:24.339027+00:00"
+      "collected_at": "2026-10-10T15:29:44.135417+00:00"
     },
     {
       "title": "Notebook 15.3\" Acer Aspire Go 5 Intel Core i3-1305U, Memória 8GB, SSD 256GB, Tela Full HD (1920 x 1080), Windows 11, AG15-51P-35JZ",
@@ -5688,7 +5533,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.626034+00:00"
+      "collected_at": "2026-10-10T15:30:25.482220+00:00"
     },
     {
       "title": "Notebook 15.6\" Asus Vivobook Intel Core i3-N305, Memória 8GB, 512 GB SSD NVMe, Linux KeepOS, E1504GA-NJ438",
@@ -5707,7 +5552,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.646358+00:00"
+      "collected_at": "2026-10-10T15:30:25.518378+00:00"
     },
     {
       "title": "Notebook 15.6\" Asus Vivobook Go 15 AMD Ryzen 5 7520U, Memória 8GB, 256 GB SSD NVMe, Windows 11, E1504FA-NJ825W",
@@ -5726,7 +5571,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.494169+00:00"
+      "collected_at": "2026-10-10T15:30:25.150847+00:00"
     },
     {
       "title": "Processador Amd Ryzen 7 5700 Box Am4 4.6ghz 8 Cores 16 Threads 20mb C/ Cooler S/video",
@@ -5745,7 +5590,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.529913+00:00"
+      "collected_at": "2026-10-10T15:31:04.467978+00:00"
     },
     {
       "title": "Mais Vendido",
@@ -5764,7 +5609,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:19.985549+00:00"
+      "collected_at": "2026-10-10T15:31:24.613754+00:00"
     },
     {
       "title": "Computador Miranda Gamer Ryzen 7 5700G, Memória 16GB DDR4, SSD 512GB NVMe, Fonte 500W 80 Plus, Linux, LOGIN",
@@ -5783,26 +5628,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:32.515129+00:00"
-    },
-    {
-      "title": "Mais Vendido",
-      "source": "Loja TCL",
-      "store_name": "Loja TCL",
-      "price": 3955.08,
-      "original_price": 4299.0,
-      "reference_price": 4299.0,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 8.0,
-      "savings": 343.92,
-      "url": "https://www.lojatcl.com.br/ar-condicionado-tcl-split-inverter-12000-btus-frio-hi-wall-renovacao-de-ar-tac-12cfg3w-inv-33027/p",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:20.257491+00:00"
+      "collected_at": "2026-10-10T15:30:18.167635+00:00"
     },
     {
       "title": "Mais Vendido",
@@ -5821,7 +5647,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:19.974794+00:00"
+      "collected_at": "2026-10-10T15:31:24.584422+00:00"
     },
     {
       "title": "Mais Vendido",
@@ -5840,26 +5666,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:19.998427+00:00"
-    },
-    {
-      "title": "Mais Vendido",
-      "source": "Loja TCL",
-      "store_name": "Loja TCL",
-      "price": 5243.08,
-      "original_price": 5699.0,
-      "reference_price": 5699.0,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 8.0,
-      "savings": 455.92,
-      "url": "https://www.lojatcl.com.br/ar-condicionado-tcl-split-inverter-18000-btus-frio-hi-wall-renovacao-de-ar-tac-18cfg3wi-inv-32353/p",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:20.197149+00:00"
+      "collected_at": "2026-10-10T15:31:24.638783+00:00"
     },
     {
       "title": "Mais Vendido",
@@ -5878,7 +5685,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:20.008922+00:00"
+      "collected_at": "2026-10-10T15:31:24.679403+00:00"
     },
     {
       "title": "Smart TV TCL 98 Polegadas QD-Mini LED 4K C8K WiFi Bluetooth Google TV 288Hz VRR HDR10+ 98C8K",
@@ -5897,7 +5704,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:20.040742+00:00"
+      "collected_at": "2026-10-10T15:31:24.806043+00:00"
     },
     {
       "title": "Processador AMD Ryzen 7 5700X, 3.4GHz, Cache 32MB, 8 Núcleos, 16 Threads, Sem Cooler - 100-100000926WOFAM4",
@@ -5916,7 +5723,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.172792+00:00"
+      "collected_at": "2026-10-10T15:31:03.818214+00:00"
     },
     {
       "title": "Roçadeira Guidão a Gasolina Vonder 52cc RGP 520 Nylon e Lâmina de Pontas",
@@ -5935,7 +5742,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:21.465327+00:00"
+      "collected_at": "2026-10-10T15:28:52.311551+00:00"
     },
     {
       "title": "Fogão Atlas Milão Glass 5 Bocas Automático Mesa de Vidro Forno 82L",
@@ -5954,26 +5761,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:21.480917+00:00"
-    },
-    {
-      "title": "Máquina de Lavar Brastemp 16kg Automática Ciclo Tira Manchas BWF16AB",
-      "source": "Gazin",
-      "store_name": "Gazin",
-      "price": 2647.62,
-      "original_price": 2846.9,
-      "reference_price": 2846.9,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 7.0,
-      "savings": 199.28,
-      "url": "https://www.gazin.com.br/produto/maquina-de-lavar-brastemp-16kg-automatica-ciclo-tira-manchas-bwf16ab/10652/branco/220-volts",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:41.352676+00:00"
+      "collected_at": "2026-10-10T15:28:52.532999+00:00"
     },
     {
       "title": "Freezer Midea 234L 1 Porta Horizontal Frost Free MDRC321FFA503",
@@ -5992,7 +5780,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:21.398864+00:00"
+      "collected_at": "2026-10-10T15:28:52.570477+00:00"
     },
     {
       "title": "Smart TV Samsung LED 98\" 4K Wi-Fi One UI Tizen™ Crystal UHD UN98U9500HGXZD",
@@ -6011,26 +5799,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:21.656580+00:00"
-    },
-    {
-      "title": "Placa De Vídeo Gamer Ninja Nvidia Geforce RTX 2060 Ronin, 6gb, Gddr6, Ray Tracing, Gn-pv-nvRTX20606d6",
-      "source": "KaBuM!",
-      "store_name": "KaBuM!",
-      "price": 1414.99,
-      "original_price": null,
-      "reference_price": 1499.99,
-      "reference_kind": "histórico observado",
-      "reference_samples": 68,
-      "difference_pct": 5.7,
-      "savings": 85.0,
-      "url": "https://www.kabum.com.br/produto/1061347/placa-de-video-gamer-ninja-nvidia-geforce-rtx-2060-ronin-6gb-gddr6-ray-tracing-gn-pv-nvrtx20606d6",
-      "category": "Placas de vídeo",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:08.872752+00:00"
+      "collected_at": "2026-10-10T15:28:53.178435+00:00"
     },
     {
       "title": "SSD Kingston 960GB SATA3, Leitura/Gravação 500/450MB/s, SA400S37/960GB",
@@ -6049,7 +5818,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:32.729520+00:00"
+      "collected_at": "2026-10-10T15:30:18.579617+00:00"
     },
     {
       "title": "Memória DDR4 16GB 3200MHz Hiksemi Armor, HSC416U32D2",
@@ -6068,7 +5837,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:32.645077+00:00"
+      "collected_at": "2026-10-10T15:30:18.434955+00:00"
     },
     {
       "title": "Multifuncional Tanque de Tinta Canon Me...",
@@ -6087,7 +5856,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:39.723126+00:00"
+      "collected_at": "2026-10-10T15:30:19.287246+00:00"
     },
     {
       "title": "Projetor Intelbras PFL5211 Full HD 5200...",
@@ -6106,7 +5875,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.582035+00:00"
+      "collected_at": "2026-10-10T15:30:17.227015+00:00"
     },
     {
       "title": "Notebook 15.6\" Asus Vivobook Rose Pink Intel Celeron N4500, Memória 4GB, 128 GB e-MMC, Windows 11, E510KA-BR833WS",
@@ -6125,7 +5894,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.558579+00:00"
+      "collected_at": "2026-10-10T15:30:25.359718+00:00"
     },
     {
       "title": "Chromebook 11,6\" Lenovo 100E Celeron N500, Memória 4Gb, EMMC 64Gb, ChromeOS, 82V0000ABR",
@@ -6144,7 +5913,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.665073+00:00"
+      "collected_at": "2026-10-10T15:30:25.593173+00:00"
     },
     {
       "title": "Notebook 15.3\" Acer Aspire 15 Intel Core i3-N305, Memória 8GB, SSD 256GB, Tela Full HD (1920 x 1080), Linux, A315-510P-320B",
@@ -6163,7 +5932,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.474239+00:00"
+      "collected_at": "2026-10-10T15:30:25.073661+00:00"
     },
     {
       "title": "MacBook Neo de 13 polegadas, Chip A18 Pro, CPU de 6 núcleos, GPU de 5 núcleos, 256GB, Prateado, MHFA4BZ, APPLE",
@@ -6182,7 +5951,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.609746+00:00"
+      "collected_at": "2026-10-10T15:30:25.449817+00:00"
     },
     {
       "title": "Notebook 15.6\" Gamer Lenovo LOQ Intel Core i5-13450HX, NVIDIA GeForce RTX 3050 6GB GDDR6, Memória 16GB, SSD 512GB NVMe, Tela Full HD IPS 144Hz, Windows 11, 83KH0006BR",
@@ -6201,7 +5970,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.540377+00:00"
+      "collected_at": "2026-10-10T15:30:25.295289+00:00"
     },
     {
       "title": "Notebook Acer Travel Mate TMP214 Intel Core i5-1335U 8GB SSD 512GB 14'' Windows 11 Professional",
@@ -6220,7 +5989,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:49.867891+00:00"
+      "collected_at": "2026-10-10T15:30:34.186221+00:00"
     },
     {
       "title": "Smartphone Samsung Galaxy A07 Android T...",
@@ -6239,7 +6008,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:38.853361+00:00"
+      "collected_at": "2026-10-10T15:30:18.060321+00:00"
     },
     {
       "title": "Processador Intel Core I5 14400, 14ª Geração 3.5 Ghz, 4.7 Ghz Turbo, Cache 20mb, LGA1700 - Bx8071514400",
@@ -6258,7 +6027,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.496278+00:00"
+      "collected_at": "2026-10-10T15:31:04.393989+00:00"
     },
     {
       "title": "Processador AMD Ryzen 5 8500G, 3.5 GHz (5.0GHz Max Turbo), Cache 22MB, 6 Núcleos, 12 Threads, AM5, Com Vídeo Integrado - 100-100000931BOX",
@@ -6277,7 +6046,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.984489+00:00"
+      "collected_at": "2026-10-10T15:31:03.393591+00:00"
     },
     {
       "title": "Processador Intel Core I5-10400F, 2.9GHz (4.3GHz Turbo), Hexa Core, Cache 12MB, LGA 1200 - BX8070110400F",
@@ -6287,7 +6056,7 @@
       "original_price": null,
       "reference_price": 917.78,
       "reference_kind": "histórico observado",
-      "reference_samples": 79,
+      "reference_samples": 80,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/162097/processador-intel-core-i5-10400f-2-9ghz-4-3ghz-turbo-hexa-core-cache-12mb-lga-1200-bx8070110400f",
@@ -6296,7 +6065,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.657702+00:00"
+      "collected_at": "2026-10-10T15:31:04.655868+00:00"
     },
     {
       "title": "Climatizador Elgin 45L, Direcionadores de ar horizontal Automático, 3 velocidades, FBFN45M2NA | 220V",
@@ -6306,7 +6075,7 @@
       "original_price": null,
       "reference_price": 1012.77,
       "reference_kind": "histórico observado",
-      "reference_samples": 15,
+      "reference_samples": 16,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.fujioka.com.br/climatizador-elgin-45l-direcionadores-de-ar-horizontal-automatico-nivel-de-agua-3-velocidades-fbfn45m2na-281909/p",
@@ -6315,26 +6084,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:17.431273+00:00"
-    },
-    {
-      "title": "Processador AMD Ryzen 7 5700G, 3.8GHz (4.6GHz Max Turbo), Cache 20MB, Octa Core, AM4, Ví­deo Integrado - 100-100000263BOX",
-      "source": "KaBuM!",
-      "store_name": "KaBuM!",
-      "price": 1281.35,
-      "original_price": null,
-      "reference_price": 1281.35,
-      "reference_kind": "referência atual",
-      "reference_samples": 3,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.kabum.com.br/produto/203463/processador-amd-ryzen-7-5700g-3-8ghz-4-6ghz-max-turbo-cache-20mb-octa-core-am4-vi-deo-integrado-100-100000263box",
-      "category": "Processadores",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.024860+00:00"
+      "collected_at": "2026-10-10T15:29:34.153704+00:00"
     },
     {
       "title": "Processador Intel Core I3-12100, 30GHz, Cache 12MB, 8 Threads, LGA 1700 - Bx8071512100",
@@ -6353,7 +6103,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.728375+00:00"
+      "collected_at": "2026-10-10T15:31:04.767191+00:00"
     },
     {
       "title": "Processador AMD Ryzen 5 8400F, 4.2 GHz (4.7 GHz Max Turbo), Cache 22MB, 6 Núcleos, 12 Threads, AM5, Sem Vídeo Integrado - 100-100001591BOX",
@@ -6372,7 +6122,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.566778+00:00"
+      "collected_at": "2026-10-10T15:31:04.540291+00:00"
     },
     {
       "title": "Processador Intel Core I3 - 14100, 3.5 GHz, (4.7GHz Turbo), Cache 12MB, 8 Threads, LGA 1700 - Bx8071514100",
@@ -6380,7 +6130,7 @@
       "store_name": "KaBuM!",
       "price": 1398.0,
       "original_price": null,
-      "reference_price": 1215.11,
+      "reference_price": 1342.08,
       "reference_kind": "histórico observado",
       "reference_samples": 150,
       "difference_pct": 0.0,
@@ -6391,7 +6141,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.639294+00:00"
+      "collected_at": "2026-10-10T15:31:04.623681+00:00"
     },
     {
       "title": "Processador AMD Ryzen 5 5600GT, 3.6GHz (4.6GHz Turbo), Cache 19MB, 6 Núcleos, Vídeo Integrado Radeon, AM4 - 100-100001488BOX",
@@ -6410,7 +6160,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.266767+00:00"
+      "collected_at": "2026-10-10T15:31:03.957473+00:00"
     },
     {
       "title": "Processador AMD Ryzen 5 7600, 3.8GHz (5.1GHz Max Turbo), Cache 38MB, 6 Núcleos, 12 Threads, AM5, Com Vídeo Integrado - 100-100001015BOX",
@@ -6420,7 +6170,7 @@
       "original_price": null,
       "reference_price": 1549.99,
       "reference_kind": "histórico observado",
-      "reference_samples": 146,
+      "reference_samples": 148,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/405799/processador-amd-ryzen-5-7600-3-8ghz-5-1ghz-max-turbo-cache-38mb-6-nucleos-12-threads-am5-com-video-integrado-100-100001015box",
@@ -6429,7 +6179,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.409556+00:00"
+      "collected_at": "2026-10-10T15:31:04.205571+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 5 225F, 3.3GHz (4.9GHz Turbo), Cache 20MB, 10 Núcleos, 10 Threads, LGA 1851, Sem Vídeo Integrado - BX80768225F",
@@ -6448,7 +6198,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.086307+00:00"
+      "collected_at": "2026-10-10T15:31:03.676107+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 5 245KF, 4.2GHz (5.2GHz Turbo), Cache 24MB, 14 Núcleos, 14 Threads, LGA 1851, Sem Vídeo Integrado - BX80768245KF",
@@ -6467,7 +6217,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.064783+00:00"
+      "collected_at": "2026-10-10T15:31:03.638682+00:00"
     },
     {
       "title": "Processador AMD Ryzen 5 5600XT, 3.7GHz (4.7GHz Max Turbo), Cache 32MB, 6 Núcleos, 12 Threads, AM4, Sem Vídeo Integrado - 100-100001585BOX",
@@ -6477,7 +6227,7 @@
       "original_price": null,
       "reference_price": 1599.99,
       "reference_kind": "histórico observado",
-      "reference_samples": 146,
+      "reference_samples": 147,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/937012/processador-amd-ryzen-5-5600xt-3-7ghz-4-7ghz-max-turbo-cache-32mb-6-nucleos-12-threads-am4-sem-video-integrado-100-100001585box",
@@ -6486,7 +6236,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.427297+00:00"
+      "collected_at": "2026-10-10T15:31:04.251375+00:00"
     },
     {
       "title": "Placa De Vídeo Husky Alpha RX 580, AMD, 8GB, GDDR5, 256-Bit, HDMI, DVI, DisplayPort - HVG580",
@@ -6505,7 +6255,26 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:08.826011+00:00"
+      "collected_at": "2026-10-10T15:31:19.267033+00:00"
+    },
+    {
+      "title": "Processador AMD Ryzen 7 5700G, 3.8GHz (4.6GHz Turbo), 8-Cores 16-Threads, Cooler Wraith Stealth, AM4, Com vídeo integrado, 100-100000263BOX",
+      "source": "TerabyteShop",
+      "store_name": "TerabyteShop",
+      "price": 1899.99,
+      "original_price": null,
+      "reference_price": 1899.99,
+      "reference_kind": "referência atual",
+      "reference_samples": 3,
+      "difference_pct": 0.0,
+      "savings": 0.0,
+      "url": "https://www.terabyteshop.com.br/produto/18973/processador-amd-ryzen-7-5700g-38ghz-46ghz-turbo-8-cores-16-threads-cooler-wraith-stealth-am4-com-video-integrado-100-100000263box",
+      "category": "Processadores",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": false,
+      "strict_highlight": false,
+      "collected_at": "2026-10-10T15:31:12.774492+00:00"
     },
     {
       "title": "Placa De Vídeo MSI RTX 3050 LP OC NVIDIA Geforce, 6GB, GDDR6, 96-Bit, Low Profile - G3050LP6C",
@@ -6515,7 +6284,7 @@
       "original_price": null,
       "reference_price": 1999.88,
       "reference_kind": "histórico observado",
-      "reference_samples": 120,
+      "reference_samples": 121,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/1012613/placa-de-video-msi-rtx-3050-lp-oc-nvidia-geforce-6gb-gddr6-96-bit-low-profile-g3050lp6c",
@@ -6524,7 +6293,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:08.996349+00:00"
+      "collected_at": "2026-10-10T15:31:19.572360+00:00"
     },
     {
       "title": "Processador AMD Ryzen 5 9600X, 3.9 GHz (5.4 GHz Max Turbo), Cache 32MB, 6 Núcleos, 12 Threads, AM5, Sem Vídeo Integrado - 100-100001405WOF",
@@ -6543,7 +6312,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.356474+00:00"
+      "collected_at": "2026-10-10T15:31:04.091117+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 5 225, 3.3GHz (4.9GHz Turbo), Cache 20MB, 10 Núcleos, 10 Threads, LGA 1851, Com Vídeo Integrado - BX80768225",
@@ -6553,7 +6322,7 @@
       "original_price": null,
       "reference_price": 2117.64,
       "reference_kind": "histórico observado",
-      "reference_samples": 13,
+      "reference_samples": 14,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/696999/processador-intel-core-ultra-5-225-3-3ghz-4-9ghz-turbo-cache-20mb-10-nucleos-10-threads-lga-1851-com-video-integrado-bx80768225",
@@ -6562,7 +6331,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.194500+00:00"
+      "collected_at": "2026-10-10T15:31:03.845501+00:00"
     },
     {
       "title": "Processador AMD Ryzen 7 7800x3d, 4.2GHz, 5.0GHz Max Turbo, Cache 104MB, Am5, C/ Vídeo E Sem Cooler - 100-100000910wof",
@@ -6581,7 +6350,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.967090+00:00"
+      "collected_at": "2026-10-10T15:31:03.359453+00:00"
     },
     {
       "title": "Placa de Vídeo PcYes Nvidia Geforce Rtx 3050 6Gb Gddr6 96Bits - Pvpcr30506Gb2F",
@@ -6591,7 +6360,7 @@
       "original_price": null,
       "reference_price": 2352.93,
       "reference_kind": "histórico observado",
-      "reference_samples": 129,
+      "reference_samples": 130,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/998334/placa-de-video-pcyes-nvidia-geforce-rtx-3050-6gb-gddr6-96bits-pvpcr30506gb2f",
@@ -6600,7 +6369,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:08.888309+00:00"
+      "collected_at": "2026-10-10T15:31:19.386782+00:00"
     },
     {
       "title": "Placa de Video MSI GeForce RTX 3050 Ventus OC 2X, 6GB, GDDR6, 96-bit, 912-V812-060",
@@ -6619,7 +6388,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:09.053414+00:00"
+      "collected_at": "2026-10-10T15:31:19.670076+00:00"
     },
     {
       "title": "Processador AMD Ryzen 5 7600X, 4.7GHz (5.3GHz Max Turbo), Cache 38MB, 6 Núcleos, 12 Threads, AM5, Com Vídeo Integrado - 100-100000593WOF",
@@ -6638,7 +6407,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.211833+00:00"
+      "collected_at": "2026-10-10T15:31:03.871308+00:00"
     },
     {
       "title": "Placa de Vídeo RTX 3050 ASUS 6G Dual OC NVIDIA GeForce, 6GB GDDR6, DLSS, Ray Tracing, G-Sync - 90YV0K60-M0NA00",
@@ -6648,7 +6417,7 @@
       "original_price": null,
       "reference_price": 2585.88,
       "reference_kind": "histórico observado",
-      "reference_samples": 118,
+      "reference_samples": 119,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/520492/placa-de-video-rtx-3050-asus-6g-dual-oc-nvidia-geforce-6gb-gddr6-dlss-ray-tracing-g-sync-90yv0k60-m0na00",
@@ -6657,7 +6426,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:08.976970+00:00"
+      "collected_at": "2026-10-10T15:31:19.539666+00:00"
     },
     {
       "title": "Processador AMD Ryzen 7 5700X, 3.4GHz (4.6GHz Max Turbo), Cache 36MB, 8 Núcleos, 16 Threads, AM4, Sem Vídeo Integrado - 100-100000926WOF",
@@ -6676,7 +6445,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.774145+00:00"
+      "collected_at": "2026-10-10T15:31:03.004016+00:00"
     },
     {
       "title": "60223-Branco",
@@ -6695,7 +6464,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:17.532481+00:00"
+      "collected_at": "2026-10-10T15:29:34.346434+00:00"
     },
     {
       "title": "Processador AMD Ryzen 7 5700G, 3.8GHz (4.6GHz Max Turbo), Cache 20MB, 8 Núcleos, 16 Threads, AM4, Com Vídeo Integrado - 100-100000263BOX",
@@ -6703,7 +6472,7 @@
       "store_name": "KaBuM!",
       "price": 2772.91,
       "original_price": null,
-      "reference_price": 1281.35,
+      "reference_price": 1899.99,
       "reference_kind": "referência atual",
       "reference_samples": 3,
       "difference_pct": 0.0,
@@ -6714,7 +6483,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.892704+00:00"
+      "collected_at": "2026-10-10T15:31:03.171362+00:00"
     },
     {
       "title": "Placa de Vídeo RX 7600 Challenger ASRock AMD Radeon, 8GB GDDR6 - 90-GA41ZZ-00UANF",
@@ -6733,7 +6502,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:08.843840+00:00"
+      "collected_at": "2026-10-10T15:31:19.298168+00:00"
     },
     {
       "title": "Processador AMD Ryzen 7 8700G, 4.2GHz (5.1GHz Max Turbo), Cache 8MB, 8 Núcleos, 16 Threads, AM5, Com Vídeo Integrado - 100-100001236SBX",
@@ -6752,7 +6521,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.337440+00:00"
+      "collected_at": "2026-10-10T15:31:04.063523+00:00"
     },
     {
       "title": "Processador AMD Ryzen 7 5800XT, 3.8 GHz (4.8 GHz Max Turbo), Cache 32MB, 8 Núcleos, 16 Threads, AM4, Sem Vídeo Integrado - 100-100001582WOF",
@@ -6771,7 +6540,45 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.132325+00:00"
+      "collected_at": "2026-10-10T15:31:03.757205+00:00"
+    },
+    {
+      "title": "Placa de Vídeo RTX 3060 Gaming OC 8G Gigabyte NVIDIA GeForce, 8GB GDDR6, 128bits, Ray Tracing - GV-N3060GAMING OC-8GD",
+      "source": "KaBuM!",
+      "store_name": "KaBuM!",
+      "price": 3058.81,
+      "original_price": null,
+      "reference_price": null,
+      "reference_kind": null,
+      "reference_samples": 0,
+      "difference_pct": 0.0,
+      "savings": 0.0,
+      "url": "https://www.kabum.com.br/produto/475652/placa-de-video-rtx-3060-gaming-oc-8g-gigabyte-nvidia-geforce-8gb-gddr6-128bits-ray-tracing-gv-n3060gaming-oc-8gd",
+      "category": "Placas de vídeo",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": false,
+      "strict_highlight": false,
+      "collected_at": "2026-10-10T15:31:19.070343+00:00"
+    },
+    {
+      "title": "Placa de Vídeo Inno3D RTX 5050 COMPACT Nvidia GeForce. 8GB, GDDR6, 128bits, DLSS 4, Ray Tracing - N50501-08D6-174080N",
+      "source": "KaBuM!",
+      "store_name": "KaBuM!",
+      "price": 3058.81,
+      "original_price": null,
+      "reference_price": null,
+      "reference_kind": null,
+      "reference_samples": 0,
+      "difference_pct": 0.0,
+      "savings": 0.0,
+      "url": "https://www.kabum.com.br/produto/892594/placa-de-video-inno3d-rtx-5050-compact-nvidia-geforce-8gb-gddr6-128bits-dlss-4-ray-tracing-n50501-08d6-174080n",
+      "category": "Placas de vídeo",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": false,
+      "strict_highlight": false,
+      "collected_at": "2026-10-10T15:31:19.202976+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 5 245K, 4.2GHz (5.2GHz Turbo), Cache 24MB, 14 Núcleos, 14 Threads, LGA 1851, Com Vídeo Integrado - BX80768245K",
@@ -6790,7 +6597,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.698403+00:00"
+      "collected_at": "2026-10-10T15:31:02.754771+00:00"
     },
     {
       "title": "Placa de Vídeo MSI GeForce RTX5050 8GB GDDR6 128BITS VENTUS 2X OC 912-V538-010",
@@ -6800,7 +6607,7 @@
       "original_price": null,
       "reference_price": 3176.46,
       "reference_kind": "histórico observado",
-      "reference_samples": 90,
+      "reference_samples": 91,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/997882/placa-de-video-msi-geforce-rtx5050-8gb-gddr6-128bits-ventus-2x-oc-912-v538-010",
@@ -6809,7 +6616,26 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:08.926249+00:00"
+      "collected_at": "2026-10-10T15:31:19.446245+00:00"
+    },
+    {
+      "title": "Placa de Vídeo GALAX NVIDIA GeForce RTX 5050 1-Click OC, 8GB, GDDR6, 128-Bits, Ray Tracing, DLSS 4 - 55NSL8MHDXRE",
+      "source": "KaBuM!",
+      "store_name": "KaBuM!",
+      "price": 3294.11,
+      "original_price": null,
+      "reference_price": 3294.11,
+      "reference_kind": "histórico observado",
+      "reference_samples": 13,
+      "difference_pct": 0.0,
+      "savings": 0.0,
+      "url": "https://www.kabum.com.br/produto/953957/placa-de-video-galax-nvidia-geforce-rtx-5050-1-click-oc-8gb-gddr6-128-bits-ray-tracing-dlss-4-55nsl8mhdxre",
+      "category": "Placas de vídeo",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": false,
+      "strict_highlight": false,
+      "collected_at": "2026-10-10T15:31:19.141412+00:00"
     },
     {
       "title": "Processador AMD Ryzen 7 5800X3D, 3.4GHZ, 8-CORE, Cache 100MB, AM4 - 100-100000651POF",
@@ -6819,7 +6645,7 @@
       "original_price": null,
       "reference_price": 3411.75,
       "reference_kind": "histórico observado",
-      "reference_samples": 108,
+      "reference_samples": 109,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/1053828/processador-amd-ryzen-7-5800x3d-3-4ghz-8-core-cache-100mb-am4-100-100000651pof",
@@ -6828,7 +6654,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.815454+00:00"
+      "collected_at": "2026-10-10T15:31:03.062355+00:00"
     },
     {
       "title": "Processador AMD Ryzen 9 9900X, 4.4 GHz (5.6 GHz Max Turbo), Cache 64MB, 12 Núcleos, 24 Threads, AM5, Sem Vídeo Integrado - 100-100000662WOF",
@@ -6838,7 +6664,7 @@
       "original_price": null,
       "reference_price": 3416.82,
       "reference_kind": "histórico observado",
-      "reference_samples": 137,
+      "reference_samples": 138,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/609952/processador-amd-ryzen-9-9900x-4-4-ghz-5-6-ghz-max-turbo-cache-64mb-12-nucleos-24-threads-am5-sem-video-integrado-100-100000662wof",
@@ -6847,7 +6673,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.047267+00:00"
+      "collected_at": "2026-10-10T15:31:03.586078+00:00"
     },
     {
       "title": "Processador AMD Ryzen 7 7700X, 4.5GHz (5.4GHz Max Turbo), Cache 40MB, 8 Núcleos, 16 Threads, AM5, Com Vídeo Integrado - 100-100000591WOF",
@@ -6866,7 +6692,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.710353+00:00"
+      "collected_at": "2026-10-10T15:31:04.740000+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 7 265KF, 3.9GHz (5.5GHz Turbo), Cache 30MB, 20 Núcleos, 20 Threads, LGA 1851, Sem Vídeo Integrado - BX80768265KF",
@@ -6876,7 +6702,7 @@
       "original_price": null,
       "reference_price": 2647.05,
       "reference_kind": "histórico observado",
-      "reference_samples": 48,
+      "reference_samples": 50,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/645179/processador-intel-core-ultra-7-265kf-3-9ghz-5-5ghz-turbo-cache-30mb-20-nucleos-20-threads-lga-1851-sem-video-integrado-bx80768265kf",
@@ -6885,26 +6711,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.662202+00:00"
-    },
-    {
-      "title": "Processador AMD Ryzen 9 5900XT, 3.3 GHz (4.8 GHz Max Turbo), Cache 64MB, 16 Núcleos, 32 Threads, AM4, Sem Vídeo Integrado - 100-100001581WOF",
-      "source": "KaBuM!",
-      "store_name": "KaBuM!",
-      "price": 3529.4,
-      "original_price": null,
-      "reference_price": 3529.4,
-      "reference_kind": "histórico observado",
-      "reference_samples": 122,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.kabum.com.br/produto/609953/processador-amd-ryzen-9-5900xt-3-3-ghz-4-8-ghz-max-turbo-cache-64mb-16-nucleos-32-threads-am4-sem-video-integrado-100-100001581wof-",
-      "category": "Processadores",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.950449+00:00"
+      "collected_at": "2026-10-10T15:31:02.897262+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 7 265K, 3.9GHz (5.5GHz Turbo), Cache 30MB, 20 Núcleos, 20 Threads, LGA 1851, Com Vídeo Integrado - BX80768265K",
@@ -6914,7 +6721,7 @@
       "original_price": null,
       "reference_price": 3529.4,
       "reference_kind": "histórico observado",
-      "reference_samples": 8,
+      "reference_samples": 9,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/645178/processador-intel-core-ultra-7-265k-3-9ghz-5-5ghz-turbo-cache-30mb-20-nucleos-20-threads-lga-1851-com-video-integrado-bx80768265k",
@@ -6923,7 +6730,45 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.592602+00:00"
+      "collected_at": "2026-10-10T15:31:02.859255+00:00"
+    },
+    {
+      "title": "Processador AMD Ryzen 9 5900XT, 3.3 GHz (4.8 GHz Max Turbo), Cache 64MB, 16 Núcleos, 32 Threads, AM4, Sem Vídeo Integrado - 100-100001581WOF",
+      "source": "KaBuM!",
+      "store_name": "KaBuM!",
+      "price": 3529.4,
+      "original_price": null,
+      "reference_price": 3529.4,
+      "reference_kind": "histórico observado",
+      "reference_samples": 123,
+      "difference_pct": 0.0,
+      "savings": 0.0,
+      "url": "https://www.kabum.com.br/produto/609953/processador-amd-ryzen-9-5900xt-3-3-ghz-4-8-ghz-max-turbo-cache-64mb-16-nucleos-32-threads-am4-sem-video-integrado-100-100001581wof-",
+      "category": "Processadores",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": false,
+      "strict_highlight": false,
+      "collected_at": "2026-10-10T15:31:03.264816+00:00"
+    },
+    {
+      "title": "Placa de Vídeo PNY RTX 5050 STD 8GB GDDR6 SingleFan NVIDIA GeForce - VCG50508SFXPB1",
+      "source": "KaBuM!",
+      "store_name": "KaBuM!",
+      "price": 3529.4,
+      "original_price": null,
+      "reference_price": null,
+      "reference_kind": null,
+      "reference_samples": 0,
+      "difference_pct": 0.0,
+      "savings": 0.0,
+      "url": "https://www.kabum.com.br/produto/997062/placa-de-video-pny-rtx-5050-std-8gb-gddr6-singlefan-nvidia-geforce-vcg50508sfxpb1",
+      "category": "Placas de vídeo",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": false,
+      "strict_highlight": false,
+      "collected_at": "2026-10-10T15:31:19.110233+00:00"
     },
     {
       "title": "Placa De Vídeo Husky Alpha RTX 3060, Nvidia, 12GB, GDDR6, 192-Bit, Dual Fan, HDMI, 3x DisplayPort - HVG023060",
@@ -6933,7 +6778,7 @@
       "original_price": null,
       "reference_price": 3529.4,
       "reference_kind": "histórico observado",
-      "reference_samples": 88,
+      "reference_samples": 89,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/996572/placa-de-video-husky-alpha-rtx-3060-nvidia-12gb-gddr6-192-bit-dual-fan-hdmi-3x-displayport-hvg023060",
@@ -6942,7 +6787,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:08.808992+00:00"
+      "collected_at": "2026-10-10T15:31:19.234864+00:00"
     },
     {
       "title": "Processador AMD Ryzen 7 7800X3D, 4.2GHz (5.0GHz Max Turbo), Cache 104MB, 8 Núcleos, 16 Threads, AM5, Com Vídeo Integrado - 100-100000910WOF",
@@ -6961,7 +6806,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:59.852624+00:00"
+      "collected_at": "2026-10-10T15:31:03.114480+00:00"
     },
     {
       "title": "61934-265244",
@@ -6971,7 +6816,7 @@
       "original_price": null,
       "reference_price": 4769.1,
       "reference_kind": "histórico observado",
-      "reference_samples": 7,
+      "reference_samples": 8,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.fujioka.com.br/impressora-3d-bambu-lab-a1-ams-lite-bivolt-alta-velocidade-500-mms-sistema-multicores-tela-ips-touch-conectividade-265244/p",
@@ -6980,7 +6825,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:17.413216+00:00"
+      "collected_at": "2026-10-10T15:29:34.119391+00:00"
     },
     {
       "title": "Processador AMD Ryzen 9 9950X, 4.3 GHz (5.7 GHz Max Turbo), Cache 64MB, 16 Núcleos, 32 Threads, AM5, Sem Vídeo Integrado - 100-100001277WOF",
@@ -6999,7 +6844,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.392305+00:00"
+      "collected_at": "2026-10-10T15:31:04.174652+00:00"
     },
     {
       "title": "Processador AMD Ryzen 9 9900x3d, 4,4 GHz, (Máx Boos Clock Até 5,5 GHz), Cache 140MB, 12 Núcleos, Threads 24, AM5 - 100-100001368WOF",
@@ -7018,7 +6863,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.461296+00:00"
+      "collected_at": "2026-10-10T15:31:04.314432+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 9 285K, 3.7GHz (5.7GHz Turbo), Cache 36MB, 24 Núcleos, 24 Threads, LGA 1851, Com Vídeo Integrado - BX80768285K",
@@ -7028,7 +6873,7 @@
       "original_price": null,
       "reference_price": 3149.99,
       "reference_kind": "histórico observado",
-      "reference_samples": 89,
+      "reference_samples": 91,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/645177/processador-intel-core-ultra-9-285k-3-7ghz-5-7ghz-turbo-cache-36mb-24-nucleos-24-threads-lga-1851-com-video-integrado-bx80768285k",
@@ -7037,7 +6882,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.747242+00:00"
+      "collected_at": "2026-10-10T15:31:04.805514+00:00"
     },
     {
       "title": "62036-177011",
@@ -7056,7 +6901,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:38:17.395109+00:00"
+      "collected_at": "2026-10-10T15:29:34.087565+00:00"
     },
     {
       "title": "Processador AMD Ryzen 9 9950X3D, 4.4 GHz (5.5 GHz Max Turbo), Cache 144MB, 16 Núcleos, 32 Threads, AM5, Sem Vídeo Integrado - 100-100000719WOF",
@@ -7075,7 +6920,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.006747+00:00"
+      "collected_at": "2026-10-10T15:31:03.439540+00:00"
     },
     {
       "title": "Processador AMD Ryzen 9 9950X3D2, 4.3GHz (5.7GHz Max Turbo), Cache 144MB, 16 Núcleos, 32 Threads, AM5, Com Vídeo Integrado - 100-100001978WOF",
@@ -7085,7 +6930,7 @@
       "original_price": null,
       "reference_price": 11764.69,
       "reference_kind": "histórico observado",
-      "reference_samples": 112,
+      "reference_samples": 113,
       "difference_pct": 0.0,
       "savings": 0.0,
       "url": "https://www.kabum.com.br/produto/1028554/processador-amd-ryzen-9-9950x3d2-4-3ghz-5-7ghz-max-turbo-cache-144mb-16-nucleos-32-threads-am5-com-video-integrado-100-100001978wof",
@@ -7094,83 +6939,10 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:00.619369+00:00"
-    },
-    {
-      "title": "Placa de Vídeo MSI RTX 5080 16G GAMING TRIO OC NVIDIA GeForce, 16GB, GDDR7, G-Sync, Ray Tracing, DLSS 4, HDR - G5080-16GTC",
-      "source": "KaBuM!",
-      "store_name": "KaBuM!",
-      "price": 18823.52,
-      "original_price": null,
-      "reference_price": 18823.52,
-      "reference_kind": "histórico observado",
-      "reference_samples": 85,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.kabum.com.br/produto/699603/placa-de-video-msi-rtx-5080-16g-gaming-trio-oc-nvidia-geforce-16gb-gddr7-g-sync-ray-tracing-dlss-4-hdr-g5080-16gtc",
-      "category": "Placas de vídeo",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-10-10T08:39:08.710074+00:00"
+      "collected_at": "2026-10-10T15:31:04.584681+00:00"
     }
   ],
   "active": [
-    {
-      "source": "Loja TCL",
-      "title": "Mais Vendido",
-      "price": 992.68,
-      "url": "https://www.lojatcl.com.br/smart-tv-semp-32-polegadas-led-hd-s42-wifi-bluetooth-google-tv-2-hdmi-hdr10-dolby-audio-32s42-32398/p",
-      "store_name": "Loja TCL",
-      "official": true,
-      "available": true,
-      "original_price": 1169.0,
-      "product_id": null,
-      "product_key": "sem-marca|mais|vendido",
-      "collected_at": "2026-10-10T08:39:20.207692+00:00",
-      "metadata": {
-        "collector": "retailer",
-        "direct_retailer": true,
-        "catalog_url": "https://www.lojatcl.com.br/"
-      },
-      "baseline_price": 3771.08,
-      "baseline_kind": "historico",
-      "baseline_samples": 150,
-      "drop_pct": 73.7,
-      "savings": 2778.4,
-      "confidence": "alta",
-      "revalidated": true,
-      "verification_note": "Loja TCL: domínio e preço confirmados novamente",
-      "status": "active"
-    },
-    {
-      "source": "Loja TCL",
-      "title": "Mais Vendido",
-      "price": 1093.88,
-      "url": "https://www.lojatcl.com.br/smart-tv-tcl-32-polegadas-hd-qled-s5k-wifi-bluetooth-google-tv-2-hdmi-hdr10-dolby-audio-32s5k-32534/p",
-      "store_name": "Loja TCL",
-      "official": true,
-      "available": true,
-      "original_price": 1249.0,
-      "product_id": null,
-      "product_key": "sem-marca|mais|vendido",
-      "collected_at": "2026-10-10T08:39:20.186841+00:00",
-      "metadata": {
-        "collector": "retailer",
-        "direct_retailer": true,
-        "catalog_url": "https://www.lojatcl.com.br/"
-      },
-      "baseline_price": 3771.08,
-      "baseline_kind": "historico",
-      "baseline_samples": 150,
-      "drop_pct": 71.0,
-      "savings": 2677.2,
-      "confidence": "alta",
-      "revalidated": true,
-      "verification_note": "Loja TCL: domínio e preço confirmados novamente",
-      "status": "active"
-    },
     {
       "source": "TerabyteShop",
       "title": "Processador Intel Core Ultra 5 245K, Otimizado para IA, 3.6 Ghz (5.2Ghz Turbo), Série 2, 14-Cores 14-Threads, LGA 1851, BX80768245K",
@@ -7182,7 +6954,7 @@
       "original_price": 1933.9,
       "product_id": null,
       "product_key": "sem-marca|bx80768245k|245k",
-      "collected_at": "2026-10-10T08:39:01.560824+00:00",
+      "collected_at": "2026-10-10T15:31:11.799469+00:00",
       "metadata": {
         "collector": "retailer",
         "direct_retailer": true,
@@ -7209,7 +6981,7 @@
       "original_price": 1738.9,
       "product_id": null,
       "product_key": "sem-marca|100000926wof|5700x",
-      "collected_at": "2026-10-10T08:39:00.941254+00:00",
+      "collected_at": "2026-10-10T15:31:10.632618+00:00",
       "metadata": {
         "collector": "retailer",
         "direct_retailer": true,
@@ -7226,30 +6998,111 @@
       "status": "active"
     },
     {
-      "source": "Loja TCL",
-      "title": "Mais Vendido",
-      "price": 1747.08,
-      "url": "https://www.lojatcl.com.br/smart-tv-tcl-43-polegadas-full-hd-qled-s5k-wifi-bluetooth-google-tv-2-hdmi-hdr10-dolby-audio-43s5k-32536/p",
-      "store_name": "Loja TCL",
+      "source": "TerabyteShop",
+      "title": "Processador AMD Ryzen 7 8700F, 4.1GHz (5.0GHz Turbo), 8-Cores 16-Threads, AM5, Com Cooler AMD Wraith Stealth, 100-100001590BOX",
+      "price": 1099.99,
+      "url": "https://www.terabyteshop.com.br/produto/28769/processador-amd-ryzen-7-8700f-41ghz-50ghz-turbo-8-cores-16-threads-am5-com-cooler-amd-wraith-stealth-100-100001590box",
+      "store_name": "TerabyteShop",
       "official": true,
       "available": true,
-      "original_price": 2199.0,
+      "original_price": 1592.9,
       "product_id": null,
-      "product_key": "sem-marca|mais|vendido",
-      "collected_at": "2026-10-10T08:39:20.247045+00:00",
+      "product_key": "sem-marca|100001590box|8700f",
+      "collected_at": "2026-10-10T15:31:11.288039+00:00",
       "metadata": {
         "collector": "retailer",
         "direct_retailer": true,
-        "catalog_url": "https://www.lojatcl.com.br/"
+        "catalog_url": "https://www.terabyteshop.com.br/hardware/processadores"
       },
-      "baseline_price": 3771.08,
+      "baseline_price": 2326.13,
       "baseline_kind": "historico",
       "baseline_samples": 150,
-      "drop_pct": 53.7,
-      "savings": 2024.0,
-      "confidence": "alta",
+      "drop_pct": 52.7,
+      "savings": 1226.14,
+      "confidence": "media",
       "revalidated": true,
-      "verification_note": "Loja TCL: domínio e preço confirmados novamente",
+      "verification_note": "TerabyteShop: domínio e preço confirmados novamente",
+      "status": "active"
+    },
+    {
+      "source": "TerabyteShop",
+      "title": "Processador AMD Ryzen 7 8700G, 4.2GHz (5.1GHz Turbo), 8-Cores 16-Threads, AM5, 100-100001236SBX",
+      "price": 1359.99,
+      "url": "https://www.terabyteshop.com.br/produto/39451/processador-amd-ryzen-7-8700g-42ghz-51ghz-turbo-8-cores-16-threads-am5-100-100001236sbx",
+      "store_name": "TerabyteShop",
+      "official": true,
+      "available": true,
+      "original_price": 2699.99,
+      "product_id": null,
+      "product_key": "sem-marca|100001236sbx|8700g",
+      "collected_at": "2026-10-10T15:31:10.942484+00:00",
+      "metadata": {
+        "collector": "retailer",
+        "direct_retailer": true,
+        "catalog_url": "https://www.terabyteshop.com.br/hardware/processadores"
+      },
+      "baseline_price": 2826.37,
+      "baseline_kind": "historico",
+      "baseline_samples": 150,
+      "drop_pct": 51.9,
+      "savings": 1466.38,
+      "confidence": "media",
+      "revalidated": true,
+      "verification_note": "TerabyteShop: domínio e preço confirmados novamente",
+      "status": "active"
+    },
+    {
+      "source": "TerabyteShop",
+      "title": "Processador AMD Ryzen 7 7700X 4.5GHz (5.4GHz Turbo), 8-Cores 16-Threads, AM5, Sem Cooler, 100-100000591WOF",
+      "price": 1729.99,
+      "url": "https://www.terabyteshop.com.br/produto/22264/processador-amd-ryzen-7-7700x-45ghz-54ghz-turbo-8-cores-16-threads-am5-100-100000591wof",
+      "store_name": "TerabyteShop",
+      "official": true,
+      "available": true,
+      "original_price": 2491.9,
+      "product_id": null,
+      "product_key": "sem-marca|100000591wof|7700x",
+      "collected_at": "2026-10-10T15:31:12.355333+00:00",
+      "metadata": {
+        "collector": "retailer",
+        "direct_retailer": true,
+        "catalog_url": "https://www.terabyteshop.com.br/hardware/processadores"
+      },
+      "baseline_price": 3424.86,
+      "baseline_kind": "historico",
+      "baseline_samples": 150,
+      "drop_pct": 49.5,
+      "savings": 1694.87,
+      "confidence": "media",
+      "revalidated": true,
+      "verification_note": "TerabyteShop: domínio e preço confirmados novamente",
+      "status": "active"
+    },
+    {
+      "source": "TerabyteShop",
+      "title": "Processador Intel Core i7 12700 2,1GHz (4.9GHz Turbo), 12ª Geração, 12-Cores 20-Threads, LGA 1700, Com Cooler, BX8071512700",
+      "price": 1799.99,
+      "url": "https://www.terabyteshop.com.br/produto/20212/processador-intel-core-i7-12700-21ghz-49ghz-turbo-12-geracao-12-cores-20-threads-lga-1700-bx8071512700",
+      "store_name": "TerabyteShop",
+      "official": true,
+      "available": true,
+      "original_price": 3043.9,
+      "product_id": null,
+      "product_key": "sem-marca|bx8071512700|1ghz",
+      "collected_at": "2026-10-10T15:31:12.516955+00:00",
+      "metadata": {
+        "collector": "retailer",
+        "direct_retailer": true,
+        "catalog_url": "https://www.terabyteshop.com.br/hardware/processadores"
+      },
+      "baseline_price": 3529.4,
+      "baseline_kind": "historico",
+      "baseline_samples": 49,
+      "drop_pct": 49.0,
+      "savings": 1729.41,
+      "confidence": "media",
+      "revalidated": true,
+      "verification_note": "TerabyteShop: domínio e preço confirmados novamente",
       "status": "active"
     }
   ],
