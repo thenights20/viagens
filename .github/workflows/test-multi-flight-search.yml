@@ -1,0 +1,30 @@
+name: Validar buscas de passagens combinadas
+
+on:
+  pull_request:
+    paths:
+      - 'docs/flight-explorer.js'
+      - 'docs/index.html'
+      - 'flight-month-search/**'
+      - 'apps-script/Code.gs'
+      - 'tests/test_multi_flight_search.py'
+      - '.github/workflows/test-multi-flight-search.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validar código Python
+        run: |
+          python -m py_compile flight-month-search/multi.py flight-month-search/search.py flight-month-search/multisource.py flight-month-search/resume_cache.py
+          python -m unittest discover -s tests -p test_multi_flight_search.py -v
+      - name: Validar Javascript e Apps Script
+        run: |
+          node --check docs/flight-explorer.js
+          cat apps-script/*.gs > /tmp/flight-bridge.js
+          node --check /tmp/flight-bridge.js
