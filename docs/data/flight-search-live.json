@@ -1,26 +1,44 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-09-28T04:50:06.048092Z",
-  "updated_at": "2026-09-28T04:50:06.048092Z",
-  "started_at": "2026-09-28T04:50:00.943155Z",
-  "status": "completed",
-  "stage": "completed",
-  "mode": "date_range_matrix",
-  "request_id": "web_2ab92b0bcb9c42e4afb97a073ace21fd",
+  "generated_at": "2026-10-14T15:24:34.836546Z",
+  "updated_at": "2026-10-14T15:24:34.836546Z",
+  "started_at": "2026-10-14T15:24:33.556507Z",
+  "status": "running",
+  "stage": "multisource",
+  "mode": "explicit_date_matrix",
+  "request_id": "web_3aeafe9c548f4d3d8ae7ad1fb5fc452f",
   "request": {
-    "origin": "ARU",
-    "destination": "BSB",
-    "month": "2027-02",
-    "period_mode": "range",
-    "start_date": "2027-02-01",
-    "end_date": "2027-04-30",
-    "max_stops": 2
+    "origin": "PPB,ARU,BAU,JTC",
+    "destination": "FLN",
+    "month": "2026-11",
+    "period_mode": "dates",
+    "start_date": "2026-11-10",
+    "end_date": "2026-11-15",
+    "max_stops": 2,
+    "origins": [
+      "PPB",
+      "ARU",
+      "BAU",
+      "JTC"
+    ],
+    "destinations": [
+      "FLN"
+    ],
+    "departure_dates": [
+      "2026-11-10",
+      "2026-11-11",
+      "2026-11-12"
+    ],
+    "return_dates": [
+      "2026-11-14",
+      "2026-11-15"
+    ]
   },
   "stats": {
-    "combinations": 3916,
-    "processed_combinations": 3916,
-    "primary_completed": 3916,
-    "primary_total": 3916,
+    "combinations": 24,
+    "processed_combinations": 0,
+    "primary_completed": 0,
+    "primary_total": 24,
     "fallback_done": 0,
     "fallback_total": 0,
     "priced_combinations": 0,
@@ -67,20 +85,26 @@
     "google"
   ],
   "source_counts": {
-    "google": 5,
+    "google": 0,
     "ita": 0
   },
   "resume": {
     "enabled": true,
     "window_minutes": 60,
-    "cache_id": "ae30e8e992054edb7eb60177",
-    "reused_combinations": 3911,
-    "searched_this_run": 5,
-    "remaining_this_run": 0,
-    "reusable_now": 3916,
-    "retryable_for_next_run": 0,
-    "saved_records": 3916,
+    "cache_id": "multi-web_3aeafe9c548f4d3d8ae7ad1fb5fc452f",
+    "reused_combinations": 0,
+    "searched_this_run": 0,
+    "remaining_this_run": 24,
+    "reusable_now": 0,
+    "retryable_for_next_run": 24,
+    "saved_records": 0,
     "saved_errors": 0,
-    "checkpoint_path": "docs/data/flight-search-checkpoints/ae30e8e992054edb7eb60177.json"
+    "checkpoint_path": "docs/data/flight-search-checkpoints/5c2385f64206066c225da3f9.json",
+    "checkpoint_paths": [
+      "docs/data/flight-search-checkpoints/5c2385f64206066c225da3f9.json",
+      "docs/data/flight-search-checkpoints/d58f9d036656177034f2298b.json",
+      "docs/data/flight-search-checkpoints/2d8c9151099835e362393660.json",
+      "docs/data/flight-search-checkpoints/45323f76bde3c5630bac58bb.json"
+    ]
   }
 }
