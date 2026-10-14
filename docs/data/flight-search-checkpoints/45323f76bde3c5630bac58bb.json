@@ -3,7 +3,7 @@
   "cache_id": "45323f76bde3c5630bac58bb",
   "signature": "JTC|FLN|2026-11-10|2026-11-15|2|BRL|economy|1",
   "created_at": "2026-10-14T15:24:34.836503Z",
-  "updated_at": "2026-10-14T23:40:07.374376Z",
+  "updated_at": "2026-10-14T23:40:14.705353Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "JTC",
@@ -26,17 +26,19 @@
     "2026-11-11|2026-11-14": {
       "departure_date": "2026-11-11",
       "return_date": "2026-11-14",
-      "status": "no_price",
-      "completed_at": "2026-10-14T15:24:44.471351Z",
+      "status": "error",
+      "completed_at": "2026-10-14T23:40:08.585257Z",
       "source": "google",
       "row": null,
-      "errors": []
+      "errors": [
+        "2026-11-11->2026-11-14: ProviderResponseError: Google returned a provider error"
+      ]
     },
     "2026-11-11|2026-11-15": {
       "departure_date": "2026-11-11",
       "return_date": "2026-11-15",
       "status": "no_price",
-      "completed_at": "2026-10-14T15:24:44.471427Z",
+      "completed_at": "2026-10-14T23:40:08.585366Z",
       "source": "google",
       "row": null,
       "errors": []
@@ -45,7 +47,7 @@
       "departure_date": "2026-11-10",
       "return_date": "2026-11-15",
       "status": "no_price",
-      "completed_at": "2026-10-14T15:24:44.471491Z",
+      "completed_at": "2026-10-14T23:40:08.585007Z",
       "source": "google",
       "row": null,
       "errors": []
