@@ -77,6 +77,7 @@
     .month-chip-list{display:flex;flex-wrap:wrap;gap:5px}
     .month-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 7px;border:1px solid rgba(119,167,255,.35);background:rgba(119,167,255,.1);border-radius:8px;font-size:11px}
     .month-chip button{padding:0;border:0;background:transparent;color:var(--hot);font-weight:900;cursor:pointer}
+    .month-search-grid.dates-mode .period-cell{grid-column:span 2}
     .month-dates-groups{display:grid;grid-template-columns:1fr 1fr;gap:9px}
     .month-dates-groups label{font-size:10px}
     #monthPeriodDates .date-block{min-width:0}
@@ -202,7 +203,7 @@
   function pairIndex(startDay,endDay){let pos=0;for(let s=1;s<=30;s++)for(let e=s+1;e<=31;e++){if(s===startDay&&e===endDay)return pos;pos++}return-1}
   function encodeRangeOrigin(origin,startDate,endDate){const oi=ORIGINS.findIndex(x=>x[0]===origin);if(oi<0)return origin;const s=Number(startDate.slice(-2)),e=Number(endDate.slice(-2)),pi=pairIndex(s,e);if(pi<0)return origin;const code=RANGE_CODES[oi*PAIRS_PER_ORIGIN+pi];return code||origin}
 
-  function periodModeChanged(){const mode=q('#monthPeriodMode').value;q('#monthPeriodMonth').hidden=mode!=='month';q('#monthPeriodRange').hidden=mode!=='range';q('#monthPeriodDates').hidden=mode!=='dates';}
+  function periodModeChanged(){const mode=q('#monthPeriodMode').value;q('.month-search-grid').classList.toggle('dates-mode',mode==='dates');q('#monthPeriodMonth').hidden=mode!=='month';q('#monthPeriodRange').hidden=mode!=='range';q('#monthPeriodDates').hidden=mode!=='dates';}
   function renderChips(which){
     const ids={origins:'#monthOriginChips',destinations:'#monthDestinationChips',departures:'#datesDepartureChips',returns:'#datesReturnChips'};
     const container=q(ids[which]);if(!container)return;
