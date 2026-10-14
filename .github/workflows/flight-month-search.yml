@@ -24,7 +24,7 @@ on:
         required: false
         default: "month"
         type: choice
-        options: ["month", "range"]
+        options: ["month", "range", "dates"]
       start_date:
         description: "Data inicial para intervalo (YYYY-MM-DD)"
         required: false
@@ -97,9 +97,9 @@ jobs:
               print('Cancelamento solicitado pelo painel. A execução anterior foi encerrada pelo concurrency.')
               raise SystemExit(0)
 
-          if not re.fullmatch(r'[A-Z]{3}',origin) or not re.fullmatch(r'[A-Z]{3}',dest): raise SystemExit('IATA inválido')
+          if not re.fullmatch(r'[A-Z]{3}(?:,[A-Z]{3})*',origin) or not re.fullmatch(r'[A-Z]{3}(?:,[A-Z]{3})*',dest): raise SystemExit('IATA inválido')
           if not re.fullmatch(r'20\d\d-(0[1-9]|1[0-2])',month): raise SystemExit('Mês inválido')
-          if period_mode not in {'month','range'}: raise SystemExit('Modo de período inválido')
+          if period_mode not in {'month','range','dates'}: raise SystemExit('Modo de período inválido')
           if period_mode == 'range':
               try:
                   start = date.fromisoformat(start_date)
@@ -108,6 +108,15 @@ jobs:
                   raise SystemExit('Datas do intervalo inválidas') from exc
               if end <= start: raise SystemExit('A data final precisa ser posterior à data inicial')
               month = start_date[:7]
+          elif period_mode == 'dates':
+              try:
+                  departures = sorted({date.fromisoformat(x.strip()) for x in start_date.split(',') if x.strip()})
+                  returns = sorted({date.fromisoformat(x.strip()) for x in end_date.split(',') if x.strip()})
+              except ValueError as exc:
+                  raise SystemExit('Datas adicionais inválidas') from exc
+              if not departures or not returns or not any(d < r and d > date.today() for d in departures for r in returns):
+                  raise SystemExit('Nenhuma combinação futura válida de ida e volta')
+              month = departures[0].strftime('%Y-%m')
           else:
               start_date = ''
               end_date = ''
@@ -142,7 +151,7 @@ jobs:
       - name: Validar código
         if: env.SEARCH_CANCEL_ONLY != '1'
         run: |
-          python -m py_compile flight-month-search/search.py flight-month-search/multisource.py flight-month-search/resume_cache.py flight-month-search/swoop_batch_worker.py
+          python -m py_compile flight-month-search/search.py flight-month-search/multisource.py flight-month-search/resume_cache.py flight-month-search/multi.py flight-month-search/swoop_batch_worker.py
           node --check docs/flight-explorer.js
 
       - name: Pesquisar Google Flights + ITA
@@ -152,7 +161,12 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           SEARCH_LIVE_BRANCH: flight-live
           SEARCH_MULTI_WORKERS: "4"
-        run: python flight-month-search/multisource.py
+        run: |
+          if [[ "$SEARCH_PERIOD_MODE" == "dates" || "$SEARCH_ORIGIN" == *,* || "$SEARCH_DESTINATION" == *,* ]]; then
+            python flight-month-search/multi.py
+          else
+            python flight-month-search/multisource.py
+          fi
 
       - name: Validar resultado
         if: env.SEARCH_CANCEL_ONLY != '1'
@@ -162,7 +176,7 @@ jobs:
           from pathlib import Path
           d=json.loads(Path('docs/data/flight-month-search.json').read_text(encoding='utf-8'))
           assert d.get('version')=='0.4.0'
-          assert d.get('mode') in {'full_month_matrix','date_range_matrix'}
+          assert d.get('mode') in {'full_month_matrix','date_range_matrix','explicit_date_matrix'}
           assert d.get('status')=='completed'
           assert d.get('currency')=='BRL'
           assert d.get('source_strategy')=='google_flights_with_ita_verification'
@@ -180,6 +194,13 @@ jobs:
               assert row['departure_date'] < row['return_date']
               assert r['start_date'] <= row['departure_date'] <= r['end_date']
               assert r['start_date'] <= row['return_date'] <= r['end_date']
+              if r.get('period_mode') == 'dates':
+                  assert row['departure_date'] in r.get('departure_dates', [])
+                  assert row['return_date'] in r.get('return_dates', [])
+              if r.get('origins'):
+                  assert row['origin'] in r['origins']
+              if r.get('destinations'):
+                  assert row['destination'] in r['destinations']
               assert row.get('currency','BRL') == 'BRL'
           print('Busca Google+ITA válida:', d['request_id'], r, d['stats'], resume)
           PY

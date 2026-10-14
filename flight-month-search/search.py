@@ -249,7 +249,7 @@ def dedupe(rows: list[dict]) -> list[dict]:
     for row in rows:
         if not row.get("price"):
             continue
-        key = (str(row.get("departure_date")), str(row.get("return_date")))
+        key = (str(row.get("origin") or ""), str(row.get("destination") or ""), str(row.get("departure_date")), str(row.get("return_date")))
         current = best.get(key)
         if current is None or float(row["price"]) < float(current["price"]):
             best[key] = row
@@ -284,7 +284,7 @@ def enrich_with_history(rows: list[dict], history: dict, origin: str, destinatio
     enriched: list[dict] = []
     for original in rows:
         row = dict(original)
-        old = pairs.get(pair_key(origin, destination, row, max_stops))
+        old = pairs.get(pair_key(str(row.get("origin") or origin), str(row.get("destination") or destination), row, max_stops))
         if old and old.get("last_price") is not None:
             previous = float(old["last_price"])
             current = float(row["price"])
@@ -314,7 +314,9 @@ def merge_rows_into_history(history: dict, rows: list[dict], origin: str, destin
     for row in dedupe(rows):
         if row.get("price") is None:
             continue
-        key = pair_key(origin, destination, row, max_stops)
+        row_origin = str(row.get("origin") or origin)
+        row_destination = str(row.get("destination") or destination)
+        key = pair_key(row_origin, row_destination, row, max_stops)
         price = round(float(row["price"]), 2)
         old = dict(pairs.get(key) or {})
         observations = list(old.get("observations") or [])
@@ -326,8 +328,8 @@ def merge_rows_into_history(history: dict, rows: list[dict], origin: str, destin
         min_price = min(float(old.get("min_price", price)), price) if old else price
         max_price = max(float(old.get("max_price", price)), price) if old else price
         pairs[key] = {
-            "origin": origin,
-            "destination": destination,
+            "origin": row_origin,
+            "destination": row_destination,
             "departure_date": row.get("departure_date"),
             "return_date": row.get("return_date"),
             "max_stops": max_stops,
@@ -474,7 +476,7 @@ def make_payload(
         "started_at": started_at,
         "status": status,
         "stage": stage,
-        "mode": "full_month_matrix" if mode == "month" else "date_range_matrix",
+        "mode": "full_month_matrix" if mode == "month" else ("explicit_date_matrix" if mode == "dates" else "date_range_matrix"),
         "request_id": request_id,
         "request": {
             "origin": origin,
