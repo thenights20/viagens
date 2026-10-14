@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-10-14T15:24:42.164094Z",
-  "updated_at": "2026-10-14T15:24:42.164094Z",
+  "generated_at": "2026-10-14T15:24:44.471614Z",
+  "updated_at": "2026-10-14T15:24:44.471614Z",
   "started_at": "2026-10-14T15:24:33.556507Z",
   "status": "running",
   "stage": "multisource",
@@ -36,8 +36,8 @@
   },
   "stats": {
     "combinations": 24,
-    "processed_combinations": 12,
-    "primary_completed": 12,
+    "processed_combinations": 24,
+    "primary_completed": 24,
     "primary_total": 24,
     "fallback_done": 0,
     "fallback_total": 0,
@@ -754,7 +754,10 @@
   ],
   "errors": [
     "PPB->FLN 2026-11-10->2026-11-15: 2026-11-10->2026-11-15: ProviderResponseError: Google returned a provider error",
-    "ARU->FLN 2026-11-10->2026-11-15: 2026-11-10->2026-11-15: ProviderResponseError: Google returned a provider error"
+    "ARU->FLN 2026-11-10->2026-11-15: 2026-11-10->2026-11-15: ProviderResponseError: Google returned a provider error",
+    "ARU->FLN 2026-11-12->2026-11-15: 2026-11-12->2026-11-15: ProviderResponseError: Google returned a provider error",
+    "BAU->FLN 2026-11-10->2026-11-15: 2026-11-10->2026-11-15: ProviderResponseError: Google returned a provider error",
+    "BAU->FLN 2026-11-12->2026-11-14: 2026-11-12->2026-11-14: ProviderResponseError: Google returned a provider error"
   ],
   "currency": "BRL",
   "source_strategy": "google_flights_with_ita_verification",
@@ -784,7 +787,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 12,
+    "google": 24,
     "ita": 0
   },
   "resume": {
@@ -792,12 +795,12 @@
     "window_minutes": 60,
     "cache_id": "multi-web_3aeafe9c548f4d3d8ae7ad1fb5fc452f",
     "reused_combinations": 0,
-    "searched_this_run": 12,
-    "remaining_this_run": 12,
-    "reusable_now": 10,
-    "retryable_for_next_run": 14,
-    "saved_records": 12,
-    "saved_errors": 2,
+    "searched_this_run": 24,
+    "remaining_this_run": 0,
+    "reusable_now": 19,
+    "retryable_for_next_run": 5,
+    "saved_records": 24,
+    "saved_errors": 5,
     "checkpoint_path": "docs/data/flight-search-checkpoints/5c2385f64206066c225da3f9.json",
     "checkpoint_paths": [
       "docs/data/flight-search-checkpoints/5c2385f64206066c225da3f9.json",
@@ -807,9 +810,9 @@
     ]
   },
   "current_pair": {
-    "origin": "BAU",
+    "origin": "JTC",
     "destination": "FLN",
-    "departure_date": "2026-11-10",
+    "departure_date": "2026-11-12",
     "return_date": "2026-11-14"
   }
 }
