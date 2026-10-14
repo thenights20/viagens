@@ -1,14 +1,14 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-10-14T15:24:52.393829Z",
-  "updated_at": "2026-10-14T15:24:52.393829Z",
-  "started_at": "2026-10-14T15:24:33.556507Z",
-  "status": "completed",
-  "stage": "completed",
+  "generated_at": "2026-10-14T15:32:28.139229Z",
+  "updated_at": "2026-10-14T15:32:28.139229Z",
+  "started_at": "2026-10-14T15:32:26.490384Z",
+  "status": "running",
+  "stage": "multisource",
   "mode": "explicit_date_matrix",
-  "request_id": "web_3aeafe9c548f4d3d8ae7ad1fb5fc452f",
+  "request_id": "web_7698d55cae2f428f9f21d73e1fc3442c",
   "request": {
-    "origin": "PPB,ARU,BAU,JTC",
+    "origin": "PPB,ARU,BAU,JTC,GRU,CGH,VCP",
     "destination": "FLN",
     "month": "2026-11",
     "period_mode": "dates",
@@ -19,7 +19,10 @@
       "PPB",
       "ARU",
       "BAU",
-      "JTC"
+      "JTC",
+      "GRU",
+      "CGH",
+      "VCP"
     ],
     "destinations": [
       "FLN"
@@ -35,23 +38,23 @@
     ]
   },
   "stats": {
-    "combinations": 24,
-    "processed_combinations": 24,
-    "primary_completed": 24,
-    "primary_total": 24,
+    "combinations": 42,
+    "processed_combinations": 19,
+    "primary_completed": 19,
+    "primary_total": 42,
     "fallback_done": 0,
     "fallback_total": 0,
     "priced_combinations": 9,
-    "coverage_pct": 37.5,
+    "coverage_pct": 21.4,
     "lowest_price": 1434.0,
     "result_count": 9
   },
   "history_summary": {
-    "compared": 0,
+    "compared": 9,
     "cheaper": 0,
     "higher": 0,
-    "same": 0,
-    "new": 9
+    "same": 9,
+    "new": 0
   },
   "daily_min": [
     {
@@ -78,13 +81,13 @@
         "ita": "https://matrix.itasoftware.com/search#from=PPB&to=FLN&depart=2026-11-10&return=2026-11-14&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1562.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1562.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 6
     },
     {
@@ -111,13 +114,13 @@
         "ita": "https://matrix.itasoftware.com/search#from=PPB&to=FLN&depart=2026-11-11&return=2026-11-14&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1434.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1434.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 1
     },
     {
@@ -144,13 +147,13 @@
         "ita": "https://matrix.itasoftware.com/search#from=PPB&to=FLN&depart=2026-11-12&return=2026-11-14&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1434.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1434.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 2
     }
   ],
@@ -179,13 +182,13 @@
         "ita": "https://matrix.itasoftware.com/search#from=PPB&to=FLN&depart=2026-11-11&return=2026-11-14&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1434.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1434.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 1
     },
     {
@@ -212,13 +215,13 @@
         "ita": "https://matrix.itasoftware.com/search#from=PPB&to=FLN&depart=2026-11-12&return=2026-11-14&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1434.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1434.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 2
     },
     {
@@ -245,13 +248,13 @@
         "ita": "https://matrix.itasoftware.com/search#from=ARU&to=FLN&depart=2026-11-11&return=2026-11-14&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1518.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1518.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 3
     },
     {
@@ -278,13 +281,13 @@
         "ita": "https://matrix.itasoftware.com/search#from=ARU&to=FLN&depart=2026-11-11&return=2026-11-15&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1518.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1518.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 4
     },
     {
@@ -311,13 +314,13 @@
         "ita": "https://matrix.itasoftware.com/search#from=ARU&to=FLN&depart=2026-11-12&return=2026-11-14&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1518.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1518.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 5
     },
     {
@@ -344,13 +347,13 @@
         "ita": "https://matrix.itasoftware.com/search#from=PPB&to=FLN&depart=2026-11-10&return=2026-11-14&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1562.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1562.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 6
     },
     {
@@ -377,13 +380,13 @@
         "ita": "https://matrix.itasoftware.com/search#from=ARU&to=FLN&depart=2026-11-10&return=2026-11-14&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1600.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1600.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 7
     },
     {
@@ -410,13 +413,13 @@
         "ita": "https://matrix.itasoftware.com/search#from=PPB&to=FLN&depart=2026-11-11&return=2026-11-15&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1650.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1650.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 8
     },
     {
@@ -443,13 +446,13 @@
         "ita": "https://matrix.itasoftware.com/search#from=PPB&to=FLN&depart=2026-11-12&return=2026-11-15&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1650.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1650.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 9
     }
   ],
@@ -478,13 +481,13 @@
         "ita": "https://matrix.itasoftware.com/search#from=PPB&to=FLN&depart=2026-11-11&return=2026-11-14&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1434.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1434.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 1
     },
     {
@@ -511,13 +514,13 @@
         "ita": "https://matrix.itasoftware.com/search#from=PPB&to=FLN&depart=2026-11-12&return=2026-11-14&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1434.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1434.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 2
     },
     {
@@ -544,13 +547,13 @@
         "ita": "https://matrix.itasoftware.com/search#from=ARU&to=FLN&depart=2026-11-11&return=2026-11-14&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1518.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1518.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 3
     },
     {
@@ -577,13 +580,13 @@
         "ita": "https://matrix.itasoftware.com/search#from=ARU&to=FLN&depart=2026-11-11&return=2026-11-15&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1518.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1518.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 4
     },
     {
@@ -610,13 +613,13 @@
         "ita": "https://matrix.itasoftware.com/search#from=ARU&to=FLN&depart=2026-11-12&return=2026-11-14&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1518.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1518.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 5
     },
     {
@@ -643,13 +646,13 @@
         "ita": "https://matrix.itasoftware.com/search#from=PPB&to=FLN&depart=2026-11-10&return=2026-11-14&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1562.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1562.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 6
     },
     {
@@ -676,13 +679,13 @@
         "ita": "https://matrix.itasoftware.com/search#from=ARU&to=FLN&depart=2026-11-10&return=2026-11-14&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1600.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1600.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 7
     },
     {
@@ -709,13 +712,13 @@
         "ita": "https://matrix.itasoftware.com/search#from=PPB&to=FLN&depart=2026-11-11&return=2026-11-15&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1650.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1650.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 8
     },
     {
@@ -742,23 +745,17 @@
         "ita": "https://matrix.itasoftware.com/search#from=PPB&to=FLN&depart=2026-11-12&return=2026-11-15&currency=BRL"
       },
       "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
+      "previous_price": 1650.0,
+      "change_amount": 0.0,
+      "change_pct": 0.0,
+      "trend": "same",
+      "historical_min": 1650.0,
+      "history_samples": 1,
+      "previous_seen_at": "2026-10-14T15:24:52.393829Z",
       "rank": 9
     }
   ],
-  "errors": [
-    "PPB->FLN 2026-11-10->2026-11-15: 2026-11-10->2026-11-15: ProviderResponseError: Google returned a provider error",
-    "ARU->FLN 2026-11-10->2026-11-15: 2026-11-10->2026-11-15: ProviderResponseError: Google returned a provider error",
-    "ARU->FLN 2026-11-12->2026-11-15: 2026-11-12->2026-11-15: ProviderResponseError: Google returned a provider error",
-    "BAU->FLN 2026-11-10->2026-11-15: 2026-11-10->2026-11-15: ProviderResponseError: Google returned a provider error",
-    "BAU->FLN 2026-11-12->2026-11-14: 2026-11-12->2026-11-14: ProviderResponseError: Google returned a provider error"
-  ],
+  "errors": [],
   "currency": "BRL",
   "source_strategy": "google_flights_with_ita_verification",
   "sources": {
@@ -787,18 +784,18 @@
     "google"
   ],
   "source_counts": {
-    "google": 24,
+    "google": 0,
     "ita": 0
   },
   "resume": {
     "enabled": true,
     "window_minutes": 60,
-    "cache_id": "multi-web_3aeafe9c548f4d3d8ae7ad1fb5fc452f",
-    "reused_combinations": 0,
-    "searched_this_run": 24,
-    "remaining_this_run": 0,
+    "cache_id": "multi-web_7698d55cae2f428f9f21d73e1fc3442c",
+    "reused_combinations": 19,
+    "searched_this_run": 0,
+    "remaining_this_run": 23,
     "reusable_now": 19,
-    "retryable_for_next_run": 5,
+    "retryable_for_next_run": 23,
     "saved_records": 24,
     "saved_errors": 5,
     "checkpoint_path": "docs/data/flight-search-checkpoints/5c2385f64206066c225da3f9.json",
@@ -806,7 +803,10 @@
       "docs/data/flight-search-checkpoints/5c2385f64206066c225da3f9.json",
       "docs/data/flight-search-checkpoints/d58f9d036656177034f2298b.json",
       "docs/data/flight-search-checkpoints/2d8c9151099835e362393660.json",
-      "docs/data/flight-search-checkpoints/45323f76bde3c5630bac58bb.json"
+      "docs/data/flight-search-checkpoints/45323f76bde3c5630bac58bb.json",
+      "docs/data/flight-search-checkpoints/67bf5d0988d361ecf762c805.json",
+      "docs/data/flight-search-checkpoints/980c1cafb8cbb8b09e85b5cf.json",
+      "docs/data/flight-search-checkpoints/9625ae3b21379bdcf773dc87.json"
     ]
   }
 }
