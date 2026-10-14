@@ -1,10 +1,10 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-10-14T15:32:36.457354Z",
-  "updated_at": "2026-10-14T15:32:36.457354Z",
+  "generated_at": "2026-10-14T15:32:47.562852Z",
+  "updated_at": "2026-10-14T15:32:47.562852Z",
   "started_at": "2026-10-14T15:32:26.490384Z",
-  "status": "running",
-  "stage": "multisource",
+  "status": "completed",
+  "stage": "completed",
   "mode": "explicit_date_matrix",
   "request_id": "web_7698d55cae2f428f9f21d73e1fc3442c",
   "request": {
@@ -39,46 +39,79 @@
   },
   "stats": {
     "combinations": 42,
-    "processed_combinations": 31,
-    "primary_completed": 31,
+    "processed_combinations": 42,
+    "primary_completed": 42,
     "primary_total": 42,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 18,
-    "coverage_pct": 42.9,
-    "lowest_price": 904.0,
-    "result_count": 18
+    "priced_combinations": 29,
+    "coverage_pct": 69.0,
+    "lowest_price": 808.0,
+    "result_count": 29
   },
   "history_summary": {
     "compared": 9,
     "cheaper": 0,
     "higher": 0,
     "same": 9,
-    "new": 9
+    "new": 20
   },
   "daily_min": [
     {
-      "origin": "CGH",
+      "origin": "VCP",
       "destination": "FLN",
       "departure_date": "2026-11-10",
       "return_date": "2026-11-14",
-      "airline": "LATAM",
-      "price": 1055.0,
-      "duration": "1h 10min",
-      "duration_minutes": 70,
+      "airline": "Azul",
+      "price": 978.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
       "stops": "Direto",
       "stops_count": 0,
-      "departure": "[2026, 11, 10] [6, 40]",
-      "arrival": "[2026, 11, 10] [7, 50]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-10+returning+2026-11-14&curr=BRL&hl=pt-BR",
+      "departure": "[2026, 11, 10] [6, 20]",
+      "arrival": "[2026, 11, 10] [7, 35]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-10+returning+2026-11-14&curr=BRL&hl=pt-BR",
       "provider": "Google Flights",
       "source_kind": "google",
       "trip_days": 4,
       "currency": "BRL",
       "price_source_confidence": "structured",
       "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-10+returning+2026-11-14&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=CGH&to=FLN&depart=2026-11-10&return=2026-11-14&currency=BRL"
+        "google": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-10+returning+2026-11-14&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=VCP&to=FLN&depart=2026-11-10&return=2026-11-14&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 11
+    },
+    {
+      "origin": "VCP",
+      "destination": "FLN",
+      "departure_date": "2026-11-11",
+      "return_date": "2026-11-14",
+      "airline": "Azul",
+      "price": 840.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 11] [6, 20]",
+      "arrival": "[2026, 11, 11] [7, 35]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-11+returning+2026-11-14&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 3,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-11+returning+2026-11-14&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=VCP&to=FLN&depart=2026-11-11&return=2026-11-14&currency=BRL"
       },
       "assigned_source": "google",
       "previous_price": null,
@@ -91,27 +124,27 @@
       "rank": 3
     },
     {
-      "origin": "GRU",
+      "origin": "VCP",
       "destination": "FLN",
-      "departure_date": "2026-11-11",
+      "departure_date": "2026-11-12",
       "return_date": "2026-11-14",
-      "airline": "Gol",
-      "price": 904.0,
-      "duration": "4h 05min",
-      "duration_minutes": 245,
-      "stops": "1 escala",
-      "stops_count": 1,
-      "departure": "[2026, 11, 11] [16, 25]",
-      "arrival": "[2026, 11, 11] [23, 15]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+FLN+on+2026-11-11+returning+2026-11-14&curr=BRL&hl=pt-BR",
+      "airline": "Azul",
+      "price": 808.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 12] [13]",
+      "arrival": "[2026, 11, 12] [14, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-12+returning+2026-11-14&curr=BRL&hl=pt-BR",
       "provider": "Google Flights",
       "source_kind": "google",
-      "trip_days": 3,
+      "trip_days": 2,
       "currency": "BRL",
       "price_source_confidence": "structured",
       "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+FLN+on+2026-11-11+returning+2026-11-14&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=FLN&depart=2026-11-11&return=2026-11-14&currency=BRL"
+        "google": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-12+returning+2026-11-14&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=VCP&to=FLN&depart=2026-11-12&return=2026-11-14&currency=BRL"
       },
       "assigned_source": "google",
       "previous_price": null,
@@ -122,43 +155,142 @@
       "history_samples": 0,
       "previous_seen_at": null,
       "rank": 1
-    },
-    {
-      "origin": "GRU",
-      "destination": "FLN",
-      "departure_date": "2026-11-12",
-      "return_date": "2026-11-14",
-      "airline": "LATAM",
-      "price": 1086.0,
-      "duration": "1h 15min",
-      "duration_minutes": 75,
-      "stops": "Direto",
-      "stops_count": 0,
-      "departure": "[2026, 11, 12] [16, 50]",
-      "arrival": "[2026, 11, 12] [18, 5]",
-      "url": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+FLN+on+2026-11-12+returning+2026-11-14&curr=BRL&hl=pt-BR",
-      "provider": "Google Flights",
-      "source_kind": "google",
-      "trip_days": 2,
-      "currency": "BRL",
-      "price_source_confidence": "structured",
-      "search_links": {
-        "google": "https://www.google.com/travel/flights?q=Flights+from+GRU+to+FLN+on+2026-11-12+returning+2026-11-14&curr=BRL&hl=pt-BR",
-        "ita": "https://matrix.itasoftware.com/search#from=GRU&to=FLN&depart=2026-11-12&return=2026-11-14&currency=BRL"
-      },
-      "assigned_source": "google",
-      "previous_price": null,
-      "change_amount": null,
-      "change_pct": null,
-      "trend": "new",
-      "historical_min": null,
-      "history_samples": 0,
-      "previous_seen_at": null,
-      "rank": 4
     }
   ],
   "results": [
     {
+      "origin": "VCP",
+      "destination": "FLN",
+      "departure_date": "2026-11-12",
+      "return_date": "2026-11-14",
+      "airline": "Azul",
+      "price": 808.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 12] [13]",
+      "arrival": "[2026, 11, 12] [14, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-12+returning+2026-11-14&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 2,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-12+returning+2026-11-14&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=VCP&to=FLN&depart=2026-11-12&return=2026-11-14&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 1
+    },
+    {
+      "origin": "VCP",
+      "destination": "FLN",
+      "departure_date": "2026-11-12",
+      "return_date": "2026-11-15",
+      "airline": "Azul",
+      "price": 827.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 12] [13]",
+      "arrival": "[2026, 11, 12] [14, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-12+returning+2026-11-15&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 3,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-12+returning+2026-11-15&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=VCP&to=FLN&depart=2026-11-12&return=2026-11-15&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 2
+    },
+    {
+      "origin": "VCP",
+      "destination": "FLN",
+      "departure_date": "2026-11-11",
+      "return_date": "2026-11-14",
+      "airline": "Azul",
+      "price": 840.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 11] [6, 20]",
+      "arrival": "[2026, 11, 11] [7, 35]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-11+returning+2026-11-14&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 3,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-11+returning+2026-11-14&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=VCP&to=FLN&depart=2026-11-11&return=2026-11-14&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 3
+    },
+    {
+      "origin": "VCP",
+      "destination": "FLN",
+      "departure_date": "2026-11-11",
+      "return_date": "2026-11-15",
+      "airline": "Azul",
+      "price": 859.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 11] [6, 20]",
+      "arrival": "[2026, 11, 11] [7, 35]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-11+returning+2026-11-15&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 4,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-11+returning+2026-11-15&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=VCP&to=FLN&depart=2026-11-11&return=2026-11-15&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 4
+    },
+    {
       "origin": "GRU",
       "destination": "FLN",
       "departure_date": "2026-11-11",
@@ -189,7 +321,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 1
+      "rank": 5
     },
     {
       "origin": "GRU",
@@ -222,7 +354,205 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 2
+      "rank": 6
+    },
+    {
+      "origin": "CGH",
+      "destination": "FLN",
+      "departure_date": "2026-11-11",
+      "return_date": "2026-11-14",
+      "airline": "LATAM",
+      "price": 926.0,
+      "duration": "1h 10min",
+      "duration_minutes": 70,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 11] [6, 40]",
+      "arrival": "[2026, 11, 11] [7, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-11+returning+2026-11-14&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 3,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-11+returning+2026-11-14&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=CGH&to=FLN&depart=2026-11-11&return=2026-11-14&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 7
+    },
+    {
+      "origin": "CGH",
+      "destination": "FLN",
+      "departure_date": "2026-11-11",
+      "return_date": "2026-11-15",
+      "airline": "LATAM",
+      "price": 926.0,
+      "duration": "1h 10min",
+      "duration_minutes": 70,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 11] [6, 40]",
+      "arrival": "[2026, 11, 11] [7, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-11+returning+2026-11-15&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 4,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-11+returning+2026-11-15&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=CGH&to=FLN&depart=2026-11-11&return=2026-11-15&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 8
+    },
+    {
+      "origin": "CGH",
+      "destination": "FLN",
+      "departure_date": "2026-11-12",
+      "return_date": "2026-11-14",
+      "airline": "LATAM",
+      "price": 926.0,
+      "duration": "1h 10min",
+      "duration_minutes": 70,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 12] [6, 40]",
+      "arrival": "[2026, 11, 12] [7, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-12+returning+2026-11-14&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 2,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-12+returning+2026-11-14&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=CGH&to=FLN&depart=2026-11-12&return=2026-11-14&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 9
+    },
+    {
+      "origin": "CGH",
+      "destination": "FLN",
+      "departure_date": "2026-11-12",
+      "return_date": "2026-11-15",
+      "airline": "LATAM",
+      "price": 926.0,
+      "duration": "1h 10min",
+      "duration_minutes": 70,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 12] [6, 40]",
+      "arrival": "[2026, 11, 12] [7, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-12+returning+2026-11-15&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 3,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-12+returning+2026-11-15&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=CGH&to=FLN&depart=2026-11-12&return=2026-11-15&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 10
+    },
+    {
+      "origin": "VCP",
+      "destination": "FLN",
+      "departure_date": "2026-11-10",
+      "return_date": "2026-11-14",
+      "airline": "Azul",
+      "price": 978.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 10] [6, 20]",
+      "arrival": "[2026, 11, 10] [7, 35]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-10+returning+2026-11-14&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 4,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-10+returning+2026-11-14&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=VCP&to=FLN&depart=2026-11-10&return=2026-11-14&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 11
+    },
+    {
+      "origin": "VCP",
+      "destination": "FLN",
+      "departure_date": "2026-11-10",
+      "return_date": "2026-11-15",
+      "airline": "Azul",
+      "price": 997.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 10] [6, 20]",
+      "arrival": "[2026, 11, 10] [7, 35]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-10+returning+2026-11-15&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 5,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-10+returning+2026-11-15&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=VCP&to=FLN&depart=2026-11-10&return=2026-11-15&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 12
     },
     {
       "origin": "CGH",
@@ -255,7 +585,40 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 3
+      "rank": 13
+    },
+    {
+      "origin": "CGH",
+      "destination": "FLN",
+      "departure_date": "2026-11-10",
+      "return_date": "2026-11-15",
+      "airline": "LATAM",
+      "price": 1055.0,
+      "duration": "1h 10min",
+      "duration_minutes": 70,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 10] [6, 40]",
+      "arrival": "[2026, 11, 10] [7, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-10+returning+2026-11-15&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 5,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-10+returning+2026-11-15&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=CGH&to=FLN&depart=2026-11-10&return=2026-11-15&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 14
     },
     {
       "origin": "GRU",
@@ -288,7 +651,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 4
+      "rank": 15
     },
     {
       "origin": "GRU",
@@ -321,7 +684,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 5
+      "rank": 16
     },
     {
       "origin": "GRU",
@@ -354,7 +717,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 6
+      "rank": 17
     },
     {
       "origin": "GRU",
@@ -387,7 +750,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 7
+      "rank": 18
     },
     {
       "origin": "PPB",
@@ -420,7 +783,7 @@
       "historical_min": 1434.0,
       "history_samples": 1,
       "previous_seen_at": "2026-10-14T15:24:52.393829Z",
-      "rank": 8
+      "rank": 19
     },
     {
       "origin": "PPB",
@@ -453,7 +816,7 @@
       "historical_min": 1434.0,
       "history_samples": 1,
       "previous_seen_at": "2026-10-14T15:24:52.393829Z",
-      "rank": 9
+      "rank": 20
     },
     {
       "origin": "ARU",
@@ -486,7 +849,7 @@
       "historical_min": 1518.0,
       "history_samples": 1,
       "previous_seen_at": "2026-10-14T15:24:52.393829Z",
-      "rank": 10
+      "rank": 21
     },
     {
       "origin": "ARU",
@@ -519,7 +882,7 @@
       "historical_min": 1518.0,
       "history_samples": 1,
       "previous_seen_at": "2026-10-14T15:24:52.393829Z",
-      "rank": 11
+      "rank": 22
     },
     {
       "origin": "ARU",
@@ -552,7 +915,7 @@
       "historical_min": 1518.0,
       "history_samples": 1,
       "previous_seen_at": "2026-10-14T15:24:52.393829Z",
-      "rank": 12
+      "rank": 23
     },
     {
       "origin": "ARU",
@@ -585,7 +948,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 13
+      "rank": 24
     },
     {
       "origin": "PPB",
@@ -618,7 +981,7 @@
       "historical_min": 1562.0,
       "history_samples": 1,
       "previous_seen_at": "2026-10-14T15:24:52.393829Z",
-      "rank": 14
+      "rank": 25
     },
     {
       "origin": "ARU",
@@ -651,7 +1014,7 @@
       "historical_min": 1600.0,
       "history_samples": 1,
       "previous_seen_at": "2026-10-14T15:24:52.393829Z",
-      "rank": 15
+      "rank": 26
     },
     {
       "origin": "PPB",
@@ -684,7 +1047,7 @@
       "historical_min": 1650.0,
       "history_samples": 1,
       "previous_seen_at": "2026-10-14T15:24:52.393829Z",
-      "rank": 16
+      "rank": 27
     },
     {
       "origin": "PPB",
@@ -717,7 +1080,7 @@
       "historical_min": 1650.0,
       "history_samples": 1,
       "previous_seen_at": "2026-10-14T15:24:52.393829Z",
-      "rank": 17
+      "rank": 28
     },
     {
       "origin": "PPB",
@@ -750,11 +1113,143 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 18
+      "rank": 29
     }
   ],
   "all_results": [
     {
+      "origin": "VCP",
+      "destination": "FLN",
+      "departure_date": "2026-11-12",
+      "return_date": "2026-11-14",
+      "airline": "Azul",
+      "price": 808.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 12] [13]",
+      "arrival": "[2026, 11, 12] [14, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-12+returning+2026-11-14&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 2,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-12+returning+2026-11-14&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=VCP&to=FLN&depart=2026-11-12&return=2026-11-14&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 1
+    },
+    {
+      "origin": "VCP",
+      "destination": "FLN",
+      "departure_date": "2026-11-12",
+      "return_date": "2026-11-15",
+      "airline": "Azul",
+      "price": 827.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 12] [13]",
+      "arrival": "[2026, 11, 12] [14, 15]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-12+returning+2026-11-15&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 3,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-12+returning+2026-11-15&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=VCP&to=FLN&depart=2026-11-12&return=2026-11-15&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 2
+    },
+    {
+      "origin": "VCP",
+      "destination": "FLN",
+      "departure_date": "2026-11-11",
+      "return_date": "2026-11-14",
+      "airline": "Azul",
+      "price": 840.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 11] [6, 20]",
+      "arrival": "[2026, 11, 11] [7, 35]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-11+returning+2026-11-14&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 3,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-11+returning+2026-11-14&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=VCP&to=FLN&depart=2026-11-11&return=2026-11-14&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 3
+    },
+    {
+      "origin": "VCP",
+      "destination": "FLN",
+      "departure_date": "2026-11-11",
+      "return_date": "2026-11-15",
+      "airline": "Azul",
+      "price": 859.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 11] [6, 20]",
+      "arrival": "[2026, 11, 11] [7, 35]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-11+returning+2026-11-15&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 4,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-11+returning+2026-11-15&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=VCP&to=FLN&depart=2026-11-11&return=2026-11-15&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 4
+    },
+    {
       "origin": "GRU",
       "destination": "FLN",
       "departure_date": "2026-11-11",
@@ -785,7 +1280,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 1
+      "rank": 5
     },
     {
       "origin": "GRU",
@@ -818,7 +1313,205 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 2
+      "rank": 6
+    },
+    {
+      "origin": "CGH",
+      "destination": "FLN",
+      "departure_date": "2026-11-11",
+      "return_date": "2026-11-14",
+      "airline": "LATAM",
+      "price": 926.0,
+      "duration": "1h 10min",
+      "duration_minutes": 70,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 11] [6, 40]",
+      "arrival": "[2026, 11, 11] [7, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-11+returning+2026-11-14&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 3,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-11+returning+2026-11-14&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=CGH&to=FLN&depart=2026-11-11&return=2026-11-14&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 7
+    },
+    {
+      "origin": "CGH",
+      "destination": "FLN",
+      "departure_date": "2026-11-11",
+      "return_date": "2026-11-15",
+      "airline": "LATAM",
+      "price": 926.0,
+      "duration": "1h 10min",
+      "duration_minutes": 70,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 11] [6, 40]",
+      "arrival": "[2026, 11, 11] [7, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-11+returning+2026-11-15&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 4,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-11+returning+2026-11-15&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=CGH&to=FLN&depart=2026-11-11&return=2026-11-15&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 8
+    },
+    {
+      "origin": "CGH",
+      "destination": "FLN",
+      "departure_date": "2026-11-12",
+      "return_date": "2026-11-14",
+      "airline": "LATAM",
+      "price": 926.0,
+      "duration": "1h 10min",
+      "duration_minutes": 70,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 12] [6, 40]",
+      "arrival": "[2026, 11, 12] [7, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-12+returning+2026-11-14&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 2,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-12+returning+2026-11-14&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=CGH&to=FLN&depart=2026-11-12&return=2026-11-14&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 9
+    },
+    {
+      "origin": "CGH",
+      "destination": "FLN",
+      "departure_date": "2026-11-12",
+      "return_date": "2026-11-15",
+      "airline": "LATAM",
+      "price": 926.0,
+      "duration": "1h 10min",
+      "duration_minutes": 70,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 12] [6, 40]",
+      "arrival": "[2026, 11, 12] [7, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-12+returning+2026-11-15&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 3,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-12+returning+2026-11-15&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=CGH&to=FLN&depart=2026-11-12&return=2026-11-15&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 10
+    },
+    {
+      "origin": "VCP",
+      "destination": "FLN",
+      "departure_date": "2026-11-10",
+      "return_date": "2026-11-14",
+      "airline": "Azul",
+      "price": 978.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 10] [6, 20]",
+      "arrival": "[2026, 11, 10] [7, 35]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-10+returning+2026-11-14&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 4,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-10+returning+2026-11-14&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=VCP&to=FLN&depart=2026-11-10&return=2026-11-14&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 11
+    },
+    {
+      "origin": "VCP",
+      "destination": "FLN",
+      "departure_date": "2026-11-10",
+      "return_date": "2026-11-15",
+      "airline": "Azul",
+      "price": 997.0,
+      "duration": "1h 15min",
+      "duration_minutes": 75,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 10] [6, 20]",
+      "arrival": "[2026, 11, 10] [7, 35]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-10+returning+2026-11-15&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 5,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+VCP+to+FLN+on+2026-11-10+returning+2026-11-15&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=VCP&to=FLN&depart=2026-11-10&return=2026-11-15&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 12
     },
     {
       "origin": "CGH",
@@ -851,7 +1544,40 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 3
+      "rank": 13
+    },
+    {
+      "origin": "CGH",
+      "destination": "FLN",
+      "departure_date": "2026-11-10",
+      "return_date": "2026-11-15",
+      "airline": "LATAM",
+      "price": 1055.0,
+      "duration": "1h 10min",
+      "duration_minutes": 70,
+      "stops": "Direto",
+      "stops_count": 0,
+      "departure": "[2026, 11, 10] [6, 40]",
+      "arrival": "[2026, 11, 10] [7, 50]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-10+returning+2026-11-15&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 5,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+CGH+to+FLN+on+2026-11-10+returning+2026-11-15&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=CGH&to=FLN&depart=2026-11-10&return=2026-11-15&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": null,
+      "change_amount": null,
+      "change_pct": null,
+      "trend": "new",
+      "historical_min": null,
+      "history_samples": 0,
+      "previous_seen_at": null,
+      "rank": 14
     },
     {
       "origin": "GRU",
@@ -884,7 +1610,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 4
+      "rank": 15
     },
     {
       "origin": "GRU",
@@ -917,7 +1643,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 5
+      "rank": 16
     },
     {
       "origin": "GRU",
@@ -950,7 +1676,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 6
+      "rank": 17
     },
     {
       "origin": "GRU",
@@ -983,7 +1709,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 7
+      "rank": 18
     },
     {
       "origin": "PPB",
@@ -1016,7 +1742,7 @@
       "historical_min": 1434.0,
       "history_samples": 1,
       "previous_seen_at": "2026-10-14T15:24:52.393829Z",
-      "rank": 8
+      "rank": 19
     },
     {
       "origin": "PPB",
@@ -1049,7 +1775,7 @@
       "historical_min": 1434.0,
       "history_samples": 1,
       "previous_seen_at": "2026-10-14T15:24:52.393829Z",
-      "rank": 9
+      "rank": 20
     },
     {
       "origin": "ARU",
@@ -1082,7 +1808,7 @@
       "historical_min": 1518.0,
       "history_samples": 1,
       "previous_seen_at": "2026-10-14T15:24:52.393829Z",
-      "rank": 10
+      "rank": 21
     },
     {
       "origin": "ARU",
@@ -1115,7 +1841,7 @@
       "historical_min": 1518.0,
       "history_samples": 1,
       "previous_seen_at": "2026-10-14T15:24:52.393829Z",
-      "rank": 11
+      "rank": 22
     },
     {
       "origin": "ARU",
@@ -1148,7 +1874,7 @@
       "historical_min": 1518.0,
       "history_samples": 1,
       "previous_seen_at": "2026-10-14T15:24:52.393829Z",
-      "rank": 12
+      "rank": 23
     },
     {
       "origin": "ARU",
@@ -1181,7 +1907,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 13
+      "rank": 24
     },
     {
       "origin": "PPB",
@@ -1214,7 +1940,7 @@
       "historical_min": 1562.0,
       "history_samples": 1,
       "previous_seen_at": "2026-10-14T15:24:52.393829Z",
-      "rank": 14
+      "rank": 25
     },
     {
       "origin": "ARU",
@@ -1247,7 +1973,7 @@
       "historical_min": 1600.0,
       "history_samples": 1,
       "previous_seen_at": "2026-10-14T15:24:52.393829Z",
-      "rank": 15
+      "rank": 26
     },
     {
       "origin": "PPB",
@@ -1280,7 +2006,7 @@
       "historical_min": 1650.0,
       "history_samples": 1,
       "previous_seen_at": "2026-10-14T15:24:52.393829Z",
-      "rank": 16
+      "rank": 27
     },
     {
       "origin": "PPB",
@@ -1313,7 +2039,7 @@
       "historical_min": 1650.0,
       "history_samples": 1,
       "previous_seen_at": "2026-10-14T15:24:52.393829Z",
-      "rank": 17
+      "rank": 28
     },
     {
       "origin": "PPB",
@@ -1346,7 +2072,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 18
+      "rank": 29
     }
   ],
   "errors": [
@@ -1380,7 +2106,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 12,
+    "google": 23,
     "ita": 0
   },
   "resume": {
@@ -1388,11 +2114,11 @@
     "window_minutes": 60,
     "cache_id": "multi-web_7698d55cae2f428f9f21d73e1fc3442c",
     "reused_combinations": 19,
-    "searched_this_run": 12,
-    "remaining_this_run": 11,
-    "reusable_now": 30,
-    "retryable_for_next_run": 12,
-    "saved_records": 31,
+    "searched_this_run": 23,
+    "remaining_this_run": 0,
+    "reusable_now": 41,
+    "retryable_for_next_run": 1,
+    "saved_records": 42,
     "saved_errors": 1,
     "checkpoint_path": "docs/data/flight-search-checkpoints/5c2385f64206066c225da3f9.json",
     "checkpoint_paths": [
@@ -1404,11 +2130,5 @@
       "docs/data/flight-search-checkpoints/980c1cafb8cbb8b09e85b5cf.json",
       "docs/data/flight-search-checkpoints/9625ae3b21379bdcf773dc87.json"
     ]
-  },
-  "current_pair": {
-    "origin": "CGH",
-    "destination": "FLN",
-    "departure_date": "2026-11-10",
-    "return_date": "2026-11-14"
   }
 }
