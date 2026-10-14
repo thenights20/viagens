@@ -36,6 +36,13 @@ function validDate_(value) {
   return /^20\d\d-(0[1-9]|1[0-2])-([012]\d|3[01])$/.test(String(value || ''));
 }
 
+function validAirportList_(value) {
+  return /^[A-Z]{3}(?:,[A-Z]{3})*$/.test(String(value || ''));
+}
+function validDateList_(value) {
+  return !!String(value || '') && String(value).split(',').every(validDate_);
+}
+
 function setProgress_(jobId, patch) {
   const props = PropertiesService.getScriptProperties();
   const key = 'PROGRESS_' + jobId;
@@ -91,13 +98,20 @@ function startSearch_(body) {
   const maxStops = Number(body.max_stops == null ? 2 : body.max_stops);
   const requestedId = String(body.request_id || '').trim();
 
-  if (!/^[A-Z]{3}$/.test(origin) || !/^[A-Z]{3}$/.test(destination)) throw new Error('Origem/destino inválidos.');
-  if (origin === destination) throw new Error('Origem e destino não podem ser iguais.');
-  if (!['month', 'range'].includes(periodMode)) throw new Error('Tipo de período inválido.');
+  if (!validAirportList_(origin) || !validAirportList_(destination)) throw new Error('Origem/destino inválidos.');
+  if (origin === destination && origin.indexOf(',') === -1) throw new Error('Origem e destino não podem ser iguais.');
+  if (!['month', 'range', 'dates'].includes(periodMode)) throw new Error('Tipo de período inválido.');
   if (periodMode === 'range') {
     if (!validDate_(startDate) || !validDate_(endDate)) throw new Error('Datas do intervalo inválidas.');
     if (endDate <= startDate) throw new Error('A data final precisa ser posterior à data inicial.');
     month = startDate.slice(0, 7);
+  } else if (periodMode === 'dates') {
+    if (!validDateList_(startDate) || !validDateList_(endDate)) throw new Error('Datas de ida e volta inválidas.');
+    const departures = startDate.split(',');
+    const returns = endDate.split(',');
+    const today = new Date().toISOString().slice(0, 10);
+    if (!departures.some(d => d > today && returns.some(r => r > d))) throw new Error('Não há combinação futura válida de ida e volta.');
+    month = departures.slice().sort()[0].slice(0, 7);
   } else {
     if (!/^20\d\d-(0[1-9]|1[0-2])$/.test(month)) throw new Error('Mês inválido.');
     startDate = '';
@@ -147,6 +161,9 @@ function readResult_(job) {
     if ((data.request.period_mode || 'month') !== (job.period_mode || 'month')) return null;
     if ((job.period_mode || 'month') === 'range') {
       if (data.request.start_date !== job.start_date || data.request.end_date !== job.end_date) return null;
+    } else if (job.period_mode === 'dates') {
+      if ((data.request.departure_dates || []).slice().sort().join(',') !== job.start_date.split(',').sort().join(',')) return null;
+      if ((data.request.return_dates || []).slice().sort().join(',') !== job.end_date.split(',').sort().join(',')) return null;
     } else if (data.request.month !== job.month) return null;
     return data;
   } catch (err) {
