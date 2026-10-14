@@ -44,6 +44,7 @@
   let worldAirports = [];
   let worldAirportByCode = new Map();
   let airportSuggestIndex = -1;
+  const selections = {origins:[],destinations:[],departures:[],returns:[]};
   const tabs = q('#flightTabs');
   const app = q('#flightsApp');
   if (!tabs || !app || q('#flightMonthPanel')) return;
@@ -70,6 +71,19 @@
     @media(max-width:760px){body.flight-search-focus header h1{font-size:21px}.month-search-grid{grid-template-columns:1fr 1fr}.month-search-grid .dest-field{grid-column:1/-1}.month-search-grid .period-cell{grid-column:1/-1}.month-search-grid .month-search-action{grid-column:1/-1}.month-search-btn{width:100%}.month-calendar{grid-template-columns:repeat(2,1fr)}.month-cards{grid-template-columns:repeat(2,1fr)}.month-progress-head{align-items:flex-start}.month-progress-title{flex-wrap:wrap}}
   `;
   style.textContent += `.month-result-filters{display:flex;gap:12px;flex-wrap:wrap;align-items:end;padding:12px;margin-bottom:10px}.month-result-filters>div{flex:1;min-width:170px}.month-result-filters label{display:block;margin-bottom:5px}.month-result-filters select{width:100%}.month-day{display:block;text-decoration:none;color:inherit}.month-day:hover,.month-day:focus-visible{border-color:#79a7ff;outline:2px solid #79a7ff;outline-offset:2px}.month-route{font-size:12px;line-height:1.5;color:#a9c5f5}.month-result-caption{padding:4px 12px 12px;color:#9db1ce}`;
+  style.textContent += `
+    .month-chip-tools{display:flex;gap:5px;flex-wrap:wrap;align-items:center;margin-top:5px}
+    .month-chip-add{padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:var(--panel2);color:var(--accent);font-size:11px;cursor:pointer}
+    .month-chip-list{display:flex;flex-wrap:wrap;gap:5px}
+    .month-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 7px;border:1px solid rgba(119,167,255,.35);background:rgba(119,167,255,.1);border-radius:8px;font-size:11px}
+    .month-chip button{padding:0;border:0;background:transparent;color:var(--hot);font-weight:900;cursor:pointer}
+    .month-dates-groups{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+    .month-dates-groups label{font-size:10px}
+    #monthPeriodDates .date-block{min-width:0}
+    #monthPeriodDates .month-chip-tools{align-items:flex-start}
+    .month-search-hint{font-size:10px;color:var(--muted);margin-top:4px}
+    @media(max-width:760px){.month-dates-groups{grid-template-columns:1fr}}
+  `;
   document.head.appendChild(style);
 
   const btn = document.createElement('button');
@@ -78,13 +92,13 @@
 
   const panel=document.createElement('div');panel.id='flightMonthPanel';panel.hidden=true;
   panel.innerHTML=`
-    <div class="month-titlebar"><div><strong>🔎 Buscar passagens · v0.6.5</strong><small>Os achados são salvos durante a pesquisa. Se a execução parar, o que já foi encontrado continua disponível.</small></div><div class="pill"><span class="dot"></span><span id="monthSearchUpdated">Aguardando busca</span></div></div>
+    <div class="month-titlebar"><div><strong>🔎 Buscar passagens · v0.7.0</strong><small>Os achados são salvos durante a pesquisa. Se a execução parar, o que já foi encontrado continua disponível.</small></div><div class="pill"><span class="dot"></span><span id="monthSearchUpdated">Aguardando busca</span></div></div>
     <section class="panel">
       <div class="month-search-grid">
-        <div class="dest-field"><label>Origem</label><input id="monthOrigin" placeholder="Cidade, aeroporto, IATA ou grupo..." autocomplete="off" spellcheck="false"><div id="monthOriginSuggest" class="airport-suggest" hidden></div><small id="originGroupHint" style="display:block;margin-top:4px;color:var(--muted);font-size:9px"></small></div>
-        <div class="dest-field"><label>Destino</label><input id="monthDestination" placeholder="Cidade, aeroporto, IATA ou grupo..." autocomplete="off" spellcheck="false"><div id="monthAirportSuggest" class="airport-suggest" hidden></div><small id="destinationGroupHint" style="display:block;margin-top:4px;color:var(--muted);font-size:9px"></small></div>
-        <div><label>Período</label><select id="monthPeriodMode"><option value="month">Mês inteiro</option><option value="range">Intervalo de datas</option></select></div>
-        <div class="period-cell"><div id="monthPeriodMonth"><label>Mês a pesquisar</label><input id="monthValue" type="month"></div><div id="monthPeriodRange" hidden><label>Datas</label><div class="month-period-range"><input id="rangeStart" type="date" title="Data inicial"><input id="rangeEnd" type="date" title="Data final"></div></div></div>
+        <div class="dest-field"><label>Origem</label><input id="monthOrigin" placeholder="Cidade, aeroporto, IATA ou grupo..." autocomplete="off" spellcheck="false"><div id="monthOriginSuggest" class="airport-suggest" hidden></div><div class="month-chip-tools"><button type="button" class="month-chip-add" id="addMonthOrigin">+ Adicionar origem</button><div class="month-chip-list" id="monthOriginChips"></div></div><small id="originGroupHint" style="display:block;margin-top:4px;color:var(--muted);font-size:9px"></small></div>
+        <div class="dest-field"><label>Destino</label><input id="monthDestination" placeholder="Cidade, aeroporto, IATA ou grupo..." autocomplete="off" spellcheck="false"><div id="monthAirportSuggest" class="airport-suggest" hidden></div><div class="month-chip-tools"><button type="button" class="month-chip-add" id="addMonthDestination">+ Adicionar destino</button><div class="month-chip-list" id="monthDestinationChips"></div></div><small id="destinationGroupHint" style="display:block;margin-top:4px;color:var(--muted);font-size:9px"></small></div>
+        <div><label>Período</label><select id="monthPeriodMode"><option value="month">Mês inteiro</option><option value="range">Intervalo de datas</option><option value="dates">Datas específicas de ida e volta</option></select></div>
+        <div class="period-cell"><div id="monthPeriodMonth"><label>Mês a pesquisar</label><input id="monthValue" type="month"></div><div id="monthPeriodRange" hidden><label>Datas</label><div class="month-period-range"><input id="rangeStart" type="date" title="Data inicial"><input id="rangeEnd" type="date" title="Data final"></div></div><div id="monthPeriodDates" hidden><div class="month-dates-groups"><div class="date-block"><label for="datesDeparture">Datas de ida</label><input type="date" id="datesDeparture"><div class="month-chip-tools"><button type="button" class="month-chip-add" id="addDeparture">+ Outra ida</button><div class="month-chip-list" id="datesDepartureChips"></div></div></div><div class="date-block"><label for="datesReturn">Datas de volta</label><input type="date" id="datesReturn"><div class="month-chip-tools"><button type="button" class="month-chip-add" id="addReturn">+ Outra volta</button><div class="month-chip-list" id="datesReturnChips"></div></div></div></div><div class="month-search-hint">As datas de ida serão cruzadas com todas as datas de volta posteriores.</div></div></div>
         <div><label>Escalas</label><select id="monthStops"><option value="0">Direto</option><option value="1">Até 1</option><option value="2" selected>Até 2</option></select></div>
         <div class="month-search-action"><button type="button" class="month-search-btn" id="monthSearchButton">🔎 Pesquisar agora</button></div>
       </div>
@@ -120,7 +134,7 @@
   const monthInput=q('#monthValue');monthInput.min=monthKey(new Date(now.getFullYear(),now.getMonth(),1));monthInput.max=monthKey(new Date(now.getFullYear(),now.getMonth()+18,1));monthInput.value=monthKey(new Date(now.getFullYear(),now.getMonth()+1,1));
   const defaultRangeStart=new Date(now.getFullYear(),now.getMonth()+1,10),defaultRangeEnd=new Date(now.getFullYear(),now.getMonth()+1,15);
   q('#rangeStart').min=dateKey(new Date(now.getFullYear(),now.getMonth(),now.getDate()+1));q('#rangeStart').max=dateKey(new Date(now.getFullYear(),now.getMonth()+19,0));q('#rangeStart').value=dateKey(defaultRangeStart);
-  q('#rangeEnd').min=q('#rangeStart').min;q('#rangeEnd').max=q('#rangeStart').max;q('#rangeEnd').value=dateKey(defaultRangeEnd);monthInput.addEventListener('change',()=>{const s=q('#monthSearchStatus');if(s&&monthInput.value)s.textContent='Mês selecionado: '+monthLabel(monthInput.value)+'. Clique em Pesquisar agora para iniciar.';});
+  q('#rangeEnd').min=q('#rangeStart').min;q('#rangeEnd').max=q('#rangeStart').max;q('#rangeEnd').value=dateKey(defaultRangeEnd);for(const [id,v] of [['#datesDeparture',dateKey(defaultRangeStart)],['#datesReturn',dateKey(defaultRangeEnd)]]){q(id).min=q('#rangeStart').min;q(id).max=q('#rangeStart').max;q(id).value=v;}monthInput.addEventListener('change',()=>{const s=q('#monthSearchStatus');if(s&&monthInput.value)s.textContent='Mês selecionado: '+monthLabel(monthInput.value)+'. Clique em Pesquisar agora para iniciar.';});
 
   function fallbackAirports(){return DESTINATIONS.map(([code,name])=>({code,name,city:name,state:'',country:''}));}
   function setWorldAirports(list){
@@ -188,23 +202,61 @@
   function pairIndex(startDay,endDay){let pos=0;for(let s=1;s<=30;s++)for(let e=s+1;e<=31;e++){if(s===startDay&&e===endDay)return pos;pos++}return-1}
   function encodeRangeOrigin(origin,startDate,endDate){const oi=ORIGINS.findIndex(x=>x[0]===origin);if(oi<0)return origin;const s=Number(startDate.slice(-2)),e=Number(endDate.slice(-2)),pi=pairIndex(s,e);if(pi<0)return origin;const code=RANGE_CODES[oi*PAIRS_PER_ORIGIN+pi];return code||origin}
 
-  function periodModeChanged(){const range=q('#monthPeriodMode').value==='range';q('#monthPeriodMonth').hidden=range;q('#monthPeriodRange').hidden=!range;}
+  function periodModeChanged(){const mode=q('#monthPeriodMode').value;q('#monthPeriodMonth').hidden=mode!=='month';q('#monthPeriodRange').hidden=mode!=='range';q('#monthPeriodDates').hidden=mode!=='dates';}
+  function renderChips(which){
+    const ids={origins:'#monthOriginChips',destinations:'#monthDestinationChips',departures:'#datesDepartureChips',returns:'#datesReturnChips'};
+    const container=q(ids[which]);if(!container)return;
+    container.innerHTML=selections[which].map((code,i)=>`<span class="month-chip">${esc(which==='origins'||which==='destinations'?airportName(code)+' ('+code+')':fmtDate(code))}<button type="button" data-index="${i}" aria-label="Remover">×</button></span>`).join('');
+    container.querySelectorAll('button[data-index]').forEach(b=>b.addEventListener('click',()=>{selections[which].splice(Number(b.dataset.index),1);renderChips(which);}));
+  }
+  function addAirportChip(which,inputId){
+    const input=q(inputId),code=resolveAirport(input.value,inputId);
+    if(!code){q('#monthSearchStatus').textContent='Selecione primeiro uma cidade ou aeroporto válido para adicionar.';return}
+    if(!selections[which].includes(code))selections[which].push(code);
+    input.value='';input.dataset.iata='';renderChips(which);
+    const box=q(which==='origins'?'#monthOriginSuggest':'#monthAirportSuggest');if(box)box.hidden=true;
+  }
+  function addDateChip(which,inputId){
+    const input=q(inputId),value=input.value;
+    if(!/^20\d{2}-\d{2}-\d{2}$/.test(value)){q('#monthSearchStatus').textContent='Escolha uma data válida antes de adicioná-la.';return}
+    if(!selections[which].includes(value))selections[which].push(value);
+    selections[which].sort();input.value='';renderChips(which);
+  }
+  function searchAirports(which,id){
+    const typed=q(id).value.trim(),code=typed?resolveAirport(typed,id):'';
+    if(typed&&!code)return [];
+    return [...new Set([...selections[which],...(code?[code]:[])].flatMap(x=>AIRPORT_GROUPS[x]||[x]))];
+  }
+  function searchDates(which,id){
+    return [...new Set([...selections[which],q(id).value].filter(Boolean))].sort();
+  }
   function formRequest(){
-    const origin=resolveAirport(q('#monthOrigin').value,'#monthOrigin'),destination=resolveDestination(q('#monthDestination').value),mode=q('#monthPeriodMode').value,max_stops=Number(q('#monthStops').value);
-    const origins=AIRPORT_GROUPS[origin]||[origin],destinations=AIRPORT_GROUPS[destination]||[destination];
+    const origins=searchAirports('origins','#monthOrigin'),destinations=searchAirports('destinations','#monthDestination');
+    const mode=q('#monthPeriodMode').value,max_stops=Number(q('#monthStops').value);
+    const base={origin:origins.join(','),destination:destinations.join(','),origins,destinations,period_mode:mode,max_stops,dispatch_origin:origins.join(',')};
+    if(mode==='dates'){
+      const departure_dates=searchDates('departures','#datesDeparture'),return_dates=searchDates('returns','#datesReturn');
+      return {...base,departure_dates,return_dates,start_date:departure_dates.join(','),end_date:return_dates.join(','),month:departure_dates[0]?.slice(0,7)||''};
+    }
     if(mode==='range'){
-      const start=q('#rangeStart').value,end=q('#rangeEnd').value,month=start.slice(0,7);
-      return{origin,destination,origins,destinations,period_mode:'range',start_date:start,end_date:end,month,max_stops,dispatch_origin:origin};
+      const start=q('#rangeStart').value,end=q('#rangeEnd').value;
+      return {...base,start_date:start,end_date:end,month:start.slice(0,7)};
     }
     const month=q('#monthValue').value;
-    return{origin,destination,origins,destinations,period_mode:'month',start_date:`${month}-01`,end_date:'',month,max_stops,dispatch_origin:origin};
+    return {...base,start_date:month+'-01',end_date:'',month};
   }
   function comboTotal(request){
+    const routes=request.origins.reduce((n,o)=>n+request.destinations.filter(d=>d!==o).length,0);
+    if(request.period_mode==='dates'){
+      const today=dateKey(new Date());
+      return routes*request.departure_dates.reduce((sum,dep)=>sum+request.return_dates.filter(ret=>dep>today&&ret>dep).length,0);
+    }
     let start,end;
     if(request.period_mode==='range'){start=new Date(request.start_date+'T12:00:00');end=new Date(request.end_date+'T12:00:00');}
     else{const[y,m]=request.month.split('-').map(Number);start=new Date(y,m-1,1,12);end=new Date(y,m,0,12);}
     const today=new Date();today.setHours(12,0,0,0);const tomorrow=new Date(today);tomorrow.setDate(tomorrow.getDate()+1);if(start<tomorrow)start=tomorrow;
-    const days=Math.floor((end-start)/86400000)+1;return days>=2?(days*(days-1))/2:0;
+    const days=Math.floor((end-start)/86400000)+1;
+    return routes*(days>=2?(days*(days-1))/2:0);
   }
   function trendHtml(x){if(x.previous_price==null)return'<span class="trend new">novo</span>';const cls=x.trend||'same';if(cls==='down')return`<span class="trend down">↓ ${money(Math.abs(x.change_amount))} (${Math.abs(Number(x.change_pct||0)).toFixed(1)}%)</span>`;if(cls==='up')return`<span class="trend up">↑ ${money(Math.abs(x.change_amount))} (${Math.abs(Number(x.change_pct||0)).toFixed(1)}%)</span>`;return'<span class="trend same">= igual</span>';}
 
@@ -250,7 +302,7 @@
   function render(){
     const available=availableRows();resultOptions(available);resultMonthOptions(available);
     const allScope=q('#resultScope').value==='all',filtered=filterRows(available,q('#resultOrigin').value,q('#resultDestination').value,q('#resultSort').value,q('#resultMonth')?.value||''),rows=filtered.slice(0,100),stats=data.stats||{},req=data.request||{},hist=data.history_summary||{};
-    q('#resultCaption').textContent=`${filtered.length} opções encontradas${filtered.length>100?' · exibindo as primeiras 100':''} · ${q('#resultScope').value==='all'?'Buscas salvas — confira o preço atualizado ao abrir o voo':(req.origin&&req.destination?routeLabel(req):'Escolha a rota para pesquisar')}`;
+    q('#resultCaption').textContent=`${filtered.length} opções encontradas${filtered.length>100?' · exibindo as primeiras 100':''} · ${q('#resultScope').value==='all'?'Buscas salvas — confira o preço atualizado ao abrir o voo':(req.origin&&req.destination?(req.origins?.length>1||req.destinations?.length>1?`${req.origins.length} origens → ${req.destinations.length} destinos`:routeLabel(req)):'Escolha a rota para pesquisar')}`;
     q('#monthRows').innerHTML=rows.map((x,i)=>`<tr><td><span class="month-rank">${i+1}</span></td><td><b>${esc(airportName(x.origin))}</b><small class="statline">${esc(x.origin)}</small></td><td><b>${esc(airportName(x.destination))}</b><small class="statline">${esc(x.destination)}</small></td><td><b>${fmtDate(x.departure_date)}</b></td><td><b>${fmtDate(x.return_date)}</b></td><td>${Number(x.trip_days||0)} dias</td><td class="month-result-price">${money(x.price)}<br>${trendHtml(x)}</td><td>${x.previous_price==null?'—':`${money(x.previous_price)} → ${money(x.price)}`}</td><td><b>${esc(x.airline||'Google Flights')}</b><small class="statline">${esc(x.stops||'')} ${x.duration?'· '+esc(x.duration):''}</small></td><td><a class="btn" href="${esc(flightLink(x))}" target="_blank" rel="noopener">Ver voo</a></td></tr>`).join('');
     q('#monthEmpty').hidden=rows.length>0;
     if(allScope){const histPrices=filtered.map(x=>Math.min(Number(x.price)||Infinity,Number(x.historical_min)||Infinity)).filter(Number.isFinite);q('#monthLowest').textContent=money(histPrices.length?Math.min(...histPrices):null);q('#monthLowest').parentElement.querySelector('span').textContent='Menor histórico salvo';q('#monthCombos').textContent=String(filtered.length);q('#monthPriced').textContent=filtered.length?'dados salvos':'0';q('#monthCount').textContent=filtered.length?`${Math.min(filtered.length,100)}/${filtered.length}`:'—';q('#monthHistory').textContent=filtered.length?'histórico preservado':'sem dados';}else{q('#monthLowest').parentElement.querySelector('span').textContent='Menor preço';q('#monthLowest').textContent=money(stats.lowest_price);const processed=stats.processed_combinations??stats.combinations;q('#monthCombos').textContent=stats.combinations!=null?`${processed}/${stats.combinations}`:'—';q('#monthPriced').textContent=stats.priced_combinations!=null?`${stats.priced_combinations} · ${stats.coverage_pct||0}%`:'—';q('#monthCount').textContent=data.results?.length?`${data.results.length}/100`:'—';q('#monthHistory').textContent=(hist.compared||hist.cheaper||hist.higher)?`↓${hist.cheaper||0} ↑${hist.higher||0}`:'sem comparação';}
@@ -263,7 +315,7 @@
     q('#monthHistoryEmpty').hidden=historyRows.length>0;setResultView(resultView);
   }
 
-  function clearForSearch(request,total){q('#resultScope').value='current';q('#resultOrigin').value='';q('#resultDestination').value='';if(q('#resultMonth'))q('#resultMonth').value='';data={request:{origin:request.origin,destination:request.destination,month:request.month,period_mode:request.period_mode,start_date:request.start_date,end_date:request.end_date,max_stops:request.max_stops},stats:{combinations:total,processed_combinations:0,priced_combinations:0,coverage_pct:0},results:[],daily_min:[],history_summary:{}};render();}
+  function clearForSearch(request,total){q('#resultScope').value='current';q('#resultOrigin').value='';q('#resultDestination').value='';if(q('#resultMonth'))q('#resultMonth').value='';data={request:{origin:request.origin,destination:request.destination,origins:request.origins,destinations:request.destinations,departure_dates:request.departure_dates,return_dates:request.return_dates,month:request.month,period_mode:request.period_mode,start_date:request.start_date,end_date:request.end_date,max_stops:request.max_stops},stats:{combinations:total,processed_combinations:0,priced_combinations:0,coverage_pct:0},results:[],daily_min:[],history_summary:{}};render();}
   function showProgress(total){q('#monthProgress').hidden=false;q('#monthStopButton').disabled=false;updateProgress({pct:0,stage:'Enviando solicitação…',done:0,total,priced:0,remaining:total,elapsed:0,detail:'envio ainda não confirmado'});}
   function updateProgress({pct,stage,done,total,priced,remaining,elapsed,detail}){pct=Math.max(0,Math.min(100,Math.round(Number(pct)||0)));done=Math.max(0,Math.min(Number(total)||0,Math.round(Number(done)||0)));q('#monthProgressFill').style.width=`${pct}%`;q('#monthProgressPct').textContent=`${pct}%`;q('#monthProgressStage').textContent=stage||'Pesquisa em andamento…';q('#monthProgressCombos').textContent=`${done} / ${total} combinações`;q('#monthProgressPriced').textContent=`${Number(priced||0)} com preço`;q('#monthProgressRemaining').textContent=`faltam ${remaining==null?Math.max(0,total-done):Math.max(0,remaining)}`;q('#monthProgressElapsed').textContent=`${Math.max(0,Math.round(elapsed||0))}s`;q('#monthProgressSaved').textContent=detail||'✓ salvamento automático';}
 
@@ -294,9 +346,13 @@
     if(!result?.request)return false;
     const r=result.request;
     if(r.origin!==request.origin||r.destination!==request.destination||Number(r.max_stops)!==Number(request.max_stops))return false;
-    if(request.period_mode==='range'){
+    if(request.period_mode==='dates'){
+      if(r.period_mode!=='dates')return false;
+      if((r.departure_dates||[]).slice().sort().join(',')!==request.departure_dates.slice().sort().join(','))return false;
+      if((r.return_dates||[]).slice().sort().join(',')!==request.return_dates.slice().sort().join(','))return false;
+    }else if(request.period_mode==='range'){
       if(r.period_mode!=='range'||r.start_date!==request.start_date||r.end_date!==request.end_date)return false;
-    }else if(r.month!==request.month||r.period_mode==='range')return false;
+    }else if(r.month!==request.month||r.period_mode==='range'||r.period_mode==='dates')return false;
     if(request.request_id)return result.request_id===request.request_id;
     const t=Date.parse(result.started_at||result.generated_at||'');
     return Number.isFinite(t)&&t>=started-30000;
@@ -333,15 +389,36 @@
     postBridge('api/cancel',{request_id:activeRequest.request_id}).catch(()=>{});
   }
 
-  function validateRequest(request){if(!/^[A-Z]{3}$/.test(request.origin))return'Escolha uma cidade/aeroporto válido na origem.';if(!/^[A-Z]{3}$/.test(request.destination))return'Escolha uma cidade/aeroporto válido, por exemplo Miami ou MIA.';if(request.period_mode==='month'&&!/^\d{4}-\d{2}$/.test(request.month))return'Escolha o mês da viagem.';if(request.period_mode==='range'){if(!request.start_date||!request.end_date)return'Informe a data inicial e a data final.';if(request.end_date<=request.start_date)return'A data final precisa ser depois da data inicial.';}if(request.origin===request.destination)return'Origem e destino não podem ser iguais.';return'';}
-  async function searchInsidePage(){if(searching)return;const request=formRequest(),status=q('#monthSearchStatus'),button=q('#monthSearchButton'),error=validateRequest(request);
-    if((request.origins||[]).length>1||(request.destinations||[]).length>1){
-      if(error){status.className='month-search-status bad';status.textContent=error;return}
-      const originGroup=request.origins||[request.origin],destinationGroup=request.destinations||[request.destination],pairs=[];for(const o of originGroup)for(const d of destinationGroup)if(o!==d)pairs.push([o,d]);
-      if(!pairs.length){status.className='month-search-status bad';status.textContent='O destino já está dentro do grupo de aeroportos escolhido.';return}
-      status.className='month-search-status wait';status.textContent='🔎 Pesquisa agrupada: '+pairs.length+' rotas entre os aeroportos selecionados.';for(const [o,d] of pairs){q('#monthOrigin').value=o;q('#monthOrigin').dataset.iata=o;q('#monthDestination').value=d;q('#monthDestination').dataset.iata=d;await searchInsidePage();while(searching)await sleep(500);}q('#monthOrigin').value=airportName(request.origin)+' ('+request.origin+')';q('#monthOrigin').dataset.iata=request.origin;q('#monthDestination').value=airportName(request.destination)+' ('+request.destination+')';q('#monthDestination').dataset.iata=request.destination;q('#resultScope').value='all';render();return;
-    }if(error){status.className='month-search-status bad';status.textContent=error;return}if(!apiBase)await loadConfig();if(!apiBase){status.className='month-search-status bad';status.textContent='O serviço de pesquisa ainda não está conectado. Atualize a página e tente novamente.';return}const total=comboTotal(request);if(total<1){status.className='month-search-status bad';status.textContent='Esse período não possui combinações futuras de ida e volta.';return}
-    request.request_id='web_'+(globalThis.crypto&&typeof globalThis.crypto.randomUUID==='function'?globalThis.crypto.randomUUID().replace(/-/g,''):(Date.now().toString(36)+Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2))).slice(0,64);searching=true;stopRequested=false;activeRun=null;activeRequest=request;button.disabled=true;button.textContent='⏳ Pesquisando…';clearForSearch(request,total);showProgress(total);status.className='month-search-status wait';status.textContent='🔎 Pesquisa enviada. Confirmando recebimento pelo serviço…';await trackSearch(request,Date.now(),total,true);}
+  function validateRequest(request){
+    if(!request.origins.length)return'Adicione uma ou mais origens válidas.';
+    if(!request.destinations.length)return'Adicione um ou mais destinos válidos.';
+    if(!request.origins.every(x=>/^[A-Z]{3}$/.test(x))||!request.destinations.every(x=>/^[A-Z]{3}$/.test(x)))return'Aeroporto inválido.';
+    if(!request.origins.some(o=>request.destinations.some(d=>o!==d)))return'Origem e destino precisam ser diferentes.';
+    if(request.period_mode==='month'&&!/^\d{4}-\d{2}$/.test(request.month))return'Escolha o mês da viagem.';
+    if(request.period_mode==='range'){
+      if(!request.start_date||!request.end_date)return'Informe o início e o fim do intervalo.';
+      if(request.end_date<=request.start_date)return'A data final precisa ser depois da inicial.';
+    }
+    if(request.period_mode==='dates'){
+      if(!request.departure_dates.length||!request.return_dates.length)return'Informe ao menos uma data de ida e uma de volta.';
+      if(!request.departure_dates.every(x=>/^\d{4}-\d{2}-\d{2}$/.test(x))||!request.return_dates.every(x=>/^\d{4}-\d{2}-\d{2}$/.test(x)))return'Informe datas válidas.';
+    }
+    return'';
+  }
+  async function searchInsidePage(){
+    if(searching)return;
+    const request=formRequest(),status=q('#monthSearchStatus'),button=q('#monthSearchButton'),error=validateRequest(request);
+    if(error){status.className='month-search-status bad';status.textContent=error;return;}
+    const total=comboTotal(request);
+    if(total<1){status.className='month-search-status bad';status.textContent='Não há combinações futuras de ida e volta válidas.';return;}
+    if(!apiBase)await loadConfig();
+    if(!apiBase){status.className='month-search-status bad';status.textContent='Serviço de pesquisa indisponível. Atualize a página e tente novamente.';return;}
+    request.request_id='web_'+(globalThis.crypto&&typeof globalThis.crypto.randomUUID==='function'?globalThis.crypto.randomUUID().replace(/-/g,''):(Date.now().toString(36)+Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2))).slice(0,64);
+    searching=true;stopRequested=false;activeRun=null;activeRequest=request;button.disabled=true;button.textContent='⏳ Pesquisando…';
+    clearForSearch(request,total);showProgress(total);
+    status.className='month-search-status wait';status.textContent='🔎 '+request.origins.length+' origens × '+request.destinations.length+' destinos · '+total+' combinações. Aguardando confirmação da pesquisa…';
+    await trackSearch(request,Date.now(),total,true);
+  }
   async function trackSearch(request,started,total,dispatch=false){const button=q('#monthSearchButton'),status=q('#monthSearchStatus');const clock=setInterval(()=>{q('#monthProgressElapsed').textContent=`${Math.round((Date.now()-started)/1000)}s`},1000);try{if(dispatch)dispatchWithoutCors(request);data=await pollSearch(request,started,total);render();updateProgress({pct:data.status==='partial'?liveProgress(data,0).pct:100,stage:data.status==='partial'?'Parcial preservado':'Pesquisa concluída',done:Number(data.stats?.processed_combinations??data.stats?.combinations??total),total:Number(data.stats?.combinations||total),priced:Number(data.stats?.priced_combinations||0),remaining:0,elapsed:(Date.now()-started)/1000,detail:'✓ resultado salvo'});q('#monthStopButton').disabled=true;status.className=data.status==='partial'?'month-search-status bad':'month-search-status ok';status.textContent=data.status==='partial'?'⚠ A pesquisa parou antes do fim, mas tudo o que havia sido encontrado ficou salvo.':`✅ Busca concluída. ${data.stats?.priced_combinations||0} combinações com preço foram salvas.`;}catch(e){if(String(e.message||e)==='__STOPPED__'){status.className='month-search-status bad';status.textContent='⛔ Acompanhamento interrompido. O cancelamento no servidor foi solicitado; os achados salvos permanecem abaixo.';}else{status.className='month-search-status bad';status.textContent=`Não foi possível concluir a busca: ${e.message||e}. Se já havia resultados, eles permanecem salvos.`;}}finally{clearInterval(clock);if(stopRequested||data.status!=='completed'){q('#monthProgressStage').textContent=stopRequested?'Acompanhamento interrompido':'Pesquisa não concluída';}searching=false;button.disabled=false;button.textContent='🔎 Pesquisar agora';const stop=q('#monthStopButton');stop.disabled=true;stop.textContent='■ Parar pesquisa';}}
 
   async function boot(){
@@ -366,6 +443,12 @@
   const searchBtn=q('#monthSearchButton');if(searchBtn)searchBtn.addEventListener('click',e=>{e.preventDefault();if(searching){const status=q('#monthSearchStatus');if(status){status.className='month-search-status wait';status.textContent='Já existe uma pesquisa em andamento. Aguarde a conclusão ou use Parar pesquisa.';}return;}Promise.resolve(searchInsidePage()).catch(reportStartError);});
   const stopBtn=q('#monthStopButton');if(stopBtn)stopBtn.addEventListener('click',e=>{e.preventDefault();Promise.resolve(stopSearch()).catch(reportStartError);});
   const periodMode=q('#monthPeriodMode');if(periodMode)periodMode.addEventListener('change',periodModeChanged);
+  for(const [id,which,input] of [['#addMonthOrigin','origins','#monthOrigin'],['#addMonthDestination','destinations','#monthDestination']]){
+    q(id).addEventListener('click',()=>addAirportChip(which,input));
+    q(input).addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addAirportChip(which,input);}});
+  }
+  for(const [id,which,input] of [['#addDeparture','departures','#datesDeparture'],['#addReturn','returns','#datesReturn']])
+    q(id).addEventListener('click',()=>addDateChip(which,input));
   const rangeStartEl=q('#rangeStart');if(rangeStartEl)rangeStartEl.addEventListener('change',()=>{const end=q('#rangeEnd');if(end&&end.value<rangeStartEl.value)end.value=rangeStartEl.value});
   document.querySelectorAll('.month-view-btn[data-result-view]').forEach(b=>b.addEventListener('click',()=>{const v=b.dataset.resultView;if(v==='history'){q('#resultScope').value='all';loadSavedPairs().then(()=>{setResultView('history');render()});}else setResultView(v)}));
   btn.addEventListener('click',activate);document.querySelectorAll('#flightTabs .tab').forEach(b=>{if(b!==btn)b.addEventListener('click',()=>{panel.hidden=true;setFocus(false)})});const productsMain=document.querySelector('.main-tab[data-main="products"]');if(productsMain)productsMain.addEventListener('click',()=>{panel.hidden=true;setFocus(false)});const flightsMain=document.querySelector('.main-tab[data-main="flights"]');if(flightsMain)flightsMain.addEventListener('click',()=>{if(btn.classList.contains('active')&&!panel.hidden)setFocus(true)});document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!searching){loadConfig();loadLastResult().then(render)}});boot();
