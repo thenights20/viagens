@@ -3,7 +3,7 @@
   "cache_id": "5c2385f64206066c225da3f9",
   "signature": "PPB|FLN|2026-11-10|2026-11-15|2|BRL|economy|1",
   "created_at": "2026-10-14T15:24:34.168092Z",
-  "updated_at": "2026-10-14T15:24:36.745289Z",
+  "updated_at": "2026-10-14T15:24:47.255382Z",
   "resume_window_minutes": 60,
   "request": {
     "origin": "PPB",
@@ -42,6 +42,149 @@
         "search_links": {
           "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+FLN+on+2026-11-11+returning+2026-11-15&curr=BRL&hl=pt-BR",
           "ita": "https://matrix.itasoftware.com/search#from=PPB&to=FLN&depart=2026-11-11&return=2026-11-15&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2026-11-10|2026-11-14": {
+      "departure_date": "2026-11-10",
+      "return_date": "2026-11-14",
+      "status": "priced",
+      "completed_at": "2026-10-14T15:24:38.060902Z",
+      "source": "google",
+      "row": {
+        "origin": "PPB",
+        "destination": "FLN",
+        "departure_date": "2026-11-10",
+        "return_date": "2026-11-14",
+        "airline": "Gol",
+        "price": 1562.0,
+        "duration": "2h 30min",
+        "duration_minutes": 150,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2026, 11, 10] [16, 10]",
+        "arrival": "[2026, 11, 10] [20, 55]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+FLN+on+2026-11-10+returning+2026-11-14&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 4,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+FLN+on+2026-11-10+returning+2026-11-14&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=PPB&to=FLN&depart=2026-11-10&return=2026-11-14&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2026-11-11|2026-11-14": {
+      "departure_date": "2026-11-11",
+      "return_date": "2026-11-14",
+      "status": "priced",
+      "completed_at": "2026-10-14T15:24:38.060972Z",
+      "source": "google",
+      "row": {
+        "origin": "PPB",
+        "destination": "FLN",
+        "departure_date": "2026-11-11",
+        "return_date": "2026-11-14",
+        "airline": "Gol",
+        "price": 1434.0,
+        "duration": "2h 30min",
+        "duration_minutes": 150,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2026, 11, 11] [8, 5]",
+        "arrival": "[2026, 11, 11] [11, 25]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+FLN+on+2026-11-11+returning+2026-11-14&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 3,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+FLN+on+2026-11-11+returning+2026-11-14&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=PPB&to=FLN&depart=2026-11-11&return=2026-11-14&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2026-11-10|2026-11-15": {
+      "departure_date": "2026-11-10",
+      "return_date": "2026-11-15",
+      "status": "error",
+      "completed_at": "2026-10-14T15:24:38.061065Z",
+      "source": "google",
+      "row": null,
+      "errors": [
+        "2026-11-10->2026-11-15: ProviderResponseError: Google returned a provider error"
+      ]
+    },
+    "2026-11-12|2026-11-14": {
+      "departure_date": "2026-11-12",
+      "return_date": "2026-11-14",
+      "status": "priced",
+      "completed_at": "2026-10-14T15:24:38.061130Z",
+      "source": "google",
+      "row": {
+        "origin": "PPB",
+        "destination": "FLN",
+        "departure_date": "2026-11-12",
+        "return_date": "2026-11-14",
+        "airline": "Gol",
+        "price": 1434.0,
+        "duration": "2h 30min",
+        "duration_minutes": 150,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2026, 11, 12] [16, 10]",
+        "arrival": "[2026, 11, 12] [20, 55]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+FLN+on+2026-11-12+returning+2026-11-14&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 2,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+FLN+on+2026-11-12+returning+2026-11-14&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=PPB&to=FLN&depart=2026-11-12&return=2026-11-14&currency=BRL"
+        },
+        "assigned_source": "google"
+      },
+      "errors": []
+    },
+    "2026-11-12|2026-11-15": {
+      "departure_date": "2026-11-12",
+      "return_date": "2026-11-15",
+      "status": "priced",
+      "completed_at": "2026-10-14T15:24:40.633238Z",
+      "source": "google",
+      "row": {
+        "origin": "PPB",
+        "destination": "FLN",
+        "departure_date": "2026-11-12",
+        "return_date": "2026-11-15",
+        "airline": "Gol",
+        "price": 1650.0,
+        "duration": "2h 30min",
+        "duration_minutes": 150,
+        "stops": "1 escala",
+        "stops_count": 1,
+        "departure": "[2026, 11, 12] [16, 10]",
+        "arrival": "[2026, 11, 12] [20, 55]",
+        "url": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+FLN+on+2026-11-12+returning+2026-11-15&curr=BRL&hl=pt-BR",
+        "provider": "Google Flights",
+        "source_kind": "google",
+        "trip_days": 3,
+        "currency": "BRL",
+        "price_source_confidence": "structured",
+        "search_links": {
+          "google": "https://www.google.com/travel/flights?q=Flights+from+PPB+to+FLN+on+2026-11-12+returning+2026-11-15&curr=BRL&hl=pt-BR",
+          "ita": "https://matrix.itasoftware.com/search#from=PPB&to=FLN&depart=2026-11-12&return=2026-11-15&currency=BRL"
         },
         "assigned_source": "google"
       },
