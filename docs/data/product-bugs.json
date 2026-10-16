@@ -1,15 +1,18 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-10-16T07:38:40.988120Z",
+  "generated_at": "2026-10-16T12:45:17.846471Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 0,
-  "strong_count": 0,
-  "critical_count": 0,
-  "confirmed_count": 0,
+  "active_count": 1,
+  "strong_count": 1,
+  "critical_count": 1,
+  "confirmed_count": 1,
   "sensor_bug_count": 0,
-  "scanner_count": 0,
-  "queries_this_run": [],
+  "scanner_count": 5,
+  "queries_this_run": [
+    "lava e seca",
+    "nintendo switch 2"
+  ],
   "source_health": {
     "Magalu": {
       "ok": true,
@@ -34,12 +37,49 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 0,
-      "candidates_seen": 0,
-      "message": "nenhum candidato extremo nesta rodada",
+      "items": 5,
+      "candidates_seen": 5,
+      "message": "scanner rápido",
       "errors": []
     }
   },
-  "validation_errors": [],
-  "bugs": []
+  "validation_errors": [
+    "Amazon Brasil · Panos lava e seca 5 peças - Simplo: preço não apareceu novamente na página",
+    "Amazon Brasil · Panos lava e seca 5 peças - Simplo: preço não apareceu novamente na página",
+    "Amazon Brasil · Cartão Nintendo Switch 2 Samsung microSD Express 256 GB: preço não apareceu novamente na página",
+    "Amazon Brasil · Mario Kart World - Nintendo Switch 2: preço não apareceu novamente na página"
+  ],
+  "bugs": [
+    {
+      "source": "Amazon Brasil",
+      "store_name": "Amazon Brasil",
+      "title": "Kit 12 Pastilhas Efervescentes Limpeza de Máquina de Lavar Lava e Seca Higieniza Tambor Tubulação Remove Resíduos de Sabão Elimina Maus Odores Ajuda Descalcificar Previne Acúmulos Manutenção Proteção.",
+      "price": 20.9,
+      "original_price": null,
+      "url": "https://www.amazon.com.br/Pastilhas-Efervescentes-Higieniza-Descalcificar-Manuten%C3%A7%C3%A3o/dp/B0HKLNRDGD/ref=sr_1_53",
+      "search_query": "lava e seca",
+      "available": true,
+      "trusted": false,
+      "revalidated": true,
+      "collector": "fast-market-scan",
+      "bug_score": 100,
+      "bug_status": "🚨 BUG PROVÁVEL",
+      "category_rule": "Lava e seca",
+      "category": "Eletrodomésticos",
+      "baseline_price": 1700.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 98.8,
+      "savings": 1679.1,
+      "reasons": [
+        "99% abaixo de piso conservador da categoria",
+        "preço impossível para a faixa de Lava e seca",
+        "preço reaberto e confirmado"
+      ],
+      "verification_note": "preço confirmado; vendedor precisa conferência manual",
+      "first_seen": "2026-10-16T12:45:17.846471Z",
+      "last_seen": "2026-10-16T12:45:17.846471Z",
+      "sightings": 1,
+      "fresh": true
+    }
+  ]
 }
