@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-10-16T22:20:20.607881Z",
+  "generated_at": "2026-10-17T00:39:47.965010Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
   "active_count": 2,
@@ -8,16 +8,11 @@
   "critical_count": 0,
   "confirmed_count": 0,
   "sensor_bug_count": 0,
-  "scanner_count": 0,
-  "queries_this_run": [],
+  "scanner_count": 2,
+  "queries_this_run": [
+    "playstation 5"
+  ],
   "source_health": {
-    "Amazon Brasil": {
-      "ok": true,
-      "items": 0,
-      "candidates_seen": 0,
-      "message": "nenhum candidato extremo nesta rodada",
-      "errors": []
-    },
     "Mercado Livre": {
       "ok": true,
       "items": 0,
@@ -38,9 +33,19 @@
       "candidates_seen": 0,
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
+    },
+    "Amazon Brasil": {
+      "ok": true,
+      "items": 2,
+      "candidates_seen": 2,
+      "message": "scanner rápido",
+      "errors": []
     }
   },
-  "validation_errors": [],
+  "validation_errors": [
+    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Preto): preço não apareceu novamente na página",
+    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Branco): preço não apareceu novamente na página"
+  ],
   "bugs": [
     {
       "source": "Loja TCL",
@@ -55,7 +60,7 @@
       "trusted": true,
       "revalidated": true,
       "collector": "radar-historico",
-      "collected_at": "2026-10-16T21:23:06.643396+00:00",
+      "collected_at": "2026-10-16T23:47:22.471345+00:00",
       "bug_score": 62,
       "bug_status": "🟢 SUSPEITO",
       "category_rule": null,
@@ -69,9 +74,9 @@
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-10-16T22:20:20.607881Z",
-      "last_seen": "2026-10-16T22:20:20.607881Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-10-17T00:39:47.965010Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "source": "Loja TCL",
@@ -86,7 +91,7 @@
       "trusted": true,
       "revalidated": true,
       "collector": "radar-historico",
-      "collected_at": "2026-10-16T21:23:06.597721+00:00",
+      "collected_at": "2026-10-16T23:47:22.444019+00:00",
       "bug_score": 62,
       "bug_status": "🟢 SUSPEITO",
       "category_rule": null,
@@ -100,9 +105,9 @@
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-10-16T22:20:20.607881Z",
-      "last_seen": "2026-10-16T22:20:20.607881Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-10-17T00:39:47.965010Z",
+      "sightings": 2,
+      "fresh": false
     }
   ]
 }
