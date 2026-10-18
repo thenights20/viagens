@@ -1,24 +1,24 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-10-18T16:40:00.044647Z",
+  "generated_at": "2026-10-18T18:56:37.521512Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 1,
-  "strong_count": 0,
+  "active_count": 3,
+  "strong_count": 1,
   "critical_count": 0,
   "confirmed_count": 0,
   "sensor_bug_count": 0,
   "scanner_count": 0,
   "queries_this_run": [],
   "source_health": {
-    "Mercado Livre": {
+    "Magalu": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     },
-    "Magalu": {
+    "Mercado Livre": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
@@ -43,6 +43,67 @@
   "validation_errors": [],
   "bugs": [
     {
+      "source": "Mercado Livre",
+      "store_name": "Samsung",
+      "title": "Celular Samsung Galaxy A57 5G 128GB, 8GB RAM, Câmera 50MP, IP68, Super AMOLED 6.7",
+      "price": 400.0,
+      "original_price": 2006.0,
+      "reference_price": 2006.0,
+      "url": "https://www.mercadolivre.com.br/celular-samsung-galaxy-a57-5g-128gb-8gb-ram-camera-50mp-ip68-super-amoled-67/p/MLB68213520#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=21&type=product&tracking_id=d7a9ffb6-b943-4972-ab01-a5d3dc10bf54&overlay_label_capability=not_apply&wid=MLB5348390891&sid=search",
+      "category": "TVs",
+      "available": true,
+      "trusted": true,
+      "revalidated": false,
+      "collector": "radar-historico",
+      "collected_at": "2026-10-18T18:12:17.445362+00:00",
+      "bug_score": 78,
+      "bug_status": "🔥 BUG FORTE",
+      "category_rule": "TV 50 polegadas",
+      "baseline_price": 2006.0,
+      "baseline_kind": "histórico/mercado",
+      "drop_pct": 80.1,
+      "savings": 1606.0,
+      "reasons": [
+        "80% abaixo de histórico/mercado",
+        "muito abaixo do piso conservador de TV 50 polegadas",
+        "vendedor/loja com sinal de confiança"
+      ],
+      "first_seen": "2026-10-18T18:56:37.521512Z",
+      "last_seen": "2026-10-18T18:56:37.521512Z",
+      "sightings": 1,
+      "fresh": true
+    },
+    {
+      "source": "Mercado Livre",
+      "store_name": "Samsung",
+      "title": "Celulares e TelefonesCelulares e Smartphones",
+      "price": 79.0,
+      "original_price": 2500.0,
+      "reference_price": 2500.0,
+      "url": "https://lista.mercadolivre.com.br/galaxy-s#results",
+      "category": null,
+      "available": true,
+      "trusted": true,
+      "revalidated": false,
+      "collector": "radar-historico",
+      "collected_at": "2026-10-18T18:12:16.071839+00:00",
+      "bug_score": 68,
+      "bug_status": "🟢 SUSPEITO",
+      "category_rule": null,
+      "baseline_price": 2500.0,
+      "baseline_kind": "histórico/mercado",
+      "drop_pct": 96.8,
+      "savings": 2421.0,
+      "reasons": [
+        "97% abaixo de histórico/mercado",
+        "vendedor/loja com sinal de confiança"
+      ],
+      "first_seen": "2026-10-18T18:56:37.521512Z",
+      "last_seen": "2026-10-18T18:56:37.521512Z",
+      "sightings": 1,
+      "fresh": true
+    },
+    {
       "source": "Loja TCL",
       "store_name": "Loja TCL",
       "title": "Mais Vendido",
@@ -55,7 +116,7 @@
       "trusted": true,
       "revalidated": true,
       "collector": "radar-historico",
-      "collected_at": "2026-10-18T14:45:17.215213+00:00",
+      "collected_at": "2026-10-18T18:15:43.494160+00:00",
       "bug_score": 62,
       "bug_status": "🟢 SUSPEITO",
       "category_rule": null,
@@ -69,8 +130,8 @@
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-10-16T22:20:20.607881Z",
-      "last_seen": "2026-10-18T16:40:00.044647Z",
-      "sightings": 13,
+      "last_seen": "2026-10-18T18:56:37.521512Z",
+      "sightings": 14,
       "fresh": false
     }
   ]
