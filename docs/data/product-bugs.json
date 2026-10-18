@@ -1,24 +1,26 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-10-18T09:14:22.308961Z",
+  "generated_at": "2026-10-18T13:17:40.764491Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 2,
+  "active_count": 1,
   "strong_count": 0,
   "critical_count": 0,
   "confirmed_count": 0,
   "sensor_bug_count": 0,
-  "scanner_count": 0,
-  "queries_this_run": [],
+  "scanner_count": 1,
+  "queries_this_run": [
+    "dji mini"
+  ],
   "source_health": {
-    "Magalu": {
+    "Mercado Livre": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     },
-    "Mercado Livre": {
+    "Magalu": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
@@ -34,13 +36,15 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 0,
-      "candidates_seen": 0,
-      "message": "nenhum candidato extremo nesta rodada",
+      "items": 1,
+      "candidates_seen": 1,
+      "message": "scanner rápido",
       "errors": []
     }
   },
-  "validation_errors": [],
+  "validation_errors": [
+    "Amazon Brasil · Hub de Carregamento DJI Mini 2 - DJI1034: preço não apareceu novamente na página"
+  ],
   "bugs": [
     {
       "source": "Loja TCL",
@@ -48,60 +52,29 @@
       "title": "Mais Vendido",
       "price": 992.68,
       "original_price": 1169.0,
-      "reference_price": 3771.08,
+      "reference_price": 3495.08,
       "url": "https://www.lojatcl.com.br/smart-tv-semp-32-polegadas-led-hd-s42-wifi-bluetooth-google-tv-2-hdmi-hdr10-dolby-audio-32s42-32398/p",
       "category": null,
       "available": true,
       "trusted": true,
       "revalidated": true,
       "collector": "radar-historico",
-      "collected_at": "2026-10-18T06:06:04.290663+00:00",
+      "collected_at": "2026-10-18T11:21:49.927387+00:00",
       "bug_score": 62,
       "bug_status": "🟢 SUSPEITO",
       "category_rule": null,
-      "baseline_price": 3771.08,
+      "baseline_price": 3495.08,
       "baseline_kind": "histórico/mercado",
-      "drop_pct": 73.7,
-      "savings": 2778.4,
+      "drop_pct": 71.6,
+      "savings": 2502.4,
       "reasons": [
-        "74% abaixo de histórico/mercado",
+        "72% abaixo de histórico/mercado",
         "preço reaberto e confirmado",
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-10-16T22:20:20.607881Z",
-      "last_seen": "2026-10-18T09:14:22.308961Z",
-      "sightings": 11,
-      "fresh": false
-    },
-    {
-      "source": "Loja TCL",
-      "store_name": "Loja TCL",
-      "title": "Mais Vendido",
-      "price": 1093.88,
-      "original_price": 1249.0,
-      "reference_price": 3771.08,
-      "url": "https://www.lojatcl.com.br/smart-tv-tcl-32-polegadas-hd-qled-s5k-wifi-bluetooth-google-tv-2-hdmi-hdr10-dolby-audio-32s5k-32534/p",
-      "category": null,
-      "available": true,
-      "trusted": true,
-      "revalidated": true,
-      "collector": "radar-historico",
-      "collected_at": "2026-10-18T06:06:04.243407+00:00",
-      "bug_score": 62,
-      "bug_status": "🟢 SUSPEITO",
-      "category_rule": null,
-      "baseline_price": 3771.08,
-      "baseline_kind": "histórico/mercado",
-      "drop_pct": 71.0,
-      "savings": 2677.2,
-      "reasons": [
-        "71% abaixo de histórico/mercado",
-        "preço reaberto e confirmado",
-        "vendedor/loja com sinal de confiança"
-      ],
-      "first_seen": "2026-10-16T22:20:20.607881Z",
-      "last_seen": "2026-10-18T09:14:22.308961Z",
-      "sightings": 11,
+      "last_seen": "2026-10-18T13:17:40.764491Z",
+      "sightings": 12,
       "fresh": false
     }
   ]
