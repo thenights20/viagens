@@ -1,25 +1,20 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-10-22T17:26:08.606963Z",
+  "generated_at": "2026-10-22T20:41:02.987344Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 1,
+  "active_count": 2,
   "strong_count": 0,
   "critical_count": 0,
   "confirmed_count": 0,
   "sensor_bug_count": 0,
-  "scanner_count": 2,
+  "scanner_count": 23,
   "queries_this_run": [
-    "lava e seca"
+    "dji mini",
+    "estante tv",
+    "playstation 5"
   ],
   "source_health": {
-    "Mercado Livre": {
-      "ok": true,
-      "items": 0,
-      "candidates_seen": 0,
-      "message": "nenhum candidato extremo nesta rodada",
-      "errors": []
-    },
     "Magalu": {
       "ok": true,
       "items": 0,
@@ -27,11 +22,11 @@
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     },
-    "Amazon Brasil": {
+    "Mercado Livre": {
       "ok": true,
-      "items": 2,
-      "candidates_seen": 2,
-      "message": "scanner rápido",
+      "items": 0,
+      "candidates_seen": 0,
+      "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     },
     "Shopee": {
@@ -40,13 +35,51 @@
       "candidates_seen": 0,
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
+    },
+    "Amazon Brasil": {
+      "ok": true,
+      "items": 23,
+      "candidates_seen": 23,
+      "message": "scanner rápido",
+      "errors": []
     }
   },
   "validation_errors": [
-    "Amazon Brasil · Panos lava e seca 5 peças - Simplo: preço não apareceu novamente na página",
-    "Amazon Brasil · Panos lava e seca 5 peças - Simplo: preço não apareceu novamente na página"
+    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Branco): preço não apareceu novamente na página",
+    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Preto): preço não apareceu novamente na página",
+    "Amazon Brasil · Mini 3 / Mini 3 Pro Propeller Holder,Prop Strap Guard Protector Stabilizer for DJI Mini 3 Series RC Drone Accessories(Orange): preço não apareceu novamente na página",
+    "Amazon Brasil · Estante para TV e Home Theater até 55 Polegadas 166cmx155cm Nichos 2 Portas Cinamomo Off White Havana Cinamomo/Off White: preço não apareceu novamente na página"
   ],
   "bugs": [
+    {
+      "source": "Amazon Brasil",
+      "store_name": "Amazon Brasil",
+      "title": "Estante Home para Tv até 65 Polegadas 2 Portas Nt 1300 Notável Móveis Freijó Trend/off White Tx",
+      "price": 479.73,
+      "original_price": 504.98,
+      "url": "https://www.amazon.com.br/Estante-Polegadas-Portas-Not%C3%A1vel-M%C3%B3veis/dp/B0C5GKWFRM/ref=sr_1_43",
+      "search_query": "estante tv",
+      "available": true,
+      "trusted": false,
+      "revalidated": false,
+      "collector": "fast-market-scan",
+      "bug_score": 66,
+      "bug_status": "🟢 SUSPEITO",
+      "category_rule": "TV 65 polegadas",
+      "category": "TVs",
+      "baseline_price": 1800.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 73.3,
+      "savings": 1320.27,
+      "reasons": [
+        "73% abaixo de piso conservador da categoria",
+        "muito abaixo do piso conservador de TV 65 polegadas"
+      ],
+      "first_seen": "2026-10-22T20:41:02.987344Z",
+      "last_seen": "2026-10-22T20:41:02.987344Z",
+      "sightings": 1,
+      "fresh": true
+    },
     {
       "source": "Loja TCL",
       "store_name": "Loja TCL",
@@ -60,7 +93,7 @@
       "trusted": true,
       "revalidated": true,
       "collector": "radar-historico",
-      "collected_at": "2026-10-22T13:57:06.299669+00:00",
+      "collected_at": "2026-10-22T18:41:01.735827+00:00",
       "bug_score": 62,
       "bug_status": "🟢 SUSPEITO",
       "category_rule": null,
@@ -74,9 +107,9 @@
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-10-22T17:26:08.606963Z",
-      "last_seen": "2026-10-22T17:26:08.606963Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-10-22T20:41:02.987344Z",
+      "sightings": 2,
+      "fresh": false
     }
   ]
 }
