@@ -1,24 +1,26 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-10-23T01:58:21.907209Z",
+  "generated_at": "2026-10-23T06:48:51.907961Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 1,
+  "active_count": 2,
   "strong_count": 0,
   "critical_count": 0,
   "confirmed_count": 0,
   "sensor_bug_count": 0,
-  "scanner_count": 0,
-  "queries_this_run": [],
+  "scanner_count": 11,
+  "queries_this_run": [
+    "galaxy s ultra"
+  ],
   "source_health": {
-    "Mercado Livre": {
+    "Magalu": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     },
-    "Magalu": {
+    "Mercado Livre": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
@@ -34,14 +36,55 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 0,
-      "candidates_seen": 0,
-      "message": "nenhum candidato extremo nesta rodada",
+      "items": 11,
+      "candidates_seen": 11,
+      "message": "scanner rápido",
       "errors": []
     }
   },
-  "validation_errors": [],
+  "validation_errors": [
+    "Amazon Brasil · Caneta Galaxy S25 Ultra de Reposição para Samsung Galaxy S25 Ultra 5G Todas as Versões, Caneta Touch Stylus (Preta): preço não apareceu novamente na página",
+    "Amazon Brasil · Caneta Galaxy S25 Ultra de Reposição para Samsung Galaxy S25 Ultra 5G Todas as Versões, Caneta Touch Stylus (Preta): preço não apareceu novamente na página",
+    "Amazon Brasil · Caneta Galaxy S25 Ultra de Reposição para Samsung Galaxy S25 Ultra 5G Todas as Versões, Caneta Touch Stylus (Preta): preço não apareceu novamente na página",
+    "Amazon Brasil · Caneta Galaxy S25 Ultra de Reposição para Samsung Galaxy S25 Ultra 5G Todas as Versões, Caneta Touch Stylus (Preta): preço não apareceu novamente na página",
+    "Amazon Brasil · Caneta Galaxy S25 Ultra de Reposição para Samsung Galaxy S25 Ultra 5G Todas as Versões, Caneta Touch Stylus (Preta): preço não apareceu novamente na página",
+    "Amazon Brasil · Samsung Caneta oficial Galaxy S para Galaxy S26 Ultra para criação, desenho, edição, escrita, controle suave, classificação IP68, comando aéreo para ações personalizadas - (preto): preço não apareceu novamente na página",
+    "Amazon Brasil · TORRAS Q3 Spin Capinha Galaxy S26 Ultra, Anel Giratório 360° Patenteado [Qi2] [4X Padrão Militar] X-Shock 3.0 Antichoque, Entrada S Pen, Suporte Dobradiça 8 Camadas, Preto Fosco: preço não apareceu novamente na página",
+    "Amazon Brasil · TORRAS Q3 Spin Capinha Galaxy S26 Ultra, Anel Giratório 360° Patenteado [Qi2] [4X Padrão Militar] X-Shock 3.0 Antichoque, Entrada S Pen, Suporte Dobradiça 8 Camadas, Preto Fosco: preço não apareceu novamente na página",
+    "Amazon Brasil · TORRAS Q3 Spin Capinha Galaxy S26 Ultra, Anel Giratório 360° Patenteado [Qi2] [4X Padrão Militar] X-Shock 3.0 Antichoque, Entrada S Pen, Suporte Dobradiça 8 Camadas, Preto Fosco: preço não apareceu novamente na página",
+    "Amazon Brasil · TORRAS Q3 Spin Capinha Galaxy S26 Ultra, Anel Giratório 360° Patenteado [Qi2] [4X Padrão Militar] X-Shock 3.0 Antichoque, Entrada S Pen, Suporte Dobradiça 8 Camadas, Preto Fosco: preço não apareceu novamente na página"
+  ],
   "bugs": [
+    {
+      "source": "Amazon Brasil",
+      "store_name": "Amazon Brasil",
+      "title": "TORRAS Q3 Spin Capinha Galaxy S26 Ultra, Anel Giratório 360° Patenteado [Qi2] [4X Padrão Militar] X-Shock 3.0 Antichoque, Entrada S Pen, Suporte Dobradiça 8 Camadas, Preto Fosco",
+      "price": 405.21,
+      "original_price": 449.0,
+      "url": "https://www.amazon.com.br/TORRAS-Q3-Girat%C3%B3rio-Patenteado-Antichoque/dp/B0H2Z3SQCD/ref=vo_sr_l_dp",
+      "search_query": "galaxy s ultra",
+      "available": true,
+      "trusted": false,
+      "revalidated": false,
+      "collector": "fast-market-scan",
+      "bug_score": 69,
+      "bug_status": "🟡 CANDIDATO NÃO CONFIRMADO",
+      "category_rule": "Galaxy S Ultra",
+      "category": "Smartphones",
+      "baseline_price": 3000.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 86.5,
+      "savings": 2594.79,
+      "reasons": [
+        "86% abaixo de piso conservador da categoria",
+        "preço impossível para a faixa de Galaxy S Ultra"
+      ],
+      "verification_note": "aguardando rechecagem",
+      "first_seen": "2026-10-23T06:48:51.907961Z",
+      "last_seen": "2026-10-23T06:48:51.907961Z",
+      "sightings": 1,
+      "fresh": true
+    },
     {
       "source": "Loja TCL",
       "store_name": "Loja TCL",
@@ -69,8 +112,8 @@
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-10-22T17:26:08.606963Z",
-      "last_seen": "2026-10-23T01:58:21.907209Z",
-      "sightings": 4,
+      "last_seen": "2026-10-23T06:48:51.907961Z",
+      "sightings": 5,
       "fresh": false
     }
   ]
