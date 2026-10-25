@@ -1,27 +1,28 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-10-24T22:06:34.720973Z",
+  "generated_at": "2026-10-25T00:19:55.213955Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 4,
-  "strong_count": 0,
-  "critical_count": 0,
-  "confirmed_count": 0,
+  "active_count": 5,
+  "strong_count": 1,
+  "critical_count": 1,
+  "confirmed_count": 1,
   "sensor_bug_count": 0,
-  "scanner_count": 33,
+  "scanner_count": 5,
   "queries_this_run": [
-    "estante tv",
-    "painel tv"
+    "geladeira",
+    "lava e seca",
+    "nintendo switch 2"
   ],
   "source_health": {
-    "Mercado Livre": {
+    "Magalu": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     },
-    "Magalu": {
+    "Mercado Livre": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
@@ -37,25 +38,50 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 33,
-      "candidates_seen": 33,
+      "items": 5,
+      "candidates_seen": 5,
       "message": "scanner rápido",
       "errors": []
     }
   },
   "validation_errors": [
-    "Amazon Brasil · Painel Egeo Frisado Para Quarto Ou Sala Ideal Para TV De Até 50 Polegadas (HANOVER 2): preço não apareceu novamente na página",
-    "Amazon Brasil · Painel Egeo Frisado Para Quarto Ou Sala Ideal Para TV De Até 50 Polegadas (HANOVER 2): preço não apareceu novamente na página",
-    "Amazon Brasil · Painel Egeo Frisado Para Quarto Ou Sala Ideal Para TV De Até 50 Polegadas (HANOVER 2): preço não apareceu novamente na página",
-    "Amazon Brasil · Painel Egeo Frisado Para Quarto Ou Sala Ideal Para TV De Até 50 Polegadas (HANOVER 2): preço não apareceu novamente na página",
-    "Amazon Brasil · Painel Frisado para TV até 50 Polegadas com Prateleira 120x90 cm para Sala Quarto - Loja Inova BR (Hanover Fend): preço não apareceu novamente na página",
-    "Amazon Brasil · Painel Frisado para TV até 50 Polegadas com Prateleira 120x90 cm para Sala Quarto - Loja Inova BR (Hanover Fend): preço não apareceu novamente na página",
-    "Amazon Brasil · Painel Frisado para TV até 50 Polegadas com Prateleira 120x90 cm para Sala Quarto - Loja Inova BR (Hanover Fend): preço não apareceu novamente na página",
-    "Amazon Brasil · Painel Frisado para TV até 50 Polegadas com Prateleira 120x90 cm para Sala Quarto - Loja Inova BR (Hanover Fend): preço não apareceu novamente na página",
-    "Amazon Brasil · Painel Caemmun Black Para Tv até 55 polegadas (Marrom/Off White): preço não apareceu novamente na página",
-    "Amazon Brasil · Estante para TV e Home Theater até 55 Polegadas 166cmx155cm Nichos 2 Portas Cinamomo Off White Havana Cinamomo/Off White: preço não apareceu novamente na página"
+    "Amazon Brasil · Panos lava e seca 5 peças - Simplo: preço não apareceu novamente na página",
+    "Amazon Brasil · Panos lava e seca 5 peças - Simplo: preço não apareceu novamente na página",
+    "Amazon Brasil · Mario Kart World - Nintendo Switch 2: preço não apareceu novamente na página",
+    "Amazon Brasil · Cartão Nintendo Switch 2 Samsung microSD Express 256 GB: preço não apareceu novamente na página"
   ],
   "bugs": [
+    {
+      "source": "Amazon Brasil",
+      "store_name": "Amazon Brasil",
+      "title": "Protetor De Geladeira ou Freezer Contra Queda Surtos de Energia 127V",
+      "price": 43.5,
+      "original_price": null,
+      "url": "https://www.amazon.com.br/Protetor-Contra-Energia-Freezer-Geladeira/dp/B0798XT2VK/ref=sr_1_41",
+      "search_query": "geladeira",
+      "available": true,
+      "trusted": false,
+      "revalidated": true,
+      "collector": "fast-market-scan",
+      "bug_score": 100,
+      "bug_status": "🚨 BUG PROVÁVEL",
+      "category_rule": "Geladeira",
+      "category": "Eletrodomésticos",
+      "baseline_price": 1400.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 96.9,
+      "savings": 1356.5,
+      "reasons": [
+        "97% abaixo de piso conservador da categoria",
+        "preço impossível para a faixa de Geladeira",
+        "preço reaberto e confirmado"
+      ],
+      "verification_note": "preço confirmado; vendedor precisa conferência manual",
+      "first_seen": "2026-10-25T00:19:55.213955Z",
+      "last_seen": "2026-10-25T00:19:55.213955Z",
+      "sightings": 1,
+      "fresh": true
+    },
     {
       "source": "Amazon Brasil",
       "store_name": "Amazon Brasil",
