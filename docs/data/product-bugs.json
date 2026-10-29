@@ -1,28 +1,30 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-10-28T21:48:48.705446Z",
+  "generated_at": "2026-10-29T01:23:40.048154Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 0,
-  "strong_count": 0,
-  "critical_count": 0,
-  "confirmed_count": 0,
+  "active_count": 2,
+  "strong_count": 1,
+  "critical_count": 1,
+  "confirmed_count": 1,
   "sensor_bug_count": 0,
-  "scanner_count": 6,
+  "scanner_count": 9,
   "queries_this_run": [
-    "lava e seca",
-    "nintendo switch 2",
-    "playstation 5"
+    "air fryer",
+    "microondas",
+    "notebook gamer",
+    "smart tv 50",
+    "smart tv 65"
   ],
   "source_health": {
-    "Mercado Livre": {
+    "Magalu": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     },
-    "Magalu": {
+    "Mercado Livre": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
@@ -38,19 +40,84 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 6,
-      "candidates_seen": 6,
+      "items": 9,
+      "candidates_seen": 9,
       "message": "scanner rápido",
       "errors": []
     }
   },
   "validation_errors": [
-    "Amazon Brasil · Panos lava e seca 5 peças - Simplo: preço não apareceu novamente na página",
-    "Amazon Brasil · Pastilhas Efervescentes para Limpeza de Máquina de Lavar | Kit 12 Pastilhas | Remove Resíduos e Reduz Odores | Lava e Seca: preço não apareceu novamente na página",
-    "Amazon Brasil · Panos lava e seca 5 peças - Simplo: preço não apareceu novamente na página",
-    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Branco): preço não apareceu novamente na página",
-    "Amazon Brasil · Mario Kart World - Nintendo Switch 2: preço não apareceu novamente na página",
-    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Preto): preço não apareceu novamente na página"
+    "Amazon Brasil · Tampa Microondas Anti-Respingo Com Alça e Transparente Anti Sujeira Com Válvula Livre de BPA Premium: preço não apareceu novamente na página",
+    "Amazon Brasil · Tampa para Microondas, Branco, Electrolux: preço não apareceu novamente na página",
+    "Amazon Brasil · Sanremo - Tampa Plástica para Micro-ondas, Linha Casar: preço não apareceu novamente na página",
+    "Amazon Brasil · Electrolux Tampa para Microondas Preta BPA Free, 34,5cm: preço não apareceu novamente na página",
+    "Amazon Brasil · C3Tech Base para notebook Gamer NBC-100BK 17,3\" Refrigerada, 4 Ventiladores, Led Azul, controle de velocidade, regulagem de altura em 5 posições, Display digital em LCD: preço não apareceu novamente na página",
+    "Amazon Brasil · Kit com 100 unidades de papel descartável antiaderente para Air Fryer: preço não apareceu novamente na página",
+    "Amazon Brasil · ELG Suporte de Parede Articulado para TV 26 a 65 Polegadas Braço 41,4cm: preço não apareceu novamente na página",
+    "Amazon Brasil · Kit com 100 unidades de papel descartável antiaderente para Air Fryer: preço não apareceu novamente na página"
   ],
-  "bugs": []
+  "bugs": [
+    {
+      "source": "Amazon Brasil",
+      "store_name": "Amazon Brasil",
+      "title": "ELG Suporte de Parede Articulado para TV 26 a 65 Polegadas Braço 41,4cm",
+      "price": 89.0,
+      "original_price": null,
+      "url": "https://www.amazon.com.br/ELG-FULL40_PRO-Multiarticulado-Movimenta%C3%A7%C3%A3o-Comprimento/dp/B07V59H2JJ/ref=sr_1_43",
+      "search_query": "smart tv 50",
+      "available": true,
+      "trusted": false,
+      "revalidated": true,
+      "collector": "fast-market-scan",
+      "bug_score": 100,
+      "bug_status": "🚨 BUG PROVÁVEL",
+      "category_rule": "TV 65 polegadas",
+      "category": "TVs",
+      "baseline_price": 1800.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 95.1,
+      "savings": 1711.0,
+      "reasons": [
+        "95% abaixo de piso conservador da categoria",
+        "preço impossível para a faixa de TV 65 polegadas",
+        "preço reaberto e confirmado"
+      ],
+      "verification_note": "preço confirmado; vendedor precisa conferência manual",
+      "first_seen": "2026-10-29T01:23:40.048154Z",
+      "last_seen": "2026-10-29T01:23:40.048154Z",
+      "sightings": 1,
+      "fresh": true
+    },
+    {
+      "source": "Loja TCL",
+      "store_name": "Loja TCL",
+      "title": "Mais Vendido",
+      "price": 1093.88,
+      "original_price": 1249.0,
+      "reference_price": 3771.08,
+      "url": "https://www.lojatcl.com.br/smart-tv-tcl-32-polegadas-hd-qled-s5k-wifi-bluetooth-google-tv-2-hdmi-hdr10-dolby-audio-32s5k-32534/p",
+      "category": null,
+      "available": true,
+      "trusted": true,
+      "revalidated": true,
+      "collector": "radar-historico",
+      "collected_at": "2026-10-28T21:49:10.923875+00:00",
+      "bug_score": 62,
+      "bug_status": "🟢 SUSPEITO",
+      "category_rule": null,
+      "baseline_price": 3771.08,
+      "baseline_kind": "histórico/mercado",
+      "drop_pct": 71.0,
+      "savings": 2677.2,
+      "reasons": [
+        "71% abaixo de histórico/mercado",
+        "preço reaberto e confirmado",
+        "vendedor/loja com sinal de confiança"
+      ],
+      "first_seen": "2026-10-29T01:23:40.048154Z",
+      "last_seen": "2026-10-29T01:23:40.048154Z",
+      "sightings": 1,
+      "fresh": true
+    }
+  ]
 }
