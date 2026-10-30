@@ -1,15 +1,18 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-10-30T16:10:49.906235Z",
+  "generated_at": "2026-10-30T20:45:34.572135Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 1,
+  "active_count": 2,
   "strong_count": 0,
   "critical_count": 0,
   "confirmed_count": 0,
   "sensor_bug_count": 0,
-  "scanner_count": 0,
-  "queries_this_run": [],
+  "scanner_count": 2,
+  "queries_this_run": [
+    "jbl partybox",
+    "playstation 5"
+  ],
   "source_health": {
     "Mercado Livre": {
       "ok": true,
@@ -34,13 +37,15 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 0,
-      "candidates_seen": 0,
-      "message": "nenhum candidato extremo nesta rodada",
+      "items": 2,
+      "candidates_seen": 2,
+      "message": "scanner rápido",
       "errors": []
     }
   },
-  "validation_errors": [],
+  "validation_errors": [
+    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Preto): preço não apareceu novamente na página"
+  ],
   "bugs": [
     {
       "source": "Loja TCL",
@@ -55,7 +60,7 @@
       "trusted": true,
       "revalidated": true,
       "collector": "radar-historico",
-      "collected_at": "2026-10-30T14:23:40.629626+00:00",
+      "collected_at": "2026-10-30T20:01:57.600779+00:00",
       "bug_score": 62,
       "bug_status": "🟢 SUSPEITO",
       "category_rule": null,
@@ -69,9 +74,40 @@
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-10-29T01:23:40.048154Z",
-      "last_seen": "2026-10-30T16:10:49.906235Z",
-      "sightings": 8,
+      "last_seen": "2026-10-30T20:45:34.572135Z",
+      "sightings": 9,
       "fresh": false
+    },
+    {
+      "source": "Dufrio",
+      "store_name": "Dufrio",
+      "title": "Refrigeração comercial",
+      "price": 3512.7,
+      "original_price": 13431.36,
+      "reference_price": 13431.36,
+      "url": "https://www.dufrio.com.br/refrigeracao-comercial/refrigerador-expositor-de-bebidas/",
+      "category": null,
+      "available": true,
+      "trusted": true,
+      "revalidated": true,
+      "collector": "radar-historico",
+      "collected_at": "2026-10-30T20:01:36.863123+00:00",
+      "bug_score": 62,
+      "bug_status": "🟢 SUSPEITO",
+      "category_rule": null,
+      "baseline_price": 13431.36,
+      "baseline_kind": "histórico/mercado",
+      "drop_pct": 73.8,
+      "savings": 9918.66,
+      "reasons": [
+        "74% abaixo de histórico/mercado",
+        "preço reaberto e confirmado",
+        "vendedor/loja com sinal de confiança"
+      ],
+      "first_seen": "2026-10-30T20:45:34.572135Z",
+      "last_seen": "2026-10-30T20:45:34.572135Z",
+      "sightings": 1,
+      "fresh": true
     }
   ]
 }
