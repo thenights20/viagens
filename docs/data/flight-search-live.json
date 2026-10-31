@@ -1,10 +1,10 @@
 {
   "version": "0.4.0",
-  "generated_at": "2026-10-31T22:07:11.813036Z",
-  "updated_at": "2026-10-31T22:07:11.813036Z",
+  "generated_at": "2026-10-31T22:07:19.780657Z",
+  "updated_at": "2026-10-31T22:07:19.780657Z",
   "started_at": "2026-10-31T22:06:56.155842Z",
-  "status": "running",
-  "stage": "multisource",
+  "status": "completed",
+  "stage": "completed",
   "mode": "date_range_matrix",
   "request_id": "web_43ec48c32cd44b48994fb47367c2960b",
   "request": {
@@ -29,20 +29,20 @@
   },
   "stats": {
     "combinations": 40,
-    "processed_combinations": 36,
-    "primary_completed": 36,
+    "processed_combinations": 40,
+    "primary_completed": 40,
     "primary_total": 40,
     "fallback_done": 0,
     "fallback_total": 0,
-    "priced_combinations": 14,
-    "coverage_pct": 35.0,
+    "priced_combinations": 15,
+    "coverage_pct": 37.5,
     "lowest_price": 1741.0,
-    "result_count": 14
+    "result_count": 15
   },
   "history_summary": {
-    "compared": 3,
+    "compared": 4,
     "cheaper": 0,
-    "higher": 3,
+    "higher": 4,
     "same": 0,
     "new": 11
   },
@@ -144,7 +144,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 13
+      "rank": 14
     },
     {
       "origin": "SJP",
@@ -482,6 +482,39 @@
       "origin": "ARU",
       "destination": "FLN",
       "departure_date": "2026-11-12",
+      "return_date": "2026-11-14",
+      "airline": "Gol",
+      "price": 2573.0,
+      "duration": "2h 25min",
+      "duration_minutes": 145,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2026, 11, 12] [14, 50]",
+      "arrival": "[2026, 11, 12] [20, 55]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+ARU+to+FLN+on+2026-11-12+returning+2026-11-14&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 2,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+ARU+to+FLN+on+2026-11-12+returning+2026-11-14&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=ARU&to=FLN&depart=2026-11-12&return=2026-11-14&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": 1518.0,
+      "change_amount": 1055.0,
+      "change_pct": 69.5,
+      "trend": "up",
+      "historical_min": 1518.0,
+      "history_samples": 2,
+      "previous_seen_at": "2026-10-14T15:32:47.562852Z",
+      "rank": 10
+    },
+    {
+      "origin": "ARU",
+      "destination": "FLN",
+      "departure_date": "2026-11-12",
       "return_date": "2026-11-13",
       "airline": "Gol",
       "price": 2700.0,
@@ -509,7 +542,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 10
+      "rank": 11
     },
     {
       "origin": "SJP",
@@ -542,7 +575,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 11
+      "rank": 12
     },
     {
       "origin": "SJP",
@@ -575,7 +608,7 @@
       "historical_min": 1541.0,
       "history_samples": 1,
       "previous_seen_at": "2026-10-14T23:40:18.248032Z",
-      "rank": 12
+      "rank": 13
     },
     {
       "origin": "SJP",
@@ -608,7 +641,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 13
+      "rank": 14
     },
     {
       "origin": "SJP",
@@ -641,7 +674,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 14
+      "rank": 15
     }
   ],
   "all_results": [
@@ -946,6 +979,39 @@
       "origin": "ARU",
       "destination": "FLN",
       "departure_date": "2026-11-12",
+      "return_date": "2026-11-14",
+      "airline": "Gol",
+      "price": 2573.0,
+      "duration": "2h 25min",
+      "duration_minutes": 145,
+      "stops": "1 escala",
+      "stops_count": 1,
+      "departure": "[2026, 11, 12] [14, 50]",
+      "arrival": "[2026, 11, 12] [20, 55]",
+      "url": "https://www.google.com/travel/flights?q=Flights+from+ARU+to+FLN+on+2026-11-12+returning+2026-11-14&curr=BRL&hl=pt-BR",
+      "provider": "Google Flights",
+      "source_kind": "google",
+      "trip_days": 2,
+      "currency": "BRL",
+      "price_source_confidence": "structured",
+      "search_links": {
+        "google": "https://www.google.com/travel/flights?q=Flights+from+ARU+to+FLN+on+2026-11-12+returning+2026-11-14&curr=BRL&hl=pt-BR",
+        "ita": "https://matrix.itasoftware.com/search#from=ARU&to=FLN&depart=2026-11-12&return=2026-11-14&currency=BRL"
+      },
+      "assigned_source": "google",
+      "previous_price": 1518.0,
+      "change_amount": 1055.0,
+      "change_pct": 69.5,
+      "trend": "up",
+      "historical_min": 1518.0,
+      "history_samples": 2,
+      "previous_seen_at": "2026-10-14T15:32:47.562852Z",
+      "rank": 10
+    },
+    {
+      "origin": "ARU",
+      "destination": "FLN",
+      "departure_date": "2026-11-12",
       "return_date": "2026-11-13",
       "airline": "Gol",
       "price": 2700.0,
@@ -973,7 +1039,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 10
+      "rank": 11
     },
     {
       "origin": "SJP",
@@ -1006,7 +1072,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 11
+      "rank": 12
     },
     {
       "origin": "SJP",
@@ -1039,7 +1105,7 @@
       "historical_min": 1541.0,
       "history_samples": 1,
       "previous_seen_at": "2026-10-14T23:40:18.248032Z",
-      "rank": 12
+      "rank": 13
     },
     {
       "origin": "SJP",
@@ -1072,7 +1138,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 13
+      "rank": 14
     },
     {
       "origin": "SJP",
@@ -1105,7 +1171,7 @@
       "historical_min": null,
       "history_samples": 0,
       "previous_seen_at": null,
-      "rank": 14
+      "rank": 15
     }
   ],
   "errors": [
@@ -1140,7 +1206,7 @@
     "google"
   ],
   "source_counts": {
-    "google": 36,
+    "google": 40,
     "ita": 0
   },
   "resume": {
@@ -1148,11 +1214,11 @@
     "window_minutes": 60,
     "cache_id": "multi-web_43ec48c32cd44b48994fb47367c2960b",
     "reused_combinations": 0,
-    "searched_this_run": 36,
-    "remaining_this_run": 4,
-    "reusable_now": 34,
-    "retryable_for_next_run": 6,
-    "saved_records": 36,
+    "searched_this_run": 40,
+    "remaining_this_run": 0,
+    "reusable_now": 38,
+    "retryable_for_next_run": 2,
+    "saved_records": 40,
     "saved_errors": 2,
     "checkpoint_path": "docs/data/flight-search-checkpoints/1146b1211a04e3a0d61bf1d1.json",
     "checkpoint_paths": [
@@ -1161,11 +1227,5 @@
       "docs/data/flight-search-checkpoints/833b87bfc0ef04c457b7d888.json",
       "docs/data/flight-search-checkpoints/adc5b5b01be7764b700aa326.json"
     ]
-  },
-  "current_pair": {
-    "origin": "ARU",
-    "destination": "FLN",
-    "departure_date": "2026-11-12",
-    "return_date": "2026-11-15"
   }
 }
