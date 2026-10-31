@@ -1,26 +1,26 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-10-31T00:08:03.157828Z",
+  "generated_at": "2026-10-31T05:32:02.894614Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 3,
-  "strong_count": 1,
-  "critical_count": 1,
-  "confirmed_count": 1,
+  "active_count": 2,
+  "strong_count": 0,
+  "critical_count": 0,
+  "confirmed_count": 0,
   "sensor_bug_count": 0,
   "scanner_count": 2,
   "queries_this_run": [
     "microondas"
   ],
   "source_health": {
-    "Mercado Livre": {
+    "Magalu": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     },
-    "Magalu": {
+    "Mercado Livre": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
@@ -43,40 +43,10 @@
     }
   },
   "validation_errors": [
-    "Amazon Brasil · Tampa Micro-ondas Transparente: preço não apareceu novamente na página"
+    "Amazon Brasil · Tampa Micro-ondas Transparente: preço não apareceu novamente na página",
+    "Amazon Brasil · Electrolux Tampa para Microondas Preta BPA Free, 34,5cm: preço não apareceu novamente na página"
   ],
   "bugs": [
-    {
-      "source": "Amazon Brasil",
-      "store_name": "Amazon Brasil",
-      "title": "Tampa Microondas Transparente",
-      "price": 14.9,
-      "original_price": 19.9,
-      "url": "https://www.amazon.com.br/Microondas-Anti-Respingo-Transparente-Sujeira-V%C3%A1lvula/dp/B0DVRNRGM1/ref=sr_1_30",
-      "search_query": "microondas",
-      "available": true,
-      "trusted": false,
-      "revalidated": true,
-      "collector": "fast-market-scan",
-      "bug_score": 100,
-      "bug_status": "🚨 BUG PROVÁVEL",
-      "category_rule": "Micro-ondas",
-      "category": "Eletrodomésticos",
-      "baseline_price": 320.0,
-      "baseline_kind": "piso conservador da categoria",
-      "drop_pct": 95.3,
-      "savings": 305.1,
-      "reasons": [
-        "95% abaixo de piso conservador da categoria",
-        "preço impossível para a faixa de Micro-ondas",
-        "preço reaberto e confirmado"
-      ],
-      "verification_note": "preço confirmado; vendedor precisa conferência manual",
-      "first_seen": "2026-10-31T00:08:03.157828Z",
-      "last_seen": "2026-10-31T00:08:03.157828Z",
-      "sightings": 1,
-      "fresh": true
-    },
     {
       "source": "Loja TCL",
       "store_name": "Loja TCL",
@@ -104,8 +74,8 @@
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-10-29T01:23:40.048154Z",
-      "last_seen": "2026-10-31T00:08:03.157828Z",
-      "sightings": 10,
+      "last_seen": "2026-10-31T05:32:02.894614Z",
+      "sightings": 11,
       "fresh": false
     },
     {
@@ -135,8 +105,8 @@
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-10-30T20:45:34.572135Z",
-      "last_seen": "2026-10-31T00:08:03.157828Z",
-      "sightings": 2,
+      "last_seen": "2026-10-31T05:32:02.894614Z",
+      "sightings": 3,
       "fresh": false
     }
   ]
