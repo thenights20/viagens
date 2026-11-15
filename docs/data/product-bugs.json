@@ -1,27 +1,24 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-11-14T20:42:17.116054Z",
+  "generated_at": "2026-11-15T00:17:08.032393Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 10,
-  "strong_count": 2,
+  "active_count": 11,
+  "strong_count": 3,
   "critical_count": 2,
-  "confirmed_count": 1,
+  "confirmed_count": 2,
   "sensor_bug_count": 0,
-  "scanner_count": 18,
-  "queries_this_run": [
-    "galaxy s ultra",
-    "playstation 5"
-  ],
+  "scanner_count": 0,
+  "queries_this_run": [],
   "source_health": {
-    "Mercado Livre": {
+    "Magalu": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     },
-    "Magalu": {
+    "Mercado Livre": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
@@ -37,23 +34,13 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 18,
-      "candidates_seen": 18,
-      "message": "scanner rápido",
+      "items": 0,
+      "candidates_seen": 0,
+      "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     }
   },
-  "validation_errors": [
-    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Preto): preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta Stylus S Pen Compatível Galaxy S24 Ultra S23 S22: preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta Galaxy S25 Ultra de Reposição para Samsung Galaxy S25 Ultra 5G Todas as Versões, Caneta Touch Stylus (Preta): preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta Galaxy S25 Ultra de Reposição para Samsung Galaxy S25 Ultra 5G Todas as Versões, Caneta Touch Stylus (Preta): preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta Galaxy S25 Ultra de Reposição para Samsung Galaxy S25 Ultra 5G Todas as Versões, Caneta Touch Stylus (Preta): preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta Galaxy S25 Ultra de Reposição para Samsung Galaxy S25 Ultra 5G Todas as Versões, Caneta Touch Stylus (Preta): preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta de reposição S26 Ultra S para Samsung Galaxy S26 Ultra Stylus, com 5 peças de substituição de pontas/pontas (azul gelo): preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta de reposição S26 Ultra S para Samsung Galaxy S26 Ultra Stylus, com 5 peças de substituição de pontas/pontas (azul gelo): preço não apareceu novamente na página",
-    "Amazon Brasil · Caneta de reposição S26 Ultra S para Samsung Galaxy S26 Ultra Stylus, com 5 peças de substituição de pontas/pontas (azul gelo): preço não apareceu novamente na página"
-  ],
+  "validation_errors": [],
   "bugs": [
     {
       "source": "Amazon Brasil",
@@ -116,6 +103,37 @@
       "last_seen": "2026-11-14T20:42:17.116054Z",
       "sightings": 2,
       "fresh": false
+    },
+    {
+      "source": "Dufrio",
+      "store_name": "Dufrio",
+      "title": "Forno Elétrico de Embutir Fogatti 60 Litros E60 Inox - 220V",
+      "price": 1137.6,
+      "original_price": 1289.28,
+      "reference_price": 10889.01,
+      "url": "https://www.dufrio.com.br/forno-eletrico-de-embutir-fogatti-60-litros-e60-inox-220v.html",
+      "category": null,
+      "available": true,
+      "trusted": true,
+      "revalidated": true,
+      "collector": "radar-historico",
+      "collected_at": "2026-11-14T23:07:21.016027+00:00",
+      "bug_score": 73,
+      "bug_status": "🔥 BUG FORTE",
+      "category_rule": null,
+      "baseline_price": 10889.01,
+      "baseline_kind": "histórico/mercado",
+      "drop_pct": 89.6,
+      "savings": 9751.41,
+      "reasons": [
+        "90% abaixo de histórico/mercado",
+        "preço reaberto e confirmado",
+        "vendedor/loja com sinal de confiança"
+      ],
+      "first_seen": "2026-11-15T00:17:08.032393Z",
+      "last_seen": "2026-11-15T00:17:08.032393Z",
+      "sightings": 1,
+      "fresh": true
     },
     {
       "source": "Amazon Brasil",
