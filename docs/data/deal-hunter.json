@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-11-20T20:19:30.598670Z",
+  "generated_at": "2026-11-21T07:07:20.887681Z",
   "source": "Deal Hunter: Google Flights Explore/Swoop + rechecagem de sinais externos",
   "scan_interval_minutes": 15,
   "origin_codes": [
@@ -8,7 +8,7 @@
     "CGH",
     "VCP",
     "GIG",
-    "JTC"
+    "TJL"
   ],
   "hub_codes": [
     "GRU",
@@ -31,7 +31,14 @@
   "very_cheap_count": 0,
   "external_targets": 3,
   "external_verified": 0,
-  "errors": [],
+  "errors": [
+    "discovery GIG: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "discovery TJL: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "discovery GRU: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "externo GRU-MAD: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "externo GIG-ORD: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result.",
+    "externo GIG-JFK: SwoopUpstreamError: Google Flights rejected the request (gRPC status 13 INTERNAL). This is an upstream error, not an empty result."
+  ],
   "benchmarks": {
     "domestic": [
       [
