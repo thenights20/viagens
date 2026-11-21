@@ -1,16 +1,17 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-11-20T21:33:45.306484Z",
+  "generated_at": "2026-11-21T02:50:37.922141Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
   "active_count": 3,
-  "strong_count": 1,
-  "critical_count": 0,
-  "confirmed_count": 1,
+  "strong_count": 2,
+  "critical_count": 1,
+  "confirmed_count": 2,
   "sensor_bug_count": 0,
-  "scanner_count": 1,
+  "scanner_count": 3,
   "queries_this_run": [
-    "dji mini"
+    "lava e seca",
+    "notebook gamer"
   ],
   "source_health": {
     "Magalu": {
@@ -36,14 +37,48 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 1,
-      "candidates_seen": 1,
+      "items": 3,
+      "candidates_seen": 3,
       "message": "scanner rápido",
       "errors": []
     }
   },
-  "validation_errors": [],
+  "validation_errors": [
+    "Amazon Brasil · C3Tech Base para notebook Gamer NBC-100BK 17,3\" Refrigerada, 4 Ventiladores, Led Azul, controle de velocidade, regulagem de altura em 5 posições, Display digital em LCD: preço não apareceu novamente na página",
+    "Amazon Brasil · Panos lava e seca 5 peças - Simplo: preço não apareceu novamente na página"
+  ],
   "bugs": [
+    {
+      "source": "Amazon Brasil",
+      "store_name": "Amazon Brasil",
+      "title": "Panos lava e seca 5 peças - Simplo",
+      "price": 4.09,
+      "original_price": null,
+      "url": "https://www.amazon.com.br/Panos-lava-seca-pe%C3%A7as-Simplo/dp/B0BQ7MSZZC/ref=sr_1_35",
+      "search_query": "lava e seca",
+      "available": true,
+      "trusted": false,
+      "revalidated": true,
+      "collector": "fast-market-scan",
+      "bug_score": 100,
+      "bug_status": "🚨 BUG PROVÁVEL",
+      "category_rule": "Lava e seca",
+      "category": "Eletrodomésticos",
+      "baseline_price": 1700.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 99.8,
+      "savings": 1695.91,
+      "reasons": [
+        "100% abaixo de piso conservador da categoria",
+        "preço impossível para a faixa de Lava e seca",
+        "preço reaberto e confirmado"
+      ],
+      "verification_note": "preço confirmado; vendedor precisa conferência manual",
+      "first_seen": "2026-11-21T02:50:37.922141Z",
+      "last_seen": "2026-11-21T02:50:37.922141Z",
+      "sightings": 1,
+      "fresh": true
+    },
     {
       "source": "Dufrio",
       "store_name": "Dufrio",
@@ -57,7 +92,7 @@
       "trusted": true,
       "revalidated": true,
       "collector": "radar-historico",
-      "collected_at": "2026-11-20T21:16:57.659214+00:00",
+      "collected_at": "2026-11-21T02:28:04.744406+00:00",
       "bug_score": 73,
       "bug_status": "🔥 BUG FORTE",
       "category_rule": null,
@@ -71,9 +106,9 @@
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-11-20T21:33:45.306484Z",
-      "last_seen": "2026-11-20T21:33:45.306484Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-11-21T02:50:37.922141Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "source": "Dufrio",
@@ -88,7 +123,7 @@
       "trusted": true,
       "revalidated": true,
       "collector": "radar-historico",
-      "collected_at": "2026-11-20T21:16:57.601998+00:00",
+      "collected_at": "2026-11-21T02:28:04.678071+00:00",
       "bug_score": 68,
       "bug_status": "🟢 SUSPEITO",
       "category_rule": null,
@@ -102,38 +137,9 @@
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-11-20T21:33:45.306484Z",
-      "last_seen": "2026-11-20T21:33:45.306484Z",
-      "sightings": 1,
-      "fresh": true
-    },
-    {
-      "source": "Amazon Brasil",
-      "store_name": "Amazon Brasil",
-      "title": "Hub de Carregamento DJI Mini 3 Pro e DJI Mini 4 Pro - DJI1029",
-      "price": 446.4,
-      "original_price": 469.9,
-      "url": "https://www.amazon.com.br/Hub-Carregamento-DJI-Mini-Pro/dp/B0CPTBL7NX/ref=sr_1_40",
-      "search_query": "dji mini",
-      "available": true,
-      "trusted": false,
-      "revalidated": false,
-      "collector": "fast-market-scan",
-      "bug_score": 66,
-      "bug_status": "🟢 SUSPEITO",
-      "category_rule": "DJI",
-      "category": "Drones e câmeras",
-      "baseline_price": 1600.0,
-      "baseline_kind": "piso conservador da categoria",
-      "drop_pct": 72.1,
-      "savings": 1153.6,
-      "reasons": [
-        "72% abaixo de piso conservador da categoria",
-        "muito abaixo do piso conservador de DJI"
-      ],
-      "first_seen": "2026-11-20T21:33:45.306484Z",
-      "last_seen": "2026-11-20T21:33:45.306484Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-11-21T02:50:37.922141Z",
+      "sightings": 2,
+      "fresh": false
     }
   ]
 }
