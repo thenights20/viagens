@@ -1,18 +1,15 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-11-21T22:23:21.347969Z",
+  "generated_at": "2026-11-22T02:25:41.677013Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 3,
-  "strong_count": 2,
-  "critical_count": 1,
-  "confirmed_count": 2,
+  "active_count": 2,
+  "strong_count": 1,
+  "critical_count": 0,
+  "confirmed_count": 1,
   "sensor_bug_count": 0,
-  "scanner_count": 5,
-  "queries_this_run": [
-    "notebook gamer",
-    "playstation 5"
-  ],
+  "scanner_count": 0,
+  "queries_this_run": [],
   "source_health": {
     "Magalu": {
       "ok": true,
@@ -37,50 +34,14 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 5,
-      "candidates_seen": 5,
-      "message": "scanner rápido",
+      "items": 0,
+      "candidates_seen": 0,
+      "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     }
   },
-  "validation_errors": [
-    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Preto): preço não apareceu novamente na página",
-    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Branco): preço não apareceu novamente na página",
-    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Preto): preço não apareceu novamente na página",
-    "Amazon Brasil · C3Tech Base para notebook Gamer NBC-100BK 17,3\" Refrigerada, 4 Ventiladores, Led Azul, controle de velocidade, regulagem de altura em 5 posições, Display digital em LCD: preço não apareceu novamente na página"
-  ],
+  "validation_errors": [],
   "bugs": [
-    {
-      "source": "Amazon Brasil",
-      "store_name": "Amazon Brasil",
-      "title": "Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Branco)",
-      "price": 26.01,
-      "original_price": 28.9,
-      "url": "https://www.amazon.com.br/Stand-Vertical-Compativel-Playstation-Branco/dp/B0D243WKVP/ref=sr_1_45_so_PORTABLE_ELECTRONIC_DEVICE_STAND",
-      "search_query": "playstation 5",
-      "available": true,
-      "trusted": false,
-      "revalidated": true,
-      "collector": "fast-market-scan",
-      "bug_score": 100,
-      "bug_status": "🚨 BUG PROVÁVEL",
-      "category_rule": "PlayStation 5",
-      "category": "Consoles",
-      "baseline_price": 2400.0,
-      "baseline_kind": "piso conservador da categoria",
-      "drop_pct": 98.9,
-      "savings": 2373.99,
-      "reasons": [
-        "99% abaixo de piso conservador da categoria",
-        "preço impossível para a faixa de PlayStation 5",
-        "preço reaberto e confirmado"
-      ],
-      "verification_note": "preço confirmado; vendedor precisa conferência manual",
-      "first_seen": "2026-11-21T22:23:21.347969Z",
-      "last_seen": "2026-11-21T22:23:21.347969Z",
-      "sightings": 1,
-      "fresh": true
-    },
     {
       "source": "Dufrio",
       "store_name": "Dufrio",
@@ -94,7 +55,7 @@
       "trusted": true,
       "revalidated": true,
       "collector": "radar-historico",
-      "collected_at": "2026-11-21T18:08:16.239381+00:00",
+      "collected_at": "2026-11-21T23:29:10.730720+00:00",
       "bug_score": 73,
       "bug_status": "🔥 BUG FORTE",
       "category_rule": null,
@@ -108,9 +69,9 @@
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-11-21T22:23:21.347969Z",
-      "last_seen": "2026-11-21T22:23:21.347969Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-11-22T02:25:41.677013Z",
+      "sightings": 2,
+      "fresh": false
     },
     {
       "source": "Dufrio",
@@ -125,7 +86,7 @@
       "trusted": true,
       "revalidated": true,
       "collector": "radar-historico",
-      "collected_at": "2026-11-21T18:08:16.174161+00:00",
+      "collected_at": "2026-11-21T23:29:10.638496+00:00",
       "bug_score": 68,
       "bug_status": "🟢 SUSPEITO",
       "category_rule": null,
@@ -139,9 +100,9 @@
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-11-21T22:23:21.347969Z",
-      "last_seen": "2026-11-21T22:23:21.347969Z",
-      "sightings": 1,
-      "fresh": true
+      "last_seen": "2026-11-22T02:25:41.677013Z",
+      "sightings": 2,
+      "fresh": false
     }
   ]
 }
