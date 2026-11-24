@@ -1,16 +1,16 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-11-23T13:22:36.598606Z",
+  "generated_at": "2026-11-24T01:05:13.224105Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 0,
-  "strong_count": 0,
-  "critical_count": 0,
-  "confirmed_count": 0,
+  "active_count": 1,
+  "strong_count": 1,
+  "critical_count": 1,
+  "confirmed_count": 1,
   "sensor_bug_count": 0,
-  "scanner_count": 2,
+  "scanner_count": 1,
   "queries_this_run": [
-    "playstation 5"
+    "notebook gamer"
   ],
   "source_health": {
     "Mercado Livre": {
@@ -36,15 +36,44 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 2,
-      "candidates_seen": 2,
+      "items": 1,
+      "candidates_seen": 1,
       "message": "scanner rápido",
       "errors": []
     }
   },
-  "validation_errors": [
-    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Preto): preço não apareceu novamente na página",
-    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Preto): preço não apareceu novamente na página"
-  ],
-  "bugs": []
+  "validation_errors": [],
+  "bugs": [
+    {
+      "source": "Amazon Brasil",
+      "store_name": "Amazon Brasil",
+      "title": "C3Tech Base para notebook Gamer NBC-100BK 17,3\" Refrigerada, 4 Ventiladores, Led Azul, controle de velocidade, regulagem de altura em 5 posições, Display digital em LCD",
+      "price": 77.99,
+      "original_price": 109.9,
+      "url": "https://www.amazon.com.br/Notebook-NBC-100BK-C3TECH-Docking-Stations/dp/B076MP9YM9/ref=sr_1_22",
+      "search_query": "notebook gamer",
+      "available": true,
+      "trusted": false,
+      "revalidated": true,
+      "collector": "fast-market-scan",
+      "bug_score": 100,
+      "bug_status": "🚨 BUG PROVÁVEL",
+      "category_rule": "Notebook gamer",
+      "category": "Notebooks",
+      "baseline_price": 2800.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 97.2,
+      "savings": 2722.01,
+      "reasons": [
+        "97% abaixo de piso conservador da categoria",
+        "preço impossível para a faixa de Notebook gamer",
+        "preço reaberto e confirmado"
+      ],
+      "verification_note": "preço confirmado; vendedor precisa conferência manual",
+      "first_seen": "2026-11-24T01:05:13.224105Z",
+      "last_seen": "2026-11-24T01:05:13.224105Z",
+      "sightings": 1,
+      "fresh": true
+    }
+  ]
 }
