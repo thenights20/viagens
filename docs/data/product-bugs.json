@@ -1,26 +1,28 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-11-24T10:54:20.031586Z",
+  "generated_at": "2026-11-24T20:57:41.599376Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 1,
+  "active_count": 0,
   "strong_count": 0,
   "critical_count": 0,
   "confirmed_count": 0,
   "sensor_bug_count": 0,
-  "scanner_count": 1,
+  "scanner_count": 5,
   "queries_this_run": [
-    "dji mini"
+    "microondas",
+    "playstation 5",
+    "smart tv 65"
   ],
   "source_health": {
-    "Mercado Livre": {
+    "Magalu": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
       "message": "nenhum candidato extremo nesta rodada",
       "errors": []
     },
-    "Magalu": {
+    "Mercado Livre": {
       "ok": true,
       "items": 0,
       "candidates_seen": 0,
@@ -36,42 +38,18 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 1,
-      "candidates_seen": 1,
+      "items": 5,
+      "candidates_seen": 5,
       "message": "scanner rápido",
       "errors": []
     }
   },
-  "validation_errors": [],
-  "bugs": [
-    {
-      "source": "Amazon Brasil",
-      "store_name": "Amazon Brasil",
-      "title": "Hub de Carregamento DJI Mini 3 Pro e DJI Mini 4 Pro - DJI1029",
-      "price": 446.4,
-      "original_price": 469.9,
-      "url": "https://www.amazon.com.br/Hub-Carregamento-DJI-Mini-Pro/dp/B0CPTBL7NX/ref=sr_1_44",
-      "search_query": "dji mini",
-      "available": true,
-      "trusted": false,
-      "revalidated": false,
-      "collector": "fast-market-scan",
-      "bug_score": 66,
-      "bug_status": "🟢 SUSPEITO",
-      "category_rule": "DJI",
-      "category": "Drones e câmeras",
-      "baseline_price": 1600.0,
-      "baseline_kind": "piso conservador da categoria",
-      "drop_pct": 72.1,
-      "savings": 1153.6,
-      "reasons": [
-        "72% abaixo de piso conservador da categoria",
-        "muito abaixo do piso conservador de DJI"
-      ],
-      "first_seen": "2026-11-24T10:54:20.031586Z",
-      "last_seen": "2026-11-24T10:54:20.031586Z",
-      "sightings": 1,
-      "fresh": true
-    }
-  ]
+  "validation_errors": [
+    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Branco): preço não apareceu novamente na página",
+    "Amazon Brasil · Tampa Microondas Anti-Respingo BPA Free com Alça e Ventilação: preço não apareceu novamente na página",
+    "Amazon Brasil · Sanremo - Tampa Plástica para Micro-ondas, Linha Casar: preço não apareceu novamente na página",
+    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Branco): preço não apareceu novamente na página",
+    "Amazon Brasil · ELG Suporte de Parede Articulado para TV 26 a 65 Polegadas Braço 41,4cm: preço não apareceu novamente na página"
+  ],
+  "bugs": []
 }
