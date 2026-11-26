@@ -1,12 +1,12 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-11-26T04:36:49.510384Z",
+  "generated_at": "2026-11-26T14:27:00.054466Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 0,
-  "strong_count": 0,
-  "critical_count": 0,
-  "confirmed_count": 0,
+  "active_count": 2,
+  "strong_count": 2,
+  "critical_count": 1,
+  "confirmed_count": 1,
   "sensor_bug_count": 0,
   "scanner_count": 0,
   "queries_this_run": [],
@@ -41,5 +41,68 @@
     }
   },
   "validation_errors": [],
-  "bugs": []
+  "bugs": [
+    {
+      "source": "Dufrio",
+      "store_name": "Dufrio",
+      "title": "Amortecedor Lavadora Lava e Seca Samsung DC66-00343F-S Hulter",
+      "price": 8.82,
+      "original_price": 10.0,
+      "reference_price": 10.0,
+      "url": "https://www.dufrio.com.br/amortecedor-lavadora-lava-e-seca-samsung-dc66-00343f-s-hulter.html",
+      "category": "Eletrodomésticos",
+      "available": true,
+      "trusted": true,
+      "revalidated": false,
+      "collector": "radar-historico",
+      "collected_at": "2026-11-26T09:41:47.806539+00:00",
+      "bug_score": 100,
+      "bug_status": "🚨 BUG PROVÁVEL",
+      "category_rule": "Lava e seca",
+      "baseline_price": 1700.0,
+      "baseline_kind": "piso conservador da categoria",
+      "drop_pct": 99.5,
+      "savings": 1691.18,
+      "reasons": [
+        "99% abaixo de piso conservador da categoria",
+        "preço impossível para a faixa de Lava e seca",
+        "vendedor/loja com sinal de confiança"
+      ],
+      "first_seen": "2026-11-26T14:27:00.054466Z",
+      "last_seen": "2026-11-26T14:27:00.054466Z",
+      "sightings": 1,
+      "fresh": true
+    },
+    {
+      "source": "Dufrio",
+      "store_name": "Dufrio",
+      "title": "Forno Elétrico de Embutir Fogatti 60 Litros E60 Inox - 220V",
+      "price": 1099.0,
+      "original_price": 1289.28,
+      "reference_price": 10251.0,
+      "url": "https://www.dufrio.com.br/forno-eletrico-de-embutir-fogatti-60-litros-e60-inox-220v.html",
+      "category": null,
+      "available": true,
+      "trusted": true,
+      "revalidated": true,
+      "collector": "radar-historico",
+      "collected_at": "2026-11-26T09:41:47.074414+00:00",
+      "bug_score": 73,
+      "bug_status": "🔥 BUG FORTE",
+      "category_rule": null,
+      "baseline_price": 10251.0,
+      "baseline_kind": "histórico/mercado",
+      "drop_pct": 89.3,
+      "savings": 9152.0,
+      "reasons": [
+        "89% abaixo de histórico/mercado",
+        "preço reaberto e confirmado",
+        "vendedor/loja com sinal de confiança"
+      ],
+      "first_seen": "2026-11-26T14:27:00.054466Z",
+      "last_seen": "2026-11-26T14:27:00.054466Z",
+      "sightings": 1,
+      "fresh": true
+    }
+  ]
 }
