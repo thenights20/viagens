@@ -1,12 +1,12 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-11-27T15:02:01.896596Z",
+  "generated_at": "2026-11-27T23:27:46.250993Z",
   "source": "Páginas públicas oficiais GOL + Azul + LATAM",
-  "offer_count": 5,
-  "domestic_count": 3,
-  "international_count": 2,
+  "offer_count": 0,
+  "domestic_count": 0,
+  "international_count": 0,
   "source_count": 3,
-  "responding_source_count": 2,
+  "responding_source_count": 1,
   "sources": {
     "GOL": {
       "ok": true,
@@ -17,12 +17,12 @@
       "message": "ok"
     },
     "Azul": {
-      "ok": true,
-      "items": 5,
-      "parsed": 10,
+      "ok": false,
+      "items": 0,
+      "parsed": 0,
       "status": 200,
       "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos",
-      "message": "ok"
+      "message": "página respondeu, mas nenhum preço reconhecido"
     },
     "LATAM": {
       "ok": false,
@@ -32,86 +32,5 @@
       "message": "HTTPSConnectionPool(host='www.latamairlines.com', port=443): Read timed out. (read timeout=45)"
     }
   },
-  "offers": [
-    {
-      "source": "Azul",
-      "origin": "GRU",
-      "origin_candidates": [
-        "GRU"
-      ],
-      "origin_name": "São Paulo",
-      "destination": "REC",
-      "destination_name": "Recife",
-      "departure_date": "2027-04-21",
-      "return_date": null,
-      "trip_mode": "one_way",
-      "price": 323.75,
-      "scope": "domestic",
-      "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
-    },
-    {
-      "source": "Azul",
-      "origin": "VCP",
-      "origin_candidates": [
-        "VCP"
-      ],
-      "origin_name": "Campinas",
-      "destination": "REC",
-      "destination_name": "Recife",
-      "departure_date": "2027-03-13",
-      "return_date": null,
-      "trip_mode": "one_way",
-      "price": 365.35,
-      "scope": "domestic",
-      "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
-    },
-    {
-      "source": "Azul",
-      "origin": "CGH",
-      "origin_candidates": [
-        "CGH"
-      ],
-      "origin_name": "São Paulo",
-      "destination": "REC",
-      "destination_name": "Recife",
-      "departure_date": "2027-02-17",
-      "return_date": null,
-      "trip_mode": "one_way",
-      "price": 372.55,
-      "scope": "domestic",
-      "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
-    },
-    {
-      "source": "Azul",
-      "origin": "VCP",
-      "origin_candidates": [
-        "VCP"
-      ],
-      "origin_name": "Campinas",
-      "destination": "LIS",
-      "destination_name": "Lisboa",
-      "departure_date": "2027-03-01",
-      "return_date": "2027-03-23",
-      "trip_mode": "round_trip",
-      "price": 4278.52,
-      "scope": "international",
-      "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
-    },
-    {
-      "source": "Azul",
-      "origin": "VCP",
-      "origin_candidates": [
-        "VCP"
-      ],
-      "origin_name": "Campinas",
-      "destination": "MCO",
-      "destination_name": "Orlando",
-      "departure_date": "2027-03-24",
-      "return_date": "2027-04-04",
-      "trip_mode": "round_trip",
-      "price": 4363.85,
-      "scope": "international",
-      "url": "https://passagens.voeazul.com.br/pt/buscador-de-precos"
-    }
-  ]
+  "offers": []
 }
