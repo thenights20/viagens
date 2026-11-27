@@ -1,16 +1,16 @@
 {
   "version": "0.1.0",
-  "generated_at": "2026-11-27T04:59:45.127780Z",
+  "generated_at": "2026-11-27T14:43:28.384536Z",
   "scan_interval_minutes": 15,
   "active_hours": 4,
-  "active_count": 2,
+  "active_count": 1,
   "strong_count": 1,
   "critical_count": 0,
   "confirmed_count": 1,
   "sensor_bug_count": 0,
-  "scanner_count": 1,
+  "scanner_count": 2,
   "queries_this_run": [
-    "dji mini"
+    "playstation 5"
   ],
   "source_health": {
     "Magalu": {
@@ -36,13 +36,16 @@
     },
     "Amazon Brasil": {
       "ok": true,
-      "items": 1,
-      "candidates_seen": 1,
+      "items": 2,
+      "candidates_seen": 2,
       "message": "scanner rápido",
       "errors": []
     }
   },
-  "validation_errors": [],
+  "validation_errors": [
+    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Branco): preço não apareceu novamente na página",
+    "Amazon Brasil · Base Stand Vertical Compativel C/Playstation 5 Ps5 Slim Fat Pro (Branco): preço não apareceu novamente na página"
+  ],
   "bugs": [
     {
       "source": "Dufrio",
@@ -57,7 +60,7 @@
       "trusted": true,
       "revalidated": true,
       "collector": "radar-historico",
-      "collected_at": "2026-11-27T02:59:39.623322+00:00",
+      "collected_at": "2026-11-27T12:38:40.856177+00:00",
       "bug_score": 73,
       "bug_status": "🔥 BUG FORTE",
       "category_rule": null,
@@ -71,38 +74,9 @@
         "vendedor/loja com sinal de confiança"
       ],
       "first_seen": "2026-11-26T14:27:00.054466Z",
-      "last_seen": "2026-11-27T04:59:45.127780Z",
-      "sightings": 3,
+      "last_seen": "2026-11-27T14:43:28.384536Z",
+      "sightings": 4,
       "fresh": false
-    },
-    {
-      "source": "Amazon Brasil",
-      "store_name": "Amazon Brasil",
-      "title": "Hub de Carregamento DJI Mini 3 Pro e DJI Mini 4 Pro - DJI1029",
-      "price": 446.4,
-      "original_price": 469.9,
-      "url": "https://www.amazon.com.br/Hub-Carregamento-DJI-Mini-Pro/dp/B0CPTBL7NX/ref=sr_1_41",
-      "search_query": "dji mini",
-      "available": true,
-      "trusted": false,
-      "revalidated": false,
-      "collector": "fast-market-scan",
-      "bug_score": 66,
-      "bug_status": "🟢 SUSPEITO",
-      "category_rule": "DJI",
-      "category": "Drones e câmeras",
-      "baseline_price": 1600.0,
-      "baseline_kind": "piso conservador da categoria",
-      "drop_pct": 72.1,
-      "savings": 1153.6,
-      "reasons": [
-        "72% abaixo de piso conservador da categoria",
-        "muito abaixo do piso conservador de DJI"
-      ],
-      "first_seen": "2026-11-27T04:59:45.127780Z",
-      "last_seen": "2026-11-27T04:59:45.127780Z",
-      "sightings": 1,
-      "fresh": true
     }
   ]
 }
