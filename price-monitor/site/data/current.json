@@ -1,13 +1,13 @@
 {
   "version": "0.5.1",
-  "generated_at": "2026-11-28T04:05:34.739129+00:00",
+  "generated_at": "2026-11-28T13:15:30.550137+00:00",
   "timezone_hint": "America/Campo_Grande",
   "preview": false,
   "online": true,
   "rotation": true,
-  "active_count": 2,
-  "observed_count": 241,
-  "product_count": 238,
+  "active_count": 4,
+  "observed_count": 235,
+  "product_count": 234,
   "tracked_count": 52,
   "configured_source_count": 15,
   "responding_source_count": 8,
@@ -27,40 +27,30 @@
       "message": "nenhum item do vendedor oficial",
       "items": 0
     },
-    "Fast Shop": {
-      "ok": true,
-      "message": "vendedor oficial confirmado no produto",
-      "items": 6
-    },
     "Magalu": {
       "ok": false,
       "message": "nenhum item do vendedor oficial",
       "items": 0
+    },
+    "Fast Shop": {
+      "ok": true,
+      "message": "vendedor oficial confirmado no produto",
+      "items": 7
     },
     "Fujioka": {
       "ok": true,
       "message": "varejista direto",
       "items": 15
     },
-    "Casas Bahia": {
-      "ok": false,
-      "message": "nenhum candidato oficial",
-      "items": 0
-    },
     "Gazin": {
       "ok": true,
       "message": "varejista direto",
-      "items": 34
+      "items": 42
     },
     "Miranda": {
       "ok": true,
       "message": "varejista direto",
       "items": 18
-    },
-    "Pichau": {
-      "ok": false,
-      "message": "nenhum item carregado",
-      "items": 0
     },
     "Dufrio": {
       "ok": true,
@@ -72,15 +62,25 @@
       "message": "varejista direto",
       "items": 40
     },
-    "Loja TCL": {
-      "ok": true,
-      "message": "varejista direto",
-      "items": 25
+    "Pichau": {
+      "ok": false,
+      "message": "nenhum item carregado",
+      "items": 0
+    },
+    "Casas Bahia": {
+      "ok": false,
+      "message": "nenhum candidato oficial",
+      "items": 0
     },
     "TerabyteShop": {
       "ok": true,
       "message": "varejista direto",
-      "items": 38
+      "items": 22
+    },
+    "Loja TCL": {
+      "ok": true,
+      "message": "varejista direto",
+      "items": 26
     },
     "KaBuM!": {
       "ok": false,
@@ -480,6 +480,25 @@
   ],
   "products": [
     {
+      "title": "Processador Intel Core Ultra 5 245K, Otimizado para IA, 3.6 Ghz (5.2Ghz Turbo), Série 2, 14-Cores 14-Threads, LGA 1851, BX80768245K",
+      "source": "TerabyteShop",
+      "store_name": "TerabyteShop",
+      "price": 1179.99,
+      "original_price": 1933.9,
+      "reference_price": 3176.46,
+      "reference_kind": "histórico observado",
+      "reference_samples": 145,
+      "difference_pct": 62.9,
+      "savings": 1996.47,
+      "url": "https://www.terabyteshop.com.br/produto/32051/processador-intel-core-ultra-5-245k-36-ghz-52ghz-turbo-serie-2-14-cores-14-threads-lga-1851-bx80768245k",
+      "category": "Processadores",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": true,
+      "collected_at": "2026-11-28T13:13:07.438303+00:00"
+    },
+    {
       "title": "Expositor Refrigerado de Bebidas Gelopar 410 Litros GPTU-40 Branco - 220V",
       "source": "Dufrio",
       "store_name": "Dufrio",
@@ -487,7 +506,7 @@
       "original_price": 6171.0,
       "reference_price": 10251.0,
       "reference_kind": "histórico observado",
-      "reference_samples": 107,
+      "reference_samples": 110,
       "difference_pct": 58.1,
       "savings": 5951.99,
       "url": "https://www.dufrio.com.br/expositor-refrigerado-de-bebidas-gelopar-410-litros-gptu-40-branco-220v-220v.html",
@@ -496,7 +515,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": true,
-      "collected_at": "2026-11-28T04:02:49.302823+00:00"
+      "collected_at": "2026-11-28T13:12:38.006838+00:00"
     },
     {
       "title": "Expositor Refrigerado de Bebidas Gelopar 410 Litros GPTU-40 Preto - 220V",
@@ -506,7 +525,7 @@
       "original_price": 5569.2,
       "reference_price": 10251.0,
       "reference_kind": "histórico observado",
-      "reference_samples": 107,
+      "reference_samples": 110,
       "difference_pct": 58.1,
       "savings": 5951.99,
       "url": "https://www.dufrio.com.br/expositor-refrigerado-de-bebidas-gelopar-410-litros-gptu-40-preto-220v.html",
@@ -515,7 +534,26 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": true,
-      "collected_at": "2026-11-28T04:02:49.327800+00:00"
+      "collected_at": "2026-11-28T13:12:38.033833+00:00"
+    },
+    {
+      "title": "Processador AMD Ryzen 7 5800XT 3.8GHz (4.8GHz Turbo), 8-Cores 16-Threads, AM4, Sem Cooler, 100-100001582WOF",
+      "source": "TerabyteShop",
+      "store_name": "TerabyteShop",
+      "price": 1599.99,
+      "original_price": 2364.9,
+      "reference_price": 2941.17,
+      "reference_kind": "histórico observado",
+      "reference_samples": 121,
+      "difference_pct": 45.6,
+      "savings": 1341.18,
+      "url": "https://www.terabyteshop.com.br/produto/39971/processador-amd-ryzen-7-5800xt-38ghz-48ghz-turbo-8-cores-16-threads-am4-sem-cooler-100-100001582wof",
+      "category": "Processadores",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": true,
+      "collected_at": "2026-11-28T13:13:07.360114+00:00"
     },
     {
       "title": "Controle Joypad Xbox Series X/S Wireles...",
@@ -537,7 +575,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:58.607631+00:00"
+      "collected_at": "2026-11-28T13:12:29.968875+00:00"
     },
     {
       "title": "Smart TV LG 55\" 80TSA 4K QNED ThinQ AI...",
@@ -558,7 +596,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:55.402515+00:00"
+      "collected_at": "2026-11-28T13:12:25.899758+00:00"
     },
     {
       "title": "Processador AMD Ryzen 9 7900X 4.7GHz (5.6GHz Turbo), 12-Cores 24-Threads, AM5, Sem Cooler, 100-100000589WOF",
@@ -579,7 +617,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.423184+00:00"
+      "collected_at": "2026-11-28T13:13:07.196978+00:00"
     },
     {
       "title": "Processador AMD Ryzen 7 9800X3D, 4.7GHz (5.2GHz Turbo), 8-Cores 16-Threads, AM5, Sem Cooler, 100-100001084WOF",
@@ -600,7 +638,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.299434+00:00"
+      "collected_at": "2026-11-28T13:13:07.065364+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 12000 BTUs TCL BreezeIN AI Frio TAC-12CTG3-INV-I - 220V",
@@ -622,7 +660,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.005701+00:00"
+      "collected_at": "2026-11-28T13:12:35.691398+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 9000 BTUs TCL BreezeIN AI Frio TAC-09CTG3-INV-I - 220V",
@@ -644,7 +682,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.072044+00:00"
+      "collected_at": "2026-11-28T13:12:35.510934+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 9000 BTUs Gree G-Side Auto Frio GWC09ATCXB-D6DNA3D - 220V",
@@ -666,7 +704,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.046915+00:00"
+      "collected_at": "2026-11-28T13:12:36.499560+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 9000 BTUs Gree G-Side Auto Frio GWC09ATBXB-D6DNA3B - 220V",
@@ -688,7 +726,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.151894+00:00"
+      "collected_at": "2026-11-28T13:12:36.549664+00:00"
     },
     {
       "title": "Ar Condicionado Split 12000 BTUs LG AI Smart Inverter Voice Frio S3UQ12JA31E.EB2GAM1 - 220V",
@@ -710,7 +748,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.371505+00:00"
+      "collected_at": "2026-11-28T13:12:35.715368+00:00"
     },
     {
       "title": "Smart TV Samsung 50\" Mini LED 4K M75H 2...",
@@ -731,29 +769,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:54.712159+00:00"
-    },
-    {
-      "title": "Ar Condicionado Split Inverter 12000 BTUs Hisense Eco Plus II Frio AS-12TW2RURCK00E - 220V",
-      "source": "Dufrio",
-      "store_name": "Dufrio",
-      "price": 1649.0,
-      "original_price": 2424.54,
-      "reference_price": 2424.54,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 32.0,
-      "savings": 775.54,
-      "url": "https://www.dufrio.com.br/ar-condicionado-split-inverter-12000-btus-hisense-eco-plus-ii-frio-as-12tw2rurck00e-220v.html",
-      "category": "Climatização",
-      "tracked": true,
-      "watch_terms": [
-        "Ar-condicionado Inverter 12000 BTU",
-        "Ar-condicionado Inverter 18000 BTU"
-      ],
-      "highlighted": true,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.225545+00:00"
+      "collected_at": "2026-11-28T13:12:25.584879+00:00"
     },
     {
       "title": "Caixa de Som JBL Boombox 4 Até 210W Blu...",
@@ -775,7 +791,29 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:55.590087+00:00"
+      "collected_at": "2026-11-28T13:12:26.174328+00:00"
+    },
+    {
+      "title": "Ar Condicionado Split Inverter 9000 BTUs Midea AI Airvolution Frio 42EFVCA09M5 - 220V",
+      "source": "Dufrio",
+      "store_name": "Dufrio",
+      "price": 1799.01,
+      "original_price": 2618.34,
+      "reference_price": 2618.34,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 31.3,
+      "savings": 819.33,
+      "url": "https://www.dufrio.com.br/ar-condicionado-split-inverter-9000-btus-midea-ai-airvolution-frio-42efvca09m5-220v.html",
+      "category": "Climatização",
+      "tracked": true,
+      "watch_terms": [
+        "Ar-condicionado Inverter 12000 BTU",
+        "Ar-condicionado Inverter 18000 BTU"
+      ],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:36.157342+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 12000 BTUs Midea AI Airvolution Frio 42EFVCB12M5 - 220V",
@@ -797,7 +835,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.102979+00:00"
+      "collected_at": "2026-11-28T13:12:35.476625+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 12000 BTUs Midea Air Volution Lite Frio 42EBVCB12M5 - 220V",
@@ -819,29 +857,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.190045+00:00"
-    },
-    {
-      "title": "Ar Condicionado Split Inverter 9000 BTUs Midea Ecomaster + IA Frio 42EZVCC09M5 - 220V",
-      "source": "Dufrio",
-      "store_name": "Dufrio",
-      "price": 1839.0,
-      "original_price": 2659.14,
-      "reference_price": 2659.14,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 30.8,
-      "savings": 820.14,
-      "url": "https://www.dufrio.com.br/ar-condicionado-inverter-9000-btus-midea-ecomaster-ia-frio-42ezvcc09m5-220v.html",
-      "category": "Climatização",
-      "tracked": true,
-      "watch_terms": [
-        "Ar-condicionado Inverter 12000 BTU",
-        "Ar-condicionado Inverter 18000 BTU"
-      ],
-      "highlighted": true,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:46.935426+00:00"
+      "collected_at": "2026-11-28T13:12:35.745030+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 9000 BTUs Hisense Eco Plus II Frio AS-09TW2RURCK00E - 220V",
@@ -863,7 +879,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.338342+00:00"
+      "collected_at": "2026-11-28T13:12:36.432501+00:00"
     },
     {
       "title": "Smart TV TCL 65 Polegadas SQD-Mini LED 4K Q7D Pro WiFi Bluetooth Google TV HDR10+ 144 Hz 65Q7DPRO",
@@ -884,7 +900,7 @@
       ],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.130787+00:00"
+      "collected_at": "2026-11-28T13:13:15.511075+00:00"
     },
     {
       "title": "Processador Intel Core i9 12900KF 3.2GHz (5.2GHz Turbo), 12ª Geração, 16-Cores 24-Threads, LGA 1700, Sem Cooler, BX8071512900KF",
@@ -903,7 +919,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.504313+00:00"
+      "collected_at": "2026-11-28T13:13:07.295701+00:00"
     },
     {
       "title": "62064-Branco",
@@ -922,7 +938,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:15.526084+00:00"
+      "collected_at": "2026-11-28T13:11:52.631760+00:00"
     },
     {
       "title": "Ar-condicionado",
@@ -941,7 +957,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:15.668964+00:00"
+      "collected_at": "2026-11-28T13:11:52.830457+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 7 265F Otimizado para IA, 2.4Ghz (5.3Ghz Turbo), Série 2, 20-Cores 20-Threads, LGA 1851, BX80768265F",
@@ -960,7 +976,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.593771+00:00"
+      "collected_at": "2026-11-28T13:13:07.375636+00:00"
     },
     {
       "title": "Refrigeração comercial",
@@ -979,26 +995,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:49.224435+00:00"
-    },
-    {
-      "title": "Processador Intel Core i7 12700K 3.6GHz (5.0GHz Turbo), 12ª Geração, 12-Cores 20-Threads, LGA 1700, Sem Cooler, BX8071512700K",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 1649.99,
-      "original_price": 3611.27,
-      "reference_price": 3611.27,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 54.3,
-      "savings": 1961.28,
-      "url": "https://www.terabyteshop.com.br/produto/19619/processador-intel-core-i7-12700k-36ghz-50ghz-turbo-12-geracao-12-cores-20-threads-lga-1700-bx8071512700k",
-      "category": "Processadores",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": true,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:09.009285+00:00"
+      "collected_at": "2026-11-28T13:12:37.940394+00:00"
     },
     {
       "title": "Processador AMD Ryzen 9 9900X, 4.4GHz (5.6GHz Turbo), 12-Cores 24-Threads, AM5, Sem Cooler, 100-100000662WOF",
@@ -1017,26 +1014,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.405858+00:00"
-    },
-    {
-      "title": "Processador Intel Core i9 14900F, 3.6 GHz (5.8GHz Turbo), 14ª Geração, 24-Cores 32-Threads, LGA 1700, BX8071514900F",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 2799.99,
-      "original_price": 6030.76,
-      "reference_price": 6030.76,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 53.6,
-      "savings": 3230.77,
-      "url": "https://www.terabyteshop.com.br/produto/27114/processador-intel-core-i9-14900f-36-ghz-58ghz-turbo-14-geracao-24-cores-32-threads-lga-1700-bx8071514900f",
-      "category": "Processadores",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": true,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.782097+00:00"
+      "collected_at": "2026-11-28T13:13:07.179194+00:00"
     },
     {
       "title": "Caixa de Som LG XBOOM GO XG9S Até 24H d...",
@@ -1055,7 +1033,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:55.558701+00:00"
+      "collected_at": "2026-11-28T13:12:26.145550+00:00"
     },
     {
       "title": "Smartphone Motorola Moto G17 Android Te...",
@@ -1074,26 +1052,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:57.529735+00:00"
-    },
-    {
-      "title": "Processador AMD Ryzen 5 9600X, 3.9GHz (5.4GHz Turbo), 6-Cores 12-Threads, AM5, Sem Cooler, 100-100001405WOF",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 1199.99,
-      "original_price": 2461.61,
-      "reference_price": 2461.61,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 51.3,
-      "savings": 1261.62,
-      "url": "https://www.terabyteshop.com.br/produto/30040/processador-amd-ryzen-5-9600x-39ghz-54ghz-turbo-6-cores-12-threads-am5-sem-cooler-100-100001405wof",
-      "category": "Processadores",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": true,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.316806+00:00"
+      "collected_at": "2026-11-28T13:12:28.266532+00:00"
     },
     {
       "title": "Refrigerador LG Duplex Top Freezer B392...",
@@ -1112,7 +1071,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:57.442511+00:00"
+      "collected_at": "2026-11-28T13:12:27.962522+00:00"
     },
     {
       "title": "Processador AMD Ryzen 7 5700X 3.4GHz (4.6GHz Turbo), 8-Cores 16-Threads, AM4, Sem Cooler, 100-100000926WOF",
@@ -1131,7 +1090,26 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.192629+00:00"
+      "collected_at": "2026-11-28T13:13:06.931460+00:00"
+    },
+    {
+      "title": "Freezer Electrolux 315L 1 Porta Horizontal Cycle Defrost Inverter HI330",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 2239.0,
+      "original_price": 4320.9,
+      "reference_price": 4320.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 48.2,
+      "savings": 2081.9,
+      "url": "https://www.gazin.com.br/produto/freezer-electrolux-315l-1-porta-horizontal-cycle-defrost-inverter-hi330/9000/branco/110-volts",
+      "category": "Outros",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:10.998072+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 5 225, Otimizado para IA, 3.3 Ghz (4.9Ghz Turbo), Série 2, 10-Cores 10-Threads, LGA 1851, BX80768225",
@@ -1150,7 +1128,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.352880+00:00"
+      "collected_at": "2026-11-28T13:13:07.114138+00:00"
     },
     {
       "title": "Geladeira Electrolux 240L Cycle Defrost 1 Porta RE31",
@@ -1169,7 +1147,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:20.303270+00:00"
+      "collected_at": "2026-11-28T13:11:54.674874+00:00"
     },
     {
       "title": "Processador Intel Core i5 12400, 2.5GHz (4.4GHz Turbo), 12ª Geração, 6-Cores 12-Threads, LGA 1700, Com Cooler, BX8071512400",
@@ -1188,7 +1166,45 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.252356+00:00"
+      "collected_at": "2026-11-28T13:13:07.004899+00:00"
+    },
+    {
+      "title": "Geladeira Brastemp 500L Frost Free Duplex BRE66AK",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 4069.0,
+      "original_price": 7655.9,
+      "reference_price": 7655.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 46.9,
+      "savings": 3586.9,
+      "url": "https://www.gazin.com.br/produto/geladeira-brastemp-500l-frost-free-duplex-bre66ak/10199/inox/bivolt",
+      "category": "Eletrodomésticos",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:10.077666+00:00"
+    },
+    {
+      "title": "Máquina de Lavar Brastemp Smart Sensor 14Kg Automática BWF14A",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 1759.0,
+      "original_price": 3300.9,
+      "reference_price": 3300.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 46.7,
+      "savings": 1541.9,
+      "url": "https://www.gazin.com.br/produto/maquina-de-lavar-brastemp-smart-sensor-14kg-automatica-bwf14a/10087/branco/110-volts",
+      "category": "Outros",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:09.936112+00:00"
     },
     {
       "title": "Geladeira Electrolux 260L Cycle Defrost Duplex DC35A",
@@ -1207,64 +1223,26 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:20.504357+00:00"
+      "collected_at": "2026-11-28T13:11:54.763003+00:00"
     },
     {
-      "title": "Processador Intel Core i9 14900KF, 3.6 GHz (6.0GHz Turbo), 14ª Geração, 24-Cores 32-Threads, LGA 1700, BX8071514900KF",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 2999.99,
-      "original_price": 5600.86,
-      "reference_price": 5600.86,
+      "title": "Geladeira Brastemp 500L Smart Frost Free Inverse BRE66AB",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 3799.0,
+      "original_price": 7106.9,
+      "reference_price": 7106.9,
       "reference_kind": "preço anterior anunciado",
       "reference_samples": 1,
-      "difference_pct": 46.4,
-      "savings": 2600.87,
-      "url": "https://www.terabyteshop.com.br/produto/26262/processador-intel-core-i9-14900kf-36-ghz-60ghz-turbo-14-geracao-24-cores-32-threads-lga-1700-bx8071514900kf",
-      "category": "Processadores",
+      "difference_pct": 46.5,
+      "savings": 3307.9,
+      "url": "https://www.gazin.com.br/produto/geladeira-brastemp-500l-smart-frost-free-inverse-bre66ab/10217/branco/bivolt",
+      "category": "Eletrodomésticos",
       "tracked": false,
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.869100+00:00"
-    },
-    {
-      "title": "Processador Intel Core i7 14700F, 3.4 GHz (5.4GHz Turbo), 14ª Geração, 20-Cores 28-Threads, LGA 1700, BX8071514700F",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 1979.99,
-      "original_price": 3643.54,
-      "reference_price": 3643.54,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 45.7,
-      "savings": 1663.55,
-      "url": "https://www.terabyteshop.com.br/produto/27113/processador-intel-core-i7-14700f-34-ghz-54ghz-turbo-14-geracao-20-cores-28-threads-lga-1700-bx8071514700f",
-      "category": "Processadores",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": true,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.800484+00:00"
-    },
-    {
-      "title": "Processador Intel Core Ultra 9 285K, Otimizado para IA, 3.7 Ghz (5.7Ghz Turbo), Série 2, 24-Cores 24-Threads, LGA 1851, BX80768285K",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 3999.99,
-      "original_price": 7366.33,
-      "reference_price": 7366.33,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 45.7,
-      "savings": 3366.34,
-      "url": "https://www.terabyteshop.com.br/produto/32037/processador-intel-core-ultra-9-285k-37-ghz-57ghz-turbo-serie-2-24-cores-24-threads-lga-1851-bx80768285k",
-      "category": "Processadores",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": true,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.688595+00:00"
+      "collected_at": "2026-11-28T13:12:10.240418+00:00"
     },
     {
       "title": "Freezer Vertical 1 Porta Consul 121 Litros CVU18GB Branco - 110V",
@@ -1283,7 +1261,45 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:49.030373+00:00"
+      "collected_at": "2026-11-28T13:12:37.551213+00:00"
+    },
+    {
+      "title": "Máquina de Lavar Brastemp 18 Kg Automática Digital BWF18",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 2139.0,
+      "original_price": 3925.9,
+      "reference_price": 3925.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 45.5,
+      "savings": 1786.9,
+      "url": "https://www.gazin.com.br/produto/maquina-de-lavar-brastemp-18-kg-automatica-digital-bwf18/9621/branco/110-volts",
+      "category": "Outros",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:09.881120+00:00"
+    },
+    {
+      "title": "Geladeira Electrolux 490L Frost Free AutoSense Inverter IB7",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 3879.0,
+      "original_price": 7100.9,
+      "reference_price": 7100.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 45.4,
+      "savings": 3221.9,
+      "url": "https://www.gazin.com.br/produto/geladeira-electrolux-490l-frost-free-autosense-inverter-ib7/7491/branco/110-volts",
+      "category": "Eletrodomésticos",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:11.082399+00:00"
     },
     {
       "title": "62242-353780",
@@ -1302,7 +1318,26 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:25.706824+00:00"
+      "collected_at": "2026-11-28T13:12:00.994500+00:00"
+    },
+    {
+      "title": "Geladeira Brastemp 512L Frost Free Duplex BRM62",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 3309.0,
+      "original_price": 5841.9,
+      "reference_price": 5841.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 43.4,
+      "savings": 2532.9,
+      "url": "https://www.gazin.com.br/produto/geladeira-brastemp-512l-frost-free-duplex-brm62/10206/branco/bivolt",
+      "category": "Eletrodomésticos",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:10.189132+00:00"
     },
     {
       "title": "Mais Vendido",
@@ -1321,7 +1356,26 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:21.038888+00:00"
+      "collected_at": "2026-11-28T13:13:15.971877+00:00"
+    },
+    {
+      "title": "Fogão Mueller MFV5BB 5 Bocas Automático Mesa de Vidro Temperado com Ultra Chama",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 1159.9,
+      "original_price": 2024.9,
+      "reference_price": 2024.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 42.7,
+      "savings": 865.0,
+      "url": "https://www.gazin.com.br/produto/fogao-mueller-mfv5bb-5-bocas-automatico-mesa-de-vidro-temperado-com-ultra-chama/6918/preto/bivolt",
+      "category": "Eletrodomésticos",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:10.889136+00:00"
     },
     {
       "title": "Processador Intel Core i9 14900K, 3.6 GHz (6.0GHz Turbo), 14ª Geração, 24-Cores 32-Threads, LGA 1700, BX8071514900K",
@@ -1340,7 +1394,64 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.389612+00:00"
+      "collected_at": "2026-11-28T13:13:07.163902+00:00"
+    },
+    {
+      "title": "Fogão Mueller MFI4BA Acendimento Manual 4 Bocas Mesa Inox Forno 48,1L",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 609.9,
+      "original_price": 1058.9,
+      "reference_price": 1058.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 42.4,
+      "savings": 449.0,
+      "url": "https://www.gazin.com.br/produto/fogao-mueller-mfi4ba-acendimento-manual-4-bocas-mesa-inox-forno-481l/7106/preto/sem-voltagem",
+      "category": "Eletrodomésticos",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:11.394529+00:00"
+    },
+    {
+      "title": "Fogão Mueller 5 Bocas MFI5BB Automático Mesa de Inox Forno 81,6L",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 899.9,
+      "original_price": 1538.9,
+      "reference_price": 1538.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 41.5,
+      "savings": 639.0,
+      "url": "https://www.gazin.com.br/produto/fogao-mueller-5-bocas-mfi5bb-automatico-mesa-de-inox-forno-816l/7226/preto-fosco/bivolt",
+      "category": "Eletrodomésticos",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:10.746097+00:00"
+    },
+    {
+      "title": "Máquina de Lavar Brastemp 15kg Automática Cesto Inox Multi Dispenser BWF15AB",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 2269.9,
+      "original_price": 3877.9,
+      "reference_price": 3877.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 41.5,
+      "savings": 1608.0,
+      "url": "https://www.gazin.com.br/produto/maquina-de-lavar-brastemp-15kg-automatica-cesto-inox-multi-dispenser-bwf15ab/7700/branco/110-volts",
+      "category": "Outros",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:10.703731+00:00"
     },
     {
       "title": "Processador Intel Core i7 12700F 2,1GHz (4.9GHz Turbo), 12ª Geração, 12-Cores 20-Threads, LGA 1700, Com Cooler, BX8071512700F",
@@ -1359,7 +1470,26 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.487791+00:00"
+      "collected_at": "2026-11-28T13:13:07.279773+00:00"
+    },
+    {
+      "title": "Máquina de Lavar Mueller 13kg Automática 11 Programas MLA13",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 1689.9,
+      "original_price": 2849.9,
+      "reference_price": 2849.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 40.7,
+      "savings": 1160.0,
+      "url": "https://www.gazin.com.br/produto/maquina-de-lavar-mueller-13kg-automatica-11-programas-mla13/8604/branco/110-volts",
+      "category": "Outros",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:11.161510+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 5 250K Plus, Otimizado para IA, (5.3GHz Turbo), 18-Cores 18-Threads, LGA 1851, BX80768250K",
@@ -1378,7 +1508,26 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.455611+00:00"
+      "collected_at": "2026-11-28T13:13:07.244678+00:00"
+    },
+    {
+      "title": "Máquina de Lavar Electrolux Essential Care 14kg Jet&Clean Cesto Inox LED14",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 2149.9,
+      "original_price": 3582.9,
+      "reference_price": 3582.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 40.0,
+      "savings": 1433.0,
+      "url": "https://www.gazin.com.br/produto/maquina-de-lavar-electrolux-essential-care-14kg-jetclean-cesto-inox-led14/4799/branco/220-volts",
+      "category": "Outros",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:10.498736+00:00"
     },
     {
       "title": "Processador Intel Core i5 12400F, 2.5GHz (4.4GHz Turbo), 12ª Geração, 6-Cores 12-Threads, LGA 1700, Com Cooler, BX8071512400F",
@@ -1388,7 +1537,7 @@
       "original_price": 1583.06,
       "reference_price": 1658.32,
       "reference_kind": "histórico observado",
-      "reference_samples": 109,
+      "reference_samples": 108,
       "difference_pct": 39.7,
       "savings": 658.33,
       "url": "https://www.terabyteshop.com.br/produto/20072/processador-intel-core-i5-12400f-25ghz-44ghz-turbo-12-geracao-6-cores-12-threads-lga-1700-bx8071512400f",
@@ -1397,7 +1546,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.236070+00:00"
+      "collected_at": "2026-11-28T13:13:06.986545+00:00"
     },
     {
       "title": "Refrigerador Electrolux Inverter Duplex...",
@@ -1416,26 +1565,45 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:57.360350+00:00"
+      "collected_at": "2026-11-28T13:12:27.603575+00:00"
     },
     {
-      "title": "Processador Intel Core i7 12700KF 3.6GHz (5.0GHz Turbo), 12ª Geração, 12-Cores 20-Threads, LGA 1700, Sem Cooler BX8071512700KF",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 1999.99,
-      "original_price": 3287.64,
-      "reference_price": 3287.64,
+      "title": "Lava Louças Brastemp 15 Serviços Função Smart Sensor BLF61AR",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 4039.9,
+      "original_price": 6571.9,
+      "reference_price": 6571.9,
       "reference_kind": "preço anterior anunciado",
       "reference_samples": 1,
-      "difference_pct": 39.2,
-      "savings": 1287.65,
-      "url": "https://www.terabyteshop.com.br/produto/19620/processador-intel-core-i7-12700kf-30ghz-50ghz-turbo-12-geracao-12-cores-20-threads-lga-1700-bx8071512700kf",
-      "category": "Processadores",
+      "difference_pct": 38.5,
+      "savings": 2532.0,
+      "url": "https://www.gazin.com.br/produto/lava-loucas-brastemp-15-servicos-funcao-smart-sensor-blf61ar/8963/inox/220-volts",
+      "category": "Outros",
       "tracked": false,
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.992269+00:00"
+      "collected_at": "2026-11-28T13:12:09.817505+00:00"
+    },
+    {
+      "title": "Geladeira Consul 333L Frost Free Duplex CRM40MK",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 2239.0,
+      "original_price": 3580.9,
+      "reference_price": 3580.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 37.5,
+      "savings": 1341.9,
+      "url": "https://www.gazin.com.br/produto/geladeira-consul-333l-frost-free-duplex-crm40mk/10040/platinum/220-volts",
+      "category": "Eletrodomésticos",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:09.963210+00:00"
     },
     {
       "title": "Expositor Refrigerado Inverter de Bebidas Gelopar 410 Litros GPTU-40 BIN BR Branco - Bivolt",
@@ -1454,7 +1622,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.409108+00:00"
+      "collected_at": "2026-11-28T13:12:35.793310+00:00"
     },
     {
       "title": "Expositor Refrigerado Inverter de Bebidas Gelopar 410 Litros GPTU-40 BIN PR Preto - Bivolt",
@@ -1473,7 +1641,26 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:49.277728+00:00"
+      "collected_at": "2026-11-28T13:12:37.976378+00:00"
+    },
+    {
+      "title": "Máquina de Lavar Consul 14kg Automática 12 Programas CWN14AB",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 1609.0,
+      "original_price": 2552.9,
+      "reference_price": 2552.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 37.0,
+      "savings": 943.9,
+      "url": "https://www.gazin.com.br/produto/maquina-de-lavar-consul-14kg-automatica-12-programas-cwn14ab/10348/branco/110-volts",
+      "category": "Outros",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:10.305834+00:00"
     },
     {
       "title": "Processador Intel Core i7 14700, 3.4 GHz (5.4GHz Turbo), 14ª Geração, 20-Cores 28-Threads, LGA 1700, BX8071514700",
@@ -1492,7 +1679,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.370629+00:00"
+      "collected_at": "2026-11-28T13:13:07.145388+00:00"
     },
     {
       "title": "Guarda-Roupa Casal 2 Portas Correr 6 Gavetas Espelho Movimente Lux Caemmun",
@@ -1511,7 +1698,45 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:20.056091+00:00"
+      "collected_at": "2026-11-28T13:11:54.482134+00:00"
+    },
+    {
+      "title": "Geladeira Brastemp 385L Frost Free Duplex BRM46",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 2589.0,
+      "original_price": 4046.9,
+      "reference_price": 4046.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 36.0,
+      "savings": 1457.9,
+      "url": "https://www.gazin.com.br/produto/geladeira-brastemp-385l-frost-free-duplex-brm46/10197/branco/110-volts",
+      "category": "Eletrodomésticos",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:09.999007+00:00"
+    },
+    {
+      "title": "Fogão Mueller MFI4BB 4 Bocas Automático Mesa de Inox Forno 48,1L",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 699.9,
+      "original_price": 1091.9,
+      "reference_price": 1091.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 35.9,
+      "savings": 392.0,
+      "url": "https://www.gazin.com.br/produto/fogao-mueller-mfi4bb-4-bocas-automatico-mesa-de-inox-forno-481l/7171/preto-fosco/bivolt",
+      "category": "Eletrodomésticos",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:10.824627+00:00"
     },
     {
       "title": "Smartphone Samsung Galaxy A37 5G Androi...",
@@ -1530,7 +1755,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:57.581077+00:00"
+      "collected_at": "2026-11-28T13:12:28.722914+00:00"
     },
     {
       "title": "Freezer Horizontal Philco 140 Litros 2 em 1 PFH160B Branco - 220V",
@@ -1549,7 +1774,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.927977+00:00"
+      "collected_at": "2026-11-28T13:12:37.430336+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 5 250KF Plus, Otimizado para IA, (5.3GHz Turbo), 18-Cores 18-Threads, LGA 1851, BX80768250KF",
@@ -1568,7 +1793,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.539229+00:00"
+      "collected_at": "2026-11-28T13:13:07.326916+00:00"
     },
     {
       "title": "Processador AMD Ryzen 5 7600X 4.7GHz (5.3GHz Turbo), 6-Cores 12-Threads, AM5, Sem Cooler, 100-100000593WOF",
@@ -1587,7 +1812,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.439481+00:00"
+      "collected_at": "2026-11-28T13:13:07.215592+00:00"
     },
     {
       "title": "Freezer Vertical Consul 159 Litros CVU18MB Branco - 110V",
@@ -1606,7 +1831,26 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.979788+00:00"
+      "collected_at": "2026-11-28T13:12:37.495919+00:00"
+    },
+    {
+      "title": "Geladeira Brastemp 512L Frost Free Duplex BRM62",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 3469.0,
+      "original_price": 5359.9,
+      "reference_price": 5359.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 35.3,
+      "savings": 1890.9,
+      "url": "https://www.gazin.com.br/produto/geladeira-brastemp-512l-frost-free-duplex-brm62/10196/inox/bivolt",
+      "category": "Eletrodomésticos",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:10.027497+00:00"
     },
     {
       "title": "EXCLUSIVO SITE",
@@ -1625,7 +1869,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:25.870561+00:00"
+      "collected_at": "2026-11-28T13:12:01.162231+00:00"
     },
     {
       "title": "Refrigerador Side by Side Electrolux 2 Portas Frost Free 624 Litros AutoSense Inox Look - ES60S",
@@ -1644,26 +1888,26 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:00:08.936671+00:00"
+      "collected_at": "2026-11-28T13:10:19.377581+00:00"
     },
     {
-      "title": "Processador Intel Core i5 12600KF 3.7GHz (4.9GHz Turbo), 12ª Geração, 10-Cores 16-Threads, LGA 1700, Sem Cooler, BX8071512600KF",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 1259.99,
-      "original_price": 1940.19,
-      "reference_price": 1940.19,
+      "title": "Geladeira Brastemp 385L Frost Free Duplex BRM46",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 2799.0,
+      "original_price": 4312.9,
+      "reference_price": 4312.9,
       "reference_kind": "preço anterior anunciado",
       "reference_samples": 1,
       "difference_pct": 35.1,
-      "savings": 680.2,
-      "url": "https://www.terabyteshop.com.br/produto/19624/processador-intel-core-i5-12600kf-37ghz-49ghz-turbo-12-geracao-10-cores-16-threads-lga-1700-bx8071512600kf",
-      "category": "Processadores",
+      "savings": 1513.9,
+      "url": "https://www.gazin.com.br/produto/geladeira-brastemp-385l-frost-free-duplex-brm46/10201/inox/110-volts",
+      "category": "Eletrodomésticos",
       "tracked": false,
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.973511+00:00"
+      "collected_at": "2026-11-28T13:12:10.127546+00:00"
     },
     {
       "title": "Freezer Horizontal Philco 199 Litros 2 em 1 PFH205B Branco - 110V",
@@ -1682,7 +1926,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.955925+00:00"
+      "collected_at": "2026-11-28T13:12:37.460405+00:00"
     },
     {
       "title": "62341-353892",
@@ -1701,7 +1945,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:15.336090+00:00"
+      "collected_at": "2026-11-28T13:11:52.379828+00:00"
     },
     {
       "title": "EXCLUSIVO SITE",
@@ -1720,26 +1964,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:25.814086+00:00"
-    },
-    {
-      "title": "Processador Intel Core i7 14700KF, 3.4 GHz (5.6GHz Turbo), 14ª Geração, 20-Cores 28-Threads, LGA 1700, BX8071514700KF",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 2749.99,
-      "original_price": 4207.18,
-      "reference_price": 4207.18,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 34.6,
-      "savings": 1457.19,
-      "url": "https://www.terabyteshop.com.br/produto/26269/processador-intel-core-i7-14700kf-34-ghz-56ghz-turbo-14-geracao-20-cores-28-threads-lga-1700-bx8071514700kf",
-      "category": "Processadores",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": true,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.852288+00:00"
+      "collected_at": "2026-11-28T13:12:01.132487+00:00"
     },
     {
       "title": "62019-177001",
@@ -1758,26 +1983,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:15.292691+00:00"
-    },
-    {
-      "title": "Processador Intel Core i5 14600K, 3.5 GHz (5.3GHz Turbo), 14ª Geração, 14-Cores 20-Threads, LGA 1700, BX8071514600K",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 1999.99,
-      "original_price": 2756.63,
-      "reference_price": 3021.2,
-      "reference_kind": "histórico observado",
-      "reference_samples": 138,
-      "difference_pct": 33.8,
-      "savings": 1021.21,
-      "url": "https://www.terabyteshop.com.br/produto/26271/processador-intel-core-i5-14600k-35-ghz-53ghz-turbo-14-geracao-14-cores-20-threads-lga-1700-bx8071514600k",
-      "category": "Processadores",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": true,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.834633+00:00"
+      "collected_at": "2026-11-28T13:11:52.343395+00:00"
     },
     {
       "title": "62064-Branco",
@@ -1796,26 +2002,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:15.249439+00:00"
-    },
-    {
-      "title": "Processador Intel Core i3 12100, 3.3GHz (4.3GHz Turbo), 12ª Geração, 4-Cores 8-Threads, LGA 1700, Com Cooler, BX8071512100",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 929.99,
-      "original_price": 1398.12,
-      "reference_price": 1398.12,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 33.5,
-      "savings": 468.13,
-      "url": "https://www.terabyteshop.com.br/produto/20219/processador-intel-core-i3-12100-33ghz-43ghz-turbo-12-geracao-4-cores-8-threads-lga-1700-bx8071512100",
-      "category": "Processadores",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": true,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.935543+00:00"
+      "collected_at": "2026-11-28T13:11:52.293213+00:00"
     },
     {
       "title": "Geladeira Smart LG Frost Free Inverter 451L Inverse Cor Inox Look - GC-B569NLL2",
@@ -1834,7 +2021,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:00:08.890922+00:00"
+      "collected_at": "2026-11-28T13:10:19.355018+00:00"
     },
     {
       "title": "Mais Vendido",
@@ -1853,7 +2040,45 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.968248+00:00"
+      "collected_at": "2026-11-28T13:13:15.940411+00:00"
+    },
+    {
+      "title": "Máquina de Lavar Brastemp 16kg Automática Ciclo Tira Manchas BWF16AB",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 1989.0,
+      "original_price": 2973.9,
+      "reference_price": 2973.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 33.1,
+      "savings": 984.9,
+      "url": "https://www.gazin.com.br/produto/maquina-de-lavar-brastemp-16kg-automatica-ciclo-tira-manchas-bwf16ab/10652/branco/110-volts",
+      "category": "Outros",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:10.443278+00:00"
+    },
+    {
+      "title": "Máquina de Lavar Consul 13kg Automática CWH13AB",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 1529.0,
+      "original_price": 2274.9,
+      "reference_price": 2274.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 32.8,
+      "savings": 745.9,
+      "url": "https://www.gazin.com.br/produto/maquina-de-lavar-consul-13kg-automatica-cwh13ab/10514/branco/110-volts",
+      "category": "Outros",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:10.375153+00:00"
     },
     {
       "title": "Guarda-Roupa Casal 3 Portas Correr 4 Gavetas Búzios Panan Roupeiro",
@@ -1872,7 +2097,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:20.639494+00:00"
+      "collected_at": "2026-11-28T13:11:54.822791+00:00"
     },
     {
       "title": "Smartphone Samsung Galaxy A57 5G Androi...",
@@ -1891,7 +2116,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:57.628242+00:00"
+      "collected_at": "2026-11-28T13:12:28.763302+00:00"
     },
     {
       "title": "62343-353899",
@@ -1910,26 +2135,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:25.657741+00:00"
-    },
-    {
-      "title": "Refrigerador Linha Casa Side by Side Haier 523 Litros, Multi Air Flow, Duplo Inverter, Inox - HSS541",
-      "source": "Fast Shop",
-      "store_name": "Fast Shop",
-      "price": 5299.0,
-      "original_price": 7809.0,
-      "reference_price": 7809.0,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 32.1,
-      "savings": 2510.0,
-      "url": "https://site.fastshop.com.br/refrigerador-linha-casa-side-by-side-haier-523-litros--multi-air-flow--duplo-inverter--inox---hss541-6xhss541ahds8_prd-170710/p",
-      "category": "Eletrodomésticos",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": true,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:00:09.117575+00:00"
+      "collected_at": "2026-11-28T13:12:00.959079+00:00"
     },
     {
       "title": "62025-177003",
@@ -1948,7 +2154,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:25.746700+00:00"
+      "collected_at": "2026-11-28T13:12:01.022937+00:00"
     },
     {
       "title": "Módulo de Memória Adata para Notebook DDR4 3200MHZ 16GB",
@@ -1967,7 +2173,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:12.363932+00:00"
+      "collected_at": "2026-11-28T13:12:53.851397+00:00"
     },
     {
       "title": "62018-177000",
@@ -1986,7 +2192,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:25.781948+00:00"
+      "collected_at": "2026-11-28T13:12:01.076367+00:00"
     },
     {
       "title": "Freezer Vertical Consul 159 Litros CVU18MB Branco - 220V",
@@ -2005,7 +2211,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:49.050983+00:00"
+      "collected_at": "2026-11-28T13:12:37.577167+00:00"
     },
     {
       "title": "Notebook 15\" Multi Ultra UB365 Intel Pentium Gold 6500Y, Memória 4GB, Armazenamento 128 GB Flash (eMMC), Tela Full HD, Windows 11",
@@ -2024,7 +2230,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:46.601053+00:00"
+      "collected_at": "2026-11-28T13:12:27.045418+00:00"
     },
     {
       "title": "Mais Vendido",
@@ -2043,7 +2249,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.086331+00:00"
+      "collected_at": "2026-11-28T13:13:15.479220+00:00"
     },
     {
       "title": "Smart TV TCL 32\" QLED Full HD 32S5K Goo...",
@@ -2062,7 +2268,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:55.462013+00:00"
+      "collected_at": "2026-11-28T13:12:26.027787+00:00"
     },
     {
       "title": "Freezer Horizontal Philco 199 Litros 2 em 1 PFH205B Branco - 220V",
@@ -2081,7 +2287,7 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:49.002429+00:00"
+      "collected_at": "2026-11-28T13:12:37.521323+00:00"
     },
     {
       "title": "Processador Intel Core Ultra 9 285, Otimizado para IA, 2.5GHz (5.6GHz Turbo), Série 2, 24-Cores 24-Threads, LGA 1851, BX80768285",
@@ -2100,7 +2306,26 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.609282+00:00"
+      "collected_at": "2026-11-28T13:13:07.391633+00:00"
+    },
+    {
+      "title": "Freezer Electrolux 143L 1 Porta Horizontal Cycle Defrost HE150",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 1609.9,
+      "original_price": 2308.9,
+      "reference_price": 2308.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 30.3,
+      "savings": 699.0,
+      "url": "https://www.gazin.com.br/produto/freezer-electrolux-143l-1-porta-horizontal-cycle-defrost-he150/6607/branco/220-volts",
+      "category": "Outros",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:10.951039+00:00"
     },
     {
       "title": "Processador Intel Core i5 14400, 3.5 GHz (4.7GHz Turbo), 14ª Geração, 10-Cores 16-Threads, LGA 1700, BX8071514400",
@@ -2119,7 +2344,26 @@
       "watch_terms": [],
       "highlighted": true,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.471601+00:00"
+      "collected_at": "2026-11-28T13:13:07.261811+00:00"
+    },
+    {
+      "title": "Forno Elétrico de Embutir 80L Electrolux Efficient com PerfectCook 360 OE8EH",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 1939.9,
+      "original_price": 2778.9,
+      "reference_price": 2778.9,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 30.2,
+      "savings": 839.0,
+      "url": "https://www.gazin.com.br/produto/forno-eletrico-de-embutir-80l-electrolux-efficient-com-perfectcook-360-oe8eh/6465/preto/220-volts",
+      "category": "Outros",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": true,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:11.051866+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 9000 BTUs Hisense Hi-Efficiency Frio AS-09TW2RLCHB00 - 220V",
@@ -2141,7 +2385,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.112612+00:00"
+      "collected_at": "2026-11-28T13:12:36.341382+00:00"
     },
     {
       "title": "Ar Condicionado Split 12000 BTUs LG Dual Inverter Voice + IA Frio S3NQ12JA31L.EB2GAM1 - 220V",
@@ -2163,7 +2407,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.126623+00:00"
+      "collected_at": "2026-11-28T13:12:35.771670+00:00"
     },
     {
       "title": "Smart TV Samsung 55\" Mini LED 4K M75H 2...",
@@ -2184,7 +2428,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:54.730232+00:00"
+      "collected_at": "2026-11-28T13:12:25.726748+00:00"
     },
     {
       "title": "Smart TV TCL 65\" QLED UHD 4K 65T6C Goog...",
@@ -2205,7 +2449,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:55.050621+00:00"
+      "collected_at": "2026-11-28T13:12:25.778630+00:00"
     },
     {
       "title": "Ar Condicionado Split 9000 BTUs LG AI Smart Inverter Voice Frio S3NQ09JA31E.EB2GAM1 - 220V",
@@ -2227,7 +2471,30 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.731713+00:00"
+      "collected_at": "2026-11-28T13:12:37.033533+00:00"
+    },
+    {
+      "title": "Smart TV 4K LG OLED 65\" Polegadas Evo AI com Dolby Vision, Dolby Atmos e Google Cast - OLED65C6PSA",
+      "source": "Fast Shop",
+      "store_name": "Fast Shop",
+      "price": 9199.0,
+      "original_price": 12719.0,
+      "reference_price": 12719.0,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 27.7,
+      "savings": 3520.0,
+      "url": "https://site.fastshop.com.br/smart-tv-4k-lg-oled-65--polegadas-evo-ai-com-dolby-vision--dolby-atmos-e-google-cast---oled65c6psa-lgoled65c6pto_prd-173950/p",
+      "category": "TVs",
+      "tracked": true,
+      "watch_terms": [
+        "LG OLED C6 55 polegadas",
+        "LG OLED C6 65 polegadas",
+        "LG OLED C6 77 polegadas"
+      ],
+      "highlighted": false,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:10:08.407173+00:00"
     },
     {
       "title": "Smart TV LG QNED evo Mini LED AI 4K QNED85 100\" Polegadas 2026",
@@ -2248,7 +2515,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T03:59:56.398901+00:00"
+      "collected_at": "2026-11-28T13:10:08.352807+00:00"
     },
     {
       "title": "Ar Condicionado Split 12000 BTUs LG Dual Inverter Voice + IA Frio S3NQ12JA31J.EB2GAM1 - 220V",
@@ -2270,20 +2537,20 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.865674+00:00"
+      "collected_at": "2026-11-28T13:12:37.285296+00:00"
     },
     {
-      "title": "Ar Condicionado Split Inverter 9000 BTUs Agratto Zen Top Frio ZICST9F-02 - 220V",
+      "title": "Ar Condicionado Split Inverter 9000 BTUs TCL T-Pro 2.0 Frio TAC-09CTG2-INV - 220V",
       "source": "Dufrio",
       "store_name": "Dufrio",
-      "price": 1599.01,
-      "original_price": 2193.0,
-      "reference_price": 2193.0,
+      "price": 1809.0,
+      "original_price": 2483.7,
+      "reference_price": 2483.7,
       "reference_kind": "preço anterior anunciado",
       "reference_samples": 1,
-      "difference_pct": 27.1,
-      "savings": 593.99,
-      "url": "https://www.dufrio.com.br/ar-condicionado-split-inverter-9000-btus-agratto-zen-top-frio-zicst9f-02-220v.html",
+      "difference_pct": 27.2,
+      "savings": 674.7,
+      "url": "https://www.dufrio.com.br/ar-condicionado-split-inverter-9000-btus-tcl-t-pro-2-0-frio-tac-09ctg2-inv-220v.html",
       "category": "Climatização",
       "tracked": true,
       "watch_terms": [
@@ -2292,7 +2559,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.972302+00:00"
+      "collected_at": "2026-11-28T13:12:36.085950+00:00"
     },
     {
       "title": "Ar Condicionado Split 9000 BTUs LG Dual Inverter Voice +IA Frio S3NQ09AA31F.EB2GAM1 - 220V",
@@ -2314,7 +2581,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.795010+00:00"
+      "collected_at": "2026-11-28T13:12:37.157030+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 9000 BTUs Midea AI Airvolution Frio 42EFVCB09M5 - 220V",
@@ -2336,7 +2603,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.013917+00:00"
+      "collected_at": "2026-11-28T13:12:36.386799+00:00"
     },
     {
       "title": "Smart TV Samsung 98\" Q80C 4K QLED Modo...",
@@ -2357,7 +2624,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:55.481242+00:00"
+      "collected_at": "2026-11-28T13:12:26.053645+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 12000 BTUs Agratto Kyn Top Frio KNICST12F-02 - 220V",
@@ -2379,7 +2646,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.268379+00:00"
+      "collected_at": "2026-11-28T13:12:36.296419+00:00"
     },
     {
       "title": "Ar Condicionado Split 18000 BTUs LG Dual Inverter Compact + IA Frio S3NQ18KLQAC.EB2GAM1 - 220V",
@@ -2401,7 +2668,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.602624+00:00"
+      "collected_at": "2026-11-28T13:12:36.871436+00:00"
     },
     {
       "title": "Smart TV Semp 65 Polegadas LED 4K S62R Roku TV Wi-Fi HDR10 Dolby Audio Brilho até 280 Nits 65S62R",
@@ -2423,7 +2690,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.156411+00:00"
+      "collected_at": "2026-11-28T13:13:15.522754+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 9000 BTUs Hisense Eco Plus Frio AS-09TW2RLRCK00E - 220V",
@@ -2445,7 +2712,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.073399+00:00"
+      "collected_at": "2026-11-28T13:12:36.250484+00:00"
     },
     {
       "title": "Ar Condicionado Split 9000 BTUs LG Dual Inverter Compact + IA Frio S3NQ09AAQAC.EB2GAM1 - 220V",
@@ -2467,7 +2734,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:54.697909+00:00"
+      "collected_at": "2026-11-28T13:12:37.356597+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 18000 BTUs Hisense Eco Plus Frio AS-18TW2RGSCK00E - 220V",
@@ -2489,29 +2756,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.654941+00:00"
-    },
-    {
-      "title": "Ar Condicionado Split Inverter 9000 BTUs Midea Air Volution Lite Frio 42EBVCB09M5 - 220V",
-      "source": "Dufrio",
-      "store_name": "Dufrio",
-      "price": 1799.01,
-      "original_price": 2314.38,
-      "reference_price": 2314.38,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 22.3,
-      "savings": 515.37,
-      "url": "https://www.dufrio.com.br/ar-condicionado-split-inverter-9000-btus-midea-air-volution-lite-frio-42ebvcb09m5-220v.html",
-      "category": "Climatização",
-      "tracked": true,
-      "watch_terms": [
-        "Ar-condicionado Inverter 12000 BTU",
-        "Ar-condicionado Inverter 18000 BTU"
-      ],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.188531+00:00"
+      "collected_at": "2026-11-28T13:12:36.932883+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 18000 BTUs Agratto Liv Top Frio LCST18F-02I - 220V",
@@ -2533,7 +2778,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:54.785031+00:00"
+      "collected_at": "2026-11-28T13:12:43.602513+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 30000 BTUs Hisense Hi-Efficiency Frio AS-30TW2RKZHB00E - 220V",
@@ -2555,7 +2800,51 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.571118+00:00"
+      "collected_at": "2026-11-28T13:12:36.821702+00:00"
+    },
+    {
+      "title": "Ar Condicionado Split Inverter 12000 BTUs Hisense Eco Plus II Frio AS-12TW2RURCK00E - 220V",
+      "source": "Dufrio",
+      "store_name": "Dufrio",
+      "price": 1899.0,
+      "original_price": 2424.54,
+      "reference_price": 2424.54,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 21.7,
+      "savings": 525.54,
+      "url": "https://www.dufrio.com.br/ar-condicionado-split-inverter-12000-btus-hisense-eco-plus-ii-frio-as-12tw2rurck00e-220v.html",
+      "category": "Climatização",
+      "tracked": true,
+      "watch_terms": [
+        "Ar-condicionado Inverter 12000 BTU",
+        "Ar-condicionado Inverter 18000 BTU"
+      ],
+      "highlighted": false,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:37.321638+00:00"
+    },
+    {
+      "title": "Ar Condicionado Split Inverter 9000 BTUs Midea Ecomaster + IA Frio 42EZVCC09M5 - 220V",
+      "source": "Dufrio",
+      "store_name": "Dufrio",
+      "price": 2099.0,
+      "original_price": 2659.14,
+      "reference_price": 2659.14,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 21.1,
+      "savings": 560.14,
+      "url": "https://www.dufrio.com.br/ar-condicionado-inverter-9000-btus-midea-ecomaster-ia-frio-42ezvcc09m5-220v.html",
+      "category": "Climatização",
+      "tracked": true,
+      "watch_terms": [
+        "Ar-condicionado Inverter 12000 BTU",
+        "Ar-condicionado Inverter 18000 BTU"
+      ],
+      "highlighted": false,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:35.383776+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 36000 BTUs Hisense Hi-Efficiency Frio AS-36TW2RKZHB00E - 220V",
@@ -2577,7 +2866,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.633016+00:00"
+      "collected_at": "2026-11-28T13:12:36.905441+00:00"
     },
     {
       "title": "Ar Condicionado 12000 Btus Split HW Inv...",
@@ -2598,7 +2887,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:57.456975+00:00"
+      "collected_at": "2026-11-28T13:12:28.116317+00:00"
     },
     {
       "title": "Smart TV TCL 75\" QLED UHD 4K 75T6C Goog...",
@@ -2619,7 +2908,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:55.505800+00:00"
+      "collected_at": "2026-11-28T13:12:26.092681+00:00"
     },
     {
       "title": "Smart TV Samsung 75\" Mini LED 4K M75H 2...",
@@ -2640,7 +2929,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:55.320296+00:00"
+      "collected_at": "2026-11-28T13:12:25.823885+00:00"
     },
     {
       "title": "Smart TV Samsung 65\" Mini LED 4K M75H 2...",
@@ -2662,28 +2951,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:55.350970+00:00"
-    },
-    {
-      "title": "Smart TV TCL 85 Polegadas QLED 4K P8L WiFi Bluetooth Google TV HDR10+ 144 Hz VRR 85P8L",
-      "source": "Loja TCL",
-      "store_name": "Loja TCL",
-      "price": 6297.55,
-      "original_price": 7249.0,
-      "reference_price": 7819.08,
-      "reference_kind": "histórico observado",
-      "reference_samples": 96,
-      "difference_pct": 19.5,
-      "savings": 1521.53,
-      "url": "https://www.lojatcl.com.br/smart-tv-tcl-85-polegadas-qled-4k-p8l-wifi-bluetooth-google-tv-hdr10--144-hz-vrr-85p8l/p",
-      "category": "TVs",
-      "tracked": true,
-      "watch_terms": [
-        "Smart TV 85 polegadas"
-      ],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:19.925944+00:00"
+      "collected_at": "2026-11-28T13:12:25.850817+00:00"
     },
     {
       "title": "Ar Condicionado Split 12000 BTUs LG Dual Inverter Compact + IA Frio S3NQ12JAQAC.EB2GAM1 - 220V",
@@ -2705,7 +2973,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.823670+00:00"
+      "collected_at": "2026-11-28T13:12:37.219954+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 12000 BTUs Agratto Zen Top Frio ZICST12F-02 - 220V",
@@ -2727,7 +2995,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.845969+00:00"
+      "collected_at": "2026-11-28T13:12:37.253912+00:00"
     },
     {
       "title": "Processador AMD Ryzen 7 9700X, 3.8GHz (5.5GHz Turbo), 8-Cores 16-Threads, AM5, Sem Cooler, 100-100001404WOF",
@@ -2748,7 +3016,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.333540+00:00"
+      "collected_at": "2026-11-28T13:13:07.086390+00:00"
     },
     {
       "title": "Smart TV TCL 65\" QLED UHD 4K QD-Mini LE...",
@@ -2769,7 +3037,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:55.380833+00:00"
+      "collected_at": "2026-11-28T13:12:25.866712+00:00"
     },
     {
       "title": "Notebook 15\" Gamer Acer Nitro V15 Intel Core i5-13420H, NVIDIA GeForce RTX 4050 6GB, Memória 8GB, SSD 512GB NVMe, Tela Full HD IPS 165 Hz, Windows 11, ANV15-52-56PD",
@@ -2791,7 +3059,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:39.429732+00:00"
+      "collected_at": "2026-11-28T13:12:20.265492+00:00"
     },
     {
       "title": "Ar Condicionado Split Inverter 22000 BTUs Hisense Eco Plus Frio AS-22TW2RXTCK00E - 220V",
@@ -2813,7 +3081,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:00.221601+00:00"
+      "collected_at": "2026-11-28T13:12:48.431996+00:00"
     },
     {
       "title": "Notebook 15\" Gamer Acer Nitro V15 Core i7-13620H, NVIDIA RTX 4060 8GB, Memória 16GB, SSD 512GB NVMe, Tela Full HD 165Hz, Linux, ANV15-52-790M",
@@ -2835,7 +3103,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:46.723052+00:00"
+      "collected_at": "2026-11-28T13:12:27.096586+00:00"
     },
     {
       "title": "Smartphone Samsung Galaxy S26 Ultra 5G 6.9″ Snapdragon 256GB 12GB",
@@ -2856,7 +3124,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:22.178238+00:00"
+      "collected_at": "2026-11-28T13:11:55.890657+00:00"
     },
     {
       "title": "Smart TV TCL 85 Polegadas SQD-Mini LED 4K X11L WiFi Bluetooth Google TV HDR10+ Ultra Slim 85X11L",
@@ -2877,26 +3145,7 @@
       ],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.250571+00:00"
-    },
-    {
-      "title": "Processador Intel Core i9 12900K 3.2GHz (5.2GHz Turbo), 12ª Geração, 16-Cores 24-Threads, LGA 1700, Sem Cooler, BX8071512900K",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 2189.99,
-      "original_price": 3119.9,
-      "reference_price": 3119.9,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 29.8,
-      "savings": 929.91,
-      "url": "https://www.terabyteshop.com.br/produto/19613/processador-intel-core-i9-12900k-32ghz-52ghz-turbo-12-geracao-16-cores-24-threads-lga-1700-bx8071512900k",
-      "category": "Processadores",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:09.027931+00:00"
+      "collected_at": "2026-11-28T13:13:15.558768+00:00"
     },
     {
       "title": "Quente e Frio",
@@ -2915,7 +3164,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.686094+00:00"
+      "collected_at": "2026-11-28T13:12:36.967595+00:00"
     },
     {
       "title": "Quente e Frio",
@@ -2934,7 +3183,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.708401+00:00"
+      "collected_at": "2026-11-28T13:12:36.993308+00:00"
     },
     {
       "title": "Mais Vendido",
@@ -2953,7 +3202,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.291374+00:00"
+      "collected_at": "2026-11-28T13:13:15.570627+00:00"
     },
     {
       "title": "Freezer Vertical Imbera 597 Litros Tripla Ação EVZ21 Max Full Black - 220V",
@@ -2972,7 +3221,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.622277+00:00"
+      "collected_at": "2026-11-28T13:12:35.988197+00:00"
     },
     {
       "title": "Notebook 15\" Multi Ultra UB366 Intel Pentium Gold 6500Y, Memória 8GB, Armazenamento 128 GB Flash (eMMC), Tela Full HD, Windows 11",
@@ -2991,7 +3240,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:39.383790+00:00"
+      "collected_at": "2026-11-28T13:12:20.214533+00:00"
     },
     {
       "title": "Processador AMD Ryzen 9 7900 3.7GHz (5.4GHz Turbo), 12-Cores 24-Threads, AM5, 100-100000590WOF",
@@ -3010,7 +3259,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.521687+00:00"
+      "collected_at": "2026-11-28T13:13:07.312174+00:00"
     },
     {
       "title": "Black Friday",
@@ -3029,7 +3278,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.938754+00:00"
+      "collected_at": "2026-11-28T13:13:15.923575+00:00"
     },
     {
       "title": "Mais Vendido",
@@ -3048,7 +3297,26 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.108563+00:00"
+      "collected_at": "2026-11-28T13:13:15.499361+00:00"
+    },
+    {
+      "title": "Black Friday",
+      "source": "Loja TCL",
+      "store_name": "Loja TCL",
+      "price": 3086.55,
+      "original_price": 4299.0,
+      "reference_price": 4299.0,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 28.2,
+      "savings": 1212.45,
+      "url": "https://www.lojatcl.com.br/smart-tv-tcl-55-polegadas-qled-mini-led-4k-a400m-wifi-bluetooth-google-tv-hdr10--144-hz-vrr-55a400m-33281/p",
+      "category": "Outros",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": false,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:13:15.994236+00:00"
     },
     {
       "title": "Mais Vendido",
@@ -3067,7 +3335,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.871708+00:00"
+      "collected_at": "2026-11-28T13:13:15.837248+00:00"
     },
     {
       "title": "Samsung Vision AI TV 65\" OLED 4K S85H 2027",
@@ -3086,7 +3354,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T03:59:56.416388+00:00"
+      "collected_at": "2026-11-28T13:10:08.434033+00:00"
     },
     {
       "title": "Guarda-Roupa Casal 2 Portas Correr 3 Gavetas Ilhéus Panan Roupeiro",
@@ -3105,26 +3373,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:20.418957+00:00"
-    },
-    {
-      "title": "Processador Intel Core i5 14600KF, 3.5 GHz (5.3GHz Turbo), 14ª Geração, 14-Cores 20-Threads, LGA 1700, BX8071514600KF",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 1649.99,
-      "original_price": 2278.9,
-      "reference_price": 2278.9,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 27.6,
-      "savings": 628.91,
-      "url": "https://www.terabyteshop.com.br/produto/26273/processador-intel-core-i5-14600kf-35-ghz-53ghz-turbo-14-geracao-14-cores-20-threads-lga-1700-bx8071514600kf",
-      "category": "Processadores",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.817536+00:00"
+      "collected_at": "2026-11-28T13:11:54.721728+00:00"
     },
     {
       "title": "Smartphone Samsung Galaxy A27 5G Androi...",
@@ -3143,7 +3392,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:57.649206+00:00"
+      "collected_at": "2026-11-28T13:12:28.805799+00:00"
     },
     {
       "title": "Freezer Vertical Multitemperatura Metalfrio 557 Litros VM50AH All Black 220V",
@@ -3162,7 +3411,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.524677+00:00"
+      "collected_at": "2026-11-28T13:12:35.840906+00:00"
     },
     {
       "title": "Quente e Frio",
@@ -3181,7 +3430,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.304759+00:00"
+      "collected_at": "2026-11-28T13:12:35.637829+00:00"
     },
     {
       "title": "Notebook ASUS Zenbook DUO Intel Core Ultra X9 378H, 32 GB, 1.0 TB W11 Home, 14\" OLED - UX8407AA-SN608W",
@@ -3200,7 +3449,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T03:59:43.583885+00:00"
+      "collected_at": "2026-11-28T13:09:55.135283+00:00"
     },
     {
       "title": "Notebook  Asus Vivobook Go 15 AMD Athlo...",
@@ -3219,7 +3468,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:57.962800+00:00"
+      "collected_at": "2026-11-28T13:12:29.033267+00:00"
     },
     {
       "title": "Impressora 3D FDM Bambu Lab A1 Bivolt",
@@ -3238,7 +3487,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:58.273061+00:00"
+      "collected_at": "2026-11-28T13:12:29.161621+00:00"
     },
     {
       "title": "Notebook  Asus Vivobook Go 15 AMD Athlon Silver 10 2.4GHz 4GB SSD 128GB 15,6'' Windows 11 Home",
@@ -3257,7 +3506,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:12.248949+00:00"
+      "collected_at": "2026-11-28T13:12:53.762138+00:00"
     },
     {
       "title": "61206-Branco",
@@ -3276,7 +3525,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:15.419140+00:00"
+      "collected_at": "2026-11-28T13:11:52.462357+00:00"
     },
     {
       "title": "Quente e Frio",
@@ -3295,7 +3544,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.156777+00:00"
+      "collected_at": "2026-11-28T13:12:35.546262+00:00"
     },
     {
       "title": "Freezer Horizontal Philco 140 Litros 2 em 1 PFH160B Branco - 110V",
@@ -3314,7 +3563,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:48.903779+00:00"
+      "collected_at": "2026-11-28T13:12:37.396350+00:00"
     },
     {
       "title": "Notebook IdeaPad Slim 3i Intel Core 3 100U, Memória 8GB, 256GB SSD, Tela 15.3\" (1920x1200), Windows 11, 83NU0000BR, LENOVO",
@@ -3333,7 +3582,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:46.577546+00:00"
+      "collected_at": "2026-11-28T13:12:27.031022+00:00"
     },
     {
       "title": "Geladeira Comercial 4 Portas Gelopar GREP-4P 1044 Litros Aço Inox - 220V",
@@ -3343,7 +3592,7 @@
       "original_price": 9603.3,
       "reference_price": 10251.0,
       "reference_kind": "histórico observado",
-      "reference_samples": 107,
+      "reference_samples": 110,
       "difference_pct": 24.9,
       "savings": 2552.0,
       "url": "https://www.dufrio.com.br/geladeira-comercial-4-portas-gelopar-grep-4p-1044-litros-aco-inox-220v.html",
@@ -3352,7 +3601,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.935563+00:00"
+      "collected_at": "2026-11-28T13:12:35.893788+00:00"
     },
     {
       "title": "Smart TV TCL 55",
@@ -3371,7 +3620,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:54.688365+00:00"
+      "collected_at": "2026-11-28T13:12:25.314684+00:00"
     },
     {
       "title": "Notebook Acer Aspire Go 15 AG15-71P-54J...",
@@ -3390,7 +3639,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:57.714134+00:00"
+      "collected_at": "2026-11-28T13:12:28.921794+00:00"
     },
     {
       "title": "Notebook Acer Aspire Go 15 AG15-71P-54J6 Intel Core i5-13420H 8GB SSD 256GB 16.6'' Linux 64 bits",
@@ -3409,7 +3658,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:12.318409+00:00"
+      "collected_at": "2026-11-28T13:12:53.827161+00:00"
     },
     {
       "title": "Quente e Frio",
@@ -3428,7 +3677,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:54.823419+00:00"
+      "collected_at": "2026-11-28T13:12:43.632263+00:00"
     },
     {
       "title": "Notebook 15.6\" Asus Vivobook Intel Core i3-N305, Memória 8GB, 512 GB SSD NVMe, Linux KeepOS, E1504GA-NJ438",
@@ -3447,7 +3696,26 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:46.792225+00:00"
+      "collected_at": "2026-11-28T13:12:27.150590+00:00"
+    },
+    {
+      "title": "Refrigerador Side By Side LG de 03 Portas Frost Free com 628 Litros InstaView Inox Look - GC-X267GL5",
+      "source": "Fast Shop",
+      "store_name": "Fast Shop",
+      "price": 16999.0,
+      "original_price": 22339.0,
+      "reference_price": 22339.0,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 23.9,
+      "savings": 5340.0,
+      "url": "https://site.fastshop.com.br/refrigerador-side-by-side-lg-de-03-portas-frost-free-com-628-litros-instaview-inox-look---gc-x267gl5-lggcx267gl5pa_prd-170092/p",
+      "category": "Eletrodomésticos",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": false,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:10:19.400102+00:00"
     },
     {
       "title": "Mais Vendido",
@@ -3466,7 +3734,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.998728+00:00"
+      "collected_at": "2026-11-28T13:13:15.954370+00:00"
     },
     {
       "title": "Ilha para Congelados Fricon 3,03 Metros Dupla Ação 1163 Litros ICED1163 Preto - 220V",
@@ -3485,7 +3753,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.807555+00:00"
+      "collected_at": "2026-11-28T13:12:35.914208+00:00"
     },
     {
       "title": "Smartphone OPPO A60 ColorOS 14 Tela 6.6...",
@@ -3504,26 +3772,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:57.545354+00:00"
-    },
-    {
-      "title": "Processador Intel Core i7 12700 2,1GHz (4.9GHz Turbo), 12ª Geração, 12-Cores 20-Threads, LGA 1700, Com Cooler, BX8071512700",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 2699.99,
-      "original_price": 3043.9,
-      "reference_price": 3529.4,
-      "reference_kind": "histórico observado",
-      "reference_samples": 150,
-      "difference_pct": 23.5,
-      "savings": 829.41,
-      "url": "https://www.terabyteshop.com.br/produto/20212/processador-intel-core-i7-12700-21ghz-49ghz-turbo-12-geracao-12-cores-20-threads-lga-1700-bx8071512700",
-      "category": "Processadores",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.955345+00:00"
+      "collected_at": "2026-11-28T13:12:28.505730+00:00"
     },
     {
       "title": "Adega Electrolux WDF29 29 Garrafas com...",
@@ -3542,7 +3791,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:57.492330+00:00"
+      "collected_at": "2026-11-28T13:12:28.213661+00:00"
     },
     {
       "title": "Expositora Refrigerada Imbera 485 Litros VRS16S Branca - Inverter Bivolt",
@@ -3561,7 +3810,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.481711+00:00"
+      "collected_at": "2026-11-28T13:12:35.942262+00:00"
     },
     {
       "title": "Freezer Horizontal Philco 253 Litros 2 em 1 PFH260B Branco - 110V",
@@ -3580,7 +3829,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:49.120794+00:00"
+      "collected_at": "2026-11-28T13:12:37.770861+00:00"
     },
     {
       "title": "Notebook 15.6\" Asus Vivobook Go 15 AMD Ryzen 5 7520U, Memória 8GB, 256 GB SSD NVMe, Windows 11, E1504FA-NJ825W",
@@ -3599,7 +3848,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:46.548691+00:00"
+      "collected_at": "2026-11-28T13:12:27.016811+00:00"
     },
     {
       "title": "Colchão Queen Size Molas Gazin Sweet Dream II 158x198",
@@ -3618,7 +3867,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:21.805063+00:00"
+      "collected_at": "2026-11-28T13:11:55.693706+00:00"
     },
     {
       "title": "Notebook Lenovo Ultrafino IdeaPad 1 AMD Ryzen R5-7520U, Mémoria 8GB, 512GB SSD, Windows 11, Tela HD 15.6\", Cloud Grey, 82X5000NBR",
@@ -3637,7 +3886,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:39.337020+00:00"
+      "collected_at": "2026-11-28T13:12:20.172234+00:00"
     },
     {
       "title": "Black Friday",
@@ -3656,7 +3905,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.334040+00:00"
+      "collected_at": "2026-11-28T13:13:15.581927+00:00"
     },
     {
       "title": "Freezer Horizontal 1 Tampa Consul Dupla Ação 307 Litros CHA31MB Branco 220V",
@@ -3675,26 +3924,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:49.147635+00:00"
-    },
-    {
-      "title": "Processador Intel Core i9 14900, 3.6 GHz (5.8GHz Turbo), 14ª Geração, 24-Cores 32-Threads, LGA 1700, BX8071514900",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 3199.99,
-      "original_price": 4114.9,
-      "reference_price": 4114.9,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 22.2,
-      "savings": 914.91,
-      "url": "https://www.terabyteshop.com.br/produto/27410/processador-intel-core-i9-14900-36-ghz-58ghz-turbo-14-geracao-24-cores-32-threads-lga-1700-bx8071514900",
-      "category": "Processadores",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.731635+00:00"
+      "collected_at": "2026-11-28T13:12:37.842858+00:00"
     },
     {
       "title": "Expositor de Bebidas Venax 300 Litros Branco VV300 - 220V",
@@ -3713,7 +3943,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:49.254878+00:00"
+      "collected_at": "2026-11-28T13:12:37.958885+00:00"
     },
     {
       "title": "Processador AMD Ryzen 7 7700 3.8GHz (5.3GHz Turbo), 8-Cores 16-Threads, AM5, Com Cooler AMD Wraith Stealth, 100-100000592SBX",
@@ -3732,7 +3962,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.559403+00:00"
+      "collected_at": "2026-11-28T13:13:07.343265+00:00"
     },
     {
       "title": "Cervejeira Fricon Frost Free 569 Litros VCFC569V Preto - 220V",
@@ -3751,7 +3981,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.685085+00:00"
+      "collected_at": "2026-11-28T13:12:35.963157+00:00"
     },
     {
       "title": "Notebook IdeaPad Slim 3 AMD Ryzen 7 8840HS, Memória 16GB, 512GB SSD, AMD Radeon 780M Graphics, 15.3\" (1920x1200), Windows 11, 83TY000JBO, LENOVO",
@@ -3770,7 +4000,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:39.472529+00:00"
+      "collected_at": "2026-11-28T13:12:20.312049+00:00"
     },
     {
       "title": "Notebook Acer Travel Mate TMP214 Intel Core i5-1335U 8GB SSD 512GB 14'' Windows 11 Professional",
@@ -3789,7 +4019,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:12.383067+00:00"
+      "collected_at": "2026-11-28T13:12:53.864759+00:00"
     },
     {
       "title": "Quente e Frio",
@@ -3808,7 +4038,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.232414+00:00"
+      "collected_at": "2026-11-28T13:12:35.662068+00:00"
     },
     {
       "title": "Freezer Horizontal Fricon 142 Litros HCEB142 Branco - 110V",
@@ -3827,7 +4057,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.440438+00:00"
+      "collected_at": "2026-11-28T13:12:35.813665+00:00"
     },
     {
       "title": "Máquina de Costura Singer Facilita Pro...",
@@ -3846,7 +4076,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:56.673478+00:00"
+      "collected_at": "2026-11-28T13:12:27.039213+00:00"
     },
     {
       "title": "Notebook IdeaPad Slim 3 Intel Core i5-13420H, Memória 8GB, 512GB SSD, Intel UHD Graphics, Tela 15.3\" (1920x1200), Windows 11, 83NS0002BR, LENOVO",
@@ -3865,7 +4095,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:39.293898+00:00"
+      "collected_at": "2026-11-28T13:12:20.127866+00:00"
     },
     {
       "title": "Smart TV TCL 50\" QLED 4K 50P7L Google T...",
@@ -3884,7 +4114,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:55.298983+00:00"
+      "collected_at": "2026-11-28T13:12:25.800069+00:00"
     },
     {
       "title": "Cervejeira Imbera 810 Litros 2 Portas CCV480S Full Black - 220V",
@@ -3903,7 +4133,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.875339+00:00"
+      "collected_at": "2026-11-28T13:12:35.868022+00:00"
     },
     {
       "title": "Freezer Horizontal 1 Tampa Consul Dupla Ação 307 Litros CHA31MB Branco 110V",
@@ -3922,7 +4152,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:49.168873+00:00"
+      "collected_at": "2026-11-28T13:12:37.873395+00:00"
     },
     {
       "title": "Smartphone OPPO A5 4G Android Tela 6.67...",
@@ -3941,7 +4171,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:57.671219+00:00"
+      "collected_at": "2026-11-28T13:12:28.844896+00:00"
     },
     {
       "title": "Tablet Samsung Galaxy Tab S10 Lite 5G 1...",
@@ -3960,7 +4190,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:57.751750+00:00"
+      "collected_at": "2026-11-28T13:12:28.991367+00:00"
     },
     {
       "title": "Fogão Braslar New Sirius 4 Bocas Manual Mesa em Inox Forno Easy Clean",
@@ -3979,7 +4209,26 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:19.629957+00:00"
+      "collected_at": "2026-11-28T13:11:54.430125+00:00"
+    },
+    {
+      "title": "Geladeira TCL 589 Litros Inox Twin Eco Inverter Frost Free Multidoor Espaço Flex 110V C589CDN1",
+      "source": "Loja TCL",
+      "store_name": "Loja TCL",
+      "price": 5999.0,
+      "original_price": 7489.0,
+      "reference_price": 7489.0,
+      "reference_kind": "preço anterior anunciado",
+      "reference_samples": 1,
+      "difference_pct": 19.9,
+      "savings": 1490.0,
+      "url": "https://www.lojatcl.com.br/geladeira-tcl-589l-multidoor-4-portas-inverter-com-espaco-flex-inox-110v-c589cdn1/p",
+      "category": "Eletrodomésticos",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": false,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:13:15.359265+00:00"
     },
     {
       "title": "Black Friday",
@@ -3998,7 +4247,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.541744+00:00"
+      "collected_at": "2026-11-28T13:13:15.687916+00:00"
     },
     {
       "title": "Black Friday",
@@ -4017,26 +4266,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.567649+00:00"
-    },
-    {
-      "title": "Processador AMD Ryzen 7 7700X 4.5GHz (5.4GHz Turbo), 8-Cores 16-Threads, AM5, Sem Cooler, 100-100000591WOF",
-      "source": "TerabyteShop",
-      "store_name": "TerabyteShop",
-      "price": 1999.99,
-      "original_price": 2491.9,
-      "reference_price": 2491.9,
-      "reference_kind": "preço anterior anunciado",
-      "reference_samples": 1,
-      "difference_pct": 19.7,
-      "savings": 491.91,
-      "url": "https://www.terabyteshop.com.br/produto/22264/processador-amd-ryzen-7-7700x-45ghz-54ghz-turbo-8-cores-16-threads-am5-100-100000591wof",
-      "category": "Processadores",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:08.888492+00:00"
+      "collected_at": "2026-11-28T13:13:15.700670+00:00"
     },
     {
       "title": "Mais Vendido",
@@ -4055,7 +4285,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.909659+00:00"
+      "collected_at": "2026-11-28T13:13:15.891470+00:00"
     },
     {
       "title": "Freezer Horizontal Philco 253 Litros 2 em 1 PFH260B Branco - 220V",
@@ -4074,7 +4304,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:49.099797+00:00"
+      "collected_at": "2026-11-28T13:12:37.705482+00:00"
     },
     {
       "title": "61207-Branco",
@@ -4093,7 +4323,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:15.601015+00:00"
+      "collected_at": "2026-11-28T13:11:52.703163+00:00"
     },
     {
       "title": "Smart TV TCL 55\" QLED UHD 4K 55T6C Goog...",
@@ -4112,7 +4342,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:54.767428+00:00"
+      "collected_at": "2026-11-28T13:12:25.754332+00:00"
     },
     {
       "title": "62066-300031",
@@ -4131,7 +4361,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:15.646781+00:00"
+      "collected_at": "2026-11-28T13:11:52.759130+00:00"
     },
     {
       "title": "Freezer Vertical Imbera 594 Litros Tripla Ação EVZ21 MAX Branco - 220V",
@@ -4150,7 +4380,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.577105+00:00"
+      "collected_at": "2026-11-28T13:12:36.015232+00:00"
     },
     {
       "title": "Impressora 3D FDM Bambu Lab A1 Mini Biv...",
@@ -4169,7 +4399,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:58.237463+00:00"
+      "collected_at": "2026-11-28T13:12:29.131863+00:00"
     },
     {
       "title": "Quente e Frio",
@@ -4188,7 +4418,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.043704+00:00"
+      "collected_at": "2026-11-28T13:12:35.596404+00:00"
     },
     {
       "title": "Black Friday",
@@ -4207,7 +4437,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.184173+00:00"
+      "collected_at": "2026-11-28T13:13:15.535132+00:00"
     },
     {
       "title": "Smart TV Samsung 32\" HD H5000F 2025 HDR...",
@@ -4226,7 +4456,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:55.435480+00:00"
+      "collected_at": "2026-11-28T13:12:25.932995+00:00"
     },
     {
       "title": "Colchão Cama Box Gazin Espuma Casal Paris Bordado 138x188",
@@ -4245,7 +4475,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:22.237350+00:00"
+      "collected_at": "2026-11-28T13:11:55.954561+00:00"
     },
     {
       "title": "Quente e Frio",
@@ -4264,7 +4494,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:46.969574+00:00"
+      "collected_at": "2026-11-28T13:12:35.439602+00:00"
     },
     {
       "title": "Notebook 15.6\" Asus Vivobook 15 Intel Core i5-1334U, Memória 8GB, 256 GB SSD NVMe, Windows 11, Tela Full HD, X1504VA-NJ1737W",
@@ -4283,7 +4513,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:46.497814+00:00"
+      "collected_at": "2026-11-28T13:12:26.955450+00:00"
     },
     {
       "title": "Freezer Vertical 1 Porta Philco 140 Litros PFV165B Branco - 220V",
@@ -4302,7 +4532,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:49.073837+00:00"
+      "collected_at": "2026-11-28T13:12:37.617841+00:00"
     },
     {
       "title": "Colchão King Size Molas Gazin Sweet Dream II 193x203",
@@ -4321,7 +4551,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:21.833999+00:00"
+      "collected_at": "2026-11-28T13:11:55.440870+00:00"
     },
     {
       "title": "Mais Vendido",
@@ -4340,7 +4570,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.795122+00:00"
+      "collected_at": "2026-11-28T13:13:15.801583+00:00"
     },
     {
       "title": "61928-265241",
@@ -4359,7 +4589,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:15.379021+00:00"
+      "collected_at": "2026-11-28T13:11:52.421414+00:00"
     },
     {
       "title": "Vitrine Neutra Gelopar Aurora Preta GRNA-140R - 220V",
@@ -4378,7 +4608,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:47.751498+00:00"
+      "collected_at": "2026-11-28T13:12:36.044085+00:00"
     },
     {
       "title": "Notebook Lenovo Ultrafino Ideapad Slim 3-15IRH10 Intel Core i5-13420H 8GB SSD 512GB 15.3'' Windows 11",
@@ -4397,7 +4627,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:12.287573+00:00"
+      "collected_at": "2026-11-28T13:12:53.811485+00:00"
     },
     {
       "title": "Black Friday",
@@ -4416,45 +4646,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.504933+00:00"
-    },
-    {
-      "title": "Black Friday",
-      "source": "Loja TCL",
-      "store_name": "Loja TCL",
-      "price": 3239.0,
-      "original_price": 3399.0,
-      "reference_price": 3770.28,
-      "reference_kind": "referência atual",
-      "reference_samples": 10,
-      "difference_pct": 14.1,
-      "savings": 531.28,
-      "url": "https://www.lojatcl.com.br/lava-e-seca-tcl-12kg---7kg-branca-com-cuidado-antialergico-e-refrescar-com-ar-110v-c312wdw1-33774/p",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.599038+00:00"
-    },
-    {
-      "title": "Black Friday",
-      "source": "Loja TCL",
-      "store_name": "Loja TCL",
-      "price": 3239.0,
-      "original_price": 3399.0,
-      "reference_price": 3770.28,
-      "reference_kind": "referência atual",
-      "reference_samples": 10,
-      "difference_pct": 14.1,
-      "savings": 531.28,
-      "url": "https://www.lojatcl.com.br/lava-e-seca-tcl-12kg---7kg-branca-com-cuidado-antialergico-e-refrescar-com-ar-220v-c312wdw-33773/p",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.623443+00:00"
+      "collected_at": "2026-11-28T13:13:15.674987+00:00"
     },
     {
       "title": "Ar Condicionado Elgin Split Hi Wall 120...",
@@ -4473,7 +4665,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:57.376224+00:00"
+      "collected_at": "2026-11-28T13:12:27.729835+00:00"
     },
     {
       "title": "Oferta Relâmpago",
@@ -4492,7 +4684,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.219822+00:00"
+      "collected_at": "2026-11-28T13:13:15.547539+00:00"
     },
     {
       "title": "Notebook 15.3\" Acer Aspire Go 5 Intel Core i3-1305U, Memória 8GB, SSD 256GB, Tela Full HD (1920 x 1080), Windows 11, AG15-51P-35JZ",
@@ -4511,7 +4703,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:46.771337+00:00"
+      "collected_at": "2026-11-28T13:12:27.134976+00:00"
     },
     {
       "title": "Notebook Lenovo IdeaPad Slim 3 15IRU10 Intel Core 3 100U 8GB SSD 256GB 15,3'' Windows 11 Home",
@@ -4530,7 +4722,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:12.267812+00:00"
+      "collected_at": "2026-11-28T13:12:53.774807+00:00"
     },
     {
       "title": "Notebook 15.6\" Asus Vivobook Rose Pink Intel Celeron N4500, Memória 4GB, 128 GB e-MMC, Windows 11, E510KA-BR833WS",
@@ -4549,7 +4741,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:46.698730+00:00"
+      "collected_at": "2026-11-28T13:12:27.077417+00:00"
     },
     {
       "title": "MacBook Neo de 13 polegadas, Chip A18 Pro, CPU de 6 núcleos, GPU de 5 núcleos, 256GB, Prateado, MHFA4BZ, APPLE",
@@ -4568,7 +4760,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:46.746199+00:00"
+      "collected_at": "2026-11-28T13:12:27.112140+00:00"
     },
     {
       "title": "Notebook 15.3\" Acer Aspire 15 Intel Core i3-N305, Memória 8GB, SSD 256GB, Tela Full HD (1920 x 1080), Linux, A315-510P-320B",
@@ -4587,45 +4779,45 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:46.525423+00:00"
+      "collected_at": "2026-11-28T13:12:27.001220+00:00"
     },
     {
       "title": "Black Friday",
       "source": "Loja TCL",
       "store_name": "Loja TCL",
-      "price": 3429.0,
-      "original_price": 3599.0,
-      "reference_price": 3770.28,
+      "price": 3239.0,
+      "original_price": 3399.0,
+      "reference_price": 3599.0,
       "reference_kind": "referência atual",
-      "reference_samples": 10,
-      "difference_pct": 9.1,
-      "savings": 341.28,
-      "url": "https://www.lojatcl.com.br/lava-e-seca-tcl-12kg---7kg-prata-com-cuidado-antialergico-e-refrescar-com-ar-110v-c312wds1-33772/p",
+      "reference_samples": 11,
+      "difference_pct": 10.0,
+      "savings": 360.0,
+      "url": "https://www.lojatcl.com.br/lava-e-seca-tcl-12kg---7kg-branca-com-cuidado-antialergico-e-refrescar-com-ar-110v-c312wdw1-33774/p",
       "category": "Outros",
       "tracked": false,
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.655374+00:00"
+      "collected_at": "2026-11-28T13:13:15.713262+00:00"
     },
     {
       "title": "Black Friday",
       "source": "Loja TCL",
       "store_name": "Loja TCL",
-      "price": 3429.0,
-      "original_price": 3599.0,
-      "reference_price": 3770.28,
+      "price": 3239.0,
+      "original_price": 3399.0,
+      "reference_price": 3599.0,
       "reference_kind": "referência atual",
-      "reference_samples": 10,
-      "difference_pct": 9.1,
-      "savings": 341.28,
-      "url": "https://www.lojatcl.com.br/lava-e-seca-tcl-12kg---7kg-prata-com-cuidado-antialergico-e-refrescar-com-ar-220v-c312wds-33771/p",
+      "reference_samples": 11,
+      "difference_pct": 10.0,
+      "savings": 360.0,
+      "url": "https://www.lojatcl.com.br/lava-e-seca-tcl-12kg---7kg-branca-com-cuidado-antialergico-e-refrescar-com-ar-220v-c312wdw-33773/p",
       "category": "Outros",
       "tracked": false,
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:03:20.683410+00:00"
+      "collected_at": "2026-11-28T13:13:15.724658+00:00"
     },
     {
       "title": "Notebook 15.6\" Gamer Lenovo LOQ Intel Core i5-13450HX, NVIDIA GeForce RTX 3050 6GB GDDR6, Memória 16GB, SSD 512GB NVMe, Tela Full HD IPS 144Hz, Windows 11, 83KH0006BR",
@@ -4644,7 +4836,26 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:46.666900+00:00"
+      "collected_at": "2026-11-28T13:12:27.061488+00:00"
+    },
+    {
+      "title": "Máquina de Lavar Suggar Lavamax Eco 20kg Semiautomática com Timer LE200",
+      "source": "Gazin",
+      "store_name": "Gazin",
+      "price": 912.24,
+      "original_price": 980.9,
+      "reference_price": 980.9,
+      "reference_kind": "histórico observado",
+      "reference_samples": 20,
+      "difference_pct": 7.0,
+      "savings": 68.66,
+      "url": "https://www.gazin.com.br/produto/maquina-de-lavar-suggar-lavamax-eco-20kg-semiautomatica-com-timer-le200/6756/prata/110-volts",
+      "category": "Outros",
+      "tracked": false,
+      "watch_terms": [],
+      "highlighted": false,
+      "strict_highlight": false,
+      "collected_at": "2026-11-28T13:12:10.862802+00:00"
     },
     {
       "title": "Smartphone Jovi Y21s 4G 6.8\" Octa Core 256GB Câmera Dupla",
@@ -4663,7 +4874,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:21.692961+00:00"
+      "collected_at": "2026-11-28T13:11:55.329759+00:00"
     },
     {
       "title": "Geladeira Electrolux 213L Cycle Defrost 1 Porta RE21",
@@ -4682,7 +4893,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:21.615466+00:00"
+      "collected_at": "2026-11-28T13:11:55.293955+00:00"
     },
     {
       "title": "Colchão Cama Box Gazin Molas Queen Size Sweet Dream II 158x198",
@@ -4701,7 +4912,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:21.931041+00:00"
+      "collected_at": "2026-11-28T13:11:55.748270+00:00"
     },
     {
       "title": "Colchão Cama Box Gazin Molas King Size Sweet Dream II 193x203",
@@ -4720,7 +4931,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:21.990670+00:00"
+      "collected_at": "2026-11-28T13:11:55.488005+00:00"
     },
     {
       "title": "Colchão Cama Box Gazin Molas Queen Size Primeline HR 158x198",
@@ -4739,26 +4950,26 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:22.048521+00:00"
+      "collected_at": "2026-11-28T13:11:55.553824+00:00"
     },
     {
       "title": "Colchão Cama Box Gazin Molas King Size Primeline HR 193x203",
       "source": "Gazin",
       "store_name": "Gazin",
-      "price": 4838.7,
-      "original_price": 5202.9,
-      "reference_price": 5202.9,
+      "price": 5212.56,
+      "original_price": 5604.9,
+      "reference_price": 5604.9,
       "reference_kind": "preço anterior anunciado",
       "reference_samples": 1,
       "difference_pct": 7.0,
-      "savings": 364.2,
+      "savings": 392.34,
       "url": "https://www.gazin.com.br/produto/colchao-cama-box-gazin-molas-king-size-primeline-hr-193x203/11408/chumbo-escuro/sem-voltagem",
       "category": "Outros",
       "tracked": false,
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:21.769935+00:00"
+      "collected_at": "2026-11-28T13:11:55.615605+00:00"
     },
     {
       "title": "iPhone 16 Apple 6,1\" 256GB Câmera Dupla",
@@ -4777,7 +4988,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:21.727212+00:00"
+      "collected_at": "2026-11-28T13:11:55.370345+00:00"
     },
     {
       "title": "Memória DDR4 16GB 3200MHz Hiksemi Armor, HSC416U32D2",
@@ -4796,7 +5007,7 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:40.101533+00:00"
+      "collected_at": "2026-11-28T13:12:20.604479+00:00"
     },
     {
       "title": "Computador Miranda Gamer Ryzen 7 5700G, Memória 16GB DDR4, SSD 512GB NVMe, Fonte 500W 80 Plus, Linux, LOGIN",
@@ -4815,333 +5026,75 @@
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:39.584784+00:00"
+      "collected_at": "2026-11-28T13:12:20.393488+00:00"
     },
     {
-      "title": "Fogão Mueller MFI4BA Acendimento Manual 4 Bocas Mesa Inox Forno 48,1L",
-      "source": "Gazin",
-      "store_name": "Gazin",
-      "price": 839.9,
-      "original_price": null,
-      "reference_price": 609.9,
-      "reference_kind": "histórico observado",
-      "reference_samples": 128,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.gazin.com.br/produto/fogao-mueller-mfi4ba-acendimento-manual-4-bocas-mesa-inox-forno-481l/7106/preto/sem-voltagem",
-      "category": "Eletrodomésticos",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:38.572836+00:00"
-    },
-    {
-      "title": "Máquina de Lavar Suggar Lavamax Eco 20kg Semiautomática com Timer LE200",
-      "source": "Gazin",
-      "store_name": "Gazin",
-      "price": 980.9,
-      "original_price": null,
-      "reference_price": 980.9,
-      "reference_kind": "histórico observado",
-      "reference_samples": 19,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.gazin.com.br/produto/maquina-de-lavar-suggar-lavamax-eco-20kg-semiautomatica-com-timer-le200/6756/prata/110-volts",
+      "title": "Black Friday",
+      "source": "Loja TCL",
+      "store_name": "Loja TCL",
+      "price": 3429.0,
+      "original_price": 3599.0,
+      "reference_price": 3599.0,
+      "reference_kind": "referência atual",
+      "reference_samples": 11,
+      "difference_pct": 4.7,
+      "savings": 170.0,
+      "url": "https://www.lojatcl.com.br/lava-e-seca-tcl-12kg---7kg-prata-com-cuidado-antialergico-e-refrescar-com-ar-110v-c312wds1-33772/p",
       "category": "Outros",
       "tracked": false,
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:38.194902+00:00"
+      "collected_at": "2026-11-28T13:13:15.736343+00:00"
     },
     {
-      "title": "Cooktop Dako Supreme 5 Bocas Superautomático Mesa de Vidro Mega Chama",
-      "source": "Gazin",
-      "store_name": "Gazin",
-      "price": 994.9,
-      "original_price": null,
-      "reference_price": 994.9,
-      "reference_kind": "histórico observado",
-      "reference_samples": 12,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.gazin.com.br/produto/cooktop-dako-supreme-5-bocas-superautomatico-mesa-de-vidro-mega-chama/7097/preto/bivolt",
-      "category": "Eletrodomésticos",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:38.357241+00:00"
-    },
-    {
-      "title": "Tanquinho Wanke Tradicional 5kg Semiautomático Agitador Removível",
-      "source": "Gazin",
-      "store_name": "Gazin",
-      "price": 1052.9,
-      "original_price": null,
-      "reference_price": 1052.9,
-      "reference_kind": "histórico observado",
-      "reference_samples": 12,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.gazin.com.br/produto/tanquinho-wanke-tradicional-5kg-semiautomatico-agitador-removivel/6180/madeira-escura/110-volts",
+      "title": "Black Friday",
+      "source": "Loja TCL",
+      "store_name": "Loja TCL",
+      "price": 3429.0,
+      "original_price": 3599.0,
+      "reference_price": 3599.0,
+      "reference_kind": "referência atual",
+      "reference_samples": 11,
+      "difference_pct": 4.7,
+      "savings": 170.0,
+      "url": "https://www.lojatcl.com.br/lava-e-seca-tcl-12kg---7kg-prata-com-cuidado-antialergico-e-refrescar-com-ar-220v-c312wds-33771/p",
       "category": "Outros",
       "tracked": false,
       "watch_terms": [],
       "highlighted": false,
       "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:38.636693+00:00"
-    },
-    {
-      "title": "Fogão Mueller MFI4BB 4 Bocas Automático Mesa de Inox Forno 48,1L",
-      "source": "Gazin",
-      "store_name": "Gazin",
-      "price": 1091.9,
-      "original_price": null,
-      "reference_price": 699.9,
-      "reference_kind": "histórico observado",
-      "reference_samples": 128,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.gazin.com.br/produto/fogao-mueller-mfi4bb-4-bocas-automatico-mesa-de-inox-forno-481l/7171/preto-fosco/bivolt",
-      "category": "Eletrodomésticos",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:38.136857+00:00"
-    },
-    {
-      "title": "Micro-ondas Bancada Electrolux 34L Função Tira Odor e Manter Aquecido MEO44",
-      "source": "Gazin",
-      "store_name": "Gazin",
-      "price": 1095.0,
-      "original_price": null,
-      "reference_price": 1095.0,
-      "reference_kind": "histórico observado",
-      "reference_samples": 12,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.gazin.com.br/produto/micro-ondas-bancada-electrolux-34l-funcao-tira-odor-e-manter-aquecido-meo44/811/branco/110-volts",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:38.686076+00:00"
-    },
-    {
-      "title": "Tanquinho Colormaq EcoMax 20kg Semiautomático Turbilhonamento LCS 20",
-      "source": "Gazin",
-      "store_name": "Gazin",
-      "price": 1150.9,
-      "original_price": null,
-      "reference_price": 1150.9,
-      "reference_kind": "histórico observado",
-      "reference_samples": 12,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.gazin.com.br/produto/tanquinho-colormaq-ecomax-20kg-semiautomatico-turbilhonamento-lcs-20/7499/prata/110-volts",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:38.465563+00:00"
-    },
-    {
-      "title": "Bebedouro de Água Eletrônico Esmaltec 1,8L Sistema Easy Open EGC35B",
-      "source": "Gazin",
-      "store_name": "Gazin",
-      "price": 1176.9,
-      "original_price": null,
-      "reference_price": 1176.9,
-      "reference_kind": "histórico observado",
-      "reference_samples": 12,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.gazin.com.br/produto/bebedouro-de-agua-eletronico-esmaltec-18l-sistema-easy-open-egc35b/6252/inox/110-volts",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:38.663108+00:00"
-    },
-    {
-      "title": "Fogão Mueller 5 Bocas MFI5BB Automático Mesa de Inox Forno 81,6L",
-      "source": "Gazin",
-      "store_name": "Gazin",
-      "price": 1435.9,
-      "original_price": null,
-      "reference_price": 899.9,
-      "reference_kind": "histórico observado",
-      "reference_samples": 128,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.gazin.com.br/produto/fogao-mueller-5-bocas-mfi5bb-automatico-mesa-de-inox-forno-816l/7226/preto-fosco/bivolt",
-      "category": "Eletrodomésticos",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:38.048742+00:00"
-    },
-    {
-      "title": "Fogão Mueller MFV5BB 5 Bocas Automático Mesa de Vidro Temperado com Ultra Chama",
-      "source": "Gazin",
-      "store_name": "Gazin",
-      "price": 2024.9,
-      "original_price": null,
-      "reference_price": 1159.9,
-      "reference_kind": "histórico observado",
-      "reference_samples": 128,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.gazin.com.br/produto/fogao-mueller-mfv5bb-5-bocas-automatico-mesa-de-vidro-temperado-com-ultra-chama/6918/preto/bivolt",
-      "category": "Eletrodomésticos",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:38.238100+00:00"
-    },
-    {
-      "title": "Forno Elétrico de Embutir 80L Electrolux Efficient com PerfectCook 360 OE8EH",
-      "source": "Gazin",
-      "store_name": "Gazin",
-      "price": 2778.9,
-      "original_price": null,
-      "reference_price": 1939.9,
-      "reference_kind": "histórico observado",
-      "reference_samples": 128,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.gazin.com.br/produto/forno-eletrico-de-embutir-80l-electrolux-efficient-com-perfectcook-360-oe8eh/6465/preto/220-volts",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:38.404112+00:00"
-    },
-    {
-      "title": "Máquina de Lavar Mueller 13kg Automática 11 Programas MLA13",
-      "source": "Gazin",
-      "store_name": "Gazin",
-      "price": 2843.9,
-      "original_price": null,
-      "reference_price": 1689.9,
-      "reference_kind": "histórico observado",
-      "reference_samples": 128,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.gazin.com.br/produto/maquina-de-lavar-mueller-13kg-automatica-11-programas-mla13/8604/branco/110-volts",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:38.490164+00:00"
-    },
-    {
-      "title": "Geladeira Esmaltec 245L Cycle Defrost Inverter ROC31 Pro",
-      "source": "Gazin",
-      "store_name": "Gazin",
-      "price": 3183.9,
-      "original_price": null,
-      "reference_price": 1719.9,
-      "reference_kind": "histórico observado",
-      "reference_samples": 78,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.gazin.com.br/produto/geladeira-esmaltec-245l-cycle-defrost-inverter-roc31-pro/8397/branco/110-volts",
-      "category": "Eletrodomésticos",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:38.270563+00:00"
-    },
-    {
-      "title": "Máquina de Lavar Brastemp 15kg Automática Cesto Inox Multi Dispenser BWF15AB",
-      "source": "Gazin",
-      "store_name": "Gazin",
-      "price": 3877.9,
-      "original_price": null,
-      "reference_price": 2269.9,
-      "reference_kind": "histórico observado",
-      "reference_samples": 113,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.gazin.com.br/produto/maquina-de-lavar-brastemp-15kg-automatica-cesto-inox-multi-dispenser-bwf15ab/7700/branco/110-volts",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:38.006931+00:00"
-    },
-    {
-      "title": "Máquina de Lavar Electrolux Essential Care 17kg Jet&Clean Cesto Inox LED17",
-      "source": "Gazin",
-      "store_name": "Gazin",
-      "price": 3909.9,
-      "original_price": null,
-      "reference_price": 2349.9,
-      "reference_kind": "histórico observado",
-      "reference_samples": 90,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.gazin.com.br/produto/maquina-de-lavar-electrolux-essential-care-17kg-jetclean-cesto-inox-led17/4798/branco/110-volts",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:37.915734+00:00"
-    },
-    {
-      "title": "Freezer Electrolux 315L 1 Porta Horizontal Cycle Defrost Inverter HI330",
-      "source": "Gazin",
-      "store_name": "Gazin",
-      "price": 4359.9,
-      "original_price": null,
-      "reference_price": 2449.9,
-      "reference_kind": "histórico observado",
-      "reference_samples": 128,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.gazin.com.br/produto/freezer-electrolux-315l-1-porta-horizontal-cycle-defrost-inverter-hi330/9000/branco/110-volts",
-      "category": "Outros",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:38.336001+00:00"
-    },
-    {
-      "title": "Geladeira Electrolux 490L Frost Free AutoSense Inverter IB7",
-      "source": "Gazin",
-      "store_name": "Gazin",
-      "price": 7100.9,
-      "original_price": null,
-      "reference_price": 4139.9,
-      "reference_kind": "histórico observado",
-      "reference_samples": 128,
-      "difference_pct": 0.0,
-      "savings": 0.0,
-      "url": "https://www.gazin.com.br/produto/geladeira-electrolux-490l-frost-free-autosense-inverter-ib7/7491/branco/110-volts",
-      "category": "Eletrodomésticos",
-      "tracked": false,
-      "watch_terms": [],
-      "highlighted": false,
-      "strict_highlight": false,
-      "collected_at": "2026-11-28T04:02:38.437798+00:00"
+      "collected_at": "2026-11-28T13:13:15.748536+00:00"
     }
   ],
   "active": [
+    {
+      "source": "TerabyteShop",
+      "title": "Processador Intel Core Ultra 5 245K, Otimizado para IA, 3.6 Ghz (5.2Ghz Turbo), Série 2, 14-Cores 14-Threads, LGA 1851, BX80768245K",
+      "price": 1179.99,
+      "url": "https://www.terabyteshop.com.br/produto/32051/processador-intel-core-ultra-5-245k-36-ghz-52ghz-turbo-serie-2-14-cores-14-threads-lga-1851-bx80768245k",
+      "store_name": "TerabyteShop",
+      "official": true,
+      "available": true,
+      "original_price": 1933.9,
+      "product_id": null,
+      "product_key": "sem-marca|bx80768245k|245k",
+      "collected_at": "2026-11-28T13:13:07.438303+00:00",
+      "metadata": {
+        "collector": "retailer",
+        "direct_retailer": true,
+        "catalog_url": "https://www.terabyteshop.com.br/hardware/processadores"
+      },
+      "baseline_price": 3176.46,
+      "baseline_kind": "historico",
+      "baseline_samples": 145,
+      "drop_pct": 62.9,
+      "savings": 1996.47,
+      "confidence": "media",
+      "revalidated": true,
+      "verification_note": "TerabyteShop: domínio e preço confirmados novamente",
+      "status": "active"
+    },
     {
       "source": "Dufrio",
       "title": "Expositor Refrigerado de Bebidas Gelopar 410 Litros GPTU-40 Branco - 220V",
@@ -5153,7 +5106,7 @@
       "original_price": 6171.0,
       "product_id": null,
       "product_key": "sem-marca|220v",
-      "collected_at": "2026-11-28T04:02:49.302823+00:00",
+      "collected_at": "2026-11-28T13:12:38.006838+00:00",
       "metadata": {
         "collector": "retailer",
         "direct_retailer": true,
@@ -5161,7 +5114,7 @@
       },
       "baseline_price": 10251.0,
       "baseline_kind": "historico",
-      "baseline_samples": 107,
+      "baseline_samples": 110,
       "drop_pct": 58.1,
       "savings": 5951.99,
       "confidence": "alta",
@@ -5180,7 +5133,7 @@
       "original_price": 5569.2,
       "product_id": null,
       "product_key": "sem-marca|220v",
-      "collected_at": "2026-11-28T04:02:49.327800+00:00",
+      "collected_at": "2026-11-28T13:12:38.033833+00:00",
       "metadata": {
         "collector": "retailer",
         "direct_retailer": true,
@@ -5188,12 +5141,39 @@
       },
       "baseline_price": 10251.0,
       "baseline_kind": "historico",
-      "baseline_samples": 107,
+      "baseline_samples": 110,
       "drop_pct": 58.1,
       "savings": 5951.99,
       "confidence": "alta",
       "revalidated": true,
       "verification_note": "Dufrio: domínio e preço confirmados novamente",
+      "status": "active"
+    },
+    {
+      "source": "TerabyteShop",
+      "title": "Processador AMD Ryzen 7 5800XT 3.8GHz (4.8GHz Turbo), 8-Cores 16-Threads, AM4, Sem Cooler, 100-100001582WOF",
+      "price": 1599.99,
+      "url": "https://www.terabyteshop.com.br/produto/39971/processador-amd-ryzen-7-5800xt-38ghz-48ghz-turbo-8-cores-16-threads-am4-sem-cooler-100-100001582wof",
+      "store_name": "TerabyteShop",
+      "official": true,
+      "available": true,
+      "original_price": 2364.9,
+      "product_id": null,
+      "product_key": "sem-marca|100001582wof|5800xt",
+      "collected_at": "2026-11-28T13:13:07.360114+00:00",
+      "metadata": {
+        "collector": "retailer",
+        "direct_retailer": true,
+        "catalog_url": "https://www.terabyteshop.com.br/hardware/processadores"
+      },
+      "baseline_price": 2941.17,
+      "baseline_kind": "historico",
+      "baseline_samples": 121,
+      "drop_pct": 45.6,
+      "savings": 1341.18,
+      "confidence": "media",
+      "revalidated": true,
+      "verification_note": "TerabyteShop: domínio e preço confirmados novamente",
       "status": "active"
     }
   ],
